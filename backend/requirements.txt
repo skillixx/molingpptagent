@@ -1,0 +1,19 @@
+fastapi
+uvicorn
+google-genai
+google-adk==1.5.0
+httpx
+a2a-sdk==0.2.10
+# 固定为已验证的 Windows/Python 3.12 版本，避免新版源码包触发 Rust 编译失败。
+litellm==1.72.6
+python-dotenv
+fastmcp==2.2.5
+asyncclick
+pytest
+click
+BeautifulSoup4
+lxml
+python-multipart
+openai
+chromadb
+markitdown[all]>=0.1.2

@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+openai
+httpx
+chromadb
+python-dotenv
+pytest
+python-multipart
+markitdown[all]>=0.1.2
+# Windows 下将旧版 .doc 转换为 .docx，需要本机安装 Microsoft Word
+pywin32>=306; sys_platform == "win32"
+# 如果不需要minerU解析，可以不安装这个，容器就会很小
+#mineru[core]>=2.0.6

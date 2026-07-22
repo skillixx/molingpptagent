@@ -1,0 +1,15 @@
+# 向量模型 API Key，在 embedding_utils.py 中使用。
+# 支持的 embedding 厂商：aliyun、doubao、vllm、xinference、ollama。
+
+#ALI_API_KEY=your_ali_api_key_here
+#EMBEDDING_PROVIDER=aliyun
+#EMBEDDING_MODEL=text-embedding-v4
+
+# 火山引擎豆包
+EMBEDDING_PROVIDER=doubao
+EMBEDDING_MODEL=doubao-embedding-text-240715
+DOUBAO_API_KEY=your_doubao_api_key_here
+
+# 如果有 GPU，可以开启 MinerU；CPU 环境下运行较慢。
+# USE_MINERU=true 时需要安装 mineru[core]>=2.0.6，MinerU 会自动下载模型。
+USE_MINERU=false

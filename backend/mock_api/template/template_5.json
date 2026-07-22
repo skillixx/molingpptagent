@@ -1,0 +1,6755 @@
+{
+  "title": "毕业答辩",
+  "width": 1280,
+  "height": 720,
+  "theme": {
+    "themeColors": [
+      "#B42318",
+      "#7A1712",
+      "#252525",
+      "#A8786E",
+      "#D0A099",
+      "#8B827B"
+    ],
+    "fontColor": "#252525",
+    "fontName": "微软雅黑",
+    "backgroundColor": "#F7F4EF",
+    "shadow": {
+      "h": 0,
+      "v": 3,
+      "blur": 8,
+      "color": "#2525251F"
+    },
+    "outline": {
+      "width": 1,
+      "color": "#D8D0C8",
+      "style": "solid"
+    }
+  },
+  "slides": [
+    {
+      "id": "IuU7YgJmft",
+      "elements": [
+        {
+          "type": "image",
+          "id": "eeJ6jLb_tt",
+          "src": "/api/data/template_5_commercial_content_bg_v1.png",
+          "width": 1280,
+          "height": 720,
+          "left": 0,
+          "top": 0,
+          "fixedRatio": true,
+          "rotate": 0,
+          "flipH": false,
+          "flipV": false,
+          "clip": {
+            "shape": "rect",
+            "range": [
+              [
+                0,
+                0.381
+              ],
+              [
+                100,
+                100
+              ]
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "id": "IuU7YgJmft-cover-kicker",
+          "width": 360,
+          "height": 30,
+          "left": 124,
+          "top": 190,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#B42318",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B42318;font-size: 19px;font-family: 微软雅黑;font-weight: bold;letter-spacing: 2px;\">GRADUATION DEFENSE</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false
+        },
+        {
+          "type": "shape",
+          "id": "IuU7YgJmft-cover-rule",
+          "width": 92,
+          "height": 5,
+          "left": 124,
+          "top": 225,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B42318",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "text",
+          "id": "CRwi6s_ob9",
+          "width": 880,
+          "height": 118,
+          "left": 122,
+          "top": 245,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#252525",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 64px;font-family: 微软雅黑;font-weight: bold;letter-spacing: 1px;\">页面标题</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "title"
+        },
+        {
+          "type": "text",
+          "id": "YxHk6XdQGt",
+          "width": 720,
+          "height": 52,
+          "left": 124,
+          "top": 382,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#817A73",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #817A73;font-size: 24px;font-family: 微软雅黑;\">正文内容</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "content"
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#FFFFFF"
+      },
+      "remark": "",
+      "type": "cover"
+    },
+    {
+      "id": "sbmpkxYDgo",
+      "elements": [
+        {
+          "type": "image",
+          "id": "cWQ4Oaa7O_",
+          "src": "/api/data/template_5_commercial_content_bg_v1.png",
+          "width": 1280,
+          "height": 720,
+          "left": 0,
+          "top": 0,
+          "fixedRatio": true,
+          "rotate": 0,
+          "flipH": false,
+          "flipV": false,
+          "clip": {
+            "shape": "rect",
+            "range": [
+              [
+                0,
+                0.381
+              ],
+              [
+                100,
+                100
+              ]
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "id": "sbmpkxYDgo-cover-kicker",
+          "width": 360,
+          "height": 30,
+          "left": 124,
+          "top": 190,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#B42318",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B42318;font-size: 19px;font-family: 微软雅黑;font-weight: bold;letter-spacing: 2px;\">GRADUATION DEFENSE</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false
+        },
+        {
+          "type": "shape",
+          "id": "sbmpkxYDgo-cover-rule",
+          "width": 92,
+          "height": 5,
+          "left": 124,
+          "top": 225,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B42318",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "text",
+          "id": "vKblp0MJgu",
+          "width": 880,
+          "height": 118,
+          "left": 122,
+          "top": 245,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#252525",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 64px;font-family: 微软雅黑;font-weight: bold;letter-spacing: 1px;\">页面标题</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "title"
+        },
+        {
+          "type": "text",
+          "id": "ZvBftxBcN3",
+          "width": 720,
+          "height": 52,
+          "left": 124,
+          "top": 382,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#817A73",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #817A73;font-size: 24px;font-family: 微软雅黑;\">正文内容</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "content"
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#FFFFFF"
+      },
+      "remark": "",
+      "type": "cover"
+    },
+    {
+      "id": "RWDjDQ84LH",
+      "elements": [
+        {
+          "type": "image",
+          "id": "5meVA_JHxH",
+          "src": "/api/data/template_5_commercial_content_bg_v1.png",
+          "width": 1280,
+          "height": 720,
+          "left": 0,
+          "top": 0,
+          "fixedRatio": true,
+          "rotate": 0,
+          "flipH": false,
+          "flipV": false,
+          "clip": {
+            "shape": "rect",
+            "range": [
+              [
+                0,
+                0.381
+              ],
+              [
+                100,
+                100
+              ]
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "id": "wqmeDnUE7U",
+          "width": 260,
+          "height": 30,
+          "left": 78,
+          "top": 58,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#B42318",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B42318;font-size: 18px;font-family: 微软雅黑;font-weight: bold;letter-spacing: 2px;\">CONTENTS</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false
+        },
+        {
+          "type": "text",
+          "id": "lmFIM34Ng4",
+          "width": 260,
+          "height": 72,
+          "left": 76,
+          "top": 88,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#252525",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 50px;font-family: 微软雅黑;font-weight: bold;\">目 录</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false
+        },
+        {
+          "type": "shape",
+          "id": "RWDjDQ84LH-contents-divider",
+          "width": 2,
+          "height": 420,
+          "left": 628,
+          "top": 190,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B4231826",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "text",
+          "id": "RWDjDQ84LH-contents-group-1-number",
+          "width": 58,
+          "height": 44,
+          "left": 92,
+          "top": 207,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#B42318",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B42318;font-size: 25px;font-family: 微软雅黑;font-weight: bold;\">01</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "itemNumber",
+          "groupId": "RWDjDQ84LH-contents-group-1"
+        },
+        {
+          "type": "text",
+          "id": "Yk7EC0b5Kv",
+          "width": 430,
+          "height": 48,
+          "left": 164,
+          "top": 206,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#252525",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 29px;font-family: 微软雅黑;font-weight: bold;\">内容要点</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "item",
+          "groupId": "RWDjDQ84LH-contents-group-1"
+        },
+        {
+          "type": "shape",
+          "id": "RWDjDQ84LH-contents-group-1-rule",
+          "width": 500,
+          "height": 2,
+          "left": 92,
+          "top": 268,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#D8D0C8",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false,
+          "groupId": "RWDjDQ84LH-contents-group-1"
+        },
+        {
+          "type": "text",
+          "id": "RWDjDQ84LH-contents-group-2-number",
+          "width": 58,
+          "height": 44,
+          "left": 666,
+          "top": 207,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#B42318",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B42318;font-size: 25px;font-family: 微软雅黑;font-weight: bold;\">02</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "itemNumber",
+          "groupId": "RWDjDQ84LH-contents-group-2"
+        },
+        {
+          "type": "text",
+          "id": "RG8Z7HPTio",
+          "width": 430,
+          "height": 48,
+          "left": 738,
+          "top": 206,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#252525",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 29px;font-family: 微软雅黑;font-weight: bold;\">内容要点</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "item",
+          "groupId": "RWDjDQ84LH-contents-group-2"
+        },
+        {
+          "type": "shape",
+          "id": "RWDjDQ84LH-contents-group-2-rule",
+          "width": 500,
+          "height": 2,
+          "left": 666,
+          "top": 268,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#D8D0C8",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false,
+          "groupId": "RWDjDQ84LH-contents-group-2"
+        },
+        {
+          "type": "text",
+          "id": "RWDjDQ84LH-contents-group-3-number",
+          "width": 58,
+          "height": 44,
+          "left": 92,
+          "top": 349,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#B42318",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B42318;font-size: 25px;font-family: 微软雅黑;font-weight: bold;\">03</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "itemNumber",
+          "groupId": "RWDjDQ84LH-contents-group-3"
+        },
+        {
+          "type": "text",
+          "id": "oUvsxKUGmR",
+          "width": 430,
+          "height": 48,
+          "left": 164,
+          "top": 348,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#252525",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 29px;font-family: 微软雅黑;font-weight: bold;\">内容要点</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "item",
+          "groupId": "RWDjDQ84LH-contents-group-3"
+        },
+        {
+          "type": "shape",
+          "id": "RWDjDQ84LH-contents-group-3-rule",
+          "width": 500,
+          "height": 2,
+          "left": 92,
+          "top": 410,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#D8D0C8",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false,
+          "groupId": "RWDjDQ84LH-contents-group-3"
+        },
+        {
+          "type": "text",
+          "id": "RWDjDQ84LH-contents-group-4-number",
+          "width": 58,
+          "height": 44,
+          "left": 666,
+          "top": 349,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#B42318",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B42318;font-size: 25px;font-family: 微软雅黑;font-weight: bold;\">04</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "itemNumber",
+          "groupId": "RWDjDQ84LH-contents-group-4"
+        },
+        {
+          "type": "text",
+          "id": "xEJ1kTj6OO",
+          "width": 430,
+          "height": 48,
+          "left": 738,
+          "top": 348,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#252525",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 29px;font-family: 微软雅黑;font-weight: bold;\">内容要点</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "item",
+          "groupId": "RWDjDQ84LH-contents-group-4"
+        },
+        {
+          "type": "shape",
+          "id": "RWDjDQ84LH-contents-group-4-rule",
+          "width": 500,
+          "height": 2,
+          "left": 666,
+          "top": 410,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#D8D0C8",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false,
+          "groupId": "RWDjDQ84LH-contents-group-4"
+        },
+        {
+          "type": "text",
+          "id": "RWDjDQ84LH-contents-group-5-number",
+          "width": 58,
+          "height": 44,
+          "left": 92,
+          "top": 491,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#B42318",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B42318;font-size: 25px;font-family: 微软雅黑;font-weight: bold;\">05</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "itemNumber",
+          "groupId": "RWDjDQ84LH-contents-group-5"
+        },
+        {
+          "type": "text",
+          "id": "tbqBd_iEUK",
+          "width": 430,
+          "height": 48,
+          "left": 164,
+          "top": 490,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#252525",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 29px;font-family: 微软雅黑;font-weight: bold;\">内容要点</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "item",
+          "groupId": "RWDjDQ84LH-contents-group-5"
+        },
+        {
+          "type": "shape",
+          "id": "RWDjDQ84LH-contents-group-5-rule",
+          "width": 500,
+          "height": 2,
+          "left": 92,
+          "top": 552,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#D8D0C8",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false,
+          "groupId": "RWDjDQ84LH-contents-group-5"
+        },
+        {
+          "type": "text",
+          "id": "RWDjDQ84LH-contents-group-6-number",
+          "width": 58,
+          "height": 44,
+          "left": 666,
+          "top": 491,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#B42318",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B42318;font-size: 25px;font-family: 微软雅黑;font-weight: bold;\">06</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "itemNumber",
+          "groupId": "RWDjDQ84LH-contents-group-6"
+        },
+        {
+          "type": "text",
+          "id": "FR5Bnm5ZC7",
+          "width": 430,
+          "height": 48,
+          "left": 738,
+          "top": 490,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#252525",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 29px;font-family: 微软雅黑;font-weight: bold;\">内容要点</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "item",
+          "groupId": "RWDjDQ84LH-contents-group-6"
+        },
+        {
+          "type": "shape",
+          "id": "RWDjDQ84LH-contents-group-6-rule",
+          "width": 500,
+          "height": 2,
+          "left": 666,
+          "top": 552,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#D8D0C8",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false,
+          "groupId": "RWDjDQ84LH-contents-group-6"
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#FFFFFF"
+      },
+      "remark": "",
+      "type": "contents"
+    },
+    {
+      "id": "TVezfGeztS",
+      "elements": [
+        {
+          "type": "image",
+          "id": "1RNwNCh2xo",
+          "src": "/api/data/template_5_commercial_section_bg_v1.png",
+          "width": 1280,
+          "height": 720,
+          "left": 0,
+          "top": 0,
+          "fixedRatio": true,
+          "rotate": 0,
+          "flipH": false,
+          "flipV": false,
+          "clip": {
+            "shape": "rect",
+            "range": [
+              [
+                0,
+                0.381
+              ],
+              [
+                100,
+                100
+              ]
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "id": "TVezfGeztS-part-number",
+          "width": 100,
+          "height": 56,
+          "left": 190,
+          "top": 194,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#B42318",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B42318;font-size: 34px;font-family: 微软雅黑;font-weight: bold;\">01</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "partNumber"
+        },
+        {
+          "type": "text",
+          "id": "TVezfGeztS-section-label",
+          "width": 180,
+          "height": 30,
+          "left": 286,
+          "top": 207,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#817A73",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #817A73;font-size: 17px;font-family: 微软雅黑;font-weight: bold;letter-spacing: 2px;\">SECTION</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false
+        },
+        {
+          "type": "shape",
+          "id": "TVezfGeztS-transition-rule",
+          "width": 96,
+          "height": 5,
+          "left": 190,
+          "top": 264,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B42318",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "text",
+          "id": "sHuR18BLuH",
+          "width": 800,
+          "height": 92,
+          "left": 190,
+          "top": 286,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#252525",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 58px;font-family: 微软雅黑;font-weight: bold;\">页面标题</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "title"
+        },
+        {
+          "type": "text",
+          "id": "TVezfGeztS-transition-summary",
+          "width": 720,
+          "height": 70,
+          "left": 192,
+          "top": 398,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#4A4642",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #4A4642;font-size: 24px;font-family: 微软雅黑;\">章节核心观点与关键结论</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "content"
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#FFFFFF"
+      },
+      "remark": "",
+      "type": "transition"
+    },
+    {
+      "id": "ykvkN5-hQE",
+      "elements": [
+        {
+          "type": "image",
+          "id": "vsxJtzLXjg",
+          "src": "/api/data/template_5_commercial_content_bg_v1.png",
+          "width": 1280,
+          "height": 720,
+          "left": 0,
+          "top": 0,
+          "fixedRatio": true,
+          "rotate": 0,
+          "flipH": false,
+          "flipV": false,
+          "clip": {
+            "shape": "rect",
+            "range": [
+              [
+                0,
+                0.381
+              ],
+              [
+                100,
+                100
+              ]
+            ]
+          }
+        },
+        {
+          "type": "shape",
+          "id": "ykvkN5-hQE-header-accent",
+          "width": 7,
+          "height": 34,
+          "left": 76,
+          "top": 43,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B42318",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "shape",
+          "id": "ykvkN5-hQE-header-rule",
+          "width": 1128,
+          "height": 2,
+          "left": 76,
+          "top": 102,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B4231840",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "text",
+          "id": "6eahBaXdhj",
+          "width": 900,
+          "height": 52,
+          "left": 104,
+          "top": 36,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#252525",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 40px;font-family: 微软雅黑;font-weight: bold;\">页面标题</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "title"
+        },
+        {
+          "type": "text",
+          "id": "ykvkN5-hQE-item-number-1",
+          "width": 54,
+          "height": 40,
+          "left": 96,
+          "top": 156,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#B42318",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B42318;font-size: 22px;font-family: 微软雅黑;font-weight: bold;\">01</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "itemNumber",
+          "groupId": "ykvkN5-hQE-text-item-1"
+        },
+        {
+          "type": "text",
+          "id": "ykvkN5-hQE-item-title-1",
+          "width": 1024,
+          "height": 44,
+          "left": 160,
+          "top": 154,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#252525",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 28px;font-family: 微软雅黑;font-weight: bold;\">要点标题</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "itemTitle",
+          "groupId": "ykvkN5-hQE-text-item-1"
+        },
+        {
+          "type": "shape",
+          "id": "3wbHhCmJaH",
+          "width": 1024,
+          "height": 92,
+          "left": 160,
+          "top": 202,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "<p style=\"text-align: left;\"><span style=\"color: #4A4642;font-size: 23px;font-family: 微软雅黑;\">内容要点</span></p>",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#4A4642",
+            "align": "top",
+            "type": "item"
+          },
+          "flipH": false,
+          "flipV": false,
+          "groupId": "ykvkN5-hQE-text-item-1"
+        },
+        {
+          "type": "shape",
+          "id": "ykvkN5-hQE-text-item-1-rule",
+          "width": 1088,
+          "height": 2,
+          "left": 96,
+          "top": 310,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B4231866",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false,
+          "groupId": "ykvkN5-hQE-text-item-1"
+        },
+        {
+          "type": "text",
+          "id": "ykvkN5-hQE-item-number-2",
+          "width": 54,
+          "height": 40,
+          "left": 96,
+          "top": 325,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#B42318",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B42318;font-size: 22px;font-family: 微软雅黑;font-weight: bold;\">02</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "itemNumber",
+          "groupId": "ykvkN5-hQE-text-item-2"
+        },
+        {
+          "type": "text",
+          "id": "ykvkN5-hQE-item-title-2",
+          "width": 1024,
+          "height": 44,
+          "left": 160,
+          "top": 323,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#252525",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 28px;font-family: 微软雅黑;font-weight: bold;\">要点标题</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "itemTitle",
+          "groupId": "ykvkN5-hQE-text-item-2"
+        },
+        {
+          "type": "shape",
+          "id": "OtHkKu6QCK",
+          "width": 1024,
+          "height": 92,
+          "left": 160,
+          "top": 371,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "<p style=\"text-align: left;\"><span style=\"color: #4A4642;font-size: 23px;font-family: 微软雅黑;\">内容要点</span></p>",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#4A4642",
+            "align": "top",
+            "type": "item"
+          },
+          "flipH": false,
+          "flipV": false,
+          "groupId": "ykvkN5-hQE-text-item-2"
+        },
+        {
+          "type": "shape",
+          "id": "ykvkN5-hQE-text-item-2-rule",
+          "width": 1088,
+          "height": 2,
+          "left": 96,
+          "top": 479,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#D8D0C8",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false,
+          "groupId": "ykvkN5-hQE-text-item-2"
+        },
+        {
+          "type": "text",
+          "id": "ykvkN5-hQE-item-number-3",
+          "width": 54,
+          "height": 40,
+          "left": 96,
+          "top": 494,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#B42318",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B42318;font-size: 22px;font-family: 微软雅黑;font-weight: bold;\">03</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "itemNumber",
+          "groupId": "ykvkN5-hQE-text-item-3"
+        },
+        {
+          "type": "text",
+          "id": "ykvkN5-hQE-item-title-3",
+          "width": 1024,
+          "height": 44,
+          "left": 160,
+          "top": 492,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#252525",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 28px;font-family: 微软雅黑;font-weight: bold;\">要点标题</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "itemTitle",
+          "groupId": "ykvkN5-hQE-text-item-3"
+        },
+        {
+          "type": "shape",
+          "id": "7Q9xxtEdvJ",
+          "width": 1024,
+          "height": 92,
+          "left": 160,
+          "top": 540,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "<p style=\"text-align: left;\"><span style=\"color: #4A4642;font-size: 23px;font-family: 微软雅黑;\">内容要点</span></p>",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#4A4642",
+            "align": "top",
+            "type": "item"
+          },
+          "flipH": false,
+          "flipV": false,
+          "groupId": "ykvkN5-hQE-text-item-3"
+        },
+        {
+          "type": "shape",
+          "id": "ykvkN5-hQE-text-item-3-rule",
+          "width": 1088,
+          "height": 2,
+          "left": 96,
+          "top": 648,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#D8D0C8",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false,
+          "groupId": "ykvkN5-hQE-text-item-3"
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#FFFFFF"
+      },
+      "remark": "",
+      "type": "content"
+    },
+    {
+      "id": "NGVLKSYA8u",
+      "elements": [
+        {
+          "type": "image",
+          "id": "PTQEWigF-V",
+          "src": "/api/data/template_5_commercial_section_bg_v1.png",
+          "width": 1280,
+          "height": 720,
+          "left": 0,
+          "top": 0,
+          "fixedRatio": true,
+          "rotate": 0,
+          "flipH": false,
+          "flipV": false,
+          "clip": {
+            "shape": "rect",
+            "range": [
+              [
+                0,
+                0.381
+              ],
+              [
+                100,
+                100
+              ]
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "id": "NGVLKSYA8u-part-number",
+          "width": 100,
+          "height": 56,
+          "left": 190,
+          "top": 194,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#B42318",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B42318;font-size: 34px;font-family: 微软雅黑;font-weight: bold;\">01</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "partNumber"
+        },
+        {
+          "type": "text",
+          "id": "NGVLKSYA8u-section-label",
+          "width": 180,
+          "height": 30,
+          "left": 286,
+          "top": 207,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#817A73",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #817A73;font-size: 17px;font-family: 微软雅黑;font-weight: bold;letter-spacing: 2px;\">SECTION</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false
+        },
+        {
+          "type": "shape",
+          "id": "NGVLKSYA8u-transition-rule",
+          "width": 96,
+          "height": 5,
+          "left": 190,
+          "top": 264,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B42318",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "text",
+          "id": "9pSzciaYf5",
+          "width": 800,
+          "height": 92,
+          "left": 190,
+          "top": 286,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#252525",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 58px;font-family: 微软雅黑;font-weight: bold;\">页面标题</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "title"
+        },
+        {
+          "type": "text",
+          "id": "NGVLKSYA8u-transition-summary",
+          "width": 720,
+          "height": 70,
+          "left": 192,
+          "top": 398,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#4A4642",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #4A4642;font-size: 24px;font-family: 微软雅黑;\">章节核心观点与关键结论</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "content"
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#FFFFFF"
+      },
+      "remark": "",
+      "type": "transition"
+    },
+    {
+      "id": "kqyC9H4PVT",
+      "elements": [
+        {
+          "type": "image",
+          "id": "73O8Ph-T_X",
+          "src": "/api/data/template_5_commercial_content_bg_v1.png",
+          "width": 1280,
+          "height": 720,
+          "left": 0,
+          "top": 0,
+          "fixedRatio": true,
+          "rotate": 0,
+          "flipH": false,
+          "flipV": false,
+          "clip": {
+            "shape": "rect",
+            "range": [
+              [
+                0,
+                0.381
+              ],
+              [
+                100,
+                100
+              ]
+            ]
+          }
+        },
+        {
+          "type": "shape",
+          "id": "kqyC9H4PVT-header-accent",
+          "width": 7,
+          "height": 34,
+          "left": 76,
+          "top": 43,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B42318",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "shape",
+          "id": "kqyC9H4PVT-header-rule",
+          "width": 1128,
+          "height": 2,
+          "left": 76,
+          "top": 102,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B4231840",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "text",
+          "id": "pnHionuEUD",
+          "width": 900,
+          "height": 52,
+          "left": 104,
+          "top": 36,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#252525",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 40px;font-family: 微软雅黑;font-weight: bold;\">页面标题</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "title"
+        },
+        {
+          "type": "text",
+          "id": "kqyC9H4PVT-item-number-1",
+          "width": 54,
+          "height": 40,
+          "left": 96,
+          "top": 152,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#B42318",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B42318;font-size: 22px;font-family: 微软雅黑;font-weight: bold;\">01</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "itemNumber",
+          "groupId": "kqyC9H4PVT-text-item-1"
+        },
+        {
+          "type": "text",
+          "id": "kqyC9H4PVT-item-title-1",
+          "width": 452,
+          "height": 44,
+          "left": 160,
+          "top": 150,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#252525",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 28px;font-family: 微软雅黑;font-weight: bold;\">要点标题</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "itemTitle",
+          "groupId": "kqyC9H4PVT-text-item-1"
+        },
+        {
+          "type": "shape",
+          "id": "_c-BvTZJEB",
+          "width": 452,
+          "height": 120,
+          "left": 160,
+          "top": 204,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "<p style=\"text-align: left;\"><span style=\"color: #4A4642;font-size: 23px;font-family: 微软雅黑;\">内容要点</span></p>",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#4A4642",
+            "align": "top",
+            "type": "item"
+          },
+          "flipH": false,
+          "flipV": false,
+          "groupId": "kqyC9H4PVT-text-item-1"
+        },
+        {
+          "type": "shape",
+          "id": "kqyC9H4PVT-text-item-1-rule",
+          "width": 516,
+          "height": 2,
+          "left": 96,
+          "top": 340,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B4231866",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false,
+          "groupId": "kqyC9H4PVT-text-item-1"
+        },
+        {
+          "type": "text",
+          "id": "kqyC9H4PVT-item-number-2",
+          "width": 54,
+          "height": 40,
+          "left": 668,
+          "top": 152,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#B42318",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B42318;font-size: 22px;font-family: 微软雅黑;font-weight: bold;\">02</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "itemNumber",
+          "groupId": "kqyC9H4PVT-text-item-2"
+        },
+        {
+          "type": "text",
+          "id": "kqyC9H4PVT-item-title-2",
+          "width": 452,
+          "height": 44,
+          "left": 732,
+          "top": 150,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#252525",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 28px;font-family: 微软雅黑;font-weight: bold;\">要点标题</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "itemTitle",
+          "groupId": "kqyC9H4PVT-text-item-2"
+        },
+        {
+          "type": "shape",
+          "id": "QHBnLyNDT9",
+          "width": 452,
+          "height": 120,
+          "left": 732,
+          "top": 204,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "<p style=\"text-align: left;\"><span style=\"color: #4A4642;font-size: 23px;font-family: 微软雅黑;\">内容要点</span></p>",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#4A4642",
+            "align": "top",
+            "type": "item"
+          },
+          "flipH": false,
+          "flipV": false,
+          "groupId": "kqyC9H4PVT-text-item-2"
+        },
+        {
+          "type": "shape",
+          "id": "kqyC9H4PVT-text-item-2-rule",
+          "width": 516,
+          "height": 2,
+          "left": 668,
+          "top": 340,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#D8D0C8",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false,
+          "groupId": "kqyC9H4PVT-text-item-2"
+        },
+        {
+          "type": "text",
+          "id": "kqyC9H4PVT-item-number-3",
+          "width": 54,
+          "height": 40,
+          "left": 96,
+          "top": 442,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#B42318",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B42318;font-size: 22px;font-family: 微软雅黑;font-weight: bold;\">03</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "itemNumber",
+          "groupId": "kqyC9H4PVT-text-item-3"
+        },
+        {
+          "type": "text",
+          "id": "kqyC9H4PVT-item-title-3",
+          "width": 452,
+          "height": 44,
+          "left": 160,
+          "top": 440,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#252525",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 28px;font-family: 微软雅黑;font-weight: bold;\">要点标题</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "itemTitle",
+          "groupId": "kqyC9H4PVT-text-item-3"
+        },
+        {
+          "type": "shape",
+          "id": "898TU2W-HM",
+          "width": 452,
+          "height": 120,
+          "left": 160,
+          "top": 494,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "<p style=\"text-align: left;\"><span style=\"color: #4A4642;font-size: 23px;font-family: 微软雅黑;\">内容要点</span></p>",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#4A4642",
+            "align": "top",
+            "type": "item"
+          },
+          "flipH": false,
+          "flipV": false,
+          "groupId": "kqyC9H4PVT-text-item-3"
+        },
+        {
+          "type": "shape",
+          "id": "kqyC9H4PVT-text-item-3-rule",
+          "width": 516,
+          "height": 2,
+          "left": 96,
+          "top": 630,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#D8D0C8",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false,
+          "groupId": "kqyC9H4PVT-text-item-3"
+        },
+        {
+          "type": "text",
+          "id": "kqyC9H4PVT-item-number-4",
+          "width": 54,
+          "height": 40,
+          "left": 668,
+          "top": 442,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#B42318",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B42318;font-size: 22px;font-family: 微软雅黑;font-weight: bold;\">04</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "itemNumber",
+          "groupId": "kqyC9H4PVT-text-item-4"
+        },
+        {
+          "type": "text",
+          "id": "kqyC9H4PVT-item-title-4",
+          "width": 452,
+          "height": 44,
+          "left": 732,
+          "top": 440,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#252525",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 28px;font-family: 微软雅黑;font-weight: bold;\">要点标题</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "itemTitle",
+          "groupId": "kqyC9H4PVT-text-item-4"
+        },
+        {
+          "type": "shape",
+          "id": "8ZSQd09gnz",
+          "width": 452,
+          "height": 120,
+          "left": 732,
+          "top": 494,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "<p style=\"text-align: left;\"><span style=\"color: #4A4642;font-size: 23px;font-family: 微软雅黑;\">内容要点</span></p>",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#4A4642",
+            "align": "top",
+            "type": "item"
+          },
+          "flipH": false,
+          "flipV": false,
+          "groupId": "kqyC9H4PVT-text-item-4"
+        },
+        {
+          "type": "shape",
+          "id": "kqyC9H4PVT-text-item-4-rule",
+          "width": 516,
+          "height": 2,
+          "left": 668,
+          "top": 630,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#D8D0C8",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false,
+          "groupId": "kqyC9H4PVT-text-item-4"
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#FFFFFF"
+      },
+      "remark": "",
+      "type": "content"
+    },
+    {
+      "id": "aLaAG5YjuW",
+      "elements": [
+        {
+          "type": "image",
+          "id": "_FgZlgQ6UO",
+          "src": "/api/data/template_5_commercial_content_bg_v1.png",
+          "width": 1280,
+          "height": 720,
+          "left": 0,
+          "top": 0,
+          "fixedRatio": true,
+          "rotate": 0,
+          "flipH": false,
+          "flipV": false,
+          "clip": {
+            "shape": "rect",
+            "range": [
+              [
+                0,
+                0.381
+              ],
+              [
+                100,
+                100
+              ]
+            ]
+          }
+        },
+        {
+          "type": "shape",
+          "id": "aLaAG5YjuW-header-accent",
+          "width": 7,
+          "height": 34,
+          "left": 76,
+          "top": 43,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B42318",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "shape",
+          "id": "aLaAG5YjuW-header-rule",
+          "width": 1128,
+          "height": 2,
+          "left": 76,
+          "top": 102,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B4231840",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "text",
+          "id": "roadiap7dK",
+          "width": 900,
+          "height": 52,
+          "left": 104,
+          "top": 36,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#252525",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 40px;font-family: 微软雅黑;font-weight: bold;\">页面标题</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "title"
+        },
+        {
+          "type": "image",
+          "id": "s0VvYwrw2V",
+          "src": "/api/data/template_5_asset_adaae87c9afb.png",
+          "width": 340,
+          "height": 218,
+          "left": 76,
+          "top": 154,
+          "fixedRatio": true,
+          "rotate": 0,
+          "flipH": false,
+          "flipV": false,
+          "imageType": "itemFigure"
+        },
+        {
+          "type": "shape",
+          "id": "-5OoNMert2",
+          "width": 340,
+          "height": 46,
+          "left": 76,
+          "top": 396,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 27px;font-family: 微软雅黑;font-weight: bold;\">要点标题</span></p>",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "top",
+            "type": "subtitle"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "shape",
+          "id": "8BnlXZ4VBD",
+          "width": 340,
+          "height": 142,
+          "left": 76,
+          "top": 456,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "<p style=\"text-align: left;\"><span style=\"color: #4A4642;font-size: 21px;font-family: 微软雅黑;\">内容要点</span></p>",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#4A4642",
+            "align": "top",
+            "type": "content"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "shape",
+          "id": "aLaAG5YjuW-image-rule-1",
+          "width": 58,
+          "height": 4,
+          "left": 76,
+          "top": 442,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B42318",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "image",
+          "id": "wmHwSqF42E",
+          "src": "/api/data/template_5_asset_2937dfb7a757.png",
+          "width": 340,
+          "height": 218,
+          "left": 458,
+          "top": 154,
+          "fixedRatio": true,
+          "rotate": 0,
+          "flipH": false,
+          "flipV": false,
+          "clip": {
+            "shape": "rect",
+            "range": [
+              [
+                9.408,
+                0
+              ],
+              [
+                94.685,
+                100
+              ]
+            ]
+          },
+          "imageType": "itemFigure"
+        },
+        {
+          "type": "shape",
+          "id": "rq9trjPzfH",
+          "width": 340,
+          "height": 46,
+          "left": 458,
+          "top": 396,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 27px;font-family: 微软雅黑;font-weight: bold;\">要点标题</span></p>",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "top",
+            "type": "subtitle"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "shape",
+          "id": "ZwCGDItVai",
+          "width": 340,
+          "height": 142,
+          "left": 458,
+          "top": 456,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "<p style=\"text-align: left;\"><span style=\"color: #4A4642;font-size: 21px;font-family: 微软雅黑;\">内容要点</span></p>",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#4A4642",
+            "align": "top",
+            "type": "content"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "shape",
+          "id": "aLaAG5YjuW-image-rule-2",
+          "width": 58,
+          "height": 4,
+          "left": 458,
+          "top": 442,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B42318",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "image",
+          "id": "-cutjRQsrj",
+          "src": "/api/data/template_5_asset_2efcef743ac3.png",
+          "width": 340,
+          "height": 218,
+          "left": 840,
+          "top": 154,
+          "fixedRatio": true,
+          "rotate": 0,
+          "flipH": false,
+          "flipV": false,
+          "clip": {
+            "shape": "rect",
+            "range": [
+              [
+                3.937,
+                0
+              ],
+              [
+                100,
+                100
+              ]
+            ]
+          },
+          "imageType": "itemFigure"
+        },
+        {
+          "type": "shape",
+          "id": "5Vc2e7RI9Q",
+          "width": 340,
+          "height": 46,
+          "left": 840,
+          "top": 396,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 27px;font-family: 微软雅黑;font-weight: bold;\">要点标题</span></p>",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "top",
+            "type": "subtitle"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "shape",
+          "id": "6M7KmbWE5w",
+          "width": 340,
+          "height": 142,
+          "left": 840,
+          "top": 456,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "<p style=\"text-align: left;\"><span style=\"color: #4A4642;font-size: 21px;font-family: 微软雅黑;\">内容要点</span></p>",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#4A4642",
+            "align": "top",
+            "type": "content"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "shape",
+          "id": "aLaAG5YjuW-image-rule-3",
+          "width": 58,
+          "height": 4,
+          "left": 840,
+          "top": 442,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B42318",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#FFFFFF"
+      },
+      "remark": "",
+      "type": "content"
+    },
+    {
+      "id": "H_cOjt5SV2",
+      "elements": [
+        {
+          "type": "image",
+          "id": "PKL86oNz_1",
+          "src": "/api/data/template_5_commercial_content_bg_v1.png",
+          "width": 1280,
+          "height": 720,
+          "left": 0,
+          "top": 0,
+          "fixedRatio": true,
+          "rotate": 0,
+          "flipH": false,
+          "flipV": false,
+          "clip": {
+            "shape": "rect",
+            "range": [
+              [
+                0,
+                0.381
+              ],
+              [
+                100,
+                100
+              ]
+            ]
+          }
+        },
+        {
+          "type": "shape",
+          "id": "H_cOjt5SV2-header-accent",
+          "width": 7,
+          "height": 34,
+          "left": 76,
+          "top": 43,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B42318",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "shape",
+          "id": "H_cOjt5SV2-header-rule",
+          "width": 1128,
+          "height": 2,
+          "left": 76,
+          "top": 102,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B4231840",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "text",
+          "id": "M_5oXqjw3b",
+          "width": 900,
+          "height": 52,
+          "left": 104,
+          "top": 36,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#252525",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 40px;font-family: 微软雅黑;font-weight: bold;\">页面标题</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "title"
+        },
+        {
+          "type": "chart",
+          "id": "graduationChartSlot",
+          "chartType": "bar",
+          "left": 120,
+          "top": 148,
+          "width": 1040,
+          "height": 390,
+          "rotate": 0,
+          "themeColors": [
+            "#B42318",
+            "#252525",
+            "#A8786E",
+            "#D0A099",
+            "#8B827B"
+          ],
+          "textColor": "#4A4642",
+          "data": {
+            "labels": [
+              "第一项",
+              "第二项",
+              "第三项",
+              "第四项"
+            ],
+            "legends": [
+              "数据"
+            ],
+            "series": [
+              [
+                220,
+                440,
+                350,
+                160
+              ]
+            ]
+          },
+          "chartMark": "item"
+        },
+        {
+          "type": "shape",
+          "id": "0-gmljq4J1",
+          "width": 940,
+          "height": 66,
+          "left": 170,
+          "top": 565,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "<p style=\"text-align: center;\"><span style=\"color: #4A4642;font-size: 22px;font-family: 微软雅黑;\">正文内容</span></p>",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#4A4642",
+            "align": "top",
+            "type": "content"
+          },
+          "flipH": false,
+          "flipV": false
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#FFFFFF"
+      },
+      "remark": "",
+      "type": "content"
+    },
+    {
+      "id": "CrENmQDs6Q",
+      "elements": [
+        {
+          "type": "image",
+          "id": "Z0aeM2sDLC",
+          "src": "/api/data/template_5_commercial_section_bg_v1.png",
+          "width": 1280,
+          "height": 720,
+          "left": 0,
+          "top": 0,
+          "fixedRatio": true,
+          "rotate": 0,
+          "flipH": false,
+          "flipV": false,
+          "clip": {
+            "shape": "rect",
+            "range": [
+              [
+                0,
+                0.381
+              ],
+              [
+                100,
+                100
+              ]
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "id": "CrENmQDs6Q-part-number",
+          "width": 100,
+          "height": 56,
+          "left": 190,
+          "top": 194,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#B42318",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B42318;font-size: 34px;font-family: 微软雅黑;font-weight: bold;\">01</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "partNumber"
+        },
+        {
+          "type": "text",
+          "id": "CrENmQDs6Q-section-label",
+          "width": 180,
+          "height": 30,
+          "left": 286,
+          "top": 207,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#817A73",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #817A73;font-size: 17px;font-family: 微软雅黑;font-weight: bold;letter-spacing: 2px;\">SECTION</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false
+        },
+        {
+          "type": "shape",
+          "id": "CrENmQDs6Q-transition-rule",
+          "width": 96,
+          "height": 5,
+          "left": 190,
+          "top": 264,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B42318",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "text",
+          "id": "SAg1cdv7lr",
+          "width": 800,
+          "height": 92,
+          "left": 190,
+          "top": 286,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#252525",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 58px;font-family: 微软雅黑;font-weight: bold;\">页面标题</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "title"
+        },
+        {
+          "type": "text",
+          "id": "CrENmQDs6Q-transition-summary",
+          "width": 720,
+          "height": 70,
+          "left": 192,
+          "top": 398,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#4A4642",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #4A4642;font-size: 24px;font-family: 微软雅黑;\">章节核心观点与关键结论</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "content"
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#FFFFFF"
+      },
+      "remark": "",
+      "type": "transition"
+    },
+    {
+      "id": "YUjwAw2rnK",
+      "elements": [
+        {
+          "type": "image",
+          "id": "wNBCAxFNeY",
+          "src": "/api/data/template_5_commercial_content_bg_v1.png",
+          "width": 1280,
+          "height": 720,
+          "left": 0,
+          "top": 0,
+          "fixedRatio": true,
+          "rotate": 0,
+          "flipH": false,
+          "flipV": false,
+          "clip": {
+            "shape": "rect",
+            "range": [
+              [
+                0,
+                0.381
+              ],
+              [
+                100,
+                100
+              ]
+            ]
+          }
+        },
+        {
+          "type": "shape",
+          "id": "YUjwAw2rnK-header-accent",
+          "width": 7,
+          "height": 34,
+          "left": 76,
+          "top": 43,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B42318",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "shape",
+          "id": "YUjwAw2rnK-header-rule",
+          "width": 1128,
+          "height": 2,
+          "left": 76,
+          "top": 102,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B4231840",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "text",
+          "id": "zCq8uJBLjI",
+          "width": 900,
+          "height": 52,
+          "left": 104,
+          "top": 36,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#252525",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 40px;font-family: 微软雅黑;font-weight: bold;\">页面标题</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "title"
+        },
+        {
+          "type": "text",
+          "id": "YUjwAw2rnK-item-number-1",
+          "width": 54,
+          "height": 40,
+          "left": 96,
+          "top": 152,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#B42318",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B42318;font-size: 22px;font-family: 微软雅黑;font-weight: bold;\">01</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "itemNumber",
+          "groupId": "YUjwAw2rnK-text-item-1"
+        },
+        {
+          "type": "text",
+          "id": "YUjwAw2rnK-item-title-1",
+          "width": 452,
+          "height": 44,
+          "left": 160,
+          "top": 150,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#252525",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 28px;font-family: 微软雅黑;font-weight: bold;\">要点标题</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "itemTitle",
+          "groupId": "YUjwAw2rnK-text-item-1"
+        },
+        {
+          "type": "shape",
+          "id": "IBx80ptsNW",
+          "width": 452,
+          "height": 120,
+          "left": 160,
+          "top": 204,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "<p style=\"text-align: left;\"><span style=\"color: #4A4642;font-size: 23px;font-family: 微软雅黑;\">内容要点</span></p>",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#4A4642",
+            "align": "top",
+            "type": "item"
+          },
+          "flipH": false,
+          "flipV": false,
+          "groupId": "YUjwAw2rnK-text-item-1"
+        },
+        {
+          "type": "shape",
+          "id": "YUjwAw2rnK-text-item-1-rule",
+          "width": 516,
+          "height": 2,
+          "left": 96,
+          "top": 340,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B4231866",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false,
+          "groupId": "YUjwAw2rnK-text-item-1"
+        },
+        {
+          "type": "text",
+          "id": "YUjwAw2rnK-item-number-2",
+          "width": 54,
+          "height": 40,
+          "left": 668,
+          "top": 152,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#B42318",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B42318;font-size: 22px;font-family: 微软雅黑;font-weight: bold;\">02</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "itemNumber",
+          "groupId": "YUjwAw2rnK-text-item-2"
+        },
+        {
+          "type": "text",
+          "id": "YUjwAw2rnK-item-title-2",
+          "width": 452,
+          "height": 44,
+          "left": 732,
+          "top": 150,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#252525",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 28px;font-family: 微软雅黑;font-weight: bold;\">要点标题</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "itemTitle",
+          "groupId": "YUjwAw2rnK-text-item-2"
+        },
+        {
+          "type": "shape",
+          "id": "wcAxnMFSLf",
+          "width": 452,
+          "height": 120,
+          "left": 732,
+          "top": 204,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "<p style=\"text-align: left;\"><span style=\"color: #4A4642;font-size: 23px;font-family: 微软雅黑;\">内容要点</span></p>",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#4A4642",
+            "align": "top",
+            "type": "item"
+          },
+          "flipH": false,
+          "flipV": false,
+          "groupId": "YUjwAw2rnK-text-item-2"
+        },
+        {
+          "type": "shape",
+          "id": "YUjwAw2rnK-text-item-2-rule",
+          "width": 516,
+          "height": 2,
+          "left": 668,
+          "top": 340,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#D8D0C8",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false,
+          "groupId": "YUjwAw2rnK-text-item-2"
+        },
+        {
+          "type": "text",
+          "id": "YUjwAw2rnK-item-number-3",
+          "width": 54,
+          "height": 40,
+          "left": 96,
+          "top": 442,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#B42318",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B42318;font-size: 22px;font-family: 微软雅黑;font-weight: bold;\">03</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "itemNumber",
+          "groupId": "YUjwAw2rnK-text-item-3"
+        },
+        {
+          "type": "text",
+          "id": "YUjwAw2rnK-item-title-3",
+          "width": 452,
+          "height": 44,
+          "left": 160,
+          "top": 440,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#252525",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 28px;font-family: 微软雅黑;font-weight: bold;\">要点标题</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "itemTitle",
+          "groupId": "YUjwAw2rnK-text-item-3"
+        },
+        {
+          "type": "shape",
+          "id": "3tpm7dnE9z",
+          "width": 452,
+          "height": 120,
+          "left": 160,
+          "top": 494,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "<p style=\"text-align: left;\"><span style=\"color: #4A4642;font-size: 23px;font-family: 微软雅黑;\">内容要点</span></p>",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#4A4642",
+            "align": "top",
+            "type": "item"
+          },
+          "flipH": false,
+          "flipV": false,
+          "groupId": "YUjwAw2rnK-text-item-3"
+        },
+        {
+          "type": "shape",
+          "id": "YUjwAw2rnK-text-item-3-rule",
+          "width": 516,
+          "height": 2,
+          "left": 96,
+          "top": 630,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#D8D0C8",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false,
+          "groupId": "YUjwAw2rnK-text-item-3"
+        },
+        {
+          "type": "text",
+          "id": "YUjwAw2rnK-item-number-4",
+          "width": 54,
+          "height": 40,
+          "left": 668,
+          "top": 442,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#B42318",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B42318;font-size: 22px;font-family: 微软雅黑;font-weight: bold;\">04</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "itemNumber",
+          "groupId": "YUjwAw2rnK-text-item-4"
+        },
+        {
+          "type": "text",
+          "id": "YUjwAw2rnK-item-title-4",
+          "width": 452,
+          "height": 44,
+          "left": 732,
+          "top": 440,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#252525",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 28px;font-family: 微软雅黑;font-weight: bold;\">要点标题</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "itemTitle",
+          "groupId": "YUjwAw2rnK-text-item-4"
+        },
+        {
+          "type": "shape",
+          "id": "AQF44F4jtn",
+          "width": 452,
+          "height": 120,
+          "left": 732,
+          "top": 494,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "<p style=\"text-align: left;\"><span style=\"color: #4A4642;font-size: 23px;font-family: 微软雅黑;\">内容要点</span></p>",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#4A4642",
+            "align": "top",
+            "type": "item"
+          },
+          "flipH": false,
+          "flipV": false,
+          "groupId": "YUjwAw2rnK-text-item-4"
+        },
+        {
+          "type": "shape",
+          "id": "YUjwAw2rnK-text-item-4-rule",
+          "width": 516,
+          "height": 2,
+          "left": 668,
+          "top": 630,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#D8D0C8",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false,
+          "groupId": "YUjwAw2rnK-text-item-4"
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#FFFFFF"
+      },
+      "remark": "",
+      "type": "content"
+    },
+    {
+      "id": "a2u3vSnkZt",
+      "elements": [
+        {
+          "type": "image",
+          "id": "Hyq7cFHQpg",
+          "src": "/api/data/template_5_commercial_content_bg_v1.png",
+          "width": 1280,
+          "height": 720,
+          "left": 0,
+          "top": 0,
+          "fixedRatio": true,
+          "rotate": 0,
+          "flipH": false,
+          "flipV": false,
+          "clip": {
+            "shape": "rect",
+            "range": [
+              [
+                0,
+                0.381
+              ],
+              [
+                100,
+                100
+              ]
+            ]
+          }
+        },
+        {
+          "type": "shape",
+          "id": "a2u3vSnkZt-header-accent",
+          "width": 7,
+          "height": 34,
+          "left": 76,
+          "top": 43,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B42318",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "shape",
+          "id": "a2u3vSnkZt-header-rule",
+          "width": 1128,
+          "height": 2,
+          "left": 76,
+          "top": 102,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B4231840",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "text",
+          "id": "3IT7PVs81F",
+          "width": 900,
+          "height": 52,
+          "left": 104,
+          "top": 36,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#252525",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 40px;font-family: 微软雅黑;font-weight: bold;\">页面标题</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "title"
+        },
+        {
+          "type": "image",
+          "id": "xswM7158Rc",
+          "src": "/api/data/template_5_asset_adaae87c9afb.png",
+          "width": 340,
+          "height": 218,
+          "left": 76,
+          "top": 154,
+          "fixedRatio": true,
+          "rotate": 0,
+          "flipH": false,
+          "flipV": false,
+          "imageType": "itemFigure"
+        },
+        {
+          "type": "shape",
+          "id": "livEfpOkO2",
+          "width": 340,
+          "height": 46,
+          "left": 76,
+          "top": 396,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 27px;font-family: 微软雅黑;font-weight: bold;\">要点标题</span></p>",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "top",
+            "type": "subtitle"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "shape",
+          "id": "lZvt_R-I-Q",
+          "width": 340,
+          "height": 142,
+          "left": 76,
+          "top": 456,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "<p style=\"text-align: left;\"><span style=\"color: #4A4642;font-size: 21px;font-family: 微软雅黑;\">内容要点</span></p>",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#4A4642",
+            "align": "top",
+            "type": "content"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "shape",
+          "id": "a2u3vSnkZt-image-rule-1",
+          "width": 58,
+          "height": 4,
+          "left": 76,
+          "top": 442,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B42318",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "image",
+          "id": "d7HBom_x-T",
+          "src": "/api/data/template_5_asset_2937dfb7a757.png",
+          "width": 340,
+          "height": 218,
+          "left": 458,
+          "top": 154,
+          "fixedRatio": true,
+          "rotate": 0,
+          "flipH": false,
+          "flipV": false,
+          "clip": {
+            "shape": "rect",
+            "range": [
+              [
+                9.408,
+                0
+              ],
+              [
+                94.685,
+                100
+              ]
+            ]
+          },
+          "imageType": "itemFigure"
+        },
+        {
+          "type": "shape",
+          "id": "Jdu1hE3cge",
+          "width": 340,
+          "height": 46,
+          "left": 458,
+          "top": 396,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 27px;font-family: 微软雅黑;font-weight: bold;\">要点标题</span></p>",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "top",
+            "type": "subtitle"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "shape",
+          "id": "Aex83Ol3Jh",
+          "width": 340,
+          "height": 142,
+          "left": 458,
+          "top": 456,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "<p style=\"text-align: left;\"><span style=\"color: #4A4642;font-size: 21px;font-family: 微软雅黑;\">内容要点</span></p>",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#4A4642",
+            "align": "top",
+            "type": "content"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "shape",
+          "id": "a2u3vSnkZt-image-rule-2",
+          "width": 58,
+          "height": 4,
+          "left": 458,
+          "top": 442,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B42318",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "image",
+          "id": "yDDt89n0wT",
+          "src": "/api/data/template_5_asset_2efcef743ac3.png",
+          "width": 340,
+          "height": 218,
+          "left": 840,
+          "top": 154,
+          "fixedRatio": true,
+          "rotate": 0,
+          "flipH": false,
+          "flipV": false,
+          "clip": {
+            "shape": "rect",
+            "range": [
+              [
+                3.937,
+                0
+              ],
+              [
+                100,
+                100
+              ]
+            ]
+          },
+          "imageType": "itemFigure"
+        },
+        {
+          "type": "shape",
+          "id": "pLWwC5uiAZ",
+          "width": 340,
+          "height": 46,
+          "left": 840,
+          "top": 396,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 27px;font-family: 微软雅黑;font-weight: bold;\">要点标题</span></p>",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "top",
+            "type": "subtitle"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "shape",
+          "id": "iwdsb_LaB-",
+          "width": 340,
+          "height": 142,
+          "left": 840,
+          "top": 456,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "<p style=\"text-align: left;\"><span style=\"color: #4A4642;font-size: 21px;font-family: 微软雅黑;\">内容要点</span></p>",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#4A4642",
+            "align": "top",
+            "type": "content"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "shape",
+          "id": "a2u3vSnkZt-image-rule-3",
+          "width": 58,
+          "height": 4,
+          "left": 840,
+          "top": 442,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B42318",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#FFFFFF"
+      },
+      "remark": "",
+      "type": "content"
+    },
+    {
+      "id": "_TYvxhjqMy",
+      "elements": [
+        {
+          "type": "image",
+          "id": "VR9uhbSBNJ",
+          "src": "/api/data/template_5_commercial_content_bg_v1.png",
+          "width": 1280,
+          "height": 720,
+          "left": 0,
+          "top": 0,
+          "fixedRatio": true,
+          "rotate": 0,
+          "flipH": false,
+          "flipV": false,
+          "clip": {
+            "shape": "rect",
+            "range": [
+              [
+                0,
+                0.381
+              ],
+              [
+                100,
+                100
+              ]
+            ]
+          }
+        },
+        {
+          "type": "shape",
+          "id": "_TYvxhjqMy-header-accent",
+          "width": 7,
+          "height": 34,
+          "left": 76,
+          "top": 43,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B42318",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "shape",
+          "id": "_TYvxhjqMy-header-rule",
+          "width": 1128,
+          "height": 2,
+          "left": 76,
+          "top": 102,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B4231840",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "text",
+          "id": "_tBVQa7KV0",
+          "width": 900,
+          "height": 52,
+          "left": 104,
+          "top": 36,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#252525",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 40px;font-family: 微软雅黑;font-weight: bold;\">页面标题</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "title"
+        },
+        {
+          "type": "text",
+          "id": "_TYvxhjqMy-item-number-1",
+          "width": 54,
+          "height": 40,
+          "left": 96,
+          "top": 152,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#B42318",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B42318;font-size: 22px;font-family: 微软雅黑;font-weight: bold;\">01</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "itemNumber",
+          "groupId": "_TYvxhjqMy-text-item-1"
+        },
+        {
+          "type": "text",
+          "id": "_TYvxhjqMy-item-title-1",
+          "width": 452,
+          "height": 44,
+          "left": 160,
+          "top": 150,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#252525",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 28px;font-family: 微软雅黑;font-weight: bold;\">要点标题</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "itemTitle",
+          "groupId": "_TYvxhjqMy-text-item-1"
+        },
+        {
+          "type": "shape",
+          "id": "v4WgYp5njx",
+          "width": 452,
+          "height": 120,
+          "left": 160,
+          "top": 204,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "<p style=\"text-align: left;\"><span style=\"color: #4A4642;font-size: 23px;font-family: 微软雅黑;\">内容要点</span></p>",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#4A4642",
+            "align": "top",
+            "type": "item"
+          },
+          "flipH": false,
+          "flipV": false,
+          "groupId": "_TYvxhjqMy-text-item-1"
+        },
+        {
+          "type": "shape",
+          "id": "_TYvxhjqMy-text-item-1-rule",
+          "width": 516,
+          "height": 2,
+          "left": 96,
+          "top": 340,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B4231866",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false,
+          "groupId": "_TYvxhjqMy-text-item-1"
+        },
+        {
+          "type": "text",
+          "id": "_TYvxhjqMy-item-number-2",
+          "width": 54,
+          "height": 40,
+          "left": 668,
+          "top": 152,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#B42318",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B42318;font-size: 22px;font-family: 微软雅黑;font-weight: bold;\">02</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "itemNumber",
+          "groupId": "_TYvxhjqMy-text-item-2"
+        },
+        {
+          "type": "text",
+          "id": "_TYvxhjqMy-item-title-2",
+          "width": 452,
+          "height": 44,
+          "left": 732,
+          "top": 150,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#252525",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 28px;font-family: 微软雅黑;font-weight: bold;\">要点标题</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "itemTitle",
+          "groupId": "_TYvxhjqMy-text-item-2"
+        },
+        {
+          "type": "shape",
+          "id": "mazKo73YgR",
+          "width": 452,
+          "height": 120,
+          "left": 732,
+          "top": 204,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "<p style=\"text-align: left;\"><span style=\"color: #4A4642;font-size: 23px;font-family: 微软雅黑;\">内容要点</span></p>",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#4A4642",
+            "align": "top",
+            "type": "item"
+          },
+          "flipH": false,
+          "flipV": false,
+          "groupId": "_TYvxhjqMy-text-item-2"
+        },
+        {
+          "type": "shape",
+          "id": "_TYvxhjqMy-text-item-2-rule",
+          "width": 516,
+          "height": 2,
+          "left": 668,
+          "top": 340,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#D8D0C8",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false,
+          "groupId": "_TYvxhjqMy-text-item-2"
+        },
+        {
+          "type": "text",
+          "id": "_TYvxhjqMy-item-number-3",
+          "width": 54,
+          "height": 40,
+          "left": 96,
+          "top": 442,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#B42318",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B42318;font-size: 22px;font-family: 微软雅黑;font-weight: bold;\">03</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "itemNumber",
+          "groupId": "_TYvxhjqMy-text-item-3"
+        },
+        {
+          "type": "text",
+          "id": "_TYvxhjqMy-item-title-3",
+          "width": 452,
+          "height": 44,
+          "left": 160,
+          "top": 440,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#252525",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 28px;font-family: 微软雅黑;font-weight: bold;\">要点标题</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "itemTitle",
+          "groupId": "_TYvxhjqMy-text-item-3"
+        },
+        {
+          "type": "shape",
+          "id": "uAV-L90Tu7",
+          "width": 452,
+          "height": 120,
+          "left": 160,
+          "top": 494,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "<p style=\"text-align: left;\"><span style=\"color: #4A4642;font-size: 23px;font-family: 微软雅黑;\">内容要点</span></p>",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#4A4642",
+            "align": "top",
+            "type": "item"
+          },
+          "flipH": false,
+          "flipV": false,
+          "groupId": "_TYvxhjqMy-text-item-3"
+        },
+        {
+          "type": "shape",
+          "id": "_TYvxhjqMy-text-item-3-rule",
+          "width": 516,
+          "height": 2,
+          "left": 96,
+          "top": 630,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#D8D0C8",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false,
+          "groupId": "_TYvxhjqMy-text-item-3"
+        },
+        {
+          "type": "text",
+          "id": "_TYvxhjqMy-item-number-4",
+          "width": 54,
+          "height": 40,
+          "left": 668,
+          "top": 442,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#B42318",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B42318;font-size: 22px;font-family: 微软雅黑;font-weight: bold;\">04</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "itemNumber",
+          "groupId": "_TYvxhjqMy-text-item-4"
+        },
+        {
+          "type": "text",
+          "id": "_TYvxhjqMy-item-title-4",
+          "width": 452,
+          "height": 44,
+          "left": 732,
+          "top": 440,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#252525",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 28px;font-family: 微软雅黑;font-weight: bold;\">要点标题</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "itemTitle",
+          "groupId": "_TYvxhjqMy-text-item-4"
+        },
+        {
+          "type": "shape",
+          "id": "MG_7F_fnnq",
+          "width": 452,
+          "height": 120,
+          "left": 732,
+          "top": 494,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "<p style=\"text-align: left;\"><span style=\"color: #4A4642;font-size: 23px;font-family: 微软雅黑;\">内容要点</span></p>",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#4A4642",
+            "align": "top",
+            "type": "item"
+          },
+          "flipH": false,
+          "flipV": false,
+          "groupId": "_TYvxhjqMy-text-item-4"
+        },
+        {
+          "type": "shape",
+          "id": "_TYvxhjqMy-text-item-4-rule",
+          "width": 516,
+          "height": 2,
+          "left": 668,
+          "top": 630,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#D8D0C8",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false,
+          "groupId": "_TYvxhjqMy-text-item-4"
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#FFFFFF"
+      },
+      "remark": "",
+      "type": "content"
+    },
+    {
+      "id": "AIfVk_UmD0",
+      "elements": [
+        {
+          "type": "image",
+          "id": "ZoyEqgb_ty",
+          "src": "/api/data/template_5_commercial_section_bg_v1.png",
+          "width": 1280,
+          "height": 720,
+          "left": 0,
+          "top": 0,
+          "fixedRatio": true,
+          "rotate": 0,
+          "flipH": false,
+          "flipV": false,
+          "clip": {
+            "shape": "rect",
+            "range": [
+              [
+                0,
+                0.381
+              ],
+              [
+                100,
+                100
+              ]
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "id": "AIfVk_UmD0-part-number",
+          "width": 100,
+          "height": 56,
+          "left": 190,
+          "top": 194,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#B42318",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B42318;font-size: 34px;font-family: 微软雅黑;font-weight: bold;\">01</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "partNumber"
+        },
+        {
+          "type": "text",
+          "id": "AIfVk_UmD0-section-label",
+          "width": 180,
+          "height": 30,
+          "left": 286,
+          "top": 207,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#817A73",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #817A73;font-size: 17px;font-family: 微软雅黑;font-weight: bold;letter-spacing: 2px;\">SECTION</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false
+        },
+        {
+          "type": "shape",
+          "id": "AIfVk_UmD0-transition-rule",
+          "width": 96,
+          "height": 5,
+          "left": 190,
+          "top": 264,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B42318",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "text",
+          "id": "nSJoMXhkUj",
+          "width": 800,
+          "height": 92,
+          "left": 190,
+          "top": 286,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#252525",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 58px;font-family: 微软雅黑;font-weight: bold;\">页面标题</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "title"
+        },
+        {
+          "type": "text",
+          "id": "AIfVk_UmD0-transition-summary",
+          "width": 720,
+          "height": 70,
+          "left": 192,
+          "top": 398,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#4A4642",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #4A4642;font-size: 24px;font-family: 微软雅黑;\">章节核心观点与关键结论</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "content"
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#FFFFFF"
+      },
+      "remark": "",
+      "type": "transition"
+    },
+    {
+      "id": "sEymTGYO_a",
+      "elements": [
+        {
+          "type": "image",
+          "id": "t3dh1K56d1",
+          "src": "/api/data/template_5_commercial_section_bg_v1.png",
+          "width": 1280,
+          "height": 720,
+          "left": 0,
+          "top": 0,
+          "fixedRatio": true,
+          "rotate": 0,
+          "flipH": false,
+          "flipV": false,
+          "clip": {
+            "shape": "rect",
+            "range": [
+              [
+                0,
+                0.381
+              ],
+              [
+                100,
+                100
+              ]
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "id": "sEymTGYO_a-part-number",
+          "width": 100,
+          "height": 56,
+          "left": 190,
+          "top": 194,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#B42318",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B42318;font-size: 34px;font-family: 微软雅黑;font-weight: bold;\">01</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "partNumber"
+        },
+        {
+          "type": "text",
+          "id": "sEymTGYO_a-section-label",
+          "width": 180,
+          "height": 30,
+          "left": 286,
+          "top": 207,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#817A73",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #817A73;font-size: 17px;font-family: 微软雅黑;font-weight: bold;letter-spacing: 2px;\">SECTION</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false
+        },
+        {
+          "type": "shape",
+          "id": "sEymTGYO_a-transition-rule",
+          "width": 96,
+          "height": 5,
+          "left": 190,
+          "top": 264,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B42318",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "text",
+          "id": "dKIUlr8akk",
+          "width": 800,
+          "height": 92,
+          "left": 190,
+          "top": 286,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#252525",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 58px;font-family: 微软雅黑;font-weight: bold;\">页面标题</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "title"
+        },
+        {
+          "type": "text",
+          "id": "sEymTGYO_a-transition-summary",
+          "width": 720,
+          "height": 70,
+          "left": 192,
+          "top": 398,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#4A4642",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #4A4642;font-size: 24px;font-family: 微软雅黑;\">章节核心观点与关键结论</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "content"
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#FFFFFF"
+      },
+      "remark": "",
+      "type": "transition"
+    },
+    {
+      "id": "12UArqZzBf",
+      "elements": [
+        {
+          "type": "image",
+          "id": "oLfRpkmvUW",
+          "src": "/api/data/template_5_commercial_content_bg_v1.png",
+          "width": 1280,
+          "height": 720,
+          "left": 0,
+          "top": 0,
+          "fixedRatio": true,
+          "rotate": 0,
+          "flipH": false,
+          "flipV": false,
+          "clip": {
+            "shape": "rect",
+            "range": [
+              [
+                0,
+                0.381
+              ],
+              [
+                100,
+                100
+              ]
+            ]
+          }
+        },
+        {
+          "type": "shape",
+          "id": "12UArqZzBf-header-accent",
+          "width": 7,
+          "height": 34,
+          "left": 76,
+          "top": 43,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B42318",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "shape",
+          "id": "12UArqZzBf-header-rule",
+          "width": 1128,
+          "height": 2,
+          "left": 76,
+          "top": 102,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B4231840",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "text",
+          "id": "MasSiwYQ4N",
+          "width": 900,
+          "height": 52,
+          "left": 104,
+          "top": 36,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#252525",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 40px;font-family: 微软雅黑;font-weight: bold;\">页面标题</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "title"
+        },
+        {
+          "type": "text",
+          "id": "12UArqZzBf-item-number-1",
+          "width": 54,
+          "height": 40,
+          "left": 96,
+          "top": 156,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#B42318",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B42318;font-size: 22px;font-family: 微软雅黑;font-weight: bold;\">01</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "itemNumber",
+          "groupId": "12UArqZzBf-text-item-1"
+        },
+        {
+          "type": "text",
+          "id": "12UArqZzBf-item-title-1",
+          "width": 1024,
+          "height": 44,
+          "left": 160,
+          "top": 154,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#252525",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 28px;font-family: 微软雅黑;font-weight: bold;\">要点标题</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "itemTitle",
+          "groupId": "12UArqZzBf-text-item-1"
+        },
+        {
+          "type": "shape",
+          "id": "NgljLBMo7v",
+          "width": 1024,
+          "height": 92,
+          "left": 160,
+          "top": 202,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "<p style=\"text-align: left;\"><span style=\"color: #4A4642;font-size: 23px;font-family: 微软雅黑;\">内容要点</span></p>",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#4A4642",
+            "align": "top",
+            "type": "item"
+          },
+          "flipH": false,
+          "flipV": false,
+          "groupId": "12UArqZzBf-text-item-1"
+        },
+        {
+          "type": "shape",
+          "id": "12UArqZzBf-text-item-1-rule",
+          "width": 1088,
+          "height": 2,
+          "left": 96,
+          "top": 310,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B4231866",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false,
+          "groupId": "12UArqZzBf-text-item-1"
+        },
+        {
+          "type": "text",
+          "id": "12UArqZzBf-item-number-2",
+          "width": 54,
+          "height": 40,
+          "left": 96,
+          "top": 325,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#B42318",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B42318;font-size: 22px;font-family: 微软雅黑;font-weight: bold;\">02</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "itemNumber",
+          "groupId": "12UArqZzBf-text-item-2"
+        },
+        {
+          "type": "text",
+          "id": "12UArqZzBf-item-title-2",
+          "width": 1024,
+          "height": 44,
+          "left": 160,
+          "top": 323,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#252525",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 28px;font-family: 微软雅黑;font-weight: bold;\">要点标题</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "itemTitle",
+          "groupId": "12UArqZzBf-text-item-2"
+        },
+        {
+          "type": "shape",
+          "id": "ABiTT9dBa-",
+          "width": 1024,
+          "height": 92,
+          "left": 160,
+          "top": 371,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "<p style=\"text-align: left;\"><span style=\"color: #4A4642;font-size: 23px;font-family: 微软雅黑;\">内容要点</span></p>",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#4A4642",
+            "align": "top",
+            "type": "item"
+          },
+          "flipH": false,
+          "flipV": false,
+          "groupId": "12UArqZzBf-text-item-2"
+        },
+        {
+          "type": "shape",
+          "id": "12UArqZzBf-text-item-2-rule",
+          "width": 1088,
+          "height": 2,
+          "left": 96,
+          "top": 479,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#D8D0C8",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false,
+          "groupId": "12UArqZzBf-text-item-2"
+        },
+        {
+          "type": "text",
+          "id": "12UArqZzBf-item-number-3",
+          "width": 54,
+          "height": 40,
+          "left": 96,
+          "top": 494,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#B42318",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B42318;font-size: 22px;font-family: 微软雅黑;font-weight: bold;\">03</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "itemNumber",
+          "groupId": "12UArqZzBf-text-item-3"
+        },
+        {
+          "type": "text",
+          "id": "12UArqZzBf-item-title-3",
+          "width": 1024,
+          "height": 44,
+          "left": 160,
+          "top": 492,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#252525",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 28px;font-family: 微软雅黑;font-weight: bold;\">要点标题</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "itemTitle",
+          "groupId": "12UArqZzBf-text-item-3"
+        },
+        {
+          "type": "shape",
+          "id": "cSnvuVA-T8",
+          "width": 1024,
+          "height": 92,
+          "left": 160,
+          "top": 540,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "<p style=\"text-align: left;\"><span style=\"color: #4A4642;font-size: 23px;font-family: 微软雅黑;\">内容要点</span></p>",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#4A4642",
+            "align": "top",
+            "type": "item"
+          },
+          "flipH": false,
+          "flipV": false,
+          "groupId": "12UArqZzBf-text-item-3"
+        },
+        {
+          "type": "shape",
+          "id": "12UArqZzBf-text-item-3-rule",
+          "width": 1088,
+          "height": 2,
+          "left": 96,
+          "top": 648,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#D8D0C8",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false,
+          "groupId": "12UArqZzBf-text-item-3"
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#FFFFFF"
+      },
+      "remark": "",
+      "type": "content"
+    },
+    {
+      "id": "wQyXe6h5AX",
+      "elements": [
+        {
+          "type": "image",
+          "id": "qAys21Nd6s",
+          "src": "/api/data/template_5_commercial_section_bg_v1.png",
+          "width": 1280,
+          "height": 720,
+          "left": 0,
+          "top": 0,
+          "fixedRatio": true,
+          "rotate": 0,
+          "flipH": false,
+          "flipV": false,
+          "clip": {
+            "shape": "rect",
+            "range": [
+              [
+                0,
+                0.381
+              ],
+              [
+                100,
+                100
+              ]
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "id": "wQyXe6h5AX-part-number",
+          "width": 100,
+          "height": 56,
+          "left": 190,
+          "top": 194,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#B42318",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B42318;font-size: 34px;font-family: 微软雅黑;font-weight: bold;\">01</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "partNumber"
+        },
+        {
+          "type": "text",
+          "id": "wQyXe6h5AX-section-label",
+          "width": 180,
+          "height": 30,
+          "left": 286,
+          "top": 207,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#817A73",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #817A73;font-size: 17px;font-family: 微软雅黑;font-weight: bold;letter-spacing: 2px;\">SECTION</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false
+        },
+        {
+          "type": "shape",
+          "id": "wQyXe6h5AX-transition-rule",
+          "width": 96,
+          "height": 5,
+          "left": 190,
+          "top": 264,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B42318",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "text",
+          "id": "yW0URHNqdl",
+          "width": 800,
+          "height": 92,
+          "left": 190,
+          "top": 286,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#252525",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 58px;font-family: 微软雅黑;font-weight: bold;\">页面标题</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "title"
+        },
+        {
+          "type": "text",
+          "id": "wQyXe6h5AX-transition-summary",
+          "width": 720,
+          "height": 70,
+          "left": 192,
+          "top": 398,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#4A4642",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #4A4642;font-size: 24px;font-family: 微软雅黑;\">章节核心观点与关键结论</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "content"
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#FFFFFF"
+      },
+      "remark": "",
+      "type": "transition"
+    },
+    {
+      "id": "zNR2XlRAT2",
+      "elements": [
+        {
+          "type": "image",
+          "id": "5eSQmZPd-p",
+          "src": "/api/data/template_5_commercial_content_bg_v1.png",
+          "width": 1280,
+          "height": 720,
+          "left": 0,
+          "top": 0,
+          "fixedRatio": true,
+          "rotate": 0,
+          "flipH": false,
+          "flipV": false,
+          "clip": {
+            "shape": "rect",
+            "range": [
+              [
+                0,
+                0.381
+              ],
+              [
+                100,
+                100
+              ]
+            ]
+          }
+        },
+        {
+          "type": "shape",
+          "id": "zNR2XlRAT2-header-accent",
+          "width": 7,
+          "height": 34,
+          "left": 76,
+          "top": 43,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B42318",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "shape",
+          "id": "zNR2XlRAT2-header-rule",
+          "width": 1128,
+          "height": 2,
+          "left": 76,
+          "top": 102,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B4231840",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "text",
+          "id": "YROcd4x-8z",
+          "width": 900,
+          "height": 52,
+          "left": 104,
+          "top": 36,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#252525",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 40px;font-family: 微软雅黑;font-weight: bold;\">页面标题</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "title"
+        },
+        {
+          "type": "text",
+          "id": "zNR2XlRAT2-item-number-1",
+          "width": 54,
+          "height": 40,
+          "left": 96,
+          "top": 152,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#B42318",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B42318;font-size: 22px;font-family: 微软雅黑;font-weight: bold;\">01</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "itemNumber",
+          "groupId": "zNR2XlRAT2-text-item-1"
+        },
+        {
+          "type": "text",
+          "id": "zNR2XlRAT2-item-title-1",
+          "width": 452,
+          "height": 44,
+          "left": 160,
+          "top": 150,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#252525",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 28px;font-family: 微软雅黑;font-weight: bold;\">要点标题</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "itemTitle",
+          "groupId": "zNR2XlRAT2-text-item-1"
+        },
+        {
+          "type": "shape",
+          "id": "DTbXtyFuQs",
+          "width": 452,
+          "height": 120,
+          "left": 160,
+          "top": 204,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "<p style=\"text-align: left;\"><span style=\"color: #4A4642;font-size: 23px;font-family: 微软雅黑;\">内容要点</span></p>",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#4A4642",
+            "align": "top",
+            "type": "item"
+          },
+          "flipH": false,
+          "flipV": false,
+          "groupId": "zNR2XlRAT2-text-item-1"
+        },
+        {
+          "type": "shape",
+          "id": "zNR2XlRAT2-text-item-1-rule",
+          "width": 516,
+          "height": 2,
+          "left": 96,
+          "top": 340,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B4231866",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false,
+          "groupId": "zNR2XlRAT2-text-item-1"
+        },
+        {
+          "type": "text",
+          "id": "zNR2XlRAT2-item-number-2",
+          "width": 54,
+          "height": 40,
+          "left": 668,
+          "top": 152,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#B42318",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B42318;font-size: 22px;font-family: 微软雅黑;font-weight: bold;\">02</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "itemNumber",
+          "groupId": "zNR2XlRAT2-text-item-2"
+        },
+        {
+          "type": "text",
+          "id": "zNR2XlRAT2-item-title-2",
+          "width": 452,
+          "height": 44,
+          "left": 732,
+          "top": 150,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#252525",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 28px;font-family: 微软雅黑;font-weight: bold;\">要点标题</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "itemTitle",
+          "groupId": "zNR2XlRAT2-text-item-2"
+        },
+        {
+          "type": "shape",
+          "id": "qv9qmPiEGx",
+          "width": 452,
+          "height": 120,
+          "left": 732,
+          "top": 204,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "<p style=\"text-align: left;\"><span style=\"color: #4A4642;font-size: 23px;font-family: 微软雅黑;\">内容要点</span></p>",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#4A4642",
+            "align": "top",
+            "type": "item"
+          },
+          "flipH": false,
+          "flipV": false,
+          "groupId": "zNR2XlRAT2-text-item-2"
+        },
+        {
+          "type": "shape",
+          "id": "zNR2XlRAT2-text-item-2-rule",
+          "width": 516,
+          "height": 2,
+          "left": 668,
+          "top": 340,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#D8D0C8",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false,
+          "groupId": "zNR2XlRAT2-text-item-2"
+        },
+        {
+          "type": "text",
+          "id": "zNR2XlRAT2-item-number-3",
+          "width": 54,
+          "height": 40,
+          "left": 96,
+          "top": 442,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#B42318",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B42318;font-size: 22px;font-family: 微软雅黑;font-weight: bold;\">03</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "itemNumber",
+          "groupId": "zNR2XlRAT2-text-item-3"
+        },
+        {
+          "type": "text",
+          "id": "zNR2XlRAT2-item-title-3",
+          "width": 452,
+          "height": 44,
+          "left": 160,
+          "top": 440,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#252525",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 28px;font-family: 微软雅黑;font-weight: bold;\">要点标题</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "itemTitle",
+          "groupId": "zNR2XlRAT2-text-item-3"
+        },
+        {
+          "type": "shape",
+          "id": "z659QK8MyJ",
+          "width": 452,
+          "height": 120,
+          "left": 160,
+          "top": 494,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "<p style=\"text-align: left;\"><span style=\"color: #4A4642;font-size: 23px;font-family: 微软雅黑;\">内容要点</span></p>",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#4A4642",
+            "align": "top",
+            "type": "item"
+          },
+          "flipH": false,
+          "flipV": false,
+          "groupId": "zNR2XlRAT2-text-item-3"
+        },
+        {
+          "type": "shape",
+          "id": "zNR2XlRAT2-text-item-3-rule",
+          "width": 516,
+          "height": 2,
+          "left": 96,
+          "top": 630,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#D8D0C8",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false,
+          "groupId": "zNR2XlRAT2-text-item-3"
+        },
+        {
+          "type": "text",
+          "id": "zNR2XlRAT2-item-number-4",
+          "width": 54,
+          "height": 40,
+          "left": 668,
+          "top": 442,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#B42318",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B42318;font-size: 22px;font-family: 微软雅黑;font-weight: bold;\">04</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "itemNumber",
+          "groupId": "zNR2XlRAT2-text-item-4"
+        },
+        {
+          "type": "text",
+          "id": "zNR2XlRAT2-item-title-4",
+          "width": 452,
+          "height": 44,
+          "left": 732,
+          "top": 440,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#252525",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 28px;font-family: 微软雅黑;font-weight: bold;\">要点标题</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "itemTitle",
+          "groupId": "zNR2XlRAT2-text-item-4"
+        },
+        {
+          "type": "shape",
+          "id": "kAOgzIiHpZ",
+          "width": 452,
+          "height": 120,
+          "left": 732,
+          "top": 494,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "<p style=\"text-align: left;\"><span style=\"color: #4A4642;font-size: 23px;font-family: 微软雅黑;\">内容要点</span></p>",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#4A4642",
+            "align": "top",
+            "type": "item"
+          },
+          "flipH": false,
+          "flipV": false,
+          "groupId": "zNR2XlRAT2-text-item-4"
+        },
+        {
+          "type": "shape",
+          "id": "zNR2XlRAT2-text-item-4-rule",
+          "width": 516,
+          "height": 2,
+          "left": 668,
+          "top": 630,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#D8D0C8",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false,
+          "groupId": "zNR2XlRAT2-text-item-4"
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#FFFFFF"
+      },
+      "remark": "",
+      "type": "content"
+    },
+    {
+      "id": "ZLZGcxb7nv",
+      "elements": [
+        {
+          "type": "image",
+          "id": "yGAjWKxVDf",
+          "src": "/api/data/template_5_commercial_content_bg_v1.png",
+          "width": 1280,
+          "height": 720,
+          "left": 0,
+          "top": 0,
+          "fixedRatio": true,
+          "rotate": 0,
+          "flipH": false,
+          "flipV": false,
+          "clip": {
+            "shape": "rect",
+            "range": [
+              [
+                0,
+                0.381
+              ],
+              [
+                100,
+                100
+              ]
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "id": "ZLZGcxb7nv-end-kicker",
+          "width": 260,
+          "height": 32,
+          "left": 124,
+          "top": 220,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#B42318",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B42318;font-size: 19px;font-family: 微软雅黑;font-weight: bold;letter-spacing: 2px;\">THANK YOU</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false
+        },
+        {
+          "type": "shape",
+          "id": "ZLZGcxb7nv-end-rule",
+          "width": 92,
+          "height": 5,
+          "left": 124,
+          "top": 258,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B42318",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "text",
+          "id": "xIgUGWloIn",
+          "width": 820,
+          "height": 100,
+          "left": 122,
+          "top": 276,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#252525",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 58px;font-family: 微软雅黑;font-weight: bold;\">谢谢您的指导</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#FFFFFF"
+      },
+      "remark": "",
+      "type": "end"
+    },
+    {
+      "id": "UArW7Ec0RC",
+      "elements": [
+        {
+          "type": "image",
+          "id": "xoniEgiVix",
+          "src": "/api/data/template_5_commercial_content_bg_v1.png",
+          "width": 1280,
+          "height": 720,
+          "left": 0,
+          "top": 0,
+          "fixedRatio": true,
+          "rotate": 0,
+          "flipH": false,
+          "flipV": false,
+          "clip": {
+            "shape": "rect",
+            "range": [
+              [
+                0,
+                0.381
+              ],
+              [
+                100,
+                100
+              ]
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "id": "UArW7Ec0RC-end-kicker",
+          "width": 260,
+          "height": 32,
+          "left": 124,
+          "top": 220,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#B42318",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B42318;font-size: 19px;font-family: 微软雅黑;font-weight: bold;letter-spacing: 2px;\">THANK YOU</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false
+        },
+        {
+          "type": "shape",
+          "id": "UArW7Ec0RC-end-rule",
+          "width": 92,
+          "height": 5,
+          "left": 124,
+          "top": 258,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B42318",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "text",
+          "id": "92u2aUgRxu",
+          "width": 820,
+          "height": 100,
+          "left": 122,
+          "top": 276,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#252525",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 58px;font-family: 微软雅黑;font-weight: bold;\">谢谢您的指导</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#FFFFFF"
+      },
+      "remark": "",
+      "type": "end"
+    },
+    {
+      "id": "_TYvxhjqMy-text-1",
+      "elements": [
+        {
+          "type": "image",
+          "id": "VR9uhbSBNJ-text-1",
+          "src": "/api/data/template_5_commercial_content_bg_v1.png",
+          "width": 1280,
+          "height": 720,
+          "left": 0,
+          "top": 0,
+          "fixedRatio": true,
+          "rotate": 0,
+          "flipH": false,
+          "flipV": false,
+          "clip": {
+            "shape": "rect",
+            "range": [
+              [
+                0,
+                0.381
+              ],
+              [
+                100,
+                100
+              ]
+            ]
+          }
+        },
+        {
+          "type": "shape",
+          "id": "_TYvxhjqMy-text-1-header-accent",
+          "width": 7,
+          "height": 34,
+          "left": 76,
+          "top": 43,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B42318",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "shape",
+          "id": "_TYvxhjqMy-text-1-header-rule",
+          "width": 1128,
+          "height": 2,
+          "left": 76,
+          "top": 102,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B4231840",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "text",
+          "id": "_tBVQa7KV0-text-1",
+          "width": 900,
+          "height": 52,
+          "left": 104,
+          "top": 36,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#252525",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 40px;font-family: 微软雅黑;font-weight: bold;\">页面标题</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "title"
+        },
+        {
+          "type": "shape",
+          "id": "_TYvxhjqMy-text-1-single-accent",
+          "width": 56,
+          "height": 5,
+          "left": 612,
+          "top": 178,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B42318",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "shape",
+          "id": "v4WgYp5njx-text-1",
+          "width": 940,
+          "height": 270,
+          "left": 170,
+          "top": 214,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#FFFFFFB8",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#D8D0C8",
+            "width": 1,
+            "style": "solid"
+          },
+          "text": {
+            "content": "<p style=\"text-align: center;\"><span style=\"color: #4A4642;font-size: 28px;font-family: 微软雅黑;\">内容要点</span></p>",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#4A4642",
+            "align": "middle",
+            "type": "content"
+          },
+          "flipH": false,
+          "flipV": false
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#FFFFFF"
+      },
+      "remark": "",
+      "type": "content"
+    },
+    {
+      "id": "zNR2XlRAT2-text-2",
+      "elements": [
+        {
+          "type": "image",
+          "id": "5eSQmZPd-p-text-2",
+          "src": "/api/data/template_5_commercial_content_bg_v1.png",
+          "width": 1280,
+          "height": 720,
+          "left": 0,
+          "top": 0,
+          "fixedRatio": true,
+          "rotate": 0,
+          "flipH": false,
+          "flipV": false,
+          "clip": {
+            "shape": "rect",
+            "range": [
+              [
+                0,
+                0.381
+              ],
+              [
+                100,
+                100
+              ]
+            ]
+          }
+        },
+        {
+          "type": "shape",
+          "id": "zNR2XlRAT2-text-2-header-accent",
+          "width": 7,
+          "height": 34,
+          "left": 76,
+          "top": 43,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B42318",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "shape",
+          "id": "zNR2XlRAT2-text-2-header-rule",
+          "width": 1128,
+          "height": 2,
+          "left": 76,
+          "top": 102,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B4231840",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "text",
+          "id": "YROcd4x-8z-text-2",
+          "width": 900,
+          "height": 52,
+          "left": 104,
+          "top": 36,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#252525",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 40px;font-family: 微软雅黑;font-weight: bold;\">页面标题</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "title"
+        },
+        {
+          "type": "text",
+          "id": "zNR2XlRAT2-text-2-item-number-1",
+          "width": 54,
+          "height": 40,
+          "left": 96,
+          "top": 186,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#B42318",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B42318;font-size: 22px;font-family: 微软雅黑;font-weight: bold;\">01</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "itemNumber",
+          "groupId": "zNR2XlRAT2-text-2-text-item-1"
+        },
+        {
+          "type": "text",
+          "id": "zNR2XlRAT2-text-2-item-title-1",
+          "width": 452,
+          "height": 44,
+          "left": 160,
+          "top": 184,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#252525",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 28px;font-family: 微软雅黑;font-weight: bold;\">要点标题</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "itemTitle",
+          "groupId": "zNR2XlRAT2-text-2-text-item-1"
+        },
+        {
+          "type": "shape",
+          "id": "DTbXtyFuQs-text-2",
+          "width": 452,
+          "height": 250,
+          "left": 160,
+          "top": 258,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "<p style=\"text-align: left;\"><span style=\"color: #4A4642;font-size: 24px;font-family: 微软雅黑;\">内容要点</span></p>",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#4A4642",
+            "align": "top",
+            "type": "item"
+          },
+          "flipH": false,
+          "flipV": false,
+          "groupId": "zNR2XlRAT2-text-2-text-item-1"
+        },
+        {
+          "type": "shape",
+          "id": "zNR2XlRAT2-text-2-text-item-1-rule",
+          "width": 516,
+          "height": 2,
+          "left": 96,
+          "top": 524,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B4231866",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false,
+          "groupId": "zNR2XlRAT2-text-2-text-item-1"
+        },
+        {
+          "type": "text",
+          "id": "zNR2XlRAT2-text-2-item-number-2",
+          "width": 54,
+          "height": 40,
+          "left": 668,
+          "top": 186,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#B42318",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B42318;font-size: 22px;font-family: 微软雅黑;font-weight: bold;\">02</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "itemNumber",
+          "groupId": "zNR2XlRAT2-text-2-text-item-2"
+        },
+        {
+          "type": "text",
+          "id": "zNR2XlRAT2-text-2-item-title-2",
+          "width": 452,
+          "height": 44,
+          "left": 732,
+          "top": 184,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#252525",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 28px;font-family: 微软雅黑;font-weight: bold;\">要点标题</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "itemTitle",
+          "groupId": "zNR2XlRAT2-text-2-text-item-2"
+        },
+        {
+          "type": "shape",
+          "id": "qv9qmPiEGx-text-2",
+          "width": 452,
+          "height": 250,
+          "left": 732,
+          "top": 258,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "<p style=\"text-align: left;\"><span style=\"color: #4A4642;font-size: 24px;font-family: 微软雅黑;\">内容要点</span></p>",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#4A4642",
+            "align": "top",
+            "type": "item"
+          },
+          "flipH": false,
+          "flipV": false,
+          "groupId": "zNR2XlRAT2-text-2-text-item-2"
+        },
+        {
+          "type": "shape",
+          "id": "zNR2XlRAT2-text-2-text-item-2-rule",
+          "width": 516,
+          "height": 2,
+          "left": 668,
+          "top": 524,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#D8D0C8",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false,
+          "groupId": "zNR2XlRAT2-text-2-text-item-2"
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#FFFFFF"
+      },
+      "remark": "",
+      "type": "content"
+    },
+    {
+      "id": "aLaAG5YjuW-image-1",
+      "elements": [
+        {
+          "type": "image",
+          "id": "_FgZlgQ6UO-image-1",
+          "src": "/api/data/template_5_commercial_content_bg_v1.png",
+          "width": 1280,
+          "height": 720,
+          "left": 0,
+          "top": 0,
+          "fixedRatio": true,
+          "rotate": 0,
+          "flipH": false,
+          "flipV": false,
+          "clip": {
+            "shape": "rect",
+            "range": [
+              [
+                0,
+                0.381
+              ],
+              [
+                100,
+                100
+              ]
+            ]
+          }
+        },
+        {
+          "type": "shape",
+          "id": "aLaAG5YjuW-image-1-header-accent",
+          "width": 7,
+          "height": 34,
+          "left": 76,
+          "top": 43,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B42318",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "shape",
+          "id": "aLaAG5YjuW-image-1-header-rule",
+          "width": 1128,
+          "height": 2,
+          "left": 76,
+          "top": 102,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B4231840",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "text",
+          "id": "roadiap7dK-image-1",
+          "width": 900,
+          "height": 52,
+          "left": 104,
+          "top": 36,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#252525",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 40px;font-family: 微软雅黑;font-weight: bold;\">页面标题</span></p>",
+          "lineHeight": 1,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "fill": "",
+          "vertical": false,
+          "textType": "title"
+        },
+        {
+          "type": "image",
+          "id": "s0VvYwrw2V-image-1",
+          "src": "/api/data/template_5_asset_adaae87c9afb.png",
+          "width": 540,
+          "height": 390,
+          "left": 76,
+          "top": 150,
+          "fixedRatio": true,
+          "rotate": 0,
+          "flipH": false,
+          "flipV": false,
+          "imageType": "itemFigure"
+        },
+        {
+          "type": "shape",
+          "id": "-5OoNMert2-image-1",
+          "width": 500,
+          "height": 58,
+          "left": 670,
+          "top": 178,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "<p style=\"text-align: left;\"><span style=\"color: #252525;font-size: 32px;font-family: 微软雅黑;font-weight: bold;\">要点标题</span></p>",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "top",
+            "type": "subtitle"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "shape",
+          "id": "8BnlXZ4VBD-image-1",
+          "width": 500,
+          "height": 220,
+          "left": 670,
+          "top": 260,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "<p style=\"text-align: left;\"><span style=\"color: #4A4642;font-size: 24px;font-family: 微软雅黑;\">内容要点</span></p>",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#4A4642",
+            "align": "top",
+            "type": "content"
+          },
+          "flipH": false,
+          "flipV": false
+        },
+        {
+          "type": "shape",
+          "id": "aLaAG5YjuW-image-1-image-accent",
+          "width": 76,
+          "height": 4,
+          "left": 670,
+          "top": 240,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B42318",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#000000",
+            "width": 0,
+            "style": "solid"
+          },
+          "text": {
+            "content": "",
+            "defaultFontName": "微软雅黑",
+            "defaultColor": "#252525",
+            "align": "middle"
+          },
+          "flipH": false,
+          "flipV": false
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#FFFFFF"
+      },
+      "remark": "",
+      "type": "content"
+    }
+  ]
+}
