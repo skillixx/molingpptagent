@@ -21,6 +21,13 @@ import chromadb  #pip install chromadb
 from chromadb.config import Settings
 from openai import OpenAI
 from dotenv import load_dotenv
+
+try:
+    # 包导入用于测试，脚本导入用于既有 `python main.py` 启动方式。
+    from .namespace import collection_name_for_subject, subject_log_tag
+except ImportError:
+    from namespace import collection_name_for_subject, subject_log_tag
+
 # 加载环境变量
 load_dotenv()
 
@@ -68,25 +75,26 @@ def cache_decorator(func):
             key = str(args) + str(kwargs)
         # 变成md5字符串
         key_file = os.path.join(cache_path, cal_md5(key) + "_cache.pkl")
+        cache_tag = os.path.basename(key_file).split("_", 1)[0][:12]
         # 如果结果已缓存，则返回缓存的结果
         if os.path.exists(key_file) and usecache:
-            # 去掉kwargs中的usecache
-            print(f"函数{func.__name__}被调用，缓存被命中，使用已缓存结果，对于参数{key}")
+            # 缓存键可能由文档正文组成，日志只能记录不可逆摘要。
+            logger.info("函数%s缓存命中 tag=%s", func.__name__, cache_tag)
             try:
                 with open(key_file, 'rb') as f:
                     result = pickle.load(f)
                     return result
-            except Exception as e:
-                print(f"函数{func.__name__}被调用，缓存被命中，读取文件:{key_file}失败，错误信息:{e}")
+            except Exception:
+                logger.warning("函数%s缓存读取失败 tag=%s", func.__name__, cache_tag)
         result = func(*args, **kwargs)
         # 将结果缓存到文件中
         # 如果返回的数据是一个元祖，并且第1个参数是False,说明这个函数报错了，那么就不缓存了，这是我们自己的一个设定
         if isinstance(result, tuple) and result[0] == False:
-            print(f"函数{func.__name__}被调用，返回结果为False，对于参数{key}, 不缓存")
+            logger.info("函数%s返回不可缓存结果 tag=%s", func.__name__, cache_tag)
         else:
             with open(key_file, 'wb') as f:
                 pickle.dump(result, f)
-            print(f"函数{func.__name__}被调用，缓存未命中，结果被缓存，对于参数{key}, 写入文件:{key_file}")
+            logger.info("函数%s缓存写入 tag=%s", func.__name__, cache_tag)
         return result
 
     return wrapper
@@ -197,7 +205,7 @@ class ChromaDB(object):
         return query_result
 
 
-    def delete_file_vectors(self, user_id: int, file_id: int):
+    def delete_file_vectors(self, user_id: int | str, file_id: int):
         """
         根据用户ID和文件ID删除对应的向量
         Args:
@@ -207,13 +215,13 @@ class ChromaDB(object):
             str: "success" 表示删除成功，"fail" 表示失败
         """
         try:
-            collection_name = f"user_{user_id}"
+            collection_name = collection_name_for_subject(user_id)
             col = self.client.get_or_create_collection(collection_name)
             col.delete(where={"file_id": file_id})
-            logger.info(f"成功删除用户 {user_id} 的文件 {file_id} 对应的向量")
+            logger.info("成功删除主体%s的文件%s向量", subject_log_tag(user_id), file_id)
             return "success"
         except Exception as e:
-            logger.error(f"删除用户 {user_id} 的文件 {file_id} 向量失败: {str(e)}", exc_info=True)
+            logger.error("删除主体%s的文件%s向量失败", subject_log_tag(user_id), file_id, exc_info=True)
             return "fail"
 
     def insert_file_vectors(self, file_name:str, user_id: int|str, file_id: int, file_type: str, url: str, folder_id: int, documents: List[str]):
@@ -234,7 +242,7 @@ class ChromaDB(object):
         del_status = self.delete_file_vectors(user_id, file_id)
         # 然后插入新的向量
         try:
-            collection_name = f"user_{user_id}"
+            collection_name = collection_name_for_subject(user_id)
             vectors_result = self.embedder.do_embedding(texts=documents)
             vectors = vectors_result["data"]
             embeddings = [one["embedding"] for one in vectors]
@@ -247,10 +255,10 @@ class ChromaDB(object):
                 metadatas=meta,
                 ids=ids
             )
-            logger.info(f"成功插入文件 {file_id} 的向量到集合 {collection_name}")
+            logger.info("成功插入主体%s的文件%s向量", subject_log_tag(user_id), file_id)
             return vectors_result
         except Exception as e:
-            logger.error(f"插入用户 {user_id} 的文件 {file_id} 向量失败: {str(e)}", exc_info=True)
+            logger.error("插入主体%s的文件%s向量失败", subject_log_tag(user_id), file_id, exc_info=True)
             raise ValueError(f"插入向量失败: {str(e)}")
 
 
@@ -270,7 +278,7 @@ class ChromaDB(object):
         }
         return result
 
-    def list_files_by_user(self, user_id: int) -> List[Dict[str, Any]]:
+    def list_files_by_user(self, user_id: int | str) -> List[Dict[str, Any]]:
         """
         根据用户ID列出该用户的所有文件信息
         Args:
@@ -279,11 +287,11 @@ class ChromaDB(object):
             List[Dict[str, Any]]: 文件信息列表
         """
         try:
-            collection_name = f"user_{user_id}"
+            collection_name = collection_name_for_subject(user_id)
             # 确认集合存在
             collections = self.list_exist_collections()
             if collection_name not in collections:
-                logger.warning(f"集合 {collection_name} 不存在，用户 {user_id} 没有任何文件。")
+                logger.warning("主体%s没有知识库文件", subject_log_tag(user_id))
                 return []
 
             col = self.client.get_collection(collection_name)
@@ -306,7 +314,8 @@ class ChromaDB(object):
                         continue
 
                     # 检查用户ID是否匹配
-                    if meta.get('user_id') == user_id:
+                    # 旧数字主体可能以int或字符串写入，集合相同且列表比较需保持兼容。
+                    if str(meta.get('user_id')) == str(user_id):
                         if file_id not in unique_files:
                             unique_files[file_id] = {
                                 "file_id": file_id,
@@ -320,7 +329,7 @@ class ChromaDB(object):
             return list(unique_files.values())
         except Exception as e:
             # 如果collection不存在或其他异常
-            logger.error(f"为用户 {user_id} 列出文件失败: {str(e)}", exc_info=True)
+            logger.error("列出主体%s文件失败", subject_log_tag(user_id), exc_info=True)
             return []
 
     def list_exist_collections(self):

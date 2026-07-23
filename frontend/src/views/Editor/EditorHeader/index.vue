@@ -58,24 +58,55 @@
         <div class="menu-item"><IconHamburgerButton class="icon" /></div>
       </Popover>
 
-      <div class="title">
-        <Input
-          class="title-input"
-          ref="titleInputRef"
-          v-model:value="titleValue"
-          @blur="handleUpdateTitle()"
-          v-if="editingTitle"
-        ></Input>
-        <div
-          class="title-text"
-          @click="startEditTitle()"
-          :title="title"
-          v-else
-        >{{ title }}</div>
+      <button
+        class="workspace-link"
+        data-testid="editor-workspace-link"
+        type="button"
+        title="返回用户工作台"
+        @click="goToWorks"
+      >
+        <IconSlideTwo class="icon" />
+        <span>我的作品</span>
+      </button>
+
+      <div
+        class="document-path"
+        data-testid="editor-file-path"
+        :title="documentPathHint"
+      >
+        <span class="path-scope">{{ presentationId ? '云端作品' : '临时作品' }}</span>
+        <span class="path-divider">/</span>
+        <div class="title">
+          <Input
+            class="title-input"
+            ref="titleInputRef"
+            v-model:value="titleValue"
+            @blur="handleUpdateTitle()"
+            v-if="editingTitle"
+          ></Input>
+          <div
+            class="title-text"
+            @click="startEditTitle()"
+            :title="title"
+            v-else
+          >{{ title }}</div>
+        </div>
       </div>
     </div>
 
     <div class="right">
+      <button
+        v-if="!presentationId"
+        class="menu-item save-work"
+        data-testid="editor-save-work"
+        type="button"
+        :disabled="savingToWorks"
+        title="将当前临时作品保存到个人工作台"
+        @click="saveToWorks"
+      >
+        <IconCheck class="icon" />
+        <span>{{ savingToWorks ? '保存中…' : '保存到我的作品' }}</span>
+      </button>
       <div class="group-menu-item">
         <div class="menu-item" v-tooltip="'幻灯片放映（F5）'" @click="enterScreening()">
           <IconPpt class="icon" />
@@ -88,9 +119,16 @@
           <div class="arrow-btn"><IconDown class="arrow" /></div>
         </Popover>
       </div>
-      <div class="menu-item" v-tooltip="'导出'" @click="setDialogForExport('pptx')">
+      <button
+        class="menu-item export-file"
+        data-testid="editor-export-file"
+        type="button"
+        title="下载PPTX并查看云端导出历史"
+        @click="setDialogForExport('pptx')"
+      >
         <IconDownload class="icon" />
-      </div>
+        <span>导出文件</span>
+      </button>
     </div>
 
     <Drawer
@@ -147,7 +185,7 @@
 </template>
 
 <script lang="ts" setup>
-import { nextTick, ref, useTemplateRef } from 'vue'
+import { computed, nextTick, ref, useTemplateRef } from 'vue'
 import { useRouter } from 'vue-router'
 import { storeToRefs } from 'pinia'
 import { useMainStore, useSlidesStore } from '@/store'
@@ -158,6 +196,7 @@ import useHistorySnapshot from '@/hooks/useHistorySnapshot'
 import type { DialogForExportTypes } from '@/types/export'
 import type { AIPPTSlide } from '@/types/AIPPT'
 import message from '@/utils/message'
+import { presentationApi } from '@/services/presentations'
 
 import HotkeyDoc from './HotkeyDoc.vue'
 import FileInput from '@/components/FileInput.vue'
@@ -174,7 +213,7 @@ import useAIPPT from '@/hooks/useAIPPT'
 const router = useRouter()
 const mainStore = useMainStore()
 const slidesStore = useSlidesStore()
-const { title } = storeToRefs(slidesStore)
+const { presentationId, title } = storeToRefs(slidesStore)
 const { enterScreening, enterScreeningFromStart } = useScreening()
 const { importSpecificFile, importPPTXFile, importJSON, exporting } = useImport()
 const { resetSlides } = useSlideHandler()
@@ -196,6 +235,8 @@ const aipptInput = ref('')
 const selectedTemplateFile = ref<any>(null)
 const templateFileName = ref('')
 const aipptLoading = ref(false)
+const savingToWorks = ref(false)
+const draftSaveKey = ref('')
 
 // ========== 修复后的写入 Slides 函数 ==========
 const applySlides = (slides: any[]) => {
@@ -226,6 +267,52 @@ const handleUpdateTitle = () => {
 // 其它 UI 控制
 const setDialogForExport = (type: DialogForExportTypes) => { mainStore.setDialogForExport(type); mainMenuVisible.value = false }
 const openMarkupPanel = () => { mainStore.setMarkupPanelState(true) }
+const goToWorks = () => { void router.push({ name: 'Works' }) }
+
+// 浏览器不能读取用户本机的真实下载目录，因此明确区分云端作品路径与本机下载位置。
+const documentPathHint = computed(() => presentationId.value
+  ? `作品路径：我的作品 / ${title.value}`
+  : `当前为临时作品；导出的PPTX会保存到浏览器默认下载目录`)
+
+const createDraftSaveKey = () => {
+  if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') {
+    return `draft-${crypto.randomUUID()}`
+  }
+  return `draft-${Date.now()}-${Math.random().toString(36).slice(2)}`
+}
+
+const saveToWorks = async () => {
+  if (presentationId.value || savingToWorks.value) return
+  savingToWorks.value = true
+  draftSaveKey.value ||= createDraftSaveKey()
+  try {
+    const currentIndex = slidesStore.slideIndex
+    const result = await presentationApi.saveDraft({
+      title: title.value || '未命名演示文稿',
+      document: {
+        schemaVersion: 1,
+        slides: slidesStore.slides,
+        theme: slidesStore.theme,
+        viewportSize: slidesStore.viewportSize,
+        viewportRatio: slidesStore.viewportRatio,
+      },
+    }, draftSaveKey.value)
+    slidesStore.replacePresentation(result.presentation)
+    // 服务端会再次校验文档，但这里仍保护页码下界，避免异常空稿导致编辑器索引为 -1。
+    slidesStore.updateSlideIndex(Math.max(0, Math.min(currentIndex, slidesStore.slides.length - 1)))
+    await router.replace({
+      name: 'PresentationEditor',
+      params: { presentationId: result.presentation.id },
+    })
+    message.success(result.reused ? '作品已恢复到个人工作台' : '作品已保存到个人工作台')
+  }
+  catch {
+    message.error('保存到个人工作台失败，请重试')
+  }
+  finally {
+    savingToWorks.value = false
+  }
+}
 
 // "测试PPTist" → 选择模板文件
 const testPPTist = () => { mainMenuVisible.value = false; tmplPicker.value?.click() }
@@ -412,12 +499,66 @@ const renderAIPPTNow = async () => {
   display: flex;
   justify-content: space-between;
   padding: 0 5px;
+  min-width: 0;
 }
 .left, .right {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+.left {
+  min-width: 0;
+  flex: 1;
+  justify-content: flex-start;
+}
+.right {
+  flex-shrink: 0;
+}
+.workspace-link,
+.export-file {
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: $borderRadius;
+  color: #3f4b68;
+  background: transparent;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+
+  &:hover { background-color: #f1f4fb; }
+  &:focus-visible {
+    outline: 3px solid rgba(67, 88, 199, .24);
+    outline-offset: 1px;
+  }
+  .icon { font-size: 17px; color: #5568c9; }
+}
+.save-work {
+  min-width: 132px;
+  margin-right: 4px;
+  color: #fff;
+  background: #4358c7;
+
+  &:hover { background: #3549b4; }
+  &:disabled {
+    opacity: .65;
+    cursor: wait;
+  }
+  .icon { color: #fff; }
+}
+.document-path {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  color: #8a93a8;
+  font-size: 12px;
+}
+.path-scope { white-space: nowrap; }
+.path-divider { margin: 0 2px; color: #c1c7d3; }
 .menu-item {
   height: 30px;
   height: 30px;
@@ -569,6 +710,7 @@ const renderAIPPTNow = async () => {
   }
 }
 .title {
+  min-width: 0;
   height: 30px;
   margin-left: 2px;
   font-size: 13px;
@@ -602,6 +744,26 @@ const renderAIPPTNow = async () => {
 .github-link {
   display: inline-block;
   height: 30px;
+}
+
+@media (max-width: 1100px) {
+  .workspace-link span,
+  .export-file span,
+  .path-scope,
+  .path-divider {
+    display: none;
+  }
+  .workspace-link,
+  .export-file { width: 34px; padding: 0; }
+  .save-work { min-width: 112px; font-size: 12px; }
+  .title .title-text { max-width: 220px; }
+}
+
+@media (max-width: 820px) {
+  .group-menu-item { display: none; }
+  .save-work { min-width: 34px; width: 34px; padding: 0; }
+  .save-work span { display: none; }
+  .title .title-text { max-width: 150px; }
 }
 
 /* AIPPT 抽屉样式 */

@@ -77,7 +77,7 @@
 import { computed, nextTick, onMounted, onUnmounted, ref, watch, useTemplateRef } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useMainStore, useSlidesStore, useKeyboardStore } from '@/store'
-import { fillDigit, isPC } from '@/utils/common'
+import { fillDigit } from '@/utils/common'
 import { isElementInViewport } from '@/utils/element'
 import type { ContextmenuItem } from '@/components/Contextmenu/types'
 import useSlideHandler from '@/hooks/useSlideHandler'
@@ -91,6 +91,7 @@ import ThumbnailSlide from '@/views/components/ThumbnailSlide/index.vue'
 import Templates from './Templates.vue'
 import Popover from '@/components/Popover.vue'
 import Draggable from 'vuedraggable'
+import { shouldUseMobileEditor } from '../editorViewport'
 
 const mainStore = useMainStore()
 const slidesStore = useSlidesStore()
@@ -101,17 +102,15 @@ const { ctrlKeyState, shiftKeyState } = storeToRefs(keyboardStore)
 
 const { slidesLoadLimit } = useLoadSlides()
 
-const isMobile = !isPC()
 const windowWidth = ref(window.innerWidth)
+const isMobile = computed(() => shouldUseMobileEditor(navigator.userAgent, windowWidth.value))
 
 const onResize = () => { windowWidth.value = window.innerWidth }
-if (isMobile) {
-  onMounted(() => window.addEventListener('resize', onResize))
-  onUnmounted(() => window.removeEventListener('resize', onResize))
-}
+onMounted(() => window.addEventListener('resize', onResize))
+onUnmounted(() => window.removeEventListener('resize', onResize))
 
 const thumbnailSize = computed(() => {
-  if (!isMobile) return 120
+  if (!isMobile.value) return 120
   return windowWidth.value - 48
 })
 

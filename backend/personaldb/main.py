@@ -20,12 +20,24 @@ from core.magic_pdf_converter import MagicPDFConverter
 from core.markitdown_converter import MarkItDownConverter
 from core.chunkers.semantic_chunker import SemanticChunker
 from core.chunkers.fast_chunker import FastChunker
+try:
+    from .namespace import collection_name_for_subject, subject_log_tag
+    from .security import safe_upload_filename
+except ImportError:
+    from namespace import collection_name_for_subject, subject_log_tag
+    from security import safe_upload_filename
 
 # 配置日志
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 app = FastAPI()
+
+
+@app.get("/healthz")
+def healthz():
+    """仅证明知识库进程可响应；不在探针中读取或修改任何用户集合。"""
+    return {"status": "ok"}
 
 # 创建临时下载目录
 TEMP_DIR = "temp_download"
@@ -46,10 +58,10 @@ def search_personal_knowledge_base(query: SearchQuery):
     搜索个人知识库
     """
     try:
-        logger.info(f"收到搜索请求: {query}")
+        logger.info("收到知识库搜索 subject=%s topk=%s", subject_log_tag(query.userId), query.topk)
         embedder = embedding_utils.EmbeddingModel()
         chroma = embedding_utils.ChromaDB(embedder)
-        collection_name = f"user_{query.userId}"
+        collection_name = collection_name_for_subject(query.userId)
 
         result = chroma.query2collection(
             collection=collection_name,
@@ -57,11 +69,13 @@ def search_personal_knowledge_base(query: SearchQuery):
             keyword=query.keyword,
             topk=query.topk
         )
-        logger.info(f"搜索成功: {result}")
+        documents = result.get("documents") or []
+        result_count = len(documents[0]) if documents and isinstance(documents[0], list) else len(documents)
+        logger.info("知识库搜索成功 subject=%s count=%s", subject_log_tag(query.userId), result_count)
         return result
-    except Exception as e:
-        logger.error(f"搜索失败: {str(e)}", exc_info=True)
-        raise HTTPException(status_code=500, detail=f"搜索失败: {str(e)}")
+    except Exception:
+        logger.error("知识库搜索失败 subject=%s", subject_log_tag(query.userId))
+        raise HTTPException(status_code=500, detail="知识库搜索失败") from None
 
 @cache_decorator
 def _get_markdown_content(file_path: str, file_name: str) -> str:
@@ -80,13 +94,13 @@ def _get_markdown_content(file_path: str, file_name: str) -> str:
     # 根据文件类型选择转换器
     if CAN_USE_MINERU and file_extension == '.pdf':
         # 使用 MinerU (MagicPDFConverter) 处理PDF
-        logger.info(f"使用PDF转换器(MinerU)处理文件: {file_path}")
+        logger.info("使用PDF转换器处理上传文件")
         converter = MagicPDFConverter(output_dir="./output_pdf")
         content, _ = converter.convert_pdf_file(file_path)
         return True, content
     else:
         # 使用 markitdown 处理其他文件
-        logger.info(f"使用Markitdown转换器处理文件: {file_path}")
+        logger.info("使用Markitdown转换器处理上传文件")
         converter = MarkItDownConverter(use_magic_pdf=False)  #use_magic_pdf设定是否使用MinerU
         content, _ = converter.convert_file(file_path)
         return True, content
@@ -97,20 +111,20 @@ def process_and_vectorize_local_file(file_name: str, temp_file_path: str, id: in
     从本地文件路径处理文件、进行向量化并存储
     """
     # 步骤2: 使用适当的转换器读取文件内容
-    logger.info(f"开始读取文件内容: {temp_file_path}")
+    logger.info("开始读取上传文件内容")
     
     status, markdown_content = _get_markdown_content(temp_file_path, file_name)
 
     if not markdown_content or not markdown_content.strip():
-        logger.error(f"文件内容为空或无效: {temp_file_path}")
+        logger.error("上传文件内容为空或无效")
         raise ValueError("文件内容为空或无效")
-    logger.info(f"文件内容读取成功，准备进行分块。")
+    logger.info("文件内容读取成功，准备进行分块")
 
     # 对Markdown格式进行Trunk(分块)
     documents = _chunk_text(markdown_content)
     if not documents:
         raise ValueError("分块后内容为空")
-    logger.info(f"内容分块成功，共 {len(documents)} 块。")
+    logger.info("内容分块成功 count=%s", len(documents))
 
     # 步骤3: 检查环境变量
     if not os.getenv("ALI_API_KEY"):
@@ -121,7 +135,7 @@ def process_and_vectorize_local_file(file_name: str, temp_file_path: str, id: in
     logger.info("初始化embedding模型")
     embedder = embedding_utils.EmbeddingModel()
     chroma = embedding_utils.ChromaDB(embedder)
-    logger.info(f"开始插入文件 {id} 的向量")
+    logger.info("开始插入文件向量 file_id=%s", id)
     embedding_result = chroma.insert_file_vectors(
         file_name=file_name,
         user_id=user_id,
@@ -143,7 +157,7 @@ def process_and_vectorize_local_file(file_name: str, temp_file_path: str, id: in
         "embedding_result": embedding_result,
         "markdown_content": markdown_content
     }
-    logger.info(f"处理OK。。。")
+    logger.info("文件转换与向量化完成")
     return result
 
 
@@ -157,41 +171,40 @@ def process_file_sync(file_name:str, id: int, user_id: int|str, file_type: str, 
 
     # 验证URL格式
     if not url.startswith(("http://", "https://")):
-        logger.error(f"无效的URL格式: {url}")
+        logger.error("下载URL格式无效")
         raise ValueError("url必须以http://或https://开头")
 
     parsed_url = urlparse(url)
-    logger.info(f"解析后的URL: {parsed_url.geturl()}")
     temp_file_path = None
     try:
         # 步骤1: 下载文件
         # file_name = os.path.basename(parsed_url.path) or f"downloaded_file_{user_id}"
         temp_file_path = os.path.join(TEMP_DIR, file_name)
-        logger.info(f"开始下载文件: {url}")
+        logger.info("开始下载依据文件")
         response = requests.get(url, timeout=60, proxies=None)
         response.raise_for_status()
         with open(temp_file_path, 'wb') as f:
             f.write(response.content)
-        logger.info(f"文件下载成功: {temp_file_path}")
+        logger.info("依据文件下载成功")
 
         return process_and_vectorize_local_file(file_name, temp_file_path, id, user_id, file_type, url, folder_id)
 
-    except requests.exceptions.Timeout as e:
-        logger.error(f"下载文件超时: {str(e)}", exc_info=True)
-        raise ValueError(f"下载文件超时: {str(e)}")
-    except requests.exceptions.RequestException as e:
-        logger.error(f"下载文件失败: {str(e)}", exc_info=True)
-        raise ValueError(f"下载文件失败: {str(e)}")
-    except ValueError as e:
-        logger.error(f"处理失败: {str(e)}", exc_info=True)
+    except requests.exceptions.Timeout:
+        logger.error("依据文件下载超时")
+        raise ValueError("依据文件下载超时") from None
+    except requests.exceptions.RequestException:
+        logger.error("依据文件下载失败")
+        raise ValueError("依据文件下载失败") from None
+    except ValueError:
+        logger.error("依据文件处理失败")
         raise
-    except Exception as e:
-        logger.error(f"未知错误: {str(e)}", exc_info=True)
-        raise ValueError(f"未知错误: {str(e)}")
+    except Exception:
+        logger.error("依据文件处理失败 error_type=unexpected")
+        raise ValueError("依据文件处理失败") from None
     finally:
         if temp_file_path and os.path.exists(temp_file_path):
             os.remove(temp_file_path)
-            logger.info(f"临时文件已删除: {temp_file_path}")
+            logger.info("依据文件临时副本已删除")
 
 
 @app.post("/upload/")
@@ -250,20 +263,21 @@ async def upload_and_vectorize_endpoint(request: Request):
 
         # 分支：文件上传
         if has_file:
+            safe_file_name = safe_upload_filename(upload_file.filename if upload_file else None)
             # 推断 fileType
-            if not fileType and upload_file and upload_file.filename:
-                fileType = upload_file.filename.split(".")[-1] if "." in upload_file.filename else "unknown"
+            if not fileType:
+                fileType = safe_file_name.rsplit(".", 1)[-1] if "." in safe_file_name else "unknown"
 
-            temp_file_name = f"{uuid.uuid4()}_{upload_file.filename or 'uploaded_file'}"
+            temp_file_name = f"{uuid.uuid4()}_{safe_file_name}"
             temp_file_path = os.path.join(TEMP_DIR, temp_file_name)
             # 保存上传内容
             content_bytes = await upload_file.read()
             with open(temp_file_path, "wb") as buffer:
                 buffer.write(content_bytes)
-            logger.info(f"文件上传成功: {temp_file_path}")
+            logger.info("上传文件临时副本写入成功")
 
             return process_and_vectorize_local_file(
-                file_name=upload_file.filename or "uploaded_file",
+                file_name=safe_file_name,
                 temp_file_path=temp_file_path,
                 id=fileId,
                 user_id=userId,
@@ -286,14 +300,12 @@ async def upload_and_vectorize_endpoint(request: Request):
 
     except HTTPException:
         raise
-    except Exception as e:
-        logger.error(f"上传和向量化失败: {str(e)}", exc_info=True)
-        raise HTTPException(status_code=500, detail=str(e))
+    except Exception:
+        # URL、文件名、正文和底层异常可能含敏感数据，仅返回稳定错误。
+        logger.error("上传和向量化失败")
+        raise HTTPException(status_code=500, detail="上传和向量化失败") from None
     finally:
         pass
-        # if temp_file_path and os.path.exists(temp_file_path):
-        #     os.remove(temp_file_path)
-        #     logger.info(f"临时文件已删除: {temp_file_path}")
 
 
 class TextVectorizeBody(BaseModel):
@@ -305,7 +317,7 @@ class TextVectorizeBody(BaseModel):
     content: str
     fileId: int
     fileName: str
-    userId: Optional[int] = 0
+    userId: Optional[int | str] = 0
     fileType: Optional[str] = None
     url: Optional[str] = ""
     folderId: Optional[int] = 0
@@ -327,7 +339,7 @@ def process_text_content(
     file_name: str,
     text: str,
     id: int,
-    user_id: int = 0,
+    user_id: int | str = 0,
     file_type: Optional[str] = None,
     folder_id: int = 0,
     url: str = ""
@@ -353,7 +365,7 @@ def process_text_content(
     embedder = embedding_utils.EmbeddingModel()
     chroma = embedding_utils.ChromaDB(embedder)
 
-    logger.info(f"插入文本向量：fileId={id}, userId={user_id}")
+    logger.info("插入文本向量 fileId=%s subject=%s", id, subject_log_tag(user_id))
     embedding_result = chroma.insert_file_vectors(
         file_name=file_name,
         user_id=user_id or 0,
@@ -387,7 +399,9 @@ def vectorize_text_endpoint(body: TextVectorizeBody):
     """
     try:
         logger.info(
-            f"收到文本向量化请求: fileId={body.fileId}, fileName={body.fileName}, userId={body.userId}"
+            "收到文本向量化请求 fileId=%s subject=%s",
+            body.fileId,
+            subject_log_tag(body.userId or 0),
         )
         return process_text_content(
             file_name=body.fileName,
@@ -398,36 +412,36 @@ def vectorize_text_endpoint(body: TextVectorizeBody):
             folder_id=body.folderId or 0,
             url=body.url or ""
         )
-    except Exception as e:
-        logger.error(f"文本向量化失败: {str(e)}", exc_info=True)
-        raise HTTPException(status_code=500, detail=f"文本向量化失败: {str(e)}")
+    except Exception:
+        logger.error("文本向量化失败 subject=%s", subject_log_tag(body.userId or 0))
+        raise HTTPException(status_code=500, detail="文本向量化失败") from None
 
 @app.get("/files/{user_id}")
-def list_user_files(user_id: int):
+def list_user_files(user_id: str):
     """
     列出指定用户的所有文件信息
     """
     try:
-        logger.info(f"收到列出用户 {user_id} 文件的请求")
+        logger.info("收到文件列表请求 subject=%s", subject_log_tag(user_id))
         embedder = embedding_utils.EmbeddingModel()
         chroma = embedding_utils.ChromaDB(embedder)
 
         files = chroma.list_files_by_user(user_id=user_id)
 
         if not files:
-            logger.info(f"用户 {user_id} 没有任何文件。")
+            logger.info("主体%s没有文件", subject_log_tag(user_id))
             return []
 
-        logger.info(f"成功为用户 {user_id} 找到 {len(files)} 个文件。")
+        logger.info("文件列表成功 subject=%s count=%s", subject_log_tag(user_id), len(files))
         return files
-    except Exception as e:
-        logger.error(f"列出用户 {user_id} 的文件失败: {str(e)}", exc_info=True)
-        raise HTTPException(status_code=500, detail=f"列出文件失败: {str(e)}")
+    except Exception:
+        logger.error("文件列表失败 subject=%s", subject_log_tag(user_id))
+        raise HTTPException(status_code=500, detail="列出文件失败") from None
 
 
 if __name__ == "__main__":
     """
     主函数入口：启动FastAPI服务
     """
-    print("启动Personal DB FastAPI服务...")
+    logger.info("启动Personal DB FastAPI服务")
     uvicorn.run(app, host="127.0.0.1", port=9100)

@@ -61,6 +61,7 @@ yarn-error.log
 **/Pods/
 vendor/
 .env*
+!frontend/.env.example
 cache
 .env_dev
 .env_prod
@@ -68,3 +69,7 @@ backend/personaldb/temp_download
 utils/temp_data.txt
 template/output_points.png
 logs
+.gstack/
+
+# 本地运行与验收产物：数据库、日志、截图及导出文件不提交到仓库
+output/

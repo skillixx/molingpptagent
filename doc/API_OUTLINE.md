@@ -1,12 +1,12 @@
 # 大纲的请求格式和响应
-curl 'http://127.0.0.1:5173/api/tools/aippt_outline' \
+curl 'http://127.0.0.1:5778/api/tools/aippt_outline' \
   -H 'Accept: */*' \
   -H 'Accept-Language: en,zh-CN;q=0.9,zh;q=0.8' \
   -H 'Connection: keep-alive' \
   -H 'Content-Type: application/json' \
   -b '_ga=GA1.1.2129295610.1683877050; _ga_69MPZE94D5=GS1.1.1732622793.1.0.1732622908.0.0.0; m=' \
-  -H 'Origin: http://127.0.0.1:5173' \
-  -H 'Referer: http://127.0.0.1:5173/' \
+  -H 'Origin: http://127.0.0.1:5778' \
+  -H 'Referer: http://127.0.0.1:5778/' \
   -H 'Sec-Fetch-Dest: empty' \
   -H 'Sec-Fetch-Mode: cors' \
   -H 'Sec-Fetch-Site: same-origin' \

@@ -87,8 +87,8 @@ class A2AOutlineClientWrapper:
                 },
             }
 
-            # === 流式响应 ===
-            print("=== 流式响应开始 ===")
+            # 流式响应日志只记录状态类型，禁止打印提示词、模型正文或复合用户主体。
+            self.logger.info("大纲Agent流式响应开始")
             streaming_request = SendStreamingMessageRequest(
                 id=str(uuid4()),
                 params=MessageSendParams(**message_data)
@@ -96,12 +96,10 @@ class A2AOutlineClientWrapper:
             stream_response = self.client.send_message_streaming(streaming_request)
             # 表示工具完成了调用，可以返回metada信息了
             async for chunk in stream_response:
-                self.logger.info(f"输出的chunk内容: {chunk}")
                 chunk_data = chunk.model_dump(mode='json', exclude_none=True)
                 if "error" in chunk_data:
-                    self.logger.error(f"错误信息: {chunk_data['error']}")
-                    print(f"错误信息: {chunk_data['error']}")
-                    yield {"type": "final", "text": chunk_data['error'], "author": "system"}
+                    self.logger.error("大纲Agent返回错误")
+                    yield {"type": "final", "text": "大纲Agent调用失败", "author": "system"}
                     break
                 result = chunk_data["result"]
                 # 判断 chunk 类型
@@ -111,10 +109,10 @@ class A2AOutlineClientWrapper:
                     chunk_status_state = chunk_status.get("state")
 
                     if chunk_status_state == "submitted":
-                        print("任务已经触发，并提交给后端")
+                        self.logger.debug("大纲Agent任务已提交")
                         continue
                     elif chunk_status_state == "working":
-                        print("任务处理中")
+                        self.logger.debug("大纲Agent任务处理中")
 
                     # 尝试提取内容
                     message = chunk_status.get("message", {})
@@ -128,9 +126,7 @@ class A2AOutlineClientWrapper:
                     if parts:
                         for part in parts:
                             part_kind = part["kind"]
-                            print(f"status, {part}")
                             if part_kind == "data":
-                                print(f"收到的是data内容:")
                                 yield {"type": "data", "data": part["data"], "author":author}
                             else:
                                 # text文本
@@ -142,17 +138,16 @@ class A2AOutlineClientWrapper:
                     author = metadata.get("author", "unknown")
                     if parts:
                         for part in parts:
-                            print(f"artifact, {part}")
                             yield {"type": "artifact", "text": part.get("text", ""), "author": author}
                     if metadata:
                         # 返回最后的元数据给前端进行解析，主要是参考信息
                         yield {"type": "metadata", "metadata": metadata, "author":author}
                 elif result.get("kind") == "task":
                     chunk_status = result["status"]
-                    print(f"任务的状态是: {chunk_status}")
+                    self.logger.debug("大纲Agent任务状态=%s", chunk_status.get("state"))
                 else:
                     self.logger.warning(f"未识别的chunk类型: {result.get('kind')}")
-            print(f"Agent正常处理完成，对话结束。")
+            self.logger.info("大纲Agent流式响应结束")
             yield {"type": "final", "text": "对话结束", "author": "system"}
 
 if __name__ == '__main__':

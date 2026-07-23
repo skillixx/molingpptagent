@@ -85,7 +85,8 @@ class ADKAgentExecutor(AgentExecutor):
                 final_session = await self.runner.session_service.get_session(
                     app_name=self.runner.app_name, user_id="self", session_id=session_id
                 )
-                print("最终的session中的结果final_session中的state: ", final_session.state)
+                # Session 可能含用户正文或任意 Unicode，只记录可控的状态键。
+                logger.debug("大纲任务完成 state_keys=%s", sorted(final_session.state.keys()))
                 final_metadata = final_session.state.get("metadata")
                 parts = convert_genai_parts_to_a2a(event.content.parts)
                 logger.debug("Yielding final response: %s", parts)

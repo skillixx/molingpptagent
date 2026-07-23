@@ -50,6 +50,7 @@ export default {
   }: AIPPTOutlinePayload): Promise<any> {
     return fetch(`${SERVER_URL}/tools/aippt_outline`, {
       method: 'POST',
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -73,6 +74,7 @@ export default {
   }: AIPPTPayload): Promise<any> {
     return fetch(`${SERVER_URL}/tools/aippt`, {
       method: 'POST',
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'text/event-stream',
@@ -123,13 +125,13 @@ export default {
     })
   },
 
-  AIPPT_Outline_From_File(file: File, user_id: string, language: string): Promise<any> {
+  AIPPT_Outline_From_File(file: File, language: string): Promise<any> {
     const formData = new FormData()
     formData.append('file', file)
-    formData.append('user_id', user_id)
     formData.append('language', language)
     return fetch(`${SERVER_URL}/tools/aippt_outline_from_file`, {
       method: 'POST',
+      credentials: 'include',
       body: formData,
     })
   },

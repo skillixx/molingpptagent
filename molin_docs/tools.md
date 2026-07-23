@@ -227,7 +227,7 @@ golangci-lint run --fix ./...   # 自动修复可修复的问题
 
 **常用命令：**
 ```bash
-npm run dev         # 启动开发服务器（默认 5173 端口）
+npm run dev         # 启动开发服务器（默认 5778 端口）
 npm run build       # 生产构建，输出到 dist/
 npm run preview     # 本地预览生产构建结果
 npm run type-check  # TypeScript 类型检查

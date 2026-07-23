@@ -1,5 +1,6 @@
 <template>
   <router-view />
+  <AuthSessionControl v-if="authFrontendConfig.ssoEnabled" />
 </template>
 
 
@@ -12,6 +13,8 @@ import { LOCALSTORAGE_KEY_DISCARDED_DB } from '@/configs/storage'
 import { deleteDiscardedDB } from '@/utils/database'
 import { isPC } from '@/utils/common'
 import api from '@/services'
+import AuthSessionControl from '@/components/AuthSessionControl.vue'
+import { authFrontendConfig } from '@/services/authConfig'
 
 import Editor from './views/Editor/index.vue'
 import Screen from './views/Screen/index.vue'
@@ -26,10 +29,6 @@ const snapshotStore = useSnapshotStore()
 const { databaseId } = storeToRefs(mainStore)
 const { slides } = storeToRefs(slidesStore)
 const { screening } = storeToRefs(useScreenStore())
-
-if (import.meta.env.MODE !== 'development') {
-  window.onbeforeunload = () => false
-}
 
 onMounted(async () => {
   // const slides = await api.getFileData('slides')

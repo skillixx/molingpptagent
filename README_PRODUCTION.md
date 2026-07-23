@@ -1,222 +1,91 @@
-# 🚀 TrainPPTAgent 生产环境部署指南
+# TrainPPTAgent 正式部署与回滚手册
 
-## ✨ 新增功能
+正式入口为 `https://ppt.axicomin.cn`。前端由 Nginx 提供 Vite 的 `dist` 静态文件，正式域名不得运行 `vite`、`vite preview` 或 HMR WebSocket。本手册只准备部署配置；执行生产迁移、启动容器和切换流量仍需单独授权。
 
-### 📋 统一ENV管理
-- **统一配置文件**: 根目录下的 `.env` 文件管理所有服务配置
-- **配置模板**: `env_template` 提供完整的配置说明
-- **智能读取**: 各服务自动读取统一配置，支持命令行参数覆盖
+## 1. 拓扑与边界
 
-### 🎯 一键生产部署
-- **自动构建**: 自动执行前端 `npm run build`
-- **依赖管理**: 自动安装前后端依赖
-- **服务启动**: 一键启动所有后端服务和前端静态服务
-- **进程监控**: 自动监控服务状态，异常时重启
+- 公网/TLS终止层只转发到宿主机 `127.0.0.1:5778` 的前端 Nginx。
+- Nginx 精确代理 `/enter`，并把 `/api/*` 去前缀转发到容器网络的 `main_api:6800`。
+- main、outline、content、PersonalDB 与可选 Worker 只在 Docker 网络 `expose`，不映射宿主机公网端口。
+- `/enter` 关闭访问日志，防止一次性 ticket 落盘；API 与入口都有来源 IP 外层限流，应用仍按 Session owner 限流。
+- TLS层必须覆盖 `X-Forwarded-Proto=https`、`X-Forwarded-Host` 和 `X-Forwarded-Port=443`。不要信任公网客户端自行提交这些头。
 
-## 🚀 快速开始
+## 2. 上线前配置
 
-### 1. 配置环境变量
+从 `env_template.txt` 复制本地 `.env`，真实密钥只写入该忽略文件，禁止打印或提交。至少确认：
 
-```bash
-# 复制配置模板
-cp env_template .env
-
-# 编辑配置文件，填入你的API密钥
-nano .env
+```dotenv
+APP_ENV=production
+APP_BASE_URL=https://ppt.axicomin.cn
+SSO_ENABLED=true
+SESSION_COOKIE_SECURE=true
+PERSISTENCE_ENABLED=true
+STORAGE_ENABLED=true
+BILLING_ENABLED=false
+RATE_LIMIT_ENABLED=true
 ```
 
-**必须配置的重要项**:
-```bash
-# 选择你要使用的模型供应商
-MODEL_PROVIDER=deepseek
-LLM_MODEL=deepseek-chat
+同时填写数据库、对象存储、墨灵应用身份和模型供应商配置。T23 完成真实积分验收并获得单独放行前，`BILLING_ENABLED=false` 必须保持不变。生产容量值不能直接沿用未确认的 100件/1GiB 默认值。
 
-# 填入对应的API密钥
-DEEPSEEK_API_KEY=your_actual_api_key_here
+公开构建变量：
+
+```dotenv
+SERVER_NAME=ppt.axicomin.cn
+VITE_MOLING_PORTAL_URL=https://moling.axicomin.cn
+FRONTEND_BIND_ADDRESS=127.0.0.1
+FRONTEND_PORT=5778
+TRAINPPT_SUBNET=172.29.23.0/24
+TRAINPPT_GATEWAY_IP=172.29.23.1
 ```
 
-### 2. 一键启动生产环境
+若该私网段与宿主现有网络冲突，必须成对调整 subnet 与 gateway；Nginx 只信任这个固定网关提供的 `X-Forwarded-For`，不得扩大为任意公网地址。
 
-```bash
-# 生产模式启动（推荐）
-python start_production.py
+## 3. 只读检查与构建
+
+```powershell
+docker compose -f docker-compose.production.yml config --quiet
+docker compose -f docker-compose.production.yml build
+docker compose -f docker-compose.production.yml run --rm --no-deps frontend nginx -t
 ```
 
-**功能特性**:
-- ✅ 自动检查环境依赖
-- ✅ 自动安装项目依赖
-- ✅ 自动构建前端项目
-- ✅ 自动启动所有服务
-- ✅ 端口冲突检测和清理
-- ✅ 进程监控和日志管理
+检查构建产物不含 Vite/HMR 客户端：
 
-### 3. 访问应用
-
-生产环境启动后：
-- **前端界面**: http://your-server-ip:5173
-- **主API**: http://your-server-ip:6800
-- **大纲服务**: http://your-server-ip:10001
-- **内容生成**: http://your-server-ip:10011
-
-## 📁 项目结构更新
-
-```
-TrainPPTAgent/
-├── .env                      # 🆕 统一环境配置
-├── .env.template            # 🆕 配置模板
-├── start_production.py     # 🆕 生产环境启动脚本
-├── logs/                   # 🆕 统一日志目录
-│   ├── production.log      # 主日志
-│   ├── main_api.log       # 各服务日志
-│   ├── outline.log
-│   └── content.log
-├── backend/
-│   ├── start_backend.py   # 原开发模式启动脚本
-│   └── ...
-└── frontend/
-    ├── dist/              # 构建后的静态文件
-    └── ...
+```powershell
+rg -n "/@vite/client|__vite_ping|vite-hmr|new WebSocket" frontend/dist
 ```
 
-## ⚙️ 配置说明
+该命令应无命中。`dist/index.html`只能引用带hash的`/assets/`文件。
 
-### 服务器配置
-```bash
-# 生产/开发模式
-PRODUCTION=true
+## 4. 迁移与启动（需单独生产授权）
 
-# 服务绑定地址
-HOST=0.0.0.0
+先备份数据库并核对当前 Alembic 版本，再由发布负责人执行：
 
-# 各服务端口
-MAIN_API_PORT=6800
-OUTLINE_API_PORT=10001
-CONTENT_API_PORT=10011
-FRONTEND_PORT=5173
+```powershell
+docker compose -f docker-compose.production.yml run --rm --no-deps -w /app main_api alembic -c alembic.ini current
+docker compose -f docker-compose.production.yml run --rm --no-deps -w /app main_api alembic -c alembic.ini upgrade head
+docker compose -f docker-compose.production.yml up -d
 ```
 
-### AI模型配置
-```bash
-# 模型供应商选择
-MODEL_PROVIDER=deepseek  # google, openai, deepseek, claude, ali
+只有 `TASK_WORKER_ENABLED=true` 且真实 handler 配置完成时，才显式启动 Worker profile：
 
-# 对应模型
-LLM_MODEL=deepseek-chat
-
-# API密钥（根据选择的供应商填写对应密钥）
-DEEPSEEK_API_KEY=your_key
-GOOGLE_API_KEY=your_key
-OPENAI_API_KEY=your_key
-CLAUDE_API_KEY=your_key
-ALI_API_KEY=your_key
+```powershell
+docker compose -f docker-compose.production.yml --profile worker up -d task_worker
 ```
 
-### 流式响应配置
-```bash
-# 大纲服务流式响应（推荐开启）
-OUTLINE_STREAMING=true
+## 5. 发布验证
 
-# 内容生成流式响应（推荐关闭，避免JSON解析问题）
-CONTENT_STREAMING=false
-```
+1. `https://ppt.axicomin.cn/api/healthz` 经外层代理可达，`/api/readyz` 的所有必需依赖为 `up`。
+2. 直接访问 `/works` 和 `/editor/<合法作品ID>` 返回同一正式 `index.html`，刷新不404。
+3. 浏览器 Network 不出现 `/@vite/client`、`__vite_ping`、HMR 或 WebSocket 开发连接。
+4. `/assets/` 带 `Cache-Control: public, max-age=31536000, immutable`；HTML带 `no-store`。
+5. `/enter?ticket=...` 响应的 Session Cookie 必须为 `Secure; HttpOnly; SameSite=Lax`，且地址栏跳转后不再含ticket。
+6. CORS/CSRF只接受 `https://ppt.axicomin.cn`；伪造Origin、跨用户资源和超频写入分别返回稳定403/404/429。
+7. 四档 UI、真实墨灵、积分、对象存储与PowerPoint打开由T23分别验收，不能用本地静态服务代替。
 
-## 🔧 高级功能
+## 6. 回滚
 
-### 开发模式 vs 生产模式
-
-**开发模式**（原方式）:
-```bash
-# 后端开发启动
-cd backend
-python start_backend.py
-
-# 前端开发启动
-cd frontend
-npm run dev
-```
-
-**生产模式**（新方式）:
-```bash
-# 一键生产部署
-python start_production.py
-```
-
-### 日志管理
-
-生产环境自动生成日志：
-- `logs/production.log`: 主启动日志
-- `logs/main_api.log`: 主API服务日志
-- `logs/outline.log`: 大纲生成服务日志
-- `logs/content.log`: 内容生成服务日志
-
-### 进程管理
-
-生产脚本提供完整的进程管理：
-- **自动监控**: 监控服务状态，异常时记录日志
-- **优雅停止**: Ctrl+C 优雅停止所有服务
-- **端口清理**: 自动检测并清理端口冲突
-- **资源回收**: 确保所有进程正确释放资源
-
-## 🔒 生产环境建议
-
-### 安全配置
-1. **API密钥**: 妥善保管 `.env` 文件，不要提交到代码仓库
-2. **端口安全**: 生产环境建议使用防火墙限制端口访问
-3. **反向代理**: 建议使用Nginx等反向代理服务器
-
-### 性能优化
-1. **工作进程**: 根据CPU核心数调整 `WORKERS` 参数
-2. **并发连接**: 根据服务器配置调整 `MAX_CONNECTIONS`
-3. **超时设置**: 根据实际需求调整 `REQUEST_TIMEOUT`
-
-### 监控告警
-1. **日志监控**: 定期检查 `logs/` 目录下的日志文件
-2. **服务状态**: 使用 `systemd` 等服务管理器进一步增强稳定性
-3. **资源监控**: 监控CPU、内存、磁盘使用情况
-
-## ❓ 常见问题
-
-### 1. 端口被占用
-```bash
-# 自动处理：启动脚本会自动检测并询问是否清理
-# 手动处理：
-netstat -tulpn | grep :6800
-sudo kill -9 <PID>
-```
-
-### 2. 前端构建失败
-```bash
-# 检查Node.js版本
-node --version  # 需要 v16+
-
-# 手动构建
-cd frontend
-npm install
-npm run build
-```
-
-### 3. API密钥配置
-```bash
-# 确保在 .env 文件中配置了正确的密钥
-# 检查MODEL_PROVIDER对应的密钥是否已填写
-cat .env | grep API_KEY
-```
-
-### 4. 服务启动失败
-```bash
-# 查看详细日志
-tail -f logs/production.log
-tail -f logs/main_api.log
-```
-
-## 🎉 升级优势
-
-相比原来的部署方式，新的生产部署具有以下优势：
-
-1. **🔧 配置统一**: 一个文件管理所有配置，避免重复配置
-2. **🚀 一键部署**: 单个命令完成完整部署流程
-3. **📊 监控完善**: 统一日志和进程监控
-4. **🔒 生产就绪**: 适合生产环境的配置和优化
-5. **🛠 易于维护**: 清晰的目录结构和日志管理
-
-立即体验新的生产部署方式！
+- 切回上一版前端镜像和主API镜像；数据库迁移均为向前兼容新增，禁止生产降级删表。
+- 保持数据库、exports/files索引和对象存储原件；暂停新归档或Worker，不批量删除用户数据。
+- 计费异常立即保持或恢复 `BILLING_ENABLED=false`，保留幂等记录供对账。
+- 依赖不就绪时不把实例加入流量；不得修改 `/readyz` 的 required 依赖伪造健康。
+- 回滚后复验 `/works`、一个历史编辑深链、只读历史下载和 `/api/readyz`，并记录镜像摘要与时间窗口。

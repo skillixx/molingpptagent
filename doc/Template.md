@@ -1,5 +1,5 @@
 # 如何制作模版
-- Step1: 部署前端，完成后访问 http://127.0.0.1:5173/editor
+- Step1: 部署前端，完成后访问 http://127.0.0.1:5778/editor
 - Step2: 点击左上角导入json,或者已有的PPT文件都可以（自己的公司的或者个人学习任何已有pptx文件)
 ![template_import.png](template_import.png)
 - Step3: 点击幻灯片类型标注

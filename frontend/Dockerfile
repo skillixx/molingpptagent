@@ -1,29 +1,29 @@
-# Stage 1: Build the React/Vite app
 FROM node:22-alpine AS build
 WORKDIR /app
 
-# 更快的缓存层：先只拷贝依赖清单
-COPY package*.json ./
+# SSO开关和门户URL是公开构建配置，不允许把Token或密钥作为build arg。
+ARG VITE_SSO_ENABLED=false
+ARG VITE_MOLING_PORTAL_URL=
+ENV VITE_SSO_ENABLED=${VITE_SSO_ENABLED} \
+    VITE_MOLING_PORTAL_URL=${VITE_MOLING_PORTAL_URL}
 
-# 更可重复的安装方式
+COPY package.json package-lock.json ./
 RUN npm ci
-
-# 拷贝源代码并构建
 COPY . .
 RUN npm run build
 
-# Stage 2: Serve with Nginx
 FROM nginx:stable-alpine
 WORKDIR /usr/share/nginx/html
+RUN rm -rf ./* && mkdir -p /etc/nginx/snippets
+COPY --from=build /app/dist ./
+COPY nginx.conf /etc/nginx/templates/default.conf.template
+COPY nginx-security-headers.conf /etc/nginx/snippets/trainppt-security-headers.conf
 
-# 清空默认站点文件
-RUN rm -rf ./*
-
-# 从 build 阶段拷贝静态产物
-COPY --from=build /app/dist .
-
-# 使用自定义 Nginx 配置
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# 只替换部署变量，保留$host、$uri等Nginx运行时变量。
+ENV SERVER_NAME=ppt.axicomin.cn \
+    MAIN_API_UPSTREAM=main_api:6800 \
+    TRUSTED_PROXY_IP=172.29.23.1 \
+    NGINX_ENVSUBST_FILTER="^(SERVER_NAME|MAIN_API_UPSTREAM|TRUSTED_PROXY_IP)$"
 
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]

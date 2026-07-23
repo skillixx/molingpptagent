@@ -12,7 +12,11 @@ import json
 import hashlib
 import pickle
 import asyncio
+import logging
 from functools import wraps
+
+
+logger = logging.getLogger(__name__)
 
 def cal_md5(content):
     content = str(content)
@@ -42,7 +46,7 @@ def async_cache_decorator(func):
         key_file = os.path.join(cache_path, cal_md5(key) + "_cache.pkl")
 
         if os.path.exists(key_file) and usecache:
-            print(f"缓存命中，读取缓存文件: {key_file}")
+            logger.info("函数%s缓存命中 tag=%s", func.__name__, cal_md5(key)[:12])
             with open(key_file, 'rb') as f:
                 result = pickle.load(f)
                 return result
@@ -51,11 +55,11 @@ def async_cache_decorator(func):
         result = await func(*args, **kwargs)
 
         if isinstance(result, tuple) and result[0] == False:
-            print(f"函数 {func.__name__} 返回结果为 False, 不缓存")
+            logger.info("函数%s返回不可缓存结果 tag=%s", func.__name__, cal_md5(key)[:12])
         else:
             with open(key_file, 'wb') as f:
                 pickle.dump(result, f)
-            print(f"缓存未命中，结果缓存至文件: {key_file}")
+            logger.info("函数%s缓存写入 tag=%s", func.__name__, cal_md5(key)[:12])
 
         return result
 
@@ -88,25 +92,25 @@ def cache_decorator(func):
             key = str(args) + str(kwargs) + func.__name__
         # 变成md5字符串
         key_file = os.path.join(cache_path, cal_md5(key) + "_cache.pkl")
+        cache_tag = cal_md5(key)[:12]
         # 如果结果已缓存，则返回缓存的结果
         if os.path.exists(key_file) and usecache:
-            # 去掉kwargs中的usecache
-            print(f"函数{func.__name__}被调用，缓存被命中，使用已缓存结果，对于参数{key}, 读取文件:{key_file}")
+            logger.info("函数%s缓存命中 tag=%s", func.__name__, cache_tag)
             try:
                 with open(key_file, 'rb') as f:
                     result = pickle.load(f)
                     return result
-            except Exception as e:
-                print(f"函数{func.__name__}被调用，缓存被命中，读取文件:{key_file}失败，错误信息:{e}")
+            except Exception:
+                logger.warning("函数%s缓存读取失败 tag=%s", func.__name__, cache_tag)
         result = func(*args, **kwargs)
         # 将结果缓存到文件中
         # 如果返回的数据是一个元祖，并且第1个参数是False,说明这个函数报错了，那么就不缓存了是我们自己的一个设定
         if isinstance(result, tuple) and result[0] == False:
-            print(f"函数{func.__name__}被调用，返回结果为False，对于参数{key}, 不缓存")
+            logger.info("函数%s返回不可缓存结果 tag=%s", func.__name__, cache_tag)
         else:
             with open(key_file, 'wb') as f:
                 pickle.dump(result, f)
-            print(f"函数{func.__name__}被调用，缓存未命中，结果被缓存，对于参数{key}, 写入文件:{key_file}")
+            logger.info("函数%s缓存写入 tag=%s", func.__name__, cache_tag)
         return result
 
     return wrapper

@@ -197,7 +197,8 @@ class ProductionStarter:
             }
         }
 
-        self.frontend_port = int(os.environ.get('FRONTEND_PORT', '5173'))
+        # 对外入口与原 molinppt 保持一致，内部 API 端口继续独立运行。
+        self.frontend_port = int(os.environ.get('FRONTEND_PORT', '5778'))
         self.host = os.environ.get('HOST', '127.0.0.1')
         self.processes: Dict[str, subprocess.Popen] = {}
         self.frontend_server = None
@@ -403,7 +404,8 @@ class ProductionStarter:
             log_f = open(log_file, 'a', encoding='utf-8', buffering=1)
 
             process = subprocess.Popen(
-                ['npm', 'run', 'dev'],
+                # 显式传递端口并启用 strictPort，防止配置与实际监听端口不一致。
+                ['npm', 'run', 'dev', '--', '--host', self.host, '--port', str(self.frontend_port), '--strictPort'],
                 cwd=self.frontend_dir,
                 stdout=log_f,
                 stderr=subprocess.STDOUT,

@@ -13,6 +13,11 @@ from ...config import PPT_WRITER_AGENT_CONFIG  # 保留导入，检查器不需�
 from ...create_model import create_model
 from . import prompt
 from .utils import validate_slide
+from ...generation_utils import (
+    fallback_slide_for_failed_generation,
+    normalize_search_engines,
+    parse_last_json_object,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -20,9 +25,8 @@ logger = logging.getLogger(__name__)
 def my_before_model_callback(callback_context: CallbackContext, llm_request: LlmRequest) -> Optional[LlmResponse]:
     agent_name = callback_context.agent_name
     history_length = len(llm_request.contents)
-    metadata = callback_context.state.get("metadata")
-    print(f"调用了{agent_name}模型前的callback, 现在Agent共有{history_length}条历史记录,metadata数据为：{metadata}")
-    logger.info(f"调用了{agent_name}模型前的callback, 现在Agent共有{history_length}条历史记录,metadata数据为：{metadata}")
+    # metadata包含复合用户主体，日志只记录规模，禁止打印身份与生成正文。
+    logger.info("调用%s模型前 callback history=%s", agent_name, history_length)
     #清空contents,不需要上一步的拆分topic的记录, 不能在这里清理，否则，每次调用工具都会清除记忆，白操作了
     # llm_request.contents.clear()
     # 返回 None，继续调用 LLM
@@ -32,15 +36,7 @@ def my_after_model_callback(callback_context: CallbackContext, llm_response: Llm
     # 1. 检查用户输入，注意如果是llm的stream模式，那么response_data的结果是一个token的结果，还有可能是工具的调用
     agent_name = callback_context.agent_name
     response_parts = llm_response.content.parts
-    part_texts = []
-    for one_part in response_parts:
-        part_text = one_part.text
-        if part_text is not None:
-            part_texts.append(part_text)
-    part_text_content = "\n".join(part_texts)
-    metadata = callback_context.state.get("metadata")
-    print(f"调用了{agent_name}模型后的callback, 这次模型回复{response_parts}条信息,metadata数据为：{metadata},回复内容是: {part_text_content}")
-    logger.info(f"调用了{agent_name}模型后的callback, 这次模型回复{response_parts}条信息,metadata数据为：{metadata},回复内容是: {part_text_content}")
+    logger.info("调用%s模型后 callback parts=%s", agent_name, len(response_parts))
     return None
 
 # ========== 生成前/后回调 ==========
@@ -67,7 +63,7 @@ def my_after_agent_callback(callback_context: CallbackContext) -> None:
 
     # 保存本轮生成的原始文本，等待校验
     callback_context.state["last_written_raw"] = part_text_content
-    print(f"--- 本页生成的原始内容已写入 state['last_written_raw'] ---")
+    logger.info("本页生成结果已写入校验缓存，chars=%s", len(part_text_content))
 
 # ========== Writer（生成） ==========
 class PPTWriterSubAgent(LlmAgent):
@@ -112,18 +108,17 @@ class PPTWriterSubAgent(LlmAgent):
             #             content=types.Content(parts=[types.Part(text=feedback_text)])
             #         )
             #     )
-            logger.info(f"=====>>>6. 当前正在进行对: 第{current_slide_index}个块重新生成")
-            del_history = ctx.session.events.pop()
-            logger.info(f"=============>>>删除了最后1个内容块：\n{del_history}")
-            del_history = ctx.session.events.pop()
-            logger.info(f"=============>>>删除了倒数第2个内容块：\n{del_history}")
-            logger.info(f"=============>>>删除后的历史记录为：\n{ctx.session.events}")
+            logger.info("第%s页进入重试，history=%s", current_slide_index, len(ctx.session.events))
+            if ctx.session.events:
+                ctx.session.events.pop()
+            if ctx.session.events:
+                ctx.session.events.pop()
+            logger.info("已清理本页失败事件，remaining_history=%s", len(ctx.session.events))
         if current_slide_index == 0:
-            print(f"正在生成第{current_slide_index}页幻灯片...")
+            logger.info("正在生成第%s页幻灯片", current_slide_index)
 
         async for event in super()._run_async_impl(ctx):
-            print(f"{self.name} 收到事件：{event}")
-            logger.info(f"{self.name} 收到事件：{event}")
+            logger.debug("%s 收到事件，author=%s", self.name, event.author)
             yield event
 
     def _get_dynamic_instruction(self, ctx: InvocationContext) -> str:
@@ -135,16 +130,12 @@ class PPTWriterSubAgent(LlmAgent):
         # 获取要生成的ppt的这一页的schema大纲
         current_slide_schema = outline_json[current_slide_index]
         metadata = ctx.state.get("metadata", {})
-        # 默认支持所有的搜索工具
-        search_engine = metadata.get("search_engine", [])
-        # 如果是None，那么没问题，走默认PREFIX_PAGE_PROMPT，如果是空列表，那么使用所有工具
-        if search_engine == []:
-            # search_engine = ["KnowledgeBaseSearch","DocumentSearch","SearchImage"]
-            search_engine = ["KnowledgeBaseSearch","SearchImage"]
+        # 空列表代表用户没有选择搜索，不能再隐式启用耗时的全部工具。
+        search_engine = normalize_search_engines(metadata)
         user_id = metadata.get("user_id", "")
         language = metadata.get("language", "chinese")  # 默认中文
         if not user_id and search_engine and "KnowledgeBaseSearch" in search_engine:
-            print("当前用户未指定知识库的用户id，无法使用KnowledgeBaseSearch进行搜索，必须去除知识库搜索工具")
+            logger.info("未指定知识库用户，跳过 KnowledgeBaseSearch")
             search_engine.remove("KnowledgeBaseSearch")
         # 根据不同的搜索工具，使用不同的prefix的prompt, search_engine为False的时候
         if not search_engine:
@@ -155,12 +146,12 @@ class PPTWriterSubAgent(LlmAgent):
             prefix_prompt = prompt.PREFIX_PAGE_PROMPT_WITH_SEARCH.format(tool_names=search_engine,language=language)
         # 这页ppt的类型
         current_slide_type = current_slide_schema.get("type")
-        print(f"当前要生成第{current_slide_index}页的ppt， 类型为：{current_slide_type}， 具体内容为：{current_slide_schema}")
+        logger.info("正在生成第%s页，type=%s", current_slide_index, current_slide_type)
         # 根据不同的类型，形成不同的prompt
         slide_prompt = prompt.prompt_mapper[current_slide_type]
         current_slide_schema_json = json.dumps(current_slide_schema, ensure_ascii=False)
         prompt_instruction = prefix_prompt + slide_prompt.format(input_slide_data=current_slide_schema_json, language=language)
-        print(f"第{current_slide_index}页的prompt是：{prompt_instruction}")
+        logger.debug("第%s页提示词长度=%s", current_slide_index, len(prompt_instruction))
         return prompt_instruction
 
 # ========== Checker（规则校验 JSON，不调用大模型） ==========
@@ -179,23 +170,7 @@ class CheckerAgent(BaseAgent):
         )
 
     def _try_parse_json(self, text: str) -> Optional[dict]:
-        if not text:
-            return None
-        s = text.strip()
-        if s.startswith("```json"):
-            s = s[len("```json"):].strip()
-        if s.startswith("```"):
-            s = s[len("```"):].strip()
-        if s.endswith("```"):
-            s = s[: -len("```")].strip()
-        try:
-            start = s.find("{")
-            end = s.rfind("}")
-            if start != -1 and end != -1 and end > start:
-                s = s[start:end+1]
-            return json.loads(s)
-        except Exception:
-            return None
+        return parse_last_json_object(text)
 
     async def _run_async_impl(self, ctx: InvocationContext) -> AsyncGenerator[Event, None]:
         raw = ctx.session.state.get("last_written_raw")  # Writer 存入
@@ -299,25 +274,25 @@ class ControllerAgent(BaseAgent):
                 author=self.name,
                 content=types.Content(parts=[types.Part(text=return_slide_json)])
             )
-            print(f"第 {current_slide_index} 页已通过校验，进入下一页。")
+            logger.info("第%s页已通过校验，进入下一页", current_slide_index)
         else:
             # 失败：尝试重试或跳过
             current_retries += 1
             retry_map[current_slide_index] = current_retries
             if current_retries <= max_retries:
-                print(f"第 {current_slide_index} 页非 JSON，准备第 {current_retries} 次重试。")
+                logger.warning("第%s页校验失败，准备第%s次重试", current_slide_index, current_retries)
                 # 不推进页码，由 LoopAgent 触发下一轮 Writer
                 return
             else:
                 # 超过重试阈值，选择跳过此页，推进
-                print(f"第 {current_slide_index} 页重试超过 {max_retries} 次，跳过并进入下一页。")
+                logger.error("第%s页重试超过%s次，跳过并进入下一页", current_slide_index, max_retries)
                 st["current_slide_index"] = current_slide_index + 1
-                last_written_raw = st.get("last_written_raw")
-                last_slide_json = st.get("last_slide_json")
-                if last_slide_json:
-                    return_slide_json = json.dumps(last_slide_json, ensure_ascii=False)
-                else:
-                    return_slide_json = last_written_raw
+                # 无效模型文本不能继续交给前端；否则前端JSON解析失败会静默少一页。
+                fallback_slide = fallback_slide_for_failed_generation(
+                    st.get("outline_json") or [], current_slide_index
+                )
+                self._append_accumulated(st, fallback_slide)
+                return_slide_json = json.dumps(fallback_slide, ensure_ascii=False)
                 # 清理中间态
                 st["last_written_raw"] = None
                 st["last_slide_json"] = None
@@ -338,7 +313,7 @@ class ControllerAgent(BaseAgent):
                 pretty = json.dumps(accumulated, ensure_ascii=False, indent=2)
             except Exception:
                 pretty = str(accumulated)
-            print(f"全部页处理完成。汇总如下：\n\n{pretty}")
+            logger.info("全部页处理完成，slides=%s", len(accumulated))
             # 结束循环
             yield Event(author=self.name, actions=EventActions(escalate=True))
 

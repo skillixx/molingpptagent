@@ -44,6 +44,14 @@ export const useSnapshotStore = defineStore('snapshot', {
       this.setSnapshotCursor(0)
       this.setSnapshotLength(1)
     },
+
+    async resetSnapshotDatabase() {
+      // 新历史作品加载后丢弃本次页面启动时的空白撤销栈；数据库ID每次启动随机，不会删除其他作品或用户数据。
+      await db.snapshots.clear()
+      this.setSnapshotCursor(-1)
+      this.setSnapshotLength(0)
+      await this.initSnapshotDatabase()
+    },
   
     async addSnapshot() {
       const slidesStore = useSlidesStore()

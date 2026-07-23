@@ -84,7 +84,7 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
     ports:
-      - "8008:80"
+      - "5778:80"
     networks:
       - main_ppt_network
     extra_hosts:

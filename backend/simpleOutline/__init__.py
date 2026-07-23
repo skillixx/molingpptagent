@@ -1,1 +1,1 @@
-from . import agent
+"""大纲 Agent 包；具体服务入口显式导入 agent，包初始化不创建模型实例。"""

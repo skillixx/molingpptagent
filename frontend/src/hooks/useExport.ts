@@ -13,12 +13,25 @@ import { type SvgPoints, toPoints } from '@/utils/svgPathParser'
 import { encrypt } from '@/utils/crypto'
 import { svg2Base64 } from '@/utils/svg2Base64'
 import message from '@/utils/message'
+import { archivePptx, archiveThumbnail, downloadAndArchivePptx } from '@/services/exports'
 
 interface ExportImageConfig {
   quality: number
   width: number
   fontEmbedCSS?: string
 }
+
+interface PendingPptxArchive {
+  blob: Blob
+  requestId: string
+  presentationId: string
+  version: number
+}
+
+// 导出弹窗由v-if卸载；共享状态保证关闭再打开仍复用原Blob和幂等键。
+const sharedArchiveRetrying = ref(false)
+const sharedArchivePending = ref(false)
+let sharedPendingArchive: PendingPptxArchive | null = null
 
 //代理下载地址
 const PROXY_ENDPOINT = '/api/proxy' 
@@ -30,6 +43,34 @@ export default () => {
   const { slides, theme, viewportRatio, title, viewportSize } = storeToRefs(slidesStore)
 
   const defaultFontSize = 16
+  const archiveRetrying = sharedArchiveRetrying
+  const archivePending = sharedArchivePending
+
+  const retryPptxArchive = async () => {
+    if (!sharedPendingArchive || archiveRetrying.value) return false
+    archiveRetrying.value = true
+    const target = sharedPendingArchive
+    try {
+      const result = await downloadAndArchivePptx({
+        blob: target.blob,
+        filename: `${title.value}.pptx`,
+        requestId: target.requestId,
+        save: saveAs,
+        archive: (blob, requestId) => archivePptx(target.presentationId, target.version, blob, requestId),
+        skipLocalSave: true,
+      })
+      archivePending.value = !result.archived
+      if (result.archived) {
+        sharedPendingArchive = null
+        message.success('云端归档已完成')
+      }
+      else message.warning('云端归档仍未完成，请稍后重试')
+      return result.archived
+    }
+    finally {
+      archiveRetrying.value = false
+    }
+  }
 
   const ratioPx2Inch = computed(() => {
     return 96 * (viewportSize.value / 960)
@@ -954,12 +995,55 @@ export default () => {
       }
     }
 
-    setTimeout(() => {
-      pptx.writeFile({ fileName: `${title.value}.pptx` }).then(() => exporting.value = false).catch(() => {
-        exporting.value = false
-        message.error('导出失败')
+    try {
+      // PptxGenJS只生成一次Blob；本地保存和对象归档必须共享这个对象，禁止二次生成造成字节漂移。
+      const generated = await pptx.write({ outputType: 'blob' })
+      const blob = generated instanceof Blob
+        ? generated
+        : new Blob([generated as BlobPart], { type: 'application/vnd.openxmlformats-officedocument.presentationml.presentation' })
+      const presentationId = slidesStore.presentationId
+      const version = slidesStore.presentationVersion
+      if (!presentationId || version === null) {
+        saveAs(blob, `${title.value}.pptx`)
+        return { localSaved: true, archived: false, archiveRequired: false }
+      }
+
+      const requestId = typeof crypto.randomUUID === 'function'
+        ? crypto.randomUUID()
+        : `export-${Date.now()}-${Math.random().toString(36).slice(2)}`
+      const result = await downloadAndArchivePptx({
+        blob,
+        filename: `${title.value}.pptx`,
+        requestId,
+        save: saveAs,
+        archive: (sameBlob, sameRequestId) => archivePptx(presentationId, version, sameBlob, sameRequestId),
       })
-    }, 200)
+      archivePending.value = !result.archived
+      sharedPendingArchive = result.archived ? null : { blob, requestId, presentationId, version }
+      if (!result.archived) message.warning('已下载到本地，但云端归档失败，可点击“重试归档”')
+
+      if (result.archived) {
+        // 缩略图是展示增强项，失败不能篡改PPTX归档成功状态；下次导出会按内容哈希重试。
+        const thumbnail = document.querySelector('.thumbnail-list .thumbnail-item.active .thumbnail') as HTMLElement | null
+        if (thumbnail) {
+          try {
+            const dataUrl = await toPng(thumbnail, { width: 480, fontEmbedCSS: '' })
+            await archiveThumbnail(presentationId, await (await fetch(dataUrl)).blob())
+          }
+          catch {
+            message.warning('PPTX已归档，缩略图暂未更新')
+          }
+        }
+      }
+      return { ...result, archiveRequired: true }
+    }
+    catch {
+      message.error('导出失败')
+      throw new Error('PPTX_EXPORT_FAILED')
+    }
+    finally {
+      exporting.value = false
+    }
   }
 
   return {
@@ -968,5 +1052,8 @@ export default () => {
     exportJSON,
     exportSpecificFile,
     exportPPTX,
+    archivePending,
+    archiveRetrying,
+    retryPptxArchive,
   }
 }

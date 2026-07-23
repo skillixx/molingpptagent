@@ -21,6 +21,7 @@ from urllib.parse import quote
 import json
 from typing import List, Dict, Any
 from .weixin_search import sogou_weixin_search,get_real_url,get_article_content
+from ...generation_utils import normalize_search_engines
 
 logger = logging.getLogger(__name__)
 
@@ -32,6 +33,11 @@ async def SearchImage(query: str, count: int = 1, tool_context: ToolContext = No
     :param tool_context: 工具上下文
     :return: 图片信息列表
     """
+    metadata = tool_context.state.get("metadata", {}) if tool_context else {}
+    if "SearchImage" not in normalize_search_engines(metadata):
+        logger.info("图片搜索未启用，跳过工具调用")
+        return []
+
     try:
         # 从环境变量获取Pexels API密钥
         pexels_api_key = os.getenv("PEXELS_API_KEY")
@@ -48,7 +54,7 @@ async def SearchImage(query: str, count: int = 1, tool_context: ToolContext = No
         encoded_query = quote(query)
         url = f"https://api.pexels.com/v1/search?query={encoded_query}&per_page={min(count, 80)}&orientation=landscape"
         
-        print(f"正在搜索图片，关键词: {query}")
+        logger.info("正在搜索图片，count=%s", count)
         
         response = requests.get(url, headers=headers, timeout=10)
         response.raise_for_status()
@@ -57,7 +63,7 @@ async def SearchImage(query: str, count: int = 1, tool_context: ToolContext = No
         photos = data.get("photos", [])
         
         if not photos:
-            print(f"未找到关键词 '{query}' 相关的图片，使用模拟数据")
+            logger.info("未找到相关图片，使用模拟数据")
             return _get_simulate_images(query, count)
         
         # 转换为前端需要的格式
@@ -74,14 +80,14 @@ async def SearchImage(query: str, count: int = 1, tool_context: ToolContext = No
             }
             image_results.append(image_info)
         
-        print(f"成功搜索到 {len(image_results)} 张图片")
+        logger.info("图片搜索完成，count=%s", len(image_results))
         return image_results
         
     except requests.exceptions.RequestException as e:
-        print(f"Pexels API请求失败: {e}")
+        logger.warning("Pexels API 请求失败，使用模拟数据")
         return _get_simulate_images(query, count)
     except Exception as e:
-        print(f"图片搜索出错: {e}")
+        logger.exception("图片搜索异常，使用模拟数据")
         return _get_simulate_images(query, count)
 
 
@@ -166,12 +172,11 @@ async def DocumentSearch(
     :return: 返回每篇文档数据
     """
     agent_name = tool_context.agent_name
-    print(f"Agent{agent_name}正在调用工具：DocumentSearch: " + keyword)
+    logger.info("Agent%s调用DocumentSearch", agent_name)
     metadata = tool_context.state.get("metadata", {})
     if metadata is None:
         metadata = {}
-    print(f"调用工具：DocumentSearch时传入的metadata: {metadata}")
-    print("文档检索: " + keyword)
+    # metadata含服务端知识库主体，不能写入控制台。
     start_time = time.time()
     results = sogou_weixin_search(keyword)
     if not results:
@@ -191,7 +196,7 @@ async def DocumentSearch(
         }
         articles.append(article)
     end_time = time.time()
-    print(f"关键词{keyword}相关的文章已经获取完毕，获取到{len(articles)}篇, 耗时{end_time - start_time}秒")
+    logger.info("DocumentSearch完成 count=%s elapsed=%.2f", len(articles), end_time - start_time)
     metadata["tool_document_ids"] = articles
     tool_context.state["metadata"] = metadata
     return articles
@@ -204,12 +209,15 @@ def KnowledgeBaseSearch(keyword: str, tool_context: ToolContext):
     """
     topk = 5  # 搜索前5条结果
     metadata = tool_context.state.get("metadata", {})
+    if "KnowledgeBaseSearch" not in normalize_search_engines(metadata):
+        logger.info("知识库搜索未启用，跳过工具调用")
+        return True, {"documents": [], "metadatas": []}
     # 就是对应用户上传PDF文件
     user_id = metadata.get("user_id", 999)
     if not user_id:
         user_id = 999
-    logger.info(f"❤️❤️❤️❤️😜😜😜😜😜调用知识库搜索接口, user_id: {user_id}, query: {keyword}, topk: {topk}")
-    print(f"❤️❤️❤️❤️😜😜😜😜😜调用知识库搜索接口, user_id: {user_id}, query: {keyword}, topk: {topk}")
+    # 复合主体可能包含平台用户标识，日志只记录调用规模，不打印主体或检索正文。
+    logger.info("调用知识库搜索接口 topk=%s", topk)
     PERSONAL_DB = os.environ.get('PERSONAL_DB', '')
     assert PERSONAL_DB, "PERSONAL_DB is not set"
     url = f"{PERSONAL_DB}/search"
@@ -234,15 +242,14 @@ def KnowledgeBaseSearch(keyword: str, tool_context: ToolContext):
         documents = result.get("documents", [])
         metadatas = result.get("metadatas", [])
         data = {"documents": documents, "metadatas": metadatas}
-        print("Response status:", response.status_code)
-        print("Response body:", result)
-        logger.info(f"{PERSONAL_DB}搜索知识库返回状态: {response.status_code}")
-        logger.info(f"{PERSONAL_DB}搜索知识库返回结果: {result}")
-        logger.info(f"{PERSONAL_DB}搜索知识库成功, 返回结果: {data}")
+        logger.info("知识库搜索返回 status=%s", response.status_code)
+        documents = result.get("documents") or []
+        result_count = len(documents[0]) if documents and isinstance(documents[0], list) else len(documents)
+        logger.info("知识库搜索返回 count=%s", result_count)
         return True, data
-    except Exception as e:
-        print(f"{PERSONAL_DB}搜索知识库报错: {e}")
-        return False, f"{PERSONAL_DB}搜索知识库报错: {str(e)}"
+    except Exception:
+        logger.error("知识库搜索失败", exc_info=True)
+        return False, "知识库搜索失败"
 
 if __name__ == '__main__':
     import asyncio

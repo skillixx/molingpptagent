@@ -1,1 +1,1 @@
-from . import agent
+"""PPT 内容生成包；按需导入 agent，避免纯工具测试初始化模型。"""

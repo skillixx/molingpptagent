@@ -10,9 +10,14 @@
 
     <div class="aippt-dialog">
       <div class="header-section">
-        <button class="template-btn" @click="goToEditor">
-          <span class="btn-inner">制作模板</span>
-        </button>
+        <div class="header-actions">
+          <button class="works-btn" type="button" data-testid="open-works" @click="goToWorks">
+            我的作品
+          </button>
+          <button class="template-btn" type="button" @click="goToEditor">
+            <span class="btn-inner">制作模板</span>
+          </button>
+        </div>
 
         <div class="brand">
           <h1 class="title">
@@ -158,6 +163,7 @@ import message from '@/utils/message'
 import FullscreenSpin from '@/components/FullscreenSpin.vue'
 import OutlineEditor from '@/components/OutlineEditor.vue'
 import { useMainStore } from '@/store/main'
+import { consumeTextResponse, isUsableMarkdownOutline } from '@/services/generationStream'
 
 const router = useRouter()
 const { getMdContent } = useAIPPT()
@@ -212,6 +218,42 @@ const goToEditor = () => {
   router.push('/editor')
 }
 
+const goToWorks = () => {
+  // 生成页保留为主入口，作品库只承担历史作品管理与继续编辑。
+  router.push({ name: 'Works' })
+}
+
+const consumeOutline = async (stream: Response) => {
+  outline.value = ''
+  const rawOutline = await consumeTextResponse(
+    stream,
+    chunk => {
+      outline.value += chunk
+      if (outlineRef.value) {
+        outlineRef.value.scrollTop = outlineRef.value.scrollHeight + 20
+      }
+    },
+    () => {
+      step.value = 'outline'
+      showProcessingModal.value = false
+    },
+  )
+  const normalizedOutline = getMdContent(rawOutline)
+    .replace(/<!--[\s\S]*?-->/g, '')
+    .replace(/<think>[\s\S]*?<\/think>/g, '')
+    .trim()
+  if (!isUsableMarkdownOutline(normalizedOutline)) {
+    throw new Error('OUTLINE_STREAM_INCOMPLETE')
+  }
+  outline.value = normalizedOutline
+}
+
+const resetGenerationState = () => {
+  loading.value = false
+  outlineCreating.value = false
+  showProcessingModal.value = false
+}
+
 const createOutline = async () => {
   if (!keyword.value.trim()) {
     message.error('请先输入PPT主题')
@@ -231,38 +273,13 @@ const createOutline = async () => {
       model: model.value,
     })
 
-    loading.value = false
-    step.value = 'outline'
-    showProcessingModal.value = false
-
-    const reader: ReadableStreamDefaultReader = stream.body.getReader()
-    const decoder = new TextDecoder('utf-8')
-
-    const readStream = () => {
-      reader.read().then(({ done, value }) => {
-        if (done) {
-          outline.value = getMdContent(outline.value)
-          outline.value = outline.value.replace(/<!--[\s\S]*?-->/g, '').replace(/<think>[\s\S]*?<\/think>/g, '')
-          outlineCreating.value = false
-          return
-        }
-
-        const chunk = decoder.decode(value, { stream: true })
-        outline.value += chunk
-
-        if (outlineRef.value) {
-          outlineRef.value.scrollTop = outlineRef.value.scrollHeight + 20
-        }
-
-        readStream()
-      })
-    }
-    readStream()
-  } catch (error) {
-    loading.value = false
-    outlineCreating.value = false
-    showProcessingModal.value = false
-    message.error('生成失败，请重试')
+    await consumeOutline(stream)
+  } catch {
+    outline.value = ''
+    step.value = 'setup'
+    message.error('大纲生成中断，请重新生成')
+  } finally {
+    resetGenerationState()
   }
 }
 
@@ -296,40 +313,16 @@ const uploadWordAndCreateOutline = async (file: File) => {
   showProcessingModal.value = true
 
   try {
-    const stream = await api.AIPPT_Outline_From_File(file, mainStore.sessionId, language.value)
+    // owner 由后端HttpOnly Session确定；前端不再把随机sessionId伪装成用户ID。
+    const stream = await api.AIPPT_Outline_From_File(file, language.value)
 
-    loading.value = false
-    step.value = 'outline'
-    showProcessingModal.value = false
-
-    const reader: ReadableStreamDefaultReader = stream.body.getReader()
-    const decoder = new TextDecoder('utf-8')
-
-    const readStream = () => {
-      reader.read().then(({ done, value }) => {
-        if (done) {
-          outline.value = getMdContent(outline.value)
-          outline.value = outline.value.replace(/<!--[\s\S]*?-->/g, '').replace(/<think>[\s\S]*?<\/think>/g, '')
-          outlineCreating.value = false
-          return
-        }
-
-        const chunk = decoder.decode(value, { stream: true })
-        outline.value += chunk
-
-        if (outlineRef.value) {
-          outlineRef.value.scrollTop = outlineRef.value.scrollHeight + 20
-        }
-
-        readStream()
-      })
-    }
-    readStream()
-  } catch (error) {
-    loading.value = false
-    outlineCreating.value = false
-    showProcessingModal.value = false
-    message.error('生成失败，请重试')
+    await consumeOutline(stream)
+  } catch {
+    outline.value = ''
+    step.value = 'setup'
+    message.error('文件大纲生成中断，请重试')
+  } finally {
+    resetGenerationState()
   }
 }
 </script>
@@ -423,23 +416,47 @@ const uploadWordAndCreateOutline = async (file: File) => {
   margin-bottom: 50px;
   position: relative;
 
-  .template-btn {
+  .header-actions {
     position: absolute;
     top: 0;
     right: 0;
-    background: linear-gradient(135deg, #667eea 0%, #a855f7 100%);
-    color: white;
-    border: none;
-    padding: 12px 28px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .template-btn,
+  .works-btn {
+    min-height: 42px;
+    padding: 10px 22px;
     border-radius: 100px;
     cursor: pointer;
     font-weight: 500;
     transition: all 0.3s;
+  }
+
+  .template-btn {
+    background: linear-gradient(135deg, #667eea 0%, #a855f7 100%);
+    color: white;
+    border: none;
     box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
 
     &:hover {
       transform: translateY(-2px);
       box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+    }
+  }
+
+  .works-btn {
+    color: #4f46e5;
+    border: 1px solid rgba(99, 102, 241, 0.24);
+    background: rgba(255, 255, 255, 0.88);
+    box-shadow: 0 4px 14px rgba(79, 70, 229, 0.1);
+
+    &:hover {
+      transform: translateY(-2px);
+      border-color: rgba(99, 102, 241, 0.5);
+      box-shadow: 0 8px 22px rgba(79, 70, 229, 0.16);
     }
   }
 
@@ -967,10 +984,15 @@ const uploadWordAndCreateOutline = async (file: File) => {
 
   .header-section {
     margin-bottom: 30px;
-    .template-btn {
+    .header-actions {
       position: static;
+      justify-content: center;
+      flex-wrap: wrap;
       margin-bottom: 24px;
     }
+
+    .template-btn,
+    .works-btn { flex: 1 1 140px; max-width: 220px; }
 
     .brand {
       margin-bottom: 24px;
@@ -1045,6 +1067,9 @@ const uploadWordAndCreateOutline = async (file: File) => {
 
   .header-section {
     margin-bottom: 20px;
+    .header-actions { gap: 8px; }
+    .template-btn,
+    .works-btn { min-height: 40px; padding: 9px 14px; font-size: 13px; }
     .brand .title .title-main { font-size: 28px; }
     .brand .subtitle { font-size: 12px; }
   }

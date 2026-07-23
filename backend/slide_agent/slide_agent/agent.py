@@ -4,6 +4,7 @@ from google.genai import types  # 用于在回调里短路并给用户返回消�
 from dotenv import load_dotenv
 from .sub_agents.ppt_writer.agent import ppt_generator_loop_agent
 from .utils import parse_markdown_to_slides  # 复用你已有的解析函数
+from .generation_utils import initialize_generation_state
 
 # 在模块顶部加载环境变量
 load_dotenv('.env')
@@ -69,10 +70,13 @@ def before_agent_callback(callback_context: CallbackContext):
             parts=[types.Part(text="markdown不合法")]
         )
 
-    # 成功：把 JSON(可序列化的 list/dict) 放到 metadata 里供后续 Agent 使用
-    state["outline_json"] = slides
-    state["slides_plan_num"] = len(slides)
-    state["makrdown"] = md_content
+    # 同一浏览器会话可以连续生成多份PPT；每次都必须重置页码和校验中间态。
+    initialize_generation_state(
+        state,
+        slides=slides,
+        markdown=md_content,
+        language=language,
+    )
     # 返回 None 继续执行后续 Agent: ppt_generator_loop_agent
     return None
 

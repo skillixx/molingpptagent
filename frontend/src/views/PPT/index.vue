@@ -89,6 +89,12 @@ import { useMainStore, useSlidesStore } from '@/store'
 import Button from '@/components/Button.vue'
 import Checkbox from '@/components/Checkbox.vue'
 import { isPC } from '@/utils/common'
+import message from '@/utils/message'
+import {
+  assertCompleteSlideGeneration,
+  expectedSlideCountFromOutline,
+  GenerationIncompleteError,
+} from '@/services/generationStream'
 
 const route = useRoute()
 const router = useRouter()
@@ -122,7 +128,8 @@ const createPPT = async () => {
 
   slideStore.resetSlides()
 
-  router.push(`/editor?session_id=${sessionId.value}${isPC() ? '&isPc=true' : ''}`)
+  const expectedSlideCount = expectedSlideCountFromOutline(outline.value)
+  let receivedSlideCount = 0
 
   try {
     const stream = await api.AIPPT_Content({
@@ -134,6 +141,9 @@ const createPPT = async () => {
       generateFromWebSearch: generateFromWebSearch.value,
       sessionId: sessionId.value,      // 后端已兼容；或改名 user_id
     })
+    if (!stream.ok || !stream.body) {
+      throw new Error('PPT_STREAM_REQUEST_FAILED')
+    }
 
     // 初始化图片池（mock 兜底）
     const mockImgs = await api.getMockData('imgs')
@@ -144,13 +154,16 @@ const createPPT = async () => {
     const templateTheme: SlideTheme = templateData.theme
     slideStore.setTheme(templateTheme)
 
+    // 后端已接受生成请求并且模板可用后再进入编辑器，失败时留在当前页便于重试。
+    await router.push(`/editor?session_id=${sessionId.value}${isPC() ? '&isPc=true' : ''}`)
+
     // 根据模板的宽度和高度动态设置 viewportSize 和 viewportRatio
     if (templateData.width && templateData.height) {
       slideStore.setViewportSize(templateData.width)
       slideStore.setViewportRatio(templateData.height / templateData.width)
     }
 
-    const reader: ReadableStreamDefaultReader<Uint8Array> = stream.body!.getReader()
+    const reader: ReadableStreamDefaultReader<Uint8Array> = stream.body.getReader()
     const decoder = new TextDecoder('utf-8')
 
     let buffer = '' // 用来跨 chunk 缓存
@@ -167,6 +180,7 @@ const createPPT = async () => {
 
       if (!payload) return
       if (payload === '[DONE]') {
+        assertCompleteSlideGeneration(receivedSlideCount, expectedSlideCount)
         loading.value = false
         mainStore.setAIPPTDialogState(false)
         mainStore.setGenerating(false)
@@ -198,6 +212,7 @@ const createPPT = async () => {
           } else {
             addSlidesFromDataToEnd([generatedSlide])
           }
+          receivedSlideCount += 1
         }
       } catch (e) {
         // 如果这条不是完整 JSON（比如后端按“文本片段”流），可以考虑改成累积 JSON 方案
@@ -214,9 +229,7 @@ const createPPT = async () => {
             buffer = ''
             if (status === 'DONE') return
           }
-          loading.value = false
-          mainStore.setGenerating(false)
-          return
+          throw new Error('PPT_STREAM_INCOMPLETE')
         }
 
         buffer += decoder.decode(value, { stream: true })
@@ -238,11 +251,15 @@ const createPPT = async () => {
       })
 
     await pump()
-  } catch (e) {
+  } catch (error) {
     loading.value = false
     mainStore.setGenerating(false)
-    // eslint-disable-next-line no-console
-    console.error(e)
+    if (error instanceof GenerationIncompleteError) {
+      message.error(`PPT仅生成 ${error.received}/${error.expected} 页，已识别为不完整，请返回模板页重试`)
+    }
+    else {
+      message.error('PPT生成中断，请返回模板页重试')
+    }
   }
 }
 </script>

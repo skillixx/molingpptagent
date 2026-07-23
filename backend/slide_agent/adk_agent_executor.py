@@ -90,12 +90,12 @@ class ADKAgentExecutor(AgentExecutor):
         session_obj = await self._upsert_session(
             session_id,metadata
         )
-        logger.debug(f"收到请求信息: {new_message}")
+        logger.debug("收到内容生成请求，parts=%s", len(new_message.parts))
         # Update session_id with the ID from the resolved session object
         # to be used in self._run_agent.
         session_id = session_obj.id
         # 汇集所有的 agent 名称
-        logger.info(f"收到请求信息: {new_message}")
+        logger.info("开始处理内容生成请求，session=%s", session_id)
         agent_names = extract_agent_names(self.runner.agent)
         agent_names = list(agent_names)
         async for event in self._run_agent(session_id, new_message):
@@ -106,7 +106,7 @@ class ADKAgentExecutor(AgentExecutor):
                     final_session = await self.runner.session_service.get_session(
                         app_name=self.runner.app_name, user_id="self", session_id=session_id
                     )
-                    print("最终的session中的结果final_session中的state: ", final_session.state)
+                    logger.debug("阶段会话状态键=%s", sorted(final_session.state.keys()))
                     references = final_session.state.get("references", [])
                     # 最后一个agent的输出了，输出成status
                     await task_updater.update_status(
@@ -115,35 +115,34 @@ class ADKAgentExecutor(AgentExecutor):
                             convert_genai_parts_to_a2a(event.content.parts), metadata={"author": agent_author, "show": True, "references": references}
                         ),
                     )
-                    print(f"final_session中的parts: {event.content.parts}")
+                    logger.debug("阶段结果 parts=%s", len(event.content.parts))
                     # await task_updater.complete()  # 这个会关掉event的Queue
                     # break
                 else:
-                    print(f"event.content没有结果，跳过, Agent是: {agent_author}, event是: {event}")
+                    logger.debug("事件无内容，跳过，agent=%s", agent_author)
                     continue
             elif not event.content or not event.content.parts:
-                print(f"event.content没有结果，跳过, Agent是: {agent_author}, event是: {event}")
+                logger.debug("事件无内容，跳过，agent=%s", agent_author)
                 continue
             elif event.is_final_response():
                 final_session = await self.runner.session_service.get_session(
                     app_name=self.runner.app_name, user_id="self", session_id=session_id
                 )
-                print("最终的session中的结果final_session中的state: ", final_session.state)
-                final_metadata = final_session.state.get("metadata")
+                logger.debug("最终会话状态键=%s", sorted(final_session.state.keys()))
                 references = final_session.state.get("references",[])
                 agent_author = event.author
                 if agent_author in agent_names:
                     logger.info(f"[adk executor] {agent_author}完成")
                     agent_names.remove(agent_author)
                 parts = convert_genai_parts_to_a2a(event.content.parts)
-                logger.info("返回最终的结果: %s", parts)
+                logger.info("返回最终结果，agent=%s parts=%s", agent_author, len(parts))
                 await task_updater.add_artifact(parts=parts,metadata={"author": agent_author, "references": references})
                 if not agent_names:
                     # 说明任务整体完成了，没有要进行其它任务的Agent了，所有Agent都完成了自己的任务
                     await task_updater.complete()  # 这个会关掉event的Queue
                     break
             elif event.get_function_calls():
-                logger.info(f"触发了工具调用。。。返回DataPart数据, {event}")
+                logger.info("触发工具调用，agent=%s", agent_author)
                 await task_updater.update_status(
                     TaskState.working,
                     message=task_updater.new_agent_message(
@@ -151,7 +150,7 @@ class ADKAgentExecutor(AgentExecutor):
                     ),
                 )
             elif event.get_function_responses():
-                logger.info(f"工具返回了结果。。。返回DataPart数据, {event}")
+                logger.info("工具调用完成，agent=%s", agent_author)
                 await task_updater.update_status(
                     TaskState.working,
                     message=task_updater.new_agent_message(
@@ -159,7 +158,7 @@ class ADKAgentExecutor(AgentExecutor):
                     ),
                 )
             else:
-                logger.info(f"其它的事件,例如数据的流事件 {event}")
+                logger.debug("收到流式事件，agent=%s", agent_author)
                 await task_updater.update_status(
                     TaskState.working,
                     message=task_updater.new_agent_message(

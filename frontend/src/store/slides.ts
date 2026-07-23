@@ -3,6 +3,7 @@ import { omit } from 'lodash'
 import { customAlphabet } from 'nanoid'
 import api from '@/services'
 import type { Slide, SlideTheme, PPTElement, PPTAnimation, SlideTemplate } from '@/types/slides'
+import type { PresentationDetail } from '@/services/presentations'
 
 interface RemovePropData {
   id: string
@@ -21,6 +22,8 @@ interface FormatedAnimation {
 }
 
 export interface SlidesState {
+  presentationId: string | null
+  presentationVersion: number | null
   title: string
   theme: SlideTheme
   slides: Slide[]
@@ -32,26 +35,21 @@ export interface SlidesState {
 
 const nanoid = customAlphabet('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz', 10)
 
+const createDefaultTheme = (): SlideTheme => ({
+  themeColors: ['#5b9bd5', '#ed7d31', '#a5a5a5', '#ffc000', '#4472c4', '#70ad47'],
+  fontColor: '#333',
+  fontName: '',
+  backgroundColor: '#fff',
+  shadow: { h: 3, v: 3, blur: 2, color: '#808080' },
+  outline: { width: 2, color: '#525252', style: 'solid' },
+})
+
 export const useSlidesStore = defineStore('slides', {
   state: (): SlidesState => ({
+    presentationId: null, // 服务端作品上下文；旧/editor入口保持null。
+    presentationVersion: null, // T12/T13保存和乐观锁使用，不能从浏览器自行递增。
     title: '未命名演示文稿', // 幻灯片标题
-    theme: {
-      themeColors: ['#5b9bd5', '#ed7d31', '#a5a5a5', '#ffc000', '#4472c4', '#70ad47'],
-      fontColor: '#333',
-      fontName: '',
-      backgroundColor: '#fff',
-      shadow: {
-        h: 3,
-        v: 3,
-        blur: 2,
-        color: '#808080',
-      },
-      outline: {
-        width: 2,
-        color: '#525252',
-        style: 'solid',
-      },
-    }, // 主题样式
+    theme: createDefaultTheme(), // 主题样式
     slides: [
       {
         id: nanoid(),
@@ -119,6 +117,34 @@ export const useSlidesStore = defineStore('slides', {
   },
 
   actions: {
+    replacePresentation(detail: PresentationDetail) {
+      const baseTheme = createDefaultTheme()
+      const theme = detail.document.theme
+      // 校验完成后一次提交整份服务端稿件，避免加载失败留下标题已换、页面未换的半状态。
+      this.$patch({
+        presentationId: detail.id,
+        presentationVersion: detail.currentVersion,
+        title: detail.title,
+        theme: {
+          ...baseTheme,
+          ...theme,
+          outline: { ...baseTheme.outline, ...theme.outline },
+          shadow: { ...baseTheme.shadow, ...theme.shadow },
+        },
+        slides: detail.document.slides.length
+          ? detail.document.slides
+          : [{ id: `blank-${detail.id}`, elements: [] }],
+        slideIndex: 0,
+        viewportSize: detail.document.viewportSize,
+        viewportRatio: detail.document.viewportRatio,
+      })
+    },
+
+    clearPresentationContext() {
+      this.presentationId = null
+      this.presentationVersion = null
+    },
+
     setTitle(title: string) {
       if (!title) this.title = '未命名演示文稿'
       else this.title = title

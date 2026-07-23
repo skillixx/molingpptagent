@@ -2,9 +2,9 @@
 curl 'https://asset.pptist.cn/data/template_2.json' \
   -H 'accept: application/json, text/plain, */*' \
   -H 'accept-language: en,zh-CN;q=0.9,zh;q=0.8' \
-  -H 'origin: http://127.0.0.1:5173' \
+  -H 'origin: http://127.0.0.1:5778' \
   -H 'priority: u=1, i' \
-  -H 'referer: http://127.0.0.1:5173/' \
+  -H 'referer: http://127.0.0.1:5778/' \
   -H 'sec-ch-ua: "Chromium";v="134", "Not:A-Brand";v="24", "Google Chrome";v="134"' \
   -H 'sec-ch-ua-mobile: ?0' \
   -H 'sec-ch-ua-platform: "macOS"' \

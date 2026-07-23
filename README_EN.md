@@ -108,7 +108,7 @@ TrainPPTAgent/
    ```bash
    npm install
    ```
-3. Start the development server (default: `http://127.0.0.1:5173`):
+3. Start the development server (default: `http://127.0.0.1:5778`):
 
    ```bash
    npm run dev

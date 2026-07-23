@@ -89,8 +89,8 @@ class A2AContentClientWrapper:
                 },
             }
 
-            # === 流式响应 ===
-            print("=== 流式响应开始 ===")
+            # 流式响应日志只记录状态类型，禁止打印模型正文或身份metadata。
+            self.logger.info("正文Agent流式响应开始")
             streaming_request = SendStreamingMessageRequest(
                 id=str(uuid4()),
                 params=MessageSendParams(**message_data)
@@ -101,9 +101,8 @@ class A2AContentClientWrapper:
                 # self.logger.info(f"输出的chunk内容: {chunk}")
                 chunk_data = chunk.model_dump(mode='json', exclude_none=True)
                 if "error" in chunk_data:
-                    self.logger.error(f"错误信息: {chunk_data['error']}")
-                    print(f"错误信息: {chunk_data['error']}")
-                    yield {"type": "final", "text": chunk_data['error'], "author": "system"}
+                    self.logger.error("正文Agent返回错误")
+                    yield {"type": "final", "text": "正文Agent调用失败", "author": "system"}
                     break
                 result = chunk_data["result"]
                 # 判断 chunk 类型
@@ -155,10 +154,10 @@ class A2AContentClientWrapper:
                         yield {"type": "metadata", "metadata": metadata, "author":author}
                 elif result.get("kind") == "task":
                     chunk_status = result["status"]
-                    print(f"任务的状态是: {chunk_status}")
+                    self.logger.debug("正文Agent任务状态=%s", chunk_status.get("state"))
                 else:
                     self.logger.warning(f"未识别的chunk类型: {result.get('kind')}")
-            print(f"Agent正常处理完成，对话结束。")
+            self.logger.info("正文Agent流式响应结束")
             yield {"type": "final", "text": "对话结束", "author": "system"}
 
     def process_chart_part_text(self, part_text: str, author: str):

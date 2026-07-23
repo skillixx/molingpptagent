@@ -133,6 +133,113 @@ OUTLINE_API=http://127.0.0.1:10001
 CONTENT_API=http://127.0.0.1:10011
 PERSONAL_DB=http://127.0.0.1:9100
 
+
+# ====================================================================
+# 墨灵平台对接、会话与功能开关
+#
+# 所有新能力默认关闭。只有对应依赖配置齐全并完成阶段 Gate 后才可开启。
+# 密钥项只填写在本地 .env，禁止提交真实值。
+# ====================================================================
+
+APP_ENV=development
+APP_BASE_URL=http://127.0.0.1:5778
+
+# 墨灵内部 API 与应用身份（SSO/计费启用时必填）
+MOLING_API_BASE_URL=
+INTERNAL_API_TOKEN=
+MOLING_APP_ID=
+MOLING_PRODUCT_ID=
+MOLING_CONNECT_TIMEOUT_SECONDS=3
+MOLING_READ_TIMEOUT_SECONDS=15
+
+# 应用 Session；生产 SSO 必须将 SESSION_COOKIE_SECURE 设为 true
+SESSION_SECRET=
+SESSION_COOKIE_NAME=trainppt_session
+SESSION_COOKIE_SECURE=false
+SESSION_TTL_SECONDS=86400
+SESSION_IDLE_TTL_SECONDS=7200
+
+# 功能开关：必须严格使用 true/false，生产计费在 G3 前必须保持 false
+SSO_ENABLED=false
+PERSISTENCE_ENABLED=false
+STORAGE_ENABLED=false
+# 历史导出下载地址HMAC密钥，至少32字符；未配置时可复用SESSION_SECRET。
+DOWNLOAD_SIGNING_SECRET=
+DOWNLOAD_URL_TTL_SECONDS=300
+BILLING_ENABLED=false
+RATE_LIMIT_ENABLED=true
+RATE_LIMIT_REQUESTS=30
+RATE_LIMIT_WINDOW_SECONDS=60
+AUDIT_LOG_ENABLED=true
+HEALTH_PROBE_TIMEOUT_SECONDS=3
+
+
+# ====================================================================
+# 数据库与对象存储
+# ====================================================================
+
+DATABASE_URL=
+STORAGE_ENDPOINT=
+STORAGE_BUCKET=
+STORAGE_ACCESS_KEY_ID=
+STORAGE_SECRET_ACCESS_KEY=
+STORAGE_PREFIX=trainppt
+STORAGE_CONNECT_TIMEOUT_SECONDS=3
+STORAGE_READ_TIMEOUT_SECONDS=30
+STORAGE_MAX_ATTEMPTS=3
+STORAGE_UPLOAD_STALE_SECONDS=900
+
+# 容量与保留：0 不是“无限”；下列用户级值是非生产安全默认，生产须在T23确认
+PRESENTATION_JSON_MAX_BYTES=10485760
+CHECKPOINT_MAX_COUNT=20
+CHECKPOINT_INLINE_MAX_BYTES=1048576
+UPLOAD_FILE_MAX_BYTES=52428800
+EXPORT_PPTX_MAX_BYTES=104857600
+THUMBNAIL_MAX_BYTES=2097152
+SOFT_DELETE_RETENTION_DAYS=30
+CLEANUP_INTERVAL_SECONDS=3600
+CLEANUP_BATCH_SIZE=100
+USER_PRESENTATION_LIMIT=100
+USER_STORAGE_QUOTA_BYTES=1073741824
+
+# MySQL 租约 Worker 基线；T08 实现执行器，心跳必须小于租期的一半
+TASK_LEASE_SECONDS=120
+TASK_HEARTBEAT_SECONDS=30
+TASK_MAX_ATTEMPTS=3
+TASK_RETRY_BACKOFF_SECONDS=30
+TASK_CLAIM_BATCH_SIZE=10
+# T09 提供真实业务处理器后才开启；T08 默认禁止空 Worker 领取任务。
+TASK_WORKER_ENABLED=false
+TASK_AGENT_TIMEOUT_SECONDS=600
+TASK_POLL_SECONDS=2
+TASK_HANDLER_FACTORY=
+
+
+# ====================================================================
+# 计费策略占位符
+#
+# 金额由运营配置决定，不在代码中写死；BILLING_ENABLED=false 时可留空。
+# 第一版固定结算，SETTLE必须小于或等于RESERVE；权益最早过期优先且不拆分。
+# ====================================================================
+
+PPT_GENERATION_RESERVE_POINTS=
+PPT_GENERATION_SETTLE_POINTS=
+SLIDE_REGENERATION_POINTS=
+BILLING_RECONCILE_INTERVAL_SECONDS=60
+BILLING_RECONCILE_MAX_RETRIES=8
+
+
+# ====================================================================
+# 服务监听端口
+# ====================================================================
+
+HOST=127.0.0.1
+MAIN_API_PORT=6800
+OUTLINE_API_PORT=10001
+CONTENT_API_PORT=10011
+PERSONALDB_PORT=9100
+FRONTEND_PORT=5778
+
 # 网络代理（可选）
 # 若访问 API（如 OpenAI）需要代理，请取消注释。
 # HTTP_PROXY=http://127.0.0.1:7890

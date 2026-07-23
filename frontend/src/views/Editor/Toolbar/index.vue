@@ -61,11 +61,14 @@ const currentTabs = computed(() => {
   return elementTabs
 })
 
-watch(currentTabs, () => {
-  const currentTabsValue: ToolbarStates[] = currentTabs.value.map(tab => tab.key)
-  if (!currentTabsValue.includes(toolbarState.value)) {
+watch([currentTabs, toolbarState], ([tabs, currentState]) => {
+  const currentTabsValue: ToolbarStates[] = tabs.map(tab => tab.key)
+  if (!currentTabsValue.includes(currentState)) {
     mainStore.setToolbarState(currentTabsValue[0])
   }
+}, {
+  // 首次挂载也要校准状态：从元素编辑返回无选中元素页面时，不能保留空的元素面板。
+  immediate: true,
 })
 
 const currentPanelComponent = computed(() => {
@@ -88,8 +91,11 @@ const currentPanelComponent = computed(() => {
   background-color: #fff;
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 .content {
+  flex: 1;
+  min-height: 0;
   padding: 12px;
   font-size: 13px;
 

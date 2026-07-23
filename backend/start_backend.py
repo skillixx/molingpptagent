@@ -350,7 +350,7 @@ class BackendStarter:
         print()
         print("💡 提示:")
         print("  - 按 Ctrl+C 停止所有服务")
-        print("  - 前端服务请访问: http://127.0.0.1:5173")
+        print("  - 前端服务请访问: http://127.0.0.1:5778")
         print("  - 服务日志保存在 backend/logs/ 目录中")
         print("=" * 60)
         
