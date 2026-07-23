@@ -26,6 +26,16 @@ beforeEach(() => {
 })
 
 describe('AuthSessionControl', () => {
+  it('以紧凑且可访问的账号操作区展示退出按钮', () => {
+    const wrapper = mount(AuthSessionControl)
+
+    expect(wrapper.get('.session-control').attributes('data-compact')).toBe('true')
+    expect(wrapper.get('.identity-label').text()).toBe('墨灵用户')
+    expect(wrapper.get('.identity-value').text()).toBe('9')
+    expect(wrapper.get('.logout-button').attributes('aria-label')).toBe('退出当前账号')
+    expect(wrapper.get('.logout-button-icon').attributes('aria-hidden')).toBe('true')
+  })
+
   it('退出成功后进入已退出提示页', async () => {
     authStore.logout.mockResolvedValue(undefined)
     const wrapper = mount(AuthSessionControl)
