@@ -1,5 +1,5 @@
 <template>
-  <aside v-if="authStore.user" class="session-control" aria-label="当前登录会话" data-compact="true">
+  <aside v-if="authStore.user" class="session-control" aria-label="当前登录会话">
     <span class="identity" :title="`墨灵用户 ${authStore.user.userId}`">
       <span class="identity-avatar" aria-hidden="true">墨</span>
       <span class="identity-copy">
@@ -76,8 +76,9 @@ async function handleLogout() {
 }
 
 .identity {
+  width: 78px;
   min-width: 0;
-  max-width: 132px;
+  max-width: 78px;
   display: flex;
   align-items: center;
   gap: 6px;
@@ -192,6 +193,11 @@ async function handleLogout() {
 
   .identity-label {
     display: none;
+  }
+
+  .identity {
+    width: auto;
+    max-width: 58px;
   }
 }
 
