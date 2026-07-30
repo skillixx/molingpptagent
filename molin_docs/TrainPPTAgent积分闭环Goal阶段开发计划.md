@@ -46,19 +46,19 @@
 
 ```yaml
 project: TrainPPTAgent-Moling-Billing-Closed-Loop
-goal_status: verification
-current_goal: BG04
-current_gate: C4
-completed_goals: 3
+goal_status: blocked
+current_goal: BG05
+current_gate: C5
+completed_goals: 4
 total_goals: 7
 working_branch: codex/trainppt-billing-closed-loop
 remote: origin
 production_billing_enabled: false
 production_worker_enabled: false
 production_migration_applied: false
-last_verified_at: 2026-07-30T17:34:00+08:00
-blocked_on: missing_asset_scoped_insufficient_balance_test_entitlement
-resume_first_step: obtain_zero_or_sub_one_balance_test_entitlement_without_modifying_target_asset
+last_verified_at: 2026-07-30T18:21:00+08:00
+blocked_on: production_predeployment_actions_not_authorized_and_deployment_explicitly_forbidden
+resume_first_step: obtain_explicit_BG05_backup_migration_deployment_and_restart_authorization
 ```
 
 状态只允许使用：`planned`、`in_progress`、`verification`、`blocked`、`completed`、`rolled_back`。
@@ -266,9 +266,9 @@ Gate C7：观察窗口内无重复扣分、错误权益或陈旧新持有单；�
 - 遗留风险：本阶段证据为本地 SQLite 和 Fake Moling；非生产真实协议、网络超时和双边流水仍由 BG04 验证。
 - 下一 Goal：BG04 非生产集成验收；先发现双方认可的非生产墨灵环境、凭据边界和测试资产。
 
-### BG04 进行中快照
+### BG04 完成快照
 
-- 状态：`verification`。BG04 开发基线、本地无积分验收以及授权范围内的应用真实计费成功、失败释放和超时同键对账均已完成；Gate C4 仅剩余额不足场景，不计入已完成 Goal。
+- 状态：`completed`。BG04 开发基线、本地无积分验收、应用真实计费成功、失败释放、超时同键对账和余额不足拒绝全部通过；Gate C4 证据齐全，计入第 4 个已完成 Goal。
 - 环境：使用未跟踪私有配置启动 `APP_ENV=test` 的本地 API、前端、Outline Agent、Content Agent、PersonalDB 和 Worker；隔离 SQLite 从空库迁移到 `20260730_0008`。测试 MySQL 仅做只读身份核验，因账号无建库权限未执行迁移；公网生产数据库和服务未修改。
 - 真实 SSO 证据：墨灵测试应用 `15` 的入口曾临时指向本地地址；一次性票据被本地 API 消费，隔离 Session 固化 `479/15/73/990306`，随后入口已恢复原地址。该过程未调用积分写接口。
 - 本地持久任务证据：计费关闭时真实 A2A 任务成功生成 5 页，任务 `succeeded/completed`、作品 `ready`；Worker 完全停止期间创建的任务在新进程启动后恢复并生成 5 页；可控非法输入任务收敛为任务和作品 `failed`。
@@ -280,9 +280,10 @@ Gate C7：观察窗口内无重复扣分、错误权益或陈旧新持有单；�
 - 应用失败释放：第二个授权窗口内，任务 `961f08ea-aab3-414d-aa49-cff86f422a0f` 在预占后遇到可控生成失败，`hold_id=842` 以原释放键终态为 `released/0`；任务和作品均为 `failed`，平台已用额度保持 `2053`。
 - 应用成功与超时同键对账：任务 `ca34e318-aef9-41d9-acae-c64b529da897` 成功生成 4 页；代理在平台首次结算返回 200 后延迟响应，Worker 以同一结算键摘要 `d13abe6db1a9d284` 重试，`hold_id=843` 最终 `settled/1`，本地操作 `retry_count=1`，任务、作品和计费操作均成功终态。
 - 平台对账：测试数据库只读确认 `842=released/0`、`843=settled/1`，均归属 `user_id=479`、`entitlement_id=990306`；两笔新增 `holding` 计数为 `0`，`quota_used 2053 -> 2054`、`quota_reserved 42 -> 42`。
-- 外部影响：第二个授权窗口实际新增消耗恰为 1 积分，已达到该窗口上限；BG04 两个授权窗口累计真实消耗 2 积分。未处理历史持有单，未部署、未迁移或修改生产服务与生产数据库；测试结束后本地 `BILLING_ENABLED=false`。
-- 当前缺口：C4-09 缺少归属正确且可用余额小于 1 的独立测试权益。现有目标权益余额充足，不能通过超大预占或修改目标权益来伪造余额不足；其余应用真实计费、同键恢复和双边流水场景已通过。
-- 恢复第一步：取得用户 `479`、商品 `73` 下余额为 0 或小于 1 的独立测试资产/权益，并仅授权一次预占 1 的预期拒绝测试；不得修改 `990206/990306`、不得新增真实消耗、不得把 Mock 证据冒充 Gate C4。
+- 余额不足准备：第三个授权窗口使用用户 `479`、资产 `214`、权益 `62`、商品 `73`；`hold_id=844/845` 各完成 `reserve 1 -> settle 1`，已用额度 `7.1 -> 9.1`、预占保持 `0`，实际新增消耗严格为授权上限 2 积分。
+- 余额不足拒绝：剩余 `0.9` 时仅调用一次 `reserve 1`，平台明确返回不可重试 `MolingBusinessError`；拒绝后仍为 `quota_used=9.1`、`quota_reserved=0`，测试数据库只读确认最大持有单仍为 `845`、活动持有单为 `0`，没有落下拒绝请求持有单。
+- 外部影响：BG04 三个独立授权窗口累计真实消耗 4 积分，其中目标权益 `990306` 消耗 2、余额不足测试权益 `62` 消耗 2；每个窗口均未超过各自上限。未处理历史持有单，未部署、未迁移或修改生产服务与生产数据库；本地 `BILLING_ENABLED=false`。
+- 下一 Goal：BG05 生产预部署准备。当前用户明确要求不得部署，且生产备份、迁移和服务重启均无授权，因此 BG05 保持 `blocked`，不得自动执行。
 
 ## 9. 全局停止条件
 
