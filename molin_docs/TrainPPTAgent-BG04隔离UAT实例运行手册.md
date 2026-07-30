@@ -8,7 +8,7 @@
 - `APP_ENV=test`，Cookie 名使用 `trainppt_uat_session`，监听端口默认 `15778`。
 - 首次启动保持 `UAT_BILLING_ENABLED=false`、`UAT_TASK_WORKER_ENABLED=false`。
 - 修改墨灵测试应用 `15` 的 `access_url`、执行真实积分动作、启动计费 Worker 前，分别取得明确授权。
-- 当前 BG04 的 1 积分授权已经用完，不能延续到应用端任务。
+- 已完成的 BG04 应用 UAT 1 积分授权已经用完；后续不得继续真实扣分，也不得把既有授权延续到余额不足或部署场景。
 
 ## 2. 准备私有配置
 

@@ -56,9 +56,9 @@ remote: origin
 production_billing_enabled: false
 production_worker_enabled: false
 production_migration_applied: false
-last_verified_at: 2026-07-30T17:06:00+08:00
-blocked_on: c4_real_billing_matrix_deferred_without_additional_points_or_deployment
-resume_first_step: obtain_insufficient_balance_test_entitlement_and_new_app_billing_uat_authorization
+last_verified_at: 2026-07-30T17:34:00+08:00
+blocked_on: missing_asset_scoped_insufficient_balance_test_entitlement
+resume_first_step: obtain_zero_or_sub_one_balance_test_entitlement_without_modifying_target_asset
 ```
 
 状态只允许使用：`planned`、`in_progress`、`verification`、`blocked`、`completed`、`rolled_back`。
@@ -268,19 +268,21 @@ Gate C7：观察窗口内无重复扣分、错误权益或陈旧新持有单；�
 
 ### BG04 进行中快照
 
-- 状态：`verification`。BG04 开发基线和本地无积分验收完成；Gate C4 的真实计费矩阵仍未全部通过，不计入已完成 Goal。
+- 状态：`verification`。BG04 开发基线、本地无积分验收以及授权范围内的应用真实计费成功、失败释放和超时同键对账均已完成；Gate C4 仅剩余额不足场景，不计入已完成 Goal。
 - 环境：使用未跟踪私有配置启动 `APP_ENV=test` 的本地 API、前端、Outline Agent、Content Agent、PersonalDB 和 Worker；隔离 SQLite 从空库迁移到 `20260730_0008`。测试 MySQL 仅做只读身份核验，因账号无建库权限未执行迁移；公网生产数据库和服务未修改。
 - 真实 SSO 证据：墨灵测试应用 `15` 的入口曾临时指向本地地址；一次性票据被本地 API 消费，隔离 Session 固化 `479/15/73/990306`，随后入口已恢复原地址。该过程未调用积分写接口。
 - 本地持久任务证据：计费关闭时真实 A2A 任务成功生成 5 页，任务 `succeeded/completed`、作品 `ready`；Worker 完全停止期间创建的任务在新进程启动后恢复并生成 5 页；可控非法输入任务收敛为任务和作品 `failed`。
 - 测试对象存储：使用本次隔离前缀完成写入、摘要一致读取和删除，`storage_roundtrip=passed` 且对象无残留。
-- 本地计费证据：上述成功、重启和失败任务的 `trainppt_billing_operations` 始终为 `0`，任务 API 的 `billing=null`。墨灵只读复核仍为 `quota_used=2053`、`quota_reserved=42`，未增加积分或活动持有单。
+- 本地无计费基线：计费关闭时的成功、重启和失败任务均保持 `trainppt_billing_operations=0`、任务 API `billing=null`，证明关闭开关不会产生计费动作。
 - 仓库改动：真实 UAT 工具增加动作绑定和不确定结果分流；新增真实 A2A 持久任务处理器、结果围栏、失败状态同步、SSO 持久任务前端路径、隔离 UAT Compose/镜像参数和运行手册；独立 Worker 仅在 `APP_ENV=test` 时允许 SQLite。
 - 最终回归：后端 `320 passed, 1 warning`；前端 `94 passed`；生产构建、`vue-tsc`、Python `compileall`、YAML 解析和 `git diff --check` 通过；变更文件 ESLint 为 0 error、2 条既有 warning。当前机器无 Docker CLI，未执行 `docker compose config` 或镜像构建。
-- 真实写入：用户已批准“BG04 测试服真实写入，最多消耗 1 积分”。`hold_id=840` 完成 `reserve 1 -> settle 1`，`quota_used 2052 -> 2053`；`hold_id=841` 完成 `reserve 1 -> release`，已用额度不变；两次预占后 `quota_reserved` 均回到历史基线 `42`。
-- 平台对账：测试数据库只读确认 `840=settled/1`、`841=released/0`，均归属 `479/990306`，本轮新增 `holding` 计数为 `0`。
-- 外部影响：此前真实写入累计消耗 1 积分，已达到授权上限；本轮本地开发验收新增消耗 0。未处理历史持有单，未部署、未迁移生产、未修改墨灵仓库。
-- 当前缺口：缺少归属正确的余额不足测试权益；没有新的积分授权，不能让应用 Worker 执行真实 reserve/settle/release 或制造真实超时待对账；部署按用户要求暂缓。因此 C4-09、C4-10 的真实部分和逐应用任务双边流水仍待验收。
-- 恢复第一步：先取得余额不足测试权益及新的应用计费 UAT 授权，再决定使用本地代理或隔离部署继续；不得把本地无积分任务或 Mock 自动化冒充 Gate C4 完成。
+- 直接接口写入基线：首个授权窗口内，`hold_id=840` 完成 `reserve 1 -> settle 1`，`quota_used 2052 -> 2053`；`hold_id=841` 完成 `reserve 1 -> release`，已用额度不变。
+- 应用失败释放：第二个授权窗口内，任务 `961f08ea-aab3-414d-aa49-cff86f422a0f` 在预占后遇到可控生成失败，`hold_id=842` 以原释放键终态为 `released/0`；任务和作品均为 `failed`，平台已用额度保持 `2053`。
+- 应用成功与超时同键对账：任务 `ca34e318-aef9-41d9-acae-c64b529da897` 成功生成 4 页；代理在平台首次结算返回 200 后延迟响应，Worker 以同一结算键摘要 `d13abe6db1a9d284` 重试，`hold_id=843` 最终 `settled/1`，本地操作 `retry_count=1`，任务、作品和计费操作均成功终态。
+- 平台对账：测试数据库只读确认 `842=released/0`、`843=settled/1`，均归属 `user_id=479`、`entitlement_id=990306`；两笔新增 `holding` 计数为 `0`，`quota_used 2053 -> 2054`、`quota_reserved 42 -> 42`。
+- 外部影响：第二个授权窗口实际新增消耗恰为 1 积分，已达到该窗口上限；BG04 两个授权窗口累计真实消耗 2 积分。未处理历史持有单，未部署、未迁移或修改生产服务与生产数据库；测试结束后本地 `BILLING_ENABLED=false`。
+- 当前缺口：C4-09 缺少归属正确且可用余额小于 1 的独立测试权益。现有目标权益余额充足，不能通过超大预占或修改目标权益来伪造余额不足；其余应用真实计费、同键恢复和双边流水场景已通过。
+- 恢复第一步：取得用户 `479`、商品 `73` 下余额为 0 或小于 1 的独立测试资产/权益，并仅授权一次预占 1 的预期拒绝测试；不得修改 `990206/990306`、不得新增真实消耗、不得把 Mock 证据冒充 Gate C4。
 
 ## 9. 全局停止条件
 
