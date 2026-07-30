@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import asyncio
+import logging
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta
 from pathlib import Path
@@ -378,6 +379,66 @@ def test_unknown_reserve_never_replays_and_requires_manual_review(tmp_path: Path
         assert operation.last_error_code == "BILLING_RESERVE_REQUIRES_MANUAL_REVIEW"
         assert task.status == presentation.status == "billing_pending"
         assert operation.reserve_key == f"ppt:{task_id}:reserve"
+    finally:
+        engine.dispose()
+
+
+def test_operational_snapshot_counts_pending_stale_manual_and_errors(
+    tmp_path: Path,
+) -> None:
+    engine, _ = _database(tmp_path, action="settle")
+    repository = BillingReconciliationRepository(engine)
+    try:
+        snapshot = repository.operational_snapshot(
+            now=START + timedelta(seconds=30),
+            stale_seconds=20,
+        )
+        assert snapshot.pending_count == 1
+        assert snapshot.stale_hold_count == 1
+        assert snapshot.manual_required_count == 0
+        assert snapshot.error_count == 1
+
+        with sessionmaker(engine).begin() as db:
+            operation = db.scalar(select(BillingOperation))
+            operation.status = "manual_required"
+        snapshot = repository.operational_snapshot(
+            now=START + timedelta(seconds=30),
+            stale_seconds=20,
+        )
+        assert snapshot.pending_count == 0
+        assert snapshot.stale_hold_count == 0
+        assert snapshot.manual_required_count == 1
+        assert snapshot.error_count == 1
+    finally:
+        engine.dispose()
+
+
+def test_worker_logs_only_aggregate_billing_snapshot(
+    tmp_path: Path,
+    caplog,
+) -> None:
+    engine, task_id = _database(tmp_path, action="settle")
+    clock = MutableClock()
+    clock.advance(30)
+    worker = _worker(engine, LedgerClient(), ResultInspector(True), clock)
+    try:
+        with caplog.at_level(
+            logging.INFO,
+            logger="backend.main_api.workers.reconciliation",
+        ):
+            assert asyncio.run(worker.run_once()) is True
+        record = next(
+            item
+            for item in caplog.records
+            if item.getMessage().startswith("billing_reconciliation_snapshot")
+        )
+        assert record.billing_pending_count == 1
+        assert record.billing_stale_hold_count == 1
+        assert record.billing_manual_required_count == 0
+        assert record.billing_error_count == 1
+        assert task_id not in record.getMessage()
+        assert "990306" not in record.getMessage()
+        assert "ppt:" not in record.getMessage()
     finally:
         engine.dispose()
 

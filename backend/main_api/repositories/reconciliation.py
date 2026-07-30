@@ -5,7 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from datetime import datetime, timedelta
 
-from sqlalchemy import Engine, or_, select, update
+from sqlalchemy import Engine, func, or_, select, update
 from sqlalchemy.orm import sessionmaker
 
 from ..models.domain import BillingOperation, GenerationTask, Presentation
@@ -47,6 +47,16 @@ class TaskStatusRecord:
     billing_next_retry_at: datetime | None
 
 
+@dataclass(frozen=True)
+class BillingOperationalSnapshot:
+    """仅含聚合计数的运维快照，不暴露用户、权益、持有单或幂等键。"""
+
+    pending_count: int
+    stale_hold_count: int
+    manual_required_count: int
+    error_count: int
+
+
 class BillingReconciliationRepository:
     """以条件更新争抢单条记录，保证多个 Worker 不会同时重放账务写入。"""
 
@@ -61,6 +71,48 @@ class BillingReconciliationRepository:
     def __init__(self, engine: Engine) -> None:
         self.engine = engine
         self._session_factory = sessionmaker(engine, expire_on_commit=False)
+
+    def operational_snapshot(
+        self,
+        *,
+        now: datetime,
+        stale_seconds: int,
+    ) -> BillingOperationalSnapshot:
+        """统计待对账和陈旧持有单，供日志采集与告警而不读取业务明细。"""
+        if stale_seconds <= 0:
+            raise ValueError("陈旧持有单阈值必须大于零")
+        stale_before = now - timedelta(seconds=stale_seconds)
+        with self._session_factory() as db:
+            pending_count = db.scalar(
+                select(func.count())
+                .select_from(BillingOperation)
+                .where(BillingOperation.status.in_(self._DUE_STATUSES))
+            )
+            stale_hold_count = db.scalar(
+                select(func.count())
+                .select_from(BillingOperation)
+                .where(
+                    BillingOperation.status.in_(self._DUE_STATUSES),
+                    BillingOperation.hold_id.is_not(None),
+                    BillingOperation.updated_at <= stale_before,
+                )
+            )
+            manual_required_count = db.scalar(
+                select(func.count())
+                .select_from(BillingOperation)
+                .where(BillingOperation.status == BillingStatus.MANUAL_REQUIRED)
+            )
+            error_count = db.scalar(
+                select(func.count())
+                .select_from(BillingOperation)
+                .where(BillingOperation.last_error_code.is_not(None))
+            )
+        return BillingOperationalSnapshot(
+            pending_count=int(pending_count or 0),
+            stale_hold_count=int(stale_hold_count or 0),
+            manual_required_count=int(manual_required_count or 0),
+            error_count=int(error_count or 0),
+        )
 
     def claim_due(
         self,
@@ -291,6 +343,7 @@ class BillingReconciliationRepository:
 
 
 __all__ = [
+    "BillingOperationalSnapshot",
     "BillingReconciliationRepository",
     "ReconciliationClaim",
     "TaskStatusRecord",

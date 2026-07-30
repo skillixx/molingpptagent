@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import asyncio
 import json
+import logging
 from datetime import datetime
 from typing import Protocol
 
@@ -11,6 +12,9 @@ from ..integrations.moling import EntitlementFinalization, MolingError
 from ..repositories.billing import BillingAction
 from ..repositories.reconciliation import BillingReconciliationRepository, ReconciliationClaim
 from .runner import TaskExecution, TaskHandler
+
+
+logger = logging.getLogger(__name__)
 
 
 class BillingReplayClient(Protocol):
@@ -52,9 +56,11 @@ class BillingReconciliationWorker:
         self.inflight_stale_seconds = inflight_stale_seconds
         self.max_retries = max_retries
         self.now_factory = now_factory
+        self._last_snapshot_at: datetime | None = None
 
     async def run_once(self) -> bool:
         now = self.now_factory()
+        await self._observe(now)
         claim = await asyncio.to_thread(
             self.repository.claim_due,
             now=now,
@@ -123,6 +129,42 @@ class BillingReconciliationWorker:
             self.repository.resolve, claim.task_id, action, self.now_factory()
         )
         return True
+
+    async def _observe(self, now: datetime) -> None:
+        """按基础退避周期输出聚合计数，避免高频轮询刷日志或泄露账务标识。"""
+        if (
+            self._last_snapshot_at is not None
+            and (now - self._last_snapshot_at).total_seconds()
+            < self.base_interval_seconds
+        ):
+            return
+        snapshot = await asyncio.to_thread(
+            self.repository.operational_snapshot,
+            now=now,
+            stale_seconds=self.inflight_stale_seconds,
+        )
+        self._last_snapshot_at = now
+        level = (
+            logging.WARNING
+            if snapshot.stale_hold_count
+            or snapshot.manual_required_count
+            or snapshot.error_count
+            else logging.INFO
+        )
+        logger.log(
+            level,
+            "billing_reconciliation_snapshot pending=%d stale_holds=%d manual=%d errors=%d",
+            snapshot.pending_count,
+            snapshot.stale_hold_count,
+            snapshot.manual_required_count,
+            snapshot.error_count,
+            extra={
+                "billing_pending_count": snapshot.pending_count,
+                "billing_stale_hold_count": snapshot.stale_hold_count,
+                "billing_manual_required_count": snapshot.manual_required_count,
+                "billing_error_count": snapshot.error_count,
+            },
+        )
 
     async def _failure(self, task_id: str, code: str) -> None:
         await asyncio.to_thread(

@@ -22,6 +22,7 @@
 | [TrainPPTAgent积分闭环一次性Goal提示词.md](./TrainPPTAgent积分闭环一次性Goal提示词.md) | TrainPPTAgent 积分 Goal 提示词 | 一次创建持续 Goal，按阶段同步远程并在授权边界暂停 |
 | [TrainPPTAgent积分迁移与配置隔离演练手册.md](./TrainPPTAgent积分迁移与配置隔离演练手册.md) | TrainPPTAgent 积分迁移演练 | BG02 升降级、配置 fail-closed、备份和回滚操作清单 |
 | [TrainPPTAgent积分迁移与配置隔离演练报告-BG02.md](./TrainPPTAgent积分迁移与配置隔离演练报告-BG02.md) | TrainPPTAgent BG02 报告 | MariaDB 往返、非法值矩阵和配置依赖验收证据 |
+| [TrainPPTAgent积分本地闭环与故障恢复报告-BG03.md](./TrainPPTAgent积分本地闭环与故障恢复报告-BG03.md) | TrainPPTAgent BG03 报告 | 成功、释放、未知终态、并发、重启和聚合观测证据 |
 | [app/developer-requirements.md](./app/developer-requirements.md) | 应用开发需求与注意事项 | 硬性需求、单价设计、会员设计、易错坑、开发规范与案例 |
 | [app/](./app/README.md) | **应用接入文档包** | 可整目录下发给应用开发者；含下列 6 份 |
 | [app/platform-integration-tasks.md](./app/platform-integration-tasks.md) | 平台方应用接入任务清单 | 平台方视角：准入准备、配置、交付物、验收（派任务用） |

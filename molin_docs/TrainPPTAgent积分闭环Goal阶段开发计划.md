@@ -47,16 +47,16 @@
 ```yaml
 project: TrainPPTAgent-Moling-Billing-Closed-Loop
 goal_status: in_progress
-current_goal: BG03
-current_gate: C3
-completed_goals: 2
+current_goal: BG04
+current_gate: C4
+completed_goals: 3
 total_goals: 7
 working_branch: codex/trainppt-billing-closed-loop
 remote: origin
 production_billing_enabled: false
 production_worker_enabled: false
 production_migration_applied: false
-last_verified_at: 2026-07-30T14:50:25+08:00
+last_verified_at: 2026-07-30T14:56:40+08:00
 ```
 
 状态只允许使用：`planned`、`in_progress`、`verification`、`blocked`、`completed`、`rolled_back`。
@@ -251,6 +251,18 @@ Gate C7：观察窗口内无重复扣分、错误权益或陈旧新持有单；�
 - 外部动作：仅启动本机 `127.0.0.1:33307` 临时 MariaDB；PID 已停止、端口无监听。未连接生产库、未扣分、未部署、未修改墨灵仓库。
 - 遗留风险：安全策略阻止递归删除，系统 Temp 中保留便携包和隔离数据；生产迁移仍未执行；历史 42 积分持有单和错误权益结算仍未处理。
 - 下一 Goal：BG03 本地闭环与故障恢复；先审计现有成功、失败、不确定、并发和重启测试覆盖。
+
+### BG03 完成记录
+
+- 状态：`completed`
+- 完成时间：2026-07-30 14:56 +08:00
+- 交付：审计并冻结成功结算、明确失败释放、不确定结果对账、并发认领、进程重启和本地提交失败闭环；新增待对账、陈旧持有单、人工介入和错误聚合快照；对账 Worker 周期输出脱敏计数日志。
+- 验证：计费编排、对账、作品幂等和任务 Worker 专项 `74 passed, 1 warning`；主 API 全量 `306 passed, 1 warning`；聚合日志测试确认不包含任务、权益或幂等键。
+- Git：提交主题 `feat(billing): BG03 加固本地闭环与故障观测`；实际哈希在推送后通过 `git log` 获取。
+- 远程：`origin/codex/trainppt-billing-closed-loop`。
+- 外部动作：无真实平台写入、无生产迁移、无部署、无墨灵仓库修改。
+- 遗留风险：本阶段证据为本地 SQLite 和 Fake Moling；非生产真实协议、网络超时和双边流水仍由 BG04 验证。
+- 下一 Goal：BG04 非生产集成验收；先发现双方认可的非生产墨灵环境、凭据边界和测试资产。
 
 ## 9. 全局停止条件
 
