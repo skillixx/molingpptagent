@@ -56,9 +56,9 @@ remote: origin
 production_billing_enabled: false
 production_worker_enabled: false
 production_migration_applied: false
-last_verified_at: 2026-07-30T18:21:00+08:00
-blocked_on: production_predeployment_actions_not_authorized_and_deployment_explicitly_forbidden
-resume_first_step: obtain_explicit_BG05_backup_migration_deployment_and_restart_authorization
+last_verified_at: 2026-07-30T18:47:00+08:00
+blocked_on: production_capacity_values_and_backup_build_migration_deployment_restart_authorization_missing
+resume_first_step: confirm_seven_production_capacity_values_then_authorize_BG05_actions_separately
 ```
 
 状态只允许使用：`planned`、`in_progress`、`verification`、`blocked`、`completed`、`rolled_back`。
@@ -284,6 +284,17 @@ Gate C7：观察窗口内无重复扣分、错误权益或陈旧新持有单；�
 - 余额不足拒绝：剩余 `0.9` 时仅调用一次 `reserve 1`，平台明确返回不可重试 `MolingBusinessError`；拒绝后仍为 `quota_used=9.1`、`quota_reserved=0`，测试数据库只读确认最大持有单仍为 `845`、活动持有单为 `0`，没有落下拒绝请求持有单。
 - 外部影响：BG04 三个独立授权窗口累计真实消耗 4 积分，其中目标权益 `990306` 消耗 2、余额不足测试权益 `62` 消耗 2；每个窗口均未超过各自上限。未处理历史持有单，未部署、未迁移或修改生产服务与生产数据库；本地 `BILLING_ENABLED=false`。
 - 下一 Goal：BG05 生产预部署准备。当前用户明确要求不得部署，且生产备份、迁移和服务重启均无授权，因此 BG05 保持 `blocked`，不得自动执行。
+
+### BG05 准备快照
+
+- 状态：`blocked`。仓库内预部署加固正在完成，但 Gate C5 必须包含真实生产备份、迁移、部署、Worker、监控和回滚证据，不能由静态检查代替。
+- 生产只读基线：正式 `/api/readyz` 为 200，六项依赖均 `up`；`/` 与 `/works` 仍包含 `/@vite/client` 且为 `no-cache`，前端仍是开发态。生产数据库为 `ppt_ai_app`、Alembic `20260723_0007`，`app_sessions.entitlement_id` 不存在；只读事务已回滚。
+- 运行开关：当前生产 `BILLING_ENABLED=false`、`TASK_WORKER_ENABLED=false`。本阶段未备份、未迁移、未构建生产镜像、未部署、未重启、未真实扣分、未处理历史持有单。
+- 预部署加固：增加不可变发布提交校验与健康/Worker 身份；Compose 使用提交镜像标签、OCI revision、API healthcheck，API/Worker 双重固定计费关闭；新增脱敏静态/数据库只读预检和受控一致性备份工具。
+- 发布入口：旧 `deploy.sh` 的 `git reset --hard`、分支切换、开发配置覆盖和错误 Compose 调用已移除；新流程拆分 preflight、backup、build、migrate、deploy、verify、rollback，每个生产动作需要独立精确确认文本，回滚不降级数据库。
+- 本地验证：后端 `335 passed, 1 warning`；前端 `94 passed`；`vue-tsc`、Vite 生产构建、开发客户端扫描、Python `compileall`、Bash 语法、Compose YAML 解析和 Alembic head 均通过。当前机器无 Docker CLI，尚无 Compose config、镜像构建或 Nginx 容器证据。
+- 当前配置阻断：生产私有配置尚缺 `RELEASE_COMMIT`、`RELEASE_CHANNEL=production`，以及七项经运营确认的容量/限流显式值；预检在外部动作前明确退出。
+- 恢复第一步：先确认七项生产运营值，再分别取得生产备份、服务器构建、数据库迁移、部署和服务重启授权。授权不包括开启计费、真实扣分、处理历史持有单、数据库降级或合并 main。
 
 ## 9. 全局停止条件
 

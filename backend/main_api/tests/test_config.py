@@ -345,6 +345,8 @@ def test_repository_template_contains_t01_keys_and_keeps_billing_disabled() -> N
         "PERSISTENCE_ENABLED",
         "STORAGE_ENABLED",
         "BILLING_ENABLED",
+        "RELEASE_COMMIT",
+        "RELEASE_CHANNEL",
         "MAIN_API_PORT",
         "OUTLINE_API_PORT",
         "CONTENT_API_PORT",
@@ -369,8 +371,29 @@ def test_operational_safety_configuration_is_bounded_and_production_cannot_disab
     assert settings.audit_log_enabled is True
 
     with pytest.raises(ConfigValidationError) as exc_info:
-        load_settings({"APP_ENV": "production", "RATE_LIMIT_ENABLED": "false"})
+        load_settings({
+            "APP_ENV": "production",
+            "RATE_LIMIT_ENABLED": "false",
+            "RELEASE_COMMIT": "a" * 40,
+            "RELEASE_CHANNEL": "production",
+        })
     assert "RATE_LIMIT_ENABLED" in str(exc_info.value)
+
+
+def test_production_requires_immutable_release_identity() -> None:
+    with pytest.raises(ConfigValidationError) as exc_info:
+        load_settings({"APP_ENV": "production"})
+    message = str(exc_info.value)
+    assert "RELEASE_COMMIT" in message
+    assert "RELEASE_CHANNEL" in message
+
+    settings = load_settings({
+        "APP_ENV": "production",
+        "RELEASE_COMMIT": "a" * 40,
+        "RELEASE_CHANNEL": "production",
+    })
+    assert settings.release_commit == "a" * 40
+    assert settings.release_channel == "production"
 
 
 def test_repository_template_contains_t21_safety_keys() -> None:

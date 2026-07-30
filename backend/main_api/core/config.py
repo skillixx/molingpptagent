@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+import re
 from collections.abc import Mapping
 from typing import Literal
 from urllib.parse import urlparse
@@ -26,6 +27,8 @@ class Settings(BaseModel):
     content_api_port: int = 10011
     personaldb_port: int = 9100
     frontend_port: int = 5778
+    release_commit: str | None = None
+    release_channel: str = "development"
 
     outline_api: str = "http://127.0.0.1:10001"
     content_api: str = "http://127.0.0.1:10011"
@@ -190,6 +193,10 @@ def load_settings(environ: Mapping[str, str] | None = None) -> Settings:
     if app_env not in {"development", "test", "staging", "production"}:
         errors.append("APP_ENV 必须是 development、test、staging 或 production")
         app_env = "development"
+    release_commit = _text(source, "RELEASE_COMMIT")
+    release_channel = (
+        _text(source, "RELEASE_CHANNEL", "development") or "development"
+    ).lower()
 
     sso_enabled = _boolean(source, "SSO_ENABLED", False, errors)
     persistence_enabled = _boolean(source, "PERSISTENCE_ENABLED", False, errors)
@@ -407,6 +414,15 @@ def load_settings(environ: Mapping[str, str] | None = None) -> Settings:
     # 生产关键写接口不能处于无限流状态；阈值仍可通过环境变量按运营容量调整。
     if app_env == "production" and not rate_limit_enabled:
         errors.append("生产环境必须设置 RATE_LIMIT_ENABLED=true")
+    if app_env == "production":
+        # 生产实例必须能回答“当前运行哪个不可变提交”，禁止用分支名或latest代替发布身份。
+        if (
+            release_commit is None
+            or re.fullmatch(r"[0-9a-f]{40}", release_commit) is None
+        ):
+            errors.append("生产环境必须设置 RELEASE_COMMIT 为40位小写Git提交")
+        if release_channel != "production":
+            errors.append("生产环境必须设置 RELEASE_CHANNEL=production")
 
     if errors:
         # 不透传 Pydantic 原始输入，保证令牌、数据库 URL 和存储密钥不进入日志。
@@ -414,6 +430,8 @@ def load_settings(environ: Mapping[str, str] | None = None) -> Settings:
 
     return Settings(
         app_env=app_env,
+        release_commit=release_commit,
+        release_channel=release_channel,
         host=_text(source, "HOST", "127.0.0.1") or "127.0.0.1",
         main_api_port=main_api_port,
         outline_api_port=outline_api_port,

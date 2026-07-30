@@ -125,7 +125,12 @@ async def serve(settings: Settings, handler: TaskHandler) -> None:
         claim_batch_size=settings.task_claim_batch_size,
         agent_timeout_seconds=settings.task_agent_timeout_seconds,
     )
-    logger.info("持久化任务 Worker 已启动")
+    logger.info(
+        "持久化任务 Worker 已启动 release=%s channel=%s billing_enabled=%s",
+        settings.release_commit or "unversioned",
+        settings.release_channel,
+        settings.billing_enabled,
+    )
     try:
         while True:
             reconciled = (

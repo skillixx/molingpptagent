@@ -123,11 +123,17 @@ def test_ready_health_maps_dependency_timeout_without_leaking_exception() -> Non
     app.include_router(create_health_router(service))
     client = TestClient(app)
 
-    assert client.get("/healthz").json() == {"status": "ok"}
+    assert client.get("/healthz").json() == {
+        "status": "ok",
+        "component": "main_api",
+        "release_channel": "development",
+    }
     ready = client.get("/readyz")
     assert ready.status_code == 503
     assert ready.json() == {
         "status": "not_ready",
+        "component": "main_api",
+        "release_channel": "development",
         "dependencies": {"database": "up", "storage": "down", "optional_docs": "down"},
     }
     assert "secret-host" not in ready.text
@@ -149,3 +155,19 @@ def test_each_required_dependency_failure_is_isolated_and_sanitized(dependency: 
     assert response.status_code == 503
     assert response.json()["dependencies"] == {dependency: "down"}
     assert "credential" not in response.text
+
+
+def test_health_routes_publish_immutable_release_identity_when_configured() -> None:
+    app = FastAPI()
+    app.include_router(create_health_router(
+        HealthService((DependencyProbe("database", True, lambda: True),)),
+        release_commit="a" * 40,
+        release_channel="production",
+    ))
+    client = TestClient(app)
+
+    for path in ("/healthz", "/readyz"):
+        payload = client.get(path).json()
+        assert payload["component"] == "main_api"
+        assert payload["release_channel"] == "production"
+        assert payload["release_commit"] == "a" * 40

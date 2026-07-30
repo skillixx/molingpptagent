@@ -287,7 +287,11 @@ if settings.sso_enabled and settings.moling_api_base_url:
         "moling", True,
         _http_reachability_check(settings.moling_api_base_url.rstrip("/")),
     ))
-app.include_router(create_health_router(HealthService(tuple(dependency_probes))))
+app.include_router(create_health_router(
+    HealthService(tuple(dependency_probes)),
+    release_commit=settings.release_commit,
+    release_channel=settings.release_channel,
+))
 
 # 关键写接口按真实owner独立限流；多实例部署时T22网关还会提供外层粗粒度保护。
 critical_write_routes = {

@@ -59,6 +59,11 @@ def test_production_compose_exposes_only_static_frontend_and_has_no_source_mount
     assert '"${FRONTEND_BIND_ADDRESS:-127.0.0.1}:${FRONTEND_PORT:-5778}:80"' in compose
     frontend_block = compose.split("\n  frontend:\n", 1)[1]
     assert "env_file:" not in frontend_block
+    assert compose.count('BILLING_ENABLED: "false"') == 2
+    assert 'TASK_WORKER_ENABLED: "true"' in compose
+    assert "RELEASE_COMMIT must be a full Git SHA" in compose
+    assert "org.opencontainers.image.revision" in compose
+    assert "healthcheck:" in compose
 
 
 def test_images_build_static_assets_and_preserve_python_package_layout() -> None:
@@ -81,7 +86,8 @@ def test_production_runbook_requires_https_migrations_and_keeps_billing_off() ->
     assert "alembic" in runbook.lower()
     assert "BILLING_ENABLED=false" in runbook
     assert "SESSION_COOKIE_SECURE=true" in runbook
-    assert "docker compose -f docker-compose.production.yml" in runbook
+    for action in ("preflight", "migrate", "deploy", "verify"):
+        assert f"./deploy.sh {action}" in runbook
     assert "Vite" in runbook and "HMR" in runbook
 
 
@@ -92,3 +98,30 @@ def test_docker_contexts_never_copy_local_secrets_or_generated_dependencies() ->
     assert "frontend/node_modules" in root_ignore
     assert ".env*" in frontend_ignore
     assert "node_modules" in frontend_ignore
+    repository_ignore = _read(".gitignore")
+    assert ".release/" in repository_ignore
+
+
+def test_production_script_is_release_pinned_and_splits_irreversible_gates() -> None:
+    script = _read("deploy.sh")
+    for forbidden in (
+        "git reset",
+        "git checkout",
+        "git pull",
+        "git clean",
+        "docker compose down",
+        "down -v",
+        "cp \"$WORK_DIR",
+    ):
+        assert forbidden not in script
+    assert "set -Eeuo pipefail" in script
+    assert "RELEASE_COMMIT 必须是40位小写Git提交" in script
+    assert "TRAINPPT_IMAGE_TAG 必须等于 RELEASE_COMMIT 前12位" in script
+    assert "BACKUP-$EXPECTED_DATABASE-$RELEASE_COMMIT" in script
+    assert "MIGRATE-$EXPECTED_DATABASE-20260730_0008-$RELEASE_COMMIT" in script
+    assert "DEPLOY-$RELEASE_COMMIT-BILLING-OFF" in script
+    assert "ROLLBACK-$RELEASE_COMMIT-TO-$ROLLBACK_COMMIT-BILLING-OFF" in script
+    assert "alembic -c alembic.ini upgrade 20260730_0008" in script
+    assert "BILLING_ENABLED=true" not in script
+    assert "production_preflight.py" in script
+    assert "verify_release_images" in script

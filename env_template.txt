@@ -143,6 +143,9 @@ PERSONAL_DB=http://127.0.0.1:9100
 
 APP_ENV=development
 APP_BASE_URL=http://127.0.0.1:5778
+# 生产发布必须填写精确40位小写Git提交，并把通道设为production。
+RELEASE_COMMIT=
+RELEASE_CHANNEL=development
 
 # 墨灵内部 API 与应用身份（SSO/计费启用时必填）
 MOLING_API_BASE_URL=
