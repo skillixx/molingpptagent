@@ -393,11 +393,7 @@ def load_settings(environ: Mapping[str, str] | None = None) -> Settings:
         if not task_worker_enabled:
             # 收费任务只能由持久Worker完成预占和后置结算，禁止开启后永久滞留待计费。
             errors.append("BILLING_ENABLED=true 需要 TASK_WORKER_ENABLED=true")
-
-    # 生产关键写接口不能处于无限流状态；阈值仍可通过环境变量按运营容量调整。
-    if app_env == "production" and not rate_limit_enabled:
-        errors.append("生产环境必须设置 RATE_LIMIT_ENABLED=true")
-        # 金额仍由运营配置决定；只有显式开计费时才强制给值，默认始终关闭。
+        # 金额由运营配置决定；只有显式开计费时才强制给值，默认始终关闭。
         missing_billing = tuple(
             key
             for key, value in (
@@ -407,6 +403,10 @@ def load_settings(environ: Mapping[str, str] | None = None) -> Settings:
             if value is None
         )
         _require(bool(missing_billing), missing_billing, errors)
+
+    # 生产关键写接口不能处于无限流状态；阈值仍可通过环境变量按运营容量调整。
+    if app_env == "production" and not rate_limit_enabled:
+        errors.append("生产环境必须设置 RATE_LIMIT_ENABLED=true")
 
     if errors:
         # 不透传 Pydantic 原始输入，保证令牌、数据库 URL 和存储密钥不进入日志。

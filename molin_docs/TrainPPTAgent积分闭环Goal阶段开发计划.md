@@ -47,16 +47,16 @@
 ```yaml
 project: TrainPPTAgent-Moling-Billing-Closed-Loop
 goal_status: in_progress
-current_goal: BG02
-current_gate: C2
-completed_goals: 1
+current_goal: BG03
+current_gate: C3
+completed_goals: 2
 total_goals: 7
 working_branch: codex/trainppt-billing-closed-loop
 remote: origin
 production_billing_enabled: false
 production_worker_enabled: false
 production_migration_applied: false
-last_verified_at: 2026-07-30T14:32:21+08:00
+last_verified_at: 2026-07-30T14:50:25+08:00
 ```
 
 状态只允许使用：`planned`、`in_progress`、`verification`、`blocked`、`completed`、`rolled_back`。
@@ -239,6 +239,18 @@ Gate C7：观察窗口内无重复扣分、错误权益或陈旧新持有单；�
 - 外部动作：仅执行只读权益查询；未真实扣分、未迁移生产数据库、未部署、未修改墨灵仓库。
 - 遗留风险：7 个历史活动持有单共 42 积分和此前错误权益结算均未处理；生产计费及 Worker 仍关闭；生产迁移未执行。
 - 下一 Goal：BG02 迁移与配置演练；从隔离数据库的 `0007 -> 0008 -> 0007 -> 0008` 开始。
+
+### BG02 完成记录
+
+- 状态：`completed`
+- 完成时间：2026-07-30 14:50 +08:00
+- 交付：修复计费开启时积分金额未 fail closed 的配置漏洞；增加 13 项运行依赖缺失矩阵；增加 SQLite 迁移往返和五类非法值测试；新增隔离演练手册与 MariaDB 真实方言报告。
+- 验证：配置和迁移专项 `56 passed`；主 API 全量 `304 passed, 1 warning`；MariaDB 11.8.8 完成 `0007 -> 0008 -> 0007 -> 0008`，`990306`、`51` 无损保留；文本、零、负数、越界和非 ASCII 数字均在 DDL 前被拦截。
+- Git：提交主题 `fix(billing): BG02 完成迁移与配置隔离演练`；实际哈希在推送后通过 `git log` 获取。
+- 远程：`origin/codex/trainppt-billing-closed-loop`。
+- 外部动作：仅启动本机 `127.0.0.1:33307` 临时 MariaDB；PID 已停止、端口无监听。未连接生产库、未扣分、未部署、未修改墨灵仓库。
+- 遗留风险：安全策略阻止递归删除，系统 Temp 中保留便携包和隔离数据；生产迁移仍未执行；历史 42 积分持有单和错误权益结算仍未处理。
+- 下一 Goal：BG03 本地闭环与故障恢复；先审计现有成功、失败、不确定、并发和重启测试覆盖。
 
 ## 9. 全局停止条件
 

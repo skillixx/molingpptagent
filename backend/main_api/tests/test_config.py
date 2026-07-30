@@ -10,6 +10,27 @@ from dotenv import dotenv_values
 from backend.main_api.core.config import ConfigValidationError, load_settings
 
 
+def _valid_billing_configuration() -> dict[str, str]:
+    """返回不依赖本机环境的最小计费配置，便于逐项验证 fail-closed。"""
+    return {
+        "APP_ENV": "test",
+        "SSO_ENABLED": "true",
+        "PERSISTENCE_ENABLED": "true",
+        "BILLING_ENABLED": "true",
+        "TASK_WORKER_ENABLED": "true",
+        "TASK_HANDLER_FACTORY": "backend.main_api.workers.example:create_handler",
+        "MOLING_API_BASE_URL": "https://moling.example.com/api",
+        "APP_BASE_URL": "https://ppt.example.com/app",
+        "INTERNAL_API_TOKEN": "test-internal-token",
+        "MOLING_APP_ID": "1001",
+        "MOLING_PRODUCT_ID": "2001",
+        "SESSION_SECRET": "s" * 32,
+        "DATABASE_URL": "mysql+pymysql://user:password@db.example.com/trainppt",
+        "PPT_GENERATION_RESERVE_POINTS": "1",
+        "PPT_GENERATION_SETTLE_POINTS": "1",
+    }
+
+
 def test_new_features_are_closed_by_default() -> None:
     """未显式开启的墨灵能力必须保持关闭，避免旧部署意外进入新链路。"""
     settings = load_settings({})
@@ -198,6 +219,51 @@ def test_storage_and_billing_validate_feature_dependencies() -> None:
     assert "SSO_ENABLED" in message
     assert "PERSISTENCE_ENABLED" in message
     assert "TASK_WORKER_ENABLED" in message
+
+
+@pytest.mark.parametrize(
+    ("missing_key", "expected_error_key"),
+    [
+        ("SSO_ENABLED", "SSO_ENABLED"),
+        ("PERSISTENCE_ENABLED", "PERSISTENCE_ENABLED"),
+        ("TASK_WORKER_ENABLED", "TASK_WORKER_ENABLED"),
+        ("TASK_HANDLER_FACTORY", "TASK_HANDLER_FACTORY"),
+        ("DATABASE_URL", "DATABASE_URL"),
+        ("MOLING_API_BASE_URL", "MOLING_API_BASE_URL"),
+        ("INTERNAL_API_TOKEN", "INTERNAL_API_TOKEN"),
+        ("MOLING_APP_ID", "MOLING_APP_ID"),
+        ("MOLING_PRODUCT_ID", "MOLING_PRODUCT_ID"),
+        ("SESSION_SECRET", "SESSION_SECRET"),
+        ("APP_BASE_URL", "APP_BASE_URL"),
+        ("PPT_GENERATION_RESERVE_POINTS", "PPT_GENERATION_RESERVE_POINTS"),
+        ("PPT_GENERATION_SETTLE_POINTS", "PPT_GENERATION_SETTLE_POINTS"),
+    ],
+)
+def test_billing_rejects_each_missing_runtime_dependency(
+    missing_key: str,
+    expected_error_key: str,
+) -> None:
+    """打开计费后，任一身份、持久化、Worker 或金额缺失都必须阻止启动。"""
+    values = _valid_billing_configuration()
+    values.pop(missing_key)
+
+    with pytest.raises(ConfigValidationError) as exc_info:
+        load_settings(values)
+
+    message = str(exc_info.value)
+    assert expected_error_key in message
+    configured_token = values.get("INTERNAL_API_TOKEN")
+    if configured_token is not None:
+        assert configured_token not in message
+
+
+def test_minimal_billing_configuration_is_accepted() -> None:
+    settings = load_settings(_valid_billing_configuration())
+
+    assert settings.billing_enabled is True
+    assert settings.task_worker_enabled is True
+    assert settings.ppt_generation_reserve_points == 1
+    assert settings.ppt_generation_settle_points == 1
 
 
 def test_valid_enabled_configuration_is_parsed() -> None:

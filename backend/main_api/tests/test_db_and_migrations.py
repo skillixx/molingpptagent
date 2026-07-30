@@ -209,7 +209,7 @@ def test_t16_idempotency_migration_preserves_rows_and_allows_same_key_for_other_
 
 
 def test_asset_scoped_billing_migration_preserves_numeric_ids(tmp_path: Path) -> None:
-    """0008 必须无损迁移已存在的数字字符串，并增加会话绑定权益列。"""
+    """0008 升降级往返必须保留数字标识，并正确增删会话权益列。"""
     from alembic import command
 
     database_url = f"sqlite:///{(tmp_path / 'asset-scoped-billing.db').as_posix()}"
@@ -257,11 +257,55 @@ def test_asset_scoped_billing_migration_preserves_numeric_ids(tmp_path: Path) ->
                 "WHERE id='b-billing'"
             )).one()
         assert tuple(row) == (990306, 51)
+
+        engine.dispose()
+        command.downgrade(config, "20260723_0007")
+        engine = create_engine(database_url)
+        schema = inspect(engine)
+        downgraded_types = {
+            column["name"]: column["type"]
+            for column in schema.get_columns("trainppt_billing_operations")
+        }
+        assert not isinstance(downgraded_types["entitlement_id"], BigInteger)
+        assert not isinstance(downgraded_types["hold_id"], BigInteger)
+        assert "entitlement_id" not in {
+            column["name"] for column in schema.get_columns("app_sessions")
+        }
+        with engine.connect() as connection:
+            row = connection.execute(text(
+                "SELECT entitlement_id, hold_id FROM trainppt_billing_operations "
+                "WHERE id='b-billing'"
+            )).one()
+        assert tuple(row) == ("990306", "51")
+
+        engine.dispose()
+        command.upgrade(config, "head")
+        engine = create_engine(database_url)
+        schema = inspect(engine)
+        restored_types = {
+            column["name"]: column["type"]
+            for column in schema.get_columns("trainppt_billing_operations")
+        }
+        assert isinstance(restored_types["entitlement_id"], BigInteger)
+        assert isinstance(restored_types["hold_id"], BigInteger)
+        with engine.connect() as connection:
+            row = connection.execute(text(
+                "SELECT entitlement_id, hold_id FROM trainppt_billing_operations "
+                "WHERE id='b-billing'"
+            )).one()
+        assert tuple(row) == (990306, 51)
     finally:
         engine.dispose()
 
 
-def test_asset_scoped_billing_migration_rejects_invalid_historical_id(tmp_path: Path) -> None:
+@pytest.mark.parametrize(
+    "invalid_hold_id",
+    ["hold-invalid", "0", "-1", "9223372036854775808", "１２３"],
+)
+def test_asset_scoped_billing_migration_rejects_invalid_historical_id(
+    tmp_path: Path,
+    invalid_hold_id: str,
+) -> None:
     """不可解析的旧持有单必须阻止迁移，不能被静默转零。"""
     from alembic import command
 
@@ -287,12 +331,17 @@ def test_asset_scoped_billing_migration_rejects_invalid_historical_id(tmp_path: 
                 "INSERT INTO trainppt_billing_operations "
                 "(id, task_id, owner_user_id, product_id, entitlement_id, hold_id, action, status, "
                 "created_at, updated_at) VALUES "
-                "('b-invalid', 't-invalid', 479, 73, '990306', 'hold-invalid', 'settle', "
+                "('b-invalid', 't-invalid', 479, 73, '990306', :invalid_hold_id, 'settle', "
                 "'billing_pending', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)"
-            ))
+            ), {"invalid_hold_id": invalid_hold_id})
         engine.dispose()
-        with pytest.raises(RuntimeError, match="非法历史值"):
+        with pytest.raises(RuntimeError, match="非法历史值") as exc_info:
             command.upgrade(config, "head")
+        assert invalid_hold_id not in str(exc_info.value)
+        engine = create_engine(database_url)
+        assert "entitlement_id" not in {
+            column["name"] for column in inspect(engine).get_columns("app_sessions")
+        }
     finally:
         engine.dispose()
 
