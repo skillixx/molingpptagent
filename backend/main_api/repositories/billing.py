@@ -40,7 +40,7 @@ class BillingWorkflowContext:
     task_id: str
     owner_user_id: int
     entitlement_id: int | None
-    hold_id: str | None
+    hold_id: int | None
     reserved_amount: int
     actual_amount: int
     reserve_key: str
@@ -135,11 +135,11 @@ class BillingWorkflowRepository:
             )
             if operation is None:
                 return False
-            operation.entitlement_id = str(entitlement_id)
+            operation.entitlement_id = entitlement_id
             operation.updated_at = now
             return True
 
-    def complete_reserve(self, task_id: str, hold_id: str, now: datetime) -> bool:
+    def complete_reserve(self, task_id: str, hold_id: int, now: datetime) -> bool:
         """平台预占成功后才把任务开放给通用Worker领取。"""
         with self._session_factory.begin() as db:
             operation, task = self._load(db, task_id)
@@ -260,7 +260,7 @@ class BillingWorkflowRepository:
         error_code: str,
         now: datetime,
         *,
-        hold_id: str | None = None,
+        hold_id: int | None = None,
     ) -> bool:
         """写动作终态未知时冻结任务；T18只能按既有动作键对账，禁止新reserve。"""
         with self._session_factory.begin() as db:
@@ -327,7 +327,7 @@ class BillingWorkflowRepository:
         return BillingWorkflowContext(
             task_id=operation.task_id,
             owner_user_id=operation.owner_user_id,
-            entitlement_id=int(operation.entitlement_id) if operation.entitlement_id else None,
+            entitlement_id=operation.entitlement_id,
             hold_id=operation.hold_id,
             reserved_amount=operation.reserved_amount,
             actual_amount=operation.actual_amount,

@@ -46,9 +46,10 @@ class FakeBillingClient:
         self.release_error: Exception | None = None
         self.insufficient = False
 
-    async def list_user_entitlements(self, *, user_id: int):
-        return (EntitlementBalance(
-            entitlement_id=81,
+    async def get_entitlement_balance(self, *, entitlement_id: int, user_id: int):
+        assert entitlement_id == 990306
+        return EntitlementBalance(
+            entitlement_id=entitlement_id,
             user_id=user_id,
             quota_total="100",
             quota_used="0",
@@ -57,15 +58,15 @@ class FakeBillingClient:
             status="active",
             expires_at=None,
             usable=True,
-        ),)
+        )
 
     async def reserve_entitlement(self, *, entitlement_id: int, user_id: int, amount: str, idempotency_key: str):
         self.calls.append(("reserve", idempotency_key))
         if self.reserve_error:
             raise self.reserve_error
-        return EntitlementReservation(hold_id="hold-1", reserved=amount, available="90", status="holding")
+        return EntitlementReservation(hold_id=51, reserved=amount, available="90", status="holding")
 
-    async def settle_entitlement(self, *, hold_id: str, actual_amount: str, idempotency_key: str):
+    async def settle_entitlement(self, *, hold_id: int, actual_amount: str, idempotency_key: str):
         self.calls.append(("settle", idempotency_key))
         if self.settle_error:
             raise self.settle_error
@@ -74,7 +75,7 @@ class FakeBillingClient:
             quota_used=actual_amount, quota_reserved="0", available="92",
         )
 
-    async def release_entitlement(self, *, hold_id: str, idempotency_key: str):
+    async def release_entitlement(self, *, hold_id: int, idempotency_key: str):
         self.calls.append(("release", idempotency_key))
         if self.release_error:
             raise self.release_error
@@ -135,7 +136,7 @@ class LocalCommitFailingRepository(BillingWorkflowRepository):
         super().__init__(engine)
         self.action = action
 
-    def complete_reserve(self, task_id: str, hold_id: str, now: datetime) -> bool:
+    def complete_reserve(self, task_id: str, hold_id: int, now: datetime) -> bool:
         return False if self.action == "reserve" else super().complete_reserve(task_id, hold_id, now)
 
     def complete_settle(self, task_id: str, now: datetime) -> bool:
@@ -166,6 +167,7 @@ def _fixture(tmp_path: Path):
         1001,
         "billing-workflow-request",
         CreatePresentationRequest(title="计费编排", content="生成完整PPT"),
+        billing_entitlement_id=990306,
     )
     client = FakeBillingClient()
     orchestrator = BillingGenerationOrchestrator(
@@ -224,7 +226,7 @@ def test_success_reserves_before_agent_persists_then_settles_once(tmp_path: Path
             ("reserve", f"ppt:{task_id}:reserve"),
             ("settle", f"ppt:{task_id}:settle"),
         ]
-        assert operation.status == "settled" and operation.hold_id == "hold-1"
+        assert operation.status == "settled" and operation.hold_id == 51
         assert task.status == "succeeded" and presentation.status == "ready"
         assert asyncio.run(orchestrator.settle_after_success(task_id)) == "settled"
         assert len(client.calls) == 2
@@ -402,7 +404,7 @@ def test_platform_success_but_local_terminal_commit_failure_is_frozen(tmp_path: 
             presentation, task, operation = _states(engine)
             assert operation.status == task.status == presentation.status == "billing_pending"
             assert operation.action == action
-            assert operation.hold_id == "hold-1"
+            assert operation.hold_id == 51
             assert operation.last_error_code == f"BILLING_{action.upper()}_LOCAL_COMMIT_FAILED"
         finally:
             engine.dispose()

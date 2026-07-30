@@ -24,7 +24,7 @@ class ReconciliationClaim:
     attempt: int
     max_attempts: int
     action: BillingAction
-    hold_id: str | None
+    hold_id: int | None
     actual_amount: int | None
     settle_key: str | None
     release_key: str | None

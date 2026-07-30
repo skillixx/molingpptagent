@@ -20,17 +20,17 @@ from .billing import BillingPolicy, BillingPolicyError
 
 
 class BillingWriteClient(Protocol):
-    async def list_user_entitlements(self, *, user_id: int): ...
+    async def get_entitlement_balance(self, *, entitlement_id: int, user_id: int): ...
 
     async def reserve_entitlement(
         self, *, entitlement_id: int, user_id: int, amount: str, idempotency_key: str
     ): ...
 
     async def settle_entitlement(
-        self, *, hold_id: str, actual_amount: str, idempotency_key: str
+        self, *, hold_id: int, actual_amount: str, idempotency_key: str
     ): ...
 
-    async def release_entitlement(self, *, hold_id: str, idempotency_key: str): ...
+    async def release_entitlement(self, *, hold_id: int, idempotency_key: str): ...
 
 
 class BillingGenerationOrchestrator:
@@ -58,7 +58,9 @@ class BillingGenerationOrchestrator:
         context = claim.context
         try:
             selection = await self.policy.select_entitlement(
-                self.client, user_id=context.owner_user_id
+                self.client,
+                user_id=context.owner_user_id,
+                entitlement_id=context.entitlement_id,
             )
         except BillingPolicyError as error:
             self.repository.fail_reserve(task_id, error.code, self.now_factory())
@@ -71,10 +73,12 @@ class BillingGenerationOrchestrator:
             )
             return "failed"
 
-        if not self.repository.set_entitlement(
-            task_id, selection.entitlement_id, self.now_factory()
-        ):
-            return "in_progress"
+        # 任务创建时已经固化票据指定权益；这里只防御性核对，绝不改选其他资产。
+        if selection.entitlement_id != context.entitlement_id:
+            self.repository.fail_reserve(
+                task_id, "BILLING_ENTITLEMENT_MISMATCH", self.now_factory()
+            )
+            return "failed"
         try:
             reservation = await self.client.reserve_entitlement(
                 entitlement_id=selection.entitlement_id,

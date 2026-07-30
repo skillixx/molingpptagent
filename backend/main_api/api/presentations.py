@@ -85,7 +85,12 @@ def create_presentations_router(
                 request_id,
             )
         try:
-            result = service.create(principal.user_id, idempotency_key, payload)
+            result = service.create(
+                principal.user_id,
+                idempotency_key,
+                payload,
+                billing_entitlement_id=principal.entitlement_id,
+            )
         except PresentationServiceError as exc:
             return _service_error(exc, request_id)
         response.headers["X-Request-Id"] = request_id

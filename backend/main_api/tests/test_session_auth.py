@@ -60,7 +60,13 @@ def repository(tmp_path) -> SessionRepository:
 
 
 def _claims() -> LaunchClaims:
-    return LaunchClaims(user_id=9, app_id=15, product_id=73, request_id="req_verify_1")
+    return LaunchClaims(
+        user_id=9,
+        app_id=15,
+        product_id=73,
+        entitlement_id=990306,
+        request_id="req_verify_1",
+    )
 
 
 def _service(repository: SessionRepository, client: FakeMolingClient) -> AuthService:
@@ -110,6 +116,7 @@ def test_enter_creates_hashed_session_and_secure_cookie(repository: SessionRepos
     assert stored.id != "raw-session-secret"
     assert len(stored.id) == 64
     assert stored.user_id == 9
+    assert stored.entitlement_id == 990306
 
 
 def test_missing_ticket_is_rejected_without_cookie(repository: SessionRepository) -> None:
@@ -376,6 +383,7 @@ def test_session_migration_creates_expected_table_and_indexes(tmp_path) -> None:
             "user_id",
             "app_id",
             "product_id",
+            "entitlement_id",
             "created_at",
             "expires_at",
             "last_seen_at",

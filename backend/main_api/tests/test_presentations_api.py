@@ -87,6 +87,7 @@ def billing_api(tmp_path: Path):
         return RequestPrincipal(
             user_id=x_test_user, app_id=15, product_id=73,
             knowledge_subject=f"moling:test:15:{x_test_user}",
+            entitlement_id=990306,
         )
 
     app = FastAPI()
@@ -273,7 +274,7 @@ def test_billing_task_is_atomically_planned_and_not_claimable_before_reserve(bil
         assert operation.task_id == task.id
         assert operation.owner_user_id == task.owner_user_id == 1001
         assert operation.product_id == 73
-        assert operation.entitlement_id is None and operation.hold_id is None
+        assert operation.entitlement_id == 990306 and operation.hold_id is None
         assert operation.status == "planned"
         assert operation.reserved_amount == 20
         assert operation.actual_amount == 15
@@ -306,6 +307,32 @@ def test_billing_task_is_atomically_planned_and_not_claimable_before_reserve(bil
     )
     assert asyncio.run(worker.run_once()) is False
     assert agent_calls == []
+
+
+def test_billing_task_without_ticket_bound_entitlement_fails_before_persistence(
+    billing_api,
+) -> None:
+    """收费开启时禁止回退到按商品猜选，缺少票据权益必须 fail-closed。"""
+    _, engine = billing_api
+    service = PresentationService(
+        PresentationRepository(engine),
+        task_max_attempts=3,
+        user_presentation_limit=None,
+        billing_enabled=True,
+        billing_product_id=73,
+        billing_reserve_points=1,
+        billing_settle_points=1,
+    )
+    with pytest.raises(PresentationServiceError) as exc_info:
+        service.create(
+            479,
+            "missing-entitlement",
+            CreatePresentationRequest(title="拒绝猜选", content="不应创建任务"),
+        )
+    assert exc_info.value.code == "BILLING_ENTITLEMENT_REQUIRED"
+    with sessionmaker(engine)() as db:
+        assert db.scalar(select(func.count()).select_from(GenerationTask)) == 0
+        assert db.scalar(select(func.count()).select_from(BillingOperation)) == 0
 
 
 def test_concurrent_billing_request_creates_one_task_and_operation(billing_api) -> None:

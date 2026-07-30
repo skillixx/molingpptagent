@@ -9,7 +9,7 @@ import sys
 from pathlib import Path
 
 import pytest
-from sqlalchemy import create_engine, inspect, text
+from sqlalchemy import BigInteger, create_engine, inspect, text
 from sqlalchemy.exc import IntegrityError
 
 from backend.main_api.core.db import (
@@ -204,6 +204,95 @@ def test_t16_idempotency_migration_preserves_rows_and_allows_same_key_for_other_
                     "VALUES ('t3', 'p1', 1001, 'shared-client-key', 'pending', 'queued', '{}', "
                     "CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)"
                 ))
+    finally:
+        engine.dispose()
+
+
+def test_asset_scoped_billing_migration_preserves_numeric_ids(tmp_path: Path) -> None:
+    """0008 必须无损迁移已存在的数字字符串，并增加会话绑定权益列。"""
+    from alembic import command
+
+    database_url = f"sqlite:///{(tmp_path / 'asset-scoped-billing.db').as_posix()}"
+    config = _alembic_config(database_url)
+    command.upgrade(config, "20260723_0007")
+    engine = create_engine(database_url)
+    try:
+        with engine.begin() as connection:
+            connection.execute(text(
+                "INSERT INTO trainppt_presentations "
+                "(id, owner_user_id, title, status, slides_json, created_at, updated_at) "
+                "VALUES ('p-billing', 479, '迁移验证', 'billing_pending', '{}', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)"
+            ))
+            connection.execute(text(
+                "INSERT INTO trainppt_generation_tasks "
+                "(id, presentation_id, owner_user_id, request_id, status, stage, input_json, "
+                "next_attempt_at, created_at, updated_at) VALUES "
+                "('t-billing', 'p-billing', 479, 'migration-key', 'billing_pending', "
+                "'billing_pending', '{}', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)"
+            ))
+            connection.execute(text(
+                "INSERT INTO trainppt_billing_operations "
+                "(id, task_id, owner_user_id, product_id, entitlement_id, hold_id, action, status, "
+                "created_at, updated_at) VALUES "
+                "('b-billing', 't-billing', 479, 73, '990306', '51', 'settle', "
+                "'billing_pending', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)"
+            ))
+        engine.dispose()
+
+        command.upgrade(config, "head")
+        engine = create_engine(database_url)
+        schema = inspect(engine)
+        billing_types = {
+            column["name"]: column["type"]
+            for column in schema.get_columns("trainppt_billing_operations")
+        }
+        assert isinstance(billing_types["entitlement_id"], BigInteger)
+        assert isinstance(billing_types["hold_id"], BigInteger)
+        assert "entitlement_id" in {
+            column["name"] for column in schema.get_columns("app_sessions")
+        }
+        with engine.connect() as connection:
+            row = connection.execute(text(
+                "SELECT entitlement_id, hold_id FROM trainppt_billing_operations "
+                "WHERE id='b-billing'"
+            )).one()
+        assert tuple(row) == (990306, 51)
+    finally:
+        engine.dispose()
+
+
+def test_asset_scoped_billing_migration_rejects_invalid_historical_id(tmp_path: Path) -> None:
+    """不可解析的旧持有单必须阻止迁移，不能被静默转零。"""
+    from alembic import command
+
+    database_url = f"sqlite:///{(tmp_path / 'invalid-billing-id.db').as_posix()}"
+    config = _alembic_config(database_url)
+    command.upgrade(config, "20260723_0007")
+    engine = create_engine(database_url)
+    try:
+        with engine.begin() as connection:
+            connection.execute(text(
+                "INSERT INTO trainppt_presentations "
+                "(id, owner_user_id, title, status, slides_json, created_at, updated_at) "
+                "VALUES ('p-invalid', 479, '迁移拦截', 'billing_pending', '{}', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)"
+            ))
+            connection.execute(text(
+                "INSERT INTO trainppt_generation_tasks "
+                "(id, presentation_id, owner_user_id, request_id, status, stage, input_json, "
+                "next_attempt_at, created_at, updated_at) VALUES "
+                "('t-invalid', 'p-invalid', 479, 'invalid-key', 'billing_pending', "
+                "'billing_pending', '{}', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)"
+            ))
+            connection.execute(text(
+                "INSERT INTO trainppt_billing_operations "
+                "(id, task_id, owner_user_id, product_id, entitlement_id, hold_id, action, status, "
+                "created_at, updated_at) VALUES "
+                "('b-invalid', 't-invalid', 479, 73, '990306', 'hold-invalid', 'settle', "
+                "'billing_pending', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)"
+            ))
+        engine.dispose()
+        with pytest.raises(RuntimeError, match="非法历史值"):
+            command.upgrade(config, "head")
     finally:
         engine.dispose()
 

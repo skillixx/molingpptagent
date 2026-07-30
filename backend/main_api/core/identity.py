@@ -28,6 +28,7 @@ class RequestPrincipal:
     app_id: int | None
     product_id: int | None
     knowledge_subject: str
+    entitlement_id: int | None = None
 
 
 def knowledge_subject(app_env: str, app_id: int, user_id: int) -> str:
@@ -70,6 +71,7 @@ class LegacyIdentityResolver:
                 app_id=None,
                 product_id=None,
                 knowledge_subject=f"local:{self._app_env}:trainppt",
+                entitlement_id=None,
             )
 
         app_session = None
@@ -89,6 +91,7 @@ class LegacyIdentityResolver:
                 app_session.app_id,
                 app_session.user_id,
             ),
+            entitlement_id=app_session.entitlement_id,
         )
 
 

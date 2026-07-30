@@ -40,6 +40,7 @@ class SessionRepository:
             "user_id",
             "app_id",
             "product_id",
+            "entitlement_id",
             "created_at",
             "expires_at",
             "last_seen_at",

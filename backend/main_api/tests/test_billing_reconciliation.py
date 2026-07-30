@@ -50,7 +50,7 @@ class LedgerClient:
         self.terminals: dict[str, str] = {}
         self.always_timeout = False
 
-    async def settle_entitlement(self, *, hold_id: str, actual_amount: str, idempotency_key: str):
+    async def settle_entitlement(self, *, hold_id: int, actual_amount: str, idempotency_key: str):
         self.calls.append(("settle", idempotency_key))
         if self.always_timeout:
             raise MolingUnavailableError("平台暂不可用", request_id="safe", retryable=True)
@@ -60,7 +60,7 @@ class LedgerClient:
             quota_used=actual_amount, quota_reserved="0", available="92",
         )
 
-    async def release_entitlement(self, *, hold_id: str, idempotency_key: str):
+    async def release_entitlement(self, *, hold_id: int, idempotency_key: str):
         self.calls.append(("release", idempotency_key))
         if self.always_timeout:
             raise MolingUnavailableError("平台暂不可用", request_id="safe", retryable=True)
@@ -93,7 +93,7 @@ class SlowLedgerClient(LedgerClient):
         self.active_calls = 0
         self.max_active_calls = 0
 
-    async def settle_entitlement(self, *, hold_id: str, actual_amount: str, idempotency_key: str):
+    async def settle_entitlement(self, *, hold_id: int, actual_amount: str, idempotency_key: str):
         self.active_calls += 1
         self.max_active_calls = max(self.max_active_calls, self.active_calls)
         self.entered.set()
@@ -128,13 +128,14 @@ def _database(tmp_path: Path, *, action: str = "settle"):
     ).create(
         1001, "reconcile-request",
         CreatePresentationRequest(title="待对账作品", content="生成PPT"),
+        billing_entitlement_id=990306,
     )
     with sessionmaker(engine).begin() as db:
         operation = db.scalar(select(BillingOperation))
         task = db.scalar(select(GenerationTask))
         presentation = db.scalar(select(Presentation))
-        operation.entitlement_id = "81"
-        operation.hold_id = "hold-r"
+        operation.entitlement_id = 990306
+        operation.hold_id = 51
         operation.action = action
         operation.status = "billing_pending"
         operation.last_error_code = f"BILLING_{action.upper()}_UNKNOWN"
@@ -406,7 +407,7 @@ def test_task_query_is_owner_scoped_and_never_exposes_billing_secrets(tmp_path: 
             "next_retry_at": None, "manual_required": False,
         }
         rendered = own.text.lower()
-        for forbidden in ("hold-r", "ppt:task-r", "entitlement", "reserved_amount", "actual_amount"):
+        for forbidden in ("ppt:task-r", "entitlement", "reserved_amount", "actual_amount"):
             assert forbidden not in rendered
         assert other.json()["code"] == "TASK_NOT_FOUND"
     finally:

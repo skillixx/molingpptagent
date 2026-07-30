@@ -17,6 +17,9 @@
 | [app-management-guide.md](./app-management-guide.md) | 应用管理 | 应用元数据（图标/描述/适配器） |
 | [app/billing-integration-design.md](./app/billing-integration-design.md) | 应用×财务商品 扣费集成 | 把应用挂成商品，购买扣费+使用扣费（总装） |
 | [app/billing-integration-spec.md](./app/billing-integration-spec.md) | 应用接入计费 开发对接规范 | 开发者视角：接口字段级契约、上报/扣减流程、功能分工 |
+| [TrainPPTAgent对接墨灵积分技术需求与阶段规划.md](./TrainPPTAgent对接墨灵积分技术需求与阶段规划.md) | TrainPPTAgent 积分接入 | 仅修改应用侧，定义预占、结算、释放、对账、验收与上线门禁 |
+| [TrainPPTAgent积分闭环Goal阶段开发计划.md](./TrainPPTAgent积分闭环Goal阶段开发计划.md) | TrainPPTAgent 积分 Goal 计划 | 按 BG01-BG07 分阶段开发、验收、提交、推送、总结与恢复 |
+| [TrainPPTAgent积分闭环一次性Goal提示词.md](./TrainPPTAgent积分闭环一次性Goal提示词.md) | TrainPPTAgent 积分 Goal 提示词 | 一次创建持续 Goal，按阶段同步远程并在授权边界暂停 |
 | [app/developer-requirements.md](./app/developer-requirements.md) | 应用开发需求与注意事项 | 硬性需求、单价设计、会员设计、易错坑、开发规范与案例 |
 | [app/](./app/README.md) | **应用接入文档包** | 可整目录下发给应用开发者；含下列 6 份 |
 | [app/platform-integration-tasks.md](./app/platform-integration-tasks.md) | 平台方应用接入任务清单 | 平台方视角：准入准备、配置、交付物、验收（派任务用） |

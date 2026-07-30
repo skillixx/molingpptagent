@@ -120,8 +120,19 @@ class PresentationService:
         owner_user_id: int,
         request_id: str,
         request: CreatePresentationRequest,
+        *,
+        billing_entitlement_id: int | None = None,
     ) -> PresentationCreateResult:
         """作品、生成任务和可选计费意图同事务创建，失败时不留下孤儿记录。"""
+        if self.billing_enabled and (
+            type(billing_entitlement_id) is not int or billing_entitlement_id <= 0
+        ):
+            # 收费任务必须来自墨灵已精确绑定权益的入口，禁止退回按商品猜选。
+            raise PresentationServiceError(
+                "BILLING_ENTITLEMENT_REQUIRED",
+                "请从墨灵指定的 PPT 资产重新进入应用",
+                409,
+            )
         now = self.now_factory()
         billing_mode = "prepaid" if self.billing_enabled else "none"
         presentation = Presentation(
@@ -156,6 +167,7 @@ class PresentationService:
                     "model": request.model,
                     "template_id": request.template_id,
                     "billing_mode": billing_mode,
+                    "billing_entitlement_id": billing_entitlement_id,
                 },
                 ensure_ascii=False,
                 separators=(",", ":"),
@@ -184,7 +196,7 @@ class PresentationService:
                 task_id=task.id,
                 owner_user_id=owner_user_id,
                 product_id=int(self.billing_product_id),
-                entitlement_id=None,
+                entitlement_id=billing_entitlement_id,
                 hold_id=None,
                 action="reserve",
                 reserved_amount=self.billing_reserve_points,

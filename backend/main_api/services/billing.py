@@ -1,4 +1,4 @@
-"""T15 预付计费策略：确定性选择单个权益，余额只作为体验提示。"""
+"""T15 预付计费策略：只使用票据指定权益，余额只作为体验提示。"""
 
 from __future__ import annotations
 
@@ -37,10 +37,6 @@ class BalanceHint:
 
 
 class EntitlementClient(Protocol):
-    async def list_user_entitlements(
-        self, *, user_id: int
-    ) -> tuple[EntitlementBalance, ...]: ...
-
     async def get_entitlement_balance(
         self, *, entitlement_id: int, user_id: int
     ) -> EntitlementBalance: ...
@@ -65,48 +61,47 @@ class BillingPolicy:
         self.now_factory = now_factory or (lambda: datetime.now(UTC))
 
     async def select_entitlement(
-        self, client: EntitlementClient, *, user_id: int
+        self,
+        client: EntitlementClient,
+        *,
+        user_id: int,
+        entitlement_id: int | None,
     ) -> EntitlementSelection:
-        """过滤active/usable/未过期权益，选单个最早过期且足额的候选。"""
-        now = self._utc(self.now_factory())
-        candidates: list[EntitlementBalance] = []
-        saw_insufficient = False
-        for item in await client.list_user_entitlements(user_id=user_id):
-            if item.user_id != user_id or item.status != "active":
-                continue
-            expiry = self._expiry(item)
-            if expiry is not None and expiry <= now:
-                continue
-            remaining = self._remaining(item)
-            if remaining is not None and remaining < self.reserve_amount:
-                saw_insufficient = True
-                continue
-            if not item.usable:
-                continue
-            candidates.append(item)
-
-        if not candidates:
-            code = (
-                "BILLING_ENTITLEMENT_INSUFFICIENT"
-                if saw_insufficient
-                else "BILLING_ENTITLEMENT_UNAVAILABLE"
+        """只校验墨灵票据指定的权益，禁止在同商品的其他资产间猜选。"""
+        if type(entitlement_id) is not int or entitlement_id <= 0:
+            raise BillingPolicyError(
+                "BILLING_ENTITLEMENT_REQUIRED",
+                "当前会话未绑定可计费权益",
             )
-            message = "可用权益额度不足" if saw_insufficient else "当前商品没有可用权益"
-            raise BillingPolicyError(code, message)
-
-        selected = min(
-            candidates,
-            key=lambda item: (
-                self._expiry(item) or datetime.max.replace(tzinfo=UTC),
-                item.entitlement_id,
-            ),
+        now = self._utc(self.now_factory())
+        selected = await client.get_entitlement_balance(
+            entitlement_id=entitlement_id,
+            user_id=user_id,
         )
+        expiry = self._expiry(selected)
+        if (
+            selected.entitlement_id != entitlement_id
+            or selected.user_id != user_id
+            or selected.status != "active"
+            or not selected.usable
+            or (expiry is not None and expiry <= now)
+        ):
+            raise BillingPolicyError(
+                "BILLING_ENTITLEMENT_UNAVAILABLE",
+                "指定的 PPT 权益当前不可用",
+            )
+        remaining = self._remaining(selected)
+        if remaining is not None and remaining < self.reserve_amount:
+            raise BillingPolicyError(
+                "BILLING_ENTITLEMENT_INSUFFICIENT",
+                "指定的 PPT 权益额度不足",
+            )
         return EntitlementSelection(
             entitlement_id=selected.entitlement_id,
             reserve_amount=self.reserve_amount,
             settle_amount=self.settle_amount,
             unlimited=selected.remaining is None,
-            expires_at=self._expiry(selected),
+            expires_at=expiry,
         )
 
     async def get_balance_hint(

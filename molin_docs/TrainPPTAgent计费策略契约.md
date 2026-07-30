@@ -13,21 +13,21 @@
 
 ## 2. 权益选择矩阵
 
-按以下顺序处理`GET /api/internal/user-entitlements`返回的候选：
+收费任务只接受墨灵 launch ticket 已绑定的 `entitlement_id`：
 
-1. 只接受服务端配置商品；调用方不能用参数跨商品查询。
-2. 响应中的每个`user_id`必须等于请求主体，否则作为平台协议错误拒绝整批数据。
-3. 过滤`status != active`、`usable=false`和已到期权益。
-4. `remaining=null`表示不限量；有限额度必须由单个权益覆盖完整预占额。
-5. 不拆分多个权益；两个各6积分的权益不能组合承担10积分请求。
-6. 足额候选按最早`expires_at`优先，永久权益排最后；到期时间相同按`entitlement_id`升序，保证确定性。
+1. 用户必须从墨灵具体资产的“进入应用”入口启动 TrainPPTAgent；
+2. 墨灵负责校验资产、应用、商品、用户和权益归属，并把目标 `entitlement_id` 写入一次性票据；
+3. TrainPPTAgent 校验票据后把 `entitlement_id` 固化到服务端 Session 和计费任务；
+4. 预占前只读取该权益余额并核对 `user_id`、`status=active`、`usable=true`、未过期和额度足够；
+5. 缺少指定权益时 fail-closed，不再按 `user_id + product_id` 猜选最早到期权益；
+6. 指定权益不足时不拆分、不切换同商品的其他资产、不创建第二次预占。
 
 | 场景 | 结果 |
 |---|---|
-| 无active/usable/未过期权益 | `BILLING_ENTITLEMENT_UNAVAILABLE` |
-| 有有限权益但没有单个足额候选 | `BILLING_ENTITLEMENT_INSUFFICIENT` |
-| 有足额有限权益 | 选最早过期的单个权益 |
-| 只有不限量权益 | 选不限量权益 |
+| 票据未绑定权益 | `BILLING_ENTITLEMENT_REQUIRED`，不创建收费任务 |
+| 指定权益非active/usable或已过期 | `BILLING_ENTITLEMENT_UNAVAILABLE` |
+| 指定权益额度不足 | `BILLING_ENTITLEMENT_INSUFFICIENT` |
+| 指定权益足额或不限量 | 只使用该 `entitlement_id` |
 | 平台原子reserve并发返回`60005` | 映射`BILLING_ENTITLEMENT_INSUFFICIENT`，不得换权益自动重复扣 |
 | 平台返回跨用户/跨权益余额 | `BILLING_PLATFORM_PROTOCOL_ERROR`或客户端协议错误 |
 
@@ -43,7 +43,7 @@
 
 ## 5. T15验证边界
 
-- 自动化选择矩阵覆盖无权益、多个权益、过期、剩余不足、不限量、固定结算上限和平台`60005`。
+- 自动化选择矩阵覆盖票据缺权益、同商品多权益、指定权益过期、剩余不足、不限量、固定结算上限和平台`60005`。
 - 2026-07-23使用现有本地Session主体对真实墨灵执行只读权益列表与余额调用：返回3个权益、3个可用候选并完成1次余额读取；验证脚本只输出数量和布尔值，不输出用户ID、权益ID、额度、令牌或下游正文。
 - 该只读结果不是reserve、settle、release或真实扣费证据；`BILLING_ENABLED`仍为`false`。
 

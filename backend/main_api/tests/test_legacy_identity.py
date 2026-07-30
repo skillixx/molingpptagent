@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from datetime import datetime
 import importlib
+import os
 import sys
 from pathlib import Path
 
@@ -58,13 +59,27 @@ def _request(*, cookie: str | None = None, query: str = "") -> Request:
 
 
 def _load_main_module():
-    """兼容主模块保留的脚本式绝对导入。"""
+    """隔离导入主模块，禁止开发机 .env 和真实数据库污染路由单测。"""
     module_dir = Path(__file__).resolve().parents[1]
+    overrides = {
+        "APP_ENV": "test",
+        "SSO_ENABLED": "false",
+        "PERSISTENCE_ENABLED": "false",
+        "STORAGE_ENABLED": "false",
+        "BILLING_ENABLED": "false",
+    }
+    previous = {key: os.environ.get(key) for key in overrides}
+    os.environ.update(overrides)
     sys.path.insert(0, str(module_dir))
     try:
         return importlib.import_module("backend.main_api.main")
     finally:
         sys.path.remove(str(module_dir))
+        for key, value in previous.items():
+            if value is None:
+                os.environ.pop(key, None)
+            else:
+                os.environ[key] = value
 
 
 def test_sso_resolver_ignores_forged_user_id_and_builds_composite_subject() -> None:

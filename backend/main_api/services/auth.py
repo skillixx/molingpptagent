@@ -75,6 +75,7 @@ class AuthService:
                 user_id=claims.user_id,
                 app_id=claims.app_id,
                 product_id=claims.product_id,
+                entitlement_id=claims.entitlement_id or None,
                 created_at=issued_at,
                 expires_at=expires_at,
                 last_seen_at=issued_at,

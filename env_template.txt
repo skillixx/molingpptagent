@@ -219,7 +219,7 @@ TASK_HANDLER_FACTORY=
 # 计费策略占位符
 #
 # 金额由运营配置决定，不在代码中写死；BILLING_ENABLED=false 时可留空。
-# 第一版固定结算，SETTLE必须小于或等于RESERVE；权益最早过期优先且不拆分。
+# 第一版固定结算，SETTLE必须小于或等于RESERVE；只扣墨灵票据指定权益，不猜选其他资产。
 # ====================================================================
 
 PPT_GENERATION_RESERVE_POINTS=

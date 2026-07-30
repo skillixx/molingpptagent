@@ -47,7 +47,10 @@ def test_verify_ticket_sends_internal_auth_and_returns_matching_claims() -> None
         assert request.read() == b'{"launch_ticket":"lt_one_time"}'
         return httpx.Response(
             200,
-            json={"code": 0, "message": "ok", "data": {"user_id": 9, "app_id": 15, "product_id": 73}},
+            json={"code": 0, "message": "ok", "data": {
+                "user_id": 9, "app_id": 15, "product_id": 73,
+                "entitlement_id": 990306,
+            }},
         )
 
     claims = _run(_client(handler).verify_launch_ticket("lt_one_time"))
@@ -55,6 +58,7 @@ def test_verify_ticket_sends_internal_auth_and_returns_matching_claims() -> None
     assert claims.user_id == 9
     assert claims.app_id == 15
     assert claims.product_id == 73
+    assert claims.entitlement_id == 990306
     assert claims.request_id == "req_test_123"
 
 
@@ -359,13 +363,13 @@ def test_reserve_settle_and_release_use_distinct_idempotency_contracts() -> None
         entitlement_id=8, user_id=9, amount="10", idempotency_key="ppt:t1:reserve"
     ))
     settled = _run(client.settle_entitlement(
-        hold_id="51", actual_amount="8", idempotency_key="ppt:t1:settle"
+        hold_id=51, actual_amount="8", idempotency_key="ppt:t1:settle"
     ))
     released = _run(client.release_entitlement(
-        hold_id="51", idempotency_key="ppt:t1:release"
+        hold_id=51, idempotency_key="ppt:t1:release"
     ))
 
-    assert isinstance(reserved, EntitlementReservation) and reserved.hold_id == "51"
+    assert isinstance(reserved, EntitlementReservation) and reserved.hold_id == 51
     assert isinstance(settled, EntitlementFinalization) and settled.status == "settled"
     assert released.status == "released"
     assert requests == [
@@ -374,12 +378,31 @@ def test_reserve_settle_and_release_use_distinct_idempotency_contracts() -> None
             "idempotency_key": "ppt:t1:reserve",
         }),
         ("/api/internal/entitlement-settle", {
-            "hold_id": "51", "actual_amount": "8", "idempotency_key": "ppt:t1:settle",
+            "hold_id": 51, "actual_amount": "8", "idempotency_key": "ppt:t1:settle",
         }),
         ("/api/internal/entitlement-release", {
-            "hold_id": "51", "idempotency_key": "ppt:t1:release",
+            "hold_id": 51, "idempotency_key": "ppt:t1:release",
         }),
     ]
+
+
+@pytest.mark.parametrize("invalid_hold_id", ["51", 0, -1, True, 9_223_372_036_854_775_808])
+def test_finalize_rejects_non_numeric_or_out_of_range_hold_id(invalid_hold_id: object) -> None:
+    """结算和释放只能发送平台 uint64 兼容范围内的 JSON 整数。"""
+    called = False
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        nonlocal called
+        called = True
+        return httpx.Response(500)
+
+    with pytest.raises(ValueError):
+        _run(_client(handler).settle_entitlement(
+            hold_id=invalid_hold_id,  # type: ignore[arg-type]
+            actual_amount="1",
+            idempotency_key="ppt:t1:settle",
+        ))
+    assert called is False
 
 
 @pytest.mark.parametrize(
@@ -405,9 +428,9 @@ def test_billing_write_response_requires_expected_terminal_fields(action: str, d
             ))
         elif action == "settle":
             _run(client.settle_entitlement(
-                hold_id="51", actual_amount="8", idempotency_key="ppt:t1:settle"
+                    hold_id=51, actual_amount="8", idempotency_key="ppt:t1:settle"
             ))
         else:
             _run(client.release_entitlement(
-                hold_id="51", idempotency_key="ppt:t1:release"
+                    hold_id=51, idempotency_key="ppt:t1:release"
             ))

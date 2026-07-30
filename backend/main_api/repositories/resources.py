@@ -6,7 +6,7 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import Literal
 
-from sqlalchemy import Engine, asc, delete, desc, func, inspect, select, update
+from sqlalchemy import BigInteger, Engine, asc, delete, desc, func, inspect, select, update
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session, sessionmaker
 
@@ -56,6 +56,17 @@ class PresentationRepository(_OwnerRepository):
                 raise PresentationSchemaError("作品数据表迁移未完成")
             task_columns = {column["name"] for column in schema.get_columns("trainppt_generation_tasks")}
             if "dispatch_started_at" not in task_columns:
+                raise PresentationSchemaError("作品数据表迁移未完成")
+            billing_columns = {
+                column["name"]: column["type"]
+                for column in schema.get_columns("trainppt_billing_operations")
+            }
+            if not {"entitlement_id", "hold_id"}.issubset(billing_columns):
+                raise PresentationSchemaError("作品数据表迁移未完成")
+            if not all(
+                isinstance(billing_columns[name], BigInteger)
+                for name in ("entitlement_id", "hold_id")
+            ):
                 raise PresentationSchemaError("作品数据表迁移未完成")
             task_uniques = {
                 constraint["name"]

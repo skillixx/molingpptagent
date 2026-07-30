@@ -23,6 +23,8 @@ class AppSession(Base):
     user_id: Mapped[int] = mapped_column(BigInteger, nullable=False)
     app_id: Mapped[int] = mapped_column(BigInteger, nullable=False)
     product_id: Mapped[int] = mapped_column(BigInteger, nullable=False)
+    # 由墨灵 launch ticket 绑定；空值仅兼容未指定套餐的旧入口。
+    entitlement_id: Mapped[int | None] = mapped_column(BigInteger, nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=False), nullable=False)
     expires_at: Mapped[datetime] = mapped_column(DateTime(timezone=False), nullable=False)
     last_seen_at: Mapped[datetime] = mapped_column(DateTime(timezone=False), nullable=False)

@@ -65,6 +65,8 @@ class LaunchClaims(BaseModel):
     user_id: int = Field(gt=0)
     app_id: int = Field(gt=0)
     product_id: int = Field(gt=0)
+    # 从具体资产进入应用时，墨灵会把该资产对应权益写入一次性票据；0 表示旧入口未指定。
+    entitlement_id: int = Field(default=0, ge=0)
     request_id: str
 
 
@@ -85,20 +87,16 @@ class EntitlementBalance(BaseModel):
 
 
 class _BillingWriteResult(BaseModel):
-    """额度写响应公共字段；hold ID统一转为字符串后再持久化。"""
+    """额度写响应公共字段；平台 Go 契约要求 hold ID 保持正整数。"""
 
     model_config = ConfigDict(frozen=True, extra="ignore")
 
-    hold_id: str
+    hold_id: int = Field(gt=0, le=9_223_372_036_854_775_807)
 
     @field_validator("hold_id", mode="before")
     @classmethod
-    def normalize_hold_id(cls, value: object) -> str:
-        if type(value) is int and value > 0:
-            return str(value)
-        if isinstance(value, str) and 0 < len(value) <= 128 and re.fullmatch(
-            r"[A-Za-z0-9._:-]+", value
-        ):
+    def normalize_hold_id(cls, value: object) -> int:
+        if type(value) is int and 0 < value <= 9_223_372_036_854_775_807:
             return value
         raise ValueError("invalid hold id")
 
@@ -250,7 +248,7 @@ class MolingClient:
     async def settle_entitlement(
         self,
         *,
-        hold_id: str,
+        hold_id: int,
         actual_amount: str,
         idempotency_key: str,
     ) -> EntitlementFinalization:
@@ -281,7 +279,7 @@ class MolingClient:
     async def release_entitlement(
         self,
         *,
-        hold_id: str,
+        hold_id: int,
         idempotency_key: str,
     ) -> EntitlementFinalization:
         """明确失败时释放预占；释放成功必须证明本次结算额为零。"""
@@ -324,10 +322,9 @@ class MolingClient:
             raise ValueError("计费幂等键无效")
 
     @staticmethod
-    def _validate_hold_id(hold_id: str) -> None:
-        if not isinstance(hold_id, str) or not re.fullmatch(
-            r"[A-Za-z0-9._:-]{1,128}", hold_id
-        ):
+    def _validate_hold_id(hold_id: int) -> None:
+        # bool 是 int 的子类，必须用精确类型判断阻止 True 被当成持有单 1。
+        if type(hold_id) is not int or not 0 < hold_id <= 9_223_372_036_854_775_807:
             raise ValueError("计费预占标识无效")
 
     async def _request(

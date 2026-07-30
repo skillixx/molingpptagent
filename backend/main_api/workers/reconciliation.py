@@ -17,11 +17,11 @@ class BillingReplayClient(Protocol):
     """只暴露可安全幂等重放的 settle/release，刻意不提供 reserve。"""
 
     async def settle_entitlement(
-        self, *, hold_id: str, actual_amount: str, idempotency_key: str
+        self, *, hold_id: int, actual_amount: str, idempotency_key: str
     ) -> EntitlementFinalization: ...
 
     async def release_entitlement(
-        self, *, hold_id: str, idempotency_key: str
+        self, *, hold_id: int, idempotency_key: str
     ) -> EntitlementFinalization: ...
 
 
