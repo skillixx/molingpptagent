@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import asyncio
+import json
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
 from pathlib import Path
@@ -21,6 +22,7 @@ from backend.main_api.integrations.moling import (
 from backend.main_api.models.base import Base
 from backend.main_api.models.domain import BillingOperation, GenerationTask, Presentation
 from backend.main_api.repositories.billing import BillingWorkflowRepository
+from backend.main_api.repositories.generation_results import GenerationResultRepository
 from backend.main_api.repositories.resources import PresentationRepository
 from backend.main_api.repositories.tasks import TaskLeaseRepository
 from backend.main_api.schemas.presentations import CreatePresentationRequest
@@ -31,6 +33,7 @@ from backend.main_api.services.generation_orchestrator import (
 )
 from backend.main_api.services.presentations import PresentationService
 from backend.main_api.workers.runner import PersistentTaskWorker
+from backend.main_api.workers.presentation_handler import PresentationGenerationHandler
 
 
 NOW = datetime(2026, 7, 23, 6, 30, 0)
@@ -127,6 +130,19 @@ class ScriptedGenerationHandler:
         if self.probe_error:
             raise RuntimeError("测试持久化探测暂不可用")
         return task.task_id in self.persisted
+
+
+class ScriptedA2AAgent:
+    """为真实业务处理器提供确定性 A2A 分片，不替换本地持久化逻辑。"""
+
+    def __init__(self, chunks: list[dict[str, str]]) -> None:
+        self.chunks = chunks
+        self.calls = 0
+
+    async def generate(self, *args, **kwargs):
+        self.calls += 1
+        for chunk in self.chunks:
+            yield chunk
 
 
 class LocalCommitFailingRepository(BillingWorkflowRepository):
@@ -230,6 +246,81 @@ def test_success_reserves_before_agent_persists_then_settles_once(tmp_path: Path
         assert task.status == "succeeded" and presentation.status == "ready"
         assert asyncio.run(orchestrator.settle_after_success(task_id)) == "settled"
         assert len(client.calls) == 2
+    finally:
+        engine.dispose()
+
+
+def test_real_presentation_handler_completes_billing_task_end_to_end(tmp_path: Path) -> None:
+    """真实处理器必须在同一任务上完成预占、可编辑产物落库和单次结算。"""
+    engine, task_id, client, orchestrator = _fixture(tmp_path)
+    outline_agent = ScriptedA2AAgent([{"type": "text", "text": "# 计费编排\n## 核心流程"}])
+    content_agent = ScriptedA2AAgent([
+        {
+            "type": "text",
+            "text": json.dumps(
+                {
+                    "type": "content",
+                    "data": {
+                        "title": "核心流程",
+                        "items": [{"title": "预占", "text": "生成前冻结积分"}],
+                    },
+                },
+                ensure_ascii=False,
+            ),
+        }
+    ])
+    inner = PresentationGenerationHandler(
+        repository=GenerationResultRepository(engine),
+        outline_factory=lambda _session_id: outline_agent,
+        content_factory=lambda _session_id: content_agent,
+        max_document_bytes=1024 * 1024,
+        now_factory=lambda: NOW,
+    )
+    try:
+        assert asyncio.run(orchestrator.prepare(task_id)) == "reserved"
+        assert _run_worker(engine, BillingTaskHandler(inner=inner, orchestrator=orchestrator)) is True
+
+        presentation, task, operation = _states(engine)
+        document = json.loads(presentation.slides_json)
+        assert outline_agent.calls == content_agent.calls == 1
+        assert client.calls == [
+            ("reserve", f"ppt:{task_id}:reserve"),
+            ("settle", f"ppt:{task_id}:settle"),
+        ]
+        assert operation.status == "settled"
+        assert task.status == "succeeded"
+        assert presentation.status == "ready" and presentation.slide_count == 1
+        assert document["slides"][0]["elements"][0]["type"] == "text"
+    finally:
+        engine.dispose()
+
+
+def test_real_presentation_handler_failure_releases_original_hold(tmp_path: Path) -> None:
+    """正文 Agent 未形成页面时必须释放原持有单，且不得尝试结算或再次预占。"""
+    engine, task_id, client, orchestrator = _fixture(tmp_path)
+    inner = PresentationGenerationHandler(
+        repository=GenerationResultRepository(engine),
+        outline_factory=lambda _session_id: ScriptedA2AAgent(
+            [{"type": "text", "text": "# 计费编排"}]
+        ),
+        content_factory=lambda _session_id: ScriptedA2AAgent(
+            [{"type": "text", "text": "not-json"}]
+        ),
+        max_document_bytes=1024 * 1024,
+        now_factory=lambda: NOW,
+    )
+    try:
+        assert asyncio.run(orchestrator.prepare(task_id)) == "reserved"
+        assert _run_worker(engine, BillingTaskHandler(inner=inner, orchestrator=orchestrator)) is True
+
+        presentation, task, operation = _states(engine)
+        assert client.calls == [
+            ("reserve", f"ppt:{task_id}:reserve"),
+            ("release", f"ppt:{task_id}:release"),
+        ]
+        assert operation.status == "released"
+        assert task.status == "failed" and task.retryable is False
+        assert presentation.status == "failed" and presentation.slide_count == 0
     finally:
         engine.dispose()
 

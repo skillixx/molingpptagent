@@ -10,7 +10,7 @@ from typing import Any
 from sqlalchemy import Engine, Select, exists, func, or_, select, update
 from sqlalchemy.orm import sessionmaker
 
-from ..models.domain import BillingOperation, GenerationTask
+from ..models.domain import BillingOperation, GenerationTask, Presentation
 
 
 @dataclass(frozen=True)
@@ -161,6 +161,8 @@ class TaskLeaseRepository:
                     locked_until=None,
                 )
             )
+            if result.rowcount == 1:
+                self._mark_presentation_failed(db, task_id, now)
             return result.rowcount == 1
 
     def get_for_execution(self, task_id: str, lock_token: str) -> TaskRecord | None:
@@ -326,6 +328,8 @@ class TaskLeaseRepository:
                 )
                 .values(**values)
             )
+            if result.rowcount == 1 and values.get("status") == "failed":
+                self._mark_presentation_failed(db, task.task_id, now)
             return result.rowcount == 1
 
     def renew(self, task_id: str, lock_token: str, locked_until: datetime, now: datetime) -> bool:
@@ -393,7 +397,26 @@ class TaskLeaseRepository:
                 )
                 .values(**values)
             )
+            if result.rowcount == 1 and values.get("status") == "failed":
+                self._mark_presentation_failed(db, task.task_id, now)
             return result.rowcount == 1
+
+    @staticmethod
+    def _mark_presentation_failed(db, task_id: str, now: datetime) -> None:
+        """任务进入最终失败时同步作品状态；可重试任务仍保持生成中。"""
+        task = db.get(GenerationTask, task_id)
+        if task is None:
+            return
+        db.execute(
+            update(Presentation)
+            .where(
+                Presentation.id == task.presentation_id,
+                Presentation.owner_user_id == task.owner_user_id,
+                Presentation.deleted_at.is_(None),
+                Presentation.status == "generating",
+            )
+            .values(status="failed", updated_at=now)
+        )
 
     @staticmethod
     def _record(task: GenerationTask) -> TaskRecord:

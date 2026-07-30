@@ -1,0 +1,164 @@
+name: trainpptagent-uat
+
+services:
+  uat_db:
+    image: mariadb:11.4
+    environment:
+      MARIADB_DATABASE: ${UAT_DB_NAME:?请在 UAT 环境文件中配置 UAT_DB_NAME}
+      MARIADB_USER: ${UAT_DB_USER:?请在 UAT 环境文件中配置 UAT_DB_USER}
+      MARIADB_PASSWORD: ${UAT_DB_PASSWORD:?请在 UAT 环境文件中配置 UAT_DB_PASSWORD}
+      MARIADB_ROOT_PASSWORD: ${UAT_DB_ROOT_PASSWORD:?请在 UAT 环境文件中配置 UAT_DB_ROOT_PASSWORD}
+    volumes:
+      - trainppt_uat_db:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "mariadb-admin ping -h 127.0.0.1 -u$${MARIADB_USER} -p$${MARIADB_PASSWORD} --silent"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+    restart: unless-stopped
+    networks: [trainppt_uat]
+
+  personaldb:
+    build:
+      context: ./backend/personaldb
+      dockerfile: Dockerfile
+      args:
+        PYTHON_BASE_IMAGE: ${UAT_PYTHON_BASE_IMAGE:-python:3.12}
+    env_file: ${UAT_ENV_FILE:-env_uat_template.txt}
+    environment:
+      PERSONALDB_PORT: "9100"
+    expose: ["9100"]
+    restart: unless-stopped
+    networks: [trainppt_uat]
+
+  outline_api:
+    build:
+      context: ./backend/simpleOutline
+      dockerfile: Dockerfile
+      args:
+        PYTHON_BASE_IMAGE: ${UAT_PYTHON_BASE_IMAGE:-python:3.12}
+    env_file: ${UAT_ENV_FILE:-env_uat_template.txt}
+    environment:
+      OUTLINE_API: http://outline_api:10001
+    command: ["python", "main_api.py", "--host", "0.0.0.0", "--port", "10001", "--agent_url", "http://outline_api:10001/"]
+    expose: ["10001"]
+    restart: unless-stopped
+    networks: [trainppt_uat]
+
+  content_api:
+    build:
+      context: ./backend/slide_agent
+      dockerfile: Dockerfile
+      args:
+        PYTHON_BASE_IMAGE: ${UAT_PYTHON_BASE_IMAGE:-python:3.12}
+    env_file: ${UAT_ENV_FILE:-env_uat_template.txt}
+    environment:
+      CONTENT_API: http://content_api:10011
+      PERSONAL_DB: http://personaldb:9100
+    command: ["python", "main_api.py", "--host", "0.0.0.0", "--port", "10011", "--agent_url", "http://content_api:10011/"]
+    expose: ["10011"]
+    depends_on: [personaldb]
+    restart: unless-stopped
+    networks: [trainppt_uat]
+
+  migrate:
+    image: trainpptagent-main-api:uat
+    build:
+      context: .
+      dockerfile: backend/main_api/Dockerfile
+      args:
+        PYTHON_BASE_IMAGE: ${UAT_MAIN_API_BASE_IMAGE:-python:3.12-slim}
+    env_file: ${UAT_ENV_FILE:-env_uat_template.txt}
+    working_dir: /app
+    command: ["alembic", "-c", "alembic.ini", "upgrade", "head"]
+    depends_on:
+      uat_db:
+        condition: service_healthy
+    restart: "no"
+    networks: [trainppt_uat]
+
+  main_api:
+    image: trainpptagent-main-api:uat
+    build:
+      context: .
+      dockerfile: backend/main_api/Dockerfile
+      args:
+        PYTHON_BASE_IMAGE: ${UAT_MAIN_API_BASE_IMAGE:-python:3.12-slim}
+    env_file: ${UAT_ENV_FILE:-env_uat_template.txt}
+    environment:
+      APP_ENV: test
+      HOST: 0.0.0.0
+      SSO_ENABLED: "true"
+      PERSISTENCE_ENABLED: "true"
+      BILLING_ENABLED: ${UAT_BILLING_ENABLED:-false}
+      TASK_WORKER_ENABLED: ${UAT_TASK_WORKER_ENABLED:-false}
+      TASK_HANDLER_FACTORY: backend.main_api.workers.presentation_handler:create_handler
+      OUTLINE_API: http://outline_api:10001
+      CONTENT_API: http://content_api:10011
+      PERSONAL_DB: http://personaldb:9100
+    expose: ["6800"]
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      outline_api:
+        condition: service_started
+      content_api:
+        condition: service_started
+    restart: unless-stopped
+    networks: [trainppt_uat]
+
+  task_worker:
+    image: trainpptagent-main-api:uat
+    profiles: ["worker"]
+    env_file: ${UAT_ENV_FILE:-env_uat_template.txt}
+    environment:
+      APP_ENV: test
+      SSO_ENABLED: "true"
+      PERSISTENCE_ENABLED: "true"
+      BILLING_ENABLED: ${UAT_BILLING_ENABLED:-false}
+      TASK_WORKER_ENABLED: ${UAT_TASK_WORKER_ENABLED:-false}
+      TASK_HANDLER_FACTORY: backend.main_api.workers.presentation_handler:create_handler
+      OUTLINE_API: http://outline_api:10001
+      CONTENT_API: http://content_api:10011
+      PERSONAL_DB: http://personaldb:9100
+    command: ["python", "-m", "backend.main_api.workers.main"]
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      outline_api:
+        condition: service_started
+      content_api:
+        condition: service_started
+    restart: unless-stopped
+    networks: [trainppt_uat]
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        NODE_BASE_IMAGE: ${UAT_NODE_BASE_IMAGE:-node:22-alpine}
+        NGINX_BASE_IMAGE: ${UAT_NGINX_BASE_IMAGE:-nginx:stable-alpine}
+        VITE_SSO_ENABLED: "true"
+        VITE_MOLING_PORTAL_URL: ${UAT_MOLING_PORTAL_URL:?请配置墨灵测试门户地址}
+    environment:
+      SERVER_NAME: ${UAT_SERVER_NAME:?请配置 UAT 服务域名或地址}
+      MAIN_API_UPSTREAM: main_api:6800
+      TRUSTED_PROXY_IP: ${UAT_GATEWAY_IP:-172.30.23.1}
+      NGINX_ENVSUBST_FILTER: "^(SERVER_NAME|MAIN_API_UPSTREAM|TRUSTED_PROXY_IP)$"
+    ports:
+      - "${UAT_BIND_ADDRESS:-127.0.0.1}:${UAT_FRONTEND_PORT:-15778}:80"
+    depends_on: [main_api]
+    restart: unless-stopped
+    networks: [trainppt_uat]
+
+volumes:
+  trainppt_uat_db:
+
+networks:
+  trainppt_uat:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: ${UAT_SUBNET:-172.30.23.0/24}
+          gateway: ${UAT_GATEWAY_IP:-172.30.23.1}

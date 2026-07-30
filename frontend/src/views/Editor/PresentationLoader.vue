@@ -42,7 +42,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, watch } from 'vue'
+import { computed, onBeforeUnmount, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 import { usePresentationEditorStore } from '@/store/presentationEditor'
@@ -56,11 +56,28 @@ const routePresentationId = computed(() => {
   const value = route.params.presentationId
   return typeof value === 'string' ? value : ''
 })
+let statusPollTimer: number | undefined
 
 watch(routePresentationId, presentationId => {
   if (!hasPersistentRoute.value) editorStore.useLegacyMode()
   else void editorStore.load(presentationId)
 }, { immediate: true })
+
+watch(
+  () => [editorStore.loadStatus, editorStore.unavailableStatus, editorStore.requestedId],
+  () => {
+    window.clearTimeout(statusPollTimer)
+    const waiting = editorStore.loadStatus === 'unavailable' && (
+      editorStore.unavailableStatus === 'generating' ||
+      editorStore.unavailableStatus === 'billing_pending'
+    )
+    if (!waiting) return
+    statusPollTimer = window.setTimeout(() => void editorStore.retry(), 4000)
+  },
+  { immediate: true },
+)
+
+onBeforeUnmount(() => window.clearTimeout(statusPollTimer))
 
 const unavailableTitle = computed(() => {
   if (editorStore.unavailableStatus === 'generating') return '作品正在生成'

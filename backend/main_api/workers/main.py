@@ -53,7 +53,11 @@ def load_handler(settings: Settings) -> TaskHandler:
 async def serve(settings: Settings, handler: TaskHandler) -> None:
     """持续轮询数据库；空队列仅短暂等待，不形成 CPU 或数据库热循环。"""
     assert settings.database_url is not None
-    engine = create_verified_database_engine(settings.database_url.get_secret_value())
+    engine = create_verified_database_engine(
+        settings.database_url.get_secret_value(),
+        # 仅测试环境允许独立 SQLite 验收库，生产与预发布仍强制使用 MySQL。
+        allow_sqlite=settings.app_env == "test",
+    )
     worker_id = f"{socket.gethostname()}:{os.getpid()}"
     billing_orchestrator: BillingGenerationOrchestrator | None = None
     reconciliation_worker: BillingReconciliationWorker | None = None

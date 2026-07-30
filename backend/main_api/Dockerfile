@@ -1,4 +1,6 @@
-FROM python:3.12-slim
+# 基础镜像允许隔离 UAT 使用测试机已缓存版本，生产构建仍保持 Python 3.12。
+ARG PYTHON_BASE_IMAGE=python:3.12-slim
+FROM ${PYTHON_BASE_IMAGE}
 
 ENV PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1 \

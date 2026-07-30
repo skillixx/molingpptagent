@@ -7,12 +7,16 @@ from dataclasses import dataclass
 from datetime import datetime, timedelta
 from pathlib import Path
 
+import pytest
+from pydantic import SecretStr
 from sqlalchemy import create_engine, select
 from sqlalchemy.orm import sessionmaker
 
+from backend.main_api.core.config import Settings
 from backend.main_api.models.base import Base
 from backend.main_api.models.domain import GenerationTask, Presentation
 from backend.main_api.repositories.tasks import TaskLeaseRepository
+from backend.main_api.workers import main as worker_main
 from backend.main_api.workers.runner import (
     NonRetryableTaskError,
     PersistentTaskWorker,
@@ -22,6 +26,44 @@ from backend.main_api.workers.runner import (
 
 
 START = datetime(2026, 7, 23, 3, 10, 0)
+
+
+def test_worker_allows_sqlite_only_for_test_runtime(monkeypatch) -> None:
+    """独立 Worker 应与主 API 共用测试 SQLite 边界，且不得放宽其他环境。"""
+
+    captured: list[bool] = []
+
+    class FakeEngine:
+        def dispose(self) -> None:
+            return None
+
+    class StopWorker(Exception):
+        pass
+
+    class FakePersistentWorker:
+        def __init__(self, **_kwargs) -> None:
+            return None
+
+        async def run_once(self) -> bool:
+            raise StopWorker
+
+    def fake_engine(_database_url: str, *, allow_sqlite: bool = False):
+        captured.append(allow_sqlite)
+        return FakeEngine()
+
+    monkeypatch.setattr(worker_main, "create_verified_database_engine", fake_engine)
+    monkeypatch.setattr(worker_main, "TaskLeaseRepository", lambda *_args, **_kwargs: object())
+    monkeypatch.setattr(worker_main, "PersistentTaskWorker", FakePersistentWorker)
+
+    handler = ScriptedHandler("success")
+    for app_env, expected in (("test", True), ("production", False)):
+        settings = Settings(
+            app_env=app_env,
+            database_url=SecretStr("sqlite+pysqlite:///worker.db"),
+        )
+        with pytest.raises(StopWorker):
+            asyncio.run(worker_main.serve(settings, handler))
+        assert captured[-1] is expected
 
 
 class WorkerCrash(BaseException):
@@ -143,6 +185,12 @@ def _task(engine) -> GenerationTask:
         return db.scalar(select(GenerationTask).where(GenerationTask.id == "task-1"))
 
 
+def _presentation(engine) -> Presentation:
+    factory = sessionmaker(engine, expire_on_commit=False)
+    with factory() as db:
+        return db.scalar(select(Presentation).where(Presentation.id == "presentation-1"))
+
+
 def _worker(engine, handler, clock, *, timeout: float = 1.0) -> PersistentTaskWorker:
     return PersistentTaskWorker(
         repository=TaskLeaseRepository(engine),
@@ -200,6 +248,7 @@ def test_crash_after_agent_dispatch_without_result_never_calls_agent_again(tmp_p
         task = _task(engine)
         assert task.status == "failed"
         assert task.last_error_code == "AGENT_OUTCOME_UNKNOWN"
+        assert _presentation(engine).status == "failed"
         assert handler.calls == ["request-stable-1"]
     finally:
         engine.dispose()
@@ -263,6 +312,7 @@ def test_retryable_failure_stops_at_max_attempts_and_becomes_dead_letter(tmp_pat
         assert task.status == "failed"
         assert task.stage == "dead_letter"
         assert task.attempt == 3
+        assert _presentation(engine).status == "failed"
         clock.advance(1000)
         assert asyncio.run(worker.run_once()) is False
         assert len(handler.calls) == 3
@@ -279,6 +329,7 @@ def test_non_retryable_failure_is_terminal_after_first_call(tmp_path: Path) -> N
         worker = _worker(engine, handler, clock)
         assert asyncio.run(worker.run_once()) is True
         assert _task(engine).status == "failed"
+        assert _presentation(engine).status == "failed"
         clock.advance(1000)
         assert asyncio.run(worker.run_once()) is False
         assert len(handler.calls) == 1

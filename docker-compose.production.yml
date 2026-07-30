@@ -73,6 +73,7 @@ services:
       APP_BASE_URL: https://${SERVER_NAME:-ppt.axicomin.cn}
       SESSION_COOKIE_SECURE: "true"
       BILLING_ENABLED: "false"
+      TASK_HANDLER_FACTORY: backend.main_api.workers.presentation_handler:create_handler
       OUTLINE_API: http://outline_api:10001
       CONTENT_API: http://content_api:10011
       PERSONAL_DB: http://personaldb:9100

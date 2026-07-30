@@ -166,6 +166,8 @@ class PresentationService:
                     "language": request.language,
                     "model": request.model,
                     "template_id": request.template_id,
+                    "generate_from_uploaded_file": request.generate_from_uploaded_file,
+                    "generate_from_web_search": request.generate_from_web_search,
                     "billing_mode": billing_mode,
                     "billing_entitlement_id": billing_entitlement_id,
                 },

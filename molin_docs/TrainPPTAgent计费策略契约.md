@@ -18,9 +18,10 @@
 1. 用户必须从墨灵具体资产的“进入应用”入口启动 TrainPPTAgent；
 2. 墨灵负责校验资产、应用、商品、用户和权益归属，并把目标 `entitlement_id` 写入一次性票据；
 3. TrainPPTAgent 校验票据后把 `entitlement_id` 固化到服务端 Session 和计费任务；
-4. 预占前只读取该权益余额并核对 `user_id`、`status=active`、`usable=true`、未过期和额度足够；
-5. 缺少指定权益时 fail-closed，不再按 `user_id + product_id` 猜选最早到期权益；
-6. 指定权益不足时不拆分、不切换同商品的其他资产、不创建第二次预占。
+4. 墨灵 SSO 前端只能通过持久作品创建接口发起生成，禁止使用旧流式接口绕过计费任务；
+5. 预占前只读取该权益余额并核对 `user_id`、`status=active`、`usable=true`、未过期和额度足够；
+6. 缺少指定权益时 fail-closed，不再按 `user_id + product_id` 猜选最早到期权益；
+7. 指定权益不足时不拆分、不切换同商品的其他资产、不创建第二次预占。
 
 | 场景 | 结果 |
 |---|---|

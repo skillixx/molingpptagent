@@ -23,6 +23,8 @@ class TaskExecution:
     input: dict[str, Any]
     attempt: int
     max_attempts: int
+    # 仅由实际 Worker 执行携带；对账器只读探测历史产物时不需要租约令牌。
+    lock_token: str | None = None
 
 
 class TaskHandler(Protocol):
@@ -230,6 +232,7 @@ class PersistentTaskWorker:
             input=payload,
             attempt=record.attempt,
             max_attempts=record.max_attempts,
+            lock_token=record.lock_token,
         )
 
 

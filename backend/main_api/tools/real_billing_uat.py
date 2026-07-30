@@ -11,6 +11,7 @@ from dataclasses import asdict, dataclass
 from datetime import UTC, datetime
 from decimal import Decimal
 from pathlib import Path
+from typing import Literal
 from uuid import uuid4
 
 from dotenv import load_dotenv
@@ -19,7 +20,12 @@ ROOT = Path(__file__).resolve().parents[3]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from backend.main_api.integrations.moling import MolingClient, MolingError
+from backend.main_api.integrations.moling import (
+    MolingClient,
+    MolingError,
+    MolingProtocolError,
+    MolingUnavailableError,
+)
 
 
 @dataclass(frozen=True)
@@ -30,6 +36,7 @@ class UatTarget:
     product_id: int
     amount: int
     max_points: int
+    terminal_action: Literal["settle", "release"] = "settle"
 
 
 @dataclass(frozen=True)
@@ -41,6 +48,7 @@ class UatResult:
     hold_id: int | None
     reserve_key: str | None
     settle_key: str | None
+    release_key: str | None
     status: str
     quota_used_before: str
     quota_used_after: str | None
@@ -62,12 +70,15 @@ def _validate_target(target: UatTarget) -> None:
         raise ValueError("UAT目标参数无效")
     if target.max_points > 3 or target.amount > target.max_points:
         raise ValueError("UAT积分超过授权上限")
+    if target.terminal_action not in {"settle", "release"}:
+        raise ValueError("UAT终态动作无效")
 
 
 def _confirmation(target: UatTarget) -> str:
     return (
         f"asset-{target.asset_id}-entitlement-{target.entitlement_id}"
         f"-amount-{target.amount}-max-{target.max_points}"
+        f"-action-{target.terminal_action}"
     )
 
 
@@ -103,6 +114,7 @@ async def execute_uat(
             hold_id=None,
             reserve_key=None,
             settle_key=None,
+            release_key=None,
             status="ready",
             quota_used_before=before.quota_used,
             quota_used_after=None,
@@ -114,7 +126,7 @@ async def execute_uat(
 
     timestamp = datetime.now(UTC).strftime("%Y%m%d%H%M%S")
     reserve_key = f"uat:ppt:{target.asset_id}:{timestamp}:{uuid4().hex[:12]}:reserve"
-    settle_key = reserve_key.removesuffix(":reserve") + ":settle"
+    action_key = reserve_key.removesuffix(":reserve") + f":{target.terminal_action}"
     amount = str(target.amount)
     try:
         reservation = await client.reserve_entitlement(
@@ -123,7 +135,7 @@ async def execute_uat(
             amount=amount,
             idempotency_key=reserve_key,
         )
-    except MolingError:
+    except (MolingProtocolError, MolingUnavailableError):
         # 预占响应不确定时保留原幂等键，禁止换键重试或继续生成。
         return UatResult(
             mode="real_write",
@@ -133,6 +145,7 @@ async def execute_uat(
             hold_id=None,
             reserve_key=reserve_key,
             settle_key=None,
+            release_key=None,
             status="reserve_pending",
             quota_used_before=before.quota_used,
             quota_used_after=None,
@@ -140,13 +153,19 @@ async def execute_uat(
             quota_reserved_after=None,
         )
     try:
-        finalization = await client.settle_entitlement(
-            hold_id=reservation.hold_id,
-            actual_amount=amount,
-            idempotency_key=settle_key,
-        )
-    except MolingError:
-        # 不确定时既不换权益也不释放，保留原 hold 供同键对账恢复。
+        if target.terminal_action == "settle":
+            finalization = await client.settle_entitlement(
+                hold_id=reservation.hold_id,
+                actual_amount=amount,
+                idempotency_key=action_key,
+            )
+        else:
+            finalization = await client.release_entitlement(
+                hold_id=reservation.hold_id,
+                idempotency_key=action_key,
+            )
+    except (MolingProtocolError, MolingUnavailableError):
+        # 终态响应不确定时不执行另一种终态动作，保留原 hold 和动作键供同键对账。
         return UatResult(
             mode="real_write",
             asset_id=target.asset_id,
@@ -154,8 +173,26 @@ async def execute_uat(
             amount=target.amount,
             hold_id=reservation.hold_id,
             reserve_key=reserve_key,
-            settle_key=settle_key,
+            settle_key=action_key if target.terminal_action == "settle" else None,
+            release_key=action_key if target.terminal_action == "release" else None,
             status="billing_pending",
+            quota_used_before=before.quota_used,
+            quota_used_after=None,
+            quota_reserved_before=before.quota_reserved,
+            quota_reserved_after=None,
+        )
+    except MolingError:
+        # 明确拒绝不等于持有单已关闭；保留原标识供人工核对，禁止自动切换终态动作。
+        return UatResult(
+            mode="real_write",
+            asset_id=target.asset_id,
+            entitlement_id=target.entitlement_id,
+            amount=target.amount,
+            hold_id=reservation.hold_id,
+            reserve_key=reserve_key,
+            settle_key=action_key if target.terminal_action == "settle" else None,
+            release_key=action_key if target.terminal_action == "release" else None,
+            status="finalization_rejected",
             quota_used_before=before.quota_used,
             quota_used_after=None,
             quota_reserved_before=before.quota_reserved,
@@ -176,17 +213,19 @@ async def execute_uat(
             amount=target.amount,
             hold_id=finalization.hold_id,
             reserve_key=reserve_key,
-            settle_key=settle_key,
-            status="settlement_verification_pending",
+            settle_key=action_key if target.terminal_action == "settle" else None,
+            release_key=action_key if target.terminal_action == "release" else None,
+            status="finalization_verification_pending",
             quota_used_before=before.quota_used,
             quota_used_after=None,
             quota_reserved_before=before.quota_reserved,
             quota_reserved_after=None,
         )
-    if Decimal(after.quota_used) - Decimal(before.quota_used) != target.amount:
-        raise RuntimeError("UAT结算后的已用额度变化不符合预期")
+    expected_used_delta = Decimal(target.amount if target.terminal_action == "settle" else 0)
+    if Decimal(after.quota_used) - Decimal(before.quota_used) != expected_used_delta:
+        raise RuntimeError("UAT终态后的已用额度变化不符合预期")
     if Decimal(after.quota_reserved) != Decimal(before.quota_reserved):
-        raise RuntimeError("UAT结算后仍残留本轮新增预占")
+        raise RuntimeError("UAT终态后仍残留本轮新增预占")
     return UatResult(
         mode="real_write",
         asset_id=target.asset_id,
@@ -194,7 +233,8 @@ async def execute_uat(
         amount=target.amount,
         hold_id=finalization.hold_id,
         reserve_key=reserve_key,
-        settle_key=settle_key,
+        settle_key=action_key if target.terminal_action == "settle" else None,
+        release_key=action_key if target.terminal_action == "release" else None,
         status=finalization.status,
         quota_used_before=before.quota_used,
         quota_used_after=after.quota_used,
@@ -229,6 +269,12 @@ def _parser() -> argparse.ArgumentParser:
     parser.add_argument("--product-id", type=int, required=True)
     parser.add_argument("--amount", type=int, required=True)
     parser.add_argument("--max-points", type=int, required=True)
+    parser.add_argument(
+        "--terminal-action",
+        choices=("settle", "release"),
+        default="settle",
+        help="预占后的唯一终态动作；确认文本会绑定该动作",
+    )
     parser.add_argument("--execute", action="store_true")
     parser.add_argument("--confirm")
     return parser
@@ -243,6 +289,7 @@ def main() -> int:
         product_id=args.product_id,
         amount=args.amount,
         max_points=args.max_points,
+        terminal_action=args.terminal_action,
     )
     try:
         result = asyncio.run(execute_uat(
@@ -258,7 +305,7 @@ def main() -> int:
         }, ensure_ascii=False))
         return 1
     print(json.dumps({"verified": True, **asdict(result)}, ensure_ascii=False))
-    return 0 if result.status in {"ready", "settled"} else 2
+    return 0 if result.status in {"ready", "settled", "released"} else 2
 
 
 if __name__ == "__main__":

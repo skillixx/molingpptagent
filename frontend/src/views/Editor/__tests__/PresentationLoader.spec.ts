@@ -1,14 +1,15 @@
 import { createPinia } from 'pinia'
 import { flushPromises, mount } from '@vue/test-utils'
 import { createMemoryHistory, createRouter } from 'vue-router'
-import { beforeEach, describe, expect, it, vi } from 'vitest'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { PresentationApiError, presentationApi } from '@/services/presentations'
+import type * as PresentationServiceModule from '@/services/presentations'
 import PresentationLoader from '@/views/Editor/PresentationLoader.vue'
 
 
 vi.mock('@/services/presentations', async importOriginal => {
-  const original = await importOriginal<typeof import('@/services/presentations')>()
+  const original = await importOriginal<typeof PresentationServiceModule>()
   return { ...original, presentationApi: { ...original.presentationApi, get: vi.fn() } }
 })
 const api = vi.mocked(presentationApi)
@@ -31,11 +32,14 @@ function testRouter() {
 }
 
 beforeEach(() => vi.clearAllMocks())
+afterEach(() => vi.useRealTimers())
 
 describe('PresentationLoader', () => {
   it('直接URL加载成功后才挂载编辑器', async () => {
     let resolveDetail: ((value: typeof detail) => void) | undefined
-    api.get.mockReturnValue(new Promise(resolve => { resolveDetail = resolve }))
+    api.get.mockReturnValue(new Promise(resolve => {
+      resolveDetail = resolve
+    }))
     const router = testRouter()
     await router.push('/editor/presentation-1')
     await router.isReady()
@@ -97,5 +101,27 @@ describe('PresentationLoader', () => {
     await flushPromises()
     expect(wrapper.get('[data-testid="editor-slot"]').text()).toBe('已恢复')
     expect(api.get).toHaveBeenCalledTimes(2)
+  })
+
+  it('生成中作品自动轮询并在就绪后挂载编辑器', async () => {
+    vi.useFakeTimers()
+    api.get
+      .mockResolvedValueOnce({ ...detail, status: 'generating' })
+      .mockResolvedValueOnce(detail)
+    const router = testRouter()
+    await router.push('/editor/presentation-1')
+    await router.isReady()
+    const wrapper = mount(PresentationLoader, {
+      slots: { default: '<div data-testid="editor-slot">生成完成</div>' },
+      global: { plugins: [createPinia(), router] },
+    })
+    await flushPromises()
+
+    expect(wrapper.get('[data-testid="history-unavailable"]').text()).toContain('作品正在生成')
+    await vi.advanceTimersByTimeAsync(4000)
+    await flushPromises()
+    expect(wrapper.get('[data-testid="editor-slot"]').text()).toBe('生成完成')
+    expect(api.get).toHaveBeenCalledTimes(2)
+    wrapper.unmount()
   })
 })

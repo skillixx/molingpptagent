@@ -1,5 +1,6 @@
-# Use an official Python runtime as a parent image
-FROM python:3.12
+# 基础镜像允许隔离 UAT 使用测试机已缓存版本，默认仍保持 Python 3.12。
+ARG PYTHON_BASE_IMAGE=python:3.12
+FROM ${PYTHON_BASE_IMAGE}
 
 # Set the working directory in the container
 WORKDIR /app

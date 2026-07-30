@@ -18,6 +18,8 @@ class CreatePresentationRequest(BaseModel):
     language: str = Field(default="chinese", min_length=1, max_length=32)
     model: str = Field(default="deepseek-chat", min_length=1, max_length=64)
     template_id: str | None = Field(default=None, min_length=1, max_length=64)
+    generate_from_uploaded_file: bool = False
+    generate_from_web_search: bool = True
 
 
 class SaveDraftPresentationRequest(BaseModel):

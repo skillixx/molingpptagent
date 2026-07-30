@@ -27,11 +27,15 @@ Content-Type: application/json
   "content": "生成一份季度经营汇报",
   "language": "chinese",
   "model": "deepseek-chat",
-  "template_id": null
+  "template_id": null,
+  "generate_from_uploaded_file": false,
+  "generate_from_web_search": true
 }
 ```
 
-规则：标题1～255字符，生成内容1～20000字符，模型最多64字符，模板ID最多64字符。额外字段被拒绝，因此客户端不能注入owner、状态、任务ID或计费字段。`Idempotency-Key`在服务端Session用户作用域内唯一：同一owner、同一完整业务载荷的重试返回原作品/任务并令`reused=true`；同一owner复用键但改变标题、正文、语言、模型、模板或计费模式时返回脱敏409；不同owner可以安全使用相同客户端键，各自创建独立记录。
+规则：标题1～255字符，生成内容1～20000字符，模型最多64字符，模板ID最多64字符；两个布尔字段分别控制知识库和网络搜索。额外字段被拒绝，因此客户端不能注入owner、状态、任务ID或计费字段。`Idempotency-Key`在服务端Session用户作用域内唯一：同一owner、同一完整业务载荷的重试返回原作品/任务并令`reused=true`；同一owner复用键但改变标题、正文、语言、模型、模板、搜索模式或计费模式时返回脱敏409；不同owner可以安全使用相同客户端键，各自创建独立记录。
+
+墨灵 SSO 构建下，模板页“生成PPT”必须调用本接口，不能再调用旧 `/tools/aippt` 流式入口绕过持久任务和预占。浏览器在网络重试时复用同一幂等键，创建成功后进入 `/editor/{presentation_id}` 状态页，页面轮询作品状态直至可编辑或明确失败。非 SSO 本地开发仍可保留旧流式路径用于兼容调试。
 
 `BILLING_ENABLED=false`时，作品和非计费任务在同一事务内创建，状态分别为`generating`和`pending/queued`。`BILLING_ENABLED=true`时，作品、任务和一条计费意图在同一事务内创建，状态分别为`billing_pending`、`billing_required/awaiting_reserve`和`planned`；计费意图记录配置商品、预占/结算金额，并以任务ID派生互不相同的reserve、settle、release幂等键。T16不发起平台写调用，Worker也不能领取`billing_required`任务；只有T17预占成功后才能推进到可领取状态。计费状态后续已推进时，相同请求仍复用原任务，不因状态变化误报冲突。
 
@@ -198,5 +202,6 @@ T11起，当前稿标准结构为：
 ## 9. 当前边界
 
 - T09～T14已实现创建、列表、详情、复制、软删除、自动保存、多标签乐观锁、检查点列表与恢复；T20增加同Blob归档、缩略图和历史下载。
-- T09创建的是非计费持久任务；T15～T18才在外层增加权益选择及reserve/settle/release。`BILLING_ENABLED`必须保持`false`。
-- `TASK_WORKER_ENABLED`在T09业务Agent处理器完成真实适配和验收前保持`false`；HTTP 202只证明事务入队，不等于Agent或PPT生成成功。
+- T15～T18已在持久任务外层增加票据权益固化及reserve/settle/release；是否创建计费意图仍由环境开关控制。
+- 真实业务处理器已复用大纲/正文 A2A Agent，并用租约令牌围栏持久化基础可编辑文档；已确认的 Markdown 大纲不会重复调用大纲 Agent。
+- 部署环境在完成对应 Gate 前仍保持`BILLING_ENABLED=false`和`TASK_WORKER_ENABLED=false`；HTTP 202只证明事务入队，不等于Agent、结算或PPT生成成功。

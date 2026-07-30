@@ -90,6 +90,8 @@ import Button from '@/components/Button.vue'
 import Checkbox from '@/components/Checkbox.vue'
 import { isPC } from '@/utils/common'
 import message from '@/utils/message'
+import { authFrontendConfig } from '@/services/authConfig'
+import { PresentationApiError, presentationApi } from '@/services/presentations'
 import {
   assertCompleteSlideGeneration,
   expectedSlideCountFromOutline,
@@ -114,6 +116,7 @@ const model = ref(route.query.model as string)
 const style = ref('通用')
 const img = ref('')
 const selectedTemplate = ref<string>('')
+const persistentRequestId = ref('')
 
 onMounted(async () => {
   await slideStore.fetchTemplates()
@@ -121,12 +124,70 @@ onMounted(async () => {
 })
 const loading = ref(false)
 
+watch([outline, language, model, selectedTemplate], () => {
+  // 用户修改生成意图后必须使用新的幂等键；网络重试则继续复用原键。
+  persistentRequestId.value = ''
+})
+
+const createRequestId = () => {
+  if (persistentRequestId.value) return persistentRequestId.value
+  persistentRequestId.value = typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function'
+    ? crypto.randomUUID()
+    : `ppt-${Date.now()}-${Math.random().toString(36).slice(2)}`
+  return persistentRequestId.value
+}
+
+const presentationTitle = () => {
+  const heading = outline.value.match(/^#\s+(.+)$/m)?.[1]?.trim()
+  return (heading || 'AI 演示文稿').slice(0, 255)
+}
+
+const persistentErrorMessage = (error: unknown) => {
+  if (!(error instanceof PresentationApiError)) return '生成任务创建失败，请稍后重试'
+  if (error.code === 'BILLING_ENTITLEMENT_REQUIRED') return '请从墨灵的 PPT 资产入口重新进入后再生成'
+  if (error.status === 429) return '生成请求过于频繁，请稍后再试'
+  return '生成任务创建失败，请稍后重试'
+}
+
+const createPersistentPPT = async () => {
+  try {
+    const result = await presentationApi.create({
+      title: presentationTitle(),
+      content: outline.value,
+      language: language.value || 'chinese',
+      model: model.value || 'deepseek-chat',
+      templateId: selectedTemplate.value,
+      generateFromUploadedFile: generateFromUploadedFile.value,
+      generateFromWebSearch: generateFromWebSearch.value,
+    }, createRequestId())
+    mainStore.setGenerating(false)
+    message.success(result.reused ? '已恢复原生成任务' : '生成任务已创建')
+    await router.push({
+      name: 'PresentationEditor',
+      params: { presentationId: result.presentation.id },
+    })
+  }
+  catch (error) {
+    mainStore.setGenerating(false)
+    message.error(persistentErrorMessage(error))
+  }
+  finally {
+    loading.value = false
+  }
+}
+
 const createPPT = async () => {
   if (!selectedTemplate.value) return
   mainStore.setGenerating(true)
   loading.value = true
 
   slideStore.resetSlides()
+
+  // 墨灵登录态必须走持久任务，确保 reserve 发生在 Agent 调用之前并由 Worker 统一收尾。
+  if (authFrontendConfig.ssoEnabled) {
+    await createPersistentPPT()
+    return
+  }
 
   const expectedSlideCount = expectedSlideCountFromOutline(outline.value)
   let receivedSlideCount = 0
@@ -139,7 +200,7 @@ const createPPT = async () => {
       model: model.value,
       generateFromUploadedFile: generateFromUploadedFile.value,
       generateFromWebSearch: generateFromWebSearch.value,
-      sessionId: sessionId.value,      // 后端已兼容；或改名 user_id
+      sessionId: sessionId.value, // 后端已兼容；或改名 user_id
     })
     if (!stream.ok || !stream.body) {
       throw new Error('PPT_STREAM_REQUEST_FAILED')
@@ -209,12 +270,14 @@ const createPPT = async () => {
         for (const generatedSlide of slideGenerator) {
           if (isEmptySlide.value) {
             slideStore.setSlides([generatedSlide])
-          } else {
+          }
+          else {
             addSlidesFromDataToEnd([generatedSlide])
           }
           receivedSlideCount += 1
         }
-      } catch (e) {
+      }
+      catch (e) {
         // 如果这条不是完整 JSON（比如后端按“文本片段”流），可以考虑改成累积 JSON 方案
         console.warn('解析 JSON 失败，跳过本条事件：', e, jsonText)
       }
@@ -251,7 +314,8 @@ const createPPT = async () => {
       })
 
     await pump()
-  } catch (error) {
+  }
+  catch (error) {
     loading.value = false
     mainStore.setGenerating(false)
     if (error instanceof GenerationIncompleteError) {

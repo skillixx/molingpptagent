@@ -116,6 +116,26 @@ def test_environment_template_contains_capacity_and_lease_defaults() -> None:
     assert template["TASK_WORKER_ENABLED"] == "false"
     assert template["TASK_AGENT_TIMEOUT_SECONDS"] == "600"
     assert template["TASK_POLL_SECONDS"] == "2"
-    assert template["TASK_HANDLER_FACTORY"] in {None, ""}
+    assert template["TASK_HANDLER_FACTORY"] == (
+        "backend.main_api.workers.presentation_handler:create_handler"
+    )
     assert template["USER_PRESENTATION_LIMIT"] == "100"
     assert template["USER_STORAGE_QUOTA_BYTES"] == str(1024 * 1024 * 1024)
+
+
+def test_uat_templates_are_isolated_and_default_to_closed_billing() -> None:
+    """UAT 部署包必须使用独立数据库命名，并在未授权时保持 Worker 和计费关闭。"""
+    repository_root = Path(__file__).resolve().parents[3]
+    template = dotenv_values(repository_root / "env_uat_template.txt")
+    compose = (repository_root / "docker-compose.uat.yml").read_text(encoding="utf-8")
+
+    assert template["APP_ENV"] == "test"
+    assert template["UAT_DB_NAME"] == "trainppt_uat"
+    assert str(template["DATABASE_URL"]).split("?", 1)[0].endswith("/trainppt_uat")
+    assert template["UAT_BILLING_ENABLED"] == "false"
+    assert template["UAT_TASK_WORKER_ENABLED"] == "false"
+    assert template["TASK_HANDLER_FACTORY"] == (
+        "backend.main_api.workers.presentation_handler:create_handler"
+    )
+    assert "ppt.axicomin.cn" not in compose
+    assert "condition: service_completed_successfully" in compose

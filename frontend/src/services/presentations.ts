@@ -78,6 +78,8 @@ export interface CreatePresentationInput {
   language?: string
   model?: string
   templateId?: string | null
+  generateFromUploadedFile?: boolean
+  generateFromWebSearch?: boolean
 }
 
 export interface SaveDraftPresentationInput {
@@ -330,6 +332,8 @@ export const presentationApi = {
         language: input.language || 'chinese',
         model: input.model || 'deepseek-chat',
         template_id: input.templateId ?? null,
+        generate_from_uploaded_file: input.generateFromUploadedFile ?? false,
+        generate_from_web_search: input.generateFromWebSearch ?? true,
       }),
     })
     if (response.status !== 202) return failure(response)

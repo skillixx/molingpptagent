@@ -32,7 +32,7 @@
 | 仓库 | `main` 与 `origin/main` 当前都在 `32f8a21` | 本轮积分改造尚未提交或推送 |
 | 资产绑定 | 代码已改为读取墨灵入口票据的 `entitlement_id`，并冻结到会话和计费操作 | 不再按用户和商品猜测其他权益 |
 | ID 类型 | `entitlement_id`、`hold_id` 已改为有符号 `BigInteger` 兼容的正整数 | 已有迁移和边界测试，待纳入 Goal 提交 |
-| 自动化 | 后端测试最近一次结果为 `284 passed, 1 warning` | 属于本地自动化证据 |
+| 自动化 | 后端 `319 passed, 1 warning`；前端 `94 passed`；生产构建通过 | 属于本地自动化与构建证据 |
 | 真实直连 UAT | 用户 `479`、资产 `990206`、权益 `990306` 已真实结算 1 积分，持有单 `839` 已终态 | 证明平台接口和目标权益可扣，不等于应用生产闭环已上线 |
 | 生产配置 | `BILLING_ENABLED=false`、`TASK_WORKER_ENABLED=false`，计费金额未配置 | 生产应用仍未启用扣分 |
 | 数据库 | 迁移 `20260730_0008` 尚未应用到生产数据库 | 需要演练和单独生产授权 |
@@ -46,7 +46,7 @@
 
 ```yaml
 project: TrainPPTAgent-Moling-Billing-Closed-Loop
-goal_status: in_progress
+goal_status: verification
 current_goal: BG04
 current_gate: C4
 completed_goals: 3
@@ -56,7 +56,9 @@ remote: origin
 production_billing_enabled: false
 production_worker_enabled: false
 production_migration_applied: false
-last_verified_at: 2026-07-30T14:56:40+08:00
+last_verified_at: 2026-07-30T17:06:00+08:00
+blocked_on: c4_real_billing_matrix_deferred_without_additional_points_or_deployment
+resume_first_step: obtain_insufficient_balance_test_entitlement_and_new_app_billing_uat_authorization
 ```
 
 状态只允许使用：`planned`、`in_progress`、`verification`、`blocked`、`completed`、`rolled_back`。
@@ -263,6 +265,22 @@ Gate C7：观察窗口内无重复扣分、错误权益或陈旧新持有单；�
 - 外部动作：无真实平台写入、无生产迁移、无部署、无墨灵仓库修改。
 - 遗留风险：本阶段证据为本地 SQLite 和 Fake Moling；非生产真实协议、网络超时和双边流水仍由 BG04 验证。
 - 下一 Goal：BG04 非生产集成验收；先发现双方认可的非生产墨灵环境、凭据边界和测试资产。
+
+### BG04 进行中快照
+
+- 状态：`verification`。BG04 开发基线和本地无积分验收完成；Gate C4 的真实计费矩阵仍未全部通过，不计入已完成 Goal。
+- 环境：使用未跟踪私有配置启动 `APP_ENV=test` 的本地 API、前端、Outline Agent、Content Agent、PersonalDB 和 Worker；隔离 SQLite 从空库迁移到 `20260730_0008`。测试 MySQL 仅做只读身份核验，因账号无建库权限未执行迁移；公网生产数据库和服务未修改。
+- 真实 SSO 证据：墨灵测试应用 `15` 的入口曾临时指向本地地址；一次性票据被本地 API 消费，隔离 Session 固化 `479/15/73/990306`，随后入口已恢复原地址。该过程未调用积分写接口。
+- 本地持久任务证据：计费关闭时真实 A2A 任务成功生成 5 页，任务 `succeeded/completed`、作品 `ready`；Worker 完全停止期间创建的任务在新进程启动后恢复并生成 5 页；可控非法输入任务收敛为任务和作品 `failed`。
+- 测试对象存储：使用本次隔离前缀完成写入、摘要一致读取和删除，`storage_roundtrip=passed` 且对象无残留。
+- 本地计费证据：上述成功、重启和失败任务的 `trainppt_billing_operations` 始终为 `0`，任务 API 的 `billing=null`。墨灵只读复核仍为 `quota_used=2053`、`quota_reserved=42`，未增加积分或活动持有单。
+- 仓库改动：真实 UAT 工具增加动作绑定和不确定结果分流；新增真实 A2A 持久任务处理器、结果围栏、失败状态同步、SSO 持久任务前端路径、隔离 UAT Compose/镜像参数和运行手册；独立 Worker 仅在 `APP_ENV=test` 时允许 SQLite。
+- 最终回归：后端 `320 passed, 1 warning`；前端 `94 passed`；生产构建、`vue-tsc`、Python `compileall`、YAML 解析和 `git diff --check` 通过；变更文件 ESLint 为 0 error、2 条既有 warning。当前机器无 Docker CLI，未执行 `docker compose config` 或镜像构建。
+- 真实写入：用户已批准“BG04 测试服真实写入，最多消耗 1 积分”。`hold_id=840` 完成 `reserve 1 -> settle 1`，`quota_used 2052 -> 2053`；`hold_id=841` 完成 `reserve 1 -> release`，已用额度不变；两次预占后 `quota_reserved` 均回到历史基线 `42`。
+- 平台对账：测试数据库只读确认 `840=settled/1`、`841=released/0`，均归属 `479/990306`，本轮新增 `holding` 计数为 `0`。
+- 外部影响：此前真实写入累计消耗 1 积分，已达到授权上限；本轮本地开发验收新增消耗 0。未处理历史持有单，未部署、未迁移生产、未修改墨灵仓库。
+- 当前缺口：缺少归属正确的余额不足测试权益；没有新的积分授权，不能让应用 Worker 执行真实 reserve/settle/release 或制造真实超时待对账；部署按用户要求暂缓。因此 C4-09、C4-10 的真实部分和逐应用任务双边流水仍待验收。
+- 恢复第一步：先取得余额不足测试权益及新的应用计费 UAT 授权，再决定使用本地代理或隔离部署继续；不得把本地无积分任务或 Mock 自动化冒充 Gate C4 完成。
 
 ## 9. 全局停止条件
 

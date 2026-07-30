@@ -220,6 +220,9 @@ def test_create_atomically_persists_owner_presentation_and_task(api) -> None:
         assert task.presentation_id == presentation.id
         assert task.request_id == "create-001"
         assert "季度经营汇报" in task.input_json
+        input_payload = json.loads(task.input_json)
+        assert input_payload["generate_from_uploaded_file"] is False
+        assert input_payload["generate_from_web_search"] is True
 
 
 def test_create_retry_reuses_same_task_and_never_duplicates_rows(api) -> None:

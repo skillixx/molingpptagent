@@ -61,6 +61,10 @@ describe('presentationApi', () => {
     const [, init] = fetchMock.mock.calls[0]
     expect(init.headers).toMatchObject({ 'Idempotency-Key': 'browser-request-1' })
     expect(String(init.body)).not.toContain('owner')
+    expect(JSON.parse(String(init.body))).toMatchObject({
+      generate_from_uploaded_file: false,
+      generate_from_web_search: true,
+    })
   })
 
   it('把临时编辑稿保存为草稿作品且不创建生成任务', async () => {
