@@ -56,9 +56,9 @@ remote: origin
 production_billing_enabled: false
 production_worker_enabled: false
 production_migration_applied: false
-last_verified_at: 2026-07-30T18:47:00+08:00
-blocked_on: production_capacity_values_and_backup_build_migration_deployment_restart_authorization_missing
-resume_first_step: confirm_seven_production_capacity_values_then_authorize_BG05_actions_separately
+last_verified_at: 2026-07-30T18:52:00+08:00
+blocked_on: production_operation_values_and_backup_build_migration_deployment_restart_authorization_missing
+resume_first_step: confirm_nine_production_operation_values_then_authorize_BG05_actions_separately
 ```
 
 状态只允许使用：`planned`、`in_progress`、`verification`、`blocked`、`completed`、`rolled_back`。
@@ -293,8 +293,8 @@ Gate C7：观察窗口内无重复扣分、错误权益或陈旧新持有单；�
 - 预部署加固：增加不可变发布提交校验与健康/Worker 身份；Compose 使用提交镜像标签、OCI revision、API healthcheck，API/Worker 双重固定计费关闭；新增脱敏静态/数据库只读预检和受控一致性备份工具。
 - 发布入口：旧 `deploy.sh` 的 `git reset --hard`、分支切换、开发配置覆盖和错误 Compose 调用已移除；新流程拆分 preflight、backup、build、migrate、deploy、verify、rollback，每个生产动作需要独立精确确认文本，回滚不降级数据库。
 - 本地验证：后端 `335 passed, 1 warning`；前端 `94 passed`；`vue-tsc`、Vite 生产构建、开发客户端扫描、Python `compileall`、Bash 语法、Compose YAML 解析和 Alembic head 均通过。当前机器无 Docker CLI，尚无 Compose config、镜像构建或 Nginx 容器证据。
-- 当前配置阻断：生产私有配置尚缺 `RELEASE_COMMIT`、`RELEASE_CHANNEL=production`，以及七项经运营确认的容量/限流显式值；预检在外部动作前明确退出。
-- 恢复第一步：先确认七项生产运营值，再分别取得生产备份、服务器构建、数据库迁移、部署和服务重启授权。授权不包括开启计费、真实扣分、处理历史持有单、数据库降级或合并 main。
+- 当前配置阻断：生产私有配置尚缺 `RELEASE_COMMIT`、`RELEASE_CHANNEL=production`，以及九项经运营确认的容量、限流和计费策略显式值；预检在外部动作前明确退出。
+- 恢复第一步：先确认九项生产运营值，再分别取得生产备份、服务器构建、数据库迁移、部署和服务重启授权。reserve/settle 值只用于关闭计费时初始化对账器；授权不包括开启计费、真实扣分、处理历史持有单、数据库降级或合并 main。
 
 ## 9. 全局停止条件
 

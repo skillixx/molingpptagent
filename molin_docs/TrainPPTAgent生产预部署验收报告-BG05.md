@@ -24,7 +24,7 @@
 - Worker 启动日志输出相同提交、通道和计费关闭状态，不输出凭据。
 - Compose 使用提交派生镜像标签，并为 API、Worker、前端添加 OCI revision 标签。
 - Main API 增加容器就绪健康检查；Worker profile 固定 `TASK_WORKER_ENABLED=true`，API 与 Worker 均固定 `BILLING_ENABLED=false`。
-- 生产静态预检要求运营容量和限流值显式配置，禁止依赖未确认默认值。
+- 生产静态预检要求运营容量、限流和 reserve/settle 策略值显式配置，禁止依赖未确认默认值；计费仍保持关闭。
 - 数据库预检使用只读事务检查版本、0008 目标列、非法旧计费 ID 和未关闭本地计费操作；任一非终态或人工记录都会阻止 Worker 部署。
 - 备份工具只接受 MySQL，密码仅通过子进程环境传递，备份使用一致性参数、`0600` 权限和流式 SHA-256。
 - `deploy.sh` 拆分为 preflight、backup、build、migrate、deploy、verify、rollback；所有生产动作绑定精确确认文本。
@@ -35,7 +35,7 @@
 | 编号 | 验收项 | 当前状态 | 完成证据 |
 |---|---|---|---|
 | C5-01 | 精确发布提交与干净 release 目录 | 待生产验证 | Git HEAD、镜像标签、容器标签、API、Worker 五方一致 |
-| C5-02 | 生产配置与运营容量值 | 阻塞 | 发布负责人提供七项显式容量/限流值，预检通过 |
+| C5-02 | 生产配置与运营策略值 | 阻塞 | 发布负责人提供七项容量/限流值及 reserve/settle 值，预检通过 |
 | C5-03 | 生产一致性备份 | 未授权 | 备份路径、字节数、SHA-256、离线留存 |
 | C5-04 | 迁移前数据审计 | 待授权窗口复核 | `0007`、非法计费 ID 为 0、目标库身份正确 |
 | C5-05 | 执行 `0007 -> 0008` | 未授权 | Alembic head 与字段类型只读复核 |
@@ -71,7 +71,7 @@ alembic -c alembic.ini heads
 
 BG05 仍需两类人工输入：
 
-1. 运营确认 `PRESENTATION_JSON_MAX_BYTES`、`UPLOAD_FILE_MAX_BYTES`、`EXPORT_PPTX_MAX_BYTES`、`USER_PRESENTATION_LIMIT`、`USER_STORAGE_QUOTA_BYTES`、`RATE_LIMIT_REQUESTS`、`RATE_LIMIT_WINDOW_SECONDS` 的生产值。
+1. 运营确认 `PRESENTATION_JSON_MAX_BYTES`、`UPLOAD_FILE_MAX_BYTES`、`EXPORT_PPTX_MAX_BYTES`、`USER_PRESENTATION_LIMIT`、`USER_STORAGE_QUOTA_BYTES`、`RATE_LIMIT_REQUESTS`、`RATE_LIMIT_WINDOW_SECONDS`、`PPT_GENERATION_RESERVE_POINTS`、`PPT_GENERATION_SETTLE_POINTS` 的生产值。
 2. 分别授权生产备份、服务器构建、数据库迁移、部署和服务重启；授权不得包含开启计费、真实扣分、处理历史持有单或数据库降级。
 
 恢复后严格执行：更新服务器私有 `.env` -> preflight -> backup -> build -> migrate -> deploy -> verify -> 15 分钟观察。任一步身份不一致、备份摘要失败、迁移数据非法、依赖不就绪或计费开关异常，立即停止后续动作。

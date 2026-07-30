@@ -44,6 +44,8 @@ def _valid_environment() -> dict[str, str]:
         "USER_STORAGE_QUOTA_BYTES": "10737418240",
         "RATE_LIMIT_REQUESTS": "30",
         "RATE_LIMIT_WINDOW_SECONDS": "60",
+        "PPT_GENERATION_RESERVE_POINTS": "1",
+        "PPT_GENERATION_SETTLE_POINTS": "1",
     }
 
 
@@ -54,6 +56,24 @@ def test_static_preflight_accepts_versioned_production_with_billing_off() -> Non
     assert settings.release_commit == RELEASE
     assert settings.billing_enabled is False
     assert settings.task_worker_enabled is False
+    assert settings.ppt_generation_reserve_points == 1
+    assert settings.ppt_generation_settle_points == 1
+
+
+@pytest.mark.parametrize(
+    "missing_key",
+    ("PPT_GENERATION_RESERVE_POINTS", "PPT_GENERATION_SETTLE_POINTS"),
+)
+def test_static_preflight_requires_billing_policy_even_while_billing_is_off(
+    missing_key: str,
+) -> None:
+    values = _valid_environment()
+    values.pop(missing_key)
+
+    with pytest.raises(RuntimeError) as exc_info:
+        validate_static_environment(values, expected_release=RELEASE)
+
+    assert missing_key in str(exc_info.value)
 
 
 def test_static_preflight_rejects_missing_capacity_and_release_mismatch_without_secrets() -> None:

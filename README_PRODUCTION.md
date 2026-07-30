@@ -42,9 +42,11 @@ USER_PRESENTATION_LIMIT=<已确认值>
 USER_STORAGE_QUOTA_BYTES=<已确认值>
 RATE_LIMIT_REQUESTS=<已确认值>
 RATE_LIMIT_WINDOW_SECONDS=<已确认值>
+PPT_GENERATION_RESERVE_POINTS=<已确认值>
+PPT_GENERATION_SETTLE_POINTS=<已确认值>
 ```
 
-本阶段不要求填写计费金额，也不得开启计费。生产入口、网段和网关仍需核对：
+两项计费策略值用于让关闭计费时的对账器具备完整运行配置；`BILLING_ENABLED=false` 仍会阻止新收费任务和新 reserve。生产入口、网段和网关仍需核对：
 
 ```dotenv
 SERVER_NAME=ppt.axicomin.cn
@@ -69,7 +71,7 @@ export EXPECTED_DB_VERSION="20260723_0007"
 预检必须证明：
 
 1. 当前 Git HEAD 与 `RELEASE_COMMIT` 完全一致且已跟踪工作区干净。
-2. 配置完整、容量值显式、发布通道为 production、计费关闭。
+2. 配置完整、容量/限流/计费策略值显式、发布通道为 production、计费关闭。
 3. Compose 可解析，API 与 Worker 使用同一不可变镜像标签。
 4. 生产数据库名正确、迁移版本符合预期、0008 迁移前计费数值 ID 全部合法。
 5. 只读事务完成后回滚，不输出数据库 URL、用户名、密码、Token 或业务明细。

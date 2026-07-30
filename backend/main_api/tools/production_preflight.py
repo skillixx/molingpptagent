@@ -24,7 +24,7 @@ from backend.main_api.core.db import DatabaseConnectionError, create_verified_da
 EXPECTED_HEAD = "20260730_0008"
 EXPECTED_PREVIOUS = "20260723_0007"
 _MAX_SIGNED_BIGINT = 9_223_372_036_854_775_807
-_REQUIRED_EXPLICIT_CAPACITY_KEYS = (
+_REQUIRED_EXPLICIT_OPERATION_KEYS = (
     "PRESENTATION_JSON_MAX_BYTES",
     "UPLOAD_FILE_MAX_BYTES",
     "EXPORT_PPTX_MAX_BYTES",
@@ -32,6 +32,8 @@ _REQUIRED_EXPLICIT_CAPACITY_KEYS = (
     "USER_STORAGE_QUOTA_BYTES",
     "RATE_LIMIT_REQUESTS",
     "RATE_LIMIT_WINDOW_SECONDS",
+    "PPT_GENERATION_RESERVE_POINTS",
+    "PPT_GENERATION_SETTLE_POINTS",
 )
 
 
@@ -64,7 +66,7 @@ def validate_static_environment(
         errors.append("BG05 必须保持 BILLING_ENABLED=false")
     if str(values.get("TASK_WORKER_ENABLED", "")).strip().lower() != "false":
         errors.append("环境文件必须保持 TASK_WORKER_ENABLED=false，由受控 Worker profile 覆盖")
-    for key in _REQUIRED_EXPLICIT_CAPACITY_KEYS:
+    for key in _REQUIRED_EXPLICIT_OPERATION_KEYS:
         if not str(values.get(key, "")).strip():
             errors.append(f"{key} 必须使用已确认的生产显式值")
 
