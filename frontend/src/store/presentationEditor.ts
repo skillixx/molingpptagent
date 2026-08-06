@@ -31,21 +31,29 @@ export const usePresentationEditorStore = defineStore('presentationEditor', {
       useSlidesStore().clearPresentationContext()
     },
 
-    async load(presentationId: string) {
+    async load(presentationId: string, options: { background?: boolean } = {}) {
       const epoch = ++this.loadEpoch
+      const background = options.background === true && this.requestedId === presentationId
       this.requestedId = presentationId
-      this.unavailableStatus = null
       this.errorCode = null
+      if (!background) this.unavailableStatus = null
       if (!SAFE_PRESENTATION_ID.test(presentationId)) {
         this.loadStatus = 'not_found'
         return
       }
-      this.loadStatus = 'loading'
+      // 自动轮询必须保留当前生成界面，不能每四秒切换到全屏加载态造成闪烁。
+      if (!background) this.loadStatus = 'loading'
 
       try {
         const detail = await presentationApi.get(presentationId)
         if (epoch !== this.loadEpoch) return
         if (detail.status !== 'ready' && detail.status !== 'draft') {
+          if (detail.status === 'generating' && detail.document.slides.length > 0) {
+            // 生成预览只读展示；清除持久作品上下文，避免自动保存提前写回未完成作品。
+            const slidesStore = useSlidesStore()
+            slidesStore.replacePresentation(detail)
+            slidesStore.clearPresentationContext()
+          }
           this.unavailableStatus = detail.status
           this.loadStatus = 'unavailable'
           return
@@ -56,6 +64,12 @@ export const usePresentationEditorStore = defineStore('presentationEditor', {
       }
       catch (error) {
         if (epoch !== this.loadEpoch) return
+        if (background) {
+          this.errorCode = error instanceof PresentationApiError
+            ? error.code
+            : 'PRESENTATION_REQUEST_FAILED'
+          return
+        }
         if (error instanceof PresentationApiError) {
           this.errorCode = error.code
           this.loadStatus = error.status === 404 ? 'not_found' : 'error'
@@ -67,7 +81,7 @@ export const usePresentationEditorStore = defineStore('presentationEditor', {
     },
 
     async retry() {
-      if (this.requestedId) await this.load(this.requestedId)
+      if (this.requestedId) await this.load(this.requestedId, { background: true })
     },
 
     async replaceLoadedDetail(detail: PresentationDetail) {

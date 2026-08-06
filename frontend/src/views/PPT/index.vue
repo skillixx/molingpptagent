@@ -145,6 +145,8 @@ const presentationTitle = () => {
 const persistentErrorMessage = (error: unknown) => {
   if (!(error instanceof PresentationApiError)) return '生成任务创建失败，请稍后重试'
   if (error.code === 'BILLING_ENTITLEMENT_REQUIRED') return '请从墨灵的 PPT 资产入口重新进入后再生成'
+  // 来源配置错误需要明确提示，避免用户把服务端安全拒绝误认为生成模型故障。
+  if (error.code === 'AUTH_ORIGIN_REJECTED') return '当前访问地址未获服务端信任，请联系管理员检查应用地址配置'
   if (error.status === 429) return '生成请求过于频繁，请稍后再试'
   return '生成任务创建失败，请稍后重试'
 }

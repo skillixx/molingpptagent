@@ -25,6 +25,7 @@ function testRouter() {
     history: createMemoryHistory(),
     routes: [
       { path: '/works', name: 'Works', component: { template: '<div />' } },
+      { path: '/', name: 'Outline', component: { template: '<div />' } },
       { path: '/editor', name: 'Editor', component: { template: '<div />' } },
       { path: '/editor/:presentationId', name: 'PresentationEditor', component: { template: '<div />' } },
     ],
@@ -103,9 +104,10 @@ describe('PresentationLoader', () => {
     expect(api.get).toHaveBeenCalledTimes(2)
   })
 
-  it('生成中作品自动轮询并在就绪后挂载编辑器', async () => {
+  it('生成中保留编辑器展示并自动轮询到可编辑状态', async () => {
     vi.useFakeTimers()
     api.get
+      .mockResolvedValueOnce({ ...detail, status: 'generating' })
       .mockResolvedValueOnce({ ...detail, status: 'generating' })
       .mockResolvedValueOnce(detail)
     const router = testRouter()
@@ -117,11 +119,33 @@ describe('PresentationLoader', () => {
     })
     await flushPromises()
 
-    expect(wrapper.get('[data-testid="history-unavailable"]').text()).toContain('作品正在生成')
-    await vi.advanceTimersByTimeAsync(4000)
-    await flushPromises()
     expect(wrapper.get('[data-testid="editor-slot"]').text()).toBe('生成完成')
+    expect(wrapper.get('[data-testid="history-generating"]').text()).toContain('AI 正在生成 PPT')
+    await vi.advanceTimersByTimeAsync(4000)
+    // 状态未变化时仍必须继续安排下一次轮询，不能停在空白生成页。
+    expect(wrapper.get('[data-testid="history-generating"]').exists()).toBe(true)
+    expect(wrapper.find('[data-testid="history-loading"]').exists()).toBe(false)
     expect(api.get).toHaveBeenCalledTimes(2)
+    await vi.advanceTimersByTimeAsync(4000)
+    expect(wrapper.get('[data-testid="editor-slot"]').text()).toBe('生成完成')
+    expect(wrapper.find('[data-testid="history-generating"]').exists()).toBe(false)
+    expect(api.get).toHaveBeenCalledTimes(3)
     wrapper.unmount()
+  })
+
+  it('生成失败说明原因并可返回生成入口', async () => {
+    api.get.mockResolvedValue({ ...detail, status: 'failed' })
+    const router = testRouter()
+    await router.push('/editor/presentation-1')
+    await router.isReady()
+    const wrapper = mount(PresentationLoader, {
+      global: { plugins: [createPinia(), router] },
+    })
+    await flushPromises()
+
+    expect(wrapper.get('[data-testid="history-unavailable"]').text()).toContain('这次生成没有完成')
+    await wrapper.get('[data-testid="restart-generation"]').trigger('click')
+    await flushPromises()
+    expect(router.currentRoute.value.name).toBe('Outline')
   })
 })

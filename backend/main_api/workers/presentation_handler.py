@@ -7,6 +7,7 @@ import html
 import json
 import re
 from datetime import datetime
+from pathlib import Path
 from typing import Any, AsyncIterator, Callable, Protocol
 from uuid import NAMESPACE_URL, uuid5
 
@@ -18,6 +19,7 @@ from ..core.db import create_verified_database_engine
 from ..outline_client import A2AOutlineClientWrapper
 from ..repositories.generation_results import GenerationResultRepository
 from .runner import NonRetryableTaskError, RetryableTaskError, TaskExecution
+from .template_renderer import PresentationTemplateRenderer, TemplateRenderError
 
 
 class AgentWrapper(Protocol):
@@ -37,12 +39,14 @@ class PresentationGenerationHandler:
         outline_factory: WrapperFactory,
         content_factory: WrapperFactory,
         max_document_bytes: int,
+        template_renderer: PresentationTemplateRenderer | None = None,
         now_factory: Callable[[], datetime] = datetime.utcnow,
     ) -> None:
         self.repository = repository
         self.outline_factory = outline_factory
         self.content_factory = content_factory
         self.max_document_bytes = max_document_bytes
+        self.template_renderer = template_renderer
         self.now_factory = now_factory
 
     async def execute(self, task: TaskExecution) -> None:
@@ -65,6 +69,13 @@ class PresentationGenerationHandler:
                 task.owner_user_id,
                 generate_from_uploaded_file=payload["generate_from_uploaded_file"],
                 generate_from_web_search=payload["generate_from_web_search"],
+                on_slide=lambda slides: self._persist_preview(
+                    task,
+                    title=payload["title"],
+                    template_id=payload["template_id"],
+                    outline=outline,
+                    semantic_slides=slides,
+                ),
             )
         except (httpx.TimeoutException, httpx.NetworkError):
             raise RetryableTaskError("AGENT_UNAVAILABLE", "Agent 暂时不可用") from None
@@ -76,6 +87,7 @@ class PresentationGenerationHandler:
 
         document = self._render_document(
             title=payload["title"],
+            template_id=payload["template_id"],
             semantic_slides=semantic_slides,
             task_id=task.task_id,
         )
@@ -99,12 +111,19 @@ class PresentationGenerationHandler:
     def _validate_input(task: TaskExecution) -> dict[str, Any]:
         if task.input.get("operation") != "generate_presentation":
             raise NonRetryableTaskError("TASK_OPERATION_UNSUPPORTED", "任务操作不受支持")
-        values: dict[str, str] = {}
+        values: dict[str, Any] = {}
         for key in ("title", "content", "language"):
             value = task.input.get(key)
             if not isinstance(value, str) or not value.strip():
                 raise NonRetryableTaskError("TASK_INPUT_INVALID", "任务输入不完整")
             values[key] = value.strip()
+        template_id = task.input.get("template_id")
+        if template_id is not None and (
+            not isinstance(template_id, str)
+            or re.fullmatch(r"template_[1-9][0-9]*", template_id) is None
+        ):
+            raise NonRetryableTaskError("TASK_TEMPLATE_INVALID", "任务模板无效")
+        values["template_id"] = template_id
         for key, default in (
             ("generate_from_uploaded_file", False),
             ("generate_from_web_search", True),
@@ -149,6 +168,7 @@ class PresentationGenerationHandler:
         *,
         generate_from_uploaded_file: bool,
         generate_from_web_search: bool,
+        on_slide: Callable[[list[dict[str, Any]]], Any] | None = None,
     ) -> list[dict[str, Any]]:
         slides: list[dict[str, Any]] = []
         search_engine: list[str] = []
@@ -167,11 +187,52 @@ class PresentationGenerationHandler:
             parsed = cls._parse_semantic_slide(chunk["text"])
             if parsed is not None:
                 slides.append(parsed)
+                if on_slide is not None:
+                    await on_slide(list(slides))
         if not slides:
             raise RetryableTaskError("CONTENT_RESULT_EMPTY", "正文 Agent 未返回有效页面")
         if len(slides) > 200:
             raise NonRetryableTaskError("CONTENT_RESULT_TOO_MANY_SLIDES", "生成页数超过限制")
         return slides
+
+    async def _persist_preview(
+        self,
+        task: TaskExecution,
+        *,
+        title: str,
+        template_id: str | None,
+        outline: str,
+        semantic_slides: list[dict[str, Any]],
+    ) -> None:
+        """收到完整页面后立即发布只读预览，最终完成前不开放编辑。"""
+        document = self._render_document(
+            title=title,
+            template_id=template_id,
+            semantic_slides=semantic_slides,
+            task_id=task.task_id,
+        )
+        encoded = json.dumps(document, ensure_ascii=False, separators=(",", ":"))
+        if len(encoded.encode("utf-8")) > self.max_document_bytes:
+            raise NonRetryableTaskError("GENERATION_RESULT_TOO_LARGE", "生成结果超过作品大小限制")
+        expected = self._expected_slide_count(outline)
+        progress = min(95, max(5, int(len(semantic_slides) / max(expected, 1) * 100)))
+        persisted = await asyncio.to_thread(
+            self.repository.persist_progress,
+            task,
+            slides_json=encoded,
+            slide_count=len(semantic_slides),
+            progress=progress,
+            now=self.now_factory(),
+        )
+        if not persisted:
+            raise NonRetryableTaskError("GENERATION_RESULT_FENCED", "生成预览未通过当前任务租约校验")
+
+    @staticmethod
+    def _expected_slide_count(outline: str) -> int:
+        """按既有大纲规则估算总页数，仅用于展示单调递增的近似进度。"""
+        section_count = len(re.findall(r"(?m)^##\s+\S", outline))
+        content_count = len(re.findall(r"(?m)^###\s+\S", outline))
+        return 1 + (1 if section_count else 0) + section_count + content_count + 1
 
     @staticmethod
     def _parse_semantic_slide(raw: str) -> dict[str, Any] | None:
@@ -186,8 +247,32 @@ class PresentationGenerationHandler:
             return None
         return value
 
-    @classmethod
     def _render_document(
+        self,
+        *,
+        title: str,
+        template_id: str | None,
+        semantic_slides: list[dict[str, Any]],
+        task_id: str,
+    ) -> dict[str, Any]:
+        if template_id and self.template_renderer is not None:
+            try:
+                return self.template_renderer.render(
+                    template_id=template_id,
+                    semantic_slides=semantic_slides,
+                    task_id=task_id,
+                    fallback_title=title,
+                )
+            except TemplateRenderError:
+                raise NonRetryableTaskError("TASK_TEMPLATE_INVALID", "任务模板无法使用") from None
+        return self._render_basic_document(
+            title=title,
+            semantic_slides=semantic_slides,
+            task_id=task_id,
+        )
+
+    @classmethod
+    def _render_basic_document(
         cls,
         *,
         title: str,
@@ -353,6 +438,7 @@ def create_handler(settings: Settings) -> PresentationGenerationHandler:
             agent_url=settings.content_api,
         ),
         max_document_bytes=settings.presentation_json_max_bytes,
+        template_renderer=PresentationTemplateRenderer(Path(__file__).resolve().parents[1] / "template"),
     )
 
 

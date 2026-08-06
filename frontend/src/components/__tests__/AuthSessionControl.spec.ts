@@ -26,11 +26,12 @@ beforeEach(() => {
 })
 
 describe('AuthSessionControl', () => {
-  it('以紧凑且可访问的账号操作区展示退出按钮', () => {
+  it('隐藏用户信息并仅展示可访问的退出按钮', () => {
     const wrapper = mount(AuthSessionControl)
 
-    expect(wrapper.get('.identity-label').text()).toBe('墨灵用户')
-    expect(wrapper.get('.identity-value').text()).toBe('9')
+    expect(wrapper.text()).not.toContain('墨灵用户')
+    expect(wrapper.text()).not.toContain('9')
+    expect(wrapper.find('.identity').exists()).toBe(false)
     expect(wrapper.get('.logout-button').attributes('aria-label')).toBe('退出当前账号')
     expect(wrapper.get('.logout-button-icon').attributes('aria-hidden')).toBe('true')
   })

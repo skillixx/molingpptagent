@@ -16,6 +16,7 @@ from backend.main_api.models.domain import GenerationTask, Presentation
 from backend.main_api.repositories.generation_results import GenerationResultRepository
 from backend.main_api.workers.presentation_handler import PresentationGenerationHandler
 from backend.main_api.workers.runner import NonRetryableTaskError, RetryableTaskError, TaskExecution
+from backend.main_api.workers.template_renderer import PresentationTemplateRenderer
 
 
 NOW = datetime(2026, 7, 30, 9, 0, 0)
@@ -89,21 +90,25 @@ def _execution(
     content: str = "请生成一份积分闭环介绍",
     generate_from_uploaded_file: bool = False,
     generate_from_web_search: bool = True,
+    template_id: str | None = None,
 ) -> TaskExecution:
+    task_input = {
+        "operation": "generate_presentation",
+        "title": "积分闭环测试",
+        "content": content,
+        "language": "chinese",
+        "model": "deepseek-chat",
+        "generate_from_uploaded_file": generate_from_uploaded_file,
+        "generate_from_web_search": generate_from_web_search,
+    }
+    if template_id is not None:
+        task_input["template_id"] = template_id
     return TaskExecution(
         task_id="task-1",
         presentation_id="presentation-1",
         owner_user_id=479,
         request_id="request-1",
-        input={
-            "operation": "generate_presentation",
-            "title": "积分闭环测试",
-            "content": content,
-            "language": "chinese",
-            "model": "deepseek-chat",
-            "generate_from_uploaded_file": generate_from_uploaded_file,
-            "generate_from_web_search": generate_from_web_search,
-        },
+        input=task_input,
         attempt=1,
         max_attempts=3,
         lock_token=lock_token,
@@ -163,6 +168,10 @@ def test_handler_calls_both_agents_and_persists_editable_document(tmp_path: Path
             assert document["schema_version"] == 1
             assert document["slides"][0]["elements"][0]["type"] == "text"
             assert "积分闭环" in document["slides"][0]["elements"][0]["content"]
+            task = db.scalar(select(GenerationTask))
+            assert task is not None
+            assert task.stage == "generating"
+            assert 1 <= task.progress <= 95
             assert asyncio.run(handler.has_persisted_result(_execution())) is True
         with factory.begin() as db:
             db.execute(
@@ -173,6 +182,63 @@ def test_handler_calls_both_agents_and_persists_editable_document(tmp_path: Path
         assert asyncio.run(handler.has_persisted_result(_execution())) is True
         assert outline.calls[0][1]["user_id"] == "479"
         assert content.calls[0][1]["metadata"]["user_id"] == "479"
+    finally:
+        engine.dispose()
+
+
+def test_handler_persists_selected_template_design(tmp_path: Path) -> None:
+    engine = _engine(tmp_path)
+    try:
+        _insert_running_task(engine)
+        outline = ScriptedAgent([{"type": "text", "text": "# 毕业答辩\n## 核心成果"}])
+        content = ScriptedAgent(
+            [
+                {
+                    "type": "text",
+                    "text": json.dumps(
+                        {"type": "cover", "data": {"title": "毕业答辩", "text": "成果汇报"}},
+                        ensure_ascii=False,
+                    ),
+                },
+                {
+                    "type": "text",
+                    "text": json.dumps(
+                        {
+                            "type": "content",
+                            "data": {
+                                "title": "核心成果",
+                                "items": [
+                                    {"title": "成果一", "text": "已完成模板渲染"},
+                                    {"title": "成果二", "text": "已完成自动展示"},
+                                    {"title": "成果三", "text": "已完成文字适配"},
+                                ],
+                            },
+                        },
+                        ensure_ascii=False,
+                    ),
+                },
+            ]
+        )
+        handler = PresentationGenerationHandler(
+            repository=GenerationResultRepository(engine),
+            outline_factory=lambda _session_id: outline,
+            content_factory=lambda _session_id: content,
+            max_document_bytes=1024 * 1024,
+            template_renderer=PresentationTemplateRenderer(Path(__file__).resolve().parents[1] / "template"),
+            now_factory=lambda: NOW,
+        )
+
+        asyncio.run(handler.execute(_execution(template_id="template_5")))
+
+        factory = sessionmaker(engine, expire_on_commit=False)
+        with factory() as db:
+            presentation = db.scalar(select(Presentation))
+            assert presentation is not None
+            document = json.loads(presentation.slides_json)
+            assert document["viewport_size"] == 1280
+            assert document["theme"]["themeColors"][0] == "#B42318"
+            assert len(document["slides"][1]["elements"]) >= 16
+            assert "已完成模板渲染" in presentation.slides_json
     finally:
         engine.dispose()
 

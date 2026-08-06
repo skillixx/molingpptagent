@@ -6,8 +6,9 @@ import { ref } from 'vue'
 
 import PPT from '@/views/PPT/index.vue'
 import api from '@/services'
-import { presentationApi } from '@/services/presentations'
+import { PresentationApiError, presentationApi } from '@/services/presentations'
 import type * as PresentationServiceModule from '@/services/presentations'
+import message from '@/utils/message'
 
 
 vi.mock('@/services/authConfig', () => ({ authFrontendConfig: { ssoEnabled: true } }))
@@ -38,6 +39,7 @@ vi.mock('@/utils/message', () => ({
 
 const mockedApi = vi.mocked(api)
 const mockedPresentationApi = vi.mocked(presentationApi)
+const mockedMessage = vi.mocked(message)
 
 function testRouter() {
   return createRouter({
@@ -135,5 +137,27 @@ describe('PPT persistent generation', () => {
       mockedPresentationApi.create.mock.calls[1][1],
     )
     expect(mockedApi.AIPPT_Content).not.toHaveBeenCalled()
+  })
+
+  it('可信来源配置错误时提示管理员检查应用地址', async () => {
+    mockedPresentationApi.create.mockRejectedValueOnce(
+      new PresentationApiError(403, 'AUTH_ORIGIN_REJECTED'),
+    )
+    const router = testRouter()
+    await router.push({
+      name: 'PPT',
+      query: { outline: '# 积分闭环', language: 'chinese', model: 'deepseek-chat' },
+    })
+    await router.isReady()
+    const wrapper = mount(PPT, { global: { plugins: [createPinia(), router] } })
+    await flushPromises()
+
+    await wrapper.get('.btn-primary').trigger('click')
+    await flushPromises()
+
+    expect(mockedMessage.error).toHaveBeenCalledWith(
+      '当前访问地址未获服务端信任，请联系管理员检查应用地址配置',
+    )
+    expect(router.currentRoute.value.name).toBe('PPT')
   })
 })

@@ -89,5 +89,20 @@ describe('usePresentationEditorStore', () => {
     expect(editor.loadStatus).toBe('unavailable')
     expect(editor.unavailableStatus).toBe('generating')
     expect(useSlidesStore().presentationId).toBeNull()
+    expect(useSlidesStore().slides[0].id).toBe('server-slide')
+  })
+
+  it('后台轮询期间保持生成状态且临时网络错误不闪回加载页', async () => {
+    api.get
+      .mockResolvedValueOnce({ ...detail, status: 'generating' })
+      .mockRejectedValueOnce(new PresentationApiError(0))
+    const editor = usePresentationEditorStore()
+
+    await editor.load('presentation-1')
+    await editor.retry()
+
+    expect(editor.loadStatus).toBe('unavailable')
+    expect(editor.unavailableStatus).toBe('generating')
+    expect(editor.errorCode).toBe('PRESENTATION_REQUEST_FAILED')
   })
 })

@@ -65,6 +65,53 @@ class GenerationResultRepository:
             presentation.updated_at = now
             return True
 
+    def persist_progress(
+        self,
+        task: TaskExecution,
+        *,
+        slides_json: str,
+        slide_count: int,
+        progress: int,
+        now: datetime,
+    ) -> bool:
+        """按当前租约保存只读生成预览，不提前把作品标记为可编辑。"""
+        if not task.lock_token or slide_count <= 0 or not 1 <= progress <= 99:
+            return False
+        with self._session_factory.begin() as db:
+            generation_task = db.scalar(
+                select(GenerationTask)
+                .where(
+                    GenerationTask.id == task.task_id,
+                    GenerationTask.presentation_id == task.presentation_id,
+                    GenerationTask.owner_user_id == task.owner_user_id,
+                    GenerationTask.status == "running",
+                    GenerationTask.lock_token == task.lock_token,
+                    GenerationTask.locked_until > now,
+                )
+                .with_for_update()
+            )
+            if generation_task is None:
+                return False
+            presentation = db.scalar(
+                select(Presentation)
+                .where(
+                    Presentation.id == task.presentation_id,
+                    Presentation.owner_user_id == task.owner_user_id,
+                    Presentation.status == "generating",
+                    Presentation.deleted_at.is_(None),
+                )
+                .with_for_update()
+            )
+            if presentation is None:
+                return False
+            presentation.slides_json = slides_json
+            presentation.slide_count = slide_count
+            presentation.updated_at = now
+            generation_task.stage = "generating"
+            generation_task.progress = max(generation_task.progress, progress)
+            generation_task.updated_at = now
+            return True
+
     def has_persisted_result(self, task: TaskExecution) -> bool:
         """只读确认目标作品已经形成结构完整且非空的可编辑文档。"""
         with self._session_factory() as db:

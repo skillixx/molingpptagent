@@ -1,12 +1,6 @@
 <template>
   <aside v-if="authStore.user" class="session-control" aria-label="当前登录会话">
-    <span class="identity" :title="`墨灵用户 ${authStore.user.userId}`">
-      <span class="identity-avatar" aria-hidden="true">墨</span>
-      <span class="identity-copy">
-        <span class="identity-label">墨灵用户</span>
-        <strong class="identity-value">{{ authStore.user.userId }}</strong>
-      </span>
-    </span>
+    <!-- 页面不展示账号标识；登录态仅用于服务端鉴权与作品归属。 -->
     <button
       type="button"
       class="logout-button"
@@ -64,59 +58,14 @@ async function handleLogout() {
   right: 12px;
   max-width: calc(100vw - 24px);
   min-height: 34px;
-  padding: 3px 3px 3px 7px;
+  padding: 3px;
   display: flex;
   align-items: center;
-  gap: 8px;
   border: 1px solid rgba(67, 88, 199, 0.16);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.96);
   box-shadow: 0 4px 14px rgba(24, 36, 92, 0.12);
   backdrop-filter: blur(10px);
-}
-
-.identity {
-  width: 78px;
-  min-width: 0;
-  max-width: 78px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.identity-avatar {
-  width: 24px;
-  height: 24px;
-  flex: 0 0 24px;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  color: #4358c7;
-  background: #eef1ff;
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.identity-copy {
-  min-width: 0;
-  display: grid;
-  line-height: 1.05;
-}
-
-.identity-label {
-  color: #8a93ad;
-  font-size: 9px;
-}
-
-.identity-value {
-  overflow: hidden;
-  color: #3f496c;
-  font-size: 12px;
-  font-weight: 600;
-  text-overflow: ellipsis;
 }
 
 .logout-button {
@@ -191,21 +140,9 @@ async function handleLogout() {
     max-width: calc(100vw - 16px);
   }
 
-  .identity-label {
-    display: none;
-  }
-
-  .identity {
-    width: auto;
-    max-width: 58px;
-  }
 }
 
 @media (max-width: 420px) {
-  .identity-copy {
-    display: none;
-  }
-
   .logout-button {
     min-width: 58px;
     min-height: 32px;
