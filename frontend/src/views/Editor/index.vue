@@ -22,7 +22,6 @@
       {{ archiveRetrying ? '正在重试云端归档…' : '本地已下载，点此重试云端归档' }}
     </button>
     <PresentationAutosaveStatus v-if="slidesStore.presentationId" :engine="engine" mobile />
-    <PresentationVersionPanel v-if="slidesStore.presentationId" :engine="engine" :apply-restored="applyRestoredPresentation" mobile />
     <div v-if="slidesStore.presentationId" class="mobile-basic-editor">
       <label>
         <span>作品标题</span>
@@ -50,7 +49,6 @@
     <div class="pptist-editor">
       <EditorHeader class="layout-header" />
       <PresentationAutosaveStatus v-if="slidesStore.presentationId" :engine="engine" />
-      <PresentationVersionPanel v-if="slidesStore.presentationId" :engine="engine" :apply-restored="applyRestoredPresentation" />
       <div class="layout-content">
         <Thumbnails class="layout-content-left" />
         <div class="layout-content-center">
@@ -111,7 +109,6 @@ import MarkupPanel from './MarkupPanel.vue'
 import Modal from '@/components/Modal.vue'
 import PresentationLoader from './PresentationLoader.vue'
 import PresentationAutosaveStatus from './PresentationAutosaveStatus.vue'
-import PresentationVersionPanel from './PresentationVersionPanel.vue'
 import { shouldUseMobileEditor } from './editorViewport'
 import usePresentationAutosave from '@/hooks/usePresentationAutosave'
 
@@ -125,7 +122,7 @@ const closeExportDialog = () => mainStore.setDialogForExport('')
 
 const remarkHeight = ref(40)
 const isMobile = ref(shouldUseMobileEditor(navigator.userAgent, window.innerWidth))
-const { engine, applyRestoredPresentation } = usePresentationAutosave()
+const { engine } = usePresentationAutosave()
 
 function updateEditorViewport() {
   isMobile.value = shouldUseMobileEditor(navigator.userAgent, window.innerWidth)
