@@ -59,7 +59,7 @@ def test_production_compose_exposes_only_static_frontend_and_has_no_source_mount
     assert '"${FRONTEND_BIND_ADDRESS:-127.0.0.1}:${FRONTEND_PORT:-5778}:80"' in compose
     frontend_block = compose.split("\n  frontend:\n", 1)[1]
     assert "env_file:" not in frontend_block
-    assert compose.count('BILLING_ENABLED: "false"') == 2
+    assert compose.count('BILLING_ENABLED: "${BILLING_ENABLED:-false}"') == 2
     assert 'TASK_WORKER_ENABLED: "true"' in compose
     assert "RELEASE_COMMIT must be a full Git SHA" in compose
     assert "org.opencontainers.image.revision" in compose
@@ -86,6 +86,9 @@ def test_production_runbook_requires_https_migrations_and_keeps_billing_off() ->
     assert "alembic" in runbook.lower()
     assert "BILLING_ENABLED=false" in runbook
     assert "SESSION_COOKIE_SECURE=true" in runbook
+    assert 'BILLING_MODE="on"' in runbook
+    assert "DEPLOY-$RELEASE_COMMIT-BILLING-ON" in runbook
+    assert "不处理历史持有单" in runbook
     for action in ("preflight", "migrate", "deploy", "verify"):
         assert f"./deploy.sh {action}" in runbook
     assert "Vite" in runbook and "HMR" in runbook
@@ -119,9 +122,11 @@ def test_production_script_is_release_pinned_and_splits_irreversible_gates() -> 
     assert "TRAINPPT_IMAGE_TAG 必须等于 RELEASE_COMMIT 前12位" in script
     assert "BACKUP-$EXPECTED_DATABASE-$RELEASE_COMMIT" in script
     assert "MIGRATE-$EXPECTED_DATABASE-20260730_0008-$RELEASE_COMMIT" in script
-    assert "DEPLOY-$RELEASE_COMMIT-BILLING-OFF" in script
+    assert "DEPLOY-$RELEASE_COMMIT-BILLING-$BILLING_LABEL" in script
     assert "ROLLBACK-$RELEASE_COMMIT-TO-$ROLLBACK_COMMIT-BILLING-OFF" in script
     assert "alembic -c alembic.ini upgrade 20260730_0008" in script
-    assert "BILLING_ENABLED=true" not in script
+    assert 'BILLING_ENABLED="true"' in script
+    assert 'BILLING_MODE="${BILLING_MODE:-off}"' in script
+    assert '--expected-billing-enabled "$BILLING_ENABLED"' in script
     assert "production_preflight.py" in script
     assert "verify_release_images" in script

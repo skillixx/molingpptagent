@@ -54,7 +54,8 @@ def _read_environment(path: Path) -> dict[str, str]:
 
 
 def validate_static_environment(
-    values: Mapping[str, str], *, expected_release: str
+    values: Mapping[str, str], *, expected_release: str,
+    expected_billing_enabled: bool = False,
 ) -> Settings:
     """复用应用校验并增加 BG05 的显式运营值和关闭计费约束。"""
     errors: list[str] = []
@@ -62,8 +63,11 @@ def validate_static_environment(
         errors.append("APP_ENV 必须为 production")
     if str(values.get("RELEASE_COMMIT", "")).strip() != expected_release:
         errors.append("RELEASE_COMMIT 与待发布提交不一致")
-    if str(values.get("BILLING_ENABLED", "")).strip().lower() != "false":
-        errors.append("BG05 必须保持 BILLING_ENABLED=false")
+    expected_billing_value = "true" if expected_billing_enabled else "false"
+    if str(values.get("BILLING_ENABLED", "")).strip().lower() != expected_billing_value:
+        errors.append(
+            f"BILLING_ENABLED 必须与发布模式一致，期望 {expected_billing_value}"
+        )
     if str(values.get("TASK_WORKER_ENABLED", "")).strip().lower() != "false":
         errors.append("环境文件必须保持 TASK_WORKER_ENABLED=false，由受控 Worker profile 覆盖")
     for key in _REQUIRED_EXPLICIT_OPERATION_KEYS:
@@ -81,7 +85,7 @@ def validate_static_environment(
         **values,
         "TASK_WORKER_ENABLED": "true",
         "TASK_HANDLER_FACTORY": "backend.main_api.workers.presentation_handler:create_handler",
-        "BILLING_ENABLED": "false",
+        "BILLING_ENABLED": expected_billing_value,
     }
     try:
         load_settings(worker_values)
@@ -174,6 +178,12 @@ def _parser() -> argparse.ArgumentParser:
     parser.add_argument("--env-file", type=Path, required=True)
     parser.add_argument("--expected-release", required=True)
     parser.add_argument(
+        "--expected-billing-enabled",
+        choices=("true", "false"),
+        default="false",
+        help="显式声明本次发布期望的生产计费状态",
+    )
+    parser.add_argument(
         "--expected-db-version",
         choices=(EXPECTED_PREVIOUS, EXPECTED_HEAD),
     )
@@ -184,7 +194,11 @@ def main() -> int:
     args = _parser().parse_args()
     try:
         values = _read_environment(args.env_file)
-        settings = validate_static_environment(values, expected_release=args.expected_release)
+        settings = validate_static_environment(
+            values,
+            expected_release=args.expected_release,
+            expected_billing_enabled=args.expected_billing_enabled == "true",
+        )
         audit = (
             audit_database(settings, expected_version=args.expected_db_version)
             if args.expected_db_version

@@ -13,6 +13,9 @@ RELEASE_COMMIT="${RELEASE_COMMIT:-}"
 TRAINPPT_IMAGE_TAG="${TRAINPPT_IMAGE_TAG:-${RELEASE_COMMIT:0:12}}"
 PYTHON_BIN="${PYTHON_BIN:-python3}"
 COMPOSE_PROJECT="trainpptagent-production"
+BILLING_MODE="${BILLING_MODE:-off}"
+BILLING_ENABLED="false"
+BILLING_LABEL="OFF"
 
 die() {
   printf 'ERROR: %s\n' "$1" >&2
@@ -29,6 +32,19 @@ require_confirmation() {
 }
 
 validate_release_identity() {
+  case "$BILLING_MODE" in
+    on)
+      BILLING_ENABLED="true"
+      BILLING_LABEL="ON"
+      ;;
+    off)
+      BILLING_ENABLED="false"
+      BILLING_LABEL="OFF"
+      ;;
+    *)
+      die "BILLING_MODE 必须是 on 或 off"
+      ;;
+  esac
   [[ "$RELEASE_COMMIT" =~ ^[0-9a-f]{40}$ ]] || die "RELEASE_COMMIT 必须是40位小写Git提交"
   [[ "$TRAINPPT_IMAGE_TAG" == "${RELEASE_COMMIT:0:12}" ]] \
     || die "TRAINPPT_IMAGE_TAG 必须等于 RELEASE_COMMIT 前12位"
@@ -38,7 +54,7 @@ validate_release_identity() {
   git -C "$ROOT_DIR" diff --quiet || die "工作区存在未提交修改"
   git -C "$ROOT_DIR" diff --cached --quiet || die "暂存区存在未提交修改"
   [[ -f "$ENV_FILE" ]] || die "生产环境文件不存在"
-  export RELEASE_COMMIT TRAINPPT_IMAGE_TAG
+  export RELEASE_COMMIT TRAINPPT_IMAGE_TAG BILLING_ENABLED
 }
 
 compose() {
@@ -52,7 +68,8 @@ compose() {
 run_static_preflight() {
   "$PYTHON_BIN" "$ROOT_DIR/backend/main_api/tools/production_preflight.py" \
     --env-file "$ENV_FILE" \
-    --expected-release "$RELEASE_COMMIT"
+    --expected-release "$RELEASE_COMMIT" \
+    --expected-billing-enabled "$BILLING_ENABLED"
   compose config --quiet
 }
 
@@ -61,6 +78,7 @@ run_database_preflight() {
   "$PYTHON_BIN" "$ROOT_DIR/backend/main_api/tools/production_preflight.py" \
     --env-file "$ENV_FILE" \
     --expected-release "$RELEASE_COMMIT" \
+    --expected-billing-enabled "$BILLING_ENABLED" \
     --expected-db-version "$version"
 }
 
@@ -139,7 +157,7 @@ case "$ACTION" in
     verify_release_images
     [[ "${MIGRATION_VERIFIED:-}" == "20260730_0008" ]] || die "缺少迁移完成证据"
     run_database_preflight "20260730_0008"
-    require_confirmation "DEPLOY-$RELEASE_COMMIT-BILLING-OFF"
+    require_confirmation "DEPLOY-$RELEASE_COMMIT-BILLING-$BILLING_LABEL"
     compose up -d --no-build personaldb outline_api content_api main_api frontend
     compose --profile worker up -d --no-build task_worker
     ;;
@@ -168,8 +186,10 @@ for endpoint in ("/api/healthz", "/api/readyz"):
 print(json.dumps({"verified": True, "release_commit": expected_commit}))
 PY
     compose ps
+    expected_log_value="False"
+    [[ "$BILLING_ENABLED" == "true" ]] && expected_log_value="True"
     compose --profile worker logs --no-color --tail=200 task_worker \
-      | grep -F "release=$RELEASE_COMMIT channel=production billing_enabled=False" >/dev/null \
+      | grep -F "release=$RELEASE_COMMIT channel=production billing_enabled=$expected_log_value" >/dev/null \
       || die "Worker 发布身份或计费关闭日志缺失"
     ;;
 
@@ -181,6 +201,8 @@ PY
     [[ "${ROLLBACK_COMMIT:-}" =~ ^[0-9a-f]{40}$ ]] || die "ROLLBACK_COMMIT 无效"
     [[ "${ROLLBACK_IMAGE_TAG:-}" =~ ^[0-9a-f]{12}$ ]] || die "ROLLBACK_IMAGE_TAG 无效"
     require_confirmation "ROLLBACK-$RELEASE_COMMIT-TO-$ROLLBACK_COMMIT-BILLING-OFF"
+    # 回滚只允许关闭计费，避免旧镜像继续接收新的真实扣分任务。
+    export BILLING_ENABLED="false"
     for image in main-api personaldb outline-api content-api frontend; do
       docker image inspect "trainpptagent-$image:$ROLLBACK_IMAGE_TAG" >/dev/null \
         || die "回滚镜像不存在: trainpptagent-$image:$ROLLBACK_IMAGE_TAG"

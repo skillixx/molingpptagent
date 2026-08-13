@@ -218,7 +218,6 @@ def test_storage_and_billing_validate_feature_dependencies() -> None:
     message = str(billing_error.value)
     assert "SSO_ENABLED" in message
     assert "PERSISTENCE_ENABLED" in message
-    assert "TASK_WORKER_ENABLED" in message
 
 
 @pytest.mark.parametrize(
@@ -226,8 +225,6 @@ def test_storage_and_billing_validate_feature_dependencies() -> None:
     [
         ("SSO_ENABLED", "SSO_ENABLED"),
         ("PERSISTENCE_ENABLED", "PERSISTENCE_ENABLED"),
-        ("TASK_WORKER_ENABLED", "TASK_WORKER_ENABLED"),
-        ("TASK_HANDLER_FACTORY", "TASK_HANDLER_FACTORY"),
         ("DATABASE_URL", "DATABASE_URL"),
         ("MOLING_API_BASE_URL", "MOLING_API_BASE_URL"),
         ("INTERNAL_API_TOKEN", "INTERNAL_API_TOKEN"),
@@ -264,6 +261,17 @@ def test_minimal_billing_configuration_is_accepted() -> None:
     assert settings.task_worker_enabled is True
     assert settings.ppt_generation_reserve_points == 1
     assert settings.ppt_generation_settle_points == 1
+
+
+def test_billing_api_configuration_accepts_dedicated_worker_topology() -> None:
+    values = _valid_billing_configuration()
+    values["TASK_WORKER_ENABLED"] = "false"
+    values.pop("TASK_HANDLER_FACTORY")
+
+    settings = load_settings(values)
+
+    assert settings.billing_enabled is True
+    assert settings.task_worker_enabled is False
 
 
 def test_valid_enabled_configuration_is_parsed() -> None:

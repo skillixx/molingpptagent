@@ -63,7 +63,8 @@ services:
       HOST: 0.0.0.0
       APP_BASE_URL: https://${SERVER_NAME:-ppt.axicomin.cn}
       SESSION_COOKIE_SECURE: "true"
-      BILLING_ENABLED: "false"
+      # 生产计费默认关闭，仅允许发布脚本通过显式 BILLING_MODE 覆盖。
+      BILLING_ENABLED: "${BILLING_ENABLED:-false}"
       RELEASE_COMMIT: ${RELEASE_COMMIT:?RELEASE_COMMIT must be a full Git SHA}
       RELEASE_CHANNEL: production
       OUTLINE_API: http://outline_api:10001
@@ -95,7 +96,8 @@ services:
       APP_ENV: production
       APP_BASE_URL: https://${SERVER_NAME:-ppt.axicomin.cn}
       SESSION_COOKIE_SECURE: "true"
-      BILLING_ENABLED: "false"
+      # API 与 Worker 必须使用完全相同的计费开关。
+      BILLING_ENABLED: "${BILLING_ENABLED:-false}"
       TASK_WORKER_ENABLED: "true"
       RELEASE_COMMIT: ${RELEASE_COMMIT:?RELEASE_COMMIT must be a full Git SHA}
       RELEASE_CHANNEL: production

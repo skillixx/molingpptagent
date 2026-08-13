@@ -7,7 +7,7 @@
 - 公网/TLS 终止层只转发到宿主机 `127.0.0.1:5778` 的前端 Nginx。
 - Main API、Outline、Content、PersonalDB 和 Worker 仅在 Docker 网络中暴露端口。
 - `.env` 只保存在服务器，不进入镜像、Git、日志或验收报告。
-- `docker-compose.production.yml` 对 Main API 和 Worker 固定覆盖 `BILLING_ENABLED=false`。
+- `docker-compose.production.yml` 默认保持 `BILLING_ENABLED=false`；只有发布脚本收到显式 `BILLING_MODE=on` 且生产 `.env` 同步为 `true` 时才允许开启。
 - Worker 只通过 `worker` profile 启动；环境文件本身保持 `TASK_WORKER_ENABLED=false`。
 - `deploy.sh` 不执行 `git pull/reset/checkout/clean`，不复制开发配置，不删除容器卷。
 - 发布必须运行在精确的 40 位 `RELEASE_COMMIT` 上，镜像标签、容器标签、API 健康响应和 Worker 日志必须一致。
@@ -124,7 +124,27 @@ export CONFIRM="DEPLOY-$RELEASE_COMMIT-BILLING-OFF"
 ./deploy.sh deploy
 ```
 
-该动作更新 API、Agent、PersonalDB、静态前端并显式启动 Worker profile；`BILLING_ENABLED=false` 不可被 `.env` 覆盖。
+该动作更新 API、Agent、PersonalDB、静态前端并显式启动 Worker profile。默认 `BILLING_MODE=off`，只有下一节定义的显式开启流程才能将 API 与 Worker 同时切换为真实计费。
+
+### 4.5 显式开启真实计费
+
+只有在已经批准真实积分扣除、数据库不存在未关闭计费操作，并确认预占与结算值后，才允许执行：
+
+```bash
+# 生产 .env 必须同时写入以下显式值：
+# BILLING_ENABLED=true
+# PPT_GENERATION_RESERVE_POINTS=1
+# PPT_GENERATION_SETTLE_POINTS=1
+export BILLING_MODE="on"
+export MIGRATION_VERIFIED="20260730_0008"
+export CONFIRM="DEPLOY-$RELEASE_COMMIT-BILLING-ON"
+./deploy.sh deploy
+./deploy.sh verify
+```
+
+`BILLING_MODE=on` 不会绕过配置或数据库门禁。API 与 Worker 使用同一个开关；新任务先预占 1 积分，成功结算 1 积分，失败释放。预检发现任何历史未关闭计费操作时会拒绝启动 Worker，不会自动结算、释放或补偿历史持有单。
+
+若上线验收失败，先将生产 `.env` 恢复为 `BILLING_ENABLED=false`，再以 `BILLING_MODE=off` 和 `DEPLOY-$RELEASE_COMMIT-BILLING-OFF` 重新部署当前镜像。该关闭动作只阻止新收费任务，不处理历史持有单。
 
 ## 5. 发布验证
 

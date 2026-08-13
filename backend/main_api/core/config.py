@@ -397,9 +397,8 @@ def load_settings(environ: Mapping[str, str] | None = None) -> Settings:
             errors.append("BILLING_ENABLED=true 需要 SSO_ENABLED=true")
         if not persistence_enabled:
             errors.append("BILLING_ENABLED=true 需要 PERSISTENCE_ENABLED=true")
-        if not task_worker_enabled:
-            # 收费任务只能由持久Worker完成预占和后置结算，禁止开启后永久滞留待计费。
-            errors.append("BILLING_ENABLED=true 需要 TASK_WORKER_ENABLED=true")
+        # API 与独立 Worker 可以使用同一份计费策略但不同进程开关。
+        # 生产发布预检会额外验证 Worker profile 确实以 TASK_WORKER_ENABLED=true 启动。
         # 金额由运营配置决定；只有显式开计费时才强制给值，默认始终关闭。
         missing_billing = tuple(
             key

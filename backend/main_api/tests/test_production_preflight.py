@@ -60,6 +60,31 @@ def test_static_preflight_accepts_versioned_production_with_billing_off() -> Non
     assert settings.ppt_generation_settle_points == 1
 
 
+def test_static_preflight_accepts_explicit_billing_on_release() -> None:
+    values = _valid_environment()
+    values["BILLING_ENABLED"] = "true"
+
+    settings = validate_static_environment(
+        values,
+        expected_release=RELEASE,
+        expected_billing_enabled=True,
+    )
+
+    assert settings.billing_enabled is True
+    assert settings.ppt_generation_reserve_points == 1
+    assert settings.ppt_generation_settle_points == 1
+
+
+def test_static_preflight_rejects_billing_state_different_from_release_mode() -> None:
+    values = _valid_environment()
+    values["BILLING_ENABLED"] = "true"
+
+    with pytest.raises(RuntimeError) as exc_info:
+        validate_static_environment(values, expected_release=RELEASE)
+
+    assert "BILLING_ENABLED" in str(exc_info.value)
+
+
 @pytest.mark.parametrize(
     "missing_key",
     ("PPT_GENERATION_RESERVE_POINTS", "PPT_GENERATION_SETTLE_POINTS"),
