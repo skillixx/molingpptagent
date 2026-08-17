@@ -18,7 +18,7 @@ from pathlib import Path
 import pytest
 from fastapi import FastAPI, Header
 from fastapi.testclient import TestClient
-from sqlalchemy import create_engine, func, select
+from sqlalchemy import create_engine, event, func, select
 from sqlalchemy.orm import sessionmaker
 
 from backend.main_api.api.presentations import create_presentations_router
@@ -195,6 +195,55 @@ def test_save_draft_idempotency_is_owner_scoped_and_rejects_changed_payload(api)
     assert changed.json()["code"] == "PRESENTATION_REQUEST_CONFLICT"
     with sessionmaker(engine)() as db:
         assert db.scalar(select(func.count()).select_from(Presentation)) == 2
+
+
+@pytest.mark.parametrize("billing_enabled", [False, True])
+def test_create_flushes_foreign_key_parents_before_children(
+    tmp_path: Path,
+    billing_enabled: bool,
+) -> None:
+    """启用真实外键后，作品必须先于任务和可选计费意图写入。"""
+    engine = create_engine(f"sqlite:///{(tmp_path / 'ordered-create.db').as_posix()}")
+
+    @event.listens_for(engine, "connect")
+    def _enable_foreign_keys(dbapi_connection, _connection_record) -> None:
+        """SQLite 测试显式开启外键，复现 MySQL 的父子写入约束。"""
+        cursor = dbapi_connection.cursor()
+        cursor.execute("PRAGMA foreign_keys=ON")
+        cursor.close()
+
+    Base.metadata.create_all(engine)
+    try:
+        service = PresentationService(
+            PresentationRepository(engine),
+            task_max_attempts=3,
+            user_presentation_limit=None,
+            billing_enabled=billing_enabled,
+            billing_product_id=73 if billing_enabled else None,
+            billing_reserve_points=20 if billing_enabled else None,
+            billing_settle_points=15 if billing_enabled else None,
+        )
+
+        result = service.create(
+            1001,
+            f"foreign-key-order-{billing_enabled}",
+            CreatePresentationRequest(
+                title="外键顺序验证",
+                content="验证作品和生成任务能够原子创建",
+                language="chinese",
+            ),
+            billing_entitlement_id=990306 if billing_enabled else None,
+        )
+
+        with sessionmaker(engine)() as db:
+            assert db.scalar(select(func.count()).select_from(Presentation)) == 1
+            assert db.scalar(select(func.count()).select_from(GenerationTask)) == 1
+            assert db.scalar(select(func.count()).select_from(BillingOperation)) == int(
+                billing_enabled
+            )
+        assert result.task.presentation_id == result.presentation.id
+    finally:
+        engine.dispose()
 
 
 def test_create_atomically_persists_owner_presentation_and_task(api) -> None:

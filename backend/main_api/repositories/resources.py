@@ -106,11 +106,15 @@ class PresentationRepository(_OwnerRepository):
                     db, presentation.owner_user_id, user_presentation_limit
                 )
 
-                records = [presentation, task]
-                if billing_operation is not None:
-                    records.append(billing_operation)
-                db.add_all(records)
+                # ORM 模型没有声明对象关系，单次 add_all 无法保证 MySQL 按外键层级写入。
+                # 仍保持同一事务，但依次 flush 父作品、子任务和可选计费意图，避免外键 1452。
+                db.add(presentation)
                 db.flush()
+                db.add(task)
+                db.flush()
+                if billing_operation is not None:
+                    db.add(billing_operation)
+                    db.flush()
                 return PresentationCreateResult(presentation, task, False)
         except IntegrityError:
             # 并发请求由用户作用域唯一约束判定输赢，败方必须重新核对完整业务载荷。
