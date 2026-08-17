@@ -27,6 +27,90 @@
           <Checkbox v-model:value="generateFromWebSearch">使用网络搜索生成PPT</Checkbox>
         </div>
 
+        <aside
+          v-if="loading && persistentGenerationEnabled"
+          class="generation-status"
+          data-testid="generation-status"
+        >
+          <div class="generation-status__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 3a9 9 0 1 0 9 9"></path>
+              <path d="M12 7v5l3 2"></path>
+            </svg>
+          </div>
+          <div class="generation-status__body">
+            <div class="generation-status__heading">
+              <div>
+                <span class="generation-status__eyebrow">生成流程已启动</span>
+                <h2>正在创建云端任务</h2>
+              </div>
+              <span class="elapsed" data-testid="generation-elapsed" aria-hidden="true">已等待 {{ generationElapsedLabel }}</span>
+            </div>
+            <p
+              class="generation-status__hint"
+              data-testid="generation-hint"
+              role="status"
+              aria-live="polite"
+            >{{ generationHint }}</p>
+
+            <ol class="generation-steps" data-testid="generation-steps" aria-label="生成进度">
+              <li class="complete">
+                <i aria-hidden="true">✓</i>
+                <span><b>模板已确认</b><small>{{ selectedTemplateName }}</small></span>
+              </li>
+              <li class="active" aria-current="step">
+                <i aria-hidden="true">2</i>
+                <span><b>创建云端任务</b><small>正在校验身份并保存生成请求</small></span>
+              </li>
+              <li>
+                <i aria-hidden="true">3</i>
+                <span><b>AI 后台生成</b><small>任务创建后可在编辑器或作品库查看</small></span>
+              </li>
+            </ol>
+
+            <div class="generation-progress" aria-hidden="true"><i></i></div>
+            <div class="generation-status__footer">
+              <span>{{ generationDestinationHint }}</span>
+              <button
+                type="button"
+                class="destination-button"
+                :aria-pressed="generationDestination === 'works'"
+                data-testid="generation-destination"
+                @click="toggleGenerationDestination"
+              >
+                {{ generationDestinationButton }}
+              </button>
+            </div>
+          </div>
+        </aside>
+
+        <aside
+          v-if="navigationFailed"
+          class="generation-status generation-status--success"
+          data-testid="generation-navigation-fallback"
+        >
+          <div class="generation-status__icon" aria-hidden="true">✓</div>
+          <div class="generation-status__body">
+            <div class="generation-status__heading">
+              <div>
+                <span class="generation-status__eyebrow">云端任务已创建</span>
+                <h2>自动跳转未完成</h2>
+              </div>
+            </div>
+            <p class="generation-status__hint" role="status" aria-live="polite">
+              PPT 已在后台正常生成，你可以手动打开编辑器，或前往作品库稍后查看。
+            </p>
+            <div class="generation-fallback-actions">
+              <button type="button" class="destination-button" @click="openCreatedPresentation">
+                打开编辑器
+              </button>
+              <button type="button" class="destination-button destination-button--secondary" @click="openWorks">
+                前往作品库
+              </button>
+            </div>
+          </div>
+        </aside>
+
         <div class="templates-container">
           <div class="templates">
             <div
@@ -55,7 +139,7 @@
 
         <div class="actions">
           <Button class="btn btn-primary" type="primary" :disabled="loading || !selectedTemplate" @click="createPPT()">
-            <span>{{ loading ? '正在生成…' : '生成PPT' }}</span>
+            <span>{{ generationButtonLabel }}</span>
             <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <circle cx="12" cy="12" r="10"></circle>
               <polyline points="12,6 12,12 16,14"></polyline>
@@ -76,7 +160,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted, watch } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { storeToRefs } from 'pinia'
 import api from '@/services'
@@ -117,12 +201,82 @@ const style = ref('通用')
 const img = ref('')
 const selectedTemplate = ref<string>('')
 const persistentRequestId = ref('')
+const persistentGenerationEnabled = authFrontendConfig.ssoEnabled
+const generationElapsedSeconds = ref(0)
+const generationDestination = ref<'editor' | 'works'>('editor')
+const createdPresentationId = ref('')
+const navigationFailed = ref(false)
+let generationTimer: number | undefined
+let componentActive = true
 
 onMounted(async () => {
   await slideStore.fetchTemplates()
   selectedTemplate.value = templates.value?.[0]?.id || ''
 })
 const loading = ref(false)
+
+const selectedTemplateName = computed(() => (
+  templates.value.find(template => template.id === selectedTemplate.value)?.name || '已选模板'
+))
+const generationElapsedLabel = computed(() => {
+  const minutes = Math.floor(generationElapsedSeconds.value / 60)
+  const seconds = generationElapsedSeconds.value % 60
+  return minutes > 0 ? `${minutes} 分 ${seconds} 秒` : `${seconds} 秒`
+})
+const generationHint = computed(() => {
+  if (generationElapsedSeconds.value < 8) {
+    return '正在提交生成请求并等待服务端确认，通常只需要几秒。'
+  }
+  if (generationElapsedSeconds.value < 30) {
+    return '请求已经发出，正在等待服务端确认。请勿重复提交，收到确认后会自动跳转。'
+  }
+  return '等待时间比平时更长，目前尚未收到服务端确认。请检查网络；若请求失败，可使用同一请求安全重试。'
+})
+const generationButtonLabel = computed(() => {
+  if (!loading.value) return '生成PPT'
+  if (!persistentGenerationEnabled) return '正在生成…'
+  return `正在创建任务 · ${generationElapsedLabel.value}`
+})
+const generationDestinationHint = computed(() => generationDestination.value === 'works'
+  ? '任务创建后将前往作品库，生成会继续进行。'
+  : '任务创建后将自动进入编辑器查看实时结果。')
+const generationDestinationButton = computed(() => generationDestination.value === 'works'
+  ? '改为创建后打开编辑器'
+  : '任务创建后去作品库')
+
+const stopGenerationTimer = () => {
+  if (generationTimer !== undefined) window.clearInterval(generationTimer)
+  generationTimer = undefined
+}
+
+const startGenerationTimer = () => {
+  stopGenerationTimer()
+  generationElapsedSeconds.value = 0
+  generationTimer = window.setInterval(() => {
+    generationElapsedSeconds.value += 1
+  }, 1000)
+}
+
+const toggleGenerationDestination = () => {
+  generationDestination.value = generationDestination.value === 'editor' ? 'works' : 'editor'
+}
+
+onBeforeUnmount(() => {
+  componentActive = false
+  stopGenerationTimer()
+})
+
+const openCreatedPresentation = async () => {
+  if (!createdPresentationId.value) return
+  await router.push({
+    name: 'PresentationEditor',
+    params: { presentationId: createdPresentationId.value },
+  })
+}
+
+const openWorks = async () => {
+  await router.push({ name: 'Works' })
+}
 
 watch([outline, language, model, selectedTemplate], () => {
   // 用户修改生成意图后必须使用新的幂等键；网络重试则继续复用原键。
@@ -152,8 +306,9 @@ const persistentErrorMessage = (error: unknown) => {
 }
 
 const createPersistentPPT = async () => {
+  let result: Awaited<ReturnType<typeof presentationApi.create>>
   try {
-    const result = await presentationApi.create({
+    result = await presentationApi.create({
       title: presentationTitle(),
       content: outline.value,
       language: language.value || 'chinese',
@@ -162,24 +317,39 @@ const createPersistentPPT = async () => {
       generateFromUploadedFile: generateFromUploadedFile.value,
       generateFromWebSearch: generateFromWebSearch.value,
     }, createRequestId())
-    mainStore.setGenerating(false)
-    message.success(result.reused ? '已恢复原生成任务' : '生成任务已创建')
-    await router.push({
-      name: 'PresentationEditor',
-      params: { presentationId: result.presentation.id },
-    })
   }
   catch (error) {
     mainStore.setGenerating(false)
     message.error(persistentErrorMessage(error))
+    return
   }
   finally {
+    stopGenerationTimer()
     loading.value = false
+  }
+
+  // 用户等待期间可能主动离开页面，此时任务可以继续，但不应再强制把用户拉回。
+  if (!componentActive) return
+
+  createdPresentationId.value = result.presentation.id
+  mainStore.setGenerating(false)
+  message.success(result.reused ? '已恢复原生成任务' : '生成任务已创建')
+
+  try {
+    if (generationDestination.value === 'works') await openWorks()
+    else await openCreatedPresentation()
+  }
+  catch {
+    // 任务创建与页面导航是两个结果；导航失败时必须保留成功事实并给出手动入口。
+    navigationFailed.value = true
+    message.warning('生成任务已创建，但页面自动跳转失败，请手动选择下一步')
   }
 }
 
 const createPPT = async () => {
   if (!selectedTemplate.value) return
+  navigationFailed.value = false
+  createdPresentationId.value = ''
   mainStore.setGenerating(true)
   loading.value = true
 
@@ -187,6 +357,7 @@ const createPPT = async () => {
 
   // 墨灵登录态必须走持久任务，确保 reserve 发生在 Agent 调用之前并由 Worker 统一收尾。
   if (authFrontendConfig.ssoEnabled) {
+    startGenerationTimer()
     await createPersistentPPT()
     return
   }
@@ -335,7 +506,7 @@ const createPPT = async () => {
 .aippt-page {
   position: relative;
   min-height: 100dvh;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 /* 背景层 */
@@ -420,6 +591,196 @@ const createPPT = async () => {
 
 /* 模板区域 */
 .select-template {
+  .generation-status {
+    margin-bottom: 20px;
+    padding: 22px 24px;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 18px;
+    border: 1px solid rgba(59, 130, 246, 0.24);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 18px 45px rgba(37, 99, 235, 0.14);
+
+    &__icon {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      border-radius: 15px;
+      background: linear-gradient(135deg, #3b82f6, #4f46e5);
+      box-shadow: 0 9px 20px rgba(59, 130, 246, 0.3);
+
+      svg {
+        width: 25px;
+        height: 25px;
+        animation: status-spin 1.6s linear infinite;
+      }
+    }
+
+    &__body { min-width: 0; }
+    &__heading {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+
+      h2 {
+        margin: 3px 0 0;
+        color: #172033;
+        font-size: 20px;
+        line-height: 1.3;
+      }
+    }
+    &__eyebrow {
+      color: #2563eb;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+    }
+    .elapsed {
+      flex: 0 0 auto;
+      padding: 6px 10px;
+      color: #334155;
+      border: 1px solid #dbeafe;
+      border-radius: 999px;
+      background: #eff6ff;
+      font-size: 12px;
+      font-variant-numeric: tabular-nums;
+    }
+    &__hint {
+      margin: 10px 0 16px;
+      color: #64748b;
+      font-size: 13px;
+      line-height: 1.65;
+    }
+    &__footer {
+      margin-top: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      color: #64748b;
+      font-size: 12px;
+    }
+
+    &--success {
+      border-color: rgba(34, 197, 94, 0.3);
+      box-shadow: 0 18px 45px rgba(22, 163, 74, 0.12);
+
+      .generation-status__icon {
+        font-size: 24px;
+        font-weight: 800;
+        background: linear-gradient(135deg, #22c55e, #15803d);
+        box-shadow: 0 9px 20px rgba(34, 197, 94, 0.25);
+      }
+      .generation-status__eyebrow { color: #15803d; }
+    }
+  }
+
+  .generation-fallback-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .generation-steps {
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    list-style: none;
+
+    li {
+      min-width: 0;
+      padding: 11px 12px;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      color: #94a3b8;
+      border: 1px solid #e2e8f0;
+      border-radius: 11px;
+      background: #f8fafc;
+
+      i {
+        width: 24px;
+        height: 24px;
+        flex: 0 0 auto;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: #e2e8f0;
+        font-size: 11px;
+        font-style: normal;
+        font-weight: 800;
+      }
+      span { min-width: 0; }
+      b, small { display: block; }
+      b { color: #64748b; font-size: 12px; }
+      small { margin-top: 2px; overflow: hidden; font-size: 10px; text-overflow: ellipsis; white-space: nowrap; }
+
+      &.complete {
+        color: #15803d;
+        border-color: #bbf7d0;
+        background: #f0fdf4;
+        i { color: #fff; background: #22c55e; }
+        b { color: #166534; }
+      }
+      &.active {
+        color: #2563eb;
+        border-color: #bfdbfe;
+        background: #eff6ff;
+        box-shadow: inset 0 0 0 1px rgba(59, 130, 246, 0.08);
+        i { color: #fff; background: #3b82f6; animation: active-step 1.2s ease-in-out infinite; }
+        b { color: #1d4ed8; }
+      }
+    }
+  }
+
+  .generation-progress {
+    height: 4px;
+    margin-top: 14px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: #dbeafe;
+
+    i {
+      width: 38%;
+      height: 100%;
+      display: block;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #60a5fa, #4f46e5);
+      animation: task-progress 1.7s ease-in-out infinite;
+    }
+  }
+
+  .destination-button {
+    min-height: 36px;
+    padding: 0 13px;
+    flex: 0 0 auto;
+    color: #1d4ed8;
+    border: 1px solid #bfdbfe;
+    border-radius: 9px;
+    background: #eff6ff;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s ease;
+
+    &:hover { border-color: #60a5fa; background: #dbeafe; transform: translateY(-1px); }
+    &:focus-visible { outline: 3px solid rgba(59, 130, 246, 0.24); outline-offset: 2px; }
+
+    &--secondary {
+      color: #475569;
+      border-color: #cbd5e1;
+      background: #fff;
+
+      &:hover { border-color: #94a3b8; background: #f8fafc; }
+    }
+  }
+
   .templates-container {
     background: rgba(255, 255, 255, 0.9);
     backdrop-filter: saturate(120%) blur(2px);
@@ -522,11 +883,28 @@ const createPPT = async () => {
   }
 }
 
+@keyframes status-spin { to { transform: rotate(360deg); } }
+@keyframes active-step { 50% { box-shadow: 0 0 0 5px rgba(59, 130, 246, 0.15); } }
+@keyframes task-progress { from { transform: translateX(-110%); } to { transform: translateX(270%); } }
+
 /* 响应式 */
 @media (max-width: 768px) {
   .aippt-dialog { padding: 24px 16px; }
   .header { .title { font-size: 28px; } .subtitle { font-size: 14px; } }
   .select-template {
+    .generation-status {
+      padding: 18px;
+      grid-template-columns: 1fr;
+      gap: 13px;
+
+      &__icon { width: 42px; height: 42px; }
+      &__heading h2 { font-size: 18px; }
+      &__footer { align-items: stretch; flex-direction: column; }
+    }
+    .generation-steps { grid-template-columns: 1fr; }
+    .generation-steps li small { white-space: normal; }
+    .destination-button { width: 100%; min-height: 42px; }
+    .generation-fallback-actions { flex-direction: column; }
     .templates-container { padding: 16px; }
     .templates { grid-template-columns: repeat(2, 1fr); gap: 12px; }
     .template-card .template-info { padding: 8px 10px; .template-name { font-size: 12px; } }
@@ -537,8 +915,28 @@ const createPPT = async () => {
   .aippt-dialog { padding: 16px 12px; }
   .header .title { font-size: 24px; }
   .select-template {
+    .generation-status {
+      margin-inline: -2px;
+      padding: 16px;
+
+      &__heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 9px;
+      }
+      .elapsed { align-self: flex-start; }
+    }
     .templates-container { padding: 12px; }
     .templates { grid-template-columns: 1fr; gap: 10px; }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .generation-status__icon svg,
+  .generation-steps li.active i,
+  .generation-progress i,
+  .header-decoration .decoration-dot {
+    animation: none !important;
   }
 }
 </style>
