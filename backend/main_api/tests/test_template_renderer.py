@@ -2,7 +2,10 @@
 
 from __future__ import annotations
 
+import json
+import math
 import re
+from html import unescape
 from pathlib import Path
 
 import pytest
@@ -35,6 +38,35 @@ def _content(element: dict[str, object]) -> str:
     if isinstance(text, dict) and isinstance(text.get("content"), str):
         return text["content"]
     return ""
+
+
+def _plain_html(value: str) -> str:
+    """提取测试所需纯文本，验证拆分前后没有丢字。"""
+    return unescape(re.sub(r"<[^>]+>", "", value))
+
+
+def _estimated_text_height(element: dict[str, object]) -> float:
+    """按前端 10px 内边距和 1.5 行高独立估算正文实际高度。"""
+    html_content = _content(element)
+    sizes = [float(value) for value in re.findall(r"font-size:\s*([0-9.]+)px", html_content)]
+    font_size = min(sizes) if sizes else 16.0
+    lines = [
+        unescape(re.sub(r"<[^>]+>", "", part))
+        for part in re.split(r"<br\s*/?>", html_content)
+    ]
+    usable_width = max(1.0, float(element.get("width", 0)) - 20)
+    weighted_per_line = usable_width / font_size * 0.9
+    wrapped_lines = sum(
+        max(
+            1,
+            math.ceil(
+                sum(1.0 if ord(char) > 255 else 0.56 for char in line)
+                / weighted_per_line
+            ),
+        )
+        for line in lines
+    )
+    return wrapped_lines * font_size * 1.5 + 20
 
 
 def _semantic_slides() -> list[dict[str, object]]:
@@ -170,7 +202,244 @@ def test_body_font_uses_actual_slot_height_to_avoid_crossing_divider() -> None:
     for element in bodies:
         sizes = [float(value) for value in re.findall(r"font-size:\s*([0-9.]+)px", _content(element))]
         assert float(element["height"]) == 92
-        assert sizes and 10 <= max(sizes) <= 14
+        assert sizes and 12 <= max(sizes) <= 16
+
+
+def test_template_1_splits_five_long_items_without_losing_their_order() -> None:
+    """超过模板要点容量时必须拆页，并原样保留全部内容顺序。"""
+    items = [
+        {
+            "title": f"产业要点 {index}",
+            "text": (
+                "全球大数据产业进入规模化增长阶段，企业通过数据采集、治理、分析和应用"
+                f"形成业务闭环。第 {index} 项重点说明产业价值与实际落地路径。"
+            ),
+        }
+        for index in range(1, 6)
+    ]
+
+    document = _renderer().render(
+        template_id="template_1",
+        semantic_slides=[
+            {
+                "type": "content",
+                "data": {"title": "大数据产业生态形成", "items": items},
+            }
+        ],
+        task_id="task-template-1-overflow",
+        fallback_title="大数据产业生态形成",
+    )
+
+    assert len(document["slides"]) == 2
+    rendered_html = "".join(
+        _content(element)
+        for slide in document["slides"]
+        for element in slide["elements"]
+    )
+    positions = [rendered_html.index(item["text"]) for item in items]
+    assert positions == sorted(positions)
+
+
+def test_template_1_long_items_stay_inside_text_boxes_and_slide_bounds() -> None:
+    """拆页后的语义文字必须同时位于文本框容量和幻灯片边界内。"""
+    items = [
+        {
+            "title": f"产业要点 {index}",
+            "text": "大数据平台形成采集、治理、分析和应用闭环，并在多个业务场景持续释放价值。" * 3,
+        }
+        for index in range(1, 6)
+    ]
+    document = _renderer().render(
+        template_id="template_1",
+        semantic_slides=[
+            {
+                "type": "content",
+                "data": {"title": "大数据产业生态形成", "items": items},
+            }
+        ],
+        task_id="task-template-1-bounds",
+        fallback_title="大数据产业生态形成",
+    )
+    slide_height = document["viewport_size"] * document["viewport_ratio"]
+
+    for slide in document["slides"]:
+        for element in slide["elements"]:
+            if _slot_type(element) is None:
+                continue
+            assert float(element.get("top", 0)) + float(element.get("height", 0)) <= slide_height + 1
+            assert _estimated_text_height(element) <= float(element.get("height", 0)) + 1
+            assert float(element.get("top", 0)) + float(element.get("height", 0)) <= slide_height + 1
+
+
+def test_template_1_splits_one_oversized_item_without_dropping_text() -> None:
+    """单条正文超过可读容量时也要拆页，且正文字符必须完整保留。"""
+    long_text = "数据要素需要经过采集、治理、分析和应用形成完整闭环。" * 40
+    document = _renderer().render(
+        template_id="template_1",
+        semantic_slides=[
+            {
+                "type": "content",
+                "data": {
+                    "title": "超长单项内容",
+                    "items": [{"title": "数据闭环", "text": long_text}],
+                },
+            }
+        ],
+        task_id="task-single-item-overflow",
+        fallback_title="超长单项内容",
+    )
+
+    assert len(document["slides"]) > 1
+    rendered_parts = [
+        _plain_html(_content(element))
+        for slide in document["slides"]
+        for element in sorted(
+            [candidate for candidate in slide["elements"] if _slot_type(candidate) == "item"],
+            key=lambda candidate: (
+                float(candidate.get("top", 0)),
+                float(candidate.get("left", 0)),
+            ),
+        )
+    ]
+    assert "".join(rendered_parts) == long_text
+
+
+@pytest.mark.parametrize("item_count", [1, 2, 3, 4])
+def test_template_1_normal_item_counts_use_a_matching_multi_slot_layout(item_count: int) -> None:
+    """正常内容数量继续使用能够完整容纳要点的模板版式。"""
+    document = _renderer().render(
+        template_id="template_1",
+        semantic_slides=[
+            {
+                "type": "content",
+                "data": {
+                    "title": "正常内容",
+                    "items": [
+                        {"title": f"要点 {index}", "text": "简洁且适合演示的正文。"}
+                        for index in range(item_count)
+                    ],
+                },
+            }
+        ],
+        task_id=f"task-normal-{item_count}",
+        fallback_title="正常内容",
+    )
+
+    item_slots = sum(
+        _slot_type(element) == "item"
+        for element in document["slides"][0]["elements"]
+    )
+    assert item_slots == item_count
+
+
+def test_content_slot_without_font_size_receives_a_readable_size(tmp_path: Path) -> None:
+    """模板未声明字号时，渲染结果仍必须包含明确且可读的字号。"""
+    template = {
+        "width": 1000,
+        "height": 562.5,
+        "slides": [
+            {
+                "id": "fontless-content",
+                "type": "content",
+                "elements": [
+                    {
+                        "id": "body",
+                        "type": "text",
+                        "textType": "content",
+                        "left": 40,
+                        "top": 100,
+                        "width": 500,
+                        "height": 160,
+                        "content": '<p style=""></p>',
+                    }
+                ],
+            }
+        ],
+    }
+    (tmp_path / "template_1.json").write_text(
+        json.dumps(template, ensure_ascii=False),
+        encoding="utf-8",
+    )
+    renderer = PresentationTemplateRenderer(tmp_path)
+
+    document = renderer.render(
+        template_id="template_1",
+        semantic_slides=[
+            {
+                "type": "content",
+                "data": {
+                    "title": "字号兜底",
+                    "items": [
+                        {
+                            "title": "完整说明",
+                            "text": "模板没有预设字号时必须写入默认字号。",
+                        }
+                    ],
+                },
+            }
+        ],
+        task_id="task-fontless-content",
+        fallback_title="字号兜底",
+    )
+
+    body = next(
+        element
+        for element in document["slides"][0]["elements"]
+        if _slot_type(element) == "content"
+    )
+    sizes = [float(value) for value in re.findall(r"font-size:\s*([0-9.]+)px", _content(body))]
+    assert sizes == [16.0]
+
+
+def test_renderer_rejects_content_that_still_crosses_the_slide_boundary(tmp_path: Path) -> None:
+    """没有可拆要点槽的模板也不能保存明显越过页面底部的正文。"""
+    template = {
+        "width": 1000,
+        "height": 300,
+        "slides": [
+            {
+                "id": "unsafe-content",
+                "type": "content",
+                "elements": [
+                    {
+                        "id": "body",
+                        "type": "text",
+                        "textType": "content",
+                        "left": 40,
+                        "top": 240,
+                        "width": 180,
+                        "height": 40,
+                        "content": '<p style=""></p>',
+                    }
+                ],
+            }
+        ],
+    }
+    (tmp_path / "template_1.json").write_text(
+        json.dumps(template, ensure_ascii=False),
+        encoding="utf-8",
+    )
+
+    with pytest.raises(TemplateRenderError, match="文本框容量|页面边界"):
+        PresentationTemplateRenderer(tmp_path).render(
+            template_id="template_1",
+            semantic_slides=[
+                {
+                    "type": "content",
+                    "data": {
+                        "title": "边界门禁",
+                        "items": [
+                            {
+                                "title": "超长正文",
+                                "text": "没有要点槽时仍然必须拒绝越过页面底部的生成结果。" * 10,
+                            }
+                        ],
+                    },
+                }
+            ],
+            task_id="task-reject-overflow",
+            fallback_title="边界门禁",
+        )
 
 
 @pytest.mark.parametrize("template_id", ["../template_5", "template_999", "template_0"])

@@ -243,6 +243,76 @@ def test_handler_persists_selected_template_design(tmp_path: Path) -> None:
         engine.dispose()
 
 
+def test_handler_persists_capacity_paginated_template_document(tmp_path: Path) -> None:
+    """Worker 必须保存模板渲染器拆页后的真实页数和全部正文。"""
+    engine = _engine(tmp_path)
+    try:
+        _insert_running_task(engine)
+        items = [
+            {
+                "title": f"产业要点 {index}",
+                "text": f"第 {index} 项通过数据采集、治理、分析和应用形成业务闭环。" * 3,
+            }
+            for index in range(1, 6)
+        ]
+        handler = PresentationGenerationHandler(
+            repository=GenerationResultRepository(engine),
+            outline_factory=lambda _session_id: ScriptedAgent(
+                [{"type": "text", "text": "# 大数据产业\n## 生态\n### 产业形成"}]
+            ),
+            content_factory=lambda _session_id: ScriptedAgent(
+                [
+                    {
+                        "type": "text",
+                        "text": json.dumps(
+                            {
+                                "type": "content",
+                                "data": {
+                                    "title": "大数据产业生态形成",
+                                    "items": items,
+                                },
+                                "images": [
+                                    {
+                                        "id": "industry-image",
+                                        "src": "https://example.com/industry.jpg",
+                                        "alt": "大数据产业配图",
+                                    }
+                                ],
+                            },
+                            ensure_ascii=False,
+                        ),
+                    }
+                ]
+            ),
+            max_document_bytes=1024 * 1024,
+            template_renderer=PresentationTemplateRenderer(
+                Path(__file__).resolve().parents[1] / "template"
+            ),
+            now_factory=lambda: NOW,
+        )
+
+        asyncio.run(handler.execute(_execution(template_id="template_1")))
+
+        factory = sessionmaker(engine, expire_on_commit=False)
+        with factory() as db:
+            presentation = db.scalar(select(Presentation))
+            assert presentation is not None
+            document = json.loads(presentation.slides_json)
+            assert presentation.slide_count == len(document["slides"]) == 2
+            for item in items:
+                assert item["text"] in presentation.slides_json
+            assert all(
+                any(
+                    element.get("type") == "image"
+                    and element.get("src") == "https://example.com/industry.jpg"
+                    for element in slide["elements"]
+                )
+                for slide in document["slides"]
+            )
+    finally:
+        engine.dispose()
+
+
 def test_handler_escapes_agent_html_before_persisting(tmp_path: Path) -> None:
     engine = _engine(tmp_path)
     try:

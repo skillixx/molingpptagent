@@ -72,12 +72,22 @@ TRANSITION_PAGE_PROMPT = """
 {input_slide_data}
 """
 
+CONTENT_LENGTH_RULES = """
+# 演示容量约束：
+- data.items 为 1～2 项时，每项正文控制在 60～90 字；
+- data.items 为 3 项时，每项正文控制在 40～60 字；
+- data.items 为 4 项及以上时，每项正文控制在 25～45 字；
+- 每项只写 1～2 句，优先保留结论、业务价值与落地方式，避免重复铺陈。
+模板渲染器会执行最终容量校验；这里必须尽量降低单页文字密度，但不得删除已有 items。
+"""
+
 # 不带图表的prompt，如果对于智力比较差的模型，可以不要带图表，助手下面的CONTENT_PAGE_PROMPT，然后启用这个
 if os.environ.get("USE_CHART"):
     # 带图表的prompt
     CONTENT_PAGE_PROMPT = """
     内容页（type: "content"）
-    你是技术与产业结合的内容扩写器，使用的语言是{language}。保持 data.title 与各 items[*].title 原样不改；对 items[*].text 逐项扩写为 2～3 句、合计 60～120 字，采用“是什么→为何重要→如何落地/示例”的逻辑；不得删除已有 items；避免编造精确数据或过度承诺。
+    你是技术与产业结合的内容扩写器，使用的语言是{language}。保持 data.title 与各 items[*].title 原样不改；采用“是什么→为何重要→如何落地/示例”的逻辑扩写正文；不得删除已有 items；避免编造精确数据或过度承诺。
+""" + CONTENT_LENGTH_RULES + """
 
 # 图表（严格防止编造）：
 仅当本页主题涉及趋势/对比/占比/量化指标，且通过检索获得“可引用的权威来源数据”时，才允许在 data.items **末尾**新增 1 个 `{{"kind":"chart", ...}}` 项；否则**不要**新增图表。
@@ -119,7 +129,8 @@ if os.environ.get("USE_CHART"):
 else:
     CONTENT_PAGE_PROMPT = """
     内容页（type: "content"）
-    你是技术与产业结合的内容扩写器。保持 data.title 与各 items[*].title 原样不改；对 items[*].text 逐项扩写为 2～3 句、合计 60～120 字，采用“是什么→为何重要→如何落地/示例”的逻辑；不得删除已有 items；避免编造精确数据或过度承诺。
+    你是技术与产业结合的内容扩写器。保持 data.title 与各 items[*].title 原样不改；采用“是什么→为何重要→如何落地/示例”的逻辑扩写正文；不得删除已有 items；避免编造精确数据或过度承诺。
+""" + CONTENT_LENGTH_RULES + """
     
     # 原始结构
     {input_slide_data}
