@@ -311,6 +311,22 @@ class PresentationTemplateRenderer:
         prefer_images: bool = False,
     ) -> dict[str, Any]:
         if slide_type == "content":
+            requested_layout_kind = self._requested_layout_kind(data)
+            if requested_layout_kind:
+                matching_kind = [
+                    slide for slide in candidates
+                    if slide.get("layoutKind") == requested_layout_kind
+                ]
+                if matching_kind:
+                    candidates = matching_kind
+            else:
+                # 年度数字属于显式语义版式，普通四项内容不能因为页序轮换而误选。
+                ordinary_candidates = [
+                    slide for slide in candidates
+                    if slide.get("layoutKind") != "metrics"
+                ]
+                if ordinary_candidates:
+                    candidates = ordinary_candidates
             count = max(1, len(self._content_items(data.get("items"))))
             scored = sorted(
                 candidates,
@@ -322,6 +338,11 @@ class PresentationTemplateRenderer:
                 image_peers = [slide for slide in peers if self._image_count(slide) > 0]
                 if image_peers:
                     peers = image_peers
+            else:
+                # 无配图时优先选择纯文字版式，避免向用户展示没有内容的图片占位框。
+                text_peers = [slide for slide in peers if self._image_count(slide) == 0]
+                if text_peers:
+                    peers = text_peers
             return peers[index % len(peers)]
         if slide_type == "contents":
             count = len(self._string_items(data.get("items")))
@@ -331,6 +352,20 @@ class PresentationTemplateRenderer:
             )
         # 封面、章节和结束页固定使用同套首选版式，避免一份作品视觉语言漂移。
         return candidates[0]
+
+    @staticmethod
+    def _requested_layout_kind(data: dict[str, Any]) -> str | None:
+        """从显式版式或数字项语义中识别生产版特殊内容布局。"""
+        explicit = data.get("layoutKind")
+        if isinstance(explicit, str) and explicit.strip():
+            return explicit.strip()
+        items = data.get("items")
+        if isinstance(items, list) and any(
+            isinstance(item, dict) and item.get("kind") in {"metric", "number", "stat"}
+            for item in items
+        ):
+            return "metrics"
+        return None
 
     @staticmethod
     def _semantic_images(value: Any) -> list[dict[str, Any]]:
@@ -345,19 +380,36 @@ class PresentationTemplateRenderer:
             and image["src"].strip()
         ]
 
-    @staticmethod
-    def _fill_images(elements: list[dict[str, Any]], images: list[dict[str, Any]]) -> None:
-        """把 Agent 配图写入模板现有图片槽，保留模板坐标、尺寸和裁剪样式。"""
-        image_slots = [element for element in elements if element.get("type") == "image"]
+    @classmethod
+    def _fill_images(cls, elements: list[dict[str, Any]], images: list[dict[str, Any]]) -> None:
+        """只把 Agent 配图写入内容图片槽，避免覆盖背景和奖杯等装饰素材。"""
+        image_slots = cls._image_slots(elements)
         for slot, source in zip(image_slots, images):
             slot["src"] = source["src"].strip()
             if isinstance(source.get("alt"), str) and source["alt"].strip():
                 slot["alt"] = source["alt"].strip()
 
-    @staticmethod
-    def _image_count(slide: dict[str, Any]) -> int:
+    @classmethod
+    def _image_count(cls, slide: dict[str, Any]) -> int:
         elements = slide.get("elements") if isinstance(slide.get("elements"), list) else []
-        return sum(element.get("type") == "image" for element in elements)
+        return len(cls._image_slots(elements))
+
+    @staticmethod
+    def _image_slots(elements: list[dict[str, Any]]) -> list[dict[str, Any]]:
+        """识别显式内容图片槽；未标注的历史模板继续沿用全部图片可替换的兼容行为。"""
+        images = [element for element in elements if element.get("type") == "image"]
+        # pageFigure/itemFigure 是历史PPTist分类，不代表“可替换/装饰”边界；
+        # 只有新协议的 content/decoration 出现时才启用严格槽位模式。
+        has_explicit_markers = any(
+            element.get("imageType") in {"content", "decoration"}
+            for element in images
+        )
+        if not has_explicit_markers:
+            return images
+        return [
+            element for element in images
+            if element.get("imageType") == "content"
+        ]
 
     def _content_layout_score(self, slide: dict[str, Any], count: int) -> tuple[int, int]:
         item_slots = self._slot_count(slide, "item")
@@ -384,6 +436,9 @@ class PresentationTemplateRenderer:
 
         content_slots = self._slots(elements, "content")
         subtitle_slots = self._slots(elements, "subtitle")
+        fallback_text = self._text(data.get("text"))
+        if (items or fallback_text) and not content_slots:
+            raise TemplateRenderError("模板缺少内容槽位")
         if len(content_slots) > 1:
             self._fill_list(elements, "subtitle", [item[0] for item in items], max_lines=2)
             self._fill_list(
@@ -397,7 +452,7 @@ class PresentationTemplateRenderer:
         lines = ["：".join(part for part in item if part) for item in items]
         body = "\n".join(f"• {line}" for line in lines if line)
         if not body:
-            body = self._text(data.get("text"))
+            body = fallback_text
         self._fill_single(elements, "content", body, max_lines=max(6, len(lines) * 2))
         if subtitle_slots and items:
             self._fill_single(elements, "subtitle", items[0][0], max_lines=2)

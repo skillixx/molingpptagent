@@ -545,6 +545,8 @@ async def get_templates():
         # 毕业答辩模板由用户提供的 PPTX 转换，并完成页面与内容槽位标注。
         { "name": "毕业答辩", "id": "template_5", "cover": "/api/data/template_5.jpg" },
         # { "name": "图表", "id": "template_6", "cover": "/api/data/template_6.jpg" },
+        # 红金年会模板使用原创背景与装饰素材，内容图片槽和装饰图片已显式隔离。
+        { "name": "红金年会颁奖", "id": "template_7", "cover": "/api/data/template_7.jpg" },
     ]
 
     return {"data": templates}

@@ -30,6 +30,7 @@ describe('generation stream', () => {
 
   it('空白或不规范大纲不伪造预期页数', () => {
     expect(expectedSlideCountFromOutline('')).toBe(0)
+    expect(expectedSlideCountFromOutline(undefined)).toBe(0)
     expect(expectedSlideCountFromOutline('Linux 入门')).toBe(0)
   })
 

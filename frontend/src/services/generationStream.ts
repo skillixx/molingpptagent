@@ -61,7 +61,9 @@ export function isUsableMarkdownOutline(content: string): boolean {
  * 与后端大纲转幻灯片规则保持一致，计算一次生成至少应返回的页数。
  * 封面、目录、章节过渡页、三级标题内容页和结束页都必须存在。
  */
-export function expectedSlideCountFromOutline(content: string): number {
+export function expectedSlideCountFromOutline(content: string | null | undefined): number {
+  // 模板页可被直接访问；缺少路由大纲时返回0，不能让生成按钮永久卡在加载态。
+  if (typeof content !== 'string') return 0
   const lines = content.split(/\r?\n/).map(line => line.trim())
   const hasTitle = lines.some(line => /^#\s+\S+/.test(line))
   if (!hasTitle) return 0
