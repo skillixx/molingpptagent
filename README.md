@@ -249,6 +249,9 @@ flowchart TD
 * [更新日志](doc/CHANGES.md)
 * [自定义模板说明](doc/Template.md)
 * [模版制作](doc/Template.md)
+* [科技蓝扁平模板开发说明](doc/科技蓝扁平PPT模板开发说明.md)
+* [科技蓝扁平模板开发 Goal](doc/科技蓝扁平PPT模板开发Goal.md)
+* [科技蓝扁平模板素材与 QA 记录](doc/科技蓝扁平PPT模板素材与QA记录.md)
 * [不同的模型配置](doc/custom_model.md)
 * [PPT的图片说明]doc/Image.md
 ---
