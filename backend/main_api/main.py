@@ -547,6 +547,8 @@ async def get_templates():
         # { "name": "图表", "id": "template_6", "cover": "/api/data/template_6.jpg" },
         # 红金年会模板使用原创背景与装饰素材，内容图片槽和装饰图片已显式隔离。
         { "name": "红金年会颁奖", "id": "template_7", "cover": "/api/data/template_7.jpg" },
+        # 科技蓝扁平模板基于用户参考PPT重构，使用原创位图和可编辑PPTist语义槽。
+        { "name": "科技蓝扁平", "id": "template_8", "cover": "/api/data/template_8.jpg" },
     ]
 
     return {"data": templates}
