@@ -44,6 +44,9 @@ export interface PresentationDocument {
 
 export interface PresentationDetail extends PresentationSummary {
   document: PresentationDocument
+  generationTaskId?: string | null
+  generationProgress?: number | null
+  generationErrorCode?: string | null
 }
 
 export interface SavePresentationInput {
@@ -385,7 +388,16 @@ export const presentationApi = {
     if (!response.ok) return failure(response)
     try {
       const data = record(await response.json())
-      return { ...parseSummary(data), document: parseDocument(data.slides) }
+      const generationProgress = data.generation_progress === null || data.generation_progress === undefined
+        ? null
+        : integer(data.generation_progress)
+      return {
+        ...parseSummary(data),
+        document: parseDocument(data.slides),
+        generationTaskId: data.generation_task_id === undefined ? null : nullableString(data.generation_task_id),
+        generationProgress,
+        generationErrorCode: data.generation_error_code === undefined ? null : nullableString(data.generation_error_code),
+      }
     }
     catch (error) {
       if (error instanceof PresentationApiError) throw error

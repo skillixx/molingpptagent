@@ -11,8 +11,8 @@
         <span>{{ generationMessage }}</span>
       </div>
       <div class="generation-actions">
-        <button type="button" class="secondary compact" data-testid="retry-history" @click="retry">刷新状态</button>
-        <button type="button" class="primary compact" data-testid="back-to-works" @click="goToWorks">返回作品库</button>
+        <button type="button" class="secondary compact" data-testid="retry-history" :disabled="actionPending !== null" @click="retry">{{ actionPending === 'retry' ? '刷新中…' : '刷新状态' }}</button>
+        <button type="button" class="primary compact" data-testid="back-to-works" :disabled="actionPending !== null" @click="goToWorks">{{ actionPending === 'works' ? '返回中…' : '返回作品库' }}</button>
       </div>
     </aside>
   </div>
@@ -30,7 +30,7 @@
       <p class="eyebrow">NOT FOUND / 未找到</p>
       <h1>这份作品无法打开</h1>
       <p>作品可能已删除、不存在，或不属于当前账号。</p>
-      <button type="button" class="primary" data-testid="back-to-works" @click="goToWorks">返回作品库</button>
+      <button type="button" class="primary" data-testid="back-to-works" :disabled="actionPending !== null" @click="goToWorks">{{ actionPending === 'works' ? '返回中…' : '返回作品库' }}</button>
     </div>
 
     <div v-else-if="editorStore.loadStatus === 'unavailable'" class="state-card" data-testid="history-unavailable">
@@ -39,9 +39,9 @@
       <h1>{{ unavailableTitle }}</h1>
       <p>{{ unavailableMessage }}</p>
       <div class="actions">
-        <button type="button" class="secondary" data-testid="retry-history" @click="retry">刷新状态</button>
-        <button v-if="editorStore.unavailableStatus === 'failed'" type="button" class="primary" data-testid="restart-generation" @click="goToGenerator">重新生成</button>
-        <button type="button" class="primary" data-testid="back-to-works" @click="goToWorks">返回作品库</button>
+        <button type="button" class="secondary" data-testid="retry-history" :disabled="actionPending !== null" @click="retry">{{ actionPending === 'retry' ? '刷新中…' : '刷新状态' }}</button>
+        <button v-if="editorStore.unavailableStatus === 'failed'" type="button" class="primary" data-testid="restart-generation" :disabled="actionPending !== null" @click="goToGenerator">{{ actionPending === 'generator' ? '正在前往…' : '重新生成' }}</button>
+        <button type="button" class="primary" data-testid="back-to-works" :disabled="actionPending !== null" @click="goToWorks">{{ actionPending === 'works' ? '返回中…' : '返回作品库' }}</button>
       </div>
     </div>
 
@@ -51,25 +51,29 @@
       <h1>作品还没有加载出来</h1>
       <p>网络或服务暂时不可用，已保留原有编辑内容。</p>
       <div class="actions">
-        <button type="button" class="secondary" data-testid="retry-history" @click="retry">重新加载</button>
-        <button type="button" class="primary" data-testid="back-to-works" @click="goToWorks">返回作品库</button>
+        <button type="button" class="secondary" data-testid="retry-history" :disabled="actionPending !== null" @click="retry">{{ actionPending === 'retry' ? '加载中…' : '重新加载' }}</button>
+        <button type="button" class="primary" data-testid="back-to-works" :disabled="actionPending !== null" @click="goToWorks">{{ actionPending === 'works' ? '返回中…' : '返回作品库' }}</button>
       </div>
     </div>
   </main>
 </template>
 
 <script lang="ts" setup>
-import { computed, onBeforeUnmount, watch } from 'vue'
+import { computed, onBeforeUnmount, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 import { usePresentationEditorStore } from '@/store/presentationEditor'
-import { useSlidesStore } from '@/store/slides'
 
 
 const route = useRoute()
 const router = useRouter()
 const editorStore = usePresentationEditorStore()
-const slidesStore = useSlidesStore()
+const actionPending = ref<'retry' | 'works' | 'generator' | null>(null)
+const TEMPLATE_STRUCTURE_ERROR_CODES = [
+  'TEMPLATE_MISSING_SLOT',
+  'TEMPLATE_DATA_INVALID',
+  'TEMPLATE_RESOURCE_MISSING',
+]
 const hasPersistentRoute = computed(() => Object.prototype.hasOwnProperty.call(route.params, 'presentationId'))
 const routePresentationId = computed(() => {
   const value = route.params.presentationId
@@ -79,9 +83,9 @@ const isGenerating = computed(() => (
   editorStore.loadStatus === 'unavailable' && editorStore.unavailableStatus === 'generating'
 ))
 const showEditor = computed(() => !hasPersistentRoute.value || editorStore.loadStatus === 'ready' || isGenerating.value)
-const previewSlideCount = computed(() => editorStore.unavailableStatus === 'generating'
-  ? slidesStore.slides.filter(slide => slide.elements.length > 0).length
-  : 0)
+const previewSlideCount = computed(() => (
+  editorStore.loadStatus === 'unavailable' && ['generating', 'failed'].includes(editorStore.unavailableStatus ?? '')
+) ? editorStore.previewSlideCount : 0)
 const generationMessage = computed(() => previewSlideCount.value > 0
   ? `已生成 ${previewSlideCount.value} 页，正在继续生成；全部完成后自动开放编辑。`
   : '正在准备第一页，生成后将在当前画布逐页展示。')
@@ -127,20 +131,58 @@ const unavailableTitle = computed(() => {
 const unavailableMessage = computed(() => {
   if (editorStore.unavailableStatus === 'generating') return '生成完成后即可从作品库继续编辑。'
   if (editorStore.unavailableStatus === 'billing_pending') return '结算结果确认前不会开放编辑，以免产生新的冲突稿。'
-  if (editorStore.unavailableStatus === 'failed') return '生成服务响应超时或中断，未产生可编辑页面，请重新发起生成。'
+  if (editorStore.unavailableStatus === 'failed') {
+    const partial = previewSlideCount.value > 0
+      ? `已生成 ${previewSlideCount.value} 页，但作品未完整完成。`
+      : ''
+    if (editorStore.errorCode === 'TEMPLATE_TEXT_OVERFLOW') {
+      return `${partial}模板无法容纳本页文字，生成已停止。请重试或更换模板。`
+    }
+    if (TEMPLATE_STRUCTURE_ERROR_CODES.includes(editorStore.errorCode ?? '')) {
+      return `${partial}模板资源或版式无法使用，生成已停止。请重试或更换模板。`
+    }
+    if (['AGENT_UNAVAILABLE', 'AGENT_REQUEST_FAILED', 'OUTLINE_RESULT_EMPTY', 'CONTENT_RESULT_EMPTY'].includes(editorStore.errorCode ?? '')) {
+      return `${partial}生成服务暂时不可用。`
+    }
+    if (['GENERATION_RESULT_FENCED', 'WORKER_LOST_BEFORE_DISPATCH', 'TASK_MAX_ATTEMPTS_EXCEEDED'].includes(editorStore.errorCode ?? '')) {
+      return `${partial}生成任务中断，请重新发起。`
+    }
+    return `${partial}生成未能完整完成，请刷新状态或重新发起生成。`
+  }
   return '请返回作品库检查状态，或稍后再试。'
 })
 
-function retry() {
-  void editorStore.retry()
+async function retry() {
+  if (actionPending.value !== null) return
+  actionPending.value = 'retry'
+  try {
+    await editorStore.retry()
+  }
+  finally {
+    actionPending.value = null
+  }
 }
 
-function goToWorks() {
-  void router.push({ name: 'Works' })
+async function goToWorks() {
+  if (actionPending.value !== null) return
+  actionPending.value = 'works'
+  try {
+    await router.push({ name: 'Works' })
+  }
+  finally {
+    actionPending.value = null
+  }
 }
 
-function goToGenerator() {
-  void router.push({ name: 'Outline' })
+async function goToGenerator() {
+  if (actionPending.value !== null) return
+  actionPending.value = 'generator'
+  try {
+    await router.push({ name: 'Outline' })
+  }
+  finally {
+    actionPending.value = null
+  }
 }
 </script>
 
@@ -168,6 +210,7 @@ button { min-height: 46px; padding: 0 22px; border-radius: 9px; font: inherit; f
 .compact { min-height: 38px; margin-top: 0; padding: 0 14px; font-size: 13px; }
 .secondary { color: #302d28; border: 1px solid rgba(37,35,31,.2); background: #fff; }
 button:focus-visible { outline: 3px solid rgba(217,82,52,.28); outline-offset: 3px; }
+button:disabled { cursor: wait; opacity: .68; }
 @keyframes spin { to { transform: rotate(360deg); } }
 @keyframes pulse { 50% { transform: scale(.88); opacity: .65; } }
 @media (max-width: 768px) { .generation-banner { bottom: 16px; width: calc(100vw - 24px); align-items: flex-start; flex-wrap: wrap; }.generation-copy { flex-basis: calc(100% - 60px); }.generation-actions { width: 100%; justify-content: flex-end; }.load-state { padding: 28px; }.state-card { padding: 44px 34px; } }

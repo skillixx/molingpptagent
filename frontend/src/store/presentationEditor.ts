@@ -17,6 +17,7 @@ export const usePresentationEditorStore = defineStore('presentationEditor', {
     requestedId: null as string | null,
     unavailableStatus: null as PresentationStatus | null,
     errorCode: null as string | null,
+    previewSlideCount: 0,
     loadEpoch: 0,
   }),
 
@@ -27,6 +28,7 @@ export const usePresentationEditorStore = defineStore('presentationEditor', {
       this.requestedId = null
       this.unavailableStatus = null
       this.errorCode = null
+      this.previewSlideCount = 0
       this.loadStatus = 'idle'
       useSlidesStore().clearPresentationContext()
     },
@@ -36,7 +38,10 @@ export const usePresentationEditorStore = defineStore('presentationEditor', {
       const background = options.background === true && this.requestedId === presentationId
       this.requestedId = presentationId
       this.errorCode = null
-      if (!background) this.unavailableStatus = null
+      if (!background) {
+        this.unavailableStatus = null
+        this.previewSlideCount = 0
+      }
       if (!SAFE_PRESENTATION_ID.test(presentationId)) {
         this.loadStatus = 'not_found'
         return
@@ -48,12 +53,16 @@ export const usePresentationEditorStore = defineStore('presentationEditor', {
         const detail = await presentationApi.get(presentationId)
         if (epoch !== this.loadEpoch) return
         if (detail.status !== 'ready' && detail.status !== 'draft') {
-          if (detail.status === 'generating' && detail.document.slides.length > 0) {
+          // 页数来自当前详情响应，不能复用上一次打开作品遗留在画布中的幻灯片。
+          this.previewSlideCount = detail.document.slides.length
+          if ((detail.status === 'generating' || detail.status === 'failed') && detail.document.slides.length > 0) {
             // 生成预览只读展示；清除持久作品上下文，避免自动保存提前写回未完成作品。
             const slidesStore = useSlidesStore()
             slidesStore.replacePresentation(detail)
             slidesStore.clearPresentationContext()
           }
+          // 失败原因来自服务端安全错误码，不保留任务错误正文。
+          this.errorCode = detail.generationErrorCode ?? null
           this.unavailableStatus = detail.status
           this.loadStatus = 'unavailable'
           return
@@ -86,6 +95,7 @@ export const usePresentationEditorStore = defineStore('presentationEditor', {
 
     async replaceLoadedDetail(detail: PresentationDetail) {
       // 应用可信服务端详情并重建编辑上下文；调用方负责暂停自动保存追踪。
+      this.previewSlideCount = 0
       const slidesStore = useSlidesStore()
       slidesStore.replacePresentation(detail)
       const mainStore = useMainStore()

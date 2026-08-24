@@ -151,6 +151,44 @@ describe('presentationApi', () => {
     })
   })
 
+  it('详情接口解析生成任务的安全状态字段', async () => {
+    fetchMock.mockResolvedValue(response({
+      ...item,
+      status: 'failed',
+      generation_task_id: 'task-1',
+      generation_progress: 21,
+      generation_error_code: 'TEMPLATE_TEXT_OVERFLOW',
+      slides: {
+        schema_version: 1,
+        slides: [{ id: 'partial-1', elements: [] }],
+        viewport_size: 1000,
+        viewport_ratio: 0.5625,
+      },
+    }))
+
+    await expect(presentationApi.get('presentation-1')).resolves.toMatchObject({
+      generationTaskId: 'task-1',
+      generationProgress: 21,
+      generationErrorCode: 'TEMPLATE_TEXT_OVERFLOW',
+    })
+  })
+
+  it('详情接口拒绝畸形生成任务状态字段', async () => {
+    fetchMock.mockResolvedValueOnce(response({
+      ...item,
+      generation_progress: '21',
+      slides: { schema_version: 1, slides: [] },
+    }))
+    await expect(presentationApi.get('broken-progress')).rejects.toMatchObject({ status: 502 })
+
+    fetchMock.mockResolvedValueOnce(response({
+      ...item,
+      generation_error_code: 500,
+      slides: { schema_version: 1, slides: [] },
+    }))
+    await expect(presentationApi.get('broken-error-code')).rejects.toMatchObject({ status: 502 })
+  })
+
   it('详情稿件结构损坏或404时保留稳定错误边界', async () => {
     fetchMock.mockResolvedValueOnce(response({ ...item, slides: { slides: [{ id: '', elements: [] }] } }))
     await expect(presentationApi.get('broken')).rejects.toMatchObject({ status: 502 })

@@ -148,4 +148,71 @@ describe('PresentationLoader', () => {
     await flushPromises()
     expect(router.currentRoute.value.name).toBe('Outline')
   })
+
+  it('模板容量失败显示真实安全原因和部分页数', async () => {
+    api.get.mockResolvedValue({
+      ...detail,
+      status: 'failed',
+      slideCount: 6,
+      generationErrorCode: 'TEMPLATE_TEXT_OVERFLOW',
+      generationProgress: 21,
+      document: {
+        ...detail.document,
+        slides: [
+          { id: 'partial-1', elements: [] },
+          { id: 'partial-2', elements: [] },
+        ],
+      },
+    })
+    const router = testRouter()
+    await router.push('/editor/presentation-1')
+    await router.isReady()
+    const wrapper = mount(PresentationLoader, { global: { plugins: [createPinia(), router] } })
+    await flushPromises()
+
+    const state = wrapper.get('[data-testid="history-unavailable"]').text()
+    expect(state).toContain('模板无法容纳本页文字，生成已停止。请重试或更换模板。')
+    expect(state).toContain('已生成 2 页，但作品未完整完成')
+  })
+
+  it.each([
+    'TEMPLATE_MISSING_SLOT',
+    'TEMPLATE_DATA_INVALID',
+    'TEMPLATE_RESOURCE_MISSING',
+  ])('模板结构错误显示可恢复的安全原因：%s', async generationErrorCode => {
+    api.get.mockResolvedValue({
+      ...detail,
+      status: 'failed',
+      generationErrorCode,
+      document: { ...detail.document, slides: [] },
+    })
+    const router = testRouter()
+    await router.push('/editor/presentation-failed')
+    await router.isReady()
+    const wrapper = mount(PresentationLoader, { global: { plugins: [createPinia(), router] } })
+    await flushPromises()
+
+    expect(wrapper.get('[data-testid="history-unavailable"]').text()).toContain(
+      '模板资源或版式无法使用，生成已停止。请重试或更换模板。',
+    )
+  })
+
+  it('零页失败作品不显示上一份作品的页数', async () => {
+    api.get.mockResolvedValue({
+      ...detail,
+      status: 'failed',
+      slideCount: 0,
+      generationErrorCode: 'AGENT_REQUEST_FAILED',
+      document: { ...detail.document, slides: [] },
+    })
+    const router = testRouter()
+    await router.push('/editor/presentation-failed')
+    await router.isReady()
+    const wrapper = mount(PresentationLoader, { global: { plugins: [createPinia(), router] } })
+    await flushPromises()
+
+    const state = wrapper.get('[data-testid="history-unavailable"]').text()
+    expect(state).toContain('生成服务暂时不可用。')
+    expect(state).not.toContain('已生成')
+  })
 })

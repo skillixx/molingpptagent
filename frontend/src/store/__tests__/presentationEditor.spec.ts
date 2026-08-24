@@ -105,4 +105,43 @@ describe('usePresentationEditorStore', () => {
     expect(editor.unavailableStatus).toBe('generating')
     expect(editor.errorCode).toBe('PRESENTATION_REQUEST_FAILED')
   })
+
+  it('失败作品保留安全错误码和已有预览页', async () => {
+    api.get.mockResolvedValueOnce({
+      ...detail,
+      status: 'failed',
+      slideCount: 6,
+      generationErrorCode: 'TEMPLATE_TEXT_OVERFLOW',
+      generationProgress: 21,
+    })
+    const editor = usePresentationEditorStore()
+
+    await editor.load('presentation-1')
+
+    expect(editor.loadStatus).toBe('unavailable')
+    expect(editor.unavailableStatus).toBe('failed')
+    expect(editor.errorCode).toBe('TEMPLATE_TEXT_OVERFLOW')
+    expect(useSlidesStore().slides).toHaveLength(1)
+    expect(useSlidesStore().presentationId).toBeNull()
+  })
+
+  it('零页失败作品不复用上一份作品的预览页数', async () => {
+    api.get
+      .mockResolvedValueOnce(detail)
+      .mockResolvedValueOnce({
+        ...detail,
+        id: 'presentation-failed',
+        status: 'failed',
+        slideCount: 0,
+        generationErrorCode: 'AGENT_REQUEST_FAILED',
+        document: { ...detail.document, slides: [] },
+      })
+    const editor = usePresentationEditorStore()
+
+    await editor.load('presentation-1')
+    await editor.load('presentation-failed')
+
+    expect(editor.loadStatus).toBe('unavailable')
+    expect(editor.previewSlideCount).toBe(0)
+  })
 })
