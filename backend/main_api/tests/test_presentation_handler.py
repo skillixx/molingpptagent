@@ -16,7 +16,7 @@ from backend.main_api.models.domain import GenerationTask, Presentation
 from backend.main_api.repositories.generation_results import GenerationResultRepository
 from backend.main_api.workers.presentation_handler import PresentationGenerationHandler
 from backend.main_api.workers.runner import NonRetryableTaskError, RetryableTaskError, TaskExecution
-from backend.main_api.workers.template_renderer import PresentationTemplateRenderer
+from backend.main_api.workers.template_renderer import PresentationTemplateRenderer, TemplateRenderError
 
 
 NOW = datetime(2026, 7, 30, 9, 0, 0)
@@ -33,6 +33,20 @@ class ScriptedAgent:
         self.calls.append((args, kwargs))
         for chunk in self.chunks:
             yield chunk
+
+
+class ClassifiedTemplateRenderer:
+    """模拟不同模板失败，验证处理器只保留安全错误分类。"""
+
+    def __init__(self, code: str) -> None:
+        self.code = code
+
+    def render(self, **_kwargs):
+        raise TemplateRenderError(
+            "生成内容超出模板文本框容量",
+            code=self.code,
+            context={"slide_type": "content", "layout_kind": "text", "slot_type": "itemTitle"},
+        )
 
 
 def _engine(tmp_path: Path):
@@ -123,6 +137,52 @@ def _handler(engine, outline: ScriptedAgent, content: ScriptedAgent):
         max_document_bytes=1024 * 1024,
         now_factory=lambda: NOW,
     )
+
+
+@pytest.mark.parametrize(
+    "source_code,expected_code,expected_message",
+    [
+        ("TEMPLATE_TEXT_OVERFLOW", "TEMPLATE_TEXT_OVERFLOW", "模板无法容纳本页文字"),
+        ("TEMPLATE_MISSING_SLOT", "TEMPLATE_MISSING_SLOT", "模板缺少必要内容槽位"),
+        ("TEMPLATE_DATA_INVALID", "TEMPLATE_DATA_INVALID", "模板数据无效"),
+        ("TEMPLATE_RESOURCE_MISSING", "TEMPLATE_RESOURCE_MISSING", "模板资源缺失"),
+        ("TEMPLATE_UNKNOWN", "TEMPLATE_DATA_INVALID", "模板数据无效"),
+    ],
+)
+def test_handler_preserves_safe_template_error_code(
+    tmp_path: Path,
+    source_code: str,
+    expected_code: str,
+    expected_message: str,
+) -> None:
+    """模板容量失败不得再被折叠为无法区分的TASK_TEMPLATE_INVALID。"""
+    engine = _engine(tmp_path)
+    try:
+        _insert_running_task(engine)
+        outline = ScriptedAgent([])
+        content = ScriptedAgent([{
+            "type": "text",
+            "text": json.dumps({
+                "type": "content",
+                "data": {"title": "长标题", "items": [{"title": "项目", "text": "正文"}]},
+            }, ensure_ascii=False),
+        }])
+        handler = PresentationGenerationHandler(
+            repository=GenerationResultRepository(engine),
+            outline_factory=lambda _session_id: outline,
+            content_factory=lambda _session_id: content,
+            max_document_bytes=1024 * 1024,
+            template_renderer=ClassifiedTemplateRenderer(source_code),
+            now_factory=lambda: NOW,
+        )
+
+        with pytest.raises(NonRetryableTaskError) as captured:
+            asyncio.run(handler.execute(_execution(content="# 已有大纲", template_id="template_8")))
+
+        assert captured.value.code == expected_code
+        assert str(captured.value) == expected_message
+    finally:
+        engine.dispose()
 
 
 def test_handler_calls_both_agents_and_persists_editable_document(tmp_path: Path) -> None:

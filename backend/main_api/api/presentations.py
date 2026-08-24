@@ -187,7 +187,8 @@ def create_presentations_router(
         request_id = _request_id(request)
         try:
             presentation = service.get(principal.user_id, presentation_id)
-            detail = _detail(presentation)
+            task = service.get_latest_generation_task(principal.user_id, presentation_id)
+            detail = _detail(presentation, task)
         except PresentationServiceError as exc:
             return _service_error(exc, request_id)
         response.headers["X-Request-Id"] = request_id
@@ -381,14 +382,23 @@ def _summary(presentation: Presentation) -> PresentationSummary:
     )
 
 
-def _detail(presentation: Presentation) -> PresentationDetail:
+def _detail(
+    presentation: Presentation, task: GenerationTask | None = None
+) -> PresentationDetail:
     try:
         slides = json.loads(presentation.slides_json)
     except (TypeError, json.JSONDecodeError):
         raise PresentationServiceError(
             "PRESENTATION_DATA_INVALID", "作品数据暂时无法读取", 500
         ) from None
-    return PresentationDetail(**_summary(presentation).model_dump(), slides=slides)
+    return PresentationDetail(
+        **_summary(presentation).model_dump(),
+        slides=slides,
+        generation_task_id=task.id if task is not None else None,
+        generation_progress=task.progress if task is not None else None,
+        # 只返回数据库中的稳定错误码，绝不暴露error_message或Agent正文。
+        generation_error_code=task.last_error_code if task is not None else None,
+    )
 
 
 def _version_summary(record) -> PresentationVersionSummary:

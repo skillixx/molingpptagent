@@ -300,6 +300,12 @@ class PresentationService:
             raise self._not_found()
         return presentation
 
+    def get_latest_generation_task(
+        self, owner_user_id: int, presentation_id: str
+    ) -> GenerationTask | None:
+        """返回作品最近任务；归属校验由仓储与作品详情读取共同保证。"""
+        return self.repository.get_latest_generation_task(owner_user_id, presentation_id)
+
     def duplicate(
         self,
         owner_user_id: int,

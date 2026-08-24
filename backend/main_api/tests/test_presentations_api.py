@@ -511,6 +511,33 @@ def test_detail_hides_other_deleted_and_missing_resources_with_same_404(api) -> 
     assert client.get(f"/api/presentations/{created['id']}").status_code == 404
 
 
+def test_failed_detail_exposes_only_safe_generation_error_and_partial_progress(api) -> None:
+    """失败作品详情应返回安全错误码和部分页数，不泄露任务错误正文。"""
+    client, engine = api
+    created = _create(client, key="failed-detail-1").json()["presentation"]
+    with sessionmaker(engine).begin() as db:
+        presentation = db.get(Presentation, created["id"])
+        task = db.scalar(select(GenerationTask).where(GenerationTask.presentation_id == created["id"]))
+        assert presentation is not None and task is not None
+        presentation.status = "failed"
+        presentation.slide_count = 6
+        presentation.slides_json = '{"slides":[{"id":"partial-1","elements":[]}]}'
+        task.status = "failed"
+        task.stage = "failed"
+        task.progress = 21
+        task.last_error_code = "TEMPLATE_TEXT_OVERFLOW"
+        task.error_message = "不得返回的内部错误正文"
+        task_id = task.id
+
+    response = client.get(f"/api/presentations/{created['id']}")
+
+    assert response.status_code == 200
+    assert response.json()["generation_error_code"] == "TEMPLATE_TEXT_OVERFLOW"
+    assert response.json()["generation_task_id"] == task_id
+    assert response.json()["generation_progress"] == 21
+    assert "不得返回" not in response.text
+
+
 def test_delete_is_idempotent_for_owner_but_other_owner_gets_404(api) -> None:
     client, _ = api
     presentation_id = _create(client, key="delete-1").json()["presentation"]["id"]

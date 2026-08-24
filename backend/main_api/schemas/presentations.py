@@ -85,6 +85,9 @@ class PresentationSummary(BaseModel):
 
 class PresentationDetail(PresentationSummary):
     slides: Any
+    generation_task_id: str | None = None
+    generation_progress: int | None = None
+    generation_error_code: str | None = None
 
 
 class PresentationVersionSummary(BaseModel):

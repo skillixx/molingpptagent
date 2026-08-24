@@ -306,7 +306,7 @@ def test_template_7_missing_content_slots_is_rejected(tmp_path: Path) -> None:
     }
     (tmp_path / "template_7.json").write_text(json.dumps(template, ensure_ascii=False), encoding="utf-8")
 
-    with pytest.raises(TemplateRenderError, match="模板缺少内容槽位"):
+    with pytest.raises(TemplateRenderError, match="模板缺少内容槽位") as captured:
         PresentationTemplateRenderer(tmp_path).render(
             template_id="template_7",
             semantic_slides=[
@@ -315,6 +315,7 @@ def test_template_7_missing_content_slots_is_rejected(tmp_path: Path) -> None:
             task_id="template-7-missing-slot",
             fallback_title="正文",
         )
+    assert captured.value.code == "TEMPLATE_MISSING_SLOT"
 
 
 def test_template_7_missing_content_slots_rejects_plain_text_fallback(tmp_path: Path) -> None:

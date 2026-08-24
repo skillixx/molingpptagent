@@ -16,7 +16,18 @@ from lxml import html as lxml_html
 
 
 class TemplateRenderError(RuntimeError):
-    """模板缺失、损坏或不具备必要版式时使用的稳定错误。"""
+    """携带安全分类和最小版式上下文的模板错误，不包含用户完整正文。"""
+
+    def __init__(
+        self,
+        message: str,
+        *,
+        code: str = "TEMPLATE_DATA_INVALID",
+        context: dict[str, str] | None = None,
+    ) -> None:
+        super().__init__(message)
+        self.code = code
+        self.context = context or {}
 
 
 class PresentationTemplateRenderer:
@@ -44,7 +55,7 @@ class PresentationTemplateRenderer:
         template = self._load(template_id)
         source_slides = template.get("slides")
         if not isinstance(source_slides, list) or not source_slides:
-            raise TemplateRenderError("模板没有可用页面")
+            raise TemplateRenderError("模板没有可用页面", code="TEMPLATE_DATA_INVALID")
 
         # 先按模板真实槽位容量拆页，后续版式选择就不需要把多条正文挤进单个文本框。
         semantic_slides = self._paginate_content_slides(source_slides, semantic_slides)
@@ -230,19 +241,32 @@ class PresentationTemplateRenderer:
 
     def _load(self, template_id: str) -> dict[str, Any]:
         if not self._SAFE_TEMPLATE_ID.fullmatch(template_id):
-            raise TemplateRenderError("模板标识无效")
+            raise TemplateRenderError("模板标识无效", code="TEMPLATE_DATA_INVALID")
         cached = self._cache.get(template_id)
         if cached is not None:
             return cached
         path = (self.template_root / f"{template_id}.json").resolve()
         if path.parent != self.template_root or not path.is_file():
-            raise TemplateRenderError("模板不存在")
+            raise TemplateRenderError("模板不存在", code="TEMPLATE_RESOURCE_MISSING")
         try:
             value = json.loads(path.read_text(encoding="utf-8"))
         except (OSError, json.JSONDecodeError):
-            raise TemplateRenderError("模板数据损坏") from None
+            raise TemplateRenderError("模板数据损坏", code="TEMPLATE_DATA_INVALID") from None
         if not isinstance(value, dict):
-            raise TemplateRenderError("模板数据损坏")
+            raise TemplateRenderError("模板数据损坏", code="TEMPLATE_DATA_INVALID")
+        slides = value.get("slides") if isinstance(value.get("slides"), list) else []
+        for slide in slides:
+            elements = slide.get("elements") if isinstance(slide, dict) and isinstance(slide.get("elements"), list) else []
+            for element in elements:
+                source = element.get("src") if isinstance(element, dict) else None
+                if not isinstance(source, str) or not source.startswith("/api/data/"):
+                    continue
+                filename = source.rsplit("/", 1)[-1]
+                # 只验证由本模板目录提供的API资源；不请求外网，也不把原始路径写入错误。
+                if not filename or Path(filename).name != filename or not (self.template_root / filename).is_file():
+                    raise TemplateRenderError(
+                        "模板资源缺失", code="TEMPLATE_RESOURCE_MISSING"
+                    )
         self._cache[template_id] = value
         return value
 
@@ -262,7 +286,7 @@ class PresentationTemplateRenderer:
         if not candidates:
             candidates = [slide for slide in templates if slide.get("type") == "content"]
         if not candidates:
-            raise TemplateRenderError("模板缺少内容版式")
+            raise TemplateRenderError("模板缺少内容版式", code="TEMPLATE_MISSING_SLOT")
         semantic_images = self._semantic_images(semantic.get("images"))
         selected = self._select(
             candidates,
@@ -438,7 +462,7 @@ class PresentationTemplateRenderer:
         subtitle_slots = self._slots(elements, "subtitle")
         fallback_text = self._text(data.get("text"))
         if (items or fallback_text) and not content_slots:
-            raise TemplateRenderError("模板缺少内容槽位")
+            raise TemplateRenderError("模板缺少内容槽位", code="TEMPLATE_MISSING_SLOT")
         if len(content_slots) > 1:
             self._fill_list(elements, "subtitle", [item[0] for item in items], max_lines=2)
             self._fill_list(
@@ -588,9 +612,33 @@ class PresentationTemplateRenderer:
             declared_height = self._number(element.get("height"), 0)
             top = self._number(element.get("top"), 0)
             if estimated_height > declared_height + 1:
-                raise TemplateRenderError("生成内容超出模板文本框容量")
+                raise TemplateRenderError(
+                    "生成内容超出模板文本框容量",
+                    code="TEMPLATE_TEXT_OVERFLOW",
+                    context={
+                        "slide_type": str(slide.get("type") or "unknown")[:32],
+                        "layout_kind": str(slide.get("layoutKind") or "default")[:64],
+                        "slot_type": str(self._slot_type(element) or "unknown")[:32],
+                        "text_length": str(len(plain_text)),
+                        "font_size": str(font_size),
+                        "width": str(self._number(element.get("width"), 0)),
+                        "height": str(declared_height),
+                    },
+                )
             if top + declared_height > slide_height + 1:
-                raise TemplateRenderError("生成内容超出幻灯片页面边界")
+                raise TemplateRenderError(
+                    "生成内容超出幻灯片页面边界",
+                    code="TEMPLATE_TEXT_OVERFLOW",
+                    context={
+                        "slide_type": str(slide.get("type") or "unknown")[:32],
+                        "layout_kind": str(slide.get("layoutKind") or "default")[:64],
+                        "slot_type": str(self._slot_type(element) or "unknown")[:32],
+                        "text_length": str(len(plain_text)),
+                        "font_size": str(font_size),
+                        "width": str(self._number(element.get("width"), 0)),
+                        "height": str(declared_height),
+                    },
+                )
 
     @classmethod
     def _wrapped_line_count(cls, value: str, width: float, font_size: float) -> int:

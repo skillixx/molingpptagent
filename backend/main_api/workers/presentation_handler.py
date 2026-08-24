@@ -5,6 +5,7 @@ from __future__ import annotations
 import asyncio
 import html
 import json
+import logging
 import re
 from datetime import datetime
 from pathlib import Path
@@ -20,6 +21,9 @@ from ..outline_client import A2AOutlineClientWrapper
 from ..repositories.generation_results import GenerationResultRepository
 from .runner import NonRetryableTaskError, RetryableTaskError, TaskExecution
 from .template_renderer import PresentationTemplateRenderer, TemplateRenderError
+
+
+logger = logging.getLogger(__name__)
 
 
 class AgentWrapper(Protocol):
@@ -90,6 +94,7 @@ class PresentationGenerationHandler:
             template_id=payload["template_id"],
             semantic_slides=semantic_slides,
             task_id=task.task_id,
+            presentation_id=task.presentation_id,
         )
         encoded = json.dumps(document, ensure_ascii=False, separators=(",", ":"))
         if len(encoded.encode("utf-8")) > self.max_document_bytes:
@@ -210,6 +215,7 @@ class PresentationGenerationHandler:
             template_id=template_id,
             semantic_slides=semantic_slides,
             task_id=task.task_id,
+            presentation_id=task.presentation_id,
         )
         encoded = json.dumps(document, ensure_ascii=False, separators=(",", ":"))
         if len(encoded.encode("utf-8")) > self.max_document_bytes:
@@ -254,6 +260,7 @@ class PresentationGenerationHandler:
         template_id: str | None,
         semantic_slides: list[dict[str, Any]],
         task_id: str,
+        presentation_id: str,
     ) -> dict[str, Any]:
         if template_id and self.template_renderer is not None:
             try:
@@ -263,8 +270,32 @@ class PresentationGenerationHandler:
                     task_id=task_id,
                     fallback_title=title,
                 )
-            except TemplateRenderError:
-                raise NonRetryableTaskError("TASK_TEMPLATE_INVALID", "任务模板无法使用") from None
+            except TemplateRenderError as exc:
+                # 日志只记录任务、模板与槽位类别，禁止写入用户完整标题或正文。
+                logger.warning(
+                    "presentation template render failed task_id=%s presentation_id=%s "
+                    "template_id=%s code=%s slide_type=%s layout_kind=%s slot_type=%s "
+                    "text_length=%s font_size=%s width=%s height=%s",
+                    task_id,
+                    presentation_id,
+                    template_id,
+                    exc.code,
+                    exc.context.get("slide_type", "unknown"),
+                    exc.context.get("layout_kind", "default"),
+                    exc.context.get("slot_type", "unknown"),
+                    exc.context.get("text_length", "unknown"),
+                    exc.context.get("font_size", "unknown"),
+                    exc.context.get("width", "unknown"),
+                    exc.context.get("height", "unknown"),
+                )
+                safe_messages = {
+                    "TEMPLATE_TEXT_OVERFLOW": "模板无法容纳本页文字",
+                    "TEMPLATE_MISSING_SLOT": "模板缺少必要内容槽位",
+                    "TEMPLATE_DATA_INVALID": "模板数据无效",
+                    "TEMPLATE_RESOURCE_MISSING": "模板资源缺失",
+                }
+                code = exc.code if exc.code in safe_messages else "TEMPLATE_DATA_INVALID"
+                raise NonRetryableTaskError(code, safe_messages[code]) from None
         return self._render_basic_document(
             title=title,
             semantic_slides=semantic_slides,

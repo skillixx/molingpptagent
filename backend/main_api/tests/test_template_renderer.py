@@ -420,7 +420,7 @@ def test_renderer_rejects_content_that_still_crosses_the_slide_boundary(tmp_path
         encoding="utf-8",
     )
 
-    with pytest.raises(TemplateRenderError, match="文本框容量|页面边界"):
+    with pytest.raises(TemplateRenderError, match="文本框容量|页面边界") as captured:
         PresentationTemplateRenderer(tmp_path).render(
             template_id="template_1",
             semantic_slides=[
@@ -440,6 +440,7 @@ def test_renderer_rejects_content_that_still_crosses_the_slide_boundary(tmp_path
             task_id="task-reject-overflow",
             fallback_title="边界门禁",
         )
+    assert captured.value.code == "TEMPLATE_TEXT_OVERFLOW"
 
 
 @pytest.mark.parametrize("template_id", ["../template_5", "template_999", "template_0"])
@@ -451,3 +452,50 @@ def test_invalid_or_missing_template_is_rejected(template_id: str) -> None:
             task_id="task-invalid",
             fallback_title="无效模板",
         )
+
+
+def test_renderer_reports_missing_local_template_asset(tmp_path: Path) -> None:
+    """模板JSON存在但引用资源缺失时必须返回独立安全错误码。"""
+    template = {
+        "width": 1000,
+        "height": 562.5,
+        "slides": [{
+            "id": "cover",
+            "type": "cover",
+            "elements": [
+                {
+                    "id": "missing-image",
+                    "type": "image",
+                    "src": "/api/data/missing-template-asset.png",
+                    "imageType": "decoration",
+                    "left": 0,
+                    "top": 0,
+                    "width": 1000,
+                    "height": 562.5,
+                },
+                {
+                    "id": "title",
+                    "type": "text",
+                    "textType": "title",
+                    "left": 100,
+                    "top": 100,
+                    "width": 800,
+                    "height": 120,
+                    "content": '<p><span style="font-size: 40px">标题</span></p>',
+                },
+            ],
+        }],
+    }
+    (tmp_path / "template_1.json").write_text(
+        json.dumps(template, ensure_ascii=False), encoding="utf-8"
+    )
+
+    with pytest.raises(TemplateRenderError) as captured:
+        PresentationTemplateRenderer(tmp_path).render(
+            template_id="template_1",
+            semantic_slides=[{"type": "cover", "data": {"title": "资源检查"}}],
+            task_id="task-missing-template-asset",
+            fallback_title="资源检查",
+        )
+
+    assert captured.value.code == "TEMPLATE_RESOURCE_MISSING"

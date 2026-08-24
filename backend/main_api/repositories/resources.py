@@ -44,6 +44,24 @@ class PresentationRepository(_OwnerRepository):
 
     model = Presentation
 
+    def get_latest_generation_task(
+        self, owner_user_id: int, presentation_id: str
+    ) -> GenerationTask | None:
+        """读取当前用户作品最近任务，仅供详情页展示安全状态与进度。"""
+        with self._session_factory() as db:
+            return db.scalar(
+                select(GenerationTask)
+                .join(Presentation, Presentation.id == GenerationTask.presentation_id)
+                .where(
+                    GenerationTask.presentation_id == presentation_id,
+                    GenerationTask.owner_user_id == owner_user_id,
+                    Presentation.owner_user_id == owner_user_id,
+                    Presentation.deleted_at.is_(None),
+                )
+                .order_by(GenerationTask.created_at.desc())
+                .limit(1)
+            )
+
     def ensure_schema(self) -> None:
         """启动前检查迁移是否到位，禁止首个用户请求才暴露缺表500。"""
         try:
