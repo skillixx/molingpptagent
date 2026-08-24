@@ -132,7 +132,7 @@ def test_template_8_respects_typography_minimums() -> None:
             if slide["type"] == "contents" and slot_type == "item":
                 contents_items.append(size)
 
-    assert cover_titles and min(cover_titles) >= 48
+    assert cover_titles and min(cover_titles) >= 50
     assert page_titles and min(page_titles) >= 35
     assert item_titles and min(item_titles) >= 24
     assert bodies and min(bodies) >= 16

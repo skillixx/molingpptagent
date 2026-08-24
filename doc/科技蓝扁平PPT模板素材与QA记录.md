@@ -324,8 +324,9 @@ Goal状态：`DONE`。
 - 图片替换：内容图源从项目资源地址变为新PNG的Data URL，装饰仍使用项目资源地址，编辑器显示“已保存”。
 - PPTX：`.codex-tmp/template_8_goal/exports/template_8_real_editor_qa.pptx`，7,867,363字节，12页。
 - 重新导入：项目同款 `pptxtojson` 解析为12页、273个元素。
-- 响应式截图：`.codex-tmp/template_8_goal/qa/editor-responsive-1920x1080.png`、`editor-responsive-1366x768.png`、`editor-responsive-768x1024.png`、`editor-responsive-390x844.png`。
-- 失败提示截图：`.codex-tmp/template_8_goal/qa/failed-retry-390x844.png`。
+- 响应式截图：[`doc/assets/template_8_qa/`](./assets/template_8_qa/) 中的1920×1080、1366×768、768×1024和390×844截图。
+- 失败提示截图：[`failed-retry-390x844.png`](./assets/template_8_qa/failed-retry-390x844.png)。
+- 真实任务、PPTX校验值和重新导入摘要：[`evidence.json`](./assets/template_8_qa/evidence.json)。
 - 四种视口的页面 `scrollWidth` 均等于 `clientWidth`，无横向溢出；浏览器控制台无warning/error。
 
 ### 12.5 最终状态

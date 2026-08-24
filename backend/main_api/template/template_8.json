@@ -456,7 +456,7 @@
           "defaultFontName": "微软雅黑",
           "defaultColor": "#FFFFFF",
           "vertical": false,
-          "content": "<p style=\"text-align: left;\"><span style=\"color: #FFFFFF;font-size: 48px;font-family: 微软雅黑;line-height: 1.35;\"><strong>用视觉推动关键决策</strong></span></p>",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #FFFFFF;font-size: 50px;font-family: 微软雅黑;line-height: 1.35;\"><strong>用视觉推动关键决策</strong></span></p>",
           "textType": "title"
         },
         {

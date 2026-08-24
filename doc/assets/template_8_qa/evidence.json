@@ -1,0 +1,68 @@
+{
+  "template_id": "template_8",
+  "verification_date": "2026-08-24",
+  "automated_tests": {
+    "backend_passed": 444,
+    "frontend_files_passed": 23,
+    "frontend_tests_passed": 110,
+    "template_8_tests_passed": 55,
+    "typecheck": "passed",
+    "production_build": "passed"
+  },
+  "persistent_worker_tasks": [
+    {
+      "task_id": "80232f15-2648-4191-8d41-fc06de2cb7bd",
+      "template_id": "template_8",
+      "status": "succeeded",
+      "presentation_status": "ready",
+      "progress": 100,
+      "slide_count": 12,
+      "error_code": null
+    },
+    {
+      "task_id": "dabd62bd-017d-4bff-afe1-52ab28b8069d",
+      "template_id": "template_8",
+      "status": "succeeded",
+      "presentation_status": "ready",
+      "progress": 100,
+      "slide_count": 12,
+      "error_code": null
+    },
+    {
+      "task_id": "f9396c9f-2e5e-4d1d-bf1a-60d01e1caefe",
+      "template_id": "template_8",
+      "status": "succeeded",
+      "presentation_status": "ready",
+      "progress": 100,
+      "slide_count": 12,
+      "error_code": null
+    },
+    {
+      "task_id": "9cbd62cf-5d0f-41b3-9744-e4ed4578d021",
+      "template_id": "template_7",
+      "status": "succeeded",
+      "presentation_status": "ready",
+      "progress": 100,
+      "slide_count": 9,
+      "error_code": null
+    }
+  ],
+  "pptx_roundtrip": {
+    "filename": "template_8_real_editor_qa.pptx",
+    "committed_to_git": false,
+    "bytes": 7867363,
+    "sha256": "6418001b3d2c6edb1ae7fcc92afd5c77c4f552de020f365de3d93b46f2a3b722",
+    "slide_count": 12,
+    "reimported_element_count": 273,
+    "zip_integrity": "passed"
+  },
+  "responsive_checks": [
+    { "viewport": "1920x1080", "horizontal_overflow": false },
+    { "viewport": "1366x768", "horizontal_overflow": false },
+    { "viewport": "768x1024", "horizontal_overflow": false },
+    { "viewport": "390x844", "horizontal_overflow": false }
+  ],
+  "minimum_rendered_font_px": 12.5,
+  "element_ids_unique": true,
+  "notes": "PPTX和逐页高分辨率总览保留为本地验收产物；仓库保存校验摘要及响应式、失败恢复截图，避免提交大型二进制导出物。"
+}
