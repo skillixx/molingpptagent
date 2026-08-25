@@ -111,6 +111,22 @@ class PresentationTemplateRenderer:
                 paginated.append(copy.deepcopy(semantic))
                 continue
 
+            semantic_images = self._semantic_images(semantic.get("images"))
+            strict_image_protocol = any(
+                self._strict_image_count(candidate) for candidate in content_templates
+            )
+            if semantic_images and strict_image_protocol:
+                paginated.extend(
+                    self._paginate_content_with_images(
+                        content_templates,
+                        semantic,
+                        raw_items,
+                        semantic_images,
+                        max_item_slots=max_item_slots,
+                    )
+                )
+                continue
+
             # 单项页可以使用更宽的版式；项目拆分后再按新数量复算，直到版式容量稳定。
             target_count = min(max(1, len(raw_items)), max_item_slots)
             expanded_items = copy.deepcopy(raw_items)
@@ -118,7 +134,8 @@ class PresentationTemplateRenderer:
                 item_capacity = self._content_item_capacity(
                     content_templates,
                     target_count,
-                    prefer_images=bool(self._semantic_images(semantic.get("images"))),
+                    prefer_images=bool(semantic_images),
+                    image_count=len(semantic_images),
                 )
                 expanded_items = [
                     expanded
@@ -145,25 +162,109 @@ class PresentationTemplateRenderer:
                 paginated.append(page)
         return paginated
 
+    def _paginate_content_with_images(
+        self,
+        content_templates: list[dict[str, Any]],
+        semantic: dict[str, Any],
+        raw_items: list[Any],
+        images: list[dict[str, Any]],
+        *,
+        max_item_slots: int,
+    ) -> list[dict[str, Any]]:
+        """把带图内容拆成一一对应的图文页和后续纯文字页，禁止丢图或残留占位图。"""
+        if len(images) > len(raw_items):
+            raise TemplateRenderError(
+                "内容图片数量超过内容项数量",
+                code="TEMPLATE_DATA_INVALID",
+                context={"item_count": str(len(raw_items)), "image_count": str(len(images))},
+            )
+        max_image_slots = max((self._image_count(slide) for slide in content_templates), default=0)
+        if max_image_slots <= 0:
+            raise TemplateRenderError("模板缺少内容图片槽位", code="TEMPLATE_MISSING_SLOT")
+
+        image_layout_count = min(len(images), max_image_slots)
+        image_capacity = self._content_item_capacity(
+            content_templates,
+            image_layout_count,
+            prefer_images=True,
+            image_count=image_layout_count,
+        )
+        # 续段会按最多 max_item_slots 条聚合到纯文字页，因此容量必须按最密集版式估算。
+        remaining_count = max_item_slots
+        text_capacity = self._content_item_capacity(
+            content_templates,
+            remaining_count,
+            prefer_images=False,
+            image_count=0,
+        )
+
+        expanded: list[tuple[Any, dict[str, Any] | None]] = []
+        for index, item in enumerate(raw_items):
+            # 带图长正文的续段会进入纯文字版式，必须同时满足图文页和续页的较小容量。
+            capacity = min(image_capacity, text_capacity) if index < len(images) else text_capacity
+            parts = self._split_content_item(item, capacity)
+            for part_index, part in enumerate(parts):
+                source = images[index] if index < len(images) and part_index == 0 else None
+                expanded.append((part, source))
+
+        title = self._text(
+            semantic.get("data", {}).get("title")
+            if isinstance(semantic.get("data"), dict)
+            else ""
+        )
+        pages: list[dict[str, Any]] = []
+        cursor = 0
+        while cursor < len(expanded):
+            has_image = expanded[cursor][1] is not None
+            limit = max_image_slots if has_image else max_item_slots
+            batch: list[tuple[Any, dict[str, Any] | None]] = []
+            while cursor < len(expanded) and len(batch) < limit:
+                pair = expanded[cursor]
+                if (pair[1] is not None) != has_image:
+                    break
+                batch.append(pair)
+                cursor += 1
+
+            page = copy.deepcopy(semantic)
+            page_data = page["data"]
+            page_data["items"] = [copy.deepcopy(item) for item, _ in batch]
+            if pages and title:
+                page_data["title"] = f"{title}（续）"
+            page_images = [copy.deepcopy(source) for _, source in batch if source is not None]
+            if page_images:
+                page["images"] = page_images
+            else:
+                page.pop("images", None)
+            pages.append(page)
+        return pages
+
     def _content_item_capacity(
         self,
         content_templates: list[dict[str, Any]],
         count: int,
         *,
         prefer_images: bool,
+        image_count: int,
     ) -> int:
-        """返回指定项目数量最终会选中版式的最小可读正文容量。"""
-        selected = self._select(
-            content_templates,
-            "content",
-            {"items": [{"title": "容量占位"} for _ in range(count)]},
-            0,
-            prefer_images=prefer_images,
-        )
-        elements = selected.get("elements") if isinstance(selected.get("elements"), list) else []
+        """返回指定项目数量所有可轮换版式中的最小可读正文容量。"""
+        selected_layouts: dict[str, dict[str, Any]] = {}
+        for index in range(max(1, len(content_templates))):
+            selected = self._select(
+                content_templates,
+                "content",
+                {"items": [{"title": "容量占位"} for _ in range(count)]},
+                index,
+                prefer_images=prefer_images,
+                image_count=image_count,
+            )
+            selected_layouts[str(selected.get("id") or index)] = selected
         capacities = [
             self._slot_readable_capacity(element)
-            for element in self._slots(elements, "item")
+            for selected in selected_layouts.values()
+            for element in self._slots(
+                selected.get("elements") if isinstance(selected.get("elements"), list) else [],
+                "item",
+            )
         ]
         return min(capacities, default=1)
 
@@ -288,12 +389,28 @@ class PresentationTemplateRenderer:
         if not candidates:
             raise TemplateRenderError("模板缺少内容版式", code="TEMPLATE_MISSING_SLOT")
         semantic_images = self._semantic_images(semantic.get("images"))
+        content_items = self._content_items(data.get("items"))
+        strict_image_protocol = (
+            slide_type == "content"
+            and any(self._strict_image_count(candidate) for candidate in candidates)
+        )
+        if semantic_images and strict_image_protocol and len(semantic_images) != len(content_items):
+            raise TemplateRenderError(
+                "内容图片数量与内容项数量不匹配",
+                code="TEMPLATE_DATA_INVALID",
+                context={
+                    "item_count": str(len(content_items)),
+                    "image_count": str(len(semantic_images)),
+                },
+            )
         selected = self._select(
             candidates,
             slide_type,
             data,
             index,
             prefer_images=bool(semantic_images),
+            image_count=len(semantic_images),
+            variant_seed=int(self._stable_id(task_id, f"variant-{slide_type}")[:8], 16),
         )
         slide = copy.deepcopy(selected)
         elements = slide.get("elements") if isinstance(slide.get("elements"), list) else []
@@ -333,6 +450,8 @@ class PresentationTemplateRenderer:
         index: int,
         *,
         prefer_images: bool = False,
+        image_count: int = 0,
+        variant_seed: int = 0,
     ) -> dict[str, Any]:
         if slide_type == "content":
             requested_layout_kind = self._requested_layout_kind(data)
@@ -352,6 +471,24 @@ class PresentationTemplateRenderer:
                 if ordinary_candidates:
                     candidates = ordinary_candidates
             count = max(1, len(self._content_items(data.get("items"))))
+            strict_image_protocol = any(self._strict_image_count(slide) for slide in candidates)
+            if prefer_images and strict_image_protocol:
+                exact_image_candidates = [
+                    slide for slide in candidates
+                    if self._image_count(slide) == image_count
+                    and self._slot_count(slide, "item") >= count
+                ]
+                if exact_image_candidates:
+                    candidates = exact_image_candidates
+                elif strict_image_protocol:
+                    raise TemplateRenderError(
+                        "模板缺少匹配的内容图片版式",
+                        code="TEMPLATE_MISSING_SLOT",
+                        context={
+                            "item_count": str(count),
+                            "image_count": str(image_count),
+                        },
+                    )
             scored = sorted(
                 candidates,
                 key=lambda slide: (self._content_layout_score(slide, count), str(slide.get("id", ""))),
@@ -374,7 +511,10 @@ class PresentationTemplateRenderer:
                 candidates,
                 key=lambda slide: (self._slot_distance(slide, "item", count), str(slide.get("id", ""))),
             )
-        # 封面、章节和结束页固定使用同套首选版式，避免一份作品视觉语言漂移。
+        # 新模板可显式启用稳定变体；同一任务保持确定性，不同任务可以覆盖全部生产版式。
+        if any(slide.get("variantMode") == "deterministic" for slide in candidates):
+            return candidates[(variant_seed + index) % len(candidates)]
+        # 历史模板继续固定使用首选版式，避免兼容行为漂移。
         return candidates[0]
 
     @staticmethod
@@ -408,15 +548,65 @@ class PresentationTemplateRenderer:
     def _fill_images(cls, elements: list[dict[str, Any]], images: list[dict[str, Any]]) -> None:
         """只把 Agent 配图写入内容图片槽，避免覆盖背景和奖杯等装饰素材。"""
         image_slots = cls._image_slots(elements)
+        if any(slot.get("strictImageCount") is True for slot in image_slots) and len(images) != len(image_slots):
+            raise TemplateRenderError(
+                "内容图片数量与模板图片槽位不匹配",
+                code="TEMPLATE_MISSING_SLOT",
+                context={
+                    "image_count": str(len(images)),
+                    "slot_count": str(len(image_slots)),
+                },
+            )
         for slot, source in zip(image_slots, images):
             slot["src"] = source["src"].strip()
             if isinstance(source.get("alt"), str) and source["alt"].strip():
                 slot["alt"] = source["alt"].strip()
+            if slot.get("requireSourceDimensions") is True:
+                source_width = cls._number(source.get("width"), 0)
+                source_height = cls._number(source.get("height"), 0)
+                if source_width <= 0 or source_height <= 0:
+                    raise TemplateRenderError(
+                        "内容图片缺少有效尺寸",
+                        code="TEMPLATE_DATA_INVALID",
+                    )
+                slot["clip"] = {
+                    "shape": "rect",
+                    "range": cls._center_crop_range(
+                        source_width,
+                        source_height,
+                        cls._number(slot.get("width"), 1),
+                        cls._number(slot.get("height"), 1),
+                    ),
+                }
 
     @classmethod
     def _image_count(cls, slide: dict[str, Any]) -> int:
         elements = slide.get("elements") if isinstance(slide.get("elements"), list) else []
         return len(cls._image_slots(elements))
+
+    @classmethod
+    def _strict_image_count(cls, slide: dict[str, Any]) -> bool:
+        """识别要求图片与正文一一对应的生产版式。"""
+        elements = slide.get("elements") if isinstance(slide.get("elements"), list) else []
+        return any(slot.get("strictImageCount") is True for slot in cls._image_slots(elements))
+
+    @staticmethod
+    def _center_crop_range(
+        source_width: float,
+        source_height: float,
+        target_width: float,
+        target_height: float,
+    ) -> list[list[float]]:
+        """计算中心裁剪百分比，使源图裁剪区域与目标容器比例一致。"""
+        source_ratio = source_width / source_height
+        target_ratio = target_width / target_height
+        if source_ratio > target_ratio:
+            visible_width = target_ratio / source_ratio * 100
+            start_x = (100 - visible_width) / 2
+            return [[start_x, 0], [100 - start_x, 100]]
+        visible_height = source_ratio / target_ratio * 100
+        start_y = (100 - visible_height) / 2
+        return [[0, start_y], [100, 100 - start_y]]
 
     @staticmethod
     def _image_slots(elements: list[dict[str, Any]]) -> list[dict[str, Any]]:

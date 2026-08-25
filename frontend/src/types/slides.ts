@@ -245,7 +245,7 @@ export interface ImageElementClip {
   shape: string
 }
 
-export type ImageType = 'pageFigure' | 'itemFigure' | 'background'
+export type ImageType = 'pageFigure' | 'itemFigure' | 'background' | 'content' | 'decoration'
 
 /**
  * 图片元素
@@ -287,6 +287,8 @@ export interface PPTImageElement extends PPTBaseElement {
   radius?: number
   colorMask?: string
   imageType?: ImageType
+  /** 未提供精确裁剪范围时的图片适配方式，content 图片默认使用 cover 防止拉伸。 */
+  imageFit?: 'fill' | 'cover' | 'contain'
 }
 
 export type ShapeTextAlign = 'top' | 'middle' | 'bottom' 

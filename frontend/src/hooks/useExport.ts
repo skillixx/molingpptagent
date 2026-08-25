@@ -14,6 +14,7 @@ import { encrypt } from '@/utils/crypto'
 import { svg2Base64 } from '@/utils/svg2Base64'
 import message from '@/utils/message'
 import { archivePptx, archiveThumbnail, downloadAndArchivePptx } from '@/services/exports'
+import { getImageExportSizing } from './templateImageProtocol'
 
 interface ExportImageConfig {
   quality: number
@@ -594,11 +595,13 @@ export default () => {
         }
 
         else if (el.type === 'image') {
+          const exportWidth = el.width / ratioPx2Inch.value
+          const exportHeight = el.height / ratioPx2Inch.value
           const options: pptxgen.ImageProps = {
             x: el.left / ratioPx2Inch.value,
             y: el.top / ratioPx2Inch.value,
-            w: el.width / ratioPx2Inch.value,
-            h: el.height / ratioPx2Inch.value,
+            w: exportWidth,
+            h: exportHeight,
           }
           if (isBase64Image(el.src)) {
             options.data = el.src
@@ -635,6 +638,10 @@ export default () => {
               w: (endX - startX) / ratioPx2Inch.value * originW / ratioPx2Inch.value,
               h: (endY - startY) / ratioPx2Inch.value * originH / ratioPx2Inch.value,
             }
+          }
+          else {
+            // 与编辑器保持一致：没有显式 clip 时，把 cover/contain 语义交给 PPTXGenJS。
+            options.sizing = getImageExportSizing(el, exportWidth, exportHeight)
           }
 
           pptxSlide.addImage(options)

@@ -549,6 +549,8 @@ async def get_templates():
         { "name": "红金年会颁奖", "id": "template_7", "cover": "/api/data/template_7.jpg" },
         # 科技蓝扁平模板基于用户参考PPT重构，使用原创位图和可编辑PPTist语义槽。
         { "name": "科技蓝扁平", "id": "template_8", "cover": "/api/data/template_8.jpg" },
+        # AI霓虹科技模板基于用户超宽参考稿重构，内容图片与原创霓虹装饰严格隔离。
+        { "name": "AI 霓虹科技", "id": "template_9", "cover": "/api/data/template_9.jpg" },
     ]
 
     return {"data": templates}

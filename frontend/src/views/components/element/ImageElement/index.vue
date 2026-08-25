@@ -47,6 +47,7 @@
               left: imgPosition.left,
               width: imgPosition.width,
               height: imgPosition.height,
+              objectFit: getImageObjectFit(elementInfo),
               filter: filter,
             }" 
             @dragstart.prevent
@@ -76,6 +77,7 @@ import useElementFlip from '@/views/components/element/hooks/useElementFlip'
 import useHistorySnapshot from '@/hooks/useHistorySnapshot'
 import useClipImage from './useClipImage'
 import useFilter from './useFilter'
+import { getImageObjectFit } from '@/hooks/templateImageProtocol'
 
 import ImageOutline from './ImageOutline/index.vue'
 import ImageClipHandler from './ImageClipHandler.vue'
@@ -144,6 +146,7 @@ const handleClip = (data: ImageClipedEmitData | null) => {
 
   const _props = {
     clip: { ...originClip, range },
+    imageFit: 'fill' as const,
     left: left + centerOffsetX,
     top: top + centerOffsetY,
     width,

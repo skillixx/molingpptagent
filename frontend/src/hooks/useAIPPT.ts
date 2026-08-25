@@ -14,6 +14,7 @@ import type { AIPPTSlide, AnyContentItem, AIPPTContentChartItem, AIPPTContentTex
 import { useSlidesStore } from '@/store'
 import useAddSlidesOrElements from './useAddSlidesOrElements'
 import useSlideHandler from './useSlideHandler'
+import { fillContentImageSlot, isContentImageSlot, isReplaceableTemplateImage } from './templateImageProtocol'
 
 
 const isChartItem = (x: any): x is AIPPTContentChartItem =>
@@ -58,13 +59,9 @@ export default () => {
     return el.type === 'chart' && (el as any).chartMark === 'chartItem'
   }
   
-  // 识别模版里的图片槽位类型（例如 itemFigure）
-  const checkImageType = (el: PPTElement, imageType: string) =>
-    el.type === 'image' && (el as PPTImageElement).imageType === imageType
-
   // 统计内容页里的 itemFigure 数量（图片项容器数）
   const countImageItemSlots = (slide: Slide) =>
-    slide.elements.filter(el => checkImageType(el, 'itemFigure')).length
+    slide.elements.filter(isContentImageSlot).length
 
   /**
    * 获取可用的模板
@@ -625,7 +622,7 @@ export default () => {
       if (item.type === 'cover') {
         const coverTemplate = coverTemplates[Math.floor(Math.random() * coverTemplates.length)]
         const elements = coverTemplate.elements.map(el => {
-          if (el.type === 'image' && (el as any).imageType && imgPool.value.length) return getNewImgElement(el as PPTImageElement)
+          if (isReplaceableTemplateImage(el, coverTemplate.elements) && imgPool.value.length) return getNewImgElement(el as PPTImageElement)
           if (el.type !== 'text' && el.type !== 'shape') return el
           if (checkTextType(el, 'title') && item.data.title) {
             return getNewTextElement({ el: el as any, text: item.data.title, maxLine: 1 })
@@ -700,7 +697,7 @@ export default () => {
         const unusedGroupIds: string[] = []
 
         const elements = contentsTemplate.elements.map(el => {
-          if (el.type === 'image' && (el as any).imageType && imgPool.value.length) return getNewImgElement(el as PPTImageElement)
+          if (isReplaceableTemplateImage(el, contentsTemplate.elements) && imgPool.value.length) return getNewImgElement(el as PPTImageElement)
           if (el.type !== 'text' && el.type !== 'shape') return el
 
           if (checkTextType(el, 'item')) {
@@ -727,7 +724,7 @@ export default () => {
       else if (item.type === 'transition') {
         transitionIndex.value = transitionIndex.value + 1
         const elements = transitionTemplate.value!.elements.map(el => {
-          if (el.type === 'image' && (el as any).imageType && imgPool.value.length) return getNewImgElement(el as PPTImageElement)
+          if (isReplaceableTemplateImage(el, transitionTemplate.value!.elements) && imgPool.value.length) return getNewImgElement(el as PPTImageElement)
           if (el.type !== 'text' && el.type !== 'shape') return el
           if (checkTextType(el, 'title') && item.data.title) {
             return getNewTextElement({ el: el as any, text: item.data.title, maxLine: 1 })
@@ -758,7 +755,7 @@ export default () => {
           .map(el => el.id)
 
         const sortedImageItemFigureIds = contentTemplate.elements
-          .filter(el => checkImageType(el, 'itemFigure'))
+          .filter(isContentImageSlot)
           .sort((a, b) => (a.left + a.top * 2) - (b.left + b.top * 2))
           .map(el => el.id)
 
@@ -816,13 +813,12 @@ export default () => {
           // === 图片型内容项（imageItems） ===
           if (hasImageItems) {
             // 3.1 itemFigure：按位置顺序取 items[].src
-            if (checkImageType(el, 'itemFigure')) {
+            if (isContentImageSlot(el)) {
               const idx = sortedImageItemFigureIds.findIndex(id => id === el.id)
               const it = imageItems[idx]
               if (it && it.src) {
-                const imgEl = el as PPTImageElement
-                // 直接替换为外链 src，不走图片池/裁剪，尽量保留原 clip
-                return { ...imgEl, src: it.src }
+                // 外链图无法同步读取天然尺寸，使用 cover 保持比例并在内容框内居中裁剪。
+                return fillContentImageSlot(el as PPTImageElement, it.src)
               }
               return el
             }
@@ -847,6 +843,9 @@ export default () => {
             }
           }
           // 正文图片只接受 AI 明确返回的图片地址，不再用随机图库替换原稿装饰。
+          if (!hasImageItems && isReplaceableTemplateImage(el, contentTemplate.elements) && imgPool.value.length) {
+            return getNewImgElement(el as PPTImageElement)
+          }
 
           if (el.type === 'chart') {
             const idx = sortedChartItemIds.findIndex(id => id === el.id)
@@ -966,7 +965,7 @@ export default () => {
         const unusedGroupIds: string[] = []
 
         const elements = referenceTemplate.elements.map(el => {
-          if (el.type === 'image' && (el as any).imageType && imgPool.value.length) return getNewImgElement(el as PPTImageElement)
+          if (isReplaceableTemplateImage(el, referenceTemplate.elements) && imgPool.value.length) return getNewImgElement(el as PPTImageElement)
           if (el.type !== 'text' && el.type !== 'shape') return el
 
           if (checkTextType(el, 'title') && item.data.title) {
@@ -1048,7 +1047,7 @@ export default () => {
       else if (item.type === 'end') {
         const endTemplate = endTemplates[Math.floor(Math.random() * endTemplates.length)]
         const elements = endTemplate.elements.map(el => {
-          if (el.type === 'image' && (el as any).imageType && imgPool.value.length) return getNewImgElement(el as PPTImageElement)
+          if (isReplaceableTemplateImage(el, endTemplate.elements) && imgPool.value.length) return getNewImgElement(el as PPTImageElement)
           return el
         })
         yield { ...endTemplate, id: nanoid(10), elements }

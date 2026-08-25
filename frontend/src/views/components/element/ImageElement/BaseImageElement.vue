@@ -30,6 +30,7 @@
               left: imgPosition.left,
               width: imgPosition.width,
               height: imgPosition.height,
+              objectFit: getImageObjectFit(elementInfo),
               filter: filter,
             }" 
             alt=""
@@ -53,6 +54,7 @@ import useElementShadow from '@/views/components/element/hooks/useElementShadow'
 import useElementFlip from '@/views/components/element/hooks/useElementFlip'
 import useClipImage from './useClipImage'
 import useFilter from './useFilter'
+import { getImageObjectFit } from '@/hooks/templateImageProtocol'
 
 import ImageOutline from './ImageOutline/index.vue'
 
