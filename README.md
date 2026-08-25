@@ -252,6 +252,9 @@ flowchart TD
 * [科技蓝扁平模板开发说明](doc/科技蓝扁平PPT模板开发说明.md)
 * [科技蓝扁平模板开发 Goal](doc/科技蓝扁平PPT模板开发Goal.md)
 * [科技蓝扁平模板素材与 QA 记录](doc/科技蓝扁平PPT模板素材与QA记录.md)
+* [AI 霓虹科技模板开发说明](doc/AI霓虹科技PPT模板开发说明.md)
+* [AI 霓虹科技模板开发 Goal](doc/AI霓虹科技PPT模板开发Goal.md)
+* [AI 霓虹科技模板素材与 QA 记录](doc/AI霓虹科技PPT模板素材与QA记录.md)
 * [不同的模型配置](doc/custom_model.md)
 * [PPT的图片说明]doc/Image.md
 ---
