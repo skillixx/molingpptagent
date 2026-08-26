@@ -1,0 +1,278 @@
+{
+  "status": "READY_FOR_CONFIRMATION",
+  "template": {
+    "id": "template_10",
+    "title": "清新校园教育",
+    "bytes": 177849,
+    "sha256": "3076b9c8bad1e51424169cc9863d09e538a8155c1e89a3eb088f5b052973908e",
+    "slides": 18,
+    "mvp_slides": 12,
+    "types": {
+      "cover": 2,
+      "contents": 6,
+      "transition": 2,
+      "content": 7,
+      "end": 1
+    },
+    "elements": 317
+  },
+  "cover": {
+    "bytes": 79121,
+    "sha256": "a29b0bab57beb36fa9d8ad5e17974dd28c29495e6a7de25e610d4cdd4113d3f9"
+  },
+  "assets": {
+    "template_10_asset_bg_cover_v1.jpg": {
+      "bytes": 156557,
+      "size": [
+        1920,
+        1080
+      ],
+      "mode": "RGB",
+      "alpha": null,
+      "sha256": "3b244b9a65532eb6bc0b7f2e91569a078327c883f1aaefde8877150c25b1fc8d"
+    },
+    "template_10_asset_bg_section_v1.jpg": {
+      "bytes": 264776,
+      "size": [
+        1920,
+        1080
+      ],
+      "mode": "RGB",
+      "alpha": null,
+      "sha256": "1e54e268a786b916229be644d51f037eec2315fb1cbdc4cbb8a6920435a6b5f0"
+    },
+    "template_10_asset_bg_end_v1.jpg": {
+      "bytes": 221199,
+      "size": [
+        1920,
+        1080
+      ],
+      "mode": "RGB",
+      "alpha": null,
+      "sha256": "aba44d52069f83432176808ca19e00e987e1d857ee9da8c641584b301d5e204c"
+    },
+    "template_10_asset_leaf_canopy_v1.png": {
+      "bytes": 436261,
+      "size": [
+        1800,
+        400
+      ],
+      "mode": "RGBA",
+      "alpha": [
+        0,
+        255
+      ],
+      "sha256": "c78013f66fbbb86cda9dd97bbe83a43b920905bc50eb6871cbed9ccebe5d1347"
+    },
+    "template_10_asset_grass_wave_v1.png": {
+      "bytes": 236032,
+      "size": [
+        1800,
+        420
+      ],
+      "mode": "RGBA",
+      "alpha": [
+        0,
+        255
+      ],
+      "sha256": "59705f45adb99787c827493fa40719db5a14f232e55f6bbecc0ae701e73af138"
+    },
+    "template_10_asset_children_group_v1.png": {
+      "bytes": 1032484,
+      "size": [
+        1600,
+        700
+      ],
+      "mode": "RGBA",
+      "alpha": [
+        0,
+        255
+      ],
+      "sha256": "ef3fa98e0844a6b78800fa3e12c3daf341506ead575c7f53cb7e3cd8f77ec93a"
+    },
+    "template_10_asset_school_doodles_v1.png": {
+      "bytes": 360867,
+      "size": [
+        1920,
+        1080
+      ],
+      "mode": "RGBA",
+      "alpha": [
+        0,
+        255
+      ],
+      "sha256": "447e684ff4edd914d3e48f4418049b30347328f9cb0c2cb5682fca854915e37b"
+    },
+    "template_10_asset_corner_supplies_v1.png": {
+      "bytes": 770617,
+      "size": [
+        1200,
+        1200
+      ],
+      "mode": "RGBA",
+      "alpha": [
+        0,
+        255
+      ],
+      "sha256": "02c63d7f663aa940d30b47325bcf54cd4621ff56a8e99d3f523b3a78a3c909cc"
+    },
+    "template_10_asset_brush_accent_v1.png": {
+      "bytes": 437668,
+      "size": [
+        1800,
+        500
+      ],
+      "mode": "RGBA",
+      "alpha": [
+        0,
+        255
+      ],
+      "sha256": "004e659e8573e52af2c7db684c11bfc102ae39c6b7e4b82685780ed688e0b8f6"
+    }
+  },
+  "tests": {
+    "template": "177 passed",
+    "backend": "521 passed",
+    "frontend": "not run; frontend source unchanged"
+  },
+  "e2e": {
+    "task_id": "335b9ad5-12f7-42c8-bf64-d2e9d665dccf",
+    "status": "succeeded",
+    "progress": 100,
+    "attempt": 1,
+    "error_code": null,
+    "presentation_id": "1ff40c57-4281-4e8f-9be5-8c6c9800930c",
+    "template_id": "template_10",
+    "declared_slide_count": 12,
+    "actual_slide_count": 12,
+    "types": {
+      "cover": 1,
+      "contents": 1,
+      "transition": 3,
+      "content": 6,
+      "end": 1
+    },
+    "decoration_count": 21,
+    "content_image_count": 0,
+    "all_decorations_are_template_10": true
+  },
+  "editor": {
+    "real_editor_id": "cad793a7-172f-50a3-b56a-dc281cab5627",
+    "edited_title_saved": true,
+    "mvp_editor_id": "ae3576e1-0cf3-5889-a680-10d97a30e1fc",
+    "content_image_count": 1,
+    "content_image_is_data_url": true,
+    "decoration_count": 20,
+    "all_decorations_preserved": true
+  },
+  "responsive": [
+    {
+      "viewport": "1920x1080",
+      "picker": {
+        "clientWidth": 1920,
+        "scrollWidth": 1920,
+        "selected": "清新校园教育",
+        "generateVisible": true,
+        "returnVisible": true
+      },
+      "editor": {
+        "clientWidth": 1920,
+        "scrollWidth": 1920,
+        "savedVisible": true,
+        "exportVisible": true
+      }
+    },
+    {
+      "viewport": "1366x768",
+      "picker": {
+        "clientWidth": 1366,
+        "scrollWidth": 1366,
+        "selected": "清新校园教育",
+        "generateVisible": true,
+        "returnVisible": true
+      },
+      "editor": {
+        "clientWidth": 1366,
+        "scrollWidth": 1366,
+        "savedVisible": true,
+        "exportVisible": true
+      }
+    },
+    {
+      "viewport": "768x1024",
+      "picker": {
+        "clientWidth": 768,
+        "scrollWidth": 768,
+        "selected": "清新校园教育",
+        "generateVisible": true,
+        "returnVisible": true
+      },
+      "editor": {
+        "clientWidth": 768,
+        "scrollWidth": 768,
+        "savedVisible": true,
+        "exportVisible": true
+      }
+    },
+    {
+      "viewport": "390x844",
+      "picker": {
+        "clientWidth": 390,
+        "scrollWidth": 390,
+        "selected": "清新校园教育",
+        "generateVisible": true,
+        "returnVisible": true
+      },
+      "editor": {
+        "clientWidth": 390,
+        "scrollWidth": 390,
+        "savedVisible": true,
+        "exportVisible": true
+      }
+    }
+  ],
+  "production_runtime": {
+    "main_api_template_count": 9,
+    "main_api_template_10_count": 1,
+    "frontend_proxy_template_count": 9,
+    "frontend_proxy_template_10_count": 1,
+    "frontend_cover_type": "image/jpeg",
+    "frontend_cover_bytes": 79121
+  },
+  "pptx": [
+    {
+      "name": "template_10_mvp_qa.pptx",
+      "bytes": 9585074,
+      "slides": 12,
+      "sha256": "35d82680b14492b21da23d735fb11ae9cbc58b4891443417df80724c79cc33b1"
+    },
+    {
+      "name": "template_10_real_editor_qa.pptx",
+      "bytes": 8140355,
+      "slides": 12,
+      "sha256": "8ea660338359fc84c5656bb2ed12f1ce6d803ca2d9e94aec71039f0f1d2c3c9d"
+    }
+  ],
+  "screenshots": [
+    "editor-1366x768.png",
+    "editor-1920x1080.png",
+    "editor-390x844.png",
+    "editor-768x1024.png",
+    "editor-image-replaced-1366x768.png",
+    "editor-text-edited-1366x768.png",
+    "export-archive-retry.png",
+    "final-assets-montage.png",
+    "template-picker-1366x768.png",
+    "template-picker-1920x1080.png",
+    "template-picker-390x844.png",
+    "template-picker-768x1024.png",
+    "template_10_18page_montage.png",
+    "template_10_real_e2e_montage.png"
+  ],
+  "known_limitations": [
+    "内置 image_gen 工具未暴露实际模型标识，记录为工具未暴露。",
+    "隔离 QA 关闭存储时导出历史加载失败，但界面提供刷新重试，PPTX 本地导出成功。",
+    "生产 6800 是无热重载进程；模板注册代码变更后必须重启该进程并刷新已打开的模板页。",
+    "未提交、推送、创建 PR、合并或部署。"
+  ]
+}
