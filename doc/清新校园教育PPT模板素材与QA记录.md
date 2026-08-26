@@ -124,7 +124,7 @@
 | `template_10_asset_corner_supplies_v1.png` | 内置 `image_gen`，模型标识未暴露 | `originals/template_10_asset_corner_supplies_v1-original.png` | 1200×1200，RGBA，770,617 字节 | 通过 |
 | `template_10_asset_brush_accent_v1.png` | 内置 `image_gen`，模型标识未暴露 | `originals/template_10_asset_brush_accent_v1-original.png` | 1800×500，RGBA，437,668 字节 | 通过 |
 
-透明 PNG 的 Alpha 极值均为 0～255。最终提示词见 [`image-prompts.md`](./assets/template_10_qa/image-prompts.md)，原始输出保存在 `doc/assets/template_10_qa/originals/`，九项发布素材均被 `template_10.json` 实际引用。
+透明 PNG 的 Alpha 极值均为 0～255。最终提示词见 [`image-prompts.md`](./assets/template_10_qa/image-prompts.md)。原始输出保存在本地 `doc/assets/template_10_qa/originals/`，未纳入 Git；仓库保留 [`originals-montage.png`](./assets/template_10_qa/originals-montage.png) 作为原图总览证据。九项发布素材均被 `template_10.json` 实际引用。
 
 ## 6. G2～G5 模板实现
 
