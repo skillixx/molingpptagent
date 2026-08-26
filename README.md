@@ -258,6 +258,9 @@ flowchart TD
 * [清新校园教育模板开发说明](doc/清新校园教育PPT模板开发说明.md)
 * [清新校园教育模板开发 Goal](doc/清新校园教育PPT模板开发Goal.md)
 * [清新校园教育模板素材与 QA 记录](doc/清新校园教育PPT模板素材与QA记录.md)
+* [蓝金流体创意模板开发说明](doc/蓝金流体创意PPT模板开发说明.md)
+* [蓝金流体创意模板开发 Goal](doc/蓝金流体创意PPT模板开发Goal.md)
+* [蓝金流体创意模板素材与 QA 记录](doc/蓝金流体创意PPT模板素材与QA记录.md)
 * [不同的模型配置](doc/custom_model.md)
 * [PPT的图片说明]doc/Image.md
 ---

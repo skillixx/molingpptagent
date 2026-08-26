@@ -1,0 +1,293 @@
+{
+  "status": "DONE",
+  "user_confirmed": true,
+  "user_confirmed_date": "2026-08-26",
+  "template": {
+    "id": "template_11",
+    "title": "蓝金流体创意",
+    "bytes": 180576,
+    "sha256": "a6f09f905f8ab09058b094aa9ef4c1e92b961404ad7c6630f91f85e41a78c49b",
+    "slides": 18,
+    "mvp_slides": 12,
+    "types": {
+      "cover": 2,
+      "contents": 6,
+      "transition": 2,
+      "content": 7,
+      "end": 1
+    },
+    "elements": 317
+  },
+  "cover": {
+    "bytes": 53803,
+    "sha256": "848ca5d67eb0b113f857cf07d4a33e6ca3379d569b8624e86769c621045373f7",
+    "size": [
+      960,
+      540
+    ],
+    "mode": "RGB"
+  },
+  "assets": {
+    "template_11_asset_bg_cover_v1.jpg": {
+      "bytes": 219464,
+      "size": [
+        1920,
+        1080
+      ],
+      "mode": "RGB",
+      "alpha": null,
+      "sha256": "955d8f34a477ff868512e623b9d8ce69f1a07210cc1434c876ec16f72368b0d4"
+    },
+    "template_11_asset_bg_end_v1.jpg": {
+      "bytes": 191387,
+      "size": [
+        1920,
+        1080
+      ],
+      "mode": "RGB",
+      "alpha": null,
+      "sha256": "23ec868c9e0d219d28f9497881ac4f69d304fc00fc1b7cd1d7ac3e9fc50103fd"
+    },
+    "template_11_asset_bg_section_v1.jpg": {
+      "bytes": 203332,
+      "size": [
+        1920,
+        1080
+      ],
+      "mode": "RGB",
+      "alpha": null,
+      "sha256": "415d5c15744ec01d34589c2e7c54980fc8ae9d07b5a82560ca8c87cb02dd1227"
+    },
+    "template_11_asset_fluid_corner_blue_v1.png": {
+      "bytes": 985779,
+      "size": [
+        1200,
+        1200
+      ],
+      "mode": "RGBA",
+      "alpha": [
+        0,
+        255
+      ],
+      "sha256": "27d2710f8d5266aef505df519badbb03a2929ed93f25c6a0de337591a2910bb8"
+    },
+    "template_11_asset_fluid_corner_ivory_v1.png": {
+      "bytes": 991411,
+      "size": [
+        1200,
+        1200
+      ],
+      "mode": "RGBA",
+      "alpha": [
+        0,
+        255
+      ],
+      "sha256": "9423cf65c75ef3f9deebb8e778331dd9405b48d218b858df37642825d9759c32"
+    },
+    "template_11_asset_fluid_ribbon_v1.png": {
+      "bytes": 644060,
+      "size": [
+        1800,
+        500
+      ],
+      "mode": "RGBA",
+      "alpha": [
+        0,
+        255
+      ],
+      "sha256": "e7fffcf15760fcab8e7698208529b5c94ae63402ec56a051f278240f962f50ee"
+    },
+    "template_11_asset_marble_orb_v1.png": {
+      "bytes": 711119,
+      "size": [
+        1200,
+        1200
+      ],
+      "mode": "RGBA",
+      "alpha": [
+        0,
+        255
+      ],
+      "sha256": "2c1385b184db0f0c55090aaa24245d3233583a9822b584ca25d1c41f7e06f21c"
+    }
+  },
+  "tests": {
+    "template_and_renderer": "55 passed",
+    "backend": "560 passed",
+    "frontend": "24 files, 118 passed",
+    "type_check": "passed",
+    "production_build": "passed"
+  },
+  "e2e": {
+    "first_session_id": "28CzkGo6eZBQ7d409gyUE",
+    "first_generated_slides": 12,
+    "second_session_id": "Q0P4s0LK1gS5admANgQ8w",
+    "second_generated_slides": 13,
+    "second_generation_note": "one extra content page created by lossless capacity pagination",
+    "text_edit_verified": true,
+    "edited_title": "蓝金流体创意年度策略 · 已验证",
+    "content_image_replaced_with_data_url": true,
+    "template_decorations_preserved": true,
+    "failure_retry": {
+      "failure_message": "PPT生成中断，请返回模板页重试",
+      "retry_session_id": "1Rjb2iBC6mVGtx3AF5jEi",
+      "retry_result": "12 slides completed"
+    },
+    "pptx_reimport": {
+      "imported_slides": 13,
+      "editable": true,
+      "edited_title": "蓝金流体创意年度策略 · 重导入可编辑"
+    },
+    "broken_images": []
+  },
+  "responsive": {
+    "picker": [
+      {
+        "viewport": "1920x1080",
+        "client_width": 1915,
+        "scroll_width": 1915,
+        "selected": true,
+        "generate": true,
+        "return": true
+      },
+      {
+        "viewport": "1366x768",
+        "client_width": 1362,
+        "scroll_width": 1362,
+        "selected": true,
+        "generate": true,
+        "return": true
+      },
+      {
+        "viewport": "768x1024",
+        "client_width": 763,
+        "scroll_width": 763,
+        "selected": true,
+        "generate": true,
+        "return": true
+      },
+      {
+        "viewport": "390x844",
+        "client_width": 386,
+        "scroll_width": 386,
+        "selected": true,
+        "generate": true,
+        "return": true
+      }
+    ],
+    "editor": [
+      {
+        "viewport": "1920x1080",
+        "client_width": 1920,
+        "scroll_width": 1920,
+        "canvas": true,
+        "export": true,
+        "works": true
+      },
+      {
+        "viewport": "1366x768",
+        "client_width": 1366,
+        "scroll_width": 1366,
+        "canvas": true,
+        "export": true,
+        "works": true
+      },
+      {
+        "viewport": "768x1024",
+        "client_width": 768,
+        "scroll_width": 768,
+        "canvas": true,
+        "export": true,
+        "works": true
+      },
+      {
+        "viewport": "390x844",
+        "client_width": 390,
+        "scroll_width": 390,
+        "mobile_preview": true,
+        "home": true,
+        "download": true
+      }
+    ]
+  },
+  "runtime": {
+    "main_api_health": 200,
+    "release_channel": "production",
+    "template_count": 10,
+    "template_11_count": 1,
+    "frontend_proxy_template_11_count": 1,
+    "cover_status": 200
+  },
+  "pptx": {
+    "name": "template_11_real_generated_qa.pptx",
+    "bytes": 16000296,
+    "slides": 13,
+    "sha256": "b99f32b68bb20990cb4b1e695a4dee286c26b4f5d3f467991cc854b4b994c50a",
+    "pptxtojson_slides": 13,
+    "pptxtojson_elements": 198
+  },
+  "screenshots": [
+    "editor-1366x768.png",
+    "editor-1920x1080.png",
+    "editor-390x844.png",
+    "editor-768x1024.png",
+    "editor-image-replaced-1366x768.png",
+    "editor-text-edited-1366x768.png",
+    "generation-failure-retry.png",
+    "generation-retry-success-1366x768.png",
+    "pptx-reimport-edited-1366x768.png",
+    "real-slide-01-1366x768.png",
+    "real-slide-02-1366x768.png",
+    "real-slide-03-1366x768.png",
+    "real-slide-04-1366x768.png",
+    "real-slide-05-1366x768.png",
+    "real-slide-06-1366x768.png",
+    "real-slide-07-1366x768.png",
+    "real-slide-08-1366x768.png",
+    "real-slide-09-1366x768.png",
+    "real-slide-10-1366x768.png",
+    "real-slide-11-1366x768.png",
+    "real-slide-12-1366x768.png",
+    "sample-content-4-1366x768.png",
+    "sample-cover-1366x768.png",
+    "sample-section-1366x768.png",
+    "template-picker-1366x768.png",
+    "template-picker-1920x1080.png",
+    "template-picker-390x844.png",
+    "template-picker-768x1024.png",
+    "template-slide-01-1366x768.png",
+    "template-slide-02-1366x768.png",
+    "template-slide-03-1366x768.png",
+    "template-slide-04-1366x768.png",
+    "template-slide-05-1366x768.png",
+    "template-slide-06-1366x768.png",
+    "template-slide-07-1366x768.png",
+    "template-slide-08-1366x768.png",
+    "template-slide-09-1366x768.png",
+    "template-slide-10-1366x768.png",
+    "template-slide-11-1366x768.png",
+    "template-slide-12-1366x768.png",
+    "template-slide-13-1366x768.png",
+    "template-slide-14-1366x768.png",
+    "template-slide-15-1366x768.png",
+    "template-slide-16-1366x768.png",
+    "template-slide-17-1366x768.png",
+    "template-slide-18-1366x768.png",
+    "template_11_18page_montage.png",
+    "template_11_real_e2e_montage.png"
+  ],
+  "stage_evidence": {
+    "reference_slide_audit": "reference-slide-audit.md",
+    "cover_sample": "sample-cover-1366x768.png",
+    "section_sample": "sample-section-1366x768.png",
+    "four_item_sample": "sample-content-4-1366x768.png"
+  },
+  "known_limitations": [
+    "Built-in imagegen did not expose the actual model identifier; recorded as tool not exposed.",
+    "Production SSO browser session was expired; real content-stream QA used an isolated non-SSO frontend and main API, then production mode was restored and reverified.",
+    "The content stream emitted non-JSON research narration warnings; the frontend skipped those fragments and completed the required slide sequence.",
+    "The second real generation produced 13 slides because a five-item section paginated into two pages; export and re-import preserved all 13 pages.",
+    "The generic artifact-tool slides_test helper could not render this PPTX; visual overflow was verified through the real PPTist editor, 30 per-slide screenshots, montage review, OOXML, and pptxtojson re-import instead.",
+    "Commit, push, PR, merge, and deployment remain outside this Goal."
+  ]
+}
