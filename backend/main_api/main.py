@@ -551,6 +551,8 @@ async def get_templates():
         { "name": "科技蓝扁平", "id": "template_8", "cover": "/api/data/template_8.jpg" },
         # AI霓虹科技模板基于用户超宽参考稿重构，内容图片与原创霓虹装饰严格隔离。
         { "name": "AI 霓虹科技", "id": "template_9", "cover": "/api/data/template_9.jpg" },
+        # 清新校园教育模板基于用户参考PPT重构，原创教育装饰与内容图片槽严格隔离。
+        { "name": "清新校园教育", "id": "template_10", "cover": "/api/data/template_10.jpg" },
     ]
 
     return {"data": templates}
