@@ -1,0 +1,99 @@
+{
+  "template_id": "template_13",
+  "status": "DONE",
+  "user_confirmation": {
+    "confirmed": true,
+    "result": "complete"
+  },
+  "template": {
+    "slides": 18,
+    "mvp_slides": 12,
+    "type_distribution": {
+      "cover": 2,
+      "contents": 6,
+      "transition": 2,
+      "content": 6,
+      "end": 2
+    },
+    "json_bytes": 181736,
+    "cover_bytes": 54267,
+    "asset_count": 6
+  },
+  "tests": {
+    "backend_passed": 634,
+    "frontend_passed": 118,
+    "template_13_passed": 35,
+    "failed": 0,
+    "backend_duration_seconds": 67.27,
+    "frontend_duration_seconds": 11.08,
+    "frontend_typecheck": "passed",
+    "frontend_build": "passed",
+    "scope": [
+      "test_template_13.py",
+      "test_template_renderer.py",
+      "test_template_assets.py",
+      "test_template_7.py through test_template_12.py"
+    ]
+  },
+  "successful_e2e": {
+    "task_id": "44ec2236-0a68-41a7-9142-f1447fd8411a",
+    "presentation_id": "2f04072a-d77f-4d0c-bd3e-4ff186c0a14b",
+    "status": "succeeded",
+    "progress": 100,
+    "attempt": 1,
+    "slides": 9,
+    "types": {
+      "cover": 1,
+      "contents": 1,
+      "transition": 2,
+      "content": 4,
+      "end": 1
+    }
+  },
+  "retry_evidence": {
+    "task_id": "e531ffab-fde9-408c-9b07-42021555697b",
+    "status": "failed",
+    "error_code": "AGENT_REQUEST_FAILED",
+    "attempts": 3,
+    "partial_slides": 11
+  },
+  "responsive_viewports": [
+    "1920x1080",
+    "1366x768",
+    "768x1024",
+    "390x844"
+  ],
+  "browser_qa": {
+    "no_horizontal_overflow": true,
+    "template_selected": true,
+    "generate_visible": true,
+    "return_visible": true,
+    "save_visible": true,
+    "export_visible": true,
+    "text_edit_saved": true,
+    "content_image_replaced": true,
+    "decorations_preserved": true,
+    "failure_refresh_visible": true
+  },
+  "pptx": {
+    "path": "doc/assets/template_13_qa/exports/template_13_real_editor_qa.pptx",
+    "bytes": 4255400,
+    "sha256": "76E4D29EB1790F247E2B4A60F52F0DD88B0363809DEE18F71638135D78D44A22",
+    "slides": 9,
+    "parsed_with_project_pptxtojson": true,
+    "reimported_in_editor": true,
+    "reimport_console_errors": 0,
+    "visual_montage": "doc/assets/template_13_qa/template_13_reimport_9page_montage.png"
+  },
+  "known_limitations": [
+    "The presentation skill artifact-tool importer could not render the PPTist-exported PPTX; the product's pptxtojson parser and browser editor round trip both succeeded.",
+    "The complete QA evidence set is about 40.5 MiB and follows the existing template evidence convention; future templates should consider Git LFS or external artifact storage."
+  ],
+  "git_actions": {
+    "scope": "at_g8_qa_completion",
+    "committed": false,
+    "pushed": false,
+    "pull_request_created": false,
+    "deployed": false
+  }
+}
