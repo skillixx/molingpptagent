@@ -1,0 +1,268 @@
+{
+  "status": "DONE",
+  "user_confirmed": true,
+  "template": {
+    "id": "template_12",
+    "title": "东方水墨雅韵",
+    "bytes": 181038,
+    "sha256": "514edc6a071e5349c7f9b365c79cf5a74e04caa46fab4e4d6da600ca8dd71816",
+    "slides": 18,
+    "mvp_slides": 12,
+    "types": {
+      "cover": 2,
+      "contents": 6,
+      "transition": 2,
+      "content": 7,
+      "end": 1
+    },
+    "elements": 318
+  },
+  "cover": {
+    "bytes": 83091,
+    "sha256": "644fd54156a8448d670754da465a658f0783c5679814cbdfcc8980031d98dec0"
+  },
+  "assets": {
+    "template_12_asset_bg_cover_v1.jpg": {
+      "bytes": 177779,
+      "size": [
+        1920,
+        1080
+      ],
+      "mode": "RGB",
+      "alpha": null,
+      "sha256": "702af8e60b8cc671bb4efc830315573ddfda266bf9d2015bf8a75273d3e72459"
+    },
+    "template_12_asset_bg_section_v1.jpg": {
+      "bytes": 149209,
+      "size": [
+        1920,
+        1080
+      ],
+      "mode": "RGB",
+      "alpha": null,
+      "sha256": "07953bb7753e2560c255f0b476eb9aff9f40ec141d8558042a0d3d64a500eb9c"
+    },
+    "template_12_asset_bg_end_v1.jpg": {
+      "bytes": 128824,
+      "size": [
+        1920,
+        1080
+      ],
+      "mode": "RGB",
+      "alpha": null,
+      "sha256": "93542374fa70d074086bdf1d38dc124fbb86f7f971bd30e6f99e0bbcb8ea3a9c"
+    },
+    "template_12_asset_mountain_band_v1.png": {
+      "bytes": 703480,
+      "size": [
+        1800,
+        550
+      ],
+      "mode": "RGBA",
+      "alpha": [
+        0,
+        255
+      ],
+      "sha256": "759f5261a77391071cd2d16b33c45ba2af37bffe3f6daf7391e370ac2e7da1ff"
+    },
+    "template_12_asset_brush_accent_v1.png": {
+      "bytes": 346210,
+      "size": [
+        1800,
+        420
+      ],
+      "mode": "RGBA",
+      "alpha": [
+        0,
+        255
+      ],
+      "sha256": "ea87b08822b812f930dd135b422c603d8a53fce2f61c544a619fb895ae988dcf"
+    },
+    "template_12_asset_folding_fan_v1.png": {
+      "bytes": 1029515,
+      "size": [
+        1400,
+        900
+      ],
+      "mode": "RGBA",
+      "alpha": [
+        0,
+        255
+      ],
+      "sha256": "00c8fcf04323344de28388ad13014ace67082e112500d381e04645a9d965c0a0"
+    },
+    "template_12_asset_ink_circle_v1.png": {
+      "bytes": 822541,
+      "size": [
+        1200,
+        1200
+      ],
+      "mode": "RGBA",
+      "alpha": [
+        0,
+        255
+      ],
+      "sha256": "07841a02cd59cb60c45ca556401a8da009080794c72ddc297593bbf9528f61db"
+    },
+    "template_12_asset_seal_red_v1.png": {
+      "bytes": 138700,
+      "size": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "alpha": [
+        0,
+        255
+      ],
+      "sha256": "8d61ff7997bf66df70b35601d498f97e3f17800229e0fdbaa3d7a126bf091156"
+    }
+  },
+  "tests": {
+    "template": "255 passed",
+    "backend": "599 passed",
+    "frontend": "not run; frontend source unchanged"
+  },
+  "e2e": {
+    "task_id": "da618952-248a-4031-9391-ed6a2d1516f8",
+    "status": "succeeded",
+    "progress": 100,
+    "attempt": 2,
+    "error_code": "AGENT_REQUEST_FAILED",
+    "presentation_id": "385b93ff-ed5f-4a81-8b35-d5a31056093b",
+    "template_id": "template_12",
+    "declared_slide_count": 10,
+    "actual_slide_count": 10,
+    "types": {
+      "cover": 1,
+      "contents": 1,
+      "transition": 3,
+      "content": 4,
+      "end": 1
+    },
+    "decoration_count": 20,
+    "content_image_count": 0,
+    "all_decorations_are_template_12": true
+  },
+  "editor": {
+    "real_editor_id": "56569ef5-b708-5374-9290-6513f6e864ca",
+    "edited_title_saved": true,
+    "mvp_editor_id": "f97614af-7236-5736-b01a-d19060d02fe3",
+    "content_image_count": 1,
+    "content_image_is_data_url": true,
+    "decoration_count": 22,
+    "all_decorations_preserved": true
+  },
+  "reimport_ui": {
+    "slideCount": 24,
+    "editedTitleVisible": true,
+    "editableElements": 6,
+    "imageElements": 3,
+    "clientWidth": 1366,
+    "scrollWidth": 1366,
+    "exportVisible": true,
+    "source": "D:/moling/TrainPPTAgent/doc/assets/template_12_qa/exports/template_12_mvp_qa.pptx",
+    "consoleErrors": []
+  },
+  "button_feedback": {
+    "returnNavigation": true,
+    "beforeReturn": "http://127.0.0.1:5781/ppt",
+    "afterReturn": "http://127.0.0.1:5781/",
+    "refreshClicked": true,
+    "retryStillVisible": true
+  },
+  "responsive": [
+    {
+      "viewport": "1920x1080",
+      "picker": {
+        "clientWidth": 1920,
+        "scrollWidth": 1920,
+        "selected": "东方水墨雅韵",
+        "generateVisible": true,
+        "returnVisible": true
+      },
+      "editor": {
+        "clientWidth": 1920,
+        "scrollWidth": 1920,
+        "savedVisible": true,
+        "exportVisible": true
+      }
+    },
+    {
+      "viewport": "1366x768",
+      "picker": {
+        "clientWidth": 1366,
+        "scrollWidth": 1366,
+        "selected": "东方水墨雅韵",
+        "generateVisible": true,
+        "returnVisible": true
+      },
+      "editor": {
+        "clientWidth": 1366,
+        "scrollWidth": 1366,
+        "savedVisible": true,
+        "exportVisible": true
+      }
+    },
+    {
+      "viewport": "768x1024",
+      "picker": {
+        "clientWidth": 768,
+        "scrollWidth": 768,
+        "selected": "东方水墨雅韵",
+        "generateVisible": true,
+        "returnVisible": true
+      },
+      "editor": {
+        "clientWidth": 768,
+        "scrollWidth": 768,
+        "savedVisible": true,
+        "exportVisible": true
+      }
+    },
+    {
+      "viewport": "390x844",
+      "picker": {
+        "clientWidth": 390,
+        "scrollWidth": 390,
+        "selected": "东方水墨雅韵",
+        "generateVisible": true,
+        "returnVisible": true
+      },
+      "editor": {
+        "clientWidth": 390,
+        "scrollWidth": 390,
+        "savedVisible": true,
+        "exportVisible": true
+      }
+    }
+  ],
+  "production_runtime": {
+    "main_api_template_12_count": 1,
+    "frontend_proxy_template_12_count": 1,
+    "frontend_cover_type": "image/jpeg",
+    "frontend_cover_bytes": 83091
+  },
+  "pptx": [
+    {
+      "name": "template_12_mvp_qa.pptx",
+      "path": "doc/assets/template_12_qa/exports/template_12_mvp_qa.pptx",
+      "bytes": 11751770,
+      "slides": 12,
+      "sha256": "b7ebbdc50af70d601262f65e90c34c7317e8baf529a22f343a67056a87ee2989"
+    },
+    {
+      "name": "template_12_real_editor_qa.pptx",
+      "path": "doc/assets/template_12_qa/exports/template_12_real_editor_qa.pptx",
+      "bytes": 11053329,
+      "slides": 10,
+      "sha256": "a8be5c70290f2af3d5ebfe9023ca188ddbe355d1640712183e74a80b822b653d"
+    }
+  ],
+  "known_limitations": [
+    "内置 imagegen 工具未暴露实际模型标识，记录为工具未暴露。",
+    "隔离 QA 关闭存储时导出历史和归档接口返回404，但界面提供刷新重试，本地PPTX导出成功。",
+    "最终真实任务首次Agent请求失败后自动重试，第2次尝试成功；任务保留历史错误码用于审计。",
+    "未提交、推送、创建PR、合并或部署。"
+  ]
+}
