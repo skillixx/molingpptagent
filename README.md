@@ -264,6 +264,9 @@ flowchart TD
 * [东方水墨雅韵模板开发说明](doc/东方水墨雅韵PPT模板开发说明.md)
 * [东方水墨雅韵模板开发 Goal](doc/东方水墨雅韵PPT模板开发Goal.md)
 * [东方水墨雅韵模板素材与 QA 记录](doc/东方水墨雅韵PPT模板素材与QA记录.md)
+* [灰蓝企业宣传模板开发说明](doc/灰蓝企业宣传PPT模板开发说明.md)
+* [灰蓝企业宣传模板开发 Goal](doc/灰蓝企业宣传PPT模板开发Goal.md)
+* [灰蓝企业宣传模板素材与 QA 记录](doc/灰蓝企业宣传PPT模板素材与QA记录.md)
 * [不同的模型配置](doc/custom_model.md)
 * [PPT的图片说明]doc/Image.md
 ---
