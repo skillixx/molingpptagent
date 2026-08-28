@@ -557,6 +557,8 @@ async def get_templates():
         { "name": "蓝金流体创意", "id": "template_11", "cover": "/api/data/template_11.jpg" },
         # 东方水墨雅韵模板使用原创水墨素材，动态内容与固定装饰严格隔离。
         { "name": "东方水墨雅韵", "id": "template_12", "cover": "/api/data/template_12.jpg" },
+        # 灰蓝企业宣传模板使用原创建筑背景，内容图片与固定装饰严格隔离。
+        { "name": "灰蓝企业宣传", "id": "template_13", "cover": "/api/data/template_13.jpg" },
     ]
 
     return {"data": templates}

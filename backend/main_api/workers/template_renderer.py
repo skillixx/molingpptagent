@@ -427,10 +427,12 @@ class PresentationTemplateRenderer:
             self._fill_single(elements, "content", self._text(data.get("text")), max_lines=4)
             self._fill_list(elements, "partNumber", [str(transition_number).zfill(2)], max_lines=1)
         elif slide_type == "end":
-            if title:
+            # 内容Agent偶尔会用“...”表示空结束语；纯标点不能覆盖模板的可读默认文案。
+            if self._meaningful_text(title):
                 self._fill_single(elements, "title", title, max_lines=2)
-            if self._text(data.get("text")):
-                self._fill_single(elements, "content", self._text(data.get("text")), max_lines=3)
+            end_content = self._text(data.get("text"))
+            if self._meaningful_text(end_content):
+                self._fill_single(elements, "content", end_content, max_lines=3)
         else:
             self._fill_single(elements, "title", title, max_lines=2)
             self._fill_content(elements, data, semantic)
@@ -453,6 +455,22 @@ class PresentationTemplateRenderer:
         image_count: int = 0,
         variant_seed: int = 0,
     ) -> dict[str, Any]:
+        if slide_type == "cover" and any(
+            self._has_explicit_content_image_slot(slide) for slide in candidates
+        ):
+            # 新协议封面按 Agent 是否提供图片选版，避免无图任务暴露空内容图框。
+            exact_image_candidates = [
+                slide for slide in candidates
+                if self._image_count(slide) == image_count
+            ]
+            if exact_image_candidates:
+                candidates = exact_image_candidates
+            elif prefer_images:
+                raise TemplateRenderError(
+                    "模板缺少匹配的封面图片版式",
+                    code="TEMPLATE_MISSING_SLOT",
+                    context={"image_count": str(image_count)},
+                )
         if slide_type == "content":
             requested_layout_kind = self._requested_layout_kind(data)
             if requested_layout_kind:
@@ -589,6 +607,15 @@ class PresentationTemplateRenderer:
         """识别要求图片与正文一一对应的生产版式。"""
         elements = slide.get("elements") if isinstance(slide.get("elements"), list) else []
         return any(slot.get("strictImageCount") is True for slot in cls._image_slots(elements))
+
+    @staticmethod
+    def _has_explicit_content_image_slot(slide: dict[str, Any]) -> bool:
+        """仅为显式标注的新模板启用封面图片选版，保持历史模板兼容。"""
+        elements = slide.get("elements") if isinstance(slide.get("elements"), list) else []
+        return any(
+            element.get("type") == "image" and element.get("imageType") == "content"
+            for element in elements
+        )
 
     @staticmethod
     def _center_crop_range(
@@ -941,6 +968,11 @@ class PresentationTemplateRenderer:
         if isinstance(value, (int, float)) and not isinstance(value, bool):
             return str(value)
         return ""
+
+    @staticmethod
+    def _meaningful_text(value: str) -> bool:
+        """至少包含一个字母或数字，避免纯标点覆盖模板默认文案。"""
+        return any(character.isalnum() for character in value)
 
     @staticmethod
     def _number(value: Any, fallback: float) -> float:
