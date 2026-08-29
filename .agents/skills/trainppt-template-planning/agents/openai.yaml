@@ -1,0 +1,7 @@
+interface:
+  display_name: "TrainPPTAgent 模板规划"
+  short_description: "规划 TrainPPTAgent 生产模板的页面、素材、QA 与机器规格"
+  default_prompt: "Use $trainppt-template-planning to turn my PPTX or written template requirements into a reviewable, build-ready plan without implementing it."
+
+policy:
+  allow_implicit_invocation: true

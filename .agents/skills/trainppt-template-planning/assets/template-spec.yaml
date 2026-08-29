@@ -1,0 +1,153 @@
+# 本文件是可复制的规划规格骨架。复制到 doc/template_specs/ 后替换双花括号变量，
+# 保持 DRAFT，直到权利、页面、素材、QA 和开放决策均审计完成。
+spec_version: 1
+status: DRAFT
+created_at: "{{yyyy-mm-dd}}"
+updated_at: "{{yyyy-mm-dd}}"
+
+project:
+  root: "{{absolute_project_root}}"
+  template_dir: "backend/main_api/template"
+  registration_file: "backend/main_api/main.py"
+  renderer_file: "backend/main_api/workers/template_renderer.py"
+
+template:
+  id: "{{discovered_candidate_template_id}}"
+  id_status: "candidate"
+  name: "{{template_name}}"
+  category: "{{template_category}}"
+  requirements_summary: "{{audience_purpose_and_core_message}}"
+  reference_files:
+    - path: "{{absolute_reference_file_path}}"
+      sha256: "{{reference_file_sha256}}"
+      rights_status: "unknown"
+      planned_action: "redraw-and-regenerate"
+  canvas:
+    width: 1000
+    height: 562.5
+  cover:
+    width: 960
+    height: 540
+
+visual:
+  theme: "{{visual_direction}}"
+  palette:
+    - id: "primary"
+      value: "{{hex_color}}"
+      purpose: "主视觉色"
+  fonts:
+    heading: "{{available_heading_font}}"
+    body: "{{available_body_font}}"
+  safe_zones:
+    - id: "cover-title"
+      description: "{{cover_title_safe_zone}}"
+  forbidden_content:
+    - "未授权 Logo"
+    - "水印、伪文字和假截图"
+    - "未授权真实人物肖像"
+  logo_policy: "no-unlicensed-logo"
+  people_policy: "no-unlicensed-likeness"
+
+pages:
+  mvp:
+    inventory:
+      cover: 1
+      contents: 1
+      transition: 1
+      content: 1
+      end: 1
+    contents_capacities: [3]
+    content_capacities: [1]
+  production:
+    inventory:
+      cover: 1
+      contents: 1
+      transition: 1
+      content: 1
+      end: 1
+  specialty_layouts:
+    - id: "{{specialty_layout_id}}"
+      purpose: "{{specialty_layout_purpose}}"
+      selection_rule: "{{deterministic_selection_rule}}"
+
+semantics:
+  page_types: ["cover", "contents", "transition", "content", "end"]
+  text_types: ["title", "subtitle", "content"]
+  content_image_type: "content"
+  decoration_image_type: "decoration"
+  minimum_font_sizes:
+    title: 24
+    body: 14
+  overflow_policy: "paginate-without-loss"
+  grouping_policy: "content-images-independent"
+
+assets:
+  generator_preference: "gpt-image-2"
+  max_total_generation_attempts: 3
+  items:
+    - id: "{{asset_id}}"
+      role: "background"
+      filename: "{{template_id}}_asset_{{asset_role}}_v1.jpg"
+      format: "JPEG"
+      dimensions: [1920, 1080]
+      max_bytes: 350000
+      alpha_required: false
+      safe_zone: "{{asset_safe_zone}}"
+      prompt_constraints:
+        - "无文字"
+        - "无 Logo"
+      rights_action: "regenerate"
+      max_attempts: 3
+
+completion_criteria:
+  - id: "criterion-page-inventory"
+    description: "页面库存与批准规格一致"
+  - id: "criterion-responsive"
+    description: "目标视口无横向溢出且关键按钮可触达"
+
+qa:
+  content_cases:
+    - id: "case-page-inventory"
+      purpose: "验证页面类型、数量和语义槽"
+  image_counts:
+    - id: "case-image-counts"
+      values: [0, 1]
+  viewports:
+    - id: "viewport-desktop"
+      width: 1440
+      height: 900
+    - id: "viewport-laptop"
+      width: 1280
+      height: 720
+    - id: "viewport-tablet"
+      width: 768
+      height: 1024
+    - id: "viewport-mobile"
+      width: 390
+      height: 844
+  export_roundtrip_required: true
+  affected_test_commands:
+    - ".\\.venv\\Scripts\\python.exe -m pytest backend/main_api/tests/test_template_{{n}}.py"
+  coverage_map:
+    criterion-page-inventory: ["case-page-inventory"]
+    criterion-responsive: ["viewport-desktop", "viewport-laptop", "viewport-tablet", "viewport-mobile"]
+
+planning_run_permissions:
+  allow_image_generation: false
+  allow_code_changes: false
+  allow_git_commit: false
+  allow_git_push: false
+  allow_merge_main: false
+  allow_service_restart: false
+  allow_production_deploy: false
+
+required_build_authorizations:
+  image_generation: true
+  code_changes: true
+  real_task_execution: true
+  final_manual_close: true
+
+open_decisions:
+  - "{{decision_that_must_be_resolved_before_ready_for_build}}"
+
+known_limits: []
