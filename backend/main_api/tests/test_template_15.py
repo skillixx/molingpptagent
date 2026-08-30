@@ -535,6 +535,71 @@ def test_template_15_long_body_paginates_without_loss() -> None:
     assert rendered == body
 
 
+def test_template_15_real_agent_five_item_titles_fit_without_content_loss() -> None:
+    """真实 Agent 的五项内容标题应保持可读，正文分页后不得丢失。"""
+    titles = ["中" * length for length in (15, 11, 12, 11, 13)]
+    bodies = ["正" * length for length in (40, 44, 37, 41, 41)]
+    document = _renderer().render(
+        template_id="template_15",
+        semantic_slides=[{
+            "type": "content",
+            "data": {
+                "title": "真实内容页标题",
+                "items": [
+                    {"title": title, "text": body}
+                    for title, body in zip(titles, bodies, strict=True)
+                ],
+            },
+        }],
+        task_id="template-15-real-agent-five-items",
+        fallback_title="真实内容页标题",
+    )
+
+    rendered_titles = "\n".join(
+        _plain_text(element)
+        for slide in document["slides"]
+        for element in slide["elements"]
+        if _slot_type(element) == "itemTitle"
+    )
+    rendered_bodies = "".join(
+        _plain_text(element)
+        for slide in document["slides"]
+        for element in slide["elements"]
+        if _slot_type(element) == "item"
+    )
+    assert all(title in rendered_titles for title in titles)
+    assert rendered_bodies == "".join(bodies)
+
+
+@pytest.mark.parametrize("variant", ["horizon", "spectrum", "particle", "stage"])
+def test_template_15_transition_accepts_declared_agent_copy_limit(variant: str) -> None:
+    """过渡页必须容纳提示词允许的三句上限，不因确定性变体随机失败。"""
+    body = "".join(f"{'中' * 24}。" for _ in range(3))
+    title = "中" * 18
+    slide = _renderer().render(
+        template_id="template_15",
+        semantic_slides=[{
+            "type": "transition",
+            "data": {"title": title, "text": body, "variant": variant},
+        }],
+        task_id=f"template-15-transition-{variant}",
+        fallback_title=title,
+    )["slides"][0]
+
+    rendered_title = next(
+        _plain_text(element)
+        for element in slide["elements"]
+        if _slot_type(element) == "title"
+    )
+    content = next(
+        _plain_text(element)
+        for element in slide["elements"]
+        if _slot_type(element) == "content"
+    )
+    assert rendered_title == title
+    assert content == body
+
+
 def test_template_15_long_body_with_image_keeps_image_on_first_part_only() -> None:
     body = "产品图只属于正文首段，后续分页不得重复固定内容图。" * 50
     document = _renderer().render(

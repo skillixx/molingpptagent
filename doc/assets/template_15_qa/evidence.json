@@ -1,7 +1,7 @@
 {
   "evidence_schema_version": 1,
   "template_id": "template_15",
-  "generated_at": "2026-08-30T08:27:52Z",
+  "generated_at": "2026-08-30T12:42:45Z",
   "qa_status": "PASS",
   "implementation_status": "READY_FOR_CONFIRMATION",
   "spec": {
@@ -17,8 +17,8 @@
   "implementation": {
     "template_json": {
       "path": "backend/main_api/template/template_15.json",
-      "bytes": 476113,
-      "sha256": "f87cc0063c97f87814dcffcc36e3faf143ecd4fa3a751d7b3cffb78a51d999af"
+      "bytes": 476115,
+      "sha256": "550e41dfe8f179f7a42f4f1ae67bb0aa50196005dbc4834889efc3462196607e"
     },
     "page_types": {
       "cover": 2,
@@ -33,8 +33,8 @@
   "checks": {
     "development_spec": {
       "status": "PASS",
-      "source": ".codex-tmp/template_15/reports/development_spec.json",
-      "sha256": "fccefc7b7e3818fab90d34771453cc4cf7e436b797a875381e4e9c0fbf3c1cdf",
+      "source": ".codex-tmp/template_15/repair-qa/reports/development_spec.json",
+      "sha256": "164b2e5d4a586a2c1e889d0e1476c36da04d67a023ddce04e2aefda976f5e834",
       "summary": {
         "script": "validate-development-spec",
         "template_id": "template_15",
@@ -49,7 +49,7 @@
     },
     "template_json": {
       "status": "PASS",
-      "source": ".codex-tmp/template_15/reports/template_json.json",
+      "source": ".codex-tmp/template_15/repair-qa/reports/template_json.json",
       "sha256": "1dc493b72e04b0635a98e3ffeb18f2cfe58a7a61d05ce37fc89444548c9e3d5b",
       "summary": {
         "script": "validate-template-json",
@@ -71,7 +71,7 @@
     },
     "assets": {
       "status": "PASS",
-      "source": ".codex-tmp/template_15/reports/assets.json",
+      "source": ".codex-tmp/template_15/repair-qa/reports/assets.json",
       "sha256": "c801e1fd17945e3818d14ad788486ce7641e213efdea381953eec5ea22d81ac3",
       "summary": {
         "script": "audit-template-assets",
@@ -183,8 +183,8 @@
     },
     "registration": {
       "status": "PASS",
-      "source": ".codex-tmp/template_15/reports/registration.json",
-      "sha256": "310b660285b8de7a619ecc3289840155aa1405596fe8b4f433b4259ed14e9beb",
+      "source": ".codex-tmp/template_15/repair-qa/reports/registration.json",
+      "sha256": "04c6e861d79d6b8c27b3c901225d806b5683070ecc6cc5c539f7e31f691e78ac",
       "summary": {
         "script": "verify-template-registration",
         "template_id": "template_15",
@@ -199,13 +199,13 @@
     },
     "tests": {
       "status": "PASS",
-      "source": ".codex-tmp/template_15/reports/tests.json",
-      "sha256": "54b94ffed60a5d88a6db703ba9138c98d4274721e5a818089df47d6f2eae4447",
+      "source": ".codex-tmp/template_15/repair-qa/reports/tests.json",
+      "sha256": "81486b82aeec2ad2c30f0bc775afe05dfc44c3b00bf648de4aeb921a3e463a5b",
       "summary": {
         "script": "run-template-tests",
         "executed": true,
         "exit_code": 0,
-        "duration_seconds": 74.533,
+        "duration_seconds": 77.083,
         "scope": "backend",
         "tests": [
           "backend\\main_api\\tests"
@@ -214,8 +214,8 @@
     },
     "api": {
       "status": "PASS",
-      "source": ".codex-tmp/template_15/reports/api.json",
-      "sha256": "15e556559dbc20d5c12d7c5fa5c95be422d1cd612f2cb56970ee7785159058fc",
+      "source": ".codex-tmp/template_15/repair-qa/reports/api.json",
+      "sha256": "c27774ed31ee5ea02ddd6ab7a17d1a6bf733bac2190135e12f58f059e4dbdc43",
       "summary": {
         "script": "verify-template-api",
         "template_id": "template_15",
@@ -235,7 +235,7 @@
           "json": {
             "status": 200,
             "content_type": "application/json",
-            "bytes": 476113
+            "bytes": 476115
           },
           "cover": {
             "status": 200,
@@ -299,19 +299,19 @@
     },
     "pptx_roundtrip": {
       "status": "PASS",
-      "source": ".codex-tmp/template_15/reports/pptx_roundtrip.json",
-      "sha256": "393088550672e9c4df931d94a4568b56c4aa6b1b64fcf30a4bc3e1b90d40275d",
+      "source": ".codex-tmp/template_15/repair-qa/reports/pptx_roundtrip.json",
+      "sha256": "0fa4d2307b24b6f7016a0472767fc14d7cf1477a64266c2837c8482922341d44",
       "summary": {
         "script": "verify-pptx-roundtrip",
-        "bytes": 6001645,
-        "sha256": "2a17ebb9c931bda7e4d3e61d001009617b2ebd479122e1cd060fcbb869c0c643",
+        "bytes": 6002452,
+        "sha256": "a51fb14246e5448ccbe5180f87e9ae94879be3ae7ef72e2df1e7b03119c66812",
         "slides": 13,
         "structure_valid": true,
         "product_roundtrip": {
           "provided": true,
           "parsed": true,
           "slides": 13,
-          "editable_elements": 207
+          "editable_elements": 208
         }
       }
     }
@@ -319,181 +319,156 @@
   "qa": {
     "e2e": {
       "progress": 100,
-      "actual_slide_count": 9,
+      "actual_slide_count": 8,
+      "status": "succeeded",
       "template_id": "template_15",
       "page_types_covered": [
-        "content",
-        "contents",
         "cover",
-        "end",
-        "transition"
+        "contents",
+        "transition",
+        "content",
+        "end"
       ],
-      "declared_slide_count": 9,
-      "status": "succeeded"
+      "declared_slide_count": 8
     },
     "editor": {
-      "decorations_preserved": true,
-      "content_image_replaced": true,
       "text_saved": true,
-      "text_persisted_after_reload": true
+      "content_image_replaced": true,
+      "text_persisted_after_reload": true,
+      "decorations_preserved": true
     },
     "failure_feedback": {
-      "button_recovered": true,
       "visible": true,
-      "retry_available": true
+      "retry_available": true,
+      "button_recovered": true
     },
     "runtime": {
+      "template_json_ok": true,
       "cover_ok": true,
       "template_unique": true,
-      "template_json_ok": true,
       "assets_ok": true
     },
     "pptx": {
       "parsed_by_product": true,
       "reimported": true,
-      "structure_valid": true,
+      "slide_count_matches": true,
       "editable_after_reimport": true,
-      "slide_count_matches": true
+      "structure_valid": true
     },
     "responsive": [
       {
-        "class": "desktop",
-        "buttons_reachable": true,
         "scroll_width": 1440,
-        "client_width": 1440,
+        "buttons_reachable": true,
+        "feedback_visible": true,
+        "class": "desktop",
         "viewport": "1440x900",
-        "feedback_visible": true
+        "client_width": 1440
       },
       {
-        "class": "laptop",
-        "buttons_reachable": true,
         "scroll_width": 1280,
-        "client_width": 1280,
+        "buttons_reachable": true,
+        "feedback_visible": true,
+        "class": "laptop",
         "viewport": "1280x720",
-        "feedback_visible": true
+        "client_width": 1280
       },
       {
-        "class": "tablet",
-        "buttons_reachable": true,
         "scroll_width": 768,
-        "client_width": 768,
+        "buttons_reachable": true,
+        "feedback_visible": true,
+        "class": "tablet",
         "viewport": "768x1024",
-        "feedback_visible": true
+        "client_width": 768
       },
       {
-        "class": "mobile",
-        "buttons_reachable": true,
         "scroll_width": 390,
-        "client_width": 390,
+        "buttons_reachable": true,
+        "feedback_visible": true,
+        "class": "mobile",
         "viewport": "390x844",
-        "feedback_visible": true
+        "client_width": 390
       }
     ]
   },
   "artifacts": [
     {
-      "path": "doc/assets/template_15_qa/template_15_39page_montage.png",
-      "bytes": 1699790,
-      "sha256": "f6ad597aba34db32307e704cf3dd12ee211788bd11f2ec4031e476a76bad845c"
+      "path": ".codex-tmp/template_15/repair-qa/e2e-audit.json",
+      "bytes": 638,
+      "sha256": "5626442b194367a5b26c8603c21acce42652318203bd38bc1b007fa06925c6fd"
     },
     {
-      "path": "doc/assets/template_15_qa/devices/works-desktop.png",
-      "bytes": 110721,
-      "sha256": "a2f383a308b35bb3db670ed1db403852383a6b308e0c4acf6a084671278fdf63"
+      "path": ".codex-tmp/template_15/repair-qa/editor-audit.json",
+      "bytes": 503,
+      "sha256": "6108dcf210fb2f664f19fc680b6b6709a9274e7190cca968a06717b285ffe9b0"
     },
     {
-      "path": "doc/assets/template_15_qa/devices/works-laptop.png",
-      "bytes": 82727,
-      "sha256": "86d908d5f7997bb62c499ac969fcd73ca0aa6621f6d9d728341629aa45e63d7b"
+      "path": ".codex-tmp/template_15/repair-qa/worker-process.json",
+      "bytes": 705,
+      "sha256": "817190f0935c6c522e5f1f24819564a2ec9c764cb641a0b546ba97cc1c8ff4bc"
     },
     {
-      "path": "doc/assets/template_15_qa/devices/works-tablet.png",
-      "bytes": 75898,
-      "sha256": "cb25d6fa4dd6538332ced6f9fa4eb113ebe463691721d57adb90d91b5df16993"
+      "path": ".codex-tmp/template_15/repair-qa/pptx-roundtrip-summary.json",
+      "bytes": 346,
+      "sha256": "0ca2f66ab0d9f597b2bdd594744511611db4e638abd94f25ac1be55092b72824"
     },
     {
-      "path": "doc/assets/template_15_qa/devices/works-mobile.png",
-      "bytes": 37653,
-      "sha256": "99df17929f4c3db0f344070bf0dbf6a0502898ef7418dc3b277e13c067db963b"
+      "path": ".codex-tmp/template_15/repair-qa/exports/template_15_repair_qa.pptx",
+      "bytes": 6002452,
+      "sha256": "a51fb14246e5448ccbe5180f87e9ae94879be3ae7ef72e2df1e7b03119c66812"
     },
     {
-      "path": "doc/assets/template_15_qa/devices/editor-desktop.png",
-      "bytes": 135906,
-      "sha256": "aefb7d9fe1a6c5781fd4e686ca7f50607a28f0b303a29451506f4152fcb3abc5"
+      "path": ".codex-tmp/template_15/repair-qa/screenshots/works-desktop.png",
+      "bytes": 109992,
+      "sha256": "085a98a8d66807b9977fc6290adb0d502cec0190ab25ddafa907c401e2addd49"
     },
     {
-      "path": "doc/assets/template_15_qa/devices/editor-laptop.png",
-      "bytes": 105462,
-      "sha256": "9a9155129d1bd3143610007ba8896eb1296f448a5a29004b319a27b55af3bc72"
+      "path": ".codex-tmp/template_15/repair-qa/screenshots/works-laptop.png",
+      "bytes": 82407,
+      "sha256": "dce4b83123acbd793f0345eaf2461f4b58597a910c332deca6c2e25a0fe0c703"
     },
     {
-      "path": "doc/assets/template_15_qa/devices/editor-tablet.png",
-      "bytes": 89130,
-      "sha256": "d012fa6303fd5755c463047a0464c7ecf5eef6dad3d4a15ec74860154fe048e1"
+      "path": ".codex-tmp/template_15/repair-qa/screenshots/works-tablet.png",
+      "bytes": 75572,
+      "sha256": "929f606c0a5de104b912764116aafcbfe6148cf9379c2ee070322229c33fd7d2"
     },
     {
-      "path": "doc/assets/template_15_qa/devices/editor-mobile.png",
-      "bytes": 47485,
-      "sha256": "3d22ae1747091a1272c44fb8393bb205174e567d9b8cee6060d46166bba74fda"
+      "path": ".codex-tmp/template_15/repair-qa/screenshots/works-mobile.png",
+      "bytes": 37673,
+      "sha256": "e271a29f32ab17a2808f44e96ca8fb125049346ddee13094f922deb78ca9a095"
     },
     {
-      "path": "doc/assets/template_15_qa/devices/editor-text-before.png",
-      "bytes": 135942,
-      "sha256": "ad4e1a049b0893a355fa430fbbefcf94382eaaa1cca77fc4ed8862f2fb1b233b"
+      "path": ".codex-tmp/template_15/repair-qa/screenshots/final-editor-desktop.png",
+      "bytes": 141289,
+      "sha256": "36f6f58a1316d50783df38eb22314ae4b32279c2d0657acc9129d4a60efa302d"
     },
     {
-      "path": "doc/assets/template_15_qa/devices/editor-text-edited.png",
-      "bytes": 136672,
-      "sha256": "3308505394e4e6ef5a675c536d80feb7c33f82d525cd92aa619b2ca542e32ec4"
+      "path": ".codex-tmp/template_15/repair-qa/screenshots/final-editor-laptop.png",
+      "bytes": 109855,
+      "sha256": "8fd36ca66ccc613756784593b037cfbebccb04244d4b89e11c7704eb13890a0f"
     },
     {
-      "path": "doc/assets/template_15_qa/devices/editor-image-replaced.png",
-      "bytes": 118107,
-      "sha256": "aff5bd0c852943e53da0777bfc3f2b1d732d71ca2d0d5aa6860bf7f50be90498"
+      "path": ".codex-tmp/template_15/repair-qa/screenshots/final-editor-tablet.png",
+      "bytes": 90344,
+      "sha256": "06309424231ce0e5ff8b118f21c3eb77fb23b647adb45a633418953f7ce37f9a"
     },
     {
-      "path": "doc/assets/template_15_qa/devices/export-failure-feedback.png",
-      "bytes": 117715,
-      "sha256": "4488e54df2e5388f5e661f92090a94771ed4320b6eca94353af9b0e821f348b4"
+      "path": ".codex-tmp/template_15/repair-qa/screenshots/final-editor-mobile.png",
+      "bytes": 47482,
+      "sha256": "4dd5dfabe702419215b7edf5afbba47be29011924bc60e97a47b664f075000fc"
     },
     {
-      "path": "doc/assets/template_15_qa/devices/pptx-reimport-editor.png",
-      "bytes": 105384,
-      "sha256": "9da5a2c7487db4a1f3c887852345c9f3a0e63153b4604d9497be8b968c121ca4"
+      "path": ".codex-tmp/template_15/repair-qa/screenshots/final-export-failure.png",
+      "bytes": 120153,
+      "sha256": "080683c52455882ea02213faf51e13184d68ba52c67444477614d5b606ac8e0b"
     },
     {
-      "path": "doc/assets/template_15_qa/asset-generation.json",
-      "bytes": 3569,
-      "sha256": "8ec9bab213e0e77714c71e5253f8c0283ad938c34a0f64176273ca86373f73cc"
-    },
-    {
-      "path": "doc/assets/template_15_qa/e2e-audit.json",
-      "bytes": 659,
-      "sha256": "ede36676af8b4c6bd72e8fcfa0ea930103b434a88b1278bff001860440081d57"
-    },
-    {
-      "path": "doc/assets/template_15_qa/editor-audit.json",
-      "bytes": 1042,
-      "sha256": "206be78cb98deeb160290bc7995a24e0e27f53c27cd4b69a18117641458f3e16"
-    },
-    {
-      "path": "doc/assets/template_15_qa/worker-process.json",
-      "bytes": 1337,
-      "sha256": "4f5f1fe186e478561a4af341ee3ed258f32120410be43dc8717c78de23851795"
-    },
-    {
-      "path": "doc/assets/template_15_qa/exports/pptx-roundtrip-summary.json",
-      "bytes": 2125,
-      "sha256": "7b4cf9fa7dd7654cb434db77e3a2f57ae30132f2239461f330de63b740e2a805"
-    },
-    {
-      "path": "doc/assets/template_15_qa/exports/reimport-mapping.json",
-      "bytes": 596,
-      "sha256": "216a8e83b0a5ee6704df05cd08dda72cd3808ab7b9c3c76de342b285dacb999a"
+      "path": ".codex-tmp/template_15/repair-qa/screenshots/final-pptx-reimport-editor.png",
+      "bytes": 131257,
+      "sha256": "970468af238622c75272916153cf1a87f2857f1ca1a8326696c2bf6d604be604"
     }
   ],
   "known_limitations": [
-    "现有 6800 主 API 仍是变更前进程；本轮未获服务重启授权，模板 API 与前端代理在隔离 6804/5782 环境完成验证。",
-    "隔离 QA 禁用云端存储，云端导出历史失败；本地 PPTX 导出、解析、重导入和失败重试反馈均已验证。"
+    "本地运行时加载当前未提交工作树；RELEASE_COMMIT 仍为当前 HEAD，模板精确版本以 evidence 中 template JSON SHA-256 为准。",
+    "通用 slides_test.py 的 artifact-tool 渲染不可用；产品同款 pptxtojson 解析、浏览器逐视口截图和 PPTX 重导入均已通过。"
   ]
 }

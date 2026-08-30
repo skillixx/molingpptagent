@@ -1033,6 +1033,10 @@ class PresentationTemplateRenderer:
                 context={
                     "text_type": str(self._slot_type(element) or "unknown")[:64],
                     "minimum_font_size": str(round(minimum, 1)),
+                    # 仅记录长度和几何数据，便于定位真实容量问题，不泄露用户正文。
+                    "text_length": str(len(value)),
+                    "width": str(round(width, 1)),
+                    "height": str(round(height, 1)),
                 },
             )
         adapted = round(adapted, 1)

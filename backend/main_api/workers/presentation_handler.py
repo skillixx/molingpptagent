@@ -275,18 +275,22 @@ class PresentationGenerationHandler:
                 logger.warning(
                     "presentation template render failed task_id=%s presentation_id=%s "
                     "template_id=%s code=%s slide_type=%s layout_kind=%s slot_type=%s "
-                    "text_length=%s font_size=%s width=%s height=%s",
+                    "text_length=%s font_size=%s width=%s height=%s item_count=%s "
+                    "image_count=%s variant=%s",
                     task_id,
                     presentation_id,
                     template_id,
                     exc.code,
                     exc.context.get("slide_type", "unknown"),
                     exc.context.get("layout_kind", "default"),
-                    exc.context.get("slot_type", "unknown"),
+                    exc.context.get("slot_type", exc.context.get("text_type", "unknown")),
                     exc.context.get("text_length", "unknown"),
-                    exc.context.get("font_size", "unknown"),
+                    exc.context.get("font_size", exc.context.get("minimum_font_size", "unknown")),
                     exc.context.get("width", "unknown"),
                     exc.context.get("height", "unknown"),
+                    exc.context.get("item_count", "unknown"),
+                    exc.context.get("image_count", "unknown"),
+                    exc.context.get("variant", "unknown"),
                 )
                 safe_messages = {
                     "TEMPLATE_TEXT_OVERFLOW": "模板无法容纳本页文字",

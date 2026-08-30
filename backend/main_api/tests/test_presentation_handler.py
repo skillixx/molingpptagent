@@ -14,6 +14,7 @@ from sqlalchemy.orm import sessionmaker
 from backend.main_api.models.base import Base
 from backend.main_api.models.domain import GenerationTask, Presentation
 from backend.main_api.repositories.generation_results import GenerationResultRepository
+from backend.main_api.workers import presentation_handler as presentation_handler_module
 from backend.main_api.workers.presentation_handler import PresentationGenerationHandler
 from backend.main_api.workers.runner import NonRetryableTaskError, RetryableTaskError, TaskExecution
 from backend.main_api.workers.template_renderer import PresentationTemplateRenderer, TemplateRenderError
@@ -45,7 +46,15 @@ class ClassifiedTemplateRenderer:
         raise TemplateRenderError(
             "生成内容超出模板文本框容量",
             code=self.code,
-            context={"slide_type": "content", "layout_kind": "text", "slot_type": "itemTitle"},
+            context={
+                "slide_type": "content",
+                "layout_kind": "text",
+                "text_type": "itemTitle",
+                "minimum_font_size": "16.0",
+                "item_count": "5",
+                "image_count": "0",
+                "variant": "unknown",
+            },
         )
 
 
@@ -151,11 +160,18 @@ def _handler(engine, outline: ScriptedAgent, content: ScriptedAgent):
 )
 def test_handler_preserves_safe_template_error_code(
     tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
     source_code: str,
     expected_code: str,
     expected_message: str,
 ) -> None:
     """模板容量失败不得再被折叠为无法区分的TASK_TEMPLATE_INVALID。"""
+    warnings: list[str] = []
+    monkeypatch.setattr(
+        presentation_handler_module.logger,
+        "warning",
+        lambda template, *values: warnings.append(template % values),
+    )
     engine = _engine(tmp_path)
     try:
         _insert_running_task(engine)
@@ -181,6 +197,11 @@ def test_handler_preserves_safe_template_error_code(
 
         assert captured.value.code == expected_code
         assert str(captured.value) == expected_message
+        assert warnings
+        assert "slot_type=itemTitle" in warnings[-1]
+        assert "font_size=16.0" in warnings[-1]
+        assert "item_count=5" in warnings[-1]
+        assert "image_count=0" in warnings[-1]
     finally:
         engine.dispose()
 
