@@ -1,0 +1,487 @@
+spec_version: 1
+status: READY_FOR_BUILD
+created_at: '2026-08-29'
+updated_at: '2026-08-29'
+
+project:
+  root: 'D:\moling\TrainPPTAgent'
+  template_dir: 'backend/main_api/template'
+  registration_file: 'backend/main_api/main.py'
+  renderer_file: 'backend/main_api/workers/template_renderer.py'
+
+template:
+  id: 'template_14'
+  id_status: 'candidate'
+  name: '深蓝青棱商务信息图'
+  category: 'business-infographic'
+  requirements_summary: '面向企业内部汇报、项目复盘、策略说明和方案提案，提供深蓝与青蓝几何切面的克制商务视觉，并覆盖目录、章节、1 至 6 项正文、指标、流程、对比、时间线和 1 至 6 图内容版式。'
+  reference_files:
+    - path: 'C:\Users\sk20\Desktop\ppt\扁平风格(38).pptx'
+      sha256: '7f8ab71aac06f3ae497bc4ded6b1ab83291eede2a2f48f10154c438b6be9c958'
+      rights_status: 'unknown'
+      planned_action: 'redraw-and-regenerate'
+  canvas:
+    width: 1000
+    height: 562.5
+  cover:
+    width: 960
+    height: 540
+
+reference_audit:
+  structural_summary:
+    slide_count: 27
+    aspect_ratio: '16:9'
+    notes_slide_count: 27
+    image_count: 6
+    chart_part_count: 0
+    smartart_part_count: 0
+    embedded_object_count: 0
+    note_content: '备注页仅含页码，没有可执行指令。'
+  reusable_patterns:
+    - '深蓝整页底色与青蓝三角切面的对角张力。'
+    - '超大章节数字配短标题的章节过渡结构。'
+    - '目录、流程、对比、百分比、中心辐射、图文分栏和多图画廊等信息图结构。'
+    - '正文页统一左上标题区，并以大面积留白组织主体内容。'
+  media_actions:
+    - source: 'ppt/media/image1.jpg'
+      rights_status: 'unknown'
+      action: 'replace'
+      reason: '城市建筑照片来源与授权未知，只保留横向城市图的构图需求。'
+    - source: 'ppt/media/image2.jpg'
+      rights_status: 'unknown'
+      action: 'replace'
+      reason: '城市街景含大量商业招牌，生产模板改用用户内容图或已授权素材。'
+    - source: 'ppt/media/image3.jpg'
+      rights_status: 'unknown'
+      action: 'exclude'
+      reason: '图片带明显第三方网站水印，不进入生产素材。'
+    - source: 'ppt/media/image4.jpg'
+      rights_status: 'unknown'
+      action: 'exclude'
+      reason: '时代广场画面含大量广告、商标和人物形象，不作为生产替代素材的内容来源。'
+    - source: 'ppt/media/image5.jpg'
+      rights_status: 'unknown'
+      action: 'replace'
+      reason: '交通街景来源未知，只抽象为城市运营场景的内容图需求。'
+    - source: 'ppt/media/image6.jpg'
+      rights_status: 'unknown'
+      action: 'replace'
+      reason: '欧洲城市广场照片来源未知，生产模板仅保留可替换图片槽。'
+  font_actions:
+    - source_fonts: ['Agency FB', 'Nexa Bold', 'Impact']
+      action: 'replace'
+      production_fonts: ['Arial Bold', 'Arial']
+      reason: '避免依赖参考稿中的非通用西文字体。'
+    - source_fonts: ['时尚中黑简体', '方正兰亭刊黑_GBK', '汉仪大宋简']
+      action: 'replace'
+      production_fonts: ['微软雅黑 Bold', '微软雅黑']
+      reason: '不从 PPTX 提取字体文件，使用当前系统与项目可用字体。'
+  forbidden_carryovers:
+    - '参考稿中的 2019、XXX、FEI ER SHE JI、占位标题和英文示例正文。'
+    - '参考稿的城市照片、水印、广告牌、商标和真实人物画面。'
+    - '任何未验证授权的字体文件、Logo、品牌色锁定或第三方 UI 截图。'
+  visual_verification:
+    structure_method: '规划脚本、PPTX 包 XML 和 artifact-tool 导入对象逐页检查。'
+    visual_method: '内嵌封面缩略图、6 张媒体原图、主题色、元素位置和字号的人工综合判断。'
+    rendering_limit: '当前环境的 artifact-tool 可导入 27 页但导出 PNG 时退出，本机没有 PowerPoint 或 LibreOffice；因此不主张逐像素复刻，实施按原创重绘方向执行。'
+
+visual:
+  theme: '深蓝理性底色、青蓝半透明几何切面和高留白信息图；封面、章节、结束页采用深色沉浸面，正文页采用暖白底并保留青蓝导视。'
+  palette:
+    - id: 'navy'
+      value: '#354A62'
+      purpose: '封面、章节和结束页主背景'
+    - id: 'deep-navy'
+      value: '#243447'
+      purpose: '深色层次、正文主文字和高对比区'
+    - id: 'cyan'
+      value: '#45BEE3'
+      purpose: '主强调、章节编号和关键图形'
+    - id: 'blue'
+      value: '#28A7CF'
+      purpose: '辅助切面、进度和图表层次'
+    - id: 'signal-red'
+      value: '#FD5B5B'
+      purpose: '仅用于风险、负向变化或关键警示'
+    - id: 'warm-white'
+      value: '#F6F8FA'
+      purpose: '正文页背景和深色页面上的高对比文字'
+    - id: 'slate'
+      value: '#6C7B8B'
+      purpose: '辅助正文、说明文字和次级刻度'
+  fonts:
+    chinese_heading: '微软雅黑 Bold'
+    chinese_body: '微软雅黑'
+    latin_heading: 'Arial Bold'
+    latin_body: 'Arial'
+  safe_zones:
+    - id: 'cover-title'
+      description: '画布坐标 x=88..760、y=184..398 保持低细节，标题最多两行，右上和左下装饰不得侵入。'
+    - id: 'content-header'
+      description: '正文页 x=44..956、y=28..104 只放标题、短副标题和导视线；主体元素从 y=126 开始。'
+    - id: 'content-body'
+      description: '正文主体限制在 x=52..948、y=126..516，四周至少保留 32 画布单位。'
+    - id: 'content-image'
+      description: '内容图不得进入标题区或页脚区，裁切后主体至少离边缘 6%，并与装饰图片独立。'
+    - id: 'corner-decoration'
+      description: '固定装饰优先占用 x=0..170,y=430..562.5 与 x=790..1000,y=0..145，不遮挡动态内容。'
+    - id: 'footer'
+      description: '页码或来源提示只允许在 y=528..552，字号不低于 12。'
+  forbidden_content:
+    - '未授权 Logo、商标、真实人物肖像和第三方 UI 截图'
+    - '水印、伪文字、假数据、假截图和无法追溯的统计结论'
+    - '参考稿中的占位文案、年份、品牌标识和城市照片原件'
+    - '低对比文字、不可读小字号和将按钮绘制成可点击但无反馈的状态'
+  logo_policy: 'no-unlicensed-logo; 默认仅提供中性 Logo 占位安全区，只有用户或项目已授权资产才能填入。'
+  people_policy: 'no-unlicensed-likeness; 人物内容仅接受用户提供、项目自有或许可清楚的素材。'
+
+pages:
+  mvp:
+    inventory:
+      cover: 1
+      contents: 3
+      transition: 1
+      content: 12
+      end: 1
+    contents_capacities: [3, 4, 6]
+    content_capacities: [1, 2, 3, 4, 5, 6]
+    variant_ids:
+      - 'cover-minimal'
+      - 'contents-3'
+      - 'contents-4'
+      - 'contents-6'
+      - 'transition-numbered'
+      - 'content-text-1'
+      - 'content-text-2'
+      - 'content-text-3'
+      - 'content-text-4'
+      - 'content-text-5'
+      - 'content-text-6'
+      - 'content-image-1'
+      - 'content-image-2'
+      - 'content-image-4'
+      - 'content-image-6'
+      - 'content-metrics-4'
+      - 'content-process-4'
+      - 'end-action'
+  production:
+    inventory:
+      cover: 2
+      contents: 6
+      transition: 2
+      content: 24
+      end: 2
+    contents_capacities: [2, 3, 4, 5, 6, 10]
+    content_capacities: [1, 2, 3, 4, 5, 6]
+    variant_inventory:
+      - id: 'cover-minimal'
+        page_type: 'cover'
+        capacity: 0
+        selection_rule: '封面没有内容图片时选择。'
+      - id: 'cover-with-image'
+        page_type: 'cover'
+        capacity: 1
+        selection_rule: '封面恰好提供 1 张带尺寸的内容图片时选择。'
+      - id: 'contents-capacity-set'
+        page_type: 'contents'
+        capacity: '2/3/4/5/6/10'
+        selection_rule: '按目录项数量选择槽位距离为 0 的精确容量。'
+      - id: 'transition-pair'
+        page_type: 'transition'
+        capacity: 1
+        selection_rule: '两种变体启用 variantMode=deterministic，由稳定种子和页序选择。'
+      - id: 'content-text-capacity-set'
+        page_type: 'content'
+        capacity: '1/2/3/4/5/6'
+        count: 9
+        selection_rule: '无图普通内容先按 item 槽位容量精确匹配；2、3、4 项的同分变体按内容页序稳定轮换。'
+      - id: 'content-image-capacity-set'
+        page_type: 'content'
+        capacity: '1/2/3/4/5/6'
+        count: 6
+        selection_rule: '图片数必须等于内容项数并精确匹配内容图片槽数量。'
+      - id: 'content-metrics-set'
+        page_type: 'content'
+        capacity: '3/4/5'
+        count: 3
+        selection_rule: 'data.layoutKind=metrics，或任一 item.kind 为 metric、number、stat 时选择。'
+      - id: 'content-process-set'
+        page_type: 'content'
+        capacity: '4/5'
+        count: 2
+        selection_rule: 'data.layoutKind=process 且无内容图片时选择。'
+      - id: 'content-compare-set'
+        page_type: 'content'
+        capacity: '2/4'
+        count: 2
+        selection_rule: 'data.layoutKind=compare 且无内容图片时选择。'
+      - id: 'content-hub-spoke-5'
+        page_type: 'content'
+        capacity: 5
+        count: 1
+        selection_rule: 'data.layoutKind=hub-spoke 且恰好 5 项时选择。'
+      - id: 'content-timeline-4'
+        page_type: 'content'
+        capacity: 4
+        count: 1
+        selection_rule: 'data.layoutKind=timeline 且恰好 4 项时选择。'
+      - id: 'end-pair'
+        page_type: 'end'
+        capacity: 1
+        selection_rule: '两种变体启用 variantMode=deterministic，由稳定种子和页序选择。'
+  specialty_layouts:
+    - id: 'metrics-radial'
+      purpose: '展示 3 至 5 个关键指标、占比或阶段达成率。'
+      selection_rule: 'data.layoutKind=metrics，或任一 item.kind 属于 metric/number/stat；按 3、4、5 项精确容量选版。'
+    - id: 'process-chain'
+      purpose: '展示 4 或 5 个有顺序的步骤、方法或实施阶段。'
+      selection_rule: 'data.layoutKind=process 且内容项为 4 或 5、图片数为 0。'
+    - id: 'compare-balanced'
+      purpose: '展示 2 项或 4 项同口径方案、现状或优劣对比。'
+      selection_rule: 'data.layoutKind=compare 且内容项为 2 或 4、图片数为 0。'
+    - id: 'hub-spoke'
+      purpose: '展示一个中心主题和四个依赖分支。'
+      selection_rule: 'data.layoutKind=hub-spoke 且内容项恰好为 5、图片数为 0。'
+    - id: 'timeline-zigzag'
+      purpose: '展示 4 个日期、里程碑或阶段结果。'
+      selection_rule: 'data.layoutKind=timeline 且内容项恰好为 4、图片数为 0。'
+    - id: 'image-gallery'
+      purpose: '展示 3 至 6 张等权内容图及短说明。'
+      selection_rule: 'data.layoutKind=gallery，图片数等于内容项数，并按 3、4、5、6 图精确选版。'
+    - id: 'headline-focus'
+      purpose: '突出单一结论、关键动作或一句话观点。'
+      selection_rule: 'data.layoutKind=focus 且仅 1 个内容项、图片数为 0。'
+
+semantics:
+  page_types: ['cover', 'contents', 'transition', 'content', 'end']
+  text_types: ['title', 'subtitle', 'section-number', 'item', 'itemNumber', 'metric', 'content', 'caption', 'footer']
+  content_image_type: 'content'
+  decoration_image_type: 'decoration'
+  minimum_font_sizes:
+    deck_title: 44
+    slide_title: 28
+    section_number: 60
+    item_title: 18
+    metric: 24
+    body: 16
+    caption: 12
+    footer: 12
+  overflow_policy: 'paginate-without-loss'
+  grouping_policy: 'content-images-independent'
+  capacity_rules:
+    contents: '2、3、4、5、6、10 项精确选版；其他数量保持顺序无损分页。'
+    content: '1 至 6 项精确选版；7 项及以上按每页最多 6 项无损分页，续页标题增加“（续）”。'
+    long_body: '按当前渲染器的可读容量拆分正文，连接拆分片段后必须与原文逐字一致。'
+    content_images: '内容图片与内容项一一对应；带图长正文只在首段保留图片，续段进入纯文字页。'
+  interaction_policy: '模板选择、生成、保存、换图、导出和重试按钮必须呈现加载、成功、失败或明确的假性交互反馈，失败后恢复可点击状态。'
+
+assets:
+  generator_preference: 'gpt-image-2'
+  max_total_generation_attempts: 15
+  items:
+    - id: 'cover-background'
+      role: 'background'
+      filename: 'template_14_asset_bg_cover_v1.jpg'
+      format: 'JPEG'
+      dimensions: [1920, 1080]
+      color_mode: 'RGB'
+      max_bytes: 350000
+      alpha_required: false
+      safe_zone: '中左部标题区保持低细节，右上与左下允许青蓝切面，中央不得出现文字或主体人物。'
+      prompt_constraints:
+        - '深蓝理性商务背景，青蓝半透明几何切面，原创构图'
+        - '无文字、无 Logo、无水印、无真实人物、无第三方 UI'
+        - '避免霓虹、科幻芯片、建筑照片和过度纹理'
+      rights_action: 'regenerate'
+      max_attempts: 3
+    - id: 'section-background'
+      role: 'background'
+      filename: 'template_14_asset_bg_section_v1.jpg'
+      format: 'JPEG'
+      dimensions: [1920, 1080]
+      color_mode: 'RGB'
+      max_bytes: 320000
+      alpha_required: false
+      safe_zone: '中部与左中部为大章节数字和两行标题保留低细节区。'
+      prompt_constraints:
+        - '深蓝平面背景，边角青蓝折面，中央大面积纯净留白'
+        - '无文字、无数字、无 Logo、无水印、无照片'
+      rights_action: 'regenerate'
+      max_attempts: 3
+    - id: 'end-background'
+      role: 'background'
+      filename: 'template_14_asset_bg_end_v1.jpg'
+      format: 'JPEG'
+      dimensions: [1920, 1080]
+      color_mode: 'RGB'
+      max_bytes: 320000
+      alpha_required: false
+      safe_zone: '中央结束语和联系方式区域保持低细节，装饰集中在四角。'
+      prompt_constraints:
+        - '与封面同源的深蓝青蓝平面几何语言，视觉更收束'
+        - '无文字、无 Logo、无水印、无真实人物、无假二维码'
+      rights_action: 'regenerate'
+      max_attempts: 3
+    - id: 'facet-corner'
+      role: 'decoration'
+      filename: 'template_14_asset_facet_corner_v1.png'
+      format: 'PNG'
+      dimensions: [1400, 900]
+      color_mode: 'RGBA'
+      max_bytes: 1000000
+      alpha_required: true
+      safe_zone: '主体仅占右上约 38% 与左下约 30%，中央完全透明，不含文字。'
+      prompt_constraints:
+        - '青蓝与浅蓝半透明三角折面，锐利但克制，透明背景'
+        - '无文字、无 Logo、无水印、无发光粒子、无照片'
+      rights_action: 'regenerate'
+      max_attempts: 3
+    - id: 'line-particle-overlay'
+      role: 'decoration'
+      filename: 'template_14_asset_line_particle_v1.png'
+      format: 'PNG'
+      dimensions: [1400, 900]
+      color_mode: 'RGBA'
+      max_bytes: 800000
+      alpha_required: true
+      safe_zone: '只在边缘提供稀疏线段与微小方点，中央和文字区透明度为 0。'
+      prompt_constraints:
+        - '极简几何线段与方点，青蓝和暖白，透明背景'
+        - '无文字、无 Logo、无水印、无假图表、无密集星空'
+      rights_action: 'regenerate'
+      max_attempts: 3
+
+completion_criteria:
+  - id: 'criterion-reference-rights'
+    description: '参考文件哈希、媒体、字体和禁止带入项均有可追溯权利动作，未知素材不原样复用。'
+  - id: 'criterion-visual-system'
+    description: '深蓝青蓝几何视觉、字体层级、安全区和色彩对比在所有页面类型中一致。'
+  - id: 'criterion-page-inventory'
+    description: 'MVP 与生产页面库存、容量和稳定 ID 与批准规格一致且全局唯一。'
+  - id: 'criterion-deterministic-selection'
+    description: '目录、普通内容、指标、流程、对比、中心辐射、时间线和图文版式均可由明确输入确定选中。'
+  - id: 'criterion-typography'
+    description: '标题、正文、指标、说明和页脚不低于规定字号，缺失字体时使用批准回退字体且不溢出。'
+  - id: 'criterion-overflow'
+    description: '7 项以上、长正文和带图长正文按原顺序无损分页，不通过不可读小字号压缩。'
+  - id: 'criterion-image-protocol'
+    description: '0 至 6 图精确或无图选版，7 图无损分页；裁切、缺失尺寸和数量不匹配行为明确。'
+  - id: 'criterion-decoration-isolation'
+    description: '内容图片可独立替换，固定装饰为 decoration 且不会被替换或删除。'
+  - id: 'criterion-assets'
+    description: '五项发布素材的格式、尺寸、色彩模式、Alpha、体积、来源和提示词记录满足 manifest。'
+  - id: 'criterion-registration'
+    description: '模板列表仅注册一次，JSON、封面和外置资源可通过当前 API 路由读取。'
+  - id: 'criterion-real-generation'
+    description: '持久 Worker 使用 template_14 完成真实生成，声明的页面类型和专项版式可在真实作品中出现。'
+  - id: 'criterion-responsive'
+    description: '桌面、笔记本、平板和手机视口无横向溢出，关键操作可见可触达。'
+  - id: 'criterion-interactions'
+    description: '选择、生成、保存、换图、导出和失败重试均有加载、成功、失败或明确假性交互反馈。'
+  - id: 'criterion-editable'
+    description: '编辑文字、保存重载和替换内容图后结果持久化，固定装饰与分组关系保持正确。'
+  - id: 'criterion-export-roundtrip'
+    description: 'PPTX 可导出、解析、重导入并继续编辑，页数与核心结构合理。'
+
+qa:
+  content_cases:
+    - id: 'case-spec-inventory'
+      purpose: '校验模板 ID、画布、页面库存、MVP 标记、全局元素 ID 和元数据。'
+    - id: 'case-registration-and-resources'
+      purpose: '校验模板列表唯一注册以及 JSON、封面和外置素材响应。'
+    - id: 'case-contents-capacity'
+      purpose: '验证 2、3、4、5、6、10 项目录的精确容量与超量分页。'
+    - id: 'case-text-capacity'
+      purpose: '验证 1 至 6 项普通正文按容量精确选版。'
+    - id: 'case-specialty-layout-kind'
+      purpose: '验证 metrics、process、compare、hub-spoke、timeline、gallery 和 focus 可由 layoutKind 到达。'
+    - id: 'case-overflow-eight-items'
+      purpose: '验证 8 项正文按原顺序拆为两页且字符不丢失。'
+    - id: 'case-long-body-split'
+      purpose: '验证中英文长正文按可读容量拆分，拼接结果与原文逐字相同。'
+    - id: 'case-long-body-with-images'
+      purpose: '验证带图长正文仅首段保留内容图，续段转入纯文字页。'
+    - id: 'case-image-crop-ratios'
+      purpose: '验证横图、竖图、方图均保持比例并中心裁切到目标框。'
+    - id: 'case-missing-image-dimensions'
+      purpose: '验证缺少宽高的内容图片返回明确错误而不是拉伸。'
+    - id: 'case-image-count-mismatch'
+      purpose: '验证图片数大于内容项数或与严格槽位不匹配时返回安全错误。'
+    - id: 'case-decoration-isolation'
+      purpose: '验证 content 与 decoration 图片角色、分组和锁定规则互不污染。'
+    - id: 'case-assets-contract'
+      purpose: '校验素材发布集合、格式、尺寸、模式、Alpha、体积和引用路径。'
+    - id: 'case-rights-review'
+      purpose: '复核素材来源、提示词、参考媒体替代动作和禁止带入项。'
+    - id: 'case-visual-review'
+      purpose: '逐页检查层级、色彩、留白、安全区、对比度、换行、遮挡和模糊裁切。'
+    - id: 'case-font-fallback'
+      purpose: '在缺失参考字体时验证微软雅黑和 Arial 回退、字号与排版稳定。'
+    - id: 'case-real-worker-generation'
+      purpose: '使用真实持久 Worker 生成代表性商务主题作品并覆盖所有声明页面类型。'
+    - id: 'case-picker-unique'
+      purpose: '验证模板选择列表只显示一个 template_14，名称和封面正确。'
+    - id: 'case-edit-save-reload'
+      purpose: '编辑标题和正文，保存并重新加载后内容保持。'
+    - id: 'case-content-image-replace'
+      purpose: '替换内容图后裁切正确，固定装饰、背景和锁定元素不变。'
+    - id: 'case-async-error-feedback'
+      purpose: '模拟生成、保存、导出失败，检查可见失败反馈、按钮恢复和可重试。'
+  image_counts:
+    - id: 'case-image-counts'
+      values: [0, 1, 2, 3, 4, 5, 6, 7]
+  viewports:
+    - id: 'viewport-desktop'
+      width: 1920
+      height: 1080
+    - id: 'viewport-laptop'
+      width: 1366
+      height: 768
+    - id: 'viewport-tablet'
+      width: 768
+      height: 1024
+    - id: 'viewport-mobile'
+      width: 390
+      height: 844
+  export_roundtrip_required: true
+  affected_test_commands:
+    - '.\.venv\Scripts\python.exe -m pytest backend/main_api/tests/test_template_14.py'
+    - '.\.venv\Scripts\python.exe -m pytest backend/main_api/tests/test_template_renderer.py backend/main_api/tests/test_template_assets.py'
+  coverage_map:
+    criterion-reference-rights: ['case-rights-review', 'case-assets-contract']
+    criterion-visual-system: ['case-visual-review', 'viewport-desktop', 'viewport-laptop', 'viewport-tablet', 'viewport-mobile']
+    criterion-page-inventory: ['case-spec-inventory']
+    criterion-deterministic-selection: ['case-contents-capacity', 'case-text-capacity', 'case-specialty-layout-kind']
+    criterion-typography: ['case-font-fallback', 'case-long-body-split', 'case-visual-review']
+    criterion-overflow: ['case-overflow-eight-items', 'case-long-body-split', 'case-long-body-with-images']
+    criterion-image-protocol: ['case-image-counts', 'case-image-crop-ratios', 'case-missing-image-dimensions', 'case-image-count-mismatch', 'case-long-body-with-images']
+    criterion-decoration-isolation: ['case-decoration-isolation', 'case-content-image-replace']
+    criterion-assets: ['case-assets-contract', 'case-rights-review']
+    criterion-registration: ['case-registration-and-resources', 'case-picker-unique']
+    criterion-real-generation: ['case-real-worker-generation', 'case-specialty-layout-kind']
+    criterion-responsive: ['viewport-desktop', 'viewport-laptop', 'viewport-tablet', 'viewport-mobile']
+    criterion-interactions: ['case-async-error-feedback', 'viewport-desktop', 'viewport-laptop', 'viewport-tablet', 'viewport-mobile']
+    criterion-editable: ['case-edit-save-reload', 'case-content-image-replace']
+    criterion-export-roundtrip: ['export-roundtrip']
+
+planning_run_permissions:
+  allow_image_generation: false
+  allow_code_changes: false
+  allow_git_commit: false
+  allow_git_push: false
+  allow_merge_main: false
+  allow_service_restart: false
+  allow_production_deploy: false
+
+required_build_authorizations:
+  image_generation: true
+  code_changes: true
+  real_task_execution: true
+  final_manual_close: true
+
+open_decisions: []
+
+known_limits:
+  - '当前环境无法把该参考 PPTX 渲染为逐页 PNG；规划基于可验证的结构、内嵌封面缩略图、全部媒体原图、主题色和元素几何，不承诺逐像素复刻。'
+  - '参考文件和 6 张照片的权利来源未提供；实施必须原创重绘固定视觉，并以用户内容图或许可清楚的素材替换照片。'
+  - '当前渲染器只会从 metric/number/stat 自动推断 metrics；process、compare、hub-spoke、timeline、gallery 和 focus 需要内容 Agent 显式提供 data.layoutKind。'

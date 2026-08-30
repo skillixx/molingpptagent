@@ -1,0 +1,31 @@
+{
+  "task_id": "44dc1322-cbff-4fbd-a5f4-a5fa4729cf80",
+  "status": "succeeded",
+  "progress": 100,
+  "attempt": 1,
+  "error_code": null,
+  "presentation_id": "c7f68ee2-a776-4073-b790-bdc0cb9afd21",
+  "template_id": "template_14",
+  "declared_slide_count": 9,
+  "actual_slide_count": 9,
+  "types": {
+    "cover": 1,
+    "contents": 1,
+    "transition": 2,
+    "content": 4,
+    "end": 1
+  },
+  "page_types_covered": [
+    "content",
+    "contents",
+    "cover",
+    "end",
+    "transition"
+  ],
+  "layout_kinds": [
+    "text"
+  ],
+  "decoration_count": 13,
+  "content_image_count": 0,
+  "all_decorations_are_template_14": true
+}

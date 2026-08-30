@@ -559,6 +559,8 @@ async def get_templates():
         { "name": "东方水墨雅韵", "id": "template_12", "cover": "/api/data/template_12.jpg" },
         # 灰蓝企业宣传模板使用原创建筑背景，内容图片与固定装饰严格隔离。
         { "name": "灰蓝企业宣传", "id": "template_13", "cover": "/api/data/template_13.jpg" },
+        # 深蓝青棱商务信息图模板使用原创几何素材，并按内容容量、图片数量和显式版式语义确定选版。
+        { "name": "深蓝青棱商务信息图", "id": "template_14", "cover": "/api/data/template_14.jpg" },
     ]
 
     return {"data": templates}

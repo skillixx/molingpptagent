@@ -39,6 +39,13 @@ class PresentationTemplateRenderer:
     _TEXT_PADDING = 20.0
     _LINE_HEIGHT = 1.5
     _WIDTH_SAFETY_FACTOR = 0.9
+    _EXPLICIT_CONTENT_LAYOUT_KINDS = {
+        "metrics",
+        "process",
+        "compare",
+        "hub-spoke",
+        "timeline",
+    }
 
     def __init__(self, template_root: Path) -> None:
         self.template_root = template_root.resolve()
@@ -57,7 +64,8 @@ class PresentationTemplateRenderer:
         if not isinstance(source_slides, list) or not source_slides:
             raise TemplateRenderError("模板没有可用页面", code="TEMPLATE_DATA_INVALID")
 
-        # 先按模板真实槽位容量拆页，后续版式选择就不需要把多条正文挤进单个文本框。
+        # 先按模板真实槽位容量拆页，后续版式选择就不需要丢目录项或挤压正文。
+        semantic_slides = self._paginate_contents_slides(source_slides, semantic_slides)
         semantic_slides = self._paginate_content_slides(source_slides, semantic_slides)
         rendered: list[dict[str, Any]] = []
         transition_number = 0
@@ -84,6 +92,41 @@ class PresentationTemplateRenderer:
             "viewport_size": width,
             "viewport_ratio": height / width,
         }
+
+    def _paginate_contents_slides(
+        self,
+        source_slides: list[dict[str, Any]],
+        semantic_slides: list[dict[str, Any]],
+    ) -> list[dict[str, Any]]:
+        """按最大目录槽位无损拆页，并让续页编号从原始偏移继续。"""
+        contents_templates = [
+            slide for slide in source_slides if slide.get("type") == "contents"
+        ]
+        max_item_slots = max(
+            (self._slot_count(slide, "item") for slide in contents_templates),
+            default=0,
+        )
+        if max_item_slots <= 0:
+            return copy.deepcopy(semantic_slides)
+
+        paginated: list[dict[str, Any]] = []
+        for semantic in semantic_slides:
+            data = semantic.get("data") if isinstance(semantic.get("data"), dict) else None
+            raw_items = data.get("items") if data is not None else None
+            if semantic.get("type") != "contents" or not isinstance(raw_items, list):
+                paginated.append(copy.deepcopy(semantic))
+                continue
+            if len(raw_items) <= max_item_slots:
+                paginated.append(copy.deepcopy(semantic))
+                continue
+
+            base_offset = semantic.get("offset") if isinstance(semantic.get("offset"), int) else 0
+            for offset in range(0, len(raw_items), max_item_slots):
+                page = copy.deepcopy(semantic)
+                page["data"]["items"] = copy.deepcopy(raw_items[offset:offset + max_item_slots])
+                page["offset"] = base_offset + offset
+                paginated.append(page)
+        return paginated
 
     def _paginate_content_slides(
         self,
@@ -481,10 +524,10 @@ class PresentationTemplateRenderer:
                 if matching_kind:
                     candidates = matching_kind
             else:
-                # 年度数字属于显式语义版式，普通四项内容不能因为页序轮换而误选。
+                # 显式语义版式不能因为容量相同而被普通内容页序轮换误选。
                 ordinary_candidates = [
                     slide for slide in candidates
-                    if slide.get("layoutKind") != "metrics"
+                    if slide.get("layoutKind") not in self._EXPLICIT_CONTENT_LAYOUT_KINDS
                 ]
                 if ordinary_candidates:
                     candidates = ordinary_candidates

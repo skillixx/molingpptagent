@@ -1,0 +1,54 @@
+{
+  "template_id": "template_14",
+  "tool": "built-in image_gen",
+  "model": "未暴露",
+  "total_generation_attempts": 7,
+  "global_attempt_limit": 15,
+  "postprocess": "使用 Pillow 做机械尺寸适配、透明补边、RGB/RGBA 转换和体积压缩；没有抠图或内容重绘。",
+  "assets": [
+    {
+      "id": "cover-background",
+      "attempts": 1,
+      "selected_original": ".codex-tmp/template_14/originals/cover-background.png",
+      "published": "backend/main_api/template/template_14_asset_bg_cover_v1.jpg",
+      "prompt_summary": "16:9 深蓝青蓝企业封面背景；标题区低细节；切面集中右上和左下；无文字、Logo、人物、城市、图表或 UI。"
+    },
+    {
+      "id": "section-background",
+      "attempts": 1,
+      "selected_original": ".codex-tmp/template_14/originals/section-background.png",
+      "published": "backend/main_api/template/template_14_asset_bg_section_v1.jpg",
+      "prompt_summary": "16:9 深蓝章节背景；中央和左中部为章节号与标题留白；无文字、数字、Logo、人物、照片或 UI。"
+    },
+    {
+      "id": "end-background",
+      "attempts": 1,
+      "selected_original": ".codex-tmp/template_14/originals/end-background.png",
+      "published": "backend/main_api/template/template_14_asset_bg_end_v1.jpg",
+      "prompt_summary": "16:9 收束型深蓝青蓝结束背景；中央低细节；无文字、Logo、二维码、人物、照片或 UI。"
+    },
+    {
+      "id": "facet-corner",
+      "attempts": 2,
+      "selected_original": ".codex-tmp/template_14/originals/facet-corner.png",
+      "published": "backend/main_api/template/template_14_asset_facet_corner_v1.png",
+      "prompt_summary": "真实透明画布；右上和左下两个相连的青蓝切面簇；无碎片、光晕、文字、Logo、人物或背景填充。"
+    },
+    {
+      "id": "line-particle-overlay",
+      "attempts": 2,
+      "selected_original": ".codex-tmp/template_14/originals/line-particle-overlay.png",
+      "published": "backend/main_api/template/template_14_asset_line_particle_v1.png",
+      "prompt_summary": "真实透明画布；四角仅 12 至 18 个短线和小方点；无光晕、星空、网络、文字、Logo 或 UI。"
+    }
+  ],
+  "visual_review": {
+    "status": "PASS",
+    "checks": [
+      "没有文字、Logo、水印、人物、照片、第三方 UI 或假图表",
+      "三张背景的标题和正文安全区保持低细节",
+      "透明装饰在暖白和深蓝底色上均无可见底色块",
+      "透明素材具有 0 到 255 的 Alpha 范围"
+    ]
+  }
+}
