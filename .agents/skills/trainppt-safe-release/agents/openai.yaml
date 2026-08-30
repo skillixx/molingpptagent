@@ -1,6 +1,0 @@
-interface:
-  display_name: "TrainPPTAgent Safe Release"
-  short_description: "安全评估、提交、合并、重启并验证 TrainPPTAgent"
-  default_prompt: "Use $trainppt-safe-release to assess this TrainPPTAgent change and perform only the release actions I explicitly authorize."
-policy:
-  allow_implicit_invocation: true
