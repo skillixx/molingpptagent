@@ -1,0 +1,30 @@
+{
+  "checked_at": "2026-08-30T14:22:00+08:00",
+  "project_root": "D:\\moling\\TrainPPTAgent",
+  "launcher": {
+    "pid": 60756,
+    "name": "dotenv.exe",
+    "executable": "D:\\moling\\TrainPPTAgent\\.venv\\Scripts\\dotenv.exe",
+    "command": "dotenv.exe -f .env run --no-override -- D:\\moling\\TrainPPTAgent\\.venv\\Scripts\\python.exe -m backend.main_api.workers.main"
+  },
+  "worker": {
+    "supervisor_pid": 49348,
+    "child_pid": 57968,
+    "supervisor_executable": "D:\\moling\\TrainPPTAgent\\.venv\\Scripts\\python.exe",
+    "supervisor_command": "D:\\moling\\TrainPPTAgent\\.venv\\Scripts\\python.exe -m backend.main_api.workers.main",
+    "child_executable": "C:\\Program Files\\Python312\\python.exe",
+    "child_command": "python.exe -m backend.main_api.workers.main"
+  },
+  "working_directory": {
+    "directly_exposed_by_win32_process": false,
+    "inferred": "D:\\moling\\TrainPPTAgent",
+    "basis": "dotenv launcher and worker supervisor both use the project-local .venv and module backend.main_api.workers.main; the accepted task loaded backend/main_api/template/template_15.json and project .env database configuration."
+  },
+  "ownership_verified": true,
+  "task_consumed": {
+    "task_id": "c29675bb-d77b-46d8-914e-e9028db3226c",
+    "template_id": "template_15",
+    "status": "succeeded",
+    "attempt": 1
+  }
+}

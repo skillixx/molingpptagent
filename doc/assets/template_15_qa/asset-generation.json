@@ -1,0 +1,74 @@
+{
+  "template_id": "template_15",
+  "tool": "built-in image_gen",
+  "model_identifier": "未暴露",
+  "generated_at": "2026-08-30T13:28:00+08:00",
+  "total_attempts": 7,
+  "max_total_attempts": 21,
+  "postprocessing": {
+    "script": "utils/process_star_pulse_template_assets.py",
+    "steps": [
+      "按目标安全区等比裁切或透明画布内等比缩放",
+      "背景转为 RGB JPEG 并在体积上限内优化",
+      "透明装饰保留 RGBA 与真实 Alpha，并在体积上限内受控减色"
+    ]
+  },
+  "items": [
+    {
+      "id": "bg-cover",
+      "attempts": 1,
+      "selected_original": ".codex-tmp/template_15/raw-bg-cover.png",
+      "published": "backend/main_api/template/template_15_asset_bg_cover_v1.jpg",
+      "prompt_summary": "深海军蓝科技发布舞台；左侧低细节标题安全区；右侧抽象产品光台；无文字、Logo、人物或具体产品。",
+      "sha256": "8bfdbd5a502ba10fb091ae5d2dbd3e2cce87e7276fd1203472169cccbcef0875"
+    },
+    {
+      "id": "bg-section",
+      "attempts": 1,
+      "selected_original": ".codex-tmp/template_15/raw-bg-section.png",
+      "published": "backend/main_api/template/template_15_asset_bg_section_v1.jpg",
+      "prompt_summary": "深海军蓝抽象科技地平线；中央章节标题区域低细节；无文字、品牌、产品和人物。",
+      "sha256": "d546d94d50842ddddf50185f5e6a29c8361f641e0e14dcd02a27d5ea176cd1f1"
+    },
+    {
+      "id": "bg-end",
+      "attempts": 1,
+      "selected_original": ".codex-tmp/template_15/raw-bg-end.png",
+      "published": "backend/main_api/template/template_15_asset_bg_end_v1.jpg",
+      "prompt_summary": "蓝紫光线向中央收束的发布收尾背景；中央行动区低细节；无文字和品牌。",
+      "sha256": "e6bb30628852fe9c0faa8fe1cac181edc7ab970e5484da6662a32500be548b88"
+    },
+    {
+      "id": "spectrum-footer",
+      "attempts": 1,
+      "selected_original": ".codex-tmp/template_15/raw-spectrum-footer.png",
+      "published": "backend/main_api/template/template_15_asset_spectrum_footer_v1.png",
+      "prompt_summary": "底缘蓝紫青光谱柱与粒子；上部真实透明；无城市、文字、Logo 或产品。",
+      "sha256": "c7679683985200d66f793ef5b8818c652e22a7d9abc48124bef27816e02e3b12"
+    },
+    {
+      "id": "horizon-glow",
+      "attempts": 1,
+      "selected_original": ".codex-tmp/template_15/raw-horizon-glow.png",
+      "published": "backend/main_api/template/template_15_asset_horizon_glow_v1.png",
+      "prompt_summary": "透明蓝紫弧形地平线光效；主体限制在下半部；非真实星球。",
+      "sha256": "bd699879075810eb1351e6bff6a0bd196201b3ebcd28787e1b3b8c219962475b"
+    },
+    {
+      "id": "particle-field",
+      "attempts": 1,
+      "selected_original": ".codex-tmp/template_15/raw-particle-field.png",
+      "published": "backend/main_api/template/template_15_asset_particle_field_v1.png",
+      "prompt_summary": "四角和底缘稀疏蓝紫粒子；中央正文区保持高度透明；无伪代码和符号。",
+      "sha256": "7a33568792f5438d3559d66887b9d61e00f19f1d6a88305ca1eecf3f9e71b515"
+    },
+    {
+      "id": "product-stage",
+      "attempts": 1,
+      "selected_original": ".codex-tmp/template_15/raw-product-stage.png",
+      "published": "backend/main_api/template/template_15_asset_product_stage_v1.png",
+      "prompt_summary": "透明低矮椭圆蓝紫光台；上方留给独立产品图；无产品轮廓、文字或品牌。",
+      "sha256": "af41e569ef656bdaf8d32bf26b9747c462ede05665a0e5be0eb383843910aba8"
+    }
+  ]
+}

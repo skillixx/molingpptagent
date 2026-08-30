@@ -1,0 +1,16 @@
+{
+  "template_id": "template_15",
+  "source_pptx_slides": 13,
+  "reimport_target_initial_slides": 1,
+  "reimported_total_slides": 14,
+  "mapping": {
+    "target_slide_1": "重导入验收草稿原有的 template_15 封面",
+    "target_slides_2_to_14": "PPTX 解析后的源页 1 至 13，顺序保持"
+  },
+  "product_behavior": "前端 importPPTXFile 在非空作品中追加导入页，不覆盖既有页。",
+  "verification": {
+    "source_text_found_after_reload": true,
+    "imported_title_edited": "星脉智能终端发布·重导入可编辑",
+    "editable_after_reimport": true
+  }
+}

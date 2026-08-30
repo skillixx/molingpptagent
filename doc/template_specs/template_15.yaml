@@ -1,0 +1,710 @@
+# 星脉科技产品发布模板机器规划规格；本文件只描述后续构建要求，不包含实施结果。
+spec_version: 1
+status: READY_FOR_BUILD
+created_at: "2026-08-30"
+updated_at: "2026-08-30"
+
+project:
+  root: "D:\\moling\\TrainPPTAgent"
+  template_dir: "backend/main_api/template"
+  registration_file: "backend/main_api/main.py"
+  renderer_file: "backend/main_api/workers/template_renderer.py"
+
+template:
+  id: "template_15"
+  id_status: "candidate"
+  name: "星脉科技产品发布"
+  category: "product-launch"
+  requirements_summary: "面向科技产品发布会、发布汇报与上市沟通，以产品主张、核心性能、差异化比较、市场定位和行动收束构成可累积的发布叙事。"
+  reference_files:
+    - path: "C:\\Users\\sk20\\Desktop\\ppt\\产品发布 (2).pptx"
+      sha256: "390cfaaec81834b9fc96b72d647bc807ba45f271e3f15cd826655c9433f14944"
+      rights_status: "unknown"
+      planned_action: "redraw-and-regenerate"
+  canvas:
+    width: 1000
+    height: 562.5
+  cover:
+    width: 960
+    height: 540
+
+reference_audit:
+  media_actions:
+    - id: "exclude-all-reference-media"
+      rights_status: "unknown"
+      action: "exclude"
+      expected_member_count: 60
+      match_rule: "下列 members 必须与 reference-audit.json 中 images、audio、video、other 的并集完全相等；构建不得从这些成员复制字节。"
+      members:
+        - "ppt/media/image1.png"
+        - "ppt/media/image2.jpeg"
+        - "ppt/media/image3.png"
+        - "ppt/media/image4.png"
+        - "ppt/media/image5.png"
+        - "ppt/media/image6.png"
+        - "ppt/media/image7.png"
+        - "ppt/media/image8.jpeg"
+        - "ppt/media/image9.png"
+        - "ppt/media/image10.jpeg"
+        - "ppt/media/image11.png"
+        - "ppt/media/image12.png"
+        - "ppt/media/image13.png"
+        - "ppt/media/image14.jpeg"
+        - "ppt/media/image15.png"
+        - "ppt/media/image16.png"
+        - "ppt/media/image17.png"
+        - "ppt/media/image18.png"
+        - "ppt/media/image19.png"
+        - "ppt/media/image20.png"
+        - "ppt/media/image21.png"
+        - "ppt/media/image22.png"
+        - "ppt/media/image23.png"
+        - "ppt/media/image24.png"
+        - "ppt/media/image25.png"
+        - "ppt/media/image26.png"
+        - "ppt/media/image27.png"
+        - "ppt/media/image28.png"
+        - "ppt/media/image29.png"
+        - "ppt/media/image30.png"
+        - "ppt/media/image31.png"
+        - "ppt/media/image32.png"
+        - "ppt/media/image33.png"
+        - "ppt/media/image34.png"
+        - "ppt/media/image35.png"
+        - "ppt/media/image36.png"
+        - "ppt/media/image37.png"
+        - "ppt/media/image38.png"
+        - "ppt/media/image39.png"
+        - "ppt/media/image40.png"
+        - "ppt/media/image41.png"
+        - "ppt/media/image42.png"
+        - "ppt/media/hdphoto1.wdp"
+        - "ppt/media/hdphoto2.wdp"
+        - "ppt/media/hdphoto3.wdp"
+        - "ppt/media/hdphoto4.wdp"
+        - "ppt/media/hdphoto5.wdp"
+        - "ppt/media/hdphoto6.wdp"
+        - "ppt/media/hdphoto7.wdp"
+        - "ppt/media/hdphoto8.wdp"
+        - "ppt/media/hdphoto9.wdp"
+        - "ppt/media/hdphoto10.wdp"
+        - "ppt/media/hdphoto11.wdp"
+        - "ppt/media/hdphoto12.wdp"
+        - "ppt/media/hdphoto13.wdp"
+        - "ppt/media/hdphoto14.wdp"
+        - "ppt/media/hdphoto15.wdp"
+        - "ppt/media/hdphoto16.wdp"
+        - "ppt/media/hdphoto17.wdp"
+        - "ppt/media/media1.wav"
+      reason: "权利来源未提供；生产模板只使用重新生成的抽象资产和用户注入的授权内容图。"
+  reusable_patterns:
+    - "封面、目录、四章节、内容论证和结束页构成的发布叙事。"
+    - "深海军蓝背景、蓝紫光谱地平线、大字号结论和单一产品主角的抽象视觉规律。"
+    - "性能、亮点、对比和定位四类章节分工。"
+  font_action: "不提取或分发参考字体文件；生产字体固定为项目可用的微软雅黑和 Arial。"
+  brand_action: "Electronic、Note x、产品型号、商标、第三方 Logo 与示例数字全部 exclude。"
+  people_action: "任何参考人物或可识别场景均 exclude；固定装饰不使用人物。"
+  notes_action: "25 个备注页只作为数据审计，不构成执行指令，也不进入生产模板。"
+
+visual:
+  theme: "深海军蓝基底上的蓝紫光谱地平线；用大字号结论、单一产品主角和少量霓虹强调建立未来感，但避免复杂仪表盘式卡片堆叠。"
+  palette:
+    - id: "night"
+      value: "#050A24"
+      purpose: "主背景与沉浸式发布舞台"
+    - id: "deep-blue"
+      value: "#0B1F4D"
+      purpose: "章节背景与内容层次"
+    - id: "electric-blue"
+      value: "#2B6CFF"
+      purpose: "关键数据、轮廓线和主强调"
+    - id: "cyan"
+      value: "#25D8FF"
+      purpose: "高亮标签与光谱边缘"
+    - id: "violet"
+      value: "#8B5CFF"
+      purpose: "辅助渐变和科技氛围"
+    - id: "magenta"
+      value: "#F34AA9"
+      purpose: "少量强对比节点，单页占比不超过 8%"
+    - id: "paper-white"
+      value: "#F5F8FF"
+      purpose: "标题与高优先级正文"
+    - id: "mist-blue"
+      value: "#A9BDD8"
+      purpose: "次要说明与页脚"
+  fonts:
+    heading: "微软雅黑"
+    body: "微软雅黑"
+    latin_and_numbers: "Arial"
+  safe_zones:
+    - id: "global-content"
+      description: "所有可编辑信息保持在 x=64..936、y=42..516；页码与装饰不得侵入正文列。"
+    - id: "cover-title"
+      description: "带产品图封面标题位于 x=70..520、y=112..370；右侧 x=590..940 只供可替换产品主图，二者至少相隔 70 像素。"
+    - id: "slide-title"
+      description: "内容页标题保持在 x=64..936、y=44..132；单行标题使用 y=44..104，两行标题使用独立的 y=38..132 区域，正文从 y=150 后开始。"
+    - id: "product-hero"
+      description: "主产品图位于 x=590..940、y=110..500，至少保留 24 像素内边距且不得进入标题区。"
+    - id: "spectrum-footer"
+      description: "固定光谱装饰限制在 y=430..562.5，主体文字不得进入 y=500 以下。"
+  title_fit_policy:
+    normalization: "先做 Unicode NFC 规范化并去除首尾空白；ASCII 字母、数字、半角标点与内部半角空格计入 ascii_count，CJK、全角字符及其他非 ASCII 码点计入 wide_count。"
+    mixed_measure: "每个场景使用整数不等式 wide_count*latin_limit + ascii_count*cjk_limit <= cjk_limit*latin_limit；不得按字节数、字符串总长度或渲染器猜测计量。"
+    cover_hero: "cjk_limit=24、latin_limit=48，最多两行且保持 50pt；不等式失败时自动改选 cover-minimal，不截断、不缩小。"
+    cover_minimal: "cjk_limit=36、latin_limit=72，最多两行且保持 50pt；不等式失败时返回明确 TemplateRenderError。"
+    slide_title: "单行 cjk_limit=20、latin_limit=44；单行失败后用两行 cjk_limit=36、latin_limit=80 并保持至少 36pt；两行仍失败时返回明确 TemplateRenderError。"
+    no_loss: "所有标题禁止截断、隐藏、覆盖产品图或缩小到最小字号以下。"
+  forbidden_content:
+    - "参考稿中的 Electronic、Note x、产品型号、商标和第三方 Logo"
+    - "参考稿中的手机、手表、城市照片、UI 截图和图标原图"
+    - "水印、伪文字、假截图、仿冒品牌标识和不可验证数据"
+    - "未授权真实人物肖像或可识别公司、学校和机构场景"
+    - "把 3:1 参考画布直接拉伸到 16:9"
+  logo_policy: "只提供中性品牌占位区；构建时不得携带参考稿品牌，业务 Logo 由用户内容或已授权项目资产注入。"
+  people_policy: "固定装饰不使用真实人物；内容图如需人物，只接受用户提供、明确授权或为项目生成的非特定人物素材。"
+
+pages:
+  layout_catalog:
+    - id: "cover-minimal"
+      page_type: "cover"
+      count: 1
+      selection_rule: "内容图为 0；或内容图为 1 但标题超过 cover-hero 上限且仍满足 cover-minimal 上限。"
+    - id: "cover-hero"
+      page_type: "cover"
+      count: 1
+      selection_rule: "内容图恰为 1 且标题满足 cover-hero 字数上限；内容图超过 1 时明确报错。"
+    - id: "contents-3"
+      page_type: "contents"
+      count: 1
+      selection_rule: "目录项恰为 3。"
+    - id: "contents-4"
+      page_type: "contents"
+      count: 1
+      selection_rule: "目录项恰为 4。"
+    - id: "contents-5"
+      page_type: "contents"
+      count: 1
+      selection_rule: "目录项恰为 5。"
+    - id: "contents-6"
+      page_type: "contents"
+      count: 1
+      selection_rule: "目录项恰为 6。"
+    - id: "transition-horizon"
+      page_type: "transition"
+      count: 1
+      selection_rule: "data.variant=\"horizon\"；未指定 variant 时使用从 1 开始的 sectionIndex，对 4 取模为 1。"
+    - id: "transition-spectrum"
+      page_type: "transition"
+      count: 1
+      selection_rule: "data.variant=\"spectrum\"；未指定 variant 时使用从 1 开始的 sectionIndex，对 4 取模为 2。"
+    - id: "transition-particle"
+      page_type: "transition"
+      count: 1
+      selection_rule: "data.variant=\"particle\"；未指定 variant 时使用从 1 开始的 sectionIndex，对 4 取模为 3。"
+    - id: "transition-stage"
+      page_type: "transition"
+      count: 1
+      selection_rule: "data.variant=\"stage\"；未指定 variant 时使用从 1 开始的 sectionIndex，对 4 取模为 0。"
+    - id: "content-text-1"
+      page_type: "content"
+      count: 1
+      selection_rule: "无内容图、items 恰为 1，且 layoutKind 为空或为 focus。"
+    - id: "content-text-2"
+      page_type: "content"
+      count: 1
+      selection_rule: "无内容图、无显式专项 layoutKind、items 恰为 2。"
+    - id: "content-text-3"
+      page_type: "content"
+      count: 1
+      selection_rule: "无内容图、无显式专项 layoutKind、items 恰为 3，且 items 不得全部为 kind=metric。"
+    - id: "content-text-4"
+      page_type: "content"
+      count: 1
+      selection_rule: "无内容图、无显式专项 layoutKind、items 恰为 4，且 items 不得全部为 kind=metric。"
+    - id: "content-text-5"
+      page_type: "content"
+      count: 1
+      selection_rule: "无内容图、无显式专项 layoutKind、items 恰为 5，且 items 不得全部为 kind=metric。"
+    - id: "content-text-6"
+      page_type: "content"
+      count: 1
+      selection_rule: "无内容图、无显式专项 layoutKind、items 恰为 6。"
+    - id: "content-hero-left"
+      page_type: "content"
+      count: 1
+      selection_rule: "内容图恰为 1、items 为 1 至 3、layoutKind 为空或为 hero，且 data.variant 不为 right。"
+    - id: "content-hero-right"
+      page_type: "content"
+      count: 1
+      selection_rule: "内容图恰为 1、items 为 1 至 3、layoutKind 为空或为 hero，且 data.variant=\"right\"。"
+    - id: "content-image-1-dense"
+      page_type: "content"
+      count: 1
+      selection_rule: "内容图恰为 1、items 为 4 至 6 且 layoutKind 为空；图片固定占右侧窄列，显式 hero 在此容量下报错。"
+    - id: "content-dual-image-2"
+      page_type: "content"
+      count: 1
+      selection_rule: "内容图恰为 2、items 为 2 至 6，且 layoutKind 为空或为 gallery。"
+    - id: "content-metrics-3"
+      page_type: "content"
+      count: 1
+      selection_rule: "无内容图，3 个 items 全部为 kind=metric，或显式 layoutKind=metrics 且 items 恰为 3。"
+    - id: "content-metrics-4"
+      page_type: "content"
+      count: 1
+      selection_rule: "无内容图，4 个 items 全部为 kind=metric，或显式 layoutKind=metrics 且 items 恰为 4。"
+    - id: "content-metrics-5"
+      page_type: "content"
+      count: 1
+      selection_rule: "无内容图，5 个 items 全部为 kind=metric，或显式 layoutKind=metrics 且 items 恰为 5。"
+    - id: "content-compare-2"
+      page_type: "content"
+      count: 1
+      selection_rule: "显式 layoutKind=compare、无内容图且 items 恰为 2。"
+    - id: "content-compare-4"
+      page_type: "content"
+      count: 1
+      selection_rule: "显式 layoutKind=compare、无内容图且 items 恰为 4。"
+    - id: "content-gallery-3"
+      page_type: "content"
+      count: 1
+      selection_rule: "内容图与 items 均恰为 3，且 layoutKind 为空或为 gallery。"
+    - id: "content-gallery-4"
+      page_type: "content"
+      count: 1
+      selection_rule: "内容图与 items 均恰为 4，且 layoutKind 为空或为 gallery。"
+    - id: "content-gallery-5"
+      page_type: "content"
+      count: 1
+      selection_rule: "内容图与 items 均恰为 5，且 layoutKind 为空或为 gallery。"
+    - id: "content-gallery-6"
+      page_type: "content"
+      count: 1
+      selection_rule: "内容图与 items 均恰为 6，且 layoutKind 为空或为 gallery。"
+    - id: "content-timeline-3"
+      page_type: "content"
+      count: 1
+      selection_rule: "显式 layoutKind=timeline、无内容图且 items 恰为 3。"
+    - id: "content-timeline-4"
+      page_type: "content"
+      count: 1
+      selection_rule: "显式 layoutKind=timeline、无内容图且 items 恰为 4。"
+    - id: "content-timeline-5"
+      page_type: "content"
+      count: 1
+      selection_rule: "显式 layoutKind=timeline、无内容图且 items 恰为 5。"
+    - id: "content-process-3"
+      page_type: "content"
+      count: 1
+      selection_rule: "显式 layoutKind=process、无内容图且 items 恰为 3。"
+    - id: "content-process-4"
+      page_type: "content"
+      count: 1
+      selection_rule: "显式 layoutKind=process、无内容图且 items 恰为 4。"
+    - id: "content-process-5"
+      page_type: "content"
+      count: 1
+      selection_rule: "显式 layoutKind=process、无内容图且 items 恰为 5。"
+    - id: "content-positioning-3"
+      page_type: "content"
+      count: 1
+      selection_rule: "显式 layoutKind=positioning、无内容图且 items 恰为 3。"
+    - id: "content-positioning-4"
+      page_type: "content"
+      count: 1
+      selection_rule: "显式 layoutKind=positioning、无内容图且 items 恰为 4。"
+    - id: "end-minimal"
+      page_type: "end"
+      count: 1
+      selection_rule: "结束页 items 为 0，只显示结束主张与可选副标题。"
+    - id: "end-action"
+      page_type: "end"
+      count: 1
+      selection_rule: "结束页 items 为 1 至 3，显示行动项；超过 3 时明确报错。"
+  mvp:
+    inventory:
+      cover: 2
+      contents: 4
+      transition: 2
+      content: 11
+      end: 1
+    contents_capacities: [3, 4, 5, 6]
+    content_capacities: [1, 2, 3, 4, 5, 6]
+    layout_ids:
+      - "cover-minimal"
+      - "cover-hero"
+      - "contents-3"
+      - "contents-4"
+      - "contents-5"
+      - "contents-6"
+      - "transition-horizon"
+      - "transition-spectrum"
+      - "content-text-1"
+      - "content-text-2"
+      - "content-text-3"
+      - "content-text-4"
+      - "content-text-5"
+      - "content-text-6"
+      - "content-hero-left"
+      - "content-metrics-3"
+      - "content-metrics-4"
+      - "content-compare-2"
+      - "content-gallery-3"
+      - "end-minimal"
+  production:
+    inventory:
+      cover: 2
+      contents: 4
+      transition: 4
+      content: 27
+      end: 2
+    layout_ids:
+      - "cover-minimal"
+      - "cover-hero"
+      - "contents-3"
+      - "contents-4"
+      - "contents-5"
+      - "contents-6"
+      - "transition-horizon"
+      - "transition-spectrum"
+      - "transition-particle"
+      - "transition-stage"
+      - "content-text-1"
+      - "content-text-2"
+      - "content-text-3"
+      - "content-text-4"
+      - "content-text-5"
+      - "content-text-6"
+      - "content-hero-left"
+      - "content-hero-right"
+      - "content-image-1-dense"
+      - "content-dual-image-2"
+      - "content-metrics-3"
+      - "content-metrics-4"
+      - "content-metrics-5"
+      - "content-compare-2"
+      - "content-compare-4"
+      - "content-gallery-3"
+      - "content-gallery-4"
+      - "content-gallery-5"
+      - "content-gallery-6"
+      - "content-timeline-3"
+      - "content-timeline-4"
+      - "content-timeline-5"
+      - "content-process-3"
+      - "content-process-4"
+      - "content-process-5"
+      - "content-positioning-3"
+      - "content-positioning-4"
+      - "end-minimal"
+      - "end-action"
+  selection_precedence:
+    - "1. 先验证显式 layoutKind 与输入形状；显式专项版式不满足 specialty_invalid_inputs 时立即返回 TemplateRenderError，不回退。"
+    - "2. 再验证图片尺寸、images<=items 及 image_item_matrix；不在矩阵中的组合立即报错。"
+    - "3. 对合法显式 layoutKind 按 catalog 精确选版。"
+    - "4. 无显式 layoutKind 时先按图片数量选择 hero、dense、dual-image 或 gallery。"
+    - "5. 无图片时，3 至 5 个全部 kind=metric 的 items 优先选择 metrics。"
+    - "6. 其余无图片输入才按 content-text-1..6 选择；每个合法输入必须恰好命中一个 layout ID。"
+  image_item_matrix:
+    - image_count: 0
+      item_count: "1..6"
+      outcome: "按显式专项、inferred metrics 或 content-text 精确选版；0 项报错，7 项以上按 ordinary_text 分页。"
+    - image_count: 1
+      item_count: "1..3"
+      outcome: "content-hero-left/right；显式 hero 只在此范围合法。"
+    - image_count: 1
+      item_count: "4..6"
+      outcome: "content-image-1-dense；layoutKind 必须为空。"
+    - image_count: 1
+      item_count: "7+"
+      outcome: "首 6 项使用 content-image-1-dense，后续页无图并重新按 selection_precedence 选择 text 或 metrics；单图只跟随首个关联 item。"
+    - image_count: 2
+      item_count: "2..6"
+      outcome: "content-dual-image-2；两图分别关联前两个 items。"
+    - image_count: 2
+      item_count: "7+"
+      outcome: "首 6 项使用 content-dual-image-2，后续页无图并重新按 selection_precedence 选择 text 或 metrics。"
+    - image_count: "3..6"
+      item_count: "必须等于 image_count"
+      outcome: "按 content-gallery-3..6 精确选版；多余无图 item 或图片多于 item 均报错。"
+    - image_count: "7+"
+      item_count: "必须等于 image_count"
+      outcome: "按原顺序每页最多 6 个 image-item 对分页；每页依 1/2/3..6 图选择 hero、dual-image 或 gallery。"
+  specialty_invalid_inputs:
+    focus: "显式 focus 仅允许 0 图且 items=1；其他组合返回 TemplateRenderError。"
+    hero: "显式 hero 仅允许 1 图且 items=1..3；缺图、多图或 4 项以上返回 TemplateRenderError。"
+    metrics: "显式 metrics 仅允许 0 图、items=3..5 且每项 kind=metric；其他组合返回 TemplateRenderError。"
+    compare: "显式 compare 仅允许 0 图且 items 为 2 或 4；其他组合返回 TemplateRenderError。"
+    gallery: "显式 gallery 允许 2 图+2..6 项，或 3..6 图且 items 与图片等量；其他组合返回 TemplateRenderError。"
+    timeline: "显式 timeline 仅允许 0 图且 items=3..5；其他组合返回 TemplateRenderError。"
+    process: "显式 process 仅允许 0 图且 items=3..5；其他组合返回 TemplateRenderError。"
+    positioning: "显式 positioning 仅允许 0 图且 items 为 3 或 4；其他组合返回 TemplateRenderError。"
+  transition_variant_policy: "transition 的 sectionIndex 从 1 开始；variant 仅允许 horizon、spectrum、particle、stage，未知值或小于 1 的 sectionIndex 返回 TemplateRenderError。"
+  overflow_rules:
+    contents: "目录 3 至 6 项精确选版；超过 6 项时按最少页数切分为每页 3 至 6 项且页间数量差不超过 1（例如 7=4+3、11=6+5）；少于 3 项明确报错。"
+    ordinary_text: "普通无图正文 1 至 6 项精确选版；7 项固定分页为 6+1；超过 7 项按原顺序每页最多 6 项分页，最后一页允许 1 至 6 项。"
+    content_images: "图片按顺序与前 N 个 items 关联并遵守 image_item_matrix；1/2 图可搭配更多文字并只出现在包含对应 item 的首个分页，3 至 6 图必须与 items 等量，7 图固定 6+1，7 图以上必须与 items 等量并每页最多 6 组；矩阵外组合、缺失尺寸或图片多于 items 明确报错。"
+    long_body: "长正文按字符和段落边界无损分页；与正文关联的单张内容图只保留在首个续页，固定装饰在所有续页保持。"
+    specialty: "compare、metrics、timeline、process、positioning 的显式容量必须命中 catalog；越界时返回 TemplateRenderError，不静默改为另一专项版式。"
+  specialty_layouts:
+    - id: "focus"
+      purpose: "单一发布主张或产品结论"
+      selection_rule: "仅允许无内容图且 items 恰为 1；可由默认规则或显式 layoutKind=focus 到达，显式 focus 的其他输入报错。"
+    - id: "hero"
+      purpose: "产品主图与一组核心卖点"
+      selection_rule: "仅允许 1 张内容图且 items 为 1 至 3；可由默认规则或显式 layoutKind=hero 到达，显式 hero 的其他输入报错。"
+    - id: "metrics"
+      purpose: "3 至 5 个核心性能指标"
+      selection_rule: "无内容图、全部 items.kind 均为 metric 且数量为 3 至 5；显式 metrics 的其他输入报错。"
+    - id: "compare"
+      purpose: "双产品或双方案对比"
+      selection_rule: "显式 layoutKind=compare、无内容图且 items 数量为 2 或 4；其他输入报错，不从普通双列内容自动推断。"
+    - id: "gallery"
+      purpose: "2 至 6 张产品细节或场景图"
+      selection_rule: "默认 3 至 6 图且与 items 等量时到达；显式 gallery 另允许 2 图+2..6 项，其他输入报错。"
+    - id: "timeline"
+      purpose: "上市节奏、路线图或版本演进"
+      selection_rule: "显式 layoutKind=timeline、无内容图且 items 数量为 3 至 5；其他输入报错。"
+    - id: "process"
+      purpose: "技术链路、体验步骤或交付流程"
+      selection_rule: "显式 layoutKind=process、无内容图且 items 数量为 3 至 5；其他输入报错。"
+    - id: "positioning"
+      purpose: "目标人群、使用场景与市场定位"
+      selection_rule: "显式 layoutKind=positioning、无内容图且 items 数量为 3 或 4；其他输入报错。"
+
+semantics:
+  page_types: ["cover", "contents", "transition", "content", "end"]
+  text_types: ["title", "subtitle", "item", "itemNumber", "metric", "label", "description", "callout"]
+  content_image_type: "content"
+  decoration_image_type: "decoration"
+  minimum_font_sizes:
+    cover_title: 50
+    slide_title: 36
+    section_title: 44
+    subheading: 24
+    body: 16
+    caption: 14
+  overflow_policy: "paginate-without-loss"
+  grouping_policy: "content-images-independent"
+
+assets:
+  generator_preference: "gpt-image-2"
+  max_total_generation_attempts: 21
+  items:
+    - id: "bg-cover"
+      role: "background"
+      filename: "template_15_asset_bg_cover_v1.jpg"
+      format: "JPEG"
+      color_mode: "RGB"
+      dimensions: [1920, 1080]
+      max_bytes: 380000
+      alpha_required: false
+      safe_zone: "左侧 58% 保持低细节，中央下缘允许蓝紫光谱抬升，右侧可形成产品舞台光。"
+      prompt_constraints: ["无文字", "无 Logo", "无产品外形", "无水印", "无人物"]
+      rights_action: "regenerate"
+      max_attempts: 3
+    - id: "bg-section"
+      role: "background"
+      filename: "template_15_asset_bg_section_v1.jpg"
+      format: "JPEG"
+      color_mode: "RGB"
+      dimensions: [1920, 1080]
+      max_bytes: 340000
+      alpha_required: false
+      safe_zone: "中部 x=18%..82%、y=20%..70% 低细节，保留居中章节标题。"
+      prompt_constraints: ["无文字", "无 Logo", "无产品", "无水印", "仅抽象蓝紫地平线"]
+      rights_action: "regenerate"
+      max_attempts: 3
+    - id: "bg-end"
+      role: "background"
+      filename: "template_15_asset_bg_end_v1.jpg"
+      format: "JPEG"
+      color_mode: "RGB"
+      dimensions: [1920, 1080]
+      max_bytes: 340000
+      alpha_required: false
+      safe_zone: "中央 60% 保持低细节，允许结束主张、行动项或联系信息。"
+      prompt_constraints: ["无文字", "无 Logo", "无产品", "无水印", "光线向中央收束"]
+      rights_action: "regenerate"
+      max_attempts: 3
+    - id: "spectrum-footer"
+      role: "decoration"
+      filename: "template_15_asset_spectrum_footer_v1.png"
+      format: "PNG"
+      color_mode: "RGBA"
+      dimensions: [1600, 520]
+      max_bytes: 950000
+      alpha_required: true
+      safe_zone: "上方 55% 保持透明；粒子柱只从底缘向上生长，不形成可读文字。"
+      prompt_constraints: ["透明背景", "无文字", "无 Logo", "蓝紫青为主", "不出现城市天际线"]
+      rights_action: "regenerate"
+      max_attempts: 3
+    - id: "horizon-glow"
+      role: "decoration"
+      filename: "template_15_asset_horizon_glow_v1.png"
+      format: "PNG"
+      color_mode: "RGBA"
+      dimensions: [1600, 700]
+      max_bytes: 850000
+      alpha_required: true
+      safe_zone: "光弧位于下三分之一，中央高光不得造成白字对比不足。"
+      prompt_constraints: ["透明背景", "无文字", "无 Logo", "抽象弧形地平线", "无星球实景"]
+      rights_action: "regenerate"
+      max_attempts: 3
+    - id: "particle-field"
+      role: "decoration"
+      filename: "template_15_asset_particle_field_v1.png"
+      format: "PNG"
+      color_mode: "RGBA"
+      dimensions: [1600, 900]
+      max_bytes: 900000
+      alpha_required: true
+      safe_zone: "粒子密度集中在画布四角和底缘，标题与正文安全区透明度至少 85%。"
+      prompt_constraints: ["透明背景", "无文字", "无 Logo", "无符号和伪代码", "低密度蓝紫粒子"]
+      rights_action: "regenerate"
+      max_attempts: 3
+    - id: "product-stage"
+      role: "decoration"
+      filename: "template_15_asset_product_stage_v1.png"
+      format: "PNG"
+      color_mode: "RGBA"
+      dimensions: [1200, 700]
+      max_bytes: 800000
+      alpha_required: true
+      safe_zone: "舞台只位于底部，中央上方保留透明区域供用户产品图叠放。"
+      prompt_constraints: ["透明背景", "无文字", "无 Logo", "无产品轮廓", "抽象环形蓝紫光台"]
+      rights_action: "regenerate"
+      max_attempts: 3
+
+completion_criteria:
+  - id: "criterion-reference-rights"
+    description: "参考稿只抽象提取结构与视觉规律，未知权利媒体、字体、品牌、人物和音频均未原样进入生产模板。"
+  - id: "criterion-page-inventory"
+    description: "20 个 MVP 与 39 个生产版式的稳定 ID、页面类型、库存、画布和 MVP 标记与批准规格一致。"
+  - id: "criterion-template-protocol"
+    description: "页面类型、文字槽、内容图与装饰图遵守 TrainPPTAgent 语义协议。"
+  - id: "criterion-selection-determinism"
+    description: "每个声明为合法的输入组合恰好命中一个稳定 layout ID；显式专项版式非法输入和矩阵外组合返回明确 TemplateRenderError。"
+  - id: "criterion-capacity-selection"
+    description: "目录 3 至 6 项、正文 1 至 6 项按精确容量确定性选版，普通正文 7 项固定分页为 6+1。"
+  - id: "criterion-specialty-layouts"
+    description: "focus、hero、metrics、compare、gallery、timeline、process 和 positioning 均可由明确条件到达。"
+  - id: "criterion-overflow"
+    description: "普通正文从 7 项起、目录从 7 项起以及长正文均按声明规则无损分页，不通过缩小到不可读字号解决。"
+  - id: "criterion-title-fit"
+    description: "封面标题与产品图安全区无重叠；长标题按单行、两行、改选封面或明确报错处理，不截断或缩小到最小字号以下。"
+  - id: "criterion-image-semantics"
+    description: "图片数 × item 数矩阵中的每个合法组合唯一选版或分页，矩阵外组合明确报错；裁切比例正确且固定装饰不被替换。"
+  - id: "criterion-assets"
+    description: "外置素材的格式、尺寸、模式、Alpha、体积、唯一文件名和发布集合符合 manifest。"
+  - id: "criterion-registration"
+    description: "模板列表唯一注册，JSON、封面和所有外置资源可通过预期路由读取。"
+  - id: "criterion-real-generation"
+    description: "持久 Worker 使用真实语义输入生成成功，并覆盖所有声明页面类型。"
+  - id: "criterion-editing"
+    description: "文字编辑保存后可重新加载，内容图可替换且固定装饰保持不变。"
+  - id: "criterion-responsive"
+    description: "桌面、笔记本、平板和手机视口无横向溢出，核心编辑和导出操作可触达。"
+  - id: "criterion-button-feedback"
+    description: "模板选择、生成、保存、换图、导出和失败重试按钮均有加载、成功、失败或明确假性交互反馈。"
+  - id: "criterion-export-roundtrip"
+    description: "PPTX 导出、解析、重导入后页数与核心结构合理且仍可继续编辑。"
+
+qa:
+  content_cases:
+    - id: "case-reference-rights-audit"
+      purpose: "核对参考媒体、品牌、字体、人物、音频的权利动作与禁带清单。"
+    - id: "case-page-inventory"
+      purpose: "验证 20 个 MVP、39 个生产版式的稳定 ID、页面类型、数量、画布与全局唯一 ID。"
+    - id: "case-template-protocol"
+      purpose: "验证页面、文字、图片语义槽和固定装饰协议。"
+    - id: "case-selection-partition"
+      purpose: "枚举普通、metrics、显式专项和图片输入，断言每个合法输入恰好命中一个 layout ID，非法输入明确报错。"
+    - id: "case-contents-capacity"
+      purpose: "验证 3、4、5、6 项目录精确选版及超量分页。"
+    - id: "case-text-capacity"
+      purpose: "验证 1 至 6 项普通正文精确选版、7 项固定 6+1，且不泄漏到专项版式。"
+    - id: "case-specialty-layouts"
+      purpose: "验证全部专项版式的显式或严格语义到达条件。"
+    - id: "case-overflow-pagination"
+      purpose: "验证 7、8、11 项和长正文无损分页、顺序保持和单张关联图片只在首段保留。"
+    - id: "case-title-fit-boundaries"
+      purpose: "验证封面 24/25、36/37、48/49、72/73，内容标题 20/21、36/37、44/45、80/81，以及中英数字混排等式边界；检查单行、两行、改选、超限报错和标题/产品图零重叠。"
+    - id: "case-image-crop-and-errors"
+      purpose: "验证横图、竖图、方图裁切、缺失尺寸和图片数越界错误。"
+    - id: "case-image-item-matrix"
+      purpose: "覆盖 0、1、2、3..6、7+ 张图片与 item 数的全部声明组合，验证唯一版式、分页或明确错误。"
+    - id: "case-asset-manifest"
+      purpose: "验证外置素材与封面的尺寸、模式、Alpha、体积和发布集合。"
+    - id: "case-registration-routes"
+      purpose: "验证模板唯一注册及 JSON、封面、素材路由。"
+    - id: "case-worker-generation"
+      purpose: "使用持久 Worker 与真实语义输入完成生成。"
+    - id: "case-edit-persistence"
+      purpose: "编辑文字、保存、重新加载并核对结果。"
+    - id: "case-image-replacement"
+      purpose: "替换内容图并确认固定装饰与分组不变。"
+    - id: "case-button-feedback"
+      purpose: "验证加载、成功、失败与可重试反馈，避免按钮无响应。"
+  image_counts:
+    - id: "case-image-counts"
+      values: [0, 1, 2, 3, 4, 5, 6, 7]
+  viewports:
+    - id: "viewport-desktop"
+      width: 1440
+      height: 900
+    - id: "viewport-laptop"
+      width: 1280
+      height: 720
+    - id: "viewport-tablet"
+      width: 768
+      height: 1024
+    - id: "viewport-mobile"
+      width: 390
+      height: 844
+  export_roundtrip_required: true
+  affected_test_commands:
+    - ".\\.venv\\Scripts\\python.exe -m pytest backend/main_api/tests/test_template_15.py"
+    - ".\\.venv\\Scripts\\python.exe -m pytest backend/main_api/tests/test_template_assets.py backend/main_api/tests/test_template_renderer.py"
+  coverage_map:
+    criterion-reference-rights: ["case-reference-rights-audit"]
+    criterion-page-inventory: ["case-page-inventory"]
+    criterion-template-protocol: ["case-template-protocol"]
+    criterion-selection-determinism: ["case-selection-partition", "case-image-item-matrix"]
+    criterion-capacity-selection: ["case-contents-capacity", "case-text-capacity"]
+    criterion-specialty-layouts: ["case-specialty-layouts"]
+    criterion-overflow: ["case-overflow-pagination"]
+    criterion-title-fit: ["case-title-fit-boundaries"]
+    criterion-image-semantics: ["case-image-counts", "case-image-item-matrix", "case-image-crop-and-errors", "case-image-replacement"]
+    criterion-assets: ["case-asset-manifest"]
+    criterion-registration: ["case-registration-routes"]
+    criterion-real-generation: ["case-worker-generation"]
+    criterion-editing: ["case-edit-persistence", "case-image-replacement"]
+    criterion-responsive: ["viewport-desktop", "viewport-laptop", "viewport-tablet", "viewport-mobile"]
+    criterion-button-feedback: ["case-button-feedback", "viewport-desktop", "viewport-laptop", "viewport-tablet", "viewport-mobile"]
+    criterion-export-roundtrip: ["export-roundtrip"]
+
+planning_run_permissions:
+  allow_image_generation: false
+  allow_code_changes: false
+  allow_git_commit: false
+  allow_git_push: false
+  allow_merge_main: false
+  allow_service_restart: false
+  allow_production_deploy: false
+
+required_build_authorizations:
+  image_generation: true
+  code_changes: true
+  real_task_execution: true
+  final_manual_close: true
+
+open_decisions: []
+
+known_limits:
+  - "候选 ID template_15 只在 2026-08-30 的联合扫描中可用，实施开始前必须重新扫描。"
+  - "参考稿是约 3:1 超宽画布；生产模板按项目协议改为 16:9，不承诺像素级复刻。"
+  - "参考稿权利证明未提供，42 个图片资源、17 个 WDP 资源、1 个 WAV 音频、品牌文本和非项目字体均不原样复用。"
+  - "当前运行时无法完整渲染该 PPTX；视觉判断来自结构化提取、封面缩略图、全部嵌入媒体蒙太奇和 OOXML 布局检查，构建阶段仍需逐页真实渲染复核。"
+  - "参考稿中的动画和音频不进入生产模板；模板只规划静态、可编辑的演示结构。"

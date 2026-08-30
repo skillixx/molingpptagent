@@ -7,6 +7,7 @@ import html
 import json
 import math
 import re
+import unicodedata
 from pathlib import Path
 from typing import Any
 from uuid import NAMESPACE_URL, uuid5
@@ -45,6 +46,7 @@ class PresentationTemplateRenderer:
         "compare",
         "hub-spoke",
         "timeline",
+        "positioning",
     }
 
     def __init__(self, template_root: Path) -> None:
@@ -108,6 +110,10 @@ class PresentationTemplateRenderer:
         )
         if max_item_slots <= 0:
             return copy.deepcopy(semantic_slides)
+        min_item_slots = min(
+            (self._slot_count(slide, "item") for slide in contents_templates if self._slot_count(slide, "item") > 0),
+            default=1,
+        )
 
         paginated: list[dict[str, Any]] = []
         for semantic in semantic_slides:
@@ -121,11 +127,22 @@ class PresentationTemplateRenderer:
                 continue
 
             base_offset = semantic.get("offset") if isinstance(semantic.get("offset"), int) else 0
-            for offset in range(0, len(raw_items), max_item_slots):
+            page_count = math.ceil(len(raw_items) / max_item_slots)
+            base_size, remainder = divmod(len(raw_items), page_count)
+            sizes = [base_size + (1 if index < remainder else 0) for index in range(page_count)]
+            if any(size < min_item_slots for size in sizes):
+                raise TemplateRenderError(
+                    "目录数量无法按声明容量无损分页",
+                    code="TEMPLATE_DATA_INVALID",
+                    context={"item_count": str(len(raw_items))},
+                )
+            offset = 0
+            for size in sizes:
                 page = copy.deepcopy(semantic)
-                page["data"]["items"] = copy.deepcopy(raw_items[offset:offset + max_item_slots])
+                page["data"]["items"] = copy.deepcopy(raw_items[offset:offset + size])
                 page["offset"] = base_offset + offset
                 paginated.append(page)
+                offset += size
         return paginated
 
     def _paginate_content_slides(
@@ -221,6 +238,12 @@ class PresentationTemplateRenderer:
                 code="TEMPLATE_DATA_INVALID",
                 context={"item_count": str(len(raw_items)), "image_count": str(len(images))},
             )
+        if len(images) >= 3 and len(images) != len(raw_items):
+            raise TemplateRenderError(
+                "三张及以上内容图片必须与内容项一一对应",
+                code="TEMPLATE_DATA_INVALID",
+                context={"item_count": str(len(raw_items)), "image_count": str(len(images))},
+            )
         max_image_slots = max((self._image_count(slide) for slide in content_templates), default=0)
         if max_image_slots <= 0:
             raise TemplateRenderError("模板缺少内容图片槽位", code="TEMPLATE_MISSING_SLOT")
@@ -250,6 +273,13 @@ class PresentationTemplateRenderer:
                 source = images[index] if index < len(images) and part_index == 0 else None
                 expanded.append((part, source))
 
+        # 新协议允许 1～2 张内容图与更多文字共页；只在模板显式声明时合并图文批次。
+        allow_extra_items = self._extra_item_layout_available(
+            content_templates,
+            image_count=len(images),
+            item_count=min(len(expanded), max_item_slots),
+        )
+
         title = self._text(
             semantic.get("data", {}).get("title")
             if isinstance(semantic.get("data"), dict)
@@ -258,15 +288,20 @@ class PresentationTemplateRenderer:
         pages: list[dict[str, Any]] = []
         cursor = 0
         while cursor < len(expanded):
-            has_image = expanded[cursor][1] is not None
-            limit = max_image_slots if has_image else max_item_slots
-            batch: list[tuple[Any, dict[str, Any] | None]] = []
-            while cursor < len(expanded) and len(batch) < limit:
-                pair = expanded[cursor]
-                if (pair[1] is not None) != has_image:
-                    break
-                batch.append(pair)
-                cursor += 1
+            if not pages and allow_extra_items:
+                batch = expanded[cursor:cursor + max_item_slots]
+                cursor += len(batch)
+                has_image = True
+            else:
+                has_image = expanded[cursor][1] is not None
+                limit = max_image_slots if has_image else max_item_slots
+                batch = []
+                while cursor < len(expanded) and len(batch) < limit:
+                    pair = expanded[cursor]
+                    if (pair[1] is not None) != has_image:
+                        break
+                    batch.append(pair)
+                    cursor += 1
 
             page = copy.deepcopy(semantic)
             page_data = page["data"]
@@ -366,18 +401,22 @@ class PresentationTemplateRenderer:
             1.0,
             cls._number(element.get("height"), 100) - cls._TEXT_PADDING,
         )
+        minimum = max(
+            cls._MINIMUM_READABLE_FONT_SIZE,
+            cls._number(element.get("minimumFontSize"), 0),
+        )
         lines = max(
             1,
             math.floor(
                 usable_height
-                / (cls._MINIMUM_READABLE_FONT_SIZE * cls._LINE_HEIGHT)
+                / (minimum * cls._LINE_HEIGHT)
             ),
         )
         return max(
             1,
             math.floor(
                 usable_width
-                / cls._MINIMUM_READABLE_FONT_SIZE
+                / minimum
                 * lines
                 * cls._WIDTH_SAFETY_FACTOR
             ),
@@ -438,14 +477,23 @@ class PresentationTemplateRenderer:
             and any(self._strict_image_count(candidate) for candidate in candidates)
         )
         if semantic_images and strict_image_protocol and len(semantic_images) != len(content_items):
-            raise TemplateRenderError(
-                "内容图片数量与内容项数量不匹配",
-                code="TEMPLATE_DATA_INVALID",
-                context={
-                    "item_count": str(len(content_items)),
-                    "image_count": str(len(semantic_images)),
-                },
+            allow_extra_items = (
+                len(semantic_images) < len(content_items)
+                and self._extra_item_layout_available(
+                    candidates,
+                    image_count=len(semantic_images),
+                    item_count=len(content_items),
+                )
             )
+            if not allow_extra_items:
+                raise TemplateRenderError(
+                    "内容图片数量与内容项数量不匹配",
+                    code="TEMPLATE_DATA_INVALID",
+                    context={
+                        "item_count": str(len(content_items)),
+                        "image_count": str(len(semantic_images)),
+                    },
+                )
         selected = self._select(
             candidates,
             slide_type,
@@ -459,6 +507,13 @@ class PresentationTemplateRenderer:
         elements = slide.get("elements") if isinstance(slide.get("elements"), list) else []
 
         title = self._text(data.get("title")) or (fallback_title if index == 0 else "")
+        if title and not self._slide_title_fits(slide, title):
+            raise TemplateRenderError(
+                "标题超过版式声明容量",
+                code="TEMPLATE_DATA_INVALID",
+                context={"slide_type": slide_type[:64]},
+            )
+        title = self._title_with_policy_break(slide, title)
         if slide_type == "cover":
             self._fill_single(elements, "title", title, max_lines=2)
             self._fill_single(elements, "content", self._text(data.get("text")), max_lines=3)
@@ -476,12 +531,14 @@ class PresentationTemplateRenderer:
             end_content = self._text(data.get("text"))
             if self._meaningful_text(end_content):
                 self._fill_single(elements, "content", end_content, max_lines=3)
+            self._fill_list(elements, "item", self._string_items(data.get("items")), max_lines=2)
         else:
             self._fill_single(elements, "title", title, max_lines=2)
             self._fill_content(elements, data, semantic)
 
         # 空槽清理可能连带移除分组图片，因此必须在文字槽处理完成后再应用 Agent 配图。
         self._fill_images(elements, semantic_images)
+        slide["templateSlideId"] = str(selected.get("id") or "")
         slide["id"] = self._stable_id(task_id, f"slide-{index}")
         slide["elements"] = self._unique_element_ids(elements, task_id, index)
         slide["type"] = slide_type
@@ -502,27 +559,69 @@ class PresentationTemplateRenderer:
             self._has_explicit_content_image_slot(slide) for slide in candidates
         ):
             # 新协议封面按 Agent 是否提供图片选版，避免无图任务暴露空内容图框。
+            title_value = self._text(data.get("title"))
             exact_image_candidates = [
                 slide for slide in candidates
                 if self._image_count(slide) == image_count
             ]
-            if exact_image_candidates:
-                candidates = exact_image_candidates
+            fitting_exact = [
+                slide for slide in exact_image_candidates
+                if self._slide_title_fits(slide, title_value)
+            ]
+            if fitting_exact:
+                candidates = fitting_exact
+            elif image_count == 1 and exact_image_candidates:
+                # 带图封面标题超限时按规格改选无图封面；用户图片不再写入固定装饰。
+                fallback = [
+                    slide for slide in candidates
+                    if self._image_count(slide) == 0 and self._slide_title_fits(slide, title_value)
+                ]
+                if not fallback:
+                    raise TemplateRenderError(
+                        "封面标题超过无图版式容量",
+                        code="TEMPLATE_DATA_INVALID",
+                    )
+                candidates = fallback
+            elif exact_image_candidates:
+                raise TemplateRenderError(
+                    "封面标题超过版式容量",
+                    code="TEMPLATE_DATA_INVALID",
+                )
             elif prefer_images:
                 raise TemplateRenderError(
                     "模板缺少匹配的封面图片版式",
                     code="TEMPLATE_MISSING_SLOT",
                     context={"image_count": str(image_count)},
                 )
+        requested_variant = data.get("variant")
+        if slide_type != "content" and isinstance(requested_variant, str) and requested_variant.strip():
+            variant_value = requested_variant.strip()
+            variant_candidates = [
+                slide for slide in candidates if slide.get("variantKey") == variant_value
+            ]
+            if not variant_candidates and any(slide.get("variantKey") for slide in candidates):
+                raise TemplateRenderError(
+                    "模板缺少匹配的显式变体",
+                    code="TEMPLATE_DATA_INVALID",
+                    context={"variant": variant_value[:64]},
+                )
+            if variant_candidates:
+                candidates = variant_candidates
         if slide_type == "content":
+            count = max(1, len(self._content_items(data.get("items"))))
             requested_layout_kind = self._requested_layout_kind(data)
             if requested_layout_kind:
                 matching_kind = [
                     slide for slide in candidates
                     if slide.get("layoutKind") == requested_layout_kind
                 ]
-                if matching_kind:
-                    candidates = matching_kind
+                if not matching_kind:
+                    raise TemplateRenderError(
+                        "模板缺少匹配的显式内容版式",
+                        code="TEMPLATE_DATA_INVALID",
+                        context={"layout_kind": requested_layout_kind[:64]},
+                    )
+                candidates = matching_kind
             else:
                 # 显式语义版式不能因为容量相同而被普通内容页序轮换误选。
                 ordinary_candidates = [
@@ -531,7 +630,42 @@ class PresentationTemplateRenderer:
                 ]
                 if ordinary_candidates:
                     candidates = ordinary_candidates
-            count = max(1, len(self._content_items(data.get("items"))))
+            allowed_candidates = [
+                slide for slide in candidates if self._item_count_allowed(slide, count)
+            ]
+            if allowed_candidates:
+                candidates = allowed_candidates
+            elif requested_layout_kind or any(
+                isinstance(slide.get("allowedItemCounts"), list) for slide in candidates
+            ):
+                raise TemplateRenderError(
+                    "显式版式不支持当前内容项数量",
+                    code="TEMPLATE_DATA_INVALID",
+                    context={
+                        "layout_kind": str(requested_layout_kind or "default")[:64],
+                        "item_count": str(count),
+                    },
+                )
+            content_variant = data.get("variant")
+            if isinstance(content_variant, str) and content_variant.strip():
+                variant_value = content_variant.strip()
+                matching_variant = [
+                    slide for slide in candidates if slide.get("variantKey") == variant_value
+                ]
+                if not matching_variant and any(slide.get("variantKey") for slide in candidates):
+                    raise TemplateRenderError(
+                        "内容版式不支持当前显式变体",
+                        code="TEMPLATE_DATA_INVALID",
+                        context={"variant": variant_value[:64]},
+                    )
+                if matching_variant:
+                    candidates = matching_variant
+            else:
+                default_variants = [
+                    slide for slide in candidates if slide.get("variantKey") in {None, "left"}
+                ]
+                if default_variants:
+                    candidates = default_variants
             strict_image_protocol = any(self._strict_image_count(slide) for slide in candidates)
             if prefer_images and strict_image_protocol:
                 exact_image_candidates = [
@@ -572,6 +706,20 @@ class PresentationTemplateRenderer:
                 candidates,
                 key=lambda slide: (self._slot_distance(slide, "item", count), str(slide.get("id", ""))),
             )
+        if slide_type == "end" and any(self._slot_count(slide, "item") > 0 for slide in candidates):
+            count = len(self._string_items(data.get("items")))
+            if count > 3:
+                raise TemplateRenderError(
+                    "结束页行动项不能超过 3 项",
+                    code="TEMPLATE_DATA_INVALID",
+                    context={"item_count": str(count)},
+                )
+            exact = [
+                slide for slide in candidates
+                if (self._slot_count(slide, "item") == 0 if count == 0 else self._slot_count(slide, "item") >= count)
+            ]
+            if exact:
+                return min(exact, key=lambda slide: str(slide.get("id", "")))
         # 新模板可显式启用稳定变体；同一任务保持确定性，不同任务可以覆盖全部生产版式。
         if any(slide.get("variantMode") == "deterministic" for slide in candidates):
             return candidates[(variant_seed + index) % len(candidates)]
@@ -585,9 +733,13 @@ class PresentationTemplateRenderer:
         if isinstance(explicit, str) and explicit.strip():
             return explicit.strip()
         items = data.get("items")
-        if isinstance(items, list) and any(
-            isinstance(item, dict) and item.get("kind") in {"metric", "number", "stat"}
-            for item in items
+        if (
+            isinstance(items, list)
+            and 3 <= len(items) <= 5
+            and all(
+                isinstance(item, dict) and item.get("kind") in {"metric", "number", "stat"}
+                for item in items
+            )
         ):
             return "metrics"
         return None
@@ -650,6 +802,37 @@ class PresentationTemplateRenderer:
         """识别要求图片与正文一一对应的生产版式。"""
         elements = slide.get("elements") if isinstance(slide.get("elements"), list) else []
         return any(slot.get("strictImageCount") is True for slot in cls._image_slots(elements))
+
+    @classmethod
+    def _allows_extra_items(cls, slide: dict[str, Any]) -> bool:
+        """识别允许少量图片与更多文字共页的显式版式。"""
+        elements = slide.get("elements") if isinstance(slide.get("elements"), list) else []
+        return any(slot.get("allowExtraItems") is True for slot in cls._image_slots(elements))
+
+    @classmethod
+    def _extra_item_layout_available(
+        cls,
+        slides: list[dict[str, Any]],
+        *,
+        image_count: int,
+        item_count: int,
+    ) -> bool:
+        """只有图片数、项目容量和声明同时匹配时，才允许图少于文字。"""
+        return any(
+            cls._allows_extra_items(slide)
+            and cls._image_count(slide) == image_count
+            and cls._slot_count(slide, "item") >= item_count
+            and cls._item_count_allowed(slide, item_count)
+            for slide in slides
+        )
+
+    @staticmethod
+    def _item_count_allowed(slide: dict[str, Any], count: int) -> bool:
+        """读取模板声明的合法项目数；历史模板未声明时保持兼容。"""
+        allowed = slide.get("allowedItemCounts")
+        if not isinstance(allowed, list):
+            return True
+        return count in [value for value in allowed if isinstance(value, int)]
 
     @staticmethod
     def _has_explicit_content_image_slot(slide: dict[str, Any]) -> bool:
@@ -803,6 +986,7 @@ class PresentationTemplateRenderer:
             br = etree.SubElement(target, "br")
             br.tail = line
         self._adapt_font_size(root, value, element, max_lines)
+        self._adapt_long_title_spacing(root, value, element)
         return "".join(
             etree.tostring(child, encoding="unicode", method="html") for child in root
         ) or f"<p>{html.escape(value)}</p>"
@@ -821,11 +1005,36 @@ class PresentationTemplateRenderer:
             element.get("height"),
             original * max_lines * self._LINE_HEIGHT + self._TEXT_PADDING,
         )
-        adapted = max(original, self._MINIMUM_READABLE_FONT_SIZE)
-        while adapted > self._MINIMUM_READABLE_FONT_SIZE:
-            if self._estimated_text_height(value, width, adapted) <= height:
+        declared_minimum = self._number(element.get("minimumFontSize"), 0)
+        minimum = max(self._MINIMUM_READABLE_FONT_SIZE, declared_minimum)
+        adapted = max(original, minimum)
+        line_height = max(0.8, self._number(element.get("textLineHeight"), self._LINE_HEIGHT))
+        width_factor = max(0.5, self._number(element.get("textWidthFactor"), 1.0))
+        while adapted > minimum:
+            if self._estimated_text_height(
+                value,
+                width,
+                adapted,
+                line_height=line_height,
+                width_factor=width_factor,
+            ) <= height:
                 break
-            adapted = max(self._MINIMUM_READABLE_FONT_SIZE, adapted - 0.5)
+            adapted = max(minimum, adapted - 0.5)
+        if declared_minimum > 0 and self._estimated_text_height(
+            value,
+            width,
+            adapted,
+            line_height=line_height,
+            width_factor=width_factor,
+        ) > height:
+            raise TemplateRenderError(
+                "文本超过版式声明的最小字号容量",
+                code="TEMPLATE_DATA_INVALID",
+                context={
+                    "text_type": str(self._slot_type(element) or "unknown")[:64],
+                    "minimum_font_size": str(round(minimum, 1)),
+                },
+            )
         adapted = round(adapted, 1)
         replaced = False
         for node in root.iter():
@@ -844,6 +1053,32 @@ class PresentationTemplateRenderer:
         style = target.get("style", "").strip()
         separator = "" if not style or style.endswith(";") else ";"
         target.set("style", f"{style}{separator} font-size: {adapted}px;".strip())
+
+    def _adapt_long_title_spacing(self, root: etree._Element, value: str, element: dict[str, Any]) -> None:
+        """只在标题超过普通显示阈值时启用受控负字距。"""
+        spacing = self._number(element.get("longTitleLetterSpacing"), 0)
+        limits = element.get("compressionLimits")
+        if spacing >= 0 or not isinstance(limits, dict):
+            return
+        wide_limit = limits.get("wide")
+        ascii_limit = limits.get("ascii")
+        if not isinstance(wide_limit, int) or not isinstance(ascii_limit, int):
+            return
+        wide_count, ascii_count = self._title_counts(value)
+        if self._title_count_fits(wide_count, ascii_count, wide_limit, ascii_limit):
+            return
+        for node in root.iter():
+            style = node.get("style")
+            if not style or "letter-spacing" not in style:
+                continue
+            node.set(
+                "style",
+                re.sub(
+                    r"letter-spacing\s*:\s*-?[0-9.]+px",
+                    f"letter-spacing: {spacing}px",
+                    style,
+                ),
+            )
 
     def _validate_slide_text_bounds(self, slide: dict[str, Any], slide_height: float) -> None:
         """按前端排版规则估算语义文本高度，阻止明显越过页面底部的文档落库。"""
@@ -864,10 +1099,14 @@ class PresentationTemplateRenderer:
                 for part in re.split(r"<br\s*/?>", raw, flags=re.IGNORECASE)
             ]
             plain_text = "\n".join(lines)
+            line_height = max(0.8, self._number(element.get("textLineHeight"), self._LINE_HEIGHT))
+            width_factor = max(0.5, self._number(element.get("textWidthFactor"), 1.0))
             estimated_height = self._estimated_text_height(
                 plain_text,
                 self._number(element.get("width"), 0),
                 font_size,
+                line_height=line_height,
+                width_factor=width_factor,
             )
             declared_height = self._number(element.get("height"), 0)
             top = self._number(element.get("top"), 0)
@@ -901,12 +1140,19 @@ class PresentationTemplateRenderer:
                 )
 
     @classmethod
-    def _wrapped_line_count(cls, value: str, width: float, font_size: float) -> int:
+    def _wrapped_line_count(
+        cls,
+        value: str,
+        width: float,
+        font_size: float,
+        *,
+        width_factor: float = 1.0,
+    ) -> int:
         """按统一中英文宽度模型估算浏览器换行数。"""
         usable_width = max(1.0, width - cls._TEXT_PADDING)
         weighted_per_line = max(
             1.0,
-            usable_width / font_size * cls._WIDTH_SAFETY_FACTOR,
+            usable_width / font_size * cls._WIDTH_SAFETY_FACTOR * width_factor,
         )
         return sum(
             max(1, math.ceil(cls._weighted_length(line) / weighted_per_line))
@@ -914,12 +1160,20 @@ class PresentationTemplateRenderer:
         )
 
     @classmethod
-    def _estimated_text_height(cls, value: str, width: float, font_size: float) -> float:
+    def _estimated_text_height(
+        cls,
+        value: str,
+        width: float,
+        font_size: float,
+        *,
+        line_height: float | None = None,
+        width_factor: float = 1.0,
+    ) -> float:
         """按前端内边距与行高估算文本元素的真实高度。"""
         return (
-            cls._wrapped_line_count(value, width, font_size)
+            cls._wrapped_line_count(value, width, font_size, width_factor=width_factor)
             * font_size
-            * cls._LINE_HEIGHT
+            * (line_height or cls._LINE_HEIGHT)
             + cls._TEXT_PADDING
         )
 
@@ -932,6 +1186,56 @@ class PresentationTemplateRenderer:
     def _character_weight(char: str) -> float:
         """返回单个字符的近似显示宽度权重，供分页与边界校验统一使用。"""
         return 1.0 if ord(char) > 255 else 0.56
+
+    @classmethod
+    def _slide_title_fits(cls, slide: dict[str, Any], value: str) -> bool:
+        """按规格的中英混排整数不等式判断标题是否可进入目标版式。"""
+        limits = slide.get("titleFitLimits")
+        if not isinstance(limits, dict) or not value:
+            return True
+        wide_limit = limits.get("maxWide")
+        ascii_limit = limits.get("maxAscii")
+        if not isinstance(wide_limit, int) or not isinstance(ascii_limit, int):
+            return True
+        wide_count, ascii_count = cls._title_counts(value)
+        return cls._title_count_fits(wide_count, ascii_count, wide_limit, ascii_limit)
+
+    @staticmethod
+    def _title_counts(value: str) -> tuple[int, int]:
+        """按 NFC 后的非 ASCII 与 ASCII 码点分别计数。"""
+        normalized = unicodedata.normalize("NFC", value).strip()
+        wide_count = sum(1 for char in normalized if ord(char) > 127)
+        return wide_count, len(normalized) - wide_count
+
+    @staticmethod
+    def _title_count_fits(wide: int, ascii_count: int, wide_limit: int, ascii_limit: int) -> bool:
+        return wide * ascii_limit + ascii_count * wide_limit <= wide_limit * ascii_limit
+
+    @classmethod
+    def _title_with_policy_break(cls, slide: dict[str, Any], value: str) -> str:
+        """超过单行阈值但仍在总容量内时插入一次可逆换行。"""
+        limits = slide.get("titleFitLimits")
+        if not isinstance(limits, dict) or not value or "\n" in value:
+            return value
+        single_wide = limits.get("singleWide")
+        single_ascii = limits.get("singleAscii")
+        if not isinstance(single_wide, int) or not isinstance(single_ascii, int):
+            return value
+        wide_count, ascii_count = cls._title_counts(value)
+        if cls._title_count_fits(wide_count, ascii_count, single_wide, single_ascii):
+            return value
+
+        normalized = unicodedata.normalize("NFC", value).strip()
+        weights = [2 if ord(char) > 127 else 1 for char in normalized]
+        target = sum(weights) / 2
+        running = 0
+        split_at = 1
+        for index, weight in enumerate(weights[:-1], start=1):
+            running += weight
+            split_at = index
+            if running >= target:
+                break
+        return f"{normalized[:split_at]}\n{normalized[split_at:]}"
 
     @staticmethod
     def _element_text_html(element: dict[str, Any]) -> str:

@@ -1,0 +1,27 @@
+{
+  "template_id": "template_15",
+  "interactive_presentation_id": "26d34296-e415-5c3d-8d57-cc876b21deff",
+  "text_saved": true,
+  "text_persisted_after_reload": true,
+  "content_image_replaced": true,
+  "before_content_images": [
+    "/api/data/template_15_asset_bg_section_v1.jpg",
+    "/api/data/template_15_asset_bg_cover_v1.jpg",
+    "/api/data/template_15_asset_bg_section_v1.jpg",
+    "/api/data/template_15_asset_bg_end_v1.jpg"
+  ],
+  "after_content_images": [
+    "data-url:183395:8afb9062c1b138b6492237bbab45a8c4517a10fa7690de1f9991c037063c5954",
+    "/api/data/template_15_asset_bg_cover_v1.jpg",
+    "/api/data/template_15_asset_bg_section_v1.jpg",
+    "/api/data/template_15_asset_bg_end_v1.jpg"
+  ],
+  "decorations_preserved": true,
+  "decoration_count_before": 19,
+  "decoration_count_after": 19,
+  "all_decorations_are_template_15": true,
+  "reimport_presentation_id": "efa1cd48-23cb-581c-bde1-2a50b4884c92",
+  "reimported": true,
+  "reimported_slide_count": 14,
+  "editable_after_reimport": true
+}
