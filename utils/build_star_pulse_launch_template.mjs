@@ -510,8 +510,8 @@ const makeTransition = ({ id, variant = 'horizon' }) => {
       suffix: 'content',
       left: compact ? 96 : 428,
       top: compact ? 430 : 322,
-      width: compact ? 700 : 430,
-      // 横向版式预留三句上限的正文高度；紧凑版式本身宽度更大，维持原高度。
+      // 使用完整横向安全区容纳真实 Agent 的长过渡语，同时保持 y=500 文字安全线。
+      width: compact ? 840 : 430,
       height: compact ? 70 : 132,
       value: '每个章节只承担一个沟通任务，并为下一步建立必要上下文。',
       fontSize: 18,

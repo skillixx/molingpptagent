@@ -571,6 +571,61 @@ def test_template_15_real_agent_five_item_titles_fit_without_content_loss() -> N
     assert rendered_bodies == "".join(bodies)
 
 
+@pytest.mark.parametrize(
+    ("name", "items", "expected_body"),
+    [
+        (
+            "string-items",
+            ["字" * 18 for _ in range(5)],
+            "字" * 90,
+        ),
+        (
+            "title-only-items",
+            [{"title": "题" * 18} for _ in range(5)],
+            "题" * 90,
+        ),
+        (
+            "chart-item",
+            [
+                {"title": f"要点 {index}", "text": "短正文"}
+                for index in range(1, 5)
+            ] + [{
+                "kind": "chart",
+                "title": "指标趋势",
+                "text": "中" * 18,
+                "chartType": "bar",
+                "labels": ["A"],
+                "series": [{"name": "X", "data": [1]}],
+            }],
+            "短正文" * 4 + "中" * 18,
+        ),
+    ],
+)
+def test_template_15_items_that_lack_native_frames_paginate_without_loss(
+    name: str,
+    items: list[object],
+    expected_body: str,
+) -> None:
+    """字符串、仅标题和无原生图表框的 item 都必须按实际正文容量拆页。"""
+    document = _renderer().render(
+        template_id="template_15",
+        semantic_slides=[{
+            "type": "content",
+            "data": {"title": "生产输入兼容", "items": items},
+        }],
+        task_id=f"template-15-{name}",
+        fallback_title="生产输入兼容",
+    )
+
+    rendered_bodies = "".join(
+        _plain_text(element)
+        for slide in document["slides"]
+        for element in slide["elements"]
+        if _slot_type(element) == "item"
+    )
+    assert rendered_bodies == expected_body
+
+
 @pytest.mark.parametrize("variant", ["horizon", "spectrum", "particle", "stage"])
 def test_template_15_transition_accepts_declared_agent_copy_limit(variant: str) -> None:
     """过渡页必须容纳提示词允许的三句上限，不因确定性变体随机失败。"""
@@ -598,6 +653,75 @@ def test_template_15_transition_accepts_declared_agent_copy_limit(variant: str) 
     )
     assert rendered_title == title
     assert content == body
+
+
+@pytest.mark.parametrize("variant", ["spectrum", "stage"])
+@pytest.mark.parametrize("body_length", [77, 89])
+def test_template_15_compact_transition_accepts_observed_agent_lengths(
+    variant: str,
+    body_length: int,
+) -> None:
+    """紧凑过渡页必须容纳生产日志中的真实长度，不能因选版不同失败。"""
+    body = "中" * body_length
+    title = "中" * 18
+    slide = _renderer().render(
+        template_id="template_15",
+        semantic_slides=[{
+            "type": "transition",
+            "data": {"title": title, "text": body, "variant": variant},
+        }],
+        task_id=f"template-15-transition-real-{variant}-{body_length}",
+        fallback_title=title,
+    )["slides"][0]
+
+    title_element = next(
+        element
+        for element in slide["elements"]
+        if _slot_type(element) == "title"
+    )
+    content_element = next(
+        element
+        for element in slide["elements"]
+        if _slot_type(element) == "content"
+    )
+    assert _plain_text(content_element) == body
+    assert content_element["top"] >= title_element["top"] + title_element["height"]
+    assert content_element["left"] + content_element["width"] <= 936
+    assert content_element["top"] + content_element["height"] <= 500
+
+
+def test_template_15_default_transition_selection_follows_section_order() -> None:
+    """默认过渡页按章节序号选版，同一 sectionIndex 不得随任务 ID 漂移。"""
+    selected: set[str] = set()
+    for task_id in ("a", "b", "c", "d", "e"):
+        slide = _renderer().render(
+            template_id="template_15",
+            semantic_slides=[{
+                "type": "transition",
+                "data": {"title": "中" * 18, "text": "中" * 89, "sectionIndex": 2},
+            }],
+            task_id=task_id,
+            fallback_title="中",
+        )["slides"][0]
+        selected.add(slide["templateSlideId"])
+
+    assert selected == {"transition-spectrum"}
+
+    document = _renderer().render(
+        template_id="template_15",
+        semantic_slides=[
+            {"type": "transition", "data": {"title": "中" * 18, "text": "中" * 89}}
+            for _ in range(4)
+        ],
+        task_id="template-15-transition-order",
+        fallback_title="中",
+    )
+    assert [slide["templateSlideId"] for slide in document["slides"]] == [
+        "transition-horizon",
+        "transition-spectrum",
+        "transition-particle",
+        "transition-stage",
+    ]
 
 
 def test_template_15_long_body_with_image_keeps_image_on_first_part_only() -> None:

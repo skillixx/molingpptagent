@@ -1,9 +1,9 @@
 {
   "evidence_schema_version": 1,
   "template_id": "template_15",
-  "generated_at": "2026-08-30T12:42:45Z",
+  "generated_at": "2026-08-30T18:39:32Z",
   "qa_status": "PASS",
-  "implementation_status": "READY_FOR_CONFIRMATION",
+  "implementation_status": "DONE",
   "spec": {
     "path": "doc/template_specs/template_15.yaml",
     "sha256": "a94d72c115c3e5196e043c507c8fd590a6c896ed955d4875831e33f6a4d34e0b",
@@ -18,7 +18,7 @@
     "template_json": {
       "path": "backend/main_api/template/template_15.json",
       "bytes": 476115,
-      "sha256": "550e41dfe8f179f7a42f4f1ae67bb0aa50196005dbc4834889efc3462196607e"
+      "sha256": "2074854f78c4f504f53e6410bef3e8e59eddabb646f081b80fcd01b8faf78d9d"
     },
     "page_types": {
       "cover": 2,
@@ -29,6 +29,38 @@
     },
     "slides": 39,
     "elements": 751
+  },
+  "repair_validation": {
+    "confirmed_at": "2026-08-30T18:39:32Z",
+    "confirmed_by": "user",
+    "status": "PASS",
+    "task_id": "6b2888d5-f541-490a-98ce-a4ca339c0075",
+    "presentation_id": "c7e650e5-1999-4932-adba-3a3dbd71ef05",
+    "worker": {
+      "release_commit": "9a51422bbd02b9365ea876e563b312cbd11af860",
+      "release_channel": "production",
+      "billing_enabled": false
+    },
+    "result": {
+      "task_status": "succeeded",
+      "task_stage": "completed",
+      "progress": 100,
+      "attempt": 1,
+      "error_code": null,
+      "presentation_status": "ready",
+      "slide_count": 73,
+      "actual_slide_count": 73
+    },
+    "tests": {
+      "backend": "798 passed",
+      "frontend_unit": "118 passed",
+      "frontend_build": "PASS"
+    },
+    "template_json_sha256": "2074854f78c4f504f53e6410bef3e8e59eddabb646f081b80fcd01b8faf78d9d",
+    "notes": [
+      "Persistent Worker restart and real template_15 generation completed without TEMPLATE errors.",
+      "Direct editor visual opening was not completed because the independent browser session had expired authentication."
+    ]
   },
   "checks": {
     "development_spec": {

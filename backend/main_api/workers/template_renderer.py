@@ -160,6 +160,7 @@ class PresentationTemplateRenderer:
         )
         if max_item_slots <= 0:
             return copy.deepcopy(semantic_slides)
+        preserve_native_charts = self._has_native_chart_elements(content_templates)
         paginated: list[dict[str, Any]] = []
         for semantic in semantic_slides:
             data = semantic.get("data") if isinstance(semantic.get("data"), dict) else None
@@ -183,6 +184,7 @@ class PresentationTemplateRenderer:
                         raw_items,
                         semantic_images,
                         max_item_slots=max_item_slots,
+                        preserve_native_charts=preserve_native_charts,
                     )
                 )
                 continue
@@ -200,7 +202,11 @@ class PresentationTemplateRenderer:
                 expanded_items = [
                     expanded
                     for item in raw_items
-                    for expanded in self._split_content_item(item, item_capacity)
+                    for expanded in self._split_content_item(
+                        item,
+                        item_capacity,
+                        preserve_native_charts=preserve_native_charts,
+                    )
                 ]
                 next_count = min(max(1, len(expanded_items)), max_item_slots)
                 if next_count == target_count:
@@ -230,6 +236,7 @@ class PresentationTemplateRenderer:
         images: list[dict[str, Any]],
         *,
         max_item_slots: int,
+        preserve_native_charts: bool,
     ) -> list[dict[str, Any]]:
         """把带图内容拆成一一对应的图文页和后续纯文字页，禁止丢图或残留占位图。"""
         if len(images) > len(raw_items):
@@ -268,7 +275,11 @@ class PresentationTemplateRenderer:
         for index, item in enumerate(raw_items):
             # 带图长正文的续段会进入纯文字版式，必须同时满足图文页和续页的较小容量。
             capacity = min(image_capacity, text_capacity) if index < len(images) else text_capacity
-            parts = self._split_content_item(item, capacity)
+            parts = self._split_content_item(
+                item,
+                capacity,
+                preserve_native_charts=preserve_native_charts,
+            )
             for part_index, part in enumerate(parts):
                 source = images[index] if index < len(images) and part_index == 0 else None
                 expanded.append((part, source))
@@ -347,29 +358,59 @@ class PresentationTemplateRenderer:
         return min(capacities, default=1)
 
     @classmethod
-    def _split_content_item(cls, item: Any, capacity: int) -> list[Any]:
-        """把单条超长正文切成可读片段，保持原字符顺序且不做静默截断。"""
+    def _split_content_item(
+        cls,
+        item: Any,
+        capacity: int,
+        *,
+        preserve_native_charts: bool,
+    ) -> list[Any]:
+        """按最终会写入正文框的文本拆分 item，避免特殊形态绕过容量校验。"""
         if not isinstance(item, dict):
+            value = cls._text(item)
+            if not value:
+                return [copy.deepcopy(item)]
+            return cls._split_weighted_text(value, capacity)
+        if item.get("kind") == "chart" and preserve_native_charts:
             return [copy.deepcopy(item)]
-        if item.get("kind") == "chart":
-            return [copy.deepcopy(item)]
-        body_key = "text" if cls._text(item.get("text")) else "content"
-        body = cls._text(item.get(body_key))
+
+        text_body = cls._text(item.get("text"))
+        content_body = cls._text(item.get("content"))
+        body_key = "text" if text_body else ("content" if content_body else None)
+        title = cls._text(item.get("title"))
+        # _fill_content 会在正文为空时回退到标题；分页必须使用相同规则。
+        body = text_body or content_body or title
         if not body:
             return [copy.deepcopy(item)]
         chunks = cls._split_weighted_text(body, capacity)
         if len(chunks) == 1:
             return [copy.deepcopy(item)]
 
-        title = cls._text(item.get("title"))
         expanded: list[dict[str, Any]] = []
         for index, chunk in enumerate(chunks):
             part = copy.deepcopy(item)
-            part[body_key] = chunk
-            if index > 0 and title:
-                part["title"] = f"{title}（续）"
+            if body_key is None:
+                # 仅标题项会同时把标题作为正文显示；拆成多个短标题即可无损分页。
+                part["title"] = chunk
+            else:
+                part[body_key] = chunk
+                if index > 0 and title:
+                    part["title"] = f"{title}（续）"
             expanded.append(part)
         return expanded
+
+    @staticmethod
+    def _has_native_chart_elements(slides: list[dict[str, Any]]) -> bool:
+        """仅当候选版式确有图表元素时，保留 chart item 的不可拆分语义。"""
+        return any(
+            isinstance(element, dict) and element.get("type") == "chart"
+            for slide in slides
+            for element in (
+                slide.get("elements")
+                if isinstance(slide, dict) and isinstance(slide.get("elements"), list)
+                else []
+            )
+        )
 
     @classmethod
     def _split_weighted_text(cls, value: str, capacity: int) -> list[str]:
@@ -494,10 +535,15 @@ class PresentationTemplateRenderer:
                         "image_count": str(len(semantic_images)),
                     },
                 )
+        selection_data = data
+        if slide_type == "transition" and "sectionIndex" not in data:
+            # Agent 骨架不携带 sectionIndex，使用当前章节序号补齐模板声明的确定性选版协议。
+            selection_data = copy.deepcopy(data)
+            selection_data["sectionIndex"] = transition_number
         selected = self._select(
             candidates,
             slide_type,
-            data,
+            selection_data,
             index,
             prefer_images=bool(semantic_images),
             image_count=len(semantic_images),
@@ -607,6 +653,26 @@ class PresentationTemplateRenderer:
                 )
             if variant_candidates:
                 candidates = variant_candidates
+        elif slide_type == "transition" and any(slide.get("variantKey") for slide in candidates):
+            section_index = data.get("sectionIndex")
+            if type(section_index) is not int or section_index < 1:
+                raise TemplateRenderError(
+                    "过渡页章节序号无效",
+                    code="TEMPLATE_DATA_INVALID",
+                    context={"section_index": str(section_index)[:64]},
+                )
+            ordered_variants = ("horizon", "spectrum", "particle", "stage")
+            variant_value = ordered_variants[(section_index - 1) % len(ordered_variants)]
+            variant_candidates = [
+                slide for slide in candidates if slide.get("variantKey") == variant_value
+            ]
+            if not variant_candidates:
+                raise TemplateRenderError(
+                    "模板缺少章节对应的过渡页变体",
+                    code="TEMPLATE_DATA_INVALID",
+                    context={"variant": variant_value},
+                )
+            candidates = variant_candidates
         if slide_type == "content":
             count = max(1, len(self._content_items(data.get("items"))))
             requested_layout_kind = self._requested_layout_kind(data)
