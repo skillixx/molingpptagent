@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_16",
+  "checkedAt": "2026-08-31T16:23:00+08:00",
+  "status": "PASS",
+  "file": "template_16_editor_roundtrip.pptx",
+  "bytes": 8720725,
+  "slideCount": 18,
+  "mediaPartCount": 42,
+  "reimportedSlideCount": 18,
+  "verified": [
+    "编辑后的封面标题",
+    "正文文本",
+    "用户替换的内容图片",
+    "固定背景与星座装饰"
+  ]
+}

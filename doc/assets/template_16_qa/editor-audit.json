@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_16",
+  "checkedAt": "2026-08-31T16:23:00+08:00",
+  "status": "PASS",
+  "editorUrl": "http://127.0.0.1:5779/editor",
+  "pageCount": 18,
+  "checks": {
+    "templateSelection": "PASS",
+    "jsonImport": "PASS",
+    "textEdit": "PASS",
+    "contentImageReplacement": "PASS",
+    "decorationProtection": "PASS",
+    "invalidJsonFeedback": "PASS",
+    "pptxExport": "PASS",
+    "pptxReimport": "PASS"
+  },
+  "viewports": [
+    {"name": "desktop", "width": 1440, "height": 900, "status": "PASS", "evidence": "devices/editor-desktop.png"},
+    {"name": "laptop", "width": 1280, "height": 720, "status": "PASS", "evidence": "devices/editor-laptop.png"},
+    {"name": "tablet", "width": 768, "height": 1024, "status": "PASS", "evidence": "devices/editor-tablet.png"},
+    {"name": "mobile", "width": 390, "height": 844, "status": "PASS", "evidence": "devices/editor-mobile.png"}
+  ],
+  "interactionEvidence": {
+    "templateSelection": "devices/template-selection-selected.png",
+    "textEdit": "devices/editor-text-edited.png",
+    "imageReplacement": "devices/editor-image-replaced.png",
+    "invalidJsonFeedback": "devices/import-failure-feedback.png",
+    "pptxReimport": "devices/pptx-reimport-editor.png"
+  },
+  "console": {"errors": 0, "warnings": 0}
+}

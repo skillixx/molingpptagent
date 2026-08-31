@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_16",
+  "checkedAt": "2026-08-31T16:23:00+08:00",
+  "status": "PASS",
+  "runtime": {
+    "mainApi": "http://127.0.0.1:6800",
+    "frontend": "http://127.0.0.1:5778",
+    "readyzStatus": 200,
+    "templateListedByMainApi": true,
+    "templateListedByFrontendProxy": true,
+    "resourceChecks": {
+      "template_16.json": 237830,
+      "template_16.jpg": 77962,
+      "template_16_asset_bg_space_dark_v1.jpg": 120338,
+      "template_16_asset_orbital_ring_v1.png": 436501,
+      "template_16_asset_constellation_edge_v1.png": 200076,
+      "template_16_asset_nebula_glow_v1.png": 278733
+    },
+    "resourceResult": "全部资源经主 API /data 与前端 /api/data 两条路径返回 HTTP 200，字节数一致"
+  },
+  "workerGeneration": {
+    "successfulPresentationId": "cb7f4401-3a7a-4f53-a4ae-f68811a0fae0",
+    "successfulTaskId": "0f3f4484-4ada-4fdc-af26-573b6c494bf0",
+    "taskStatus": "succeeded",
+    "presentationStatus": "ready",
+    "slideCount": 25,
+    "slideTypes": {
+      "cover": 1,
+      "contents": 1,
+      "transition": 4,
+      "content": 18,
+      "end": 1
+    },
+    "reachedStableLayoutIds": [
+      "content-focus-1",
+      "content-text-2",
+      "content-text-4",
+      "contents-4",
+      "cover-orbit",
+      "end-orbit",
+      "transition-nebula",
+      "transition-orbit"
+    ],
+    "fixedDecorationCount": 45,
+    "brokenImageCount": 0
+  },
+  "resolvedFailure": {
+    "presentationId": "80c66cd3-7768-43fd-9042-0d5203b591c5",
+    "taskId": "76aea56a-9838-410a-93c3-1f38f15ba352",
+    "error": "TEMPLATE_DATA_INVALID",
+    "rootCause": "封面示例中的预置换行与渲染器自动换行叠加，导致真实代理副标题边界输入发生溢出",
+    "resolution": "移除预置 br、调整封面文本框并增加真实代理边界回归测试",
+    "regressionTest": "test_template_16_accepts_real_agent_cover_subtitle_boundary"
+  }
+}

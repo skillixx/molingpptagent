@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_16",
+  "status": "DONE",
+  "updatedAt": "2026-08-31T16:27:00+08:00",
+  "stages": {
+    "G0": {"status":"PASS","evidence":"g0-baseline.json"},
+    "G1": {"status":"PASS","evidence":"reference-rights-audit.json"},
+    "G2": {"status":"PASS","evidence":"asset-generation.json"},
+    "G3": {"status":"PASS","evidence":"../../template_specs/template_16.yaml"},
+    "G4": {"status":"PASS","evidence":"../../../backend/main_api/template/template_16.json"},
+    "G5": {"status":"PASS","evidence":"../../../backend/main_api/tests/test_template_16.py"},
+    "G6": {"status":"PASS","evidence":"editor-audit.json"},
+    "G7": {"status":"PASS","evidence":"template16-contact-sheet.png"},
+    "G8": {"status":"PASS","evidence":"e2e-audit.json"}
+  },
+  "finalStatus": "DONE",
+  "userConfirmation": "CONFIRMED",
+  "confirmedAt": "2026-08-31T16:27:00+08:00"
+}

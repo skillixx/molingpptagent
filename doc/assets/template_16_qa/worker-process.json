@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-08-31T16:23:00+08:00",
+  "status": "PASS",
+  "launcherPid": 16076,
+  "launcher": ".venv\\Scripts\\dotenv.exe -f .env run --no-override -- .venv\\Scripts\\python.exe -m backend.main_api.workers.main",
+  "workerProcessIds": [11960, 62184],
+  "workerModule": "backend.main_api.workers.main",
+  "workingProject": "<repository-root>",
+  "releaseCommit": "79a15fbdfa62c788084f3ea00fbf9bc176da1808",
+  "releaseChannel": "production",
+  "billingEnabled": false
+}

@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-31T15:18:37+08:00",
+  "tool": "Codex built-in image_gen",
+  "modelReportedByTool": "未暴露",
+  "assets": [
+    {
+      "id": "bg-space-dark",
+      "promptSummary": "原创深蓝外太空背景，中央和左侧标题区低细节，星点集中在边缘，无文字、Logo、产品或人物",
+      "sourceOutput": "<CODEX_HOME>\\generated_images\\01a05689-76ac-7f52-9eec-ef6660b2ffb9\\exec-b43b972a-ee0c-4463-886b-457d84eec1b1.png",
+      "publishedPath": "backend/main_api/template/template_16_asset_bg_space_dark_v1.jpg",
+      "size": [1920,1080],
+      "mode": "RGB",
+      "bytes": 120338,
+      "sha256": "3a5331bd28873d804d8a7fd915ccec03589f548adc1ab03b988bc88f36e8bc4d",
+      "alphaVerified": null,
+      "visualReview": "PASS"
+    },
+    {
+      "id": "orbital-ring",
+      "promptSummary": "透明背景的非对称青蓝轨道星环，中心留空，少量节点，无文字、Logo、星球或产品",
+      "sourceOutput": "<CODEX_HOME>\\generated_images\\01a05689-76ac-7f52-9eec-ef6660b2ffb9\\exec-dafe648e-e86e-4967-b446-90c2b9182be7.png",
+      "publishedPath": "backend/main_api/template/template_16_asset_orbital_ring_v1.png",
+      "size": [1200,1200],
+      "mode": "RGBA",
+      "bytes": 436501,
+      "sha256": "d29badb9c01e8387658e8ca7ec285c29318e9efba20d352125f44e09e0179cc9",
+      "alphaVerified": true,
+      "alphaExtrema": [0,250],
+      "visualReview": "PASS"
+    },
+    {
+      "id": "constellation-edge",
+      "promptSummary": "透明背景的稀疏星座网络，只分布在边缘和四角，中央大面积透明",
+      "sourceOutput": "<CODEX_HOME>\\generated_images\\01a05689-76ac-7f52-9eec-ef6660b2ffb9\\exec-3cc623af-cc1e-4463-ad0a-31e4165a9ae4.png",
+      "publishedPath": "backend/main_api/template/template_16_asset_constellation_edge_v1.png",
+      "size": [1600,900],
+      "mode": "RGBA",
+      "bytes": 200076,
+      "sha256": "79425638908d1a157306c2f49bd50da58e01e6a3cc56549ece07a515cf9a108d",
+      "alphaVerified": true,
+      "alphaExtrema": [0,236],
+      "visualReview": "PASS"
+    },
+    {
+      "id": "nebula-glow",
+      "promptSummary": "透明背景的右下局部青蓝星云光晕，大部分画布透明，无硬矩形边缘",
+      "sourceOutput": "<CODEX_HOME>\\generated_images\\01a05689-76ac-7f52-9eec-ef6660b2ffb9\\exec-cd2ee6b4-0f48-421c-8000-1cceb26181f2.png",
+      "publishedPath": "backend/main_api/template/template_16_asset_nebula_glow_v1.png",
+      "size": [1200,700],
+      "mode": "RGBA",
+      "bytes": 278733,
+      "sha256": "fa518d9f8b48c2c88daf50755e31af18904bc2f1aed30ceb74f809aff18182f0",
+      "alphaVerified": true,
+      "alphaExtrema": [0,252],
+      "visualReview": "PASS"
+    }
+  ],
+  "result": "PASS"
+}

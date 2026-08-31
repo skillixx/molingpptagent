@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-08-31T15:23:07.8605739+08:00",
+  "repository": {
+    "path": "<repository-root>",
+    "branch": "main",
+    "head": "79a15fbdfa62c788084f3ea00fbf9bc176da1808"
+  },
+  "templateId": {
+    "candidate": "template_16",
+    "registered": false,
+    "jsonExistedBeforeGoal": false,
+    "testExistedBeforeGoal": false,
+    "decision": "use-template_16"
+  },
+  "initialUserChanges": [
+    "doc/深空星环科技PPT模板开发说明.md",
+    "doc/深空星环科技PPT模板开发Goal.md"
+  ],
+  "services": [
+    {"port": 5778, "state": "LISTEN", "pid": 61060, "role": "frontend", "projectEvidence": "Vite command references <repository-root>\\frontend"},
+    {"port": 6800, "state": "LISTEN", "pid": 14032, "role": "main-api", "projectEvidence": "main.py listener; endpoint verification required before mutation"},
+    {"port": 10001, "state": "LISTEN", "pid": 30348, "role": "outline-agent", "projectEvidence": "main_api.py --port 10001"},
+    {"port": 10011, "state": "LISTEN", "pid": 53312, "role": "content-agent", "projectEvidence": "main_api.py --port 10011"},
+    {"port": 9100, "state": "LISTEN", "pid": 56292, "role": "personaldb", "projectEvidence": "main.py listener; endpoint verification required before mutation"},
+    {"port": 13306, "state": "LISTEN", "role": "mysql-forwarding", "projectEvidence": "Docker Desktop and WSL forwarding"},
+    {"port": 19000, "state": "LISTEN", "role": "minio-api", "projectEvidence": "Docker Desktop and WSL forwarding"},
+    {"port": 19001, "state": "LISTEN", "role": "minio-console", "projectEvidence": "Docker Desktop and WSL forwarding"}
+  ],
+  "result": "PASS"
+}
