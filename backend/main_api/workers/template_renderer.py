@@ -68,12 +68,18 @@ class PresentationTemplateRenderer:
 
         # 先按模板真实槽位容量拆页，后续版式选择就不需要丢目录项或挤压正文。
         semantic_slides = self._paginate_contents_slides(source_slides, semantic_slides)
+        semantic_slides = self._paginate_transition_slides(source_slides, semantic_slides)
         semantic_slides = self._paginate_content_slides(source_slides, semantic_slides)
         rendered: list[dict[str, Any]] = []
         transition_number = 0
         for index, semantic in enumerate(semantic_slides):
             if semantic.get("type") == "transition":
-                transition_number += 1
+                internal_number = semantic.get("_rendererTransitionNumber")
+                if isinstance(internal_number, int) and internal_number > 0:
+                    # 同一章节拆出的过渡续页复用章节编号，避免后续章节选版整体错位。
+                    transition_number = internal_number
+                else:
+                    transition_number += 1
             rendered.append(self._render_slide(
                 source_slides,
                 semantic,
@@ -145,6 +151,66 @@ class PresentationTemplateRenderer:
                 offset += size
         return paginated
 
+    def _paginate_transition_slides(
+        self,
+        source_slides: list[dict[str, Any]],
+        semantic_slides: list[dict[str, Any]],
+    ) -> list[dict[str, Any]]:
+        """按过渡正文槽位容量无损拆页，并保持原章节编号与确定性变体。"""
+        transition_templates = [
+            slide for slide in source_slides if slide.get("type") == "transition"
+        ]
+        if not transition_templates:
+            return copy.deepcopy(semantic_slides)
+
+        paginated: list[dict[str, Any]] = []
+        transition_number = 0
+        for semantic in semantic_slides:
+            if semantic.get("type") != "transition":
+                paginated.append(copy.deepcopy(semantic))
+                continue
+
+            transition_number += 1
+            page = copy.deepcopy(semantic)
+            page["_rendererTransitionNumber"] = transition_number
+            data = page.get("data") if isinstance(page.get("data"), dict) else None
+            body = self._text(data.get("text")) if data is not None else ""
+            if not body:
+                paginated.append(page)
+                continue
+
+            selection_data = copy.deepcopy(data)
+            if "sectionIndex" not in selection_data:
+                selection_data["sectionIndex"] = transition_number
+            selected_layouts: dict[str, dict[str, Any]] = {}
+            for index in range(max(1, len(transition_templates))):
+                selected = self._select(
+                    transition_templates,
+                    "transition",
+                    selection_data,
+                    index,
+                )
+                selected_layouts[str(selected.get("id") or index)] = selected
+            content_slots = [
+                element
+                for selected in selected_layouts.values()
+                for element in self._slots(
+                    selected.get("elements") if isinstance(selected.get("elements"), list) else [],
+                    "content",
+                )
+            ]
+            if not content_slots:
+                paginated.append(page)
+                continue
+
+            # 强制换行会增加真实高度，必须复用最终渲染的高度模型，而不能只按总字符宽度切分。
+            chunks = self._split_text_to_fit_slots(body, content_slots)
+            for chunk in chunks:
+                chunk_page = copy.deepcopy(page)
+                chunk_page["data"]["text"] = chunk
+                paginated.append(chunk_page)
+        return paginated
+
     def _paginate_content_slides(
         self,
         source_slides: list[dict[str, Any]],
@@ -176,6 +242,16 @@ class PresentationTemplateRenderer:
             strict_image_protocol = any(
                 self._strict_image_count(candidate) for candidate in content_templates
             )
+            if self._requested_layout_kind(data):
+                # 显式或推断出的专业版式有固定项目数，不能借分页把非法输入悄悄改成合法批次。
+                self._select(
+                    content_templates,
+                    "content",
+                    data,
+                    0,
+                    prefer_images=bool(semantic_images),
+                    image_count=len(semantic_images),
+                )
             if semantic_images and strict_image_protocol:
                 paginated.extend(
                     self._paginate_content_with_images(
@@ -189,9 +265,10 @@ class PresentationTemplateRenderer:
                 )
                 continue
 
-            # 单项页可以使用更宽的版式；项目拆分后再按新数量复算，直到版式容量稳定。
+            # 单项页可以使用更宽的版式；正文拆分和标题安全批次互相影响，因此迭代到容量稳定。
             target_count = min(max(1, len(raw_items)), max_item_slots)
             expanded_items = copy.deepcopy(raw_items)
+            batches: list[list[Any]] = [expanded_items]
             for _ in range(max_item_slots + 1):
                 item_capacity = self._content_item_capacity(
                     content_templates,
@@ -208,25 +285,139 @@ class PresentationTemplateRenderer:
                         preserve_native_charts=preserve_native_charts,
                     )
                 ]
-                next_count = min(max(1, len(expanded_items)), max_item_slots)
+                batches = self._content_title_safe_batches(
+                    content_templates,
+                    data,
+                    expanded_items,
+                    max_item_slots=max_item_slots,
+                    prefer_images=False,
+                    image_count=0,
+                )
+                next_count = max((len(batch) for batch in batches), default=1)
                 if next_count == target_count:
                     break
                 target_count = next_count
-            if len(expanded_items) <= max_item_slots:
-                page = copy.deepcopy(semantic)
-                page["data"]["items"] = expanded_items
-                paginated.append(page)
-                continue
 
             title = self._text(data.get("title"))
-            for offset in range(0, len(expanded_items), max_item_slots):
+            for page_index, batch in enumerate(batches):
                 page = copy.deepcopy(semantic)
                 page_data = page["data"]
-                page_data["items"] = copy.deepcopy(expanded_items[offset:offset + max_item_slots])
-                if offset > 0 and title:
-                    page_data["title"] = f"{title}（续）"
+                page_data["items"] = copy.deepcopy(batch)
+                if page_index > 0 and title:
+                    page_data["title"] = self._content_continuation_title(
+                        content_templates,
+                        page_data,
+                        title,
+                        prefer_images=False,
+                        image_count=0,
+                    )
                 paginated.append(page)
         return paginated
+
+    def _content_title_safe_batches(
+        self,
+        content_templates: list[dict[str, Any]],
+        base_data: dict[str, Any],
+        items: list[Any],
+        *,
+        max_item_slots: int,
+        prefer_images: bool,
+        image_count: int,
+    ) -> list[list[Any]]:
+        """按标题实际容量贪心分批；尾批可自动降密度，避免 3/5/6 项窄标题框溢出。"""
+        if not items:
+            # 空内容页仍需保留模板骨架，不能把一个语义页分页成零页。
+            return [[]]
+        batches: list[list[Any]] = []
+        cursor = 0
+        while cursor < len(items):
+            remaining = len(items) - cursor
+            selected_batch: list[Any] | None = None
+            for size in range(min(max_item_slots, remaining), 0, -1):
+                batch = items[cursor:cursor + size]
+                selection_data = copy.deepcopy(base_data)
+                selection_data["items"] = copy.deepcopy(batch)
+                if self._content_item_titles_fit(
+                    content_templates,
+                    selection_data,
+                    prefer_images=prefer_images,
+                    image_count=image_count,
+                ):
+                    selected_batch = batch
+                    break
+            if selected_batch is None:
+                raise TemplateRenderError(
+                    "内容项标题超过所有可用版式容量",
+                    code="TEMPLATE_DATA_INVALID",
+                    context={"item_count": str(remaining)},
+                )
+            batches.append(copy.deepcopy(selected_batch))
+            cursor += len(selected_batch)
+        return batches
+
+    def _content_item_titles_fit(
+        self,
+        content_templates: list[dict[str, Any]],
+        data: dict[str, Any],
+        *,
+        prefer_images: bool,
+        image_count: int,
+    ) -> bool:
+        """校验所有可能轮换到的候选版式，确保 itemTitle 在最小可读字号下都能容纳。"""
+        titles = [title for title, _ in self._content_items(data.get("items"))]
+        selected_layouts: dict[str, dict[str, Any]] = {}
+        for index in range(max(1, len(content_templates))):
+            try:
+                selected = self._select(
+                    content_templates,
+                    "content",
+                    data,
+                    index,
+                    prefer_images=prefer_images,
+                    image_count=image_count,
+                )
+            except TemplateRenderError:
+                return False
+            selected_layouts[str(selected.get("id") or index)] = selected
+
+        for selected in selected_layouts.values():
+            elements = selected.get("elements") if isinstance(selected.get("elements"), list) else []
+            slots = self._slots(elements, "itemTitle")
+            # 没有独立标题槽的历史版式保持原兼容行为，标题会由其正文协议处理。
+            if not slots:
+                continue
+            if len(slots) < len(titles):
+                return False
+            if any(
+                title and not self._slot_text_fits(slot, title)
+                for title, slot in zip(titles, slots, strict=False)
+            ):
+                return False
+        return bool(selected_layouts)
+
+    def _content_continuation_title(
+        self,
+        content_templates: list[dict[str, Any]],
+        data: dict[str, Any],
+        title: str,
+        *,
+        prefer_images: bool,
+        image_count: int,
+    ) -> str:
+        """优先显示续页标记；若标记会挤爆标题框，则无损复用原始标题。"""
+        continuation = f"{title}（续）"
+        for index in range(max(1, len(content_templates))):
+            selected = self._select(
+                content_templates,
+                "content",
+                data,
+                index,
+                prefer_images=prefer_images,
+                image_count=image_count,
+            )
+            if not self._slide_title_fits(selected, continuation):
+                return title
+        return continuation
 
     def _paginate_content_with_images(
         self,
@@ -432,6 +623,35 @@ class PresentationTemplateRenderer:
         return chunks or [value]
 
     @classmethod
+    def _split_text_to_fit_slots(
+        cls,
+        value: str,
+        slots: list[dict[str, Any]],
+    ) -> list[str]:
+        """按最终槽位高度贪心切分文字，使连续文本与强制换行共用同一容量判断。"""
+        chunks: list[str] = []
+        current = ""
+        for character in value:
+            candidate = current + character
+            if current and not all(cls._slot_text_fits(slot, candidate) for slot in slots):
+                # 分页边界本身已经表达段落中断，边界处的空白由最终渲染统一裁去。
+                chunk = current.strip()
+                if chunk:
+                    chunks.append(chunk)
+                current = character.strip()
+                if current and not all(cls._slot_text_fits(slot, current) for slot in slots):
+                    raise TemplateRenderError(
+                        "过渡页正文无法进入最小可读槽位",
+                        code="TEMPLATE_DATA_INVALID",
+                    )
+                continue
+            current = candidate
+        final_chunk = current.strip()
+        if final_chunk:
+            chunks.append(final_chunk)
+        return chunks or [value]
+
+    @classmethod
     def _slot_readable_capacity(cls, element: dict[str, Any]) -> int:
         """按最小可读字号估算正文槽位容量，不允许靠极小字号换取容量。"""
         usable_width = max(
@@ -462,6 +682,21 @@ class PresentationTemplateRenderer:
                 * cls._WIDTH_SAFETY_FACTOR
             ),
         )
+
+    @classmethod
+    def _slot_text_fits(cls, element: dict[str, Any], value: str) -> bool:
+        """使用与最终渲染相同的换行模型判断文字能否在声明的最小字号下显示。"""
+        minimum = max(
+            cls._MINIMUM_READABLE_FONT_SIZE,
+            cls._number(element.get("minimumFontSize"), 0),
+        )
+        return cls._estimated_text_height(
+            value,
+            cls._number(element.get("width"), 300),
+            minimum,
+            line_height=max(0.8, cls._number(element.get("textLineHeight"), cls._LINE_HEIGHT)),
+            width_factor=max(0.5, cls._number(element.get("textWidthFactor"), 1.0)),
+        ) <= cls._number(element.get("height"), 100)
 
     def _load(self, template_id: str) -> dict[str, Any]:
         if not self._SAFE_TEMPLATE_ID.fullmatch(template_id):

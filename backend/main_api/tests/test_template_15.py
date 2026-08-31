@@ -571,6 +571,42 @@ def test_template_15_real_agent_five_item_titles_fit_without_content_loss() -> N
     assert rendered_bodies == "".join(bodies)
 
 
+@pytest.mark.parametrize("title_length", [17, 18])
+def test_template_15_long_item_titles_choose_readable_pagination(title_length: int) -> None:
+    """正文拆段后即使标题带续页语义，也必须改用能容纳标题的低密度版式。"""
+    title = "中" * title_length
+    body = "正" * 40
+    document = _renderer().render(
+        template_id="template_15",
+        semantic_slides=[{
+            "type": "content",
+            "data": {
+                "title": "长标题分页",
+                "items": [{"title": title, "text": body} for _ in range(5)],
+            },
+        }],
+        task_id=f"template-15-long-item-title-{title_length}",
+        fallback_title="长标题分页",
+    )
+
+    rendered_titles = [
+        _plain_text(element)
+        for slide in document["slides"]
+        for element in slide["elements"]
+        if _slot_type(element) == "itemTitle"
+    ]
+    rendered_bodies = "".join(
+        _plain_text(element)
+        for slide in document["slides"]
+        for element in slide["elements"]
+        if _slot_type(element) == "item"
+    )
+    assert len(document["slides"]) > 1
+    assert rendered_titles
+    assert all(value.startswith(title) for value in rendered_titles)
+    assert rendered_bodies == body * 5
+
+
 @pytest.mark.parametrize(
     ("name", "items", "expected_body"),
     [
@@ -722,6 +758,75 @@ def test_template_15_default_transition_selection_follows_section_order() -> Non
         "transition-particle",
         "transition-stage",
     ]
+
+
+def test_template_15_long_transition_copy_paginates_without_shifting_sections() -> None:
+    """超长过渡文案应在原章节内无损拆页，不能挤占后续章节的确定性选版序号。"""
+    long_body = "中" * 98
+    document = _renderer().render(
+        template_id="template_15",
+        semantic_slides=[
+            {"type": "transition", "data": {"title": "第一章", "text": "短文案"}},
+            {"type": "transition", "data": {"title": "第二章", "text": long_body}},
+            {"type": "transition", "data": {"title": "第三章", "text": "短文案"}},
+            {"type": "transition", "data": {"title": "第四章", "text": "短文案"}},
+        ],
+        task_id="template-15-long-transition-pagination",
+        fallback_title="章节",
+    )
+
+    assert [slide["templateSlideId"] for slide in document["slides"]] == [
+        "transition-horizon",
+        "transition-spectrum",
+        "transition-spectrum",
+        "transition-particle",
+        "transition-stage",
+    ]
+    second_section = document["slides"][1:3]
+    assert "".join(
+        _plain_text(element)
+        for slide in second_section
+        for element in slide["elements"]
+        if _slot_type(element) == "content"
+    ) == long_body
+    assert {
+        _plain_text(element)
+        for slide in second_section
+        for element in slide["elements"]
+        if _slot_type(element) == "partNumber"
+    } == {"02"}
+
+
+def test_template_15_multiline_transition_copy_paginates_by_rendered_height() -> None:
+    """强制换行必须计入实际高度，不能因总字符数较短而绕过过渡页分页。"""
+    body = "\n".join(["中" * 20] * 3)
+    document = _renderer().render(
+        template_id="template_15",
+        semantic_slides=[{
+            "type": "transition",
+            "data": {"title": "多行过渡", "text": body, "variant": "spectrum"},
+        }],
+        task_id="template-15-multiline-transition-pagination",
+        fallback_title="多行过渡",
+    )
+
+    assert [slide["templateSlideId"] for slide in document["slides"]] == [
+        "transition-spectrum",
+        "transition-spectrum",
+    ]
+    rendered = "".join(
+        _plain_text(element)
+        for slide in document["slides"]
+        for element in slide["elements"]
+        if _slot_type(element) == "content"
+    )
+    assert rendered == body.replace("\n", "")
+    assert {
+        _plain_text(element)
+        for slide in document["slides"]
+        for element in slide["elements"]
+        if _slot_type(element) == "partNumber"
+    } == {"01"}
 
 
 def test_template_15_long_body_with_image_keeps_image_on_first_part_only() -> None:
