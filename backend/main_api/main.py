@@ -563,6 +563,8 @@ async def get_templates():
         { "name": "深蓝青棱商务信息图", "id": "template_14", "cover": "/api/data/template_14.jpg" },
         # 星脉科技产品发布模板使用原创蓝紫光场，内容图、固定装饰与显式发布版式严格隔离。
         { "name": "星脉科技产品发布", "id": "template_15", "cover": "/api/data/template_15.jpg" },
+        # 深空星环科技模板使用原创深空背景与透明星环装饰，内容图片和固定装饰严格隔离。
+        { "name": "深空星环科技", "id": "template_16", "cover": "/api/data/template_16.jpg" },
     ]
 
     return {"data": templates}

@@ -1,0 +1,130 @@
+schema_version: 1
+template:
+  id: template_16
+  title: 深空星环科技
+  build_stage: production
+  canvas:
+    width: 1000
+    height: 562.5
+    aspect_ratio: "16:9"
+  reference:
+    path: "%USERPROFILE%\\Desktop\\扁平风格(32).pptx"
+    sha256: 8ea531f1b9582374f7e79cb5515738d20d5e96c3df1642bed8e9532f036a98ce
+    media_policy: exclude_all
+    native_chart_policy: exclude_slide_18_chart
+  typography:
+    chinese: 微软雅黑
+    latin: Arial
+    minimum_font_size: 12
+    cover_title: 50
+    transition_title: 44
+    page_title: 35
+    item_title: 24
+    body: 16
+  colors:
+    background: "#04131F"
+    surface: "#0A2942"
+    cyan: "#19C7D9"
+    blue: "#4E7FFF"
+    purple: "#8B5CFF"
+    orange: "#F3A846"
+    text: "#F7FBFF"
+    muted: "#B7C6D4"
+  mvp_slide_ids:
+    - cover-orbit
+    - contents-2
+    - contents-3
+    - contents-4
+    - contents-5
+    - contents-6
+    - contents-10
+    - transition-orbit
+    - content-text-2
+    - content-text-3
+    - content-text-4
+    - end-orbit
+  production_slide_ids:
+    - cover-orbit
+    - cover-image
+    - contents-2
+    - contents-3
+    - contents-4
+    - contents-5
+    - contents-6
+    - contents-10
+    - transition-orbit
+    - transition-nebula
+    - content-focus-1
+    - content-text-2
+    - content-text-3
+    - content-text-4
+    - content-image-1
+    - content-image-2
+    - end-orbit
+    - end-action
+  expected_counts:
+    cover: 2
+    contents: 6
+    transition: 2
+    content: 6
+    end: 2
+  semantic_slots:
+    text:
+      - title
+      - content
+      - item
+      - itemTitle
+      - itemNumber
+      - partNumber
+      - subtitle
+    image:
+      content: replaceable
+      decoration: fixed
+  selection:
+    contents:
+      exact_counts: [2, 3, 4, 5, 6, 10]
+      overflow: balanced_lossless_pagination
+    content:
+      text_item_counts: [1, 2, 3, 4]
+      image_counts: [0, 1, 2]
+      overflow: lossless_pagination
+      minimum_font_size: 12
+    end:
+      action_item_counts: [0, 1, 2, 3]
+assets:
+  - id: bg-space-dark
+    filename: template_16_asset_bg_space_dark_v1.jpg
+    format: JPEG
+    size: [1920, 1080]
+    mode: RGB
+    max_bytes: 380000
+    required_for_mvp: true
+  - id: orbital-ring
+    filename: template_16_asset_orbital_ring_v1.png
+    format: PNG
+    size: [1200, 1200]
+    mode: RGBA
+    max_bytes: 900000
+    required_for_mvp: true
+  - id: constellation-edge
+    filename: template_16_asset_constellation_edge_v1.png
+    format: PNG
+    size: [1600, 900]
+    mode: RGBA
+    max_bytes: 900000
+    required_for_mvp: true
+  - id: nebula-glow
+    filename: template_16_asset_nebula_glow_v1.png
+    format: PNG
+    size: [1200, 700]
+    mode: RGBA
+    max_bytes: 700000
+    required_for_mvp: true
+qa:
+  viewports:
+    - [1440, 900]
+    - [1280, 720]
+    - [768, 1024]
+    - [390, 844]
+  final_status_before_user_confirmation: READY_FOR_CONFIRMATION
+  user_confirmation_required_for_done: true

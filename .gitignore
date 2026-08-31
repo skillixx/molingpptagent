@@ -74,3 +74,7 @@ logs
 
 # 本地运行与验收产物：数据库、日志、截图及导出文件不提交到仓库
 output/
+
+# Codex 本地模板开发临时文件和可重新生成的编辑器导出物
+.codex-tmp/
+doc/assets/template_16_qa/exports/*.pptx
