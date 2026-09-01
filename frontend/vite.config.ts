@@ -15,6 +15,8 @@ export default defineConfig({
     // 与原 molinppt 统一使用 5778，strictPort 可避免端口占用时静默漂移。
     port: 5778,
     strictPort: true,
+    // 当前开发联调允许任意代理 Host；生产环境发布前必须恢复精确域名白名单或改用静态产物。
+    allowedHosts: true,
     proxy: {
       // 登录票据只能由主 API 服务端校验；保留查询串并原样转发，避免 Vue 空路由白屏。
       '/enter': {
