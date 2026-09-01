@@ -42,7 +42,7 @@
     "frontendFullSuite": "26 files, 124 tests passed",
     "frontendTypeCheck": "PASS",
     "utilitySyntax": "PASS",
-    "productionBuild": "NOT_RUN; requires separate authorization"
+    "productionBuildRerun": "NOT_RUN; the earlier local Vite build remains recorded above, and any new production build requires separate authorization"
   },
   "knownLimitations": [
     "V1 is static and intentionally excludes source animations, transitions, audio and native charts.",
