@@ -1083,6 +1083,9 @@ class PresentationTemplateRenderer:
                         "内容图片缺少有效尺寸",
                         code="TEMPLATE_DATA_INVALID",
                     )
+                # 保留真实源图尺寸，供编辑器后续换图、重新裁切和导出往返使用。
+                slot["originalWidth"] = source_width
+                slot["originalHeight"] = source_height
                 slot["clip"] = {
                     "shape": "rect",
                     "range": cls._center_crop_range(

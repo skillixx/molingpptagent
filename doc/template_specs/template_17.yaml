@@ -1,0 +1,140 @@
+schema_version: 1
+template:
+  id: template_17
+  title: 蓝菱商务汇报
+  build_stage: production
+  canvas:
+    width: 1000
+    height: 562.5
+    aspect_ratio: "16:9"
+  reference:
+    path: "%USERPROFILE%\\Desktop\\动态动画(12).pptx"
+    sha256: 80a91226e145d048f60a649a5c6460e91ca9a5962c4a0980715451a972099944
+    media_policy: exclude_all
+    animation_policy: exclude_all
+    native_chart_policy: exclude_slides_18_and_28
+  typography:
+    chinese: 微软雅黑
+    latin: Arial
+    minimum_font_size: 12
+    cover_title: 50
+    transition_title: 44
+    page_title: 35
+    item_title: 24
+    body: 16
+  colors:
+    background: "#F4F6F9"
+    surface: "#FFFFFF"
+    blue: "#0877C9"
+    deep_blue: "#0648A9"
+    pale_blue: "#93BCE8"
+    cyan: "#34A7C8"
+    text: "#4B5158"
+    muted: "#7B838C"
+    border: "#D8DDE3"
+  mvp_slide_ids:
+    - cover-diamond
+    - contents-2
+    - contents-3
+    - contents-4
+    - contents-5
+    - contents-6
+    - contents-10
+    - transition-banner
+    - content-text-2
+    - content-text-3
+    - content-text-4
+    - end-diamond
+  production_slide_ids:
+    - cover-diamond
+    - cover-image
+    - contents-2
+    - contents-3
+    - contents-4
+    - contents-5
+    - contents-6
+    - contents-10
+    - transition-banner
+    - transition-side
+    - content-focus-1
+    - content-text-2
+    - content-text-3
+    - content-text-4
+    - content-image-1
+    - content-image-2
+    - end-diamond
+    - end-action
+  expected_counts:
+    cover: 2
+    contents: 6
+    transition: 2
+    content: 6
+    end: 2
+  semantic_slots:
+    text:
+      - title
+      - content
+      - item
+      - itemTitle
+      - itemNumber
+      - partNumber
+      - subtitle
+    image:
+      content: replaceable
+      decoration: fixed
+  selection:
+    contents:
+      exact_counts: [2, 3, 4, 5, 6, 10]
+      overflow: balanced_lossless_pagination
+    content:
+      text_item_counts: [1, 2, 3, 4]
+      image_counts: [0, 1, 2]
+      overflow: lossless_pagination
+      minimum_font_size: 12
+    end:
+      action_item_counts: [0, 1, 2, 3]
+assets:
+  - id: bg-light
+    filename: template_17_asset_bg_light_v1.jpg
+    format: JPEG
+    size: [1920, 1080]
+    mode: RGB
+    max_bytes: 350000
+    required_for_mvp: true
+  - id: world-map-dots
+    filename: template_17_asset_world_map_dots_v1.png
+    format: PNG
+    size: [1600, 900]
+    mode: RGBA
+    max_bytes: 650000
+    required_for_mvp: true
+  - id: cover-diamond-cluster
+    filename: template_17_asset_cover_diamond_cluster_v1.png
+    format: PNG
+    size: [1400, 1000]
+    mode: RGBA
+    max_bytes: 1000000
+    required_for_mvp: true
+  - id: diamond-footer
+    filename: template_17_asset_diamond_footer_v1.png
+    format: PNG
+    size: [1600, 520]
+    mode: RGBA
+    max_bytes: 900000
+    required_for_mvp: true
+  - id: diamond-corner
+    filename: template_17_asset_diamond_corner_v1.png
+    format: PNG
+    size: [900, 900]
+    mode: RGBA
+    max_bytes: 700000
+    required_for_mvp: true
+qa:
+  viewports:
+    - [1440, 900]
+    - [1280, 720]
+    - [768, 1024]
+    - [390, 844]
+  export_roundtrip_required: true
+  final_status_before_user_confirmation: READY_FOR_CONFIRMATION
+  user_confirmation_required_for_done: true

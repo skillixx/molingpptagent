@@ -565,6 +565,8 @@ async def get_templates():
         { "name": "星脉科技产品发布", "id": "template_15", "cover": "/api/data/template_15.jpg" },
         # 深空星环科技模板使用原创深空背景与透明星环装饰，内容图片和固定装饰严格隔离。
         { "name": "深空星环科技", "id": "template_16", "cover": "/api/data/template_16.jpg" },
+        # 蓝菱商务汇报模板使用原创浅色背景与透明菱形装饰，内容图片保持独立可替换。
+        { "name": "蓝菱商务汇报", "id": "template_17", "cover": "/api/data/template_17.jpg" },
     ]
 
     return {"data": templates}
