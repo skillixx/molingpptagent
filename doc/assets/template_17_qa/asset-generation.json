@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_17",
+  "status": "PASS",
+  "tool": "Codex built-in image_gen",
+  "model": "工具未暴露",
+  "promptRecordType": "normalized full record of each executed request",
+  "rawOutputRoot": "<CODEX_HOME>/generated_images/<session-id>",
+  "processingCommand": ".\\.venv\\Scripts\\python.exe utils\\process_blue_diamond_business_assets.py --generated-root <raw-output-root> --output-root <publish-root>",
+  "deterministicReproduction": "PASS; regenerated published files matched all five SHA-256 values",
+  "assets": [
+    {
+      "id": "bg-light",
+      "prompt": "生成一张16:9浅灰蓝商务演示背景：柔和纸纹与极轻渐变，中央80%保持安静低细节，边缘允许少量冷蓝光感；不含文字、数字、Logo、水印、二维码、人物、产品、界面、地图或证据型数据。",
+      "rawFile": "exec-3e5854d4-75ab-4f95-80d8-c964dbd823b8.png",
+      "rawSize": "1672x941",
+      "rawBytes": 1293068,
+      "rawSha256": "16d819fe44430238232ed6d0667e5b7b50aaddeb94f49cc43175cb8d878beea9",
+      "publishedFile": "backend/main_api/template/template_17_asset_bg_light_v1.jpg",
+      "publishedSize": "1920x1080 RGB",
+      "publishedBytes": 96421,
+      "publishedSha256": "e7d40cee02861b6b3a6696f88fbdec828afef6b22e6bdf38ac96fdf4833922da",
+      "humanReview": "PASS; center safe area is quiet and has no forbidden content"
+    },
+    {
+      "id": "world-map-dots",
+      "prompt": "生成透明背景的抽象世界地图点阵水印：浅灰蓝小圆点组成低对比世界轮廓，疏密均匀，中央文字可读；不含国界、地名、文字、数字、数据点、Logo、水印或政治标注。",
+      "rawFile": "exec-bc6e3f9d-06ba-4d6c-9db7-8eb4b33e20f5.png",
+      "rawSize": "1672x941",
+      "rawBytes": 829048,
+      "rawSha256": "a4f2a2f7c126029182b552747c237ddb6d48078bb2ffe7d209e17e3afb206d40",
+      "publishedFile": "backend/main_api/template/template_17_asset_world_map_dots_v1.png",
+      "publishedSize": "1600x900 RGBA",
+      "publishedBytes": 51786,
+      "publishedSha256": "bb8f5b12546344fd0ad1e0078a01855f0293bc0bee06f255674ad8ff53d6218d",
+      "humanReview": "PASS; true alpha 0..255, low contrast, no labels or hard rectangle"
+    },
+    {
+      "id": "cover-diamond-cluster",
+      "prompt": "生成透明背景的蓝色2.5D菱形纸片集群：深蓝、亮蓝、浅蓝与白色，同一透视和柔和光源，集中在左侧与底部，右侧保留大面积标题安全区；不含文字、数字、Logo、水印、人物、产品或界面。",
+      "rawFile": "exec-9897cc24-ed3a-4fac-9825-e3a9c52204cb.png",
+      "rawSize": "1536x1024",
+      "rawBytes": 1431175,
+      "rawSha256": "56183254e836d939a4fae2c6255880c51803b940c67ccb95140579eb7b123b6c",
+      "publishedFile": "backend/main_api/template/template_17_asset_cover_diamond_cluster_v1.png",
+      "publishedSize": "1400x1000 RGBA",
+      "publishedBytes": 834745,
+      "publishedSha256": "11a4b455ec4e7e7d688b87d8d2488c3dd094026a24311c4b7acc6f4995720262",
+      "humanReview": "PASS; true alpha 0..255 and title safe area remains clear"
+    },
+    {
+      "id": "diamond-footer",
+      "prompt": "生成透明背景的横向蓝色菱形底边装饰带：2.5D纸片质感、柔和阴影、深蓝亮蓝浅蓝白色层次，图形仅位于底部约30%，顶部至少70%透明；无矩形硬边，不含文字、Logo、水印、人物或界面。",
+      "rawFile": "exec-057e9197-f472-4b6b-b5f6-efd9b9c3db2f.png",
+      "rawSize": "1672x941",
+      "rawBytes": 546192,
+      "rawSha256": "1629a69fe34f41c7cf38ff1f1fbf28d8006253e75afd215e21383d01b16d1ff4",
+      "publishedFile": "backend/main_api/template/template_17_asset_diamond_footer_v1.png",
+      "publishedSize": "1600x520 RGBA",
+      "publishedBytes": 144944,
+      "publishedSha256": "fe281a5cf654d04318282d1230b7a10319b186c53a36bf4b5d1ff24d277f3d7b",
+      "humanReview": "PASS; true alpha 0..255 and decoration stays below content safe area"
+    },
+    {
+      "id": "diamond-corner",
+      "prompt": "生成透明背景的左上角蓝色菱形装饰：深蓝亮蓝浅蓝白色2.5D纸片沿左侧对角延伸，柔和低对比阴影，右侧至少70%透明；不含文字、数字、Logo、水印、人物、产品或界面。",
+      "rawFile": "exec-2929b547-2fdc-457e-a060-434273c2b1da.png",
+      "rawSize": "1254x1254",
+      "rawBytes": 852793,
+      "rawSha256": "3fcd0667fe8087804375c38f2db9eff599af8e4ddb7327ef97bab582fe41e613",
+      "publishedFile": "backend/main_api/template/template_17_asset_diamond_corner_v1.png",
+      "publishedSize": "900x900 RGBA",
+      "publishedBytes": 456693,
+      "publishedSha256": "f2d70e669748d7aa4b655c0bd6fd751d907db4f0484c9ebb016473077233ee07",
+      "humanReview": "PASS; true alpha 0..255 and corner placement does not invade title area"
+    }
+  ]
+}

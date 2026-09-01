@@ -267,6 +267,10 @@ flowchart TD
 * [灰蓝企业宣传模板开发说明](doc/灰蓝企业宣传PPT模板开发说明.md)
 * [灰蓝企业宣传模板开发 Goal](doc/灰蓝企业宣传PPT模板开发Goal.md)
 * [灰蓝企业宣传模板素材与 QA 记录](doc/灰蓝企业宣传PPT模板素材与QA记录.md)
+* [蓝菱商务汇报模板开发说明](doc/蓝菱商务汇报PPT模板开发说明.md)
+* [蓝菱商务汇报模板开发 Goal](doc/蓝菱商务汇报PPT模板开发Goal.md)
+* [蓝菱商务汇报模板 Goal 执行提示词](doc/蓝菱商务汇报PPT模板开发Goal执行提示词.md)
+* [蓝菱商务汇报模板素材与 QA 记录](doc/蓝菱商务汇报PPT模板素材与QA记录.md)
 * [不同的模型配置](doc/custom_model.md)
 * [PPT的图片说明]doc/Image.md
 ---

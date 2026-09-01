@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_17",
+  "status": "PASS",
+  "executionMode": "real-content-agent-production-handler-and-persistent-worker",
+  "databaseWrites": "isolated-temporary-sqlite-only",
+  "productionQueueWrites": false,
+  "billingOperations": false,
+  "taskId": "template-17-worker-qa",
+  "presentationId": "template-17-worker-presentation",
+  "workerClaimed": true,
+  "workerStatus": "succeeded",
+  "workerStage": "completed",
+  "workerAttempt": 1,
+  "slideCount": 24,
+  "slideTypes": {
+    "cover": 1,
+    "contents": 1,
+    "transition": 2,
+    "content": 19,
+    "end": 1
+  },
+  "reachedStableLayoutIds": [
+    "content-focus-1",
+    "content-text-2",
+    "content-text-3",
+    "content-text-4",
+    "contents-2",
+    "cover-diamond",
+    "end-diamond",
+    "transition-banner",
+    "transition-side"
+  ],
+  "fixedDecorationCount": 69,
+  "contentImageCount": 0,
+  "previewUpdates": 9
+}

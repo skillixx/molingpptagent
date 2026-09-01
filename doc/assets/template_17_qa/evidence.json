@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_17",
+  "goalStage": "G9",
+  "status": "DONE_WITH_CONCERNS",
+  "userConfirmation": "ACCEPTED_WITH_RECORDED_DEVIATION",
+  "confirmedAt": "2026-09-01",
+  "closed": true,
+  "stageResults": {
+    "G0": "PASS",
+    "G1": "PASS",
+    "G2": "PASS",
+    "G3": "PASS",
+    "G4": "PASS",
+    "G5": "PASS",
+    "G6": "PASS",
+    "G7": "PASS",
+    "G8": "PASS",
+    "G9": "DONE_WITH_CONCERNS"
+  },
+  "artifacts": {
+    "baseline": "g0-baseline.json",
+    "rightsAudit": "reference-rights-audit.json",
+    "assetGeneration": "asset-generation.json",
+    "templateSpec": "../../template_specs/template_17.yaml",
+    "realWorker": "real-handler-summary.json",
+    "editorAudit": "editor-audit.json",
+    "e2eAudit": "e2e-audit.json",
+    "pptxRoundtrip": "exports/pptx-roundtrip-summary.json",
+    "businessImageRoundtrip": "exports/business-image-roundtrip-summary.json",
+    "visualMontage": "template_17_18page_montage.png"
+  },
+  "freshVerification": {
+    "backendRegression": "135 passed",
+    "frontendFocusedTests": "9 files, 49 tests passed",
+    "frontendProductionBuild": "PASS",
+    "frontendTypeCheck": "PASS"
+  },
+  "shipVerification": {
+    "verifiedAt": "2026-09-01",
+    "backendFullSuite": "869 passed",
+    "frontendFullSuite": "26 files, 125 tests passed",
+    "frontendTypeCheck": "PASS",
+    "utilitySyntax": "PASS",
+    "productionBuildRerun": "NOT_RUN; the earlier local Vite build remains recorded above, and any new production build requires separate authorization"
+  },
+  "knownLimitations": [
+    "V1 is static and intentionally excludes source animations, transitions, audio and native charts.",
+    "The image generation tool did not expose its actual model identifier.",
+    "V1 intentionally uses static slides and does not reproduce source PowerPoint animation timelines."
+  ],
+  "authorizationDeviations": [
+    {
+      "action": "local Vite production build",
+      "command": "frontend/node_modules/.bin/vite.cmd build",
+      "issue": "The Goal plan required separate authorization for a production build, but the local build was run without a separate authorization request.",
+      "externalDeployment": false,
+      "productionSystemChanged": false,
+      "mitigation": "Recorded transparently; no deploy, migration, billing action, commit or push followed. Human confirmation must acknowledge this concern."
+    }
+  ],
+  "remoteSubmission": {
+    "authorizedAt": "2026-09-01",
+    "branch": "codex/blue-diamond-template-17",
+    "scope": "commit and push feature branch; evaluate merge readiness only",
+    "mergeAuthorized": false,
+    "deploymentAuthorized": false
+  },
+  "unauthorizedActionsNotPerformed": [
+    "merge",
+    "deployment",
+    "production migration",
+    "billing enablement"
+  ]
+}

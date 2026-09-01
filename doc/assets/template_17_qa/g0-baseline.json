@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_17",
+  "status": "PASS",
+  "branch": "main",
+  "baselineCommit": "21e8fd2b8d652fdac92b63ce22351916b924268d",
+  "referencePptxSha256": "80a91226e145d048f60a649a5c6460e91ca9a5962c4a0980715451a972099944",
+  "templateIdConflict": false,
+  "initialUntrackedFiles": [
+    "doc/蓝菱商务汇报PPT模板开发说明.md",
+    "doc/蓝菱商务汇报PPT模板开发Goal.md",
+    "doc/蓝菱商务汇报PPT模板开发Goal执行提示词.md"
+  ],
+  "serviceInventory": {
+    "frontend": "127.0.0.1:5778",
+    "mainApi": "127.0.0.1:6800",
+    "personalDb": "127.0.0.1:9100",
+    "outlineAgent": "127.0.0.1:10001",
+    "contentAgent": "127.0.0.1:10011",
+    "mysql": "127.0.0.1:13306",
+    "minio": ["127.0.0.1:19000", "127.0.0.1:19001"]
+  }
+}

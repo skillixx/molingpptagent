@@ -10,6 +10,7 @@ import useSlideHandler from '@/hooks/useSlideHandler'
 import useHistorySnapshot from './useHistorySnapshot'
 import message from '@/utils/message'
 import { getSvgPathRange } from '@/utils/svgPathParser'
+import { normalizePptxSolidFill } from '@/utils/pptxFill'
 import type {
   Slide,
   TableCellStyle,
@@ -312,7 +313,7 @@ export default () => {
         else {
           background = {
             type: 'solid',
-            color: value || '#fff',
+            color: normalizePptxSolidFill(value),
           }
         }
 
