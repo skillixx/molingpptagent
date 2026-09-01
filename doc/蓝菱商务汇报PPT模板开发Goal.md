@@ -24,7 +24,7 @@
 - G9：`DONE_WITH_CONCERNS`。
 - 最终模板：`template_17`，12 页 MVP、18 页生产版。
 - 后端专项与受影响回归：`135 passed`；远程提交前最终完整后端套件：`869 passed`。
-- 前端相关测试：`9 files / 49 tests passed`；远程提交前最终完整前端套件：`26 files / 124 tests passed`，类型检查通过。
+- 前端相关测试：`9 files / 49 tests passed`；合并前最终完整前端套件：`26 files / 125 tests passed`，类型检查通过。
 - 真实 Worker：`succeeded/completed`，使用隔离临时 SQLite，不写生产队列和计费操作。
 - 四视口、文字编辑、内容图替换、PPTX 导出和重新导入均通过。
 - 全库 TypeScript 类型检查已通过；PPTX 导入联合类型在实际使用路径中完成安全收窄。

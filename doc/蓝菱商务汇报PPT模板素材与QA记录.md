@@ -161,10 +161,10 @@ G0 只读盘点期间没有启动、停止或重启任何服务；后续为加�
 | 全库 TypeScript 类型检查 | `PASS`；PPTX 导入纯色背景分支已显式收窄联合类型 |
 | 浏览器控制台 | 0 error；1 条既有 ProseMirror `white-space: pre-wrap` 警告 |
 | 远程提交前完整后端套件 | `869 passed` |
-| 远程提交前完整前端套件 | `26 files / 124 tests passed` |
+| 合并前完整前端套件 | `26 files / 125 tests passed` |
 | 远程提交前类型与工具检查 | TypeScript、Python 编译和 Node 语法检查均 `PASS` |
 | 远程提交前生产构建复跑 | 未重复运行；沿用上方已记录的本地 Vite 构建证据，任何新的生产构建仍需单独授权 |
-| Vite Host 联调配置 | `server.allowedHosts: true`；按用户要求临时关闭 Host 白名单检查，生产发布前必须恢复精确域名白名单或使用静态构建产物 |
+| Vite Host 联调配置 | 默认精确白名单 `ppt.axicomin.cn`；仅设置 `VITE_ALLOW_ALL_HOSTS=true` 时允许任意 Host |
 
 类型修复位于本次实际使用的 PPTX 导入路径：对象型填充值不再被误传给纯色背景，非字符串值安全回退为白色。类型检查、相关测试、构建和真实导入均通过。
 

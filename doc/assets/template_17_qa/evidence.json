@@ -39,7 +39,7 @@
   "shipVerification": {
     "verifiedAt": "2026-09-01",
     "backendFullSuite": "869 passed",
-    "frontendFullSuite": "26 files, 124 tests passed",
+    "frontendFullSuite": "26 files, 125 tests passed",
     "frontendTypeCheck": "PASS",
     "utilitySyntax": "PASS",
     "productionBuildRerun": "NOT_RUN; the earlier local Vite build remains recorded above, and any new production build requires separate authorization"
