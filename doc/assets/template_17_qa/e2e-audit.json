@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_17",
+  "status": "PASS",
+  "staticVisualReview": {
+    "slidesReviewed": 18,
+    "montage": "template_17_18page_montage.png",
+    "overlapOrClippingDefectsRemaining": 0
+  },
+  "realWorker": {
+    "summary": "real-handler-summary.json",
+    "executionMode": "real-content-agent-production-handler-and-persistent-worker",
+    "productionQueueWrites": false,
+    "billingOperations": false,
+    "status": "succeeded",
+    "stage": "completed"
+  },
+  "editor": "editor-audit.json",
+  "pptxRoundtrip": "exports/pptx-roundtrip-summary.json",
+  "businessImageRoundtrip": "exports/business-image-roundtrip-summary.json"
+}

@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_17",
+  "status": "PASS_WITH_RECORDED_WARNING",
+  "editorImport": {
+    "slideCount": 18,
+    "canvas": "1000x562.5",
+    "brokenImages": 0
+  },
+  "textEdit": {
+    "status": "PASS",
+    "editedText": "蓝菱商务汇报已编辑",
+    "evidence": "devices/editor-text-edited.png"
+  },
+  "contentImageReplacement": {
+    "status": "PASS",
+    "contentImageId": "t17-content-image-0344",
+    "replacementSourceKind": "data-url",
+    "protectedDecorationSources": [
+      "/api/data/template_17_asset_bg_light_v1.jpg",
+      "/api/data/template_17_asset_world_map_dots_v1.png",
+      "/api/data/template_17_asset_diamond_footer_v1.png"
+    ],
+    "evidence": "devices/editor-image-replaced.png"
+  },
+  "viewports": [
+    {"size": "1440x900", "status": "PASS", "evidence": "devices/editor-desktop.png"},
+    {"size": "1280x720", "status": "PASS", "evidence": "devices/editor-laptop.png"},
+    {"size": "768x1024", "status": "PASS", "evidence": "devices/editor-tablet.png"},
+    {"size": "390x844", "status": "PASS", "evidence": "devices/editor-mobile.png"}
+  ],
+  "templatePicker": {
+    "desktop": "devices/picker-desktop.png",
+    "mobile": "devices/picker-mobile.png",
+    "status": "PASS"
+  },
+  "saveAndReload": {
+    "status": "PASS",
+    "browserFlow": "template_17 was saved through the real UI to an isolated mocked presentation API, page reload restored 18 slides with saved state and zero broken images",
+    "businessImageAfterReloadSha256": "16d819fe44430238232ed6d0667e5b7b50aaddeb94f49cc43175cb8d878beea9",
+    "evidence": "devices/editor-save-reload.png",
+    "verification": [
+      "presentationAutosaveEngine.spec.ts",
+      "PresentationAutosaveStatus.spec.ts",
+      "PresentationLoader.spec.ts",
+      "actual PPTX export and clean re-import"
+    ]
+  },
+  "buttonFeedbackAndRetry": {
+    "status": "PASS",
+    "browserFlow": "first autosave received isolated 503 and showed 保存失败，草稿仍在本机; a subsequent retry save returned to 已保存 without losing edited text",
+    "failureEvidence": "devices/editor-save-retry-failure.png",
+    "successEvidence": "devices/editor-save-retry-success.png",
+    "verification": [
+      "PersistentGeneration.spec.ts covers waiting, success, navigation failure and network retry feedback",
+      "Toolbar.spec.ts covers editor toolbar interaction",
+      "ExportPPTXLocation.spec.ts covers export action",
+      "real template picker showed active Generate PPT and Back to Outline controls"
+    ]
+  },
+  "focusedFrontendTests": "9 files, 49 tests passed",
+  "consoleErrors": 0,
+  "consoleWarnings": [
+    "Existing ProseMirror white-space pre-wrap warning; not introduced by template_17"
+  ]
+}

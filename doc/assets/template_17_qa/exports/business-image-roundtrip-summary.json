@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_17",
+  "status": "PASS",
+  "file": "template_17_business_image_roundtrip.pptx",
+  "bytes": 8308058,
+  "sourceBusinessImage": {
+    "file": "exec-3e5854d4-75ab-4f95-80d8-c964dbd823b8.png",
+    "bytes": 1293068,
+    "sha256": "16d819fe44430238232ed6d0667e5b7b50aaddeb94f49cc43175cb8d878beea9"
+  },
+  "exportEvidence": {
+    "ooxmlMediaPart": "ppt/media/image-15-4.png",
+    "exactSha256Match": true
+  },
+  "reimportEvidence": {
+    "slideCount": 18,
+    "verifiedSlide": 15,
+    "brokenImages": 0,
+    "businessImageBytes": 1293068,
+    "businessImageSha256": "16d819fe44430238232ed6d0667e5b7b50aaddeb94f49cc43175cb8d878beea9",
+    "exactSha256Match": true,
+    "screenshot": "../devices/pptx-business-image-reimport.png"
+  }
+}

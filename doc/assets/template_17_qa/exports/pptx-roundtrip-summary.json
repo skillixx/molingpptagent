@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_17",
+  "status": "PASS",
+  "file": "template_17_editor_roundtrip.pptx",
+  "bytes": 7111408,
+  "exportedSlideCount": 18,
+  "ooxmlMediaPartCount": 49,
+  "reimportedSlideCount": 18,
+  "reimportedBrokenImages": 0,
+  "editedTitlePresent": true,
+  "shapeTextElementCount": 143,
+  "reimportedImageCount": 49,
+  "publishedAssetHashMatches": {
+    "template_17_asset_bg_light_v1.jpg": 22,
+    "template_17_asset_cover_diamond_cluster_v1.png": 1,
+    "template_17_asset_diamond_corner_v1.png": 4,
+    "template_17_asset_diamond_footer_v1.png": 8,
+    "template_17_asset_world_map_dots_v1.png": 14
+  },
+  "contentImageInference": "PASS; 22 background-hash media parts equal 18 fixed page backgrounds plus 4 content slots (cover-image 1, content-image-1 1, content-image-2 2)",
+  "fixedDecorationsPresent": true,
+  "evidence": "../devices/pptx-reimport-editor.png"
+}
