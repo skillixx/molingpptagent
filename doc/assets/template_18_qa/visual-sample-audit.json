@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_18",
+  "goalStage": "G3",
+  "status": "PASS",
+  "samples": [
+    {
+      "id": "cover-rooftile",
+      "referenceSlides": [1],
+      "screenshot": "samples/cover-rooftile.png",
+      "preserved": ["four-circle title rhythm", "roof-tile visual weight", "plum branches", "large upper whitespace"],
+      "deviations": ["four fixed editable brand characters preserve the source rhythm", "dynamic business title is placed in the lower information plaque", "all reference media and fonts were replaced"]
+    },
+    {
+      "id": "contents-4",
+      "referenceSlides": [2],
+      "screenshot": "samples/contents-4.png",
+      "preserved": ["dusty-rose vertical rail", "four-item rhythm", "roof baseline", "large whitespace"],
+      "deviations": ["vertical source body text was converted to horizontal editable items", "source landscape was replaced by the original roof asset"]
+    },
+    {
+      "id": "transition-rose-band",
+      "referenceSlides": [3, 9, 15, 21],
+      "screenshot": "samples/transition-rose-band.png",
+      "preserved": ["dusty-rose vertical band", "medallion", "plum branch", "horse-head walls", "short vertical chapter label"],
+      "deviations": ["horizontal editable summary uses an ivory safety panel", "source media and non-commercial fonts were replaced"]
+    },
+    {
+      "id": "content-text-2",
+      "referenceSlides": [7, 10, 18, 24],
+      "screenshot": "samples/content-text-2.png",
+      "preserved": ["two-item rhythm", "large whitespace", "lightweight numbering", "lower-left architectural weight"],
+      "deviations": ["body text is horizontal for readability and pagination", "source images were replaced"]
+    },
+    {
+      "id": "end-rooftile",
+      "referenceSlides": [26],
+      "screenshot": "samples/end-rooftile.png",
+      "preserved": ["four-circle closing rhythm", "roof-tile visual weight", "plum branches", "cover-end symmetry"],
+      "deviations": ["dynamic closing title is placed in the lower information plaque", "all reference media and fonts were replaced"]
+    }
+  ],
+  "checks": {
+    "composition": "PASS",
+    "colorTemperature": "PASS",
+    "hierarchy": "PASS",
+    "negativeSpace": "PASS",
+    "decorationDensity": "PASS",
+    "editableText": "PASS",
+    "noWholeSlideImages": "PASS",
+    "noUnlicensedReferenceMedia": "PASS"
+  }
+}

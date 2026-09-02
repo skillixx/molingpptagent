@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_18",
+  "goalStage": "G1",
+  "status": "PASS",
+  "sourceDeck": "C:/Users/sk20/Desktop/精品系列(2).pptx",
+  "productionSlides": [
+    {"id": "cover-rooftile", "type": "cover", "referenceSlides": [1], "keep": ["roof-tile visual weight", "plum branches", "four-circle title rhythm", "large upper whitespace"], "replace": ["all source media", "source fonts", "source sample text"]},
+    {"id": "cover-eaves", "type": "cover", "referenceSlides": [1, 8, 25], "keep": ["ancient architecture corner weight", "warm ivory whitespace", "asymmetric image balance"], "replace": ["all source media", "source sample text"]},
+    {"id": "contents-2", "type": "contents", "referenceSlides": [2], "keep": ["rose vertical rail", "restrained landscape baseline", "sparse index rhythm"], "replace": ["source mountain image", "source text"]},
+    {"id": "contents-3", "type": "contents", "referenceSlides": [2], "keep": ["rose vertical rail", "sparse index rhythm"], "replace": ["source mountain image", "source text"]},
+    {"id": "contents-4", "type": "contents", "referenceSlides": [2], "keep": ["four-column rhythm", "rose vertical rail", "large whitespace"], "replace": ["source mountain image", "source text"]},
+    {"id": "contents-5", "type": "contents", "referenceSlides": [2], "keep": ["rose vertical rail", "balanced columns"], "replace": ["source mountain image", "source text"]},
+    {"id": "contents-6", "type": "contents", "referenceSlides": [2], "keep": ["rose vertical rail", "balanced columns"], "replace": ["source mountain image", "source text"]},
+    {"id": "contents-10", "type": "contents", "referenceSlides": [2], "keep": ["rose vertical rail", "compact paired columns"], "replace": ["source mountain image", "source text"]},
+    {"id": "transition-rose-band", "type": "transition", "referenceSlides": [3, 9, 15, 21], "keep": ["rose vertical band", "round medallion", "eaves at lower right", "plum branch at upper right", "short vertical chapter title"], "replace": ["all source media", "source fonts", "source text"]},
+    {"id": "transition-medallion", "type": "transition", "referenceSlides": [3, 9, 15, 21], "keep": ["medallion focal point", "architecture corner", "asymmetric whitespace"], "replace": ["all source media", "source fonts", "source text"]},
+    {"id": "content-statement-1", "type": "content", "referenceSlides": [4, 13, 20, 25], "keep": ["single conclusion focus", "large whitespace", "corner architecture or branch"], "replace": ["vertical body text", "all source media", "source text"]},
+    {"id": "content-image-1", "type": "content", "referenceSlides": [5, 8], "keep": ["one image plus one text block", "soft rose image backing", "crane or architecture decoration"], "replace": ["source content image", "source decoration", "source text"]},
+    {"id": "content-text-2", "type": "content", "referenceSlides": [7, 10, 18, 24], "keep": ["two balanced content groups", "lightweight numbering", "large whitespace"], "replace": ["narrow vertical body", "source media", "source text"]},
+    {"id": "content-text-3", "type": "content", "referenceSlides": [12, 17, 19], "keep": ["three-item rhythm", "circular accent", "horizontal sequence"], "replace": ["source circles", "source content images", "source text"]},
+    {"id": "content-text-4", "type": "content", "referenceSlides": [6, 14, 22, 24], "keep": ["four-item rhythm", "rose and gold accents", "low-density ornament"], "replace": ["native charts", "narrow vertical body", "source media", "source text"]},
+    {"id": "content-metrics-4", "type": "content", "referenceSlides": [22], "keep": ["four evenly spaced metrics", "fan-like left visual weight", "gold circular rhythm"], "replace": ["native charts", "source fan image", "source text"]},
+    {"id": "end-rooftile", "type": "end", "referenceSlides": [26], "keep": ["roof-tile visual weight", "four-circle closing rhythm", "plum branches", "cover-end symmetry"], "replace": ["all source media", "source fonts", "source sample text"]},
+    {"id": "end-action", "type": "end", "referenceSlides": [26, 17], "keep": ["cover-end symmetry", "three-step rhythm", "ancient architecture accents"], "replace": ["all source media", "source sample text"]}
+  ],
+  "allowedDeviations": [
+    "replace unlicensed source media and fonts",
+    "convert narrow vertical body text to horizontal editable text",
+    "replace native charts with editable text and shapes",
+    "replace unstable circular masks with the project clip contract",
+    "adjust local dimensions for text capacity, pagination and responsive editing"
+  ],
+  "forbiddenDeviations": [
+    "generic Chinese style without source-specific composition",
+    "technology dashboard, neon, glassmorphism or dense card-grid styling",
+    "whole-slide screenshots or flattened page images",
+    "new visual systems unrelated to the reference deck"
+  ]
+}

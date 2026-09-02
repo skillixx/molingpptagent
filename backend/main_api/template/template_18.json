@@ -1,0 +1,5282 @@
+{
+  "id": "template_18",
+  "title": "飞檐雅韵",
+  "width": 1000,
+  "height": 562.5,
+  "theme": {
+    "themeColors": [
+      "#B77D80",
+      "#211B1C",
+      "#4D4D4B",
+      "#A83F36",
+      "#B6925F",
+      "#E9DADB"
+    ],
+    "fontColor": "#4A4643",
+    "fontName": "微软雅黑",
+    "backgroundColor": "#F6F2EA",
+    "shadow": {
+      "h": 2,
+      "v": 3,
+      "blur": 5,
+      "color": "#000000",
+      "opacity": 0.18
+    },
+    "outline": {
+      "width": 1,
+      "color": "#B77D80",
+      "style": "solid"
+    }
+  },
+  "metadata": {
+    "aspectRatio": "16:9",
+    "buildStage": "production",
+    "sourceReference": "精品系列(2).pptx",
+    "sourceReferenceSha256": "7433A07E7FD206D847EE01F1AC4B206E42416EB801D433DB60C2BBFC24E8CF8B",
+    "rightsPolicy": "reference-media-excluded",
+    "sourceFidelity": "high-composition-color-spacing-rhythm",
+    "mvpSlideIds": [
+      "cover-rooftile",
+      "contents-2",
+      "contents-3",
+      "contents-4",
+      "contents-5",
+      "contents-6",
+      "contents-10",
+      "transition-rose-band",
+      "content-text-2",
+      "content-text-3",
+      "content-text-4",
+      "end-rooftile"
+    ],
+    "productionSlideIds": [
+      "cover-rooftile",
+      "cover-eaves",
+      "contents-2",
+      "contents-3",
+      "contents-4",
+      "contents-5",
+      "contents-6",
+      "contents-10",
+      "transition-rose-band",
+      "transition-medallion",
+      "content-statement-1",
+      "content-image-1",
+      "content-text-2",
+      "content-text-3",
+      "content-text-4",
+      "content-metrics-4",
+      "end-rooftile",
+      "end-action"
+    ],
+    "imageSlotMarker": "imageType=content",
+    "decorativeImageMarker": "imageType=decoration",
+    "assetGeneration": "built-in imagegen; requested GPT Image 2; actual model identifier not exposed",
+    "assetFiles": [
+      "template_18_asset_bg_cover_v1.jpg",
+      "template_18_asset_bg_section_v1.jpg",
+      "template_18_asset_bg_end_v1.jpg",
+      "template_18_asset_rooftile_band_v1.png",
+      "template_18_asset_eaves_corner_v1.png",
+      "template_18_asset_plum_branch_v1.png",
+      "template_18_asset_crane_pair_v1.png",
+      "template_18_asset_medallion_v1.png"
+    ]
+  },
+  "slides": [
+    {
+      "id": "cover-rooftile",
+      "type": "cover",
+      "elements": [
+        {
+          "type": "image",
+          "id": "t18-cover-rooftile-background-001",
+          "src": "/api/data/template_18_asset_bg_cover_v1.jpg",
+          "left": 0,
+          "top": 0,
+          "width": 1000,
+          "height": 562.5,
+          "rotate": 0,
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "shape",
+          "id": "t18-cover-rooftile-title-circle-002",
+          "left": 95,
+          "top": 224,
+          "width": 142,
+          "height": 142,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 100 0 A 100 100 0 1 1 100 200 A 100 100 0 1 1 100 0 Z",
+          "fill": "#211B1C",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#211B1C",
+            "width": 0,
+            "style": "solid"
+          },
+          "lock": true
+        },
+        {
+          "type": "shape",
+          "id": "t18-cover-rooftile-title-circle-003",
+          "left": 300,
+          "top": 224,
+          "width": 142,
+          "height": 142,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 100 0 A 100 100 0 1 1 100 200 A 100 100 0 1 1 100 0 Z",
+          "fill": "#211B1C",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#211B1C",
+            "width": 0,
+            "style": "solid"
+          },
+          "lock": true
+        },
+        {
+          "type": "shape",
+          "id": "t18-cover-rooftile-title-circle-004",
+          "left": 505,
+          "top": 224,
+          "width": 142,
+          "height": 142,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 100 0 A 100 100 0 1 1 100 200 A 100 100 0 1 1 100 0 Z",
+          "fill": "#211B1C",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#211B1C",
+            "width": 0,
+            "style": "solid"
+          },
+          "lock": true
+        },
+        {
+          "type": "shape",
+          "id": "t18-cover-rooftile-title-circle-005",
+          "left": 710,
+          "top": 224,
+          "width": 142,
+          "height": 142,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 100 0 A 100 100 0 1 1 100 200 A 100 100 0 1 1 100 0 Z",
+          "fill": "#211B1C",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#211B1C",
+            "width": 0,
+            "style": "solid"
+          },
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-cover-rooftile-brand-character-006",
+          "left": 95,
+          "top": 253,
+          "width": 142,
+          "height": 78,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#FFFFFF",
+          "vertical": false,
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #FFFFFF;font-size: 48px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">飞</span></p>"
+        },
+        {
+          "type": "text",
+          "id": "t18-cover-rooftile-brand-character-007",
+          "left": 300,
+          "top": 253,
+          "width": 142,
+          "height": 78,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#FFFFFF",
+          "vertical": false,
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #FFFFFF;font-size: 48px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">檐</span></p>"
+        },
+        {
+          "type": "text",
+          "id": "t18-cover-rooftile-brand-character-008",
+          "left": 505,
+          "top": 253,
+          "width": 142,
+          "height": 78,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#FFFFFF",
+          "vertical": false,
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #FFFFFF;font-size: 48px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">雅</span></p>"
+        },
+        {
+          "type": "text",
+          "id": "t18-cover-rooftile-brand-character-009",
+          "left": 710,
+          "top": 253,
+          "width": 142,
+          "height": 78,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#FFFFFF",
+          "vertical": false,
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #FFFFFF;font-size: 48px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">韵</span></p>"
+        },
+        {
+          "type": "shape",
+          "id": "t18-cover-rooftile-subtitle-panel-010",
+          "left": 240,
+          "top": 378,
+          "width": 520,
+          "height": 160,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "rgba(246,242,234,0.94)",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#211B1C",
+            "width": 2,
+            "style": "solid"
+          },
+          "lock": true,
+          "pathFormula": "roundRect",
+          "keypoints": [
+            0.08
+          ]
+        },
+        {
+          "type": "shape",
+          "id": "t18-cover-rooftile-subtitle-node-011",
+          "left": 260,
+          "top": 430,
+          "width": 42,
+          "height": 42,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 100 0 A 100 100 0 1 1 100 200 A 100 100 0 1 1 100 0 Z",
+          "fill": "#A83F36",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#A83F36",
+            "width": 0,
+            "style": "solid"
+          },
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-cover-rooftile-title-012",
+          "left": 320,
+          "top": 382,
+          "width": 420,
+          "height": 78,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 35px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">东方古建主题演示</span></p>",
+          "textType": "title",
+          "minimumFontSize": 35
+        },
+        {
+          "type": "text",
+          "id": "t18-cover-rooftile-subtitle-013",
+          "left": 320,
+          "top": 462,
+          "width": 420,
+          "height": 72,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#4A4643",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #4A4643;font-size: 15px;font-family: 微软雅黑;line-height: 1.35;\">让东方意境承载清晰表达</span></p>",
+          "textType": "content",
+          "minimumFontSize": 14
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#F6F2EA"
+      },
+      "sourceReferenceSlides": [
+        1
+      ],
+      "sourceFidelity": {
+        "preserve": [
+          "roof-tile visual weight",
+          "plum branches",
+          "four-circle title rhythm",
+          "large upper whitespace"
+        ],
+        "deviations": [
+          "source media replaced",
+          "single editable title spans four native circles"
+        ]
+      },
+      "remark": "[Sources]\n- Visual composition reference: user-provided 精品系列(2).pptx\n- Reference media excluded; original project assets generated with built-in imagegen\n- Actual image model identifier was not exposed by the tool",
+      "titleFitLimits": {
+        "maxWide": 24,
+        "maxAscii": 48,
+        "singleWide": 12,
+        "singleAscii": 24
+      }
+    },
+    {
+      "id": "cover-eaves",
+      "type": "cover",
+      "elements": [
+        {
+          "type": "image",
+          "id": "t18-cover-eaves-background-001",
+          "src": "/api/data/template_18_asset_bg_section_v1.jpg",
+          "left": 0,
+          "top": 0,
+          "width": 1000,
+          "height": 562.5,
+          "rotate": 0,
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "shape",
+          "id": "t18-cover-eaves-image-backing-002",
+          "left": 76,
+          "top": 148,
+          "width": 390,
+          "height": 252,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#E9DADB",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#E9DADB",
+            "width": 0,
+            "style": "solid"
+          },
+          "lock": true,
+          "pathFormula": "roundRect",
+          "keypoints": [
+            0.08
+          ]
+        },
+        {
+          "type": "image",
+          "id": "t18-cover-eaves-content-image-003",
+          "src": "/api/data/template_18_asset_bg_section_v1.jpg",
+          "left": 94,
+          "top": 166,
+          "width": 354,
+          "height": 216,
+          "rotate": 0,
+          "fixedRatio": false,
+          "imageType": "content",
+          "lock": false,
+          "groupId": "cover-eaves-content-image-1",
+          "clip": {
+            "shape": "rect",
+            "range": [
+              [
+                0,
+                0
+              ],
+              [
+                100,
+                100
+              ]
+            ]
+          },
+          "strictImageCount": true,
+          "requireSourceDimensions": true,
+          "originalWidth": 1920,
+          "originalHeight": 1080
+        },
+        {
+          "type": "text",
+          "id": "t18-cover-eaves-title-004",
+          "left": 510,
+          "top": 178,
+          "width": 390,
+          "height": 110,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 50px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">飞檐雅韵</span></p>",
+          "textType": "title",
+          "minimumFontSize": 50
+        },
+        {
+          "type": "line",
+          "id": "t18-cover-eaves-title-line-005",
+          "left": 514,
+          "top": 300,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            300,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B77D80",
+          "style": "solid",
+          "width": 2,
+          "rotate": 0,
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-cover-eaves-subtitle-006",
+          "left": 515,
+          "top": 323,
+          "width": 360,
+          "height": 80,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#4A4643",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #4A4643;font-size: 18px;font-family: 微软雅黑;line-height: 1.35;\">用古建秩序承载当代表达</span></p>",
+          "textType": "content",
+          "minimumFontSize": 16
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#F6F2EA"
+      },
+      "sourceReferenceSlides": [
+        1,
+        8,
+        25
+      ],
+      "sourceFidelity": {
+        "preserve": [
+          "ancient architecture corner weight",
+          "warm ivory whitespace",
+          "asymmetric image balance"
+        ],
+        "deviations": [
+          "source media replaced",
+          "business image slot added for production use"
+        ]
+      },
+      "remark": "[Sources]\n- Visual composition reference: user-provided 精品系列(2).pptx\n- Reference media excluded; original project assets generated with built-in imagegen\n- Actual image model identifier was not exposed by the tool",
+      "titleFitLimits": {
+        "maxWide": 24,
+        "maxAscii": 48,
+        "singleWide": 15,
+        "singleAscii": 30
+      }
+    },
+    {
+      "id": "contents-2",
+      "type": "contents",
+      "elements": [
+        {
+          "type": "shape",
+          "id": "t18-contents-2-rose-rail-001",
+          "left": 755,
+          "top": 0,
+          "width": 175,
+          "height": 562.5,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B77D80",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#B77D80",
+            "width": 0,
+            "style": "solid"
+          },
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t18-contents-2-rail-medallion-002",
+          "src": "/api/data/template_18_asset_medallion_v1.png",
+          "left": 774,
+          "top": 66,
+          "width": 138,
+          "height": 138,
+          "rotate": 0,
+          "fixedRatio": true,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-2-contents-label-003",
+          "left": 810,
+          "top": 250,
+          "width": 60,
+          "height": 100,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#FFFFFF",
+          "vertical": true,
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #FFFFFF;font-size: 40px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">目录</span></p>"
+        },
+        {
+          "type": "image",
+          "id": "t18-contents-2-roof-band-004",
+          "src": "/api/data/template_18_asset_rooftile_band_v1.png",
+          "left": 0,
+          "top": 444,
+          "width": 755,
+          "height": 118.5,
+          "rotate": 0,
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-2-item-number-005",
+          "left": 165,
+          "top": 145,
+          "width": 48,
+          "height": 46,
+          "rotate": 0,
+          "defaultFontName": "Arial",
+          "defaultColor": "#B77D80",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B77D80;font-size: 16px;font-family: Arial;line-height: 1.35;font-weight: 700;\">01</span></p>",
+          "textType": "itemNumber",
+          "groupId": "contents-2-item-1"
+        },
+        {
+          "type": "line",
+          "id": "t18-contents-2-item-line-006",
+          "left": 213,
+          "top": 163,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            28,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B6925F",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-2-item-007",
+          "left": 251,
+          "top": 141,
+          "width": 430,
+          "height": 48,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 18px;font-family: 微软雅黑;line-height: 1.35;\">目录项目 1</span></p>",
+          "textType": "item",
+          "groupId": "contents-2-item-1",
+          "minimumFontSize": 16
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-2-item-number-008",
+          "left": 165,
+          "top": 231,
+          "width": 48,
+          "height": 46,
+          "rotate": 0,
+          "defaultFontName": "Arial",
+          "defaultColor": "#B77D80",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B77D80;font-size: 16px;font-family: Arial;line-height: 1.35;font-weight: 700;\">02</span></p>",
+          "textType": "itemNumber",
+          "groupId": "contents-2-item-2"
+        },
+        {
+          "type": "line",
+          "id": "t18-contents-2-item-line-009",
+          "left": 213,
+          "top": 249,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            28,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B6925F",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-2-item-010",
+          "left": 251,
+          "top": 227,
+          "width": 430,
+          "height": 48,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 18px;font-family: 微软雅黑;line-height: 1.35;\">目录项目 2</span></p>",
+          "textType": "item",
+          "groupId": "contents-2-item-2",
+          "minimumFontSize": 16
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#F6F2EA"
+      },
+      "sourceReferenceSlides": [
+        2
+      ],
+      "sourceFidelity": {
+        "preserve": [
+          "dusty-rose vertical rail",
+          "sparse index rhythm",
+          "large warm-ivory whitespace"
+        ],
+        "deviations": [
+          "source mountain media replaced",
+          "horizontal editable contents"
+        ]
+      },
+      "remark": "[Sources]\n- Visual composition reference: user-provided 精品系列(2).pptx\n- Reference media excluded; original project assets generated with built-in imagegen\n- Actual image model identifier was not exposed by the tool",
+      "allowedItemCounts": [
+        2
+      ]
+    },
+    {
+      "id": "contents-3",
+      "type": "contents",
+      "elements": [
+        {
+          "type": "shape",
+          "id": "t18-contents-3-rose-rail-001",
+          "left": 755,
+          "top": 0,
+          "width": 175,
+          "height": 562.5,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B77D80",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#B77D80",
+            "width": 0,
+            "style": "solid"
+          },
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t18-contents-3-rail-medallion-002",
+          "src": "/api/data/template_18_asset_medallion_v1.png",
+          "left": 774,
+          "top": 66,
+          "width": 138,
+          "height": 138,
+          "rotate": 0,
+          "fixedRatio": true,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-3-contents-label-003",
+          "left": 810,
+          "top": 250,
+          "width": 60,
+          "height": 100,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#FFFFFF",
+          "vertical": true,
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #FFFFFF;font-size: 40px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">目录</span></p>"
+        },
+        {
+          "type": "image",
+          "id": "t18-contents-3-roof-band-004",
+          "src": "/api/data/template_18_asset_rooftile_band_v1.png",
+          "left": 0,
+          "top": 444,
+          "width": 755,
+          "height": 118.5,
+          "rotate": 0,
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-3-item-number-005",
+          "left": 165,
+          "top": 145,
+          "width": 48,
+          "height": 46,
+          "rotate": 0,
+          "defaultFontName": "Arial",
+          "defaultColor": "#B77D80",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B77D80;font-size: 16px;font-family: Arial;line-height: 1.35;font-weight: 700;\">01</span></p>",
+          "textType": "itemNumber",
+          "groupId": "contents-3-item-1"
+        },
+        {
+          "type": "line",
+          "id": "t18-contents-3-item-line-006",
+          "left": 213,
+          "top": 163,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            28,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B6925F",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-3-item-007",
+          "left": 251,
+          "top": 141,
+          "width": 430,
+          "height": 48,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 18px;font-family: 微软雅黑;line-height: 1.35;\">目录项目 1</span></p>",
+          "textType": "item",
+          "groupId": "contents-3-item-1",
+          "minimumFontSize": 16
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-3-item-number-008",
+          "left": 165,
+          "top": 231,
+          "width": 48,
+          "height": 46,
+          "rotate": 0,
+          "defaultFontName": "Arial",
+          "defaultColor": "#B77D80",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B77D80;font-size: 16px;font-family: Arial;line-height: 1.35;font-weight: 700;\">02</span></p>",
+          "textType": "itemNumber",
+          "groupId": "contents-3-item-2"
+        },
+        {
+          "type": "line",
+          "id": "t18-contents-3-item-line-009",
+          "left": 213,
+          "top": 249,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            28,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B6925F",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-3-item-010",
+          "left": 251,
+          "top": 227,
+          "width": 430,
+          "height": 48,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 18px;font-family: 微软雅黑;line-height: 1.35;\">目录项目 2</span></p>",
+          "textType": "item",
+          "groupId": "contents-3-item-2",
+          "minimumFontSize": 16
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-3-item-number-011",
+          "left": 165,
+          "top": 317,
+          "width": 48,
+          "height": 46,
+          "rotate": 0,
+          "defaultFontName": "Arial",
+          "defaultColor": "#B77D80",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B77D80;font-size: 16px;font-family: Arial;line-height: 1.35;font-weight: 700;\">03</span></p>",
+          "textType": "itemNumber",
+          "groupId": "contents-3-item-3"
+        },
+        {
+          "type": "line",
+          "id": "t18-contents-3-item-line-012",
+          "left": 213,
+          "top": 335,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            28,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B6925F",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-3-item-013",
+          "left": 251,
+          "top": 313,
+          "width": 430,
+          "height": 48,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 18px;font-family: 微软雅黑;line-height: 1.35;\">目录项目 3</span></p>",
+          "textType": "item",
+          "groupId": "contents-3-item-3",
+          "minimumFontSize": 16
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#F6F2EA"
+      },
+      "sourceReferenceSlides": [
+        2
+      ],
+      "sourceFidelity": {
+        "preserve": [
+          "dusty-rose vertical rail",
+          "sparse index rhythm",
+          "large warm-ivory whitespace"
+        ],
+        "deviations": [
+          "source mountain media replaced",
+          "horizontal editable contents"
+        ]
+      },
+      "remark": "[Sources]\n- Visual composition reference: user-provided 精品系列(2).pptx\n- Reference media excluded; original project assets generated with built-in imagegen\n- Actual image model identifier was not exposed by the tool",
+      "allowedItemCounts": [
+        3
+      ]
+    },
+    {
+      "id": "contents-4",
+      "type": "contents",
+      "elements": [
+        {
+          "type": "shape",
+          "id": "t18-contents-4-rose-rail-001",
+          "left": 755,
+          "top": 0,
+          "width": 175,
+          "height": 562.5,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B77D80",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#B77D80",
+            "width": 0,
+            "style": "solid"
+          },
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t18-contents-4-rail-medallion-002",
+          "src": "/api/data/template_18_asset_medallion_v1.png",
+          "left": 774,
+          "top": 66,
+          "width": 138,
+          "height": 138,
+          "rotate": 0,
+          "fixedRatio": true,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-4-contents-label-003",
+          "left": 810,
+          "top": 250,
+          "width": 60,
+          "height": 100,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#FFFFFF",
+          "vertical": true,
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #FFFFFF;font-size: 40px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">目录</span></p>"
+        },
+        {
+          "type": "image",
+          "id": "t18-contents-4-roof-band-004",
+          "src": "/api/data/template_18_asset_rooftile_band_v1.png",
+          "left": 0,
+          "top": 444,
+          "width": 755,
+          "height": 118.5,
+          "rotate": 0,
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-4-item-number-005",
+          "left": 80,
+          "top": 145,
+          "width": 48,
+          "height": 46,
+          "rotate": 0,
+          "defaultFontName": "Arial",
+          "defaultColor": "#B77D80",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B77D80;font-size: 16px;font-family: Arial;line-height: 1.35;font-weight: 700;\">01</span></p>",
+          "textType": "itemNumber",
+          "groupId": "contents-4-item-1"
+        },
+        {
+          "type": "line",
+          "id": "t18-contents-4-item-line-006",
+          "left": 128,
+          "top": 163,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            28,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B6925F",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-4-item-007",
+          "left": 166,
+          "top": 141,
+          "width": 220,
+          "height": 48,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 18px;font-family: 微软雅黑;line-height: 1.35;\">目录项目 1</span></p>",
+          "textType": "item",
+          "groupId": "contents-4-item-1",
+          "minimumFontSize": 16
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-4-item-number-008",
+          "left": 395,
+          "top": 145,
+          "width": 48,
+          "height": 46,
+          "rotate": 0,
+          "defaultFontName": "Arial",
+          "defaultColor": "#B77D80",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B77D80;font-size: 16px;font-family: Arial;line-height: 1.35;font-weight: 700;\">02</span></p>",
+          "textType": "itemNumber",
+          "groupId": "contents-4-item-2"
+        },
+        {
+          "type": "line",
+          "id": "t18-contents-4-item-line-009",
+          "left": 443,
+          "top": 163,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            28,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B6925F",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-4-item-010",
+          "left": 481,
+          "top": 141,
+          "width": 220,
+          "height": 48,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 18px;font-family: 微软雅黑;line-height: 1.35;\">目录项目 2</span></p>",
+          "textType": "item",
+          "groupId": "contents-4-item-2",
+          "minimumFontSize": 16
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-4-item-number-011",
+          "left": 80,
+          "top": 231,
+          "width": 48,
+          "height": 46,
+          "rotate": 0,
+          "defaultFontName": "Arial",
+          "defaultColor": "#B77D80",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B77D80;font-size: 16px;font-family: Arial;line-height: 1.35;font-weight: 700;\">03</span></p>",
+          "textType": "itemNumber",
+          "groupId": "contents-4-item-3"
+        },
+        {
+          "type": "line",
+          "id": "t18-contents-4-item-line-012",
+          "left": 128,
+          "top": 249,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            28,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B6925F",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-4-item-013",
+          "left": 166,
+          "top": 227,
+          "width": 220,
+          "height": 48,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 18px;font-family: 微软雅黑;line-height: 1.35;\">目录项目 3</span></p>",
+          "textType": "item",
+          "groupId": "contents-4-item-3",
+          "minimumFontSize": 16
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-4-item-number-014",
+          "left": 395,
+          "top": 231,
+          "width": 48,
+          "height": 46,
+          "rotate": 0,
+          "defaultFontName": "Arial",
+          "defaultColor": "#B77D80",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B77D80;font-size: 16px;font-family: Arial;line-height: 1.35;font-weight: 700;\">04</span></p>",
+          "textType": "itemNumber",
+          "groupId": "contents-4-item-4"
+        },
+        {
+          "type": "line",
+          "id": "t18-contents-4-item-line-015",
+          "left": 443,
+          "top": 249,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            28,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B6925F",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-4-item-016",
+          "left": 481,
+          "top": 227,
+          "width": 220,
+          "height": 48,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 18px;font-family: 微软雅黑;line-height: 1.35;\">目录项目 4</span></p>",
+          "textType": "item",
+          "groupId": "contents-4-item-4",
+          "minimumFontSize": 16
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#F6F2EA"
+      },
+      "sourceReferenceSlides": [
+        2
+      ],
+      "sourceFidelity": {
+        "preserve": [
+          "dusty-rose vertical rail",
+          "sparse index rhythm",
+          "large warm-ivory whitespace"
+        ],
+        "deviations": [
+          "source mountain media replaced",
+          "horizontal editable contents"
+        ]
+      },
+      "remark": "[Sources]\n- Visual composition reference: user-provided 精品系列(2).pptx\n- Reference media excluded; original project assets generated with built-in imagegen\n- Actual image model identifier was not exposed by the tool",
+      "allowedItemCounts": [
+        4
+      ]
+    },
+    {
+      "id": "contents-5",
+      "type": "contents",
+      "elements": [
+        {
+          "type": "shape",
+          "id": "t18-contents-5-rose-rail-001",
+          "left": 755,
+          "top": 0,
+          "width": 175,
+          "height": 562.5,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B77D80",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#B77D80",
+            "width": 0,
+            "style": "solid"
+          },
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t18-contents-5-rail-medallion-002",
+          "src": "/api/data/template_18_asset_medallion_v1.png",
+          "left": 774,
+          "top": 66,
+          "width": 138,
+          "height": 138,
+          "rotate": 0,
+          "fixedRatio": true,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-5-contents-label-003",
+          "left": 810,
+          "top": 250,
+          "width": 60,
+          "height": 100,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#FFFFFF",
+          "vertical": true,
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #FFFFFF;font-size: 40px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">目录</span></p>"
+        },
+        {
+          "type": "image",
+          "id": "t18-contents-5-roof-band-004",
+          "src": "/api/data/template_18_asset_rooftile_band_v1.png",
+          "left": 0,
+          "top": 444,
+          "width": 755,
+          "height": 118.5,
+          "rotate": 0,
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-5-item-number-005",
+          "left": 80,
+          "top": 145,
+          "width": 48,
+          "height": 46,
+          "rotate": 0,
+          "defaultFontName": "Arial",
+          "defaultColor": "#B77D80",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B77D80;font-size: 16px;font-family: Arial;line-height: 1.35;font-weight: 700;\">01</span></p>",
+          "textType": "itemNumber",
+          "groupId": "contents-5-item-1"
+        },
+        {
+          "type": "line",
+          "id": "t18-contents-5-item-line-006",
+          "left": 128,
+          "top": 163,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            28,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B6925F",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-5-item-007",
+          "left": 166,
+          "top": 141,
+          "width": 220,
+          "height": 48,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 18px;font-family: 微软雅黑;line-height: 1.35;\">目录项目 1</span></p>",
+          "textType": "item",
+          "groupId": "contents-5-item-1",
+          "minimumFontSize": 16
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-5-item-number-008",
+          "left": 395,
+          "top": 145,
+          "width": 48,
+          "height": 46,
+          "rotate": 0,
+          "defaultFontName": "Arial",
+          "defaultColor": "#B77D80",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B77D80;font-size: 16px;font-family: Arial;line-height: 1.35;font-weight: 700;\">02</span></p>",
+          "textType": "itemNumber",
+          "groupId": "contents-5-item-2"
+        },
+        {
+          "type": "line",
+          "id": "t18-contents-5-item-line-009",
+          "left": 443,
+          "top": 163,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            28,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B6925F",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-5-item-010",
+          "left": 481,
+          "top": 141,
+          "width": 220,
+          "height": 48,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 18px;font-family: 微软雅黑;line-height: 1.35;\">目录项目 2</span></p>",
+          "textType": "item",
+          "groupId": "contents-5-item-2",
+          "minimumFontSize": 16
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-5-item-number-011",
+          "left": 80,
+          "top": 231,
+          "width": 48,
+          "height": 46,
+          "rotate": 0,
+          "defaultFontName": "Arial",
+          "defaultColor": "#B77D80",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B77D80;font-size: 16px;font-family: Arial;line-height: 1.35;font-weight: 700;\">03</span></p>",
+          "textType": "itemNumber",
+          "groupId": "contents-5-item-3"
+        },
+        {
+          "type": "line",
+          "id": "t18-contents-5-item-line-012",
+          "left": 128,
+          "top": 249,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            28,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B6925F",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-5-item-013",
+          "left": 166,
+          "top": 227,
+          "width": 220,
+          "height": 48,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 18px;font-family: 微软雅黑;line-height: 1.35;\">目录项目 3</span></p>",
+          "textType": "item",
+          "groupId": "contents-5-item-3",
+          "minimumFontSize": 16
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-5-item-number-014",
+          "left": 395,
+          "top": 231,
+          "width": 48,
+          "height": 46,
+          "rotate": 0,
+          "defaultFontName": "Arial",
+          "defaultColor": "#B77D80",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B77D80;font-size: 16px;font-family: Arial;line-height: 1.35;font-weight: 700;\">04</span></p>",
+          "textType": "itemNumber",
+          "groupId": "contents-5-item-4"
+        },
+        {
+          "type": "line",
+          "id": "t18-contents-5-item-line-015",
+          "left": 443,
+          "top": 249,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            28,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B6925F",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-5-item-016",
+          "left": 481,
+          "top": 227,
+          "width": 220,
+          "height": 48,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 18px;font-family: 微软雅黑;line-height: 1.35;\">目录项目 4</span></p>",
+          "textType": "item",
+          "groupId": "contents-5-item-4",
+          "minimumFontSize": 16
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-5-item-number-017",
+          "left": 80,
+          "top": 317,
+          "width": 48,
+          "height": 46,
+          "rotate": 0,
+          "defaultFontName": "Arial",
+          "defaultColor": "#B77D80",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B77D80;font-size: 16px;font-family: Arial;line-height: 1.35;font-weight: 700;\">05</span></p>",
+          "textType": "itemNumber",
+          "groupId": "contents-5-item-5"
+        },
+        {
+          "type": "line",
+          "id": "t18-contents-5-item-line-018",
+          "left": 128,
+          "top": 335,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            28,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B6925F",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-5-item-019",
+          "left": 166,
+          "top": 313,
+          "width": 220,
+          "height": 48,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 18px;font-family: 微软雅黑;line-height: 1.35;\">目录项目 5</span></p>",
+          "textType": "item",
+          "groupId": "contents-5-item-5",
+          "minimumFontSize": 16
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#F6F2EA"
+      },
+      "sourceReferenceSlides": [
+        2
+      ],
+      "sourceFidelity": {
+        "preserve": [
+          "dusty-rose vertical rail",
+          "sparse index rhythm",
+          "large warm-ivory whitespace"
+        ],
+        "deviations": [
+          "source mountain media replaced",
+          "horizontal editable contents"
+        ]
+      },
+      "remark": "[Sources]\n- Visual composition reference: user-provided 精品系列(2).pptx\n- Reference media excluded; original project assets generated with built-in imagegen\n- Actual image model identifier was not exposed by the tool",
+      "allowedItemCounts": [
+        5
+      ]
+    },
+    {
+      "id": "contents-6",
+      "type": "contents",
+      "elements": [
+        {
+          "type": "shape",
+          "id": "t18-contents-6-rose-rail-001",
+          "left": 755,
+          "top": 0,
+          "width": 175,
+          "height": 562.5,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B77D80",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#B77D80",
+            "width": 0,
+            "style": "solid"
+          },
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t18-contents-6-rail-medallion-002",
+          "src": "/api/data/template_18_asset_medallion_v1.png",
+          "left": 774,
+          "top": 66,
+          "width": 138,
+          "height": 138,
+          "rotate": 0,
+          "fixedRatio": true,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-6-contents-label-003",
+          "left": 810,
+          "top": 250,
+          "width": 60,
+          "height": 100,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#FFFFFF",
+          "vertical": true,
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #FFFFFF;font-size: 40px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">目录</span></p>"
+        },
+        {
+          "type": "image",
+          "id": "t18-contents-6-roof-band-004",
+          "src": "/api/data/template_18_asset_rooftile_band_v1.png",
+          "left": 0,
+          "top": 444,
+          "width": 755,
+          "height": 118.5,
+          "rotate": 0,
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-6-item-number-005",
+          "left": 80,
+          "top": 145,
+          "width": 48,
+          "height": 46,
+          "rotate": 0,
+          "defaultFontName": "Arial",
+          "defaultColor": "#B77D80",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B77D80;font-size: 16px;font-family: Arial;line-height: 1.35;font-weight: 700;\">01</span></p>",
+          "textType": "itemNumber",
+          "groupId": "contents-6-item-1"
+        },
+        {
+          "type": "line",
+          "id": "t18-contents-6-item-line-006",
+          "left": 128,
+          "top": 163,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            28,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B6925F",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-6-item-007",
+          "left": 166,
+          "top": 141,
+          "width": 220,
+          "height": 48,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 18px;font-family: 微软雅黑;line-height: 1.35;\">目录项目 1</span></p>",
+          "textType": "item",
+          "groupId": "contents-6-item-1",
+          "minimumFontSize": 16
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-6-item-number-008",
+          "left": 395,
+          "top": 145,
+          "width": 48,
+          "height": 46,
+          "rotate": 0,
+          "defaultFontName": "Arial",
+          "defaultColor": "#B77D80",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B77D80;font-size: 16px;font-family: Arial;line-height: 1.35;font-weight: 700;\">02</span></p>",
+          "textType": "itemNumber",
+          "groupId": "contents-6-item-2"
+        },
+        {
+          "type": "line",
+          "id": "t18-contents-6-item-line-009",
+          "left": 443,
+          "top": 163,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            28,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B6925F",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-6-item-010",
+          "left": 481,
+          "top": 141,
+          "width": 220,
+          "height": 48,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 18px;font-family: 微软雅黑;line-height: 1.35;\">目录项目 2</span></p>",
+          "textType": "item",
+          "groupId": "contents-6-item-2",
+          "minimumFontSize": 16
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-6-item-number-011",
+          "left": 80,
+          "top": 231,
+          "width": 48,
+          "height": 46,
+          "rotate": 0,
+          "defaultFontName": "Arial",
+          "defaultColor": "#B77D80",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B77D80;font-size: 16px;font-family: Arial;line-height: 1.35;font-weight: 700;\">03</span></p>",
+          "textType": "itemNumber",
+          "groupId": "contents-6-item-3"
+        },
+        {
+          "type": "line",
+          "id": "t18-contents-6-item-line-012",
+          "left": 128,
+          "top": 249,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            28,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B6925F",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-6-item-013",
+          "left": 166,
+          "top": 227,
+          "width": 220,
+          "height": 48,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 18px;font-family: 微软雅黑;line-height: 1.35;\">目录项目 3</span></p>",
+          "textType": "item",
+          "groupId": "contents-6-item-3",
+          "minimumFontSize": 16
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-6-item-number-014",
+          "left": 395,
+          "top": 231,
+          "width": 48,
+          "height": 46,
+          "rotate": 0,
+          "defaultFontName": "Arial",
+          "defaultColor": "#B77D80",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B77D80;font-size: 16px;font-family: Arial;line-height: 1.35;font-weight: 700;\">04</span></p>",
+          "textType": "itemNumber",
+          "groupId": "contents-6-item-4"
+        },
+        {
+          "type": "line",
+          "id": "t18-contents-6-item-line-015",
+          "left": 443,
+          "top": 249,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            28,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B6925F",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-6-item-016",
+          "left": 481,
+          "top": 227,
+          "width": 220,
+          "height": 48,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 18px;font-family: 微软雅黑;line-height: 1.35;\">目录项目 4</span></p>",
+          "textType": "item",
+          "groupId": "contents-6-item-4",
+          "minimumFontSize": 16
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-6-item-number-017",
+          "left": 80,
+          "top": 317,
+          "width": 48,
+          "height": 46,
+          "rotate": 0,
+          "defaultFontName": "Arial",
+          "defaultColor": "#B77D80",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B77D80;font-size: 16px;font-family: Arial;line-height: 1.35;font-weight: 700;\">05</span></p>",
+          "textType": "itemNumber",
+          "groupId": "contents-6-item-5"
+        },
+        {
+          "type": "line",
+          "id": "t18-contents-6-item-line-018",
+          "left": 128,
+          "top": 335,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            28,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B6925F",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-6-item-019",
+          "left": 166,
+          "top": 313,
+          "width": 220,
+          "height": 48,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 18px;font-family: 微软雅黑;line-height: 1.35;\">目录项目 5</span></p>",
+          "textType": "item",
+          "groupId": "contents-6-item-5",
+          "minimumFontSize": 16
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-6-item-number-020",
+          "left": 395,
+          "top": 317,
+          "width": 48,
+          "height": 46,
+          "rotate": 0,
+          "defaultFontName": "Arial",
+          "defaultColor": "#B77D80",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B77D80;font-size: 16px;font-family: Arial;line-height: 1.35;font-weight: 700;\">06</span></p>",
+          "textType": "itemNumber",
+          "groupId": "contents-6-item-6"
+        },
+        {
+          "type": "line",
+          "id": "t18-contents-6-item-line-021",
+          "left": 443,
+          "top": 335,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            28,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B6925F",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-6-item-022",
+          "left": 481,
+          "top": 313,
+          "width": 220,
+          "height": 48,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 18px;font-family: 微软雅黑;line-height: 1.35;\">目录项目 6</span></p>",
+          "textType": "item",
+          "groupId": "contents-6-item-6",
+          "minimumFontSize": 16
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#F6F2EA"
+      },
+      "sourceReferenceSlides": [
+        2
+      ],
+      "sourceFidelity": {
+        "preserve": [
+          "dusty-rose vertical rail",
+          "sparse index rhythm",
+          "large warm-ivory whitespace"
+        ],
+        "deviations": [
+          "source mountain media replaced",
+          "horizontal editable contents"
+        ]
+      },
+      "remark": "[Sources]\n- Visual composition reference: user-provided 精品系列(2).pptx\n- Reference media excluded; original project assets generated with built-in imagegen\n- Actual image model identifier was not exposed by the tool",
+      "allowedItemCounts": [
+        6
+      ]
+    },
+    {
+      "id": "contents-10",
+      "type": "contents",
+      "elements": [
+        {
+          "type": "shape",
+          "id": "t18-contents-10-rose-rail-001",
+          "left": 755,
+          "top": 0,
+          "width": 175,
+          "height": 562.5,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B77D80",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#B77D80",
+            "width": 0,
+            "style": "solid"
+          },
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t18-contents-10-rail-medallion-002",
+          "src": "/api/data/template_18_asset_medallion_v1.png",
+          "left": 774,
+          "top": 66,
+          "width": 138,
+          "height": 138,
+          "rotate": 0,
+          "fixedRatio": true,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-10-contents-label-003",
+          "left": 810,
+          "top": 250,
+          "width": 60,
+          "height": 100,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#FFFFFF",
+          "vertical": true,
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #FFFFFF;font-size: 40px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">目录</span></p>"
+        },
+        {
+          "type": "image",
+          "id": "t18-contents-10-roof-band-004",
+          "src": "/api/data/template_18_asset_rooftile_band_v1.png",
+          "left": 0,
+          "top": 444,
+          "width": 755,
+          "height": 118.5,
+          "rotate": 0,
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-10-item-number-005",
+          "left": 80,
+          "top": 145,
+          "width": 48,
+          "height": 46,
+          "rotate": 0,
+          "defaultFontName": "Arial",
+          "defaultColor": "#B77D80",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B77D80;font-size: 16px;font-family: Arial;line-height: 1.35;font-weight: 700;\">01</span></p>",
+          "textType": "itemNumber",
+          "groupId": "contents-10-item-1"
+        },
+        {
+          "type": "line",
+          "id": "t18-contents-10-item-line-006",
+          "left": 128,
+          "top": 163,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            28,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B6925F",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-10-item-007",
+          "left": 166,
+          "top": 141,
+          "width": 220,
+          "height": 48,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 16px;font-family: 微软雅黑;line-height: 1.35;\">目录项目 1</span></p>",
+          "textType": "item",
+          "groupId": "contents-10-item-1",
+          "minimumFontSize": 16
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-10-item-number-008",
+          "left": 395,
+          "top": 145,
+          "width": 48,
+          "height": 46,
+          "rotate": 0,
+          "defaultFontName": "Arial",
+          "defaultColor": "#B77D80",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B77D80;font-size: 16px;font-family: Arial;line-height: 1.35;font-weight: 700;\">02</span></p>",
+          "textType": "itemNumber",
+          "groupId": "contents-10-item-2"
+        },
+        {
+          "type": "line",
+          "id": "t18-contents-10-item-line-009",
+          "left": 443,
+          "top": 163,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            28,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B6925F",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-10-item-010",
+          "left": 481,
+          "top": 141,
+          "width": 220,
+          "height": 48,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 16px;font-family: 微软雅黑;line-height: 1.35;\">目录项目 2</span></p>",
+          "textType": "item",
+          "groupId": "contents-10-item-2",
+          "minimumFontSize": 16
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-10-item-number-011",
+          "left": 80,
+          "top": 220,
+          "width": 48,
+          "height": 46,
+          "rotate": 0,
+          "defaultFontName": "Arial",
+          "defaultColor": "#B77D80",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B77D80;font-size: 16px;font-family: Arial;line-height: 1.35;font-weight: 700;\">03</span></p>",
+          "textType": "itemNumber",
+          "groupId": "contents-10-item-3"
+        },
+        {
+          "type": "line",
+          "id": "t18-contents-10-item-line-012",
+          "left": 128,
+          "top": 238,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            28,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B6925F",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-10-item-013",
+          "left": 166,
+          "top": 216,
+          "width": 220,
+          "height": 48,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 16px;font-family: 微软雅黑;line-height: 1.35;\">目录项目 3</span></p>",
+          "textType": "item",
+          "groupId": "contents-10-item-3",
+          "minimumFontSize": 16
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-10-item-number-014",
+          "left": 395,
+          "top": 220,
+          "width": 48,
+          "height": 46,
+          "rotate": 0,
+          "defaultFontName": "Arial",
+          "defaultColor": "#B77D80",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B77D80;font-size: 16px;font-family: Arial;line-height: 1.35;font-weight: 700;\">04</span></p>",
+          "textType": "itemNumber",
+          "groupId": "contents-10-item-4"
+        },
+        {
+          "type": "line",
+          "id": "t18-contents-10-item-line-015",
+          "left": 443,
+          "top": 238,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            28,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B6925F",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-10-item-016",
+          "left": 481,
+          "top": 216,
+          "width": 220,
+          "height": 48,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 16px;font-family: 微软雅黑;line-height: 1.35;\">目录项目 4</span></p>",
+          "textType": "item",
+          "groupId": "contents-10-item-4",
+          "minimumFontSize": 16
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-10-item-number-017",
+          "left": 80,
+          "top": 295,
+          "width": 48,
+          "height": 46,
+          "rotate": 0,
+          "defaultFontName": "Arial",
+          "defaultColor": "#B77D80",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B77D80;font-size: 16px;font-family: Arial;line-height: 1.35;font-weight: 700;\">05</span></p>",
+          "textType": "itemNumber",
+          "groupId": "contents-10-item-5"
+        },
+        {
+          "type": "line",
+          "id": "t18-contents-10-item-line-018",
+          "left": 128,
+          "top": 313,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            28,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B6925F",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-10-item-019",
+          "left": 166,
+          "top": 291,
+          "width": 220,
+          "height": 48,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 16px;font-family: 微软雅黑;line-height: 1.35;\">目录项目 5</span></p>",
+          "textType": "item",
+          "groupId": "contents-10-item-5",
+          "minimumFontSize": 16
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-10-item-number-020",
+          "left": 395,
+          "top": 295,
+          "width": 48,
+          "height": 46,
+          "rotate": 0,
+          "defaultFontName": "Arial",
+          "defaultColor": "#B77D80",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B77D80;font-size: 16px;font-family: Arial;line-height: 1.35;font-weight: 700;\">06</span></p>",
+          "textType": "itemNumber",
+          "groupId": "contents-10-item-6"
+        },
+        {
+          "type": "line",
+          "id": "t18-contents-10-item-line-021",
+          "left": 443,
+          "top": 313,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            28,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B6925F",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-10-item-022",
+          "left": 481,
+          "top": 291,
+          "width": 220,
+          "height": 48,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 16px;font-family: 微软雅黑;line-height: 1.35;\">目录项目 6</span></p>",
+          "textType": "item",
+          "groupId": "contents-10-item-6",
+          "minimumFontSize": 16
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-10-item-number-023",
+          "left": 80,
+          "top": 370,
+          "width": 48,
+          "height": 46,
+          "rotate": 0,
+          "defaultFontName": "Arial",
+          "defaultColor": "#B77D80",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B77D80;font-size: 16px;font-family: Arial;line-height: 1.35;font-weight: 700;\">07</span></p>",
+          "textType": "itemNumber",
+          "groupId": "contents-10-item-7"
+        },
+        {
+          "type": "line",
+          "id": "t18-contents-10-item-line-024",
+          "left": 128,
+          "top": 388,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            28,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B6925F",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-10-item-025",
+          "left": 166,
+          "top": 366,
+          "width": 220,
+          "height": 48,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 16px;font-family: 微软雅黑;line-height: 1.35;\">目录项目 7</span></p>",
+          "textType": "item",
+          "groupId": "contents-10-item-7",
+          "minimumFontSize": 16
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-10-item-number-026",
+          "left": 395,
+          "top": 370,
+          "width": 48,
+          "height": 46,
+          "rotate": 0,
+          "defaultFontName": "Arial",
+          "defaultColor": "#B77D80",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B77D80;font-size: 16px;font-family: Arial;line-height: 1.35;font-weight: 700;\">08</span></p>",
+          "textType": "itemNumber",
+          "groupId": "contents-10-item-8"
+        },
+        {
+          "type": "line",
+          "id": "t18-contents-10-item-line-027",
+          "left": 443,
+          "top": 388,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            28,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B6925F",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-10-item-028",
+          "left": 481,
+          "top": 366,
+          "width": 220,
+          "height": 48,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 16px;font-family: 微软雅黑;line-height: 1.35;\">目录项目 8</span></p>",
+          "textType": "item",
+          "groupId": "contents-10-item-8",
+          "minimumFontSize": 16
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-10-item-number-029",
+          "left": 80,
+          "top": 445,
+          "width": 48,
+          "height": 46,
+          "rotate": 0,
+          "defaultFontName": "Arial",
+          "defaultColor": "#B77D80",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B77D80;font-size: 16px;font-family: Arial;line-height: 1.35;font-weight: 700;\">09</span></p>",
+          "textType": "itemNumber",
+          "groupId": "contents-10-item-9"
+        },
+        {
+          "type": "line",
+          "id": "t18-contents-10-item-line-030",
+          "left": 128,
+          "top": 463,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            28,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B6925F",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-10-item-031",
+          "left": 166,
+          "top": 441,
+          "width": 220,
+          "height": 48,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 16px;font-family: 微软雅黑;line-height: 1.35;\">目录项目 9</span></p>",
+          "textType": "item",
+          "groupId": "contents-10-item-9",
+          "minimumFontSize": 16
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-10-item-number-032",
+          "left": 395,
+          "top": 445,
+          "width": 48,
+          "height": 46,
+          "rotate": 0,
+          "defaultFontName": "Arial",
+          "defaultColor": "#B77D80",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B77D80;font-size: 16px;font-family: Arial;line-height: 1.35;font-weight: 700;\">10</span></p>",
+          "textType": "itemNumber",
+          "groupId": "contents-10-item-10"
+        },
+        {
+          "type": "line",
+          "id": "t18-contents-10-item-line-033",
+          "left": 443,
+          "top": 463,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            28,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B6925F",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-contents-10-item-034",
+          "left": 481,
+          "top": 441,
+          "width": 220,
+          "height": 48,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 16px;font-family: 微软雅黑;line-height: 1.35;\">目录项目 10</span></p>",
+          "textType": "item",
+          "groupId": "contents-10-item-10",
+          "minimumFontSize": 16
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#F6F2EA"
+      },
+      "sourceReferenceSlides": [
+        2
+      ],
+      "sourceFidelity": {
+        "preserve": [
+          "dusty-rose vertical rail",
+          "sparse index rhythm",
+          "large warm-ivory whitespace"
+        ],
+        "deviations": [
+          "source mountain media replaced",
+          "horizontal editable contents"
+        ]
+      },
+      "remark": "[Sources]\n- Visual composition reference: user-provided 精品系列(2).pptx\n- Reference media excluded; original project assets generated with built-in imagegen\n- Actual image model identifier was not exposed by the tool",
+      "allowedItemCounts": [
+        10
+      ]
+    },
+    {
+      "id": "transition-rose-band",
+      "type": "transition",
+      "elements": [
+        {
+          "type": "image",
+          "id": "t18-transition-rose-band-background-001",
+          "src": "/api/data/template_18_asset_bg_section_v1.jpg",
+          "left": 0,
+          "top": 0,
+          "width": 1000,
+          "height": 562.5,
+          "rotate": 0,
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "shape",
+          "id": "t18-transition-rose-band-rose-band-002",
+          "left": 138,
+          "top": 0,
+          "width": 260,
+          "height": 562.5,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B77D80",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#B77D80",
+            "width": 0,
+            "style": "solid"
+          },
+          "lock": true
+        },
+        {
+          "type": "shape",
+          "id": "t18-transition-rose-band-text-safe-panel-003",
+          "left": 440,
+          "top": 130,
+          "width": 315,
+          "height": 320,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "rgba(246,242,234,0.95)",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "rgba(246,242,234,0.95)",
+            "width": 0,
+            "style": "solid"
+          },
+          "lock": true,
+          "pathFormula": "roundRect",
+          "keypoints": [
+            0.08
+          ]
+        },
+        {
+          "type": "image",
+          "id": "t18-transition-rose-band-medallion-004",
+          "src": "/api/data/template_18_asset_medallion_v1.png",
+          "left": 178,
+          "top": 75,
+          "width": 180,
+          "height": 180,
+          "rotate": 0,
+          "fixedRatio": true,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-transition-rose-band-part-number-005",
+          "left": 235,
+          "top": 292,
+          "width": 66,
+          "height": 170,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#FFFFFF",
+          "vertical": true,
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #FFFFFF;font-size: 44px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">第壹章</span></p>",
+          "textType": "partNumber",
+          "minimumFontSize": 35
+        },
+        {
+          "type": "text",
+          "id": "t18-transition-rose-band-title-006",
+          "left": 470,
+          "top": 145,
+          "width": 410,
+          "height": 130,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 44px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">章节标题</span></p>",
+          "textType": "title",
+          "minimumFontSize": 44,
+          "textLineHeight": 1.2
+        },
+        {
+          "type": "line",
+          "id": "t18-transition-rose-band-title-line-007",
+          "left": 470,
+          "top": 285,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            260,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B77D80",
+          "style": "solid",
+          "width": 2,
+          "rotate": 0,
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-transition-rose-band-content-008",
+          "left": 472,
+          "top": 310,
+          "width": 250,
+          "height": 120,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#4A4643",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #4A4643;font-size: 18px;font-family: 微软雅黑;line-height: 1.35;\">用一段简洁说明承接上一章节，并为下一部分建立清晰语境。</span></p>",
+          "textType": "content",
+          "minimumFontSize": 16
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#F6F2EA"
+      },
+      "sourceReferenceSlides": [
+        3,
+        9,
+        15,
+        21
+      ],
+      "sourceFidelity": {
+        "preserve": [
+          "dusty-rose vertical band",
+          "medallion",
+          "eaves lower right",
+          "plum upper right",
+          "short vertical chapter title"
+        ],
+        "deviations": [
+          "source media replaced",
+          "body copy made horizontal for readability"
+        ]
+      },
+      "remark": "[Sources]\n- Visual composition reference: user-provided 精品系列(2).pptx\n- Reference media excluded; original project assets generated with built-in imagegen\n- Actual image model identifier was not exposed by the tool",
+      "variantMode": "deterministic"
+    },
+    {
+      "id": "transition-medallion",
+      "type": "transition",
+      "elements": [
+        {
+          "type": "image",
+          "id": "t18-transition-medallion-medallion-001",
+          "src": "/api/data/template_18_asset_medallion_v1.png",
+          "left": 80,
+          "top": 112,
+          "width": 275,
+          "height": 275,
+          "rotate": 0,
+          "fixedRatio": true,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t18-transition-medallion-eaves-002",
+          "src": "/api/data/template_18_asset_eaves_corner_v1.png",
+          "left": 700,
+          "top": 345,
+          "width": 300,
+          "height": 217.5,
+          "rotate": 0,
+          "fixedRatio": true,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t18-transition-medallion-plum-003",
+          "src": "/api/data/template_18_asset_plum_branch_v1.png",
+          "left": 645,
+          "top": 20,
+          "width": 305,
+          "height": 124,
+          "rotate": 0,
+          "fixedRatio": true,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-transition-medallion-part-number-004",
+          "left": 390,
+          "top": 148,
+          "width": 90,
+          "height": 68,
+          "rotate": 0,
+          "defaultFontName": "Arial",
+          "defaultColor": "#B77D80",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B77D80;font-size: 28px;font-family: Arial;line-height: 1.35;font-weight: 700;\">02</span></p>",
+          "textType": "partNumber"
+        },
+        {
+          "type": "text",
+          "id": "t18-transition-medallion-title-005",
+          "left": 390,
+          "top": 205,
+          "width": 540,
+          "height": 130,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 44px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">章节标题</span></p>",
+          "textType": "title",
+          "minimumFontSize": 38,
+          "textLineHeight": 1.2
+        },
+        {
+          "type": "text",
+          "id": "t18-transition-medallion-content-006",
+          "left": 394,
+          "top": 350,
+          "width": 280,
+          "height": 90,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#4A4643",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #4A4643;font-size: 18px;font-family: 微软雅黑;line-height: 1.35;\">以古典纹章和飞檐关系建立章节转换。</span></p>",
+          "textType": "content",
+          "minimumFontSize": 16
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#F6F2EA"
+      },
+      "sourceReferenceSlides": [
+        3,
+        9,
+        15,
+        21
+      ],
+      "sourceFidelity": {
+        "preserve": [
+          "medallion focal point",
+          "architecture corner",
+          "asymmetric whitespace"
+        ],
+        "deviations": [
+          "source vertical body removed",
+          "editable horizontal title and summary"
+        ]
+      },
+      "remark": "[Sources]\n- Visual composition reference: user-provided 精品系列(2).pptx\n- Reference media excluded; original project assets generated with built-in imagegen\n- Actual image model identifier was not exposed by the tool",
+      "variantMode": "deterministic"
+    },
+    {
+      "id": "content-statement-1",
+      "type": "content",
+      "elements": [
+        {
+          "type": "text",
+          "id": "t18-content-statement-1-part-mark-001",
+          "left": 0,
+          "top": 24,
+          "width": 58,
+          "height": 54,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#B77D80",
+          "vertical": false,
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #B77D80;font-size: 44px;font-family: 微软雅黑;line-height: 1.35;\">壹</span></p>"
+        },
+        {
+          "type": "text",
+          "id": "t18-content-statement-1-page-title-002",
+          "left": 78,
+          "top": 34,
+          "width": 700,
+          "height": 82,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 35px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">核心结论</span></p>",
+          "textType": "title",
+          "minimumFontSize": 35
+        },
+        {
+          "type": "line",
+          "id": "t18-content-statement-1-title-line-003",
+          "left": 78,
+          "top": 120,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            650,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B77D80",
+          "style": "solid",
+          "width": 1.5,
+          "rotate": 0,
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t18-content-statement-1-header-plum-004",
+          "src": "/api/data/template_18_asset_plum_branch_v1.png",
+          "left": 720,
+          "top": 2,
+          "width": 250,
+          "height": 102,
+          "rotate": 0,
+          "fixedRatio": true,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "shape",
+          "id": "t18-content-statement-1-statement-rail-005",
+          "left": 104,
+          "top": 164,
+          "width": 10,
+          "height": 245,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#B77D80",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#B77D80",
+            "width": 0,
+            "style": "solid"
+          },
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-content-statement-1-statement-title-006",
+          "left": 150,
+          "top": 176,
+          "width": 590,
+          "height": 100,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 32px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">让核心观点成为页面唯一重心</span></p>",
+          "textType": "itemTitle",
+          "groupId": "content-statement-1-item-1",
+          "minimumFontSize": 24
+        },
+        {
+          "type": "text",
+          "id": "t18-content-statement-1-statement-body-007",
+          "left": 154,
+          "top": 300,
+          "width": 525,
+          "height": 150,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#4A4643",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #4A4643;font-size: 18px;font-family: 微软雅黑;line-height: 1.35;\">单项内容页用于承载结论、引语或摘要。装饰保持克制，正文获得足够空间。</span></p>",
+          "textType": "item",
+          "groupId": "content-statement-1-item-1",
+          "minimumFontSize": 16
+        },
+        {
+          "type": "image",
+          "id": "t18-content-statement-1-eaves-008",
+          "src": "/api/data/template_18_asset_eaves_corner_v1.png",
+          "left": 700,
+          "top": 230,
+          "width": 300,
+          "height": 225,
+          "rotate": 0,
+          "fixedRatio": true,
+          "imageType": "decoration",
+          "lock": true
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#F6F2EA"
+      },
+      "sourceReferenceSlides": [
+        4,
+        13,
+        20,
+        25
+      ],
+      "sourceFidelity": {
+        "preserve": [
+          "single conclusion focus",
+          "large whitespace",
+          "architecture corner"
+        ],
+        "deviations": [
+          "vertical body changed to horizontal editable statement"
+        ]
+      },
+      "remark": "[Sources]\n- Visual composition reference: user-provided 精品系列(2).pptx\n- Reference media excluded; original project assets generated with built-in imagegen\n- Actual image model identifier was not exposed by the tool",
+      "allowedItemCounts": [
+        1
+      ],
+      "layoutKind": "text",
+      "titleFitLimits": {
+        "maxWide": 40,
+        "maxAscii": 80,
+        "singleWide": 20,
+        "singleAscii": 44
+      }
+    },
+    {
+      "id": "content-image-1",
+      "type": "content",
+      "elements": [
+        {
+          "type": "text",
+          "id": "t18-content-image-1-part-mark-001",
+          "left": 0,
+          "top": 24,
+          "width": 58,
+          "height": 54,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#B77D80",
+          "vertical": false,
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #B77D80;font-size: 44px;font-family: 微软雅黑;line-height: 1.35;\">贰</span></p>"
+        },
+        {
+          "type": "text",
+          "id": "t18-content-image-1-page-title-002",
+          "left": 78,
+          "top": 34,
+          "width": 700,
+          "height": 82,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 35px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">图文内容</span></p>",
+          "textType": "title",
+          "minimumFontSize": 35
+        },
+        {
+          "type": "line",
+          "id": "t18-content-image-1-title-line-003",
+          "left": 78,
+          "top": 120,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            650,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B77D80",
+          "style": "solid",
+          "width": 1.5,
+          "rotate": 0,
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t18-content-image-1-header-plum-004",
+          "src": "/api/data/template_18_asset_plum_branch_v1.png",
+          "left": 720,
+          "top": 2,
+          "width": 250,
+          "height": 102,
+          "rotate": 0,
+          "fixedRatio": true,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "shape",
+          "id": "t18-content-image-1-rose-backing-005",
+          "left": 0,
+          "top": 140,
+          "width": 1000,
+          "height": 230,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#E9DADB",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#E9DADB",
+            "width": 0,
+            "style": "solid"
+          },
+          "lock": true
+        },
+        {
+          "type": "shape",
+          "id": "t18-content-image-1-image-ring-006",
+          "left": 114,
+          "top": 144,
+          "width": 222,
+          "height": 222,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 100 0 A 100 100 0 1 1 100 200 A 100 100 0 1 1 100 0 Z",
+          "fill": "rgba(255,255,255,0)",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#B6925F",
+            "width": 3,
+            "style": "solid"
+          },
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t18-content-image-1-content-image-007",
+          "src": "/api/data/template_18_asset_bg_section_v1.jpg",
+          "left": 124,
+          "top": 154,
+          "width": 202,
+          "height": 202,
+          "rotate": 0,
+          "fixedRatio": false,
+          "imageType": "content",
+          "lock": false,
+          "groupId": "content-image-1-item-1",
+          "clip": {
+            "shape": "ellipse",
+            "range": [
+              [
+                0,
+                0
+              ],
+              [
+                100,
+                100
+              ]
+            ]
+          },
+          "strictImageCount": true,
+          "requireSourceDimensions": true,
+          "originalWidth": 1920,
+          "originalHeight": 1080
+        },
+        {
+          "type": "text",
+          "id": "t18-content-image-1-item-number-008",
+          "left": 430,
+          "top": 175,
+          "width": 52,
+          "height": 38,
+          "rotate": 0,
+          "defaultFontName": "Arial",
+          "defaultColor": "#B77D80",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B77D80;font-size: 18px;font-family: Arial;line-height: 1.35;font-weight: 700;\">01</span></p>",
+          "textType": "itemNumber",
+          "groupId": "content-image-1-item-1"
+        },
+        {
+          "type": "text",
+          "id": "t18-content-image-1-item-title-009",
+          "left": 488,
+          "top": 168,
+          "width": 370,
+          "height": 62,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 24px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">输入标题内容</span></p>",
+          "textType": "itemTitle",
+          "groupId": "content-image-1-item-1",
+          "minimumFontSize": 24
+        },
+        {
+          "type": "text",
+          "id": "t18-content-image-1-item-body-010",
+          "left": 432,
+          "top": 245,
+          "width": 425,
+          "height": 104,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#4A4643",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #4A4643;font-size: 17px;font-family: 微软雅黑;line-height: 1.35;\">业务图片与正文保持清晰分区，固定双鹤装饰不会被换图覆盖。</span></p>",
+          "textType": "item",
+          "groupId": "content-image-1-item-1",
+          "minimumFontSize": 16
+        },
+        {
+          "type": "image",
+          "id": "t18-content-image-1-cranes-011",
+          "src": "/api/data/template_18_asset_crane_pair_v1.png",
+          "left": 650,
+          "top": 350,
+          "width": 290,
+          "height": 184,
+          "rotate": 0,
+          "fixedRatio": true,
+          "imageType": "decoration",
+          "lock": true
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#F6F2EA"
+      },
+      "sourceReferenceSlides": [
+        5,
+        8
+      ],
+      "sourceFidelity": {
+        "preserve": [
+          "one image plus one text block",
+          "soft rose image backing",
+          "circular image language from reference slide 19",
+          "crane decoration"
+        ],
+        "deviations": [
+          "source content image replaced with a semantic circular image slot"
+        ]
+      },
+      "remark": "[Sources]\n- Visual composition reference: user-provided 精品系列(2).pptx\n- Reference media excluded; original project assets generated with built-in imagegen\n- Actual image model identifier was not exposed by the tool",
+      "allowedItemCounts": [
+        1
+      ],
+      "layoutKind": "1-image-text",
+      "titleFitLimits": {
+        "maxWide": 40,
+        "maxAscii": 80,
+        "singleWide": 20,
+        "singleAscii": 44
+      }
+    },
+    {
+      "id": "content-text-2",
+      "type": "content",
+      "elements": [
+        {
+          "type": "text",
+          "id": "t18-content-text-2-part-mark-001",
+          "left": 0,
+          "top": 24,
+          "width": 58,
+          "height": 54,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#B77D80",
+          "vertical": false,
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #B77D80;font-size: 44px;font-family: 微软雅黑;line-height: 1.35;\">贰</span></p>"
+        },
+        {
+          "type": "text",
+          "id": "t18-content-text-2-page-title-002",
+          "left": 78,
+          "top": 34,
+          "width": 700,
+          "height": 82,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 35px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">飞檐雅韵内容结构</span></p>",
+          "textType": "title",
+          "minimumFontSize": 35
+        },
+        {
+          "type": "line",
+          "id": "t18-content-text-2-title-line-003",
+          "left": 78,
+          "top": 120,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            650,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B77D80",
+          "style": "solid",
+          "width": 1.5,
+          "rotate": 0,
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t18-content-text-2-header-plum-004",
+          "src": "/api/data/template_18_asset_plum_branch_v1.png",
+          "left": 720,
+          "top": 2,
+          "width": 250,
+          "height": 102,
+          "rotate": 0,
+          "fixedRatio": true,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-content-text-2-item-number-005",
+          "left": 80,
+          "top": 178,
+          "width": 48,
+          "height": 46,
+          "rotate": 0,
+          "defaultFontName": "Arial",
+          "defaultColor": "#B77D80",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B77D80;font-size: 18px;font-family: Arial;line-height: 1.35;font-weight: 700;\">01</span></p>",
+          "textType": "itemNumber",
+          "groupId": "content-text-2-item-1"
+        },
+        {
+          "type": "line",
+          "id": "t18-content-text-2-item-line-006",
+          "left": 132,
+          "top": 196,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            34,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B6925F",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-content-text-2-item-title-007",
+          "left": 176,
+          "top": 172,
+          "width": 294,
+          "height": 60,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 24px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">内容标题 1</span></p>",
+          "textType": "itemTitle",
+          "groupId": "content-text-2-item-1",
+          "minimumFontSize": 24
+        },
+        {
+          "type": "text",
+          "id": "t18-content-text-2-item-body-008",
+          "left": 84,
+          "top": 252,
+          "width": 382,
+          "height": 210,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#4A4643",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #4A4643;font-size: 17px;font-family: 微软雅黑;line-height: 1.35;\">在此输入完整说明，保持观点、证据与行动之间的清晰关系。</span></p>",
+          "textType": "item",
+          "groupId": "content-text-2-item-1",
+          "minimumFontSize": 16
+        },
+        {
+          "type": "text",
+          "id": "t18-content-text-2-item-number-009",
+          "left": 550,
+          "top": 178,
+          "width": 48,
+          "height": 46,
+          "rotate": 0,
+          "defaultFontName": "Arial",
+          "defaultColor": "#B77D80",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B77D80;font-size: 18px;font-family: Arial;line-height: 1.35;font-weight: 700;\">02</span></p>",
+          "textType": "itemNumber",
+          "groupId": "content-text-2-item-2"
+        },
+        {
+          "type": "line",
+          "id": "t18-content-text-2-item-line-010",
+          "left": 602,
+          "top": 196,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            34,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B6925F",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-content-text-2-item-title-011",
+          "left": 646,
+          "top": 172,
+          "width": 294,
+          "height": 60,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 24px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">内容标题 2</span></p>",
+          "textType": "itemTitle",
+          "groupId": "content-text-2-item-2",
+          "minimumFontSize": 24
+        },
+        {
+          "type": "text",
+          "id": "t18-content-text-2-item-body-012",
+          "left": 554,
+          "top": 252,
+          "width": 382,
+          "height": 210,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#4A4643",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #4A4643;font-size: 17px;font-family: 微软雅黑;line-height: 1.35;\">在此输入完整说明，保持观点、证据与行动之间的清晰关系。</span></p>",
+          "textType": "item",
+          "groupId": "content-text-2-item-2",
+          "minimumFontSize": 16
+        },
+        {
+          "type": "image",
+          "id": "t18-content-text-2-eaves-013",
+          "src": "/api/data/template_18_asset_eaves_corner_v1.png",
+          "left": 0,
+          "top": 350,
+          "width": 283.33,
+          "height": 212.5,
+          "rotate": 0,
+          "fixedRatio": true,
+          "imageType": "decoration",
+          "lock": true
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#F6F2EA"
+      },
+      "sourceReferenceSlides": [
+        7,
+        10,
+        18,
+        24
+      ],
+      "sourceFidelity": {
+        "preserve": [
+          "2-item rhythm",
+          "large whitespace",
+          "lightweight numbering"
+        ],
+        "deviations": [
+          "narrow vertical body changed to horizontal editable text"
+        ]
+      },
+      "remark": "[Sources]\n- Visual composition reference: user-provided 精品系列(2).pptx\n- Reference media excluded; original project assets generated with built-in imagegen\n- Actual image model identifier was not exposed by the tool",
+      "allowedItemCounts": [
+        2
+      ],
+      "layoutKind": "text",
+      "titleFitLimits": {
+        "maxWide": 40,
+        "maxAscii": 80,
+        "singleWide": 20,
+        "singleAscii": 44
+      }
+    },
+    {
+      "id": "content-text-3",
+      "type": "content",
+      "elements": [
+        {
+          "type": "text",
+          "id": "t18-content-text-3-part-mark-001",
+          "left": 0,
+          "top": 24,
+          "width": 58,
+          "height": 54,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#B77D80",
+          "vertical": false,
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #B77D80;font-size: 44px;font-family: 微软雅黑;line-height: 1.35;\">叁</span></p>"
+        },
+        {
+          "type": "text",
+          "id": "t18-content-text-3-page-title-002",
+          "left": 78,
+          "top": 34,
+          "width": 700,
+          "height": 82,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 35px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">飞檐雅韵内容结构</span></p>",
+          "textType": "title",
+          "minimumFontSize": 35
+        },
+        {
+          "type": "line",
+          "id": "t18-content-text-3-title-line-003",
+          "left": 78,
+          "top": 120,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            650,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B77D80",
+          "style": "solid",
+          "width": 1.5,
+          "rotate": 0,
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t18-content-text-3-header-plum-004",
+          "src": "/api/data/template_18_asset_plum_branch_v1.png",
+          "left": 720,
+          "top": 2,
+          "width": 250,
+          "height": 102,
+          "rotate": 0,
+          "fixedRatio": true,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-content-text-3-item-number-005",
+          "left": 75,
+          "top": 178,
+          "width": 48,
+          "height": 46,
+          "rotate": 0,
+          "defaultFontName": "Arial",
+          "defaultColor": "#B77D80",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B77D80;font-size: 18px;font-family: Arial;line-height: 1.35;font-weight: 700;\">01</span></p>",
+          "textType": "itemNumber",
+          "groupId": "content-text-3-item-1"
+        },
+        {
+          "type": "line",
+          "id": "t18-content-text-3-item-line-006",
+          "left": 127,
+          "top": 196,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            34,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B6925F",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-content-text-3-item-title-007",
+          "left": 171,
+          "top": 172,
+          "width": 154,
+          "height": 60,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 24px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">内容标题 1</span></p>",
+          "textType": "itemTitle",
+          "groupId": "content-text-3-item-1",
+          "minimumFontSize": 24
+        },
+        {
+          "type": "text",
+          "id": "t18-content-text-3-item-body-008",
+          "left": 79,
+          "top": 252,
+          "width": 242,
+          "height": 210,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#4A4643",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #4A4643;font-size: 17px;font-family: 微软雅黑;line-height: 1.35;\">在此输入完整说明，保持观点、证据与行动之间的清晰关系。</span></p>",
+          "textType": "item",
+          "groupId": "content-text-3-item-1",
+          "minimumFontSize": 16
+        },
+        {
+          "type": "text",
+          "id": "t18-content-text-3-item-number-009",
+          "left": 375,
+          "top": 178,
+          "width": 48,
+          "height": 46,
+          "rotate": 0,
+          "defaultFontName": "Arial",
+          "defaultColor": "#B77D80",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B77D80;font-size: 18px;font-family: Arial;line-height: 1.35;font-weight: 700;\">02</span></p>",
+          "textType": "itemNumber",
+          "groupId": "content-text-3-item-2"
+        },
+        {
+          "type": "line",
+          "id": "t18-content-text-3-item-line-010",
+          "left": 427,
+          "top": 196,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            34,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B6925F",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-content-text-3-item-title-011",
+          "left": 471,
+          "top": 172,
+          "width": 154,
+          "height": 60,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 24px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">内容标题 2</span></p>",
+          "textType": "itemTitle",
+          "groupId": "content-text-3-item-2",
+          "minimumFontSize": 24
+        },
+        {
+          "type": "text",
+          "id": "t18-content-text-3-item-body-012",
+          "left": 379,
+          "top": 252,
+          "width": 242,
+          "height": 210,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#4A4643",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #4A4643;font-size: 17px;font-family: 微软雅黑;line-height: 1.35;\">在此输入完整说明，保持观点、证据与行动之间的清晰关系。</span></p>",
+          "textType": "item",
+          "groupId": "content-text-3-item-2",
+          "minimumFontSize": 16
+        },
+        {
+          "type": "text",
+          "id": "t18-content-text-3-item-number-013",
+          "left": 675,
+          "top": 178,
+          "width": 48,
+          "height": 46,
+          "rotate": 0,
+          "defaultFontName": "Arial",
+          "defaultColor": "#B77D80",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B77D80;font-size: 18px;font-family: Arial;line-height: 1.35;font-weight: 700;\">03</span></p>",
+          "textType": "itemNumber",
+          "groupId": "content-text-3-item-3"
+        },
+        {
+          "type": "line",
+          "id": "t18-content-text-3-item-line-014",
+          "left": 727,
+          "top": 196,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            34,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B6925F",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-content-text-3-item-title-015",
+          "left": 771,
+          "top": 172,
+          "width": 154,
+          "height": 60,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 24px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">内容标题 3</span></p>",
+          "textType": "itemTitle",
+          "groupId": "content-text-3-item-3",
+          "minimumFontSize": 24
+        },
+        {
+          "type": "text",
+          "id": "t18-content-text-3-item-body-016",
+          "left": 679,
+          "top": 252,
+          "width": 242,
+          "height": 210,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#4A4643",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #4A4643;font-size: 17px;font-family: 微软雅黑;line-height: 1.35;\">在此输入完整说明，保持观点、证据与行动之间的清晰关系。</span></p>",
+          "textType": "item",
+          "groupId": "content-text-3-item-3",
+          "minimumFontSize": 16
+        },
+        {
+          "type": "image",
+          "id": "t18-content-text-3-medallion-017",
+          "src": "/api/data/template_18_asset_medallion_v1.png",
+          "left": 720,
+          "top": 335,
+          "width": 175,
+          "height": 175,
+          "rotate": 0,
+          "fixedRatio": true,
+          "imageType": "decoration",
+          "lock": true
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#F6F2EA"
+      },
+      "sourceReferenceSlides": [
+        12,
+        17,
+        19
+      ],
+      "sourceFidelity": {
+        "preserve": [
+          "3-item rhythm",
+          "large whitespace",
+          "lightweight numbering"
+        ],
+        "deviations": [
+          "narrow vertical body changed to horizontal editable text"
+        ]
+      },
+      "remark": "[Sources]\n- Visual composition reference: user-provided 精品系列(2).pptx\n- Reference media excluded; original project assets generated with built-in imagegen\n- Actual image model identifier was not exposed by the tool",
+      "allowedItemCounts": [
+        3
+      ],
+      "layoutKind": "text",
+      "titleFitLimits": {
+        "maxWide": 40,
+        "maxAscii": 80,
+        "singleWide": 20,
+        "singleAscii": 44
+      }
+    },
+    {
+      "id": "content-text-4",
+      "type": "content",
+      "elements": [
+        {
+          "type": "text",
+          "id": "t18-content-text-4-part-mark-001",
+          "left": 0,
+          "top": 24,
+          "width": 58,
+          "height": 54,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#B77D80",
+          "vertical": false,
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #B77D80;font-size: 44px;font-family: 微软雅黑;line-height: 1.35;\">肆</span></p>"
+        },
+        {
+          "type": "text",
+          "id": "t18-content-text-4-page-title-002",
+          "left": 78,
+          "top": 34,
+          "width": 700,
+          "height": 82,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 35px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">飞檐雅韵内容结构</span></p>",
+          "textType": "title",
+          "minimumFontSize": 35
+        },
+        {
+          "type": "line",
+          "id": "t18-content-text-4-title-line-003",
+          "left": 78,
+          "top": 120,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            650,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B77D80",
+          "style": "solid",
+          "width": 1.5,
+          "rotate": 0,
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t18-content-text-4-header-plum-004",
+          "src": "/api/data/template_18_asset_plum_branch_v1.png",
+          "left": 720,
+          "top": 2,
+          "width": 250,
+          "height": 102,
+          "rotate": 0,
+          "fixedRatio": true,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-content-text-4-item-number-005",
+          "left": 80,
+          "top": 152,
+          "width": 48,
+          "height": 46,
+          "rotate": 0,
+          "defaultFontName": "Arial",
+          "defaultColor": "#B77D80",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B77D80;font-size: 18px;font-family: Arial;line-height: 1.35;font-weight: 700;\">01</span></p>",
+          "textType": "itemNumber",
+          "groupId": "content-text-4-item-1"
+        },
+        {
+          "type": "line",
+          "id": "t18-content-text-4-item-line-006",
+          "left": 132,
+          "top": 170,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            34,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B6925F",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-content-text-4-item-title-007",
+          "left": 176,
+          "top": 146,
+          "width": 294,
+          "height": 60,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 24px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">内容标题 1</span></p>",
+          "textType": "itemTitle",
+          "groupId": "content-text-4-item-1",
+          "minimumFontSize": 24
+        },
+        {
+          "type": "text",
+          "id": "t18-content-text-4-item-body-008",
+          "left": 84,
+          "top": 226,
+          "width": 382,
+          "height": 78,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#4A4643",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #4A4643;font-size: 17px;font-family: 微软雅黑;line-height: 1.35;\">在此输入完整说明，保持观点、证据与行动之间的清晰关系。</span></p>",
+          "textType": "item",
+          "groupId": "content-text-4-item-1",
+          "minimumFontSize": 16
+        },
+        {
+          "type": "text",
+          "id": "t18-content-text-4-item-number-009",
+          "left": 550,
+          "top": 152,
+          "width": 48,
+          "height": 46,
+          "rotate": 0,
+          "defaultFontName": "Arial",
+          "defaultColor": "#B77D80",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B77D80;font-size: 18px;font-family: Arial;line-height: 1.35;font-weight: 700;\">02</span></p>",
+          "textType": "itemNumber",
+          "groupId": "content-text-4-item-2"
+        },
+        {
+          "type": "line",
+          "id": "t18-content-text-4-item-line-010",
+          "left": 602,
+          "top": 170,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            34,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B6925F",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-content-text-4-item-title-011",
+          "left": 646,
+          "top": 146,
+          "width": 294,
+          "height": 60,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 24px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">内容标题 2</span></p>",
+          "textType": "itemTitle",
+          "groupId": "content-text-4-item-2",
+          "minimumFontSize": 24
+        },
+        {
+          "type": "text",
+          "id": "t18-content-text-4-item-body-012",
+          "left": 554,
+          "top": 226,
+          "width": 382,
+          "height": 78,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#4A4643",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #4A4643;font-size: 17px;font-family: 微软雅黑;line-height: 1.35;\">在此输入完整说明，保持观点、证据与行动之间的清晰关系。</span></p>",
+          "textType": "item",
+          "groupId": "content-text-4-item-2",
+          "minimumFontSize": 16
+        },
+        {
+          "type": "text",
+          "id": "t18-content-text-4-item-number-013",
+          "left": 80,
+          "top": 337,
+          "width": 48,
+          "height": 46,
+          "rotate": 0,
+          "defaultFontName": "Arial",
+          "defaultColor": "#B77D80",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B77D80;font-size: 18px;font-family: Arial;line-height: 1.35;font-weight: 700;\">03</span></p>",
+          "textType": "itemNumber",
+          "groupId": "content-text-4-item-3"
+        },
+        {
+          "type": "line",
+          "id": "t18-content-text-4-item-line-014",
+          "left": 132,
+          "top": 355,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            34,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B6925F",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-content-text-4-item-title-015",
+          "left": 176,
+          "top": 331,
+          "width": 294,
+          "height": 60,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 24px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">内容标题 3</span></p>",
+          "textType": "itemTitle",
+          "groupId": "content-text-4-item-3",
+          "minimumFontSize": 24
+        },
+        {
+          "type": "text",
+          "id": "t18-content-text-4-item-body-016",
+          "left": 84,
+          "top": 411,
+          "width": 382,
+          "height": 78,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#4A4643",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #4A4643;font-size: 17px;font-family: 微软雅黑;line-height: 1.35;\">在此输入完整说明，保持观点、证据与行动之间的清晰关系。</span></p>",
+          "textType": "item",
+          "groupId": "content-text-4-item-3",
+          "minimumFontSize": 16
+        },
+        {
+          "type": "text",
+          "id": "t18-content-text-4-item-number-017",
+          "left": 550,
+          "top": 337,
+          "width": 48,
+          "height": 46,
+          "rotate": 0,
+          "defaultFontName": "Arial",
+          "defaultColor": "#B77D80",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #B77D80;font-size: 18px;font-family: Arial;line-height: 1.35;font-weight: 700;\">04</span></p>",
+          "textType": "itemNumber",
+          "groupId": "content-text-4-item-4"
+        },
+        {
+          "type": "line",
+          "id": "t18-content-text-4-item-line-018",
+          "left": 602,
+          "top": 355,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            34,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B6925F",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-content-text-4-item-title-019",
+          "left": 646,
+          "top": 331,
+          "width": 294,
+          "height": 60,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 24px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">内容标题 4</span></p>",
+          "textType": "itemTitle",
+          "groupId": "content-text-4-item-4",
+          "minimumFontSize": 24
+        },
+        {
+          "type": "text",
+          "id": "t18-content-text-4-item-body-020",
+          "left": 554,
+          "top": 411,
+          "width": 382,
+          "height": 78,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#4A4643",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #4A4643;font-size: 17px;font-family: 微软雅黑;line-height: 1.35;\">在此输入完整说明，保持观点、证据与行动之间的清晰关系。</span></p>",
+          "textType": "item",
+          "groupId": "content-text-4-item-4",
+          "minimumFontSize": 16
+        },
+        {
+          "type": "image",
+          "id": "t18-content-text-4-cranes-021",
+          "src": "/api/data/template_18_asset_crane_pair_v1.png",
+          "left": 840,
+          "top": 490,
+          "width": 110,
+          "height": 70,
+          "rotate": 0,
+          "fixedRatio": true,
+          "imageType": "decoration",
+          "lock": true
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#F6F2EA"
+      },
+      "sourceReferenceSlides": [
+        6,
+        14,
+        22,
+        24
+      ],
+      "sourceFidelity": {
+        "preserve": [
+          "4-item rhythm",
+          "large whitespace",
+          "lightweight numbering"
+        ],
+        "deviations": [
+          "narrow vertical body changed to horizontal editable text"
+        ]
+      },
+      "remark": "[Sources]\n- Visual composition reference: user-provided 精品系列(2).pptx\n- Reference media excluded; original project assets generated with built-in imagegen\n- Actual image model identifier was not exposed by the tool",
+      "allowedItemCounts": [
+        4
+      ],
+      "layoutKind": "text",
+      "titleFitLimits": {
+        "maxWide": 40,
+        "maxAscii": 80,
+        "singleWide": 20,
+        "singleAscii": 44
+      }
+    },
+    {
+      "id": "content-metrics-4",
+      "type": "content",
+      "elements": [
+        {
+          "type": "text",
+          "id": "t18-content-metrics-4-part-mark-001",
+          "left": 0,
+          "top": 24,
+          "width": 58,
+          "height": 54,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#B77D80",
+          "vertical": false,
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #B77D80;font-size: 44px;font-family: 微软雅黑;line-height: 1.35;\">肆</span></p>"
+        },
+        {
+          "type": "text",
+          "id": "t18-content-metrics-4-page-title-002",
+          "left": 78,
+          "top": 34,
+          "width": 700,
+          "height": 82,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 35px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">四项核心指标</span></p>",
+          "textType": "title",
+          "minimumFontSize": 35
+        },
+        {
+          "type": "line",
+          "id": "t18-content-metrics-4-title-line-003",
+          "left": 78,
+          "top": 120,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            650,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B77D80",
+          "style": "solid",
+          "width": 1.5,
+          "rotate": 0,
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t18-content-metrics-4-header-plum-004",
+          "src": "/api/data/template_18_asset_plum_branch_v1.png",
+          "left": 720,
+          "top": 2,
+          "width": 250,
+          "height": 102,
+          "rotate": 0,
+          "fixedRatio": true,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t18-content-metrics-4-eaves-005",
+          "src": "/api/data/template_18_asset_eaves_corner_v1.png",
+          "left": 0,
+          "top": 320,
+          "width": 280,
+          "height": 210,
+          "rotate": 0,
+          "fixedRatio": true,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "shape",
+          "id": "t18-content-metrics-4-metric-ring-006",
+          "left": 280,
+          "top": 160,
+          "width": 112,
+          "height": 112,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 100 0 A 100 100 0 1 1 100 200 A 100 100 0 1 1 100 0 Z",
+          "fill": "rgba(255,255,255,0)",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#B6925F",
+            "width": 12,
+            "style": "solid"
+          },
+          "lock": true,
+          "groupId": "content-metrics-4-item-1"
+        },
+        {
+          "type": "text",
+          "id": "t18-content-metrics-4-metric-number-007",
+          "left": 305,
+          "top": 194,
+          "width": 62,
+          "height": 44,
+          "rotate": 0,
+          "defaultFontName": "Arial",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #211B1C;font-size: 24px;font-family: Arial;line-height: 1.35;font-weight: 700;\">01</span></p>",
+          "textType": "itemNumber",
+          "groupId": "content-metrics-4-item-1"
+        },
+        {
+          "type": "text",
+          "id": "t18-content-metrics-4-metric-title-008",
+          "left": 270,
+          "top": 292,
+          "width": 132,
+          "height": 68,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #211B1C;font-size: 24px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">指标 1</span></p>",
+          "textType": "itemTitle",
+          "groupId": "content-metrics-4-item-1",
+          "minimumFontSize": 24
+        },
+        {
+          "type": "text",
+          "id": "t18-content-metrics-4-metric-body-009",
+          "left": 270,
+          "top": 365,
+          "width": 132,
+          "height": 104,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#4A4643",
+          "vertical": false,
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #4A4643;font-size: 16px;font-family: 微软雅黑;line-height: 1.35;\">指标说明</span></p>",
+          "textType": "item",
+          "groupId": "content-metrics-4-item-1",
+          "minimumFontSize": 16
+        },
+        {
+          "type": "shape",
+          "id": "t18-content-metrics-4-metric-ring-010",
+          "left": 450,
+          "top": 160,
+          "width": 112,
+          "height": 112,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 100 0 A 100 100 0 1 1 100 200 A 100 100 0 1 1 100 0 Z",
+          "fill": "rgba(255,255,255,0)",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#B6925F",
+            "width": 12,
+            "style": "solid"
+          },
+          "lock": true,
+          "groupId": "content-metrics-4-item-2"
+        },
+        {
+          "type": "text",
+          "id": "t18-content-metrics-4-metric-number-011",
+          "left": 475,
+          "top": 194,
+          "width": 62,
+          "height": 44,
+          "rotate": 0,
+          "defaultFontName": "Arial",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #211B1C;font-size: 24px;font-family: Arial;line-height: 1.35;font-weight: 700;\">02</span></p>",
+          "textType": "itemNumber",
+          "groupId": "content-metrics-4-item-2"
+        },
+        {
+          "type": "text",
+          "id": "t18-content-metrics-4-metric-title-012",
+          "left": 440,
+          "top": 292,
+          "width": 132,
+          "height": 68,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #211B1C;font-size: 24px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">指标 2</span></p>",
+          "textType": "itemTitle",
+          "groupId": "content-metrics-4-item-2",
+          "minimumFontSize": 24
+        },
+        {
+          "type": "text",
+          "id": "t18-content-metrics-4-metric-body-013",
+          "left": 440,
+          "top": 365,
+          "width": 132,
+          "height": 104,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#4A4643",
+          "vertical": false,
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #4A4643;font-size: 16px;font-family: 微软雅黑;line-height: 1.35;\">指标说明</span></p>",
+          "textType": "item",
+          "groupId": "content-metrics-4-item-2",
+          "minimumFontSize": 16
+        },
+        {
+          "type": "shape",
+          "id": "t18-content-metrics-4-metric-ring-014",
+          "left": 620,
+          "top": 160,
+          "width": 112,
+          "height": 112,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 100 0 A 100 100 0 1 1 100 200 A 100 100 0 1 1 100 0 Z",
+          "fill": "rgba(255,255,255,0)",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#B6925F",
+            "width": 12,
+            "style": "solid"
+          },
+          "lock": true,
+          "groupId": "content-metrics-4-item-3"
+        },
+        {
+          "type": "text",
+          "id": "t18-content-metrics-4-metric-number-015",
+          "left": 645,
+          "top": 194,
+          "width": 62,
+          "height": 44,
+          "rotate": 0,
+          "defaultFontName": "Arial",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #211B1C;font-size: 24px;font-family: Arial;line-height: 1.35;font-weight: 700;\">03</span></p>",
+          "textType": "itemNumber",
+          "groupId": "content-metrics-4-item-3"
+        },
+        {
+          "type": "text",
+          "id": "t18-content-metrics-4-metric-title-016",
+          "left": 610,
+          "top": 292,
+          "width": 132,
+          "height": 68,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #211B1C;font-size: 24px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">指标 3</span></p>",
+          "textType": "itemTitle",
+          "groupId": "content-metrics-4-item-3",
+          "minimumFontSize": 24
+        },
+        {
+          "type": "text",
+          "id": "t18-content-metrics-4-metric-body-017",
+          "left": 610,
+          "top": 365,
+          "width": 132,
+          "height": 104,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#4A4643",
+          "vertical": false,
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #4A4643;font-size: 16px;font-family: 微软雅黑;line-height: 1.35;\">指标说明</span></p>",
+          "textType": "item",
+          "groupId": "content-metrics-4-item-3",
+          "minimumFontSize": 16
+        },
+        {
+          "type": "shape",
+          "id": "t18-content-metrics-4-metric-ring-018",
+          "left": 790,
+          "top": 160,
+          "width": 112,
+          "height": 112,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 100 0 A 100 100 0 1 1 100 200 A 100 100 0 1 1 100 0 Z",
+          "fill": "rgba(255,255,255,0)",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#B6925F",
+            "width": 12,
+            "style": "solid"
+          },
+          "lock": true,
+          "groupId": "content-metrics-4-item-4"
+        },
+        {
+          "type": "text",
+          "id": "t18-content-metrics-4-metric-number-019",
+          "left": 815,
+          "top": 194,
+          "width": 62,
+          "height": 44,
+          "rotate": 0,
+          "defaultFontName": "Arial",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #211B1C;font-size: 24px;font-family: Arial;line-height: 1.35;font-weight: 700;\">04</span></p>",
+          "textType": "itemNumber",
+          "groupId": "content-metrics-4-item-4"
+        },
+        {
+          "type": "text",
+          "id": "t18-content-metrics-4-metric-title-020",
+          "left": 780,
+          "top": 292,
+          "width": 132,
+          "height": 68,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #211B1C;font-size: 24px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">指标 4</span></p>",
+          "textType": "itemTitle",
+          "groupId": "content-metrics-4-item-4",
+          "minimumFontSize": 24
+        },
+        {
+          "type": "text",
+          "id": "t18-content-metrics-4-metric-body-021",
+          "left": 780,
+          "top": 365,
+          "width": 132,
+          "height": 104,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#4A4643",
+          "vertical": false,
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #4A4643;font-size: 16px;font-family: 微软雅黑;line-height: 1.35;\">指标说明</span></p>",
+          "textType": "item",
+          "groupId": "content-metrics-4-item-4",
+          "minimumFontSize": 16
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#F6F2EA"
+      },
+      "sourceReferenceSlides": [
+        22
+      ],
+      "sourceFidelity": {
+        "preserve": [
+          "four evenly spaced metrics",
+          "gold circular rhythm",
+          "left visual accent"
+        ],
+        "deviations": [
+          "native charts replaced with editable text and shapes"
+        ]
+      },
+      "remark": "[Sources]\n- Visual composition reference: user-provided 精品系列(2).pptx\n- Reference media excluded; original project assets generated with built-in imagegen\n- Actual image model identifier was not exposed by the tool",
+      "allowedItemCounts": [
+        4
+      ],
+      "layoutKind": "metrics",
+      "titleFitLimits": {
+        "maxWide": 40,
+        "maxAscii": 80,
+        "singleWide": 20,
+        "singleAscii": 44
+      }
+    },
+    {
+      "id": "end-rooftile",
+      "type": "end",
+      "elements": [
+        {
+          "type": "image",
+          "id": "t18-end-rooftile-background-001",
+          "src": "/api/data/template_18_asset_bg_end_v1.jpg",
+          "left": 0,
+          "top": 0,
+          "width": 1000,
+          "height": 562.5,
+          "rotate": 0,
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "shape",
+          "id": "t18-end-rooftile-title-circle-002",
+          "left": 95,
+          "top": 250,
+          "width": 142,
+          "height": 142,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 100 0 A 100 100 0 1 1 100 200 A 100 100 0 1 1 100 0 Z",
+          "fill": "#211B1C",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#211B1C",
+            "width": 0,
+            "style": "solid"
+          },
+          "lock": true
+        },
+        {
+          "type": "shape",
+          "id": "t18-end-rooftile-title-circle-003",
+          "left": 300,
+          "top": 250,
+          "width": 142,
+          "height": 142,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 100 0 A 100 100 0 1 1 100 200 A 100 100 0 1 1 100 0 Z",
+          "fill": "#211B1C",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#211B1C",
+            "width": 0,
+            "style": "solid"
+          },
+          "lock": true
+        },
+        {
+          "type": "shape",
+          "id": "t18-end-rooftile-title-circle-004",
+          "left": 505,
+          "top": 250,
+          "width": 142,
+          "height": 142,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 100 0 A 100 100 0 1 1 100 200 A 100 100 0 1 1 100 0 Z",
+          "fill": "#211B1C",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#211B1C",
+            "width": 0,
+            "style": "solid"
+          },
+          "lock": true
+        },
+        {
+          "type": "shape",
+          "id": "t18-end-rooftile-title-circle-005",
+          "left": 710,
+          "top": 250,
+          "width": 142,
+          "height": 142,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 100 0 A 100 100 0 1 1 100 200 A 100 100 0 1 1 100 0 Z",
+          "fill": "#211B1C",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#211B1C",
+            "width": 0,
+            "style": "solid"
+          },
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t18-end-rooftile-closing-character-006",
+          "left": 95,
+          "top": 279,
+          "width": 142,
+          "height": 78,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#FFFFFF",
+          "vertical": false,
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #FFFFFF;font-size: 48px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">感</span></p>"
+        },
+        {
+          "type": "text",
+          "id": "t18-end-rooftile-closing-character-007",
+          "left": 300,
+          "top": 279,
+          "width": 142,
+          "height": 78,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#FFFFFF",
+          "vertical": false,
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #FFFFFF;font-size: 48px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">谢</span></p>"
+        },
+        {
+          "type": "text",
+          "id": "t18-end-rooftile-closing-character-008",
+          "left": 505,
+          "top": 279,
+          "width": 142,
+          "height": 78,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#FFFFFF",
+          "vertical": false,
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #FFFFFF;font-size: 48px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">聆</span></p>"
+        },
+        {
+          "type": "text",
+          "id": "t18-end-rooftile-closing-character-009",
+          "left": 710,
+          "top": 279,
+          "width": 142,
+          "height": 78,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#FFFFFF",
+          "vertical": false,
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #FFFFFF;font-size: 48px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">听</span></p>"
+        },
+        {
+          "type": "shape",
+          "id": "t18-end-rooftile-subtitle-panel-010",
+          "left": 300,
+          "top": 388,
+          "width": 400,
+          "height": 136,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "rgba(246,242,234,0.94)",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#211B1C",
+            "width": 1,
+            "style": "solid"
+          },
+          "lock": true,
+          "pathFormula": "roundRect",
+          "keypoints": [
+            0.08
+          ]
+        },
+        {
+          "type": "text",
+          "id": "t18-end-rooftile-title-011",
+          "left": 325,
+          "top": 392,
+          "width": 350,
+          "height": 78,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #211B1C;font-size: 35px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">期待下一次相见</span></p>",
+          "textType": "title",
+          "minimumFontSize": 35
+        },
+        {
+          "type": "text",
+          "id": "t18-end-rooftile-content-012",
+          "left": 325,
+          "top": 476,
+          "width": 350,
+          "height": 44,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #211B1C;font-size: 14px;font-family: 微软雅黑;line-height: 1.35;\">让东方意境留下余韵</span></p>",
+          "textType": "content",
+          "minimumFontSize": 14
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#F6F2EA"
+      },
+      "sourceReferenceSlides": [
+        26
+      ],
+      "sourceFidelity": {
+        "preserve": [
+          "roof-tile visual weight",
+          "four-circle closing rhythm",
+          "plum branches",
+          "cover-end symmetry"
+        ],
+        "deviations": [
+          "source media and fonts replaced",
+          "editable closing title"
+        ]
+      },
+      "remark": "[Sources]\n- Visual composition reference: user-provided 精品系列(2).pptx\n- Reference media excluded; original project assets generated with built-in imagegen\n- Actual image model identifier was not exposed by the tool"
+    },
+    {
+      "id": "end-action",
+      "type": "end",
+      "elements": [
+        {
+          "type": "image",
+          "id": "t18-end-action-background-001",
+          "src": "/api/data/template_18_asset_bg_end_v1.jpg",
+          "left": 0,
+          "top": 0,
+          "width": 1000,
+          "height": 562.5,
+          "rotate": 0,
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "shape",
+          "id": "t18-end-action-safe-panel-002",
+          "left": 78,
+          "top": 92,
+          "width": 844,
+          "height": 405,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "rgba(246,242,234,0.90)",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#B77D80",
+            "width": 1,
+            "style": "solid"
+          },
+          "lock": true,
+          "pathFormula": "roundRect",
+          "keypoints": [
+            0.08
+          ]
+        },
+        {
+          "type": "text",
+          "id": "t18-end-action-title-003",
+          "left": 160,
+          "top": 112,
+          "width": 680,
+          "height": 96,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #211B1C;font-size: 44px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">下一步行动</span></p>",
+          "textType": "title",
+          "minimumFontSize": 44
+        },
+        {
+          "type": "text",
+          "id": "t18-end-action-content-004",
+          "left": 180,
+          "top": 205,
+          "width": 640,
+          "height": 56,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#4A4643",
+          "vertical": false,
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #4A4643;font-size: 18px;font-family: 微软雅黑;line-height: 1.35;\">明确负责人、完成标准和复盘时间</span></p>",
+          "textType": "content",
+          "minimumFontSize": 16
+        },
+        {
+          "type": "shape",
+          "id": "t18-end-action-action-card-005",
+          "left": 135,
+          "top": 300,
+          "width": 220,
+          "height": 115,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "rgba(255,255,255,0.88)",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#B77D80",
+            "width": 1,
+            "style": "solid"
+          },
+          "lock": true,
+          "pathFormula": "roundRect",
+          "keypoints": [
+            0.08
+          ],
+          "groupId": "end-action-item-1"
+        },
+        {
+          "type": "shape",
+          "id": "t18-end-action-action-node-006",
+          "left": 153,
+          "top": 333,
+          "width": 48,
+          "height": 48,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 100 0 A 100 100 0 1 1 100 200 A 100 100 0 1 1 100 0 Z",
+          "fill": "#B77D80",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#B77D80",
+            "width": 0,
+            "style": "solid"
+          },
+          "lock": true,
+          "groupId": "end-action-item-1"
+        },
+        {
+          "type": "text",
+          "id": "t18-end-action-action-number-007",
+          "left": 153,
+          "top": 342,
+          "width": 48,
+          "height": 32,
+          "rotate": 0,
+          "defaultFontName": "Arial",
+          "defaultColor": "#FFFFFF",
+          "vertical": false,
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #FFFFFF;font-size: 15px;font-family: Arial;line-height: 1.35;font-weight: 700;\">01</span></p>",
+          "groupId": "end-action-item-1"
+        },
+        {
+          "type": "text",
+          "id": "t18-end-action-action-item-008",
+          "left": 217,
+          "top": 331,
+          "width": 116,
+          "height": 52,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 17px;font-family: 微软雅黑;line-height: 1.35;\">行动 1</span></p>",
+          "textType": "item",
+          "groupId": "end-action-item-1",
+          "minimumFontSize": 16
+        },
+        {
+          "type": "shape",
+          "id": "t18-end-action-action-card-009",
+          "left": 390,
+          "top": 300,
+          "width": 220,
+          "height": 115,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "rgba(255,255,255,0.88)",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#B77D80",
+            "width": 1,
+            "style": "solid"
+          },
+          "lock": true,
+          "pathFormula": "roundRect",
+          "keypoints": [
+            0.08
+          ],
+          "groupId": "end-action-item-2"
+        },
+        {
+          "type": "shape",
+          "id": "t18-end-action-action-node-010",
+          "left": 408,
+          "top": 333,
+          "width": 48,
+          "height": 48,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 100 0 A 100 100 0 1 1 100 200 A 100 100 0 1 1 100 0 Z",
+          "fill": "#B77D80",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#B77D80",
+            "width": 0,
+            "style": "solid"
+          },
+          "lock": true,
+          "groupId": "end-action-item-2"
+        },
+        {
+          "type": "text",
+          "id": "t18-end-action-action-number-011",
+          "left": 408,
+          "top": 342,
+          "width": 48,
+          "height": 32,
+          "rotate": 0,
+          "defaultFontName": "Arial",
+          "defaultColor": "#FFFFFF",
+          "vertical": false,
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #FFFFFF;font-size: 15px;font-family: Arial;line-height: 1.35;font-weight: 700;\">02</span></p>",
+          "groupId": "end-action-item-2"
+        },
+        {
+          "type": "text",
+          "id": "t18-end-action-action-item-012",
+          "left": 472,
+          "top": 331,
+          "width": 116,
+          "height": 52,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 17px;font-family: 微软雅黑;line-height: 1.35;\">行动 2</span></p>",
+          "textType": "item",
+          "groupId": "end-action-item-2",
+          "minimumFontSize": 16
+        },
+        {
+          "type": "shape",
+          "id": "t18-end-action-action-card-013",
+          "left": 645,
+          "top": 300,
+          "width": 220,
+          "height": 115,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "rgba(255,255,255,0.88)",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#B77D80",
+            "width": 1,
+            "style": "solid"
+          },
+          "lock": true,
+          "pathFormula": "roundRect",
+          "keypoints": [
+            0.08
+          ],
+          "groupId": "end-action-item-3"
+        },
+        {
+          "type": "shape",
+          "id": "t18-end-action-action-node-014",
+          "left": 663,
+          "top": 333,
+          "width": 48,
+          "height": 48,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 100 0 A 100 100 0 1 1 100 200 A 100 100 0 1 1 100 0 Z",
+          "fill": "#B77D80",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#B77D80",
+            "width": 0,
+            "style": "solid"
+          },
+          "lock": true,
+          "groupId": "end-action-item-3"
+        },
+        {
+          "type": "text",
+          "id": "t18-end-action-action-number-015",
+          "left": 663,
+          "top": 342,
+          "width": 48,
+          "height": 32,
+          "rotate": 0,
+          "defaultFontName": "Arial",
+          "defaultColor": "#FFFFFF",
+          "vertical": false,
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #FFFFFF;font-size: 15px;font-family: Arial;line-height: 1.35;font-weight: 700;\">03</span></p>",
+          "groupId": "end-action-item-3"
+        },
+        {
+          "type": "text",
+          "id": "t18-end-action-action-item-016",
+          "left": 727,
+          "top": 331,
+          "width": 116,
+          "height": 52,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "vertical": false,
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 17px;font-family: 微软雅黑;line-height: 1.35;\">行动 3</span></p>",
+          "textType": "item",
+          "groupId": "end-action-item-3",
+          "minimumFontSize": 16
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#F6F2EA"
+      },
+      "sourceReferenceSlides": [
+        26,
+        17
+      ],
+      "sourceFidelity": {
+        "preserve": [
+          "cover-end symmetry",
+          "three-step rhythm",
+          "ancient architecture accents"
+        ],
+        "deviations": [
+          "action items added as semantic groups"
+        ]
+      },
+      "remark": "[Sources]\n- Visual composition reference: user-provided 精品系列(2).pptx\n- Reference media excluded; original project assets generated with built-in imagegen\n- Actual image model identifier was not exposed by the tool"
+    }
+  ]
+}

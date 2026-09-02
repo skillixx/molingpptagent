@@ -1,0 +1,42 @@
+{
+  "template_id": "template_18",
+  "checked_at": "2026-09-02T11:46:00+08:00",
+  "status": "PASS",
+  "export": {
+    "file": "exports/template_18_e2e_roundtrip.pptx",
+    "bytes": 10332648,
+    "sha256": "60331B18282C43921EDF965C11B0944BC7AB451B51B9FF510CE150D4F08CDFA6",
+    "download_failure": null
+  },
+  "node_parse": {
+    "library": "pptxtojson 1.5.2",
+    "slide_count": 11,
+    "size_pt": {
+      "width": 720,
+      "height": 405
+    },
+    "theme_color_count": 6,
+    "image_count": 22,
+    "shape_count": 128,
+    "edited_title_preserved": true,
+    "content_image_geometry": "ellipse",
+    "content_image_size_pt": [145.44, 145.44],
+    "four_metrics_preserved": true
+  },
+  "editor_reimport": {
+    "status": "PASS",
+    "slide_count": 11,
+    "edited_title_preserved": true,
+    "content_image_preserved": true,
+    "content_image_clip_path": "ellipse(50% 50% at 50% 50%)",
+    "circular_image_preserved": true,
+    "four_metrics_preserved": true,
+    "decorations_preserved": true,
+    "main_images_on_content_slide": 3,
+    "console_errors": 0
+  },
+  "evidence": [
+    "devices/roundtrip-circle-slide5-1366x768.png"
+  ],
+  "known_behavior": "The deliberately extended edited cover title wraps in the narrow information panel after re-import; source-length template titles retain the intended single-line composition."
+}

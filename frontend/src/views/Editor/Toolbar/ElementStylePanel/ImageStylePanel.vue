@@ -76,6 +76,7 @@ import type { PPTImageElement, SlideBackground } from '@/types/slides'
 import { CLIPPATHS } from '@/configs/imageClip'
 import { getImageDataURL, getImageSize } from '@/utils/image'
 import useHistorySnapshot from '@/hooks/useHistorySnapshot'
+import { getImageReplacementProps } from '@/hooks/templateImageProtocol'
 
 import ElementOutline from '../common/ElementOutline.vue'
 import ElementShadow from '../common/ElementShadow.vue'
@@ -222,30 +223,9 @@ const replaceImage = (files: FileList) => {
   const imageFile = files[0]
   if (!imageFile) return
   getImageDataURL(imageFile).then(dataURL => {
-    const originWidth = handleImageElement.value.width
-    const originHeight = handleImageElement.value.height
-    const originLeft = handleImageElement.value.left
-    const originTop = handleImageElement.value.top
-    const centerX = originLeft + originWidth / 2
-    const centerY = originTop + originHeight / 2
-
     getImageSize(dataURL).then(({ width, height }) => {
-      const h = originHeight
-      const w = width * (originHeight / height)
-      const l = centerX - w / 2
-      const t = centerY - h / 2
-
-      slidesStore.removeElementProps({
-        id: handleElementId.value,
-        propName: 'clip',
-      })
-      updateImage({
-        src: dataURL,
-        width: w,
-        height: h,
-        left: l,
-        top: t,
-      })
+      // 圆形、圆角等已裁剪图片换图后继续保留原裁切形状和画框。
+      updateImage(getImageReplacementProps(handleImageElement.value, dataURL, width, height))
     })
   })
 }

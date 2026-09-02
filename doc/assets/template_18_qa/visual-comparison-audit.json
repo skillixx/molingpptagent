@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_18",
+  "goalStage": "G8",
+  "checkedAt": "2026-09-02T11:49:00+08:00",
+  "status": "PASS",
+  "method": "Full-slide reference and production renders inspected side by side at 1600x900 comparison size.",
+  "sourceEvidence": "output/playwright/boutique-series-template-audit-20260901/slide-XX.png",
+  "comparisons": [
+    {
+      "category": "main-cover",
+      "referenceSlide": 1,
+      "productionSlide": "cover-rooftile",
+      "evidence": "comparisons/cover.png",
+      "preserved": ["four dark title circles", "roof-tile lower visual weight", "plum and bird upper framing", "centered lower information plaque", "large upper whitespace"],
+      "allowedDeviation": "Reference media and restricted fonts were replaced; the business title remains editable in a slightly taller ivory plaque."
+    },
+    {
+      "category": "contents",
+      "referenceSlide": 2,
+      "productionSlide": "contents-4",
+      "evidence": "comparisons/contents.png",
+      "preserved": ["right dusty-rose vertical rail", "vertical contents label", "four-item rhythm", "lower landscape baseline", "large whitespace"],
+      "allowedDeviation": "Unlicensed mountains were replaced by the original roof asset, and narrow vertical item bodies became editable horizontal items."
+    },
+    {
+      "category": "transition-rose",
+      "referenceSlide": 3,
+      "productionSlide": "transition-rose-band",
+      "evidence": "comparisons/transition-rose.png",
+      "preserved": ["dusty-rose vertical band", "gold medallion", "short vertical chapter label", "plum branch upper right", "horse-head-wall lower right"],
+      "allowedDeviation": "The summary is horizontal inside an ivory safety panel to support editing and stable pagination."
+    },
+    {
+      "category": "transition-medallion",
+      "referenceSlide": 9,
+      "productionSlide": "transition-medallion",
+      "evidence": "comparisons/transition-medallion.png",
+      "preserved": ["medallion focal role", "asymmetric whitespace", "plum branch upper right", "architecture lower right", "dusty-rose chapter numbering"],
+      "allowedDeviation": "This production variant removes the full-height rose band while retaining its medallion and color role, providing the required second stable transition layout."
+    },
+    {
+      "category": "two-item-content",
+      "referenceSlide": 7,
+      "productionSlide": "content-text-2",
+      "evidence": "comparisons/content-2.png",
+      "preserved": ["two balanced content groups", "lightweight numbering", "wide whitespace", "lower-left architectural visual weight"],
+      "allowedDeviation": "The licensed-risk photographic band was removed; horizontal bodies and a compact eaves accent preserve readability and pagination."
+    },
+    {
+      "category": "three-item-content",
+      "referenceSlide": 12,
+      "productionSlide": "content-text-3",
+      "evidence": "comparisons/content-3.png",
+      "preserved": ["three-column rhythm", "circular accent language", "large whitespace", "top-left chapter and title hierarchy"],
+      "allowedDeviation": "Three source ink-circle images were replaced by one authorized medallion accent so all item titles and bodies remain editable."
+    },
+    {
+      "category": "four-item-content",
+      "referenceSlide": 6,
+      "productionSlide": "content-text-4",
+      "evidence": "comparisons/content-4.png",
+      "preserved": ["low-density four-item rhythm", "dusty-rose focus", "top-left chapter and title hierarchy", "large whitespace"],
+      "allowedDeviation": "Vertical source bodies became a 2x2 horizontal structure for capacity; the crane ornament was moved into the bottom safety area after overlap was found and fixed."
+    },
+    {
+      "category": "single-image-content",
+      "referenceSlide": 5,
+      "productionSlide": "content-image-1",
+      "evidence": ["comparisons/content-image.png", "comparisons/content-image-circle.png"],
+      "additionalReferenceSlide": 19,
+      "preserved": ["single image plus single text block", "dusty-rose middle band", "circular content-image language from reference slide 19", "crane decorative role", "large lower whitespace"],
+      "allowedDeviation": "The source roof photograph and crane bytes were replaced by generated assets; the business image is an independent replaceable ellipse slot whose clip survives editor replacement and PPTX round-trip."
+    },
+    {
+      "category": "four-metrics",
+      "referenceSlide": 22,
+      "productionSlide": "content-metrics-4",
+      "evidence": "comparisons/metrics-4.png",
+      "preserved": ["four evenly spaced circular metrics", "gold circular rhythm", "left visual weight", "wide whitespace"],
+      "allowedDeviation": "Native charts and the source fan were replaced by editable rings, text, and an authorized eaves accent."
+    },
+    {
+      "category": "standard-end",
+      "referenceSlide": 26,
+      "productionSlide": "end-rooftile",
+      "evidence": "comparisons/end-standard.png",
+      "preserved": ["four dark closing circles", "roof-tile lower visual weight", "plum and bird upper framing", "lower information plaque", "cover-end symmetry"],
+      "allowedDeviation": "All source media and fonts were replaced; editable closing copy remains in the ivory plaque."
+    },
+    {
+      "category": "action-end",
+      "referenceSlide": 17,
+      "productionSlide": "end-action",
+      "evidence": "comparisons/end-action.png",
+      "preserved": ["three-step rhythm", "ancient architecture visual weight", "dusty-rose numbering", "large whitespace"],
+      "allowedDeviation": "The action layout combines the three-step content rhythm with the end-page roof and branch language to support 1-3 editable actions."
+    }
+  ],
+  "checks": {
+    "compositionAndVisualWeight": "PASS",
+    "primaryColorRelationship": "PASS",
+    "titleHierarchy": "PASS",
+    "imageFrameRoles": "PASS",
+    "decorationDensity": "PASS",
+    "negativeSpace": "PASS",
+    "pageRhythm": "PASS",
+    "editableDynamicContent": "PASS",
+    "noWholeSlideScreenshotSubstitution": "PASS",
+    "noUnresolvedDecorationTextOverlap": "PASS"
+  },
+  "unresolvedDeviations": []
+}

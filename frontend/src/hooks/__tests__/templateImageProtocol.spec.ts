@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { fillContentImageSlot, getImageExportSizing, getImageObjectFit, isContentImageSlot, isReplaceableTemplateImage } from '../templateImageProtocol'
+import { fillContentImageSlot, getImageExportSizing, getImageObjectFit, getImageReplacementProps, isContentImageSlot, isReplaceableTemplateImage } from '../templateImageProtocol'
 
 
 describe('template image protocol', () => {
@@ -88,5 +88,41 @@ describe('template image protocol', () => {
     } as any, 'https://example.invalid/content.jpg')
 
     expect(getImageObjectFit(slot)).toBe('cover')
+  })
+
+  it('编辑器替换圆形横图时保留椭圆裁切和原画框', () => {
+    const slot = {
+      type: 'image', id: 'circle', imageType: 'content', src: '/old.jpg',
+      left: 120, top: 150, width: 202, height: 202, fixedRatio: false, rotate: 0,
+      clip: { shape: 'ellipse', range: [[0, 0], [100, 100]] },
+    } as any
+
+    const props = getImageReplacementProps(slot, 'data:image/jpeg;base64,new', 1920, 1080)
+
+    expect(props).toMatchObject({
+      src: 'data:image/jpeg;base64,new',
+      left: 120,
+      top: 150,
+      width: 202,
+      height: 202,
+      clip: { shape: 'ellipse' },
+    })
+    expect(props.clip?.range[0][0]).toBeGreaterThan(0)
+    expect(props.clip?.range[0][1]).toBe(0)
+  })
+
+  it('编辑器替换未裁剪图片时保持历史居中缩放行为', () => {
+    const slot = {
+      type: 'image', id: 'plain', src: '/old.jpg',
+      left: 100, top: 100, width: 200, height: 100, fixedRatio: false, rotate: 0,
+    } as any
+
+    expect(getImageReplacementProps(slot, 'data:image/png;base64,new', 1000, 1000)).toEqual({
+      src: 'data:image/png;base64,new',
+      left: 150,
+      top: 100,
+      width: 100,
+      height: 100,
+    })
   })
 })

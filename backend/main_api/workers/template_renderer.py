@@ -1086,8 +1086,11 @@ class PresentationTemplateRenderer:
                 # 保留真实源图尺寸，供编辑器后续换图、重新裁切和导出往返使用。
                 slot["originalWidth"] = source_width
                 slot["originalHeight"] = source_height
+                declared_clip = slot.get("clip") if isinstance(slot.get("clip"), dict) else {}
+                # 模板明确声明圆形图片时保留椭圆裁切；其他图片继续使用既有矩形居中裁切。
+                clip_shape = "ellipse" if declared_clip.get("shape") == "ellipse" else "rect"
                 slot["clip"] = {
-                    "shape": "rect",
+                    "shape": clip_shape,
                     "range": cls._center_crop_range(
                         source_width,
                         source_height,

@@ -149,6 +149,11 @@ function buildHtml(template) {
       } else if (element.type === "image") {
         node = document.createElement("div");
         node.className = "element element-image";
+        // 预览器同步展示模板的圆形裁切契约，避免视觉 QA 把圆形内容图误判为矩形。
+        if (element.clip?.shape === "ellipse") {
+          node.style.borderRadius = "50%";
+          node.style.overflow = "hidden";
+        }
         const image = document.createElement("img");
         image.src = element.src;
         image.alt = element.alt || "";

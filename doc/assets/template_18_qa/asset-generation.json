@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_18",
+  "goalStage": "G2",
+  "status": "PASS",
+  "generationTool": "built-in imagegen",
+  "requestedModel": "GPT Image 2 (gpt-image-2)",
+  "actualModel": "tool did not expose model identifier",
+  "promptRecord": "image-prompts.md",
+  "montage": "template_18_asset_montage.png",
+  "assets": {
+    "template_18_asset_bg_cover_v1.jpg": {
+      "bytes": 260834,
+      "size": [1920, 1080],
+      "mode": "RGB",
+      "alpha": null,
+      "sha256": "47da2eed85b5c33eb3c46d00a940d1d54ff594116631ae5657ecdb0f4827a0e6"
+    },
+    "template_18_asset_bg_section_v1.jpg": {
+      "bytes": 190866,
+      "size": [1920, 1080],
+      "mode": "RGB",
+      "alpha": null,
+      "sha256": "7ae5503c93a1dd672646059fe1213b439bdeb1c51ec70c6eaec34a12b2b2bebe"
+    },
+    "template_18_asset_bg_end_v1.jpg": {
+      "bytes": 286509,
+      "size": [1920, 1080],
+      "mode": "RGB",
+      "alpha": null,
+      "sha256": "d8d02924b06e29973b39dcd7776f344ae4933fe2226ba1efdfed956dff6ca85a"
+    },
+    "template_18_asset_rooftile_band_v1.png": {
+      "bytes": 614625,
+      "size": [1800, 620],
+      "mode": "RGBA",
+      "alpha": [0, 255],
+      "sha256": "e6f316ef74ef715287365c00c8f2a69d0a16d46948f6afe3b3caf7bd0d57516e"
+    },
+    "template_18_asset_eaves_corner_v1.png": {
+      "bytes": 743624,
+      "size": [1200, 900],
+      "mode": "RGBA",
+      "alpha": [0, 255],
+      "sha256": "e57e7d9a254b1e453d12cf2e83fc7b6931da323ba3fffaa26852bb72f889921c"
+    },
+    "template_18_asset_plum_branch_v1.png": {
+      "bytes": 332574,
+      "size": [1600, 650],
+      "mode": "RGBA",
+      "alpha": [0, 255],
+      "sha256": "cb1c7156e0692f2d42dd070bd40d4abe547c9a5fcf616cfb62663f6221f06de2"
+    },
+    "template_18_asset_crane_pair_v1.png": {
+      "bytes": 530412,
+      "size": [1100, 700],
+      "mode": "RGBA",
+      "alpha": [0, 255],
+      "sha256": "bc7ac230fd460eaaad05a4a1d33fdc89a18cf34957ef303ef09584c4ad52b987"
+    },
+    "template_18_asset_medallion_v1.png": {
+      "bytes": 533544,
+      "size": [900, 900],
+      "mode": "RGBA",
+      "alpha": [0, 255],
+      "sha256": "551df1ae502ba380d1a9ce04d5940c438fffa59090caf5817f15ed7537d22768"
+    }
+  },
+  "verification": {
+    "allDimensionsMatch": true,
+    "allModesMatch": true,
+    "allAlphaRangesMatch": true,
+    "allFilesWithinByteLimits": true,
+    "allAssetsOriginal": true,
+    "sourceMediaBytesCopied": false,
+    "visualReview": "PASS"
+  },
+  "generationNotes": [
+    "The first plum-branch generations contained a baked checkerboard RGB background and were rejected.",
+    "A simplified new generation produced a real RGBA alpha channel and became the published plum asset.",
+    "Alpha extrema were normalized after high-quality resize and PNG quantization without changing visible content."
+  ]
+}

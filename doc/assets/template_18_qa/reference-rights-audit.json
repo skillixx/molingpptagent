@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_18",
+  "goalStage": "G1",
+  "status": "PASS",
+  "reference": {
+    "path": "C:/Users/sk20/Desktop/精品系列(2).pptx",
+    "sha256": "7433A07E7FD206D847EE01F1AC4B206E42416EB801D433DB60C2BBFC24E8CF8B",
+    "slides": 26,
+    "masters": 1,
+    "layouts": 11,
+    "actualSlideLayout": "blank",
+    "structuralPlaceholders": 0,
+    "mediaCount": 40,
+    "nativeCharts": 4,
+    "audioFiles": 1,
+    "embeddedFonts": 0
+  },
+  "rightsFindings": [
+    {
+      "object": "slide master notice",
+      "finding": "The source master contains a Baotu rights warning.",
+      "productionAction": "exclude"
+    },
+    {
+      "object": "source raster media",
+      "finding": "Usage rights are not proven by the source file alone.",
+      "productionAction": "exclude-and-replace-with-original-assets"
+    },
+    {
+      "object": "WenYue GuDianMingChaoTi",
+      "finding": "The source font name explicitly says non-commercial use and the font is not embedded.",
+      "productionAction": "replace-with-authorized-font"
+    },
+    {
+      "object": "audio, animations and transitions",
+      "finding": "These objects are not part of the stable project roundtrip contract.",
+      "productionAction": "exclude"
+    },
+    {
+      "object": "native charts on source slide 22",
+      "finding": "The four charts disappeared in the verified project export and reimport path.",
+      "productionAction": "rebuild-with-editable-text-and-shapes"
+    },
+    {
+      "object": "circular image masks on source slide 19",
+      "finding": "The masks became rectangular in the verified roundtrip path.",
+      "productionAction": "rebuild-with-project-clip-contract"
+    }
+  ],
+  "mediaPolicy": "exclude-all-source-media-bytes",
+  "fontPolicy": "replace-special-and-noncommercial-fonts",
+  "animationPolicy": "exclude-all",
+  "audioPolicy": "exclude-all",
+  "nativeChartPolicy": "exclude-and-rebuild",
+  "replacementPolicy": "generate-original-assets-with-built-in-imagegen-or-use-clearly-authorized-sources",
+  "fidelityPolicy": "preserve-composition-role-color-temperature-density-and-page-rhythm-without-copying-source-media"
+}

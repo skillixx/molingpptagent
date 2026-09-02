@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_18",
+  "stage": "G9",
+  "checkedAt": "2026-09-02T13:29:00+08:00",
+  "status": "PASS",
+  "userConfirmation": {
+    "confirmed": true,
+    "message": "确认完成并闭合 Goal。"
+  },
+  "completion": {
+    "status": "DONE",
+    "goalClosureAuthorized": true
+  },
+  "postClosureStatus": {
+    "supersededByLiveFindings": true,
+    "currentMergeReadiness": "NOT_READY",
+    "knownIssuesDocument": "../../飞檐雅韵PPT模板当前已知问题.md"
+  },
+  "artifactAudit": {
+    "requiredFilesMissing": [],
+    "referenceSha256": "7433A07E7FD206D847EE01F1AC4B206E42416EB801D433DB60C2BBFC24E8CF8B",
+    "productionSlides": 18,
+    "productionElements": 266,
+    "uniqueSlideIds": true,
+    "publishedAssets": 8,
+    "visualComparisons": 12
+  },
+  "freshVerification": {
+    "backendTests": {
+      "status": "PASS",
+      "tests": 133,
+      "durationSeconds": 13.31
+    },
+    "frontendTests": {
+      "status": "PASS",
+      "testFiles": 4,
+      "tests": 18,
+      "durationSeconds": 7.18
+    },
+    "frontendTypeCheck": "PASS",
+    "runtime": {
+      "status": "PASS",
+      "readyzConsecutivePasses": 3,
+      "dependencies": {
+        "outline": "up",
+        "content": "up",
+        "personaldb": "up",
+        "database": "up",
+        "moling": "up"
+      },
+      "templateRegistrationCount": 1,
+      "templateIdsUnique": true,
+      "coverStatus": 200,
+      "templateJsonStatus": 200
+    },
+    "realWorker": "PASS",
+    "editorReplaceImage": "PASS",
+    "fourViewports": "PASS",
+    "pptxRoundtrip": "PASS",
+    "circularImagePreserved": true,
+    "fourMetricsPreserved": true
+  },
+  "transientObservations": [
+    {
+      "component": "moling",
+      "observation": "The first readiness request reported moling down while the endpoint remained HTTP reachable.",
+      "resolution": "No service was restarted; three immediate fresh /readyz checks returned ready with moling up."
+    }
+  ],
+  "unauthorizedActionsNotRun": [
+    "git commit",
+    "git push",
+    "pull request",
+    "merge",
+    "deploy",
+    "production build",
+    "billing write"
+  ],
+  "evidence": [
+    "g8-summary.json",
+    "visual-comparison-audit.json",
+    "editor-audit.json",
+    "viewport-audit.json",
+    "pptx-roundtrip-summary.json",
+    "real-handler-summary.json",
+    "runtime-audit.json",
+    "../../飞檐雅韵PPT模板G8执行报告.md"
+  ]
+}

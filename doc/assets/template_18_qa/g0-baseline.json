@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_18",
+  "goalStage": "G0",
+  "status": "PASS",
+  "verifiedAt": "2026-09-01T14:21:04+08:00",
+  "repository": {
+    "path": "D:/moling/TrainPPTAgent",
+    "branch": "main",
+    "templateIdConflict": false,
+    "registeredTemplateMaxId": 17,
+    "existingTemplateIds": [1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
+  },
+  "reference": {
+    "path": "C:/Users/sk20/Desktop/精品系列(2).pptx",
+    "bytes": 22806711,
+    "sha256": "7433A07E7FD206D847EE01F1AC4B206E42416EB801D433DB60C2BBFC24E8CF8B",
+    "slides": 26,
+    "aspectRatio": "16:9"
+  },
+  "documents": {
+    "development": "../../飞檐雅韵PPT模板开发说明.md",
+    "goal": "../../飞檐雅韵PPT模板开发Goal.md",
+    "executionPrompt": "../../飞檐雅韵PPT模板开发Goal执行提示词.md"
+  },
+  "baselineTests": {
+    "command": ".venv/Scripts/python.exe -m pytest backend/main_api/tests/test_template_assets.py backend/main_api/tests/test_template_renderer.py backend/main_api/tests/test_template_12.py backend/main_api/tests/test_template_17.py -q",
+    "result": "96 passed in 8.65s"
+  },
+  "authorization": {
+    "localDevelopment": true,
+    "imageGeneration": true,
+    "localTests": true,
+    "localQa": true,
+    "commit": false,
+    "push": false,
+    "pullRequest": false,
+    "merge": false,
+    "deployment": false,
+    "productionBuild": false,
+    "productionMigration": false,
+    "billingEnablement": false,
+    "rollback": false
+  }
+}

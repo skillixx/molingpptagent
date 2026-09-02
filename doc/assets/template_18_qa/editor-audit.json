@@ -1,0 +1,40 @@
+{
+  "template_id": "template_18",
+  "checked_at": "2026-09-02T11:46:00+08:00",
+  "status": "PASS",
+  "editor_url": "http://127.0.0.1:5778/editor?qa=template18",
+  "checks": {
+    "json_import": {
+      "status": "PASS",
+      "slide_count": 11
+    },
+    "text_edit": {
+      "status": "PASS",
+      "before": "飞檐雅韵项目验收",
+      "after": "飞檐雅韵项目验收（已编辑）"
+    },
+    "content_image_replace": {
+      "status": "PASS",
+      "slide": 5,
+      "before": "/api/data/template_18_asset_bg_section_v1.jpg",
+      "after": "embedded JPEG uploaded through the editor Replace Image button",
+      "replacement_data_image_count_in_editor": 2,
+      "initial_clip_path": "ellipse(50% 50% at 50% 50%)",
+      "replacement_clip_path": "ellipse(50% 50% at 50% 50%)",
+      "clip_preserved_after_replace": true
+    },
+    "fixed_decoration_preservation": {
+      "status": "PASS",
+      "visible_after_replace": [
+        "template_18_asset_plum_branch_v1.png",
+        "template_18_asset_crane_pair_v1.png"
+      ],
+      "matching_decoration_images_in_editor": 11
+    },
+    "console_errors": 0
+  },
+  "evidence": [
+    "devices/desktop-1920x1080.png",
+    "devices/roundtrip-circle-slide5-1366x768.png"
+  ]
+}

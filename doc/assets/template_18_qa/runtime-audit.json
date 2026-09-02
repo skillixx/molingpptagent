@@ -1,0 +1,40 @@
+{
+  "template_id": "template_18",
+  "checked_at": "2026-09-02T11:49:00+08:00",
+  "status": "PASS",
+  "main_api": {
+    "port": 6800,
+    "pid": 61792,
+    "ready_status": "ready",
+    "dependencies": {
+      "outline": "up",
+      "content": "up",
+      "personaldb": "up",
+      "database": "up",
+      "moling": "up"
+    }
+  },
+  "template_registration": {
+    "backend_template_18_count": 1,
+    "frontend_template_18_count": 1,
+    "template_ids_unique": true
+  },
+  "frontend_proxy_assets": {
+    "/api/data/template_18.jpg": {
+      "status": 200,
+      "bytes": 89603
+    },
+    "/api/data/template_18.json": {
+      "status": 200,
+      "bytes": 161454
+    }
+  },
+  "listeners": {
+    "frontend_5778": 65260,
+    "main_api_6800": 61792,
+    "personaldb_9100": 56292,
+    "outline_10001": 30348,
+    "content_10011": 53312
+  },
+  "note": "The public /api/data paths are served through the frontend proxy; direct main-api /api/data requests are not the application route."
+}

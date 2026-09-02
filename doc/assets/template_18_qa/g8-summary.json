@@ -1,0 +1,91 @@
+{
+  "template_id": "template_18",
+  "stage": "G8",
+  "status": "PASS",
+  "next_stage": "G9_PENDING",
+  "goal_completion_requested": false,
+  "production_build_run": false,
+  "checks": {
+    "real_worker": {
+      "status": "PASS",
+      "slides": 17,
+      "claimed_by_worker": true,
+      "attempt": 1,
+      "slide_types": {
+        "cover": 1,
+        "contents": 1,
+        "transition": 4,
+        "content": 10,
+        "end": 1
+      },
+      "evidence": "real-handler-summary.json"
+    },
+    "controlled_editor_document": {
+      "status": "PASS",
+      "slides": 11,
+      "evidence": "e2e-document.json"
+    },
+    "editor_text_edit_and_image_replace": {
+      "status": "PASS",
+      "evidence": "editor-audit.json"
+    },
+    "four_viewports": {
+      "status": "PASS",
+      "viewports": [
+        "1920x1080",
+        "1366x768",
+        "768x1024",
+        "390x844"
+      ],
+      "evidence": "viewport-audit.json"
+    },
+    "pptx_roundtrip": {
+      "status": "PASS",
+      "slides": 11,
+      "evidence": "pptx-roundtrip-summary.json"
+    },
+    "backend_regression": {
+      "status": "PASS",
+      "tests": 133,
+      "duration_seconds": 14.28
+    },
+    "frontend_focused_regression": {
+      "status": "PASS",
+      "test_files": 4,
+      "tests": 18,
+      "duration_seconds": 68.02
+    },
+    "frontend_type_check": {
+      "status": "PASS",
+      "command": "npm run type-check"
+    },
+    "runtime_endpoints": {
+      "status": "PASS",
+      "evidence": "runtime-audit.json"
+    },
+    "reference_production_visual_comparison": {
+      "status": "PASS",
+      "comparison_count": 12,
+      "evidence": "visual-comparison-audit.json"
+    }
+  },
+  "known_limitations": [
+    "The image generation tool did not expose the underlying model identifier, so the asset record states built-in imagegen rather than claiming a specific GPT Image model.",
+    "A deliberately extended edited cover title wraps after PPTX re-import; the source-length title keeps the intended single-line composition."
+  ],
+  "automatic_fixes_during_final_audit": [
+    "Moved and reduced the content-text-4 crane decoration after side-by-side inspection found it covering the fourth body item; rebuilt and revalidated the current production JSON.",
+    "Implemented a real ellipse content-image slot based on reference slide 19 and preserved the ellipse clip when the editor Replace Image action loads a new bitmap.",
+    "Updated the read-only preview helper so ellipse clips are visible during visual QA."
+  ],
+  "forbidden_actions_not_run": [
+    "G9",
+    "READY_FOR_CONFIRMATION",
+    "Goal completion",
+    "git commit",
+    "git push",
+    "merge",
+    "deploy",
+    "production build"
+  ]
+}

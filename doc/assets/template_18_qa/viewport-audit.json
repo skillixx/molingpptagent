@@ -1,0 +1,51 @@
+{
+  "template_id": "template_18",
+  "checked_at": "2026-09-02T11:46:00+08:00",
+  "status": "PASS",
+  "viewports": [
+    {
+      "name": "desktop",
+      "width": 1920,
+      "height": 1080,
+      "document_overflow_x": 0,
+      "body_overflow_x": 0,
+      "mode": "editor",
+      "primary_action": "导出文件",
+      "screenshot": "devices/desktop-1920x1080.png",
+      "sha256": "678059EDA958C42FE03382D19A28557AEC0098DBB7CACCA4134CE20012DFF1C7"
+    },
+    {
+      "name": "laptop",
+      "width": 1366,
+      "height": 768,
+      "document_overflow_x": 0,
+      "body_overflow_x": 0,
+      "mode": "editor",
+      "primary_action": "导出文件",
+      "screenshot": "devices/laptop-1366x768.png",
+      "sha256": "C80944BB2D67C1C3F152C1FBCD607AF861D832C0AFCE935D85C255B7CD8590F1"
+    },
+    {
+      "name": "tablet",
+      "width": 768,
+      "height": 1024,
+      "document_overflow_x": 0,
+      "body_overflow_x": 0,
+      "mode": "editor",
+      "primary_action": "导出文件",
+      "screenshot": "devices/tablet-768x1024.png",
+      "sha256": "2453A70B1C4979C491BB7F7384AE672A2B1C5432B744DD140CA47F243A2EABFC"
+    },
+    {
+      "name": "mobile",
+      "width": 390,
+      "height": 844,
+      "document_overflow_x": 0,
+      "body_overflow_x": 0,
+      "mode": "responsive PPT preview",
+      "primary_action": "下载",
+      "screenshot": "devices/mobile-390x844.png",
+      "sha256": "803018969FC5E6FC33CEEBA96C7B93A3EC03E610CF1B02C7FFB7BD4D032D95D2"
+    }
+  ]
+}

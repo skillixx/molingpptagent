@@ -1,0 +1,192 @@
+schema_version: 1
+template:
+  id: template_18
+  title: 飞檐雅韵
+  build_stage: planned
+  canvas:
+    width: 1000
+    height: 562.5
+    aspect_ratio: "16:9"
+  reference:
+    path: "%USERPROFILE%\\Desktop\\精品系列(2).pptx"
+    sha256: 7433A07E7FD206D847EE01F1AC4B206E42416EB801D433DB60C2BBFC24E8CF8B
+    slide_count: 26
+    media_policy: exclude_all
+    font_policy: replace_noncommercial_and_special_fonts
+    animation_policy: exclude_all
+    audio_policy: exclude_all
+    native_chart_policy: rebuild_slide_22_with_editable_elements
+    circular_mask_policy: rebuild_slide_19_with_project_clip_contract
+  fidelity:
+    level: high
+    must_preserve:
+      - roof_tile_visual_weight
+      - eaves_and_ma_tou_wall_corner_composition
+      - plum_branch_and_bird_accents
+      - dusty_rose_vertical_rail
+      - dark_ink_circular_title_rhythm
+      - warm_ivory_negative_space
+      - short_vertical_section_titles
+      - sparse_page_rhythm
+    forbidden_styles:
+      - generic_chinese_style_without_reference_composition
+      - technology_dashboard
+      - neon
+      - glassmorphism
+      - dense_card_grid
+    comparison_required: true
+    deviation_log_required: true
+  typography:
+    chinese: 微软雅黑
+    latin: Arial
+    minimum_font_size: 12
+    cover_title: 50
+    transition_title: 44
+    page_title: 35
+    item_title: 24
+    body: 16
+    vertical_text_max_chars: 8
+  colors:
+    background: "#F6F2EA"
+    dusty_rose: "#B77D80"
+    ink: "#211B1C"
+    tile_gray: "#4D4D4B"
+    body: "#4A4643"
+    cinnabar: "#A83F36"
+    muted_gold: "#B6925F"
+    pale_rose: "#E9DADB"
+  safe_area:
+    horizontal: [55, 936]
+    vertical: [40, 522.5]
+    title_height: [70, 92]
+    decoration_text_gap: 20
+    roof_band_max_height_ratio: 0.22
+    eaves_corner_max_width_ratio: 0.30
+  mvp_slide_ids:
+    - cover-rooftile
+    - contents-2
+    - contents-3
+    - contents-4
+    - contents-5
+    - contents-6
+    - contents-10
+    - transition-rose-band
+    - content-text-2
+    - content-text-3
+    - content-text-4
+    - end-rooftile
+  production_slide_ids:
+    - cover-rooftile
+    - cover-eaves
+    - contents-2
+    - contents-3
+    - contents-4
+    - contents-5
+    - contents-6
+    - contents-10
+    - transition-rose-band
+    - transition-medallion
+    - content-statement-1
+    - content-image-1
+    - content-text-2
+    - content-text-3
+    - content-text-4
+    - content-metrics-4
+    - end-rooftile
+    - end-action
+  expected_counts:
+    cover: 2
+    contents: 6
+    transition: 2
+    content: 6
+    end: 2
+  semantic_slots:
+    text:
+      - title
+      - content
+      - item
+      - itemTitle
+      - itemNumber
+      - partNumber
+    image:
+      content: replaceable
+      decoration: fixed
+  selection:
+    contents:
+      exact_counts: [2, 3, 4, 5, 6, 10]
+      overflow: balanced_lossless_pagination
+    content:
+      text_item_counts: [1, 2, 3, 4]
+      image_counts: [0, 1]
+      metrics_count: 4
+      overflow: lossless_pagination
+      minimum_font_size: 12
+    end:
+      action_item_counts: [0, 1, 2, 3]
+assets:
+  - id: bg-cover
+    filename: template_18_asset_bg_cover_v1.jpg
+    format: JPEG
+    size: [1920, 1080]
+    mode: RGB
+    max_bytes: 400000
+    required_for_mvp: true
+  - id: bg-section
+    filename: template_18_asset_bg_section_v1.jpg
+    format: JPEG
+    size: [1920, 1080]
+    mode: RGB
+    max_bytes: 320000
+    required_for_mvp: true
+  - id: bg-end
+    filename: template_18_asset_bg_end_v1.jpg
+    format: JPEG
+    size: [1920, 1080]
+    mode: RGB
+    max_bytes: 400000
+    required_for_mvp: true
+  - id: rooftile-band
+    filename: template_18_asset_rooftile_band_v1.png
+    format: PNG
+    size: [1800, 620]
+    mode: RGBA
+    max_bytes: 1000000
+    required_for_mvp: true
+  - id: eaves-corner
+    filename: template_18_asset_eaves_corner_v1.png
+    format: PNG
+    size: [1200, 900]
+    mode: RGBA
+    max_bytes: 900000
+    required_for_mvp: true
+  - id: plum-branch
+    filename: template_18_asset_plum_branch_v1.png
+    format: PNG
+    size: [1600, 650]
+    mode: RGBA
+    max_bytes: 850000
+    required_for_mvp: true
+  - id: crane-pair
+    filename: template_18_asset_crane_pair_v1.png
+    format: PNG
+    size: [1100, 700]
+    mode: RGBA
+    max_bytes: 750000
+    required_for_mvp: true
+  - id: medallion
+    filename: template_18_asset_medallion_v1.png
+    format: PNG
+    size: [900, 900]
+    mode: RGBA
+    max_bytes: 600000
+    required_for_mvp: true
+qa:
+  viewports:
+    - [1920, 1080]
+    - [1366, 768]
+    - [768, 1024]
+    - [390, 844]
+  reference_comparison_required: true
+  export_roundtrip_required: true
+  final_goal_status: G8_PASS_G9_PENDING
+  g9_execution_allowed: false

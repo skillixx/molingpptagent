@@ -567,6 +567,8 @@ async def get_templates():
         { "name": "深空星环科技", "id": "template_16", "cover": "/api/data/template_16.jpg" },
         # 蓝菱商务汇报模板使用原创浅色背景与透明菱形装饰，内容图片保持独立可替换。
         { "name": "蓝菱商务汇报", "id": "template_17", "cover": "/api/data/template_17.jpg" },
+        # 飞檐雅韵模板使用原创灰瓦、飞檐与梅枝素材，并保持业务图片独立可替换。
+        { "name": "飞檐雅韵", "id": "template_18", "cover": "/api/data/template_18.jpg" },
     ]
 
     return {"data": templates}

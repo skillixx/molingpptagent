@@ -45,3 +45,52 @@ export const getImageExportSizing = (
 export const getImageObjectFit = (element: PPTImageElement) => (
   element.clip ? 'fill' : (element.imageFit || 'fill')
 )
+
+/**
+ * 计算编辑器“替换图片”的更新属性。
+ * 已裁剪图片保持原画框和裁剪形状，只根据新图比例重算居中裁切范围；未裁剪图片保持历史居中缩放行为。
+ */
+export const getImageReplacementProps = (
+  element: PPTImageElement,
+  src: string,
+  sourceWidth: number,
+  sourceHeight: number,
+): Partial<PPTImageElement> => {
+  if (element.clip) {
+    const frameRatio = element.width / element.height
+    const sourceRatio = sourceWidth / sourceHeight
+    let range: [[number, number], [number, number]]
+
+    if (sourceRatio > frameRatio) {
+      const visibleWidth = frameRatio / sourceRatio * 100
+      const distance = (100 - visibleWidth) / 2
+      range = [[distance, 0], [100 - distance, 100]]
+    }
+    else {
+      const visibleHeight = sourceRatio / frameRatio * 100
+      const distance = (100 - visibleHeight) / 2
+      range = [[0, distance], [100, 100 - distance]]
+    }
+
+    return {
+      src,
+      left: element.left,
+      top: element.top,
+      width: element.width,
+      height: element.height,
+      clip: { ...element.clip, range },
+    }
+  }
+
+  const height = element.height
+  const width = sourceWidth * (height / sourceHeight)
+  const centerX = element.left + element.width / 2
+  const centerY = element.top + element.height / 2
+  return {
+    src,
+    width,
+    height,
+    left: centerX - width / 2,
+    top: centerY - height / 2,
+  }
+}
