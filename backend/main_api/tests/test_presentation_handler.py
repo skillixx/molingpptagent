@@ -42,6 +42,9 @@ class ClassifiedTemplateRenderer:
     def __init__(self, code: str) -> None:
         self.code = code
 
+    def max_content_item_slots(self, _template_id: str) -> int:
+        return 4
+
     def render(self, **_kwargs):
         raise TemplateRenderError(
             "生成内容超出模板文本框容量",
@@ -55,6 +58,16 @@ class ClassifiedTemplateRenderer:
                 "image_count": "0",
                 "variant": "unknown",
             },
+        )
+
+
+class PreflightFailingTemplateRenderer:
+    """模拟模板在容量预检阶段失败，确保不会先调用任何外部 Agent。"""
+
+    def max_content_item_slots(self, _template_id: str) -> int:
+        raise TemplateRenderError(
+            "模板文件不存在",
+            code="TEMPLATE_RESOURCE_MISSING",
         )
 
 
@@ -155,6 +168,12 @@ def _handler(engine, outline: ScriptedAgent, content: ScriptedAgent):
         ("TEMPLATE_MISSING_SLOT", "TEMPLATE_MISSING_SLOT", "模板缺少必要内容槽位"),
         ("TEMPLATE_DATA_INVALID", "TEMPLATE_DATA_INVALID", "模板数据无效"),
         ("TEMPLATE_RESOURCE_MISSING", "TEMPLATE_RESOURCE_MISSING", "模板资源缺失"),
+        ("ITEM_TITLE_TOO_LONG", "ITEM_TITLE_TOO_LONG", "内容项标题过长"),
+        (
+            "TEMPLATE_PAGINATION_EXPLOSION",
+            "TEMPLATE_PAGINATION_EXPLOSION",
+            "内容拆分页数异常",
+        ),
         ("TEMPLATE_UNKNOWN", "TEMPLATE_DATA_INVALID", "模板数据无效"),
     ],
 )
@@ -439,6 +458,72 @@ def test_confirmed_markdown_outline_skips_outline_agent_and_preserves_search_mod
         assert content.calls[0][0] == ()
         assert content.calls[0][1]["user_question"] == "# 已确认大纲\n## 第一章"
         assert content.calls[0][1]["metadata"]["search_engine"] == ["KnowledgeBaseSearch"]
+    finally:
+        engine.dispose()
+
+
+def test_incompatible_confirmed_outline_is_rejected_before_content_agent_call(tmp_path: Path) -> None:
+    """模板只有四项槽位时，五项大纲必须在任何真实 Content Agent 调用前失败。"""
+    engine = _engine(tmp_path)
+    try:
+        _insert_running_task(engine)
+        outline = ScriptedAgent([])
+        content = ScriptedAgent([{"type": "text", "text": "不应被调用"}])
+        handler = PresentationGenerationHandler(
+            repository=GenerationResultRepository(engine),
+            outline_factory=lambda _session_id: outline,
+            content_factory=lambda _session_id: content,
+            max_document_bytes=1024 * 1024,
+            template_renderer=PresentationTemplateRenderer(
+                Path(__file__).resolve().parents[1] / "template"
+            ),
+            now_factory=lambda: NOW,
+        )
+        markdown = """# 社交媒体与品牌营销
+## 第一章
+### 品牌策略
+- 项目一
+- 项目二
+- 项目三
+- 项目四
+- 项目五
+"""
+
+        with pytest.raises(NonRetryableTaskError) as captured:
+            asyncio.run(handler.execute(_execution(content=markdown, template_id="template_4")))
+
+        assert captured.value.code == "TEMPLATE_ITEM_COUNT_UNSUPPORTED"
+        assert outline.calls == []
+        assert content.calls == []
+    finally:
+        engine.dispose()
+
+
+def test_template_preflight_failure_is_terminal_before_any_agent_call(tmp_path: Path) -> None:
+    """模板资源错误必须先于大纲和正文 Agent 检查，并保持不可重试分类。"""
+    engine = _engine(tmp_path)
+    try:
+        _insert_running_task(engine)
+        outline = ScriptedAgent([{"type": "text", "text": "# 不应生成"}])
+        content = ScriptedAgent([{"type": "text", "text": "不应生成"}])
+        handler = PresentationGenerationHandler(
+            repository=GenerationResultRepository(engine),
+            outline_factory=lambda _session_id: outline,
+            content_factory=lambda _session_id: content,
+            max_document_bytes=1024 * 1024,
+            template_renderer=PreflightFailingTemplateRenderer(),
+            now_factory=lambda: NOW,
+        )
+
+        with pytest.raises(NonRetryableTaskError) as captured:
+            asyncio.run(handler.execute(_execution(
+                content="普通主题",
+                template_id="template_999",
+            )))
+
+        assert captured.value.code == "TEMPLATE_RESOURCE_MISSING"
+        assert outline.calls == []
+        assert content.calls == []
     finally:
         engine.dispose()
 

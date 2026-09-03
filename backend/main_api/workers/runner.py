@@ -120,23 +120,34 @@ class PersistentTaskWorker:
         if not marked:
             return True
 
-        heartbeat = asyncio.create_task(self._heartbeat(record))
+        lease_lost = asyncio.Event()
+        execution_task = asyncio.create_task(self.handler.execute(execution))
+        heartbeat = asyncio.create_task(
+            self._heartbeat(record, execution_task, lease_lost)
+        )
         try:
             await asyncio.wait_for(
-                self.handler.execute(execution), timeout=self.agent_timeout_seconds
+                execution_task, timeout=self.agent_timeout_seconds
             )
         except TimeoutError:
+            # Agent 已经收到外部请求，超时后的实际结果未知；自动重放会重复消耗整份 PPT 的 Token。
             await self._record_failure(
-                record, "AGENT_TIMEOUT", "Agent 调用超时", retryable=True
+                record, "AGENT_TIMEOUT", "Agent 调用超时", retryable=False
             )
         except RetryableTaskError as exc:
-            await self._record_failure(record, exc.code, exc.safe_message, retryable=True)
+            # mark_dispatch_started 已经提交；此后即使异常被上游标为可重试，自动重放也可能重复计费。
+            await self._record_failure(record, exc.code, exc.safe_message, retryable=False)
         except NonRetryableTaskError as exc:
             await self._record_failure(record, exc.code, exc.safe_message, retryable=False)
+        except asyncio.CancelledError:
+            if lease_lost.is_set():
+                # 删除或租约转移已经由数据库写入终态；这里只负责结束外部调用。
+                return True
+            raise
         except Exception:
-            # 未知异常不得把堆栈、密钥或上游响应写入任务表。
+            # 派发后的未知异常既不能泄露内部信息，也不能自动重放结果未知的外部请求。
             await self._record_failure(
-                record, "WORKER_EXECUTION_ERROR", "任务执行发生内部错误", retryable=True
+                record, "WORKER_EXECUTION_ERROR", "任务执行发生内部错误", retryable=False
             )
         else:
             await asyncio.to_thread(
@@ -178,8 +189,13 @@ class PersistentTaskWorker:
             recovered += int(resolved)
         return recovered
 
-    async def _heartbeat(self, record: TaskRecord) -> None:
-        """续租失败即停止心跳；最终写入仍由 lock_token 和有效期双重围栏保护。"""
+    async def _heartbeat(
+        self,
+        record: TaskRecord,
+        execution_task: asyncio.Task[None],
+        lease_lost: asyncio.Event,
+    ) -> None:
+        """续租失败立即取消业务协程，避免失去租约后仍继续调用外部 Agent。"""
         while True:
             await asyncio.sleep(self.heartbeat_seconds)
             now = self.clock()
@@ -191,6 +207,8 @@ class PersistentTaskWorker:
                 now,
             )
             if not renewed:
+                lease_lost.set()
+                execution_task.cancel()
                 return
 
     async def _record_failure(

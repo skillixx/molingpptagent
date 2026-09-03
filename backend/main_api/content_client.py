@@ -10,8 +10,12 @@ import httpx
 from a2a.client import A2ACardResolver, A2AClient
 from a2a.types import (
     AgentCard,
+    CancelTaskRequest,
+    CancelTaskSuccessResponse,
     MessageSendParams,
     SendStreamingMessageRequest,
+    TaskIdParams,
+    TaskState,
 )
 
 PUBLIC_AGENT_CARD_PATH = '/.well-known/agent.json'
@@ -63,6 +67,53 @@ class A2AContentClientWrapper:
             except Exception as e:
                 self.logger.error(f'获取 AgentCard 失败: {e}', exc_info=True)
                 raise RuntimeError('无法获取 agent card，无法继续运行。') from e
+
+    async def _cancel_remote_task(self) -> bool:
+        """本地消费被取消时通知 A2A 服务停止同一远端任务，避免孤儿模型继续计费。"""
+        if self.client is None or not isinstance(self.task_id, str) or not self.task_id:
+            return False
+        try:
+            response = await self.client.cancel_task(
+                CancelTaskRequest(
+                    id=str(uuid4()),
+                    params=TaskIdParams(id=self.task_id),
+                )
+            )
+        except Exception:
+            # 取消失败不能覆盖原始超时；日志只记录稳定分类，不打印远端响应。
+            self.logger.warning("正文 Agent 远端取消失败")
+            return False
+        root = getattr(response, "root", None)
+        if (
+            not isinstance(root, CancelTaskSuccessResponse)
+            or root.result.status.state != TaskState.canceled
+        ):
+            self.logger.warning("正文 Agent 远端取消未确认")
+            return False
+        self.logger.info("正文 Agent 远端任务已取消")
+        return True
+
+    async def _stream_with_remote_cancel(self, stream_response):
+        """在等待远端流时传播取消请求，随后保留原始 CancelledError。"""
+        try:
+            async for chunk in stream_response:
+                yield chunk
+        except asyncio.CancelledError:
+            await self._cancel_remote_task()
+            raise
+        except Exception:
+            # 远端已经返回 taskId 后断流时，先尽力停止孤儿任务，再保留原异常分类。
+            await self._cancel_remote_task()
+            raise
+
+    async def _delay_between_chunks(self) -> None:
+        """防粘连等待也属于活动请求，取消时同样必须通知远端。"""
+        try:
+            await asyncio.sleep(1)
+        except asyncio.CancelledError:
+            await self._cancel_remote_task()
+            raise
+
     async def generate(self, user_question: str, metadata={}) -> None:
         """
         user_question: 用户问题
@@ -97,7 +148,7 @@ class A2AContentClientWrapper:
             )
             stream_response = self.client.send_message_streaming(streaming_request)
             # 表示工具完成了调用，可以返回metada信息了
-            async for chunk in stream_response:
+            async for chunk in self._stream_with_remote_cancel(stream_response):
                 # self.logger.info(f"输出的chunk内容: {chunk}")
                 chunk_data = chunk.model_dump(mode='json', exclude_none=True)
                 if "error" in chunk_data:
@@ -105,6 +156,9 @@ class A2AContentClientWrapper:
                     yield {"type": "final", "text": "正文Agent调用失败", "author": "system"}
                     break
                 result = chunk_data["result"]
+                remote_task_id = result.get("taskId")
+                if isinstance(remote_task_id, str) and remote_task_id:
+                    self.task_id = remote_task_id
                 # 判断 chunk 类型
                 # 查看parts类型，分为data，text，reasoning，final，例如放入{"type": "text", "text": xxx}，最后yield返回
                 if result.get("kind") == "status-update":
@@ -139,7 +193,7 @@ class A2AContentClientWrapper:
                                 for item in self.process_chart_part_text(part.get("text", ""), author):
                                     yield item
                                     # 关键的sleep，防止前端对chunk进行粘连，无法进行json解析
-                                    await asyncio.sleep(1)
+                                    await self._delay_between_chunks()
                 elif result.get("kind") == "artifact-update":
                     artifact = result.get("artifact", {})
                     parts = artifact.get("parts", [])
