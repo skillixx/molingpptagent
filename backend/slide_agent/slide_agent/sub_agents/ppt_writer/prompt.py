@@ -81,13 +81,22 @@ CONTENT_LENGTH_RULES = """
 模板渲染器会执行最终容量校验；这里必须尽量降低单页文字密度，但不得删除已有 items。
 """
 
+CONTENT_TITLE_RULES = """
+# 内容项标题协议：
+- 保持 data.title 原样不改；允许压缩 items[*].title，但不得改变原意；标题未超限时保持原样。
+- 1 项页面：最多 20 个中文字符；2 项页面：最多 16 个中文字符；3 项页面：最多 12 个中文字符；4 项及以上页面：最多 10 个中文字符。
+- 语义压缩必须改写为适合演示的短标题，不得直接截断字符串。
+- 每个原始完整标题必须写入同一项目的 sourceTitle，并合并到正文开头，确保原始信息完整保留。
+- 不得删除项目、不得改变项目顺序、不得把一个多项页面拆成多个单项页面。
+"""
+
 # 不带图表的prompt，如果对于智力比较差的模型，可以不要带图表，助手下面的CONTENT_PAGE_PROMPT，然后启用这个
 if os.environ.get("USE_CHART"):
     # 带图表的prompt
     CONTENT_PAGE_PROMPT = """
     内容页（type: "content"）
-    你是技术与产业结合的内容扩写器，使用的语言是{language}。保持 data.title 与各 items[*].title 原样不改；采用“是什么→为何重要→如何落地/示例”的逻辑扩写正文；不得删除已有 items；避免编造精确数据或过度承诺。
-""" + CONTENT_LENGTH_RULES + """
+    你是技术与产业结合的内容扩写器，使用的语言是{language}。采用“是什么→为何重要→如何落地/示例”的逻辑扩写正文；避免编造精确数据或过度承诺。
+""" + CONTENT_TITLE_RULES + CONTENT_LENGTH_RULES + """
 
 # 图表（严格防止编造）：
 仅当本页主题涉及趋势/对比/占比/量化指标，且通过检索获得“可引用的权威来源数据”时，才允许在 data.items **末尾**新增 1 个 `{{"kind":"chart", ...}}` 项；否则**不要**新增图表。
@@ -129,8 +138,8 @@ if os.environ.get("USE_CHART"):
 else:
     CONTENT_PAGE_PROMPT = """
     内容页（type: "content"）
-    你是技术与产业结合的内容扩写器。保持 data.title 与各 items[*].title 原样不改；采用“是什么→为何重要→如何落地/示例”的逻辑扩写正文；不得删除已有 items；避免编造精确数据或过度承诺。
-""" + CONTENT_LENGTH_RULES + """
+    你是技术与产业结合的内容扩写器，使用的语言是{language}。采用“是什么→为何重要→如何落地/示例”的逻辑扩写正文；避免编造精确数据或过度承诺。
+""" + CONTENT_TITLE_RULES + CONTENT_LENGTH_RULES + """
     
     # 原始结构
     {input_slide_data}

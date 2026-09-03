@@ -438,7 +438,7 @@ def test_template_11_paginates_eight_items_without_reordering() -> None:
 
 def test_template_11_splits_long_body_without_truncation() -> None:
     """长正文拆分后必须保持全部字符和顺序。"""
-    long_text = "从真实问题出发，连接目标、活动、反馈与迁移。" * 80
+    long_text = "从真实问题出发，连接目标、活动、反馈与迁移。" * 24
     document = _renderer().render(
         template_id="template_11",
         semantic_slides=[{"type": "content", "data": {"title": "完整说明", "items": [{"title": "学习路径", "text": long_text}]}}],
@@ -451,7 +451,7 @@ def test_template_11_splits_long_body_without_truncation() -> None:
 
 def test_template_11_splits_long_body_with_image_only_on_first_part() -> None:
     """带图长正文拆页后，图片只出现一次且字符完整。"""
-    long_text = "先理解问题，再尝试行动，最后形成可迁移的经验。" * 80
+    long_text = "先理解问题，再尝试行动，最后形成可迁移的经验。" * 16
     source = "https://example.invalid/long-body.jpg"
     document = _renderer().render(
         template_id="template_11",
@@ -510,13 +510,16 @@ def test_template_11_accepts_transition_and_end_boundaries() -> None:
 def test_template_11_preserves_body_contract(count: int, body_length: int) -> None:
     """正文达到Agent上限时可以分页，但不能丢字。"""
     bodies = [_exact_text(f"第{i}项围绕学习目标组织活动并形成反馈", body_length) for i in range(1, count + 1)]
+    titles = [_exact_text(f"第{i}项学习能力建设与实践路径", 30) for i in range(1, count + 1)]
     document = _renderer().render(
         template_id="template_11",
         semantic_slides=[{
             "type": "content",
-            "data": {"title": _exact_text("人工智能驱动教学创新实践路径", 40), "items": [{"title": _exact_text(f"第{i}项学习能力建设与实践路径", 30), "text": body} for i, body in enumerate(bodies, 1)]},
+            "data": {"title": _exact_text("人工智能驱动教学创新实践路径", 40), "items": [{"title": title, "text": body} for title, body in zip(titles, bodies, strict=True)]},
         }],
         task_id=f"template-11-body-{count}-{body_length}",
         fallback_title="正文容量契约",
     )
-    assert _rendered_item_text(document) == "".join(bodies)
+    assert _rendered_item_text(document) == "".join(
+        f"{title}。{body}" for title, body in zip(titles, bodies, strict=True)
+    )

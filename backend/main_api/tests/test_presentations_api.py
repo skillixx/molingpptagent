@@ -539,7 +539,7 @@ def test_failed_detail_exposes_only_safe_generation_error_and_partial_progress(a
 
 
 def test_delete_is_idempotent_for_owner_but_other_owner_gets_404(api) -> None:
-    client, _ = api
+    client, engine = api
     presentation_id = _create(client, key="delete-1").json()["presentation"]["id"]
     other = client.delete(
         f"/api/presentations/{presentation_id}",
@@ -559,6 +559,47 @@ def test_delete_is_idempotent_for_owner_but_other_owner_gets_404(api) -> None:
     )
     assert other_create.status_code == 404
     assert first.status_code == repeated.status_code == 204
+    factory = sessionmaker(engine, expire_on_commit=False)
+    with factory() as db:
+        task = db.scalar(
+            select(GenerationTask).where(GenerationTask.presentation_id == presentation_id)
+        )
+        assert task is not None
+        assert task.status == task.stage == "failed"
+        assert task.retryable is False
+        assert task.last_error_code == "USER_CANCELLED"
+
+
+def test_delete_marks_running_generation_task_as_user_cancelled(api) -> None:
+    """作品删除必须同时撤销已被 Worker 领取的任务，供续租链路停止远端生成。"""
+    client, engine = api
+    presentation_id = _create(client, key="delete-running-1").json()["presentation"]["id"]
+    factory = sessionmaker(engine, expire_on_commit=False)
+    with factory.begin() as db:
+        task = db.scalar(
+            select(GenerationTask).where(GenerationTask.presentation_id == presentation_id)
+        )
+        assert task is not None
+        task.status = "running"
+        task.stage = "generating"
+        task.locked_by = "worker-running"
+        task.lock_token = "running-lock"
+
+    response = client.delete(
+        f"/api/presentations/{presentation_id}",
+        headers={"Origin": TRUSTED_ORIGIN},
+    )
+
+    assert response.status_code == 204
+    with factory() as db:
+        task = db.scalar(
+            select(GenerationTask).where(GenerationTask.presentation_id == presentation_id)
+        )
+        assert task is not None
+        assert task.status == task.stage == "failed"
+        assert task.retryable is False
+        assert task.last_error_code == "USER_CANCELLED"
+        assert task.lock_token is None
 
 
 def test_duplicate_copies_editable_content_only_for_owner(api) -> None:

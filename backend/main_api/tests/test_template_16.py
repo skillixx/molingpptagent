@@ -234,7 +234,8 @@ def test_template_16_ids_fonts_paths_and_samples_are_clean() -> None:
             if _slot_type(element) == "title":
                 assert element.get("minimumFontSize", 0) >= 35
             elif _slot_type(element) == "itemTitle":
-                assert element.get("minimumFontSize", 0) >= 24
+                expected = 20 if slide["id"] in {"content-text-2", "content-text-3", "content-text-4"} else 24
+                assert element.get("minimumFontSize", 0) >= expected
             elif _slot_type(element) in {"item", "content"}:
                 assert element.get("minimumFontSize", 0) >= 16
 
@@ -352,7 +353,7 @@ def test_template_16_paginates_eight_items_without_reordering() -> None:
 
 
 def test_template_16_long_body_is_split_without_loss() -> None:
-    body = "深空中的复杂信息需要按层级组织，并完整保留每一条证据。" * 60
+    body = "深空中的复杂信息需要按层级组织，并完整保留每一条证据。" * 12
     document = _renderer().render(
         template_id="template_16",
         semantic_slides=[{

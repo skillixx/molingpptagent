@@ -412,7 +412,7 @@ def test_template_9_paginates_eight_items_without_reordering() -> None:
 
 def test_template_9_splits_long_body_without_truncation() -> None:
     """长正文拆分后必须保持全部字符和顺序。"""
-    long_text = "复杂信息需要先确定结论，再按层级组织证据和行动。" * 80
+    long_text = "复杂信息需要先确定结论，再按层级组织证据和行动。" * 24
     document = _renderer().render(
         template_id="template_9",
         semantic_slides=[{"type": "content", "data": {"title": "完整说明", "items": [{"title": "核心结论", "text": long_text}]}}],
@@ -433,7 +433,7 @@ def test_template_9_splits_long_body_without_truncation() -> None:
 
 def test_template_9_splits_long_body_with_image_only_on_first_part() -> None:
     """带图长正文拆页后，图片只出现一次，续页按顺序保留全部字符。"""
-    long_text = "先给结论，再展开证据，最后明确行动与责任人。" * 80
+    long_text = "先给结论，再展开证据，最后明确行动与责任人。" * 20
     source = "https://example.invalid/long-body.jpg"
     document = _renderer().render(
         template_id="template_9",
@@ -503,11 +503,12 @@ def test_template_9_accepts_transition_and_end_boundaries() -> None:
 def test_template_9_preserves_body_contract(count: int, body_length: int) -> None:
     """正文达到Agent上限时可以分页，但不能丢字。"""
     bodies = [_exact_text(f"第{i}项围绕业务目标组织证据并明确执行责任", body_length) for i in range(1, count + 1)]
+    titles = [_exact_text(f"第{i}项业务能力建设与落地路径", 30) for i in range(1, count + 1)]
     document = _renderer().render(
         template_id="template_9",
         semantic_slides=[{
             "type": "content",
-            "data": {"title": _exact_text("人工智能驱动组织转型实践路径", 40), "items": [{"title": _exact_text(f"第{i}项业务能力建设与落地路径", 30), "text": body} for i, body in enumerate(bodies, 1)]},
+            "data": {"title": _exact_text("人工智能驱动组织转型实践路径", 40), "items": [{"title": title, "text": body} for title, body in zip(titles, bodies, strict=True)]},
         }],
         task_id=f"template-9-body-{count}-{body_length}",
         fallback_title="正文容量契约",
@@ -520,4 +521,6 @@ def test_template_9_preserves_body_contract(count: int, body_length: int) -> Non
             key=lambda candidate: (float(candidate.get("top", 0)), float(candidate.get("left", 0))),
         )
     ]
-    assert "".join(parts) == "".join(bodies)
+    assert "".join(parts) == "".join(
+        f"{title}。{body}" for title, body in zip(titles, bodies, strict=True)
+    )

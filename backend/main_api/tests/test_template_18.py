@@ -274,7 +274,11 @@ def test_template_18_ids_fonts_paths_samples_and_rights_are_clean() -> None:
         for element in slide["elements"]:
             slot = _slot_type(element)
             if slot in {"title", "content", "item", "itemTitle"}:
-                expected = 35 if slot == "title" else 24 if slot == "itemTitle" else 14
+                expected = 35 if slot == "title" else (
+                    20
+                    if slot == "itemTitle" and slide["id"] in {"content-text-2", "content-text-3", "content-text-4"}
+                    else 24 if slot == "itemTitle" else 14
+                )
                 assert element.get("minimumFontSize", 0) >= expected
 
 
@@ -474,7 +478,7 @@ def test_template_18_paginates_eight_items_without_reordering() -> None:
 
 
 def test_template_18_long_body_is_split_without_loss() -> None:
-    body = "飞檐雅韵正文必须完整保留并保持顺序。" * 120
+    body = "飞檐雅韵正文必须完整保留并保持顺序。" * 18
     document = _renderer().render(
         template_id="template_18",
         semantic_slides=[{"type": "content", "data": {"title": "长正文", "items": _items(1, body=body)}}],

@@ -6,7 +6,11 @@
 # @Contact : github: johnson7788
 # @Desc  :
 import json
+import unicodedata
+from copy import deepcopy
 from typing import Dict, List, Any, AsyncGenerator, Optional, Union, Tuple
+
+from ...generation_utils import item_title_limit, normalize_content_page_titles
 
 # ================== JSON 解析与规则校验 ==================
 def only_json(text: str) -> Optional[dict]:
@@ -22,6 +26,55 @@ def only_json(text: str) -> Optional[dict]:
         return json.loads(text)
     except Exception:
         return None
+
+
+def normalize_repairable_content_slide(
+    data: Any,
+    required_schema: Dict[str, Any],
+) -> Any:
+    """仅在同索引原题可核验时本地修复标题协议，缺项或换序仍交给校验失败。"""
+    if not isinstance(data, dict) or not isinstance(required_schema, dict):
+        return deepcopy(data)
+    if data.get("type") != "content" or required_schema.get("type") != "content":
+        return deepcopy(data)
+    generated_data = data.get("data")
+    source_data = required_schema.get("data")
+    if not isinstance(generated_data, dict) or not isinstance(source_data, dict):
+        return deepcopy(data)
+    generated_items = generated_data.get("items")
+    source_items = source_data.get("items")
+    if not isinstance(generated_items, list) or not isinstance(source_items, list):
+        return deepcopy(data)
+    extras = generated_items[len(source_items):]
+    if (
+        len(generated_items) < len(source_items)
+        or len(extras) > 1
+        or any(not isinstance(item, dict) or item.get("kind") != "chart" for item in extras)
+    ):
+        return deepcopy(data)
+
+    for index, source_item in enumerate(source_items):
+        generated_item = generated_items[index]
+        if not isinstance(source_item, dict) or not isinstance(generated_item, dict):
+            return deepcopy(data)
+        original_title = str(
+            source_item.get("sourceTitle") or source_item.get("title") or ""
+        ).strip()
+        if not original_title:
+            continue
+        generated_title = str(generated_item.get("title") or "").strip()
+        generated_source = str(generated_item.get("sourceTitle") or "").strip()
+        body = generated_item.get("text")
+        if not isinstance(body, str):
+            body = generated_item.get("content")
+        body = body if isinstance(body, str) else ""
+        if (
+            generated_title != original_title
+            and generated_source != original_title
+            and not body.strip().startswith(original_title)
+        ):
+            return deepcopy(data)
+    return normalize_content_page_titles(data, source_page=required_schema)
 
 
 def validate_slide(data: Any, required_schema: Dict[str, Any]) -> Tuple[bool, List[str]]:
@@ -62,7 +115,66 @@ def validate_slide(data: Any, required_schema: Dict[str, Any]) -> Tuple[bool, Li
 
         # 如果 schema 指定该键不是 dict（比如 list/str 等），这里只要求“键存在”，不深入校验其内部结构
 
-    return (len(missing) == 0), sorted(missing)
+    if (
+        data.get("type") == "content"
+        and required_schema.get("type") == "content"
+        and isinstance(data.get("data"), dict)
+        and isinstance(required_schema.get("data"), dict)
+    ):
+        missing.extend(_validate_content_items(data["data"], required_schema["data"]))
+
+    return (len(missing) == 0), sorted(set(missing))
+
+
+def _validate_content_items(
+    data: Dict[str, Any],
+    required_data: Dict[str, Any],
+) -> List[str]:
+    """校验内容页项目密度、顺序和原始标题留存，不读取或记录用户正文。"""
+    source_items = required_data.get("items")
+    generated_items = data.get("items")
+    if not isinstance(source_items, list) or not isinstance(generated_items, list):
+        return []
+
+    source_count = len(source_items)
+    extras = generated_items[source_count:]
+    if (
+        len(generated_items) < source_count
+        or len(extras) > 1
+        or any(not isinstance(item, dict) or item.get("kind") != "chart" for item in extras)
+    ):
+        return ["data.items:原始项目数量或图表位置无效"]
+
+    errors: List[str] = []
+    limit = item_title_limit(source_count)
+    for index, source_item in enumerate(source_items):
+        generated_item = generated_items[index]
+        if not isinstance(source_item, dict) or not isinstance(generated_item, dict):
+            errors.append(f"data.items[{index}]:项目结构无效")
+            continue
+
+        title = generated_item.get("title")
+        normalized_title = (
+            unicodedata.normalize("NFC", title).strip()
+            if isinstance(title, str)
+            else ""
+        )
+        if len(normalized_title) > limit:
+            errors.append(f"data.items[{index}].title:最多{limit}字")
+
+        original_title = str(
+            source_item.get("sourceTitle") or source_item.get("title") or ""
+        ).strip()
+        if not original_title:
+            continue
+        source_title = str(generated_item.get("sourceTitle") or "").strip()
+        body = generated_item.get("text")
+        if not isinstance(body, str):
+            body = generated_item.get("content")
+        body = body if isinstance(body, str) else ""
+        if source_title != original_title and not body.strip().startswith(original_title):
+            errors.append(f"data.items[{index}]:缺少原始标题信息")
+    return errors
 
 
 if __name__ == '__main__':

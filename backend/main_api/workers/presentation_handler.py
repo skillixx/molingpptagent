@@ -36,6 +36,15 @@ WrapperFactory = Callable[[str], AgentWrapper]
 class PresentationGenerationHandler:
     """把提示词依次交给大纲和正文 Agent，并落库为基础可编辑页面。"""
 
+    _SAFE_TEMPLATE_ERROR_MESSAGES = {
+        "TEMPLATE_TEXT_OVERFLOW": "模板无法容纳本页文字",
+        "TEMPLATE_MISSING_SLOT": "模板缺少必要内容槽位",
+        "TEMPLATE_DATA_INVALID": "模板数据无效",
+        "TEMPLATE_RESOURCE_MISSING": "模板资源缺失",
+        "ITEM_TITLE_TOO_LONG": "内容项标题过长",
+        "TEMPLATE_PAGINATION_EXPLOSION": "内容拆分页数异常",
+    }
+
     def __init__(
         self,
         *,
@@ -55,6 +64,8 @@ class PresentationGenerationHandler:
 
     async def execute(self, task: TaskExecution) -> None:
         payload = self._validate_input(task)
+        # 模板资源与容量必须在任何外部 Agent 调用前完成读取，失败时不能消耗大纲 Token。
+        template_capacity = self._template_content_capacity(payload["template_id"])
         context_id = f"trainppt-{task.task_id}"
         try:
             # 模板页提交的是用户已确认的大纲；其他调用方传普通主题时才补跑大纲 Agent。
@@ -66,6 +77,7 @@ class PresentationGenerationHandler:
                     payload["language"],
                     task.owner_user_id,
                 )
+            self._validate_template_outline_capacity(template_capacity, outline)
             semantic_slides = await self._collect_slides(
                 self.content_factory(context_id),
                 outline,
@@ -142,6 +154,61 @@ class PresentationGenerationHandler:
     @staticmethod
     def _is_markdown_outline(content: str) -> bool:
         return re.search(r"(?m)^#{1,6}\s+\S", content) is not None
+
+    def _template_content_capacity(self, template_id: str | None) -> int:
+        """在外部派发前读取模板容量，并把模板错误固定映射为不可重试分类。"""
+        if template_id is None or self.template_renderer is None:
+            return 0
+        try:
+            return self.template_renderer.max_content_item_slots(template_id)
+        except TemplateRenderError as exc:
+            raise self._template_task_error(exc) from None
+
+    @classmethod
+    def _template_task_error(cls, exc: TemplateRenderError) -> NonRetryableTaskError:
+        code = (
+            exc.code
+            if exc.code in cls._SAFE_TEMPLATE_ERROR_MESSAGES
+            else "TEMPLATE_DATA_INVALID"
+        )
+        return NonRetryableTaskError(code, cls._SAFE_TEMPLATE_ERROR_MESSAGES[code])
+
+    @staticmethod
+    def _validate_template_outline_capacity(
+        capacity: int,
+        outline: str,
+    ) -> None:
+        """拒绝模板无法容纳的单主题项目数，避免先调用正文 Agent 再失败。"""
+        if capacity <= 0:
+            return
+        item_counts = PresentationGenerationHandler._outline_content_item_counts(outline)
+        maximum = max(item_counts, default=0)
+        if maximum > capacity:
+            raise NonRetryableTaskError(
+                "TEMPLATE_ITEM_COUNT_UNSUPPORTED",
+                f"当前模板每个内容主题最多支持 {capacity} 项",
+            )
+
+    @staticmethod
+    def _outline_content_item_counts(outline: str) -> list[int]:
+        """按 Markdown 三级标题统计直属项目，不读取或记录具体正文。"""
+        counts: list[int] = []
+        current: int | None = None
+        for raw_line in outline.splitlines():
+            line = raw_line.strip()
+            if line.startswith("### "):
+                if current is not None:
+                    counts.append(current)
+                current = 0
+            elif line.startswith("#"):
+                if current is not None:
+                    counts.append(current)
+                    current = None
+            elif current is not None and line.startswith("- "):
+                current += 1
+        if current is not None:
+            counts.append(current)
+        return counts
 
     @staticmethod
     async def _collect_outline(
@@ -276,7 +343,8 @@ class PresentationGenerationHandler:
                     "presentation template render failed task_id=%s presentation_id=%s "
                     "template_id=%s code=%s slide_type=%s layout_kind=%s slot_type=%s "
                     "text_length=%s font_size=%s width=%s height=%s item_count=%s "
-                    "image_count=%s variant=%s",
+                    "image_count=%s variant=%s planned_page_count=%s final_page_count=%s "
+                    "content_page_count=%s single_item_page_count=%s max_item_count=%s",
                     task_id,
                     presentation_id,
                     template_id,
@@ -291,15 +359,13 @@ class PresentationGenerationHandler:
                     exc.context.get("item_count", "unknown"),
                     exc.context.get("image_count", "unknown"),
                     exc.context.get("variant", "unknown"),
+                    exc.context.get("planned_page_count", "unknown"),
+                    exc.context.get("final_page_count", "unknown"),
+                    exc.context.get("content_page_count", "unknown"),
+                    exc.context.get("single_item_page_count", "unknown"),
+                    exc.context.get("max_item_count", "unknown"),
                 )
-                safe_messages = {
-                    "TEMPLATE_TEXT_OVERFLOW": "模板无法容纳本页文字",
-                    "TEMPLATE_MISSING_SLOT": "模板缺少必要内容槽位",
-                    "TEMPLATE_DATA_INVALID": "模板数据无效",
-                    "TEMPLATE_RESOURCE_MISSING": "模板资源缺失",
-                }
-                code = exc.code if exc.code in safe_messages else "TEMPLATE_DATA_INVALID"
-                raise NonRetryableTaskError(code, safe_messages[code]) from None
+                raise self._template_task_error(exc) from None
         return self._render_basic_document(
             title=title,
             semantic_slides=semantic_slides,

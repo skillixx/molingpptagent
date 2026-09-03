@@ -27,11 +27,11 @@ from a2a.types import (
     SendMessageSuccessResponse,
     Task,
     TaskQueryParams,
+    TaskNotCancelableError,
     TaskState,
     TaskStatus,
     TextPart,
     DataPart,
-    UnsupportedOperationError,
 )
 from a2a.utils.errors import ServerError
 from a2a.utils.message import new_agent_text_message
@@ -171,25 +171,44 @@ class ADKAgentExecutor(AgentExecutor):
         context: RequestContext,
         event_queue: EventQueue,
     ):
-        # Run the agent until either complete or the task is suspended.
-        updater = TaskUpdater(event_queue, context.task_id, context.context_id)
-        # Immediately notify that the task is submitted.
-        if not context.current_task:
-            await updater.submit()
-        await updater.start_work()
-        await self._process_request(
-            types.UserContent(
-                parts=convert_a2a_parts_to_genai(context.message.parts),
-            ),
-            context.context_id,
-            updater,
-            metadata=context.message.metadata
-        )
-        logger.info("[adk executor] Agent执行完成退出")
+        # 注册真实执行协程，tasks/cancel 才能终止已经进入模型调用的远端任务。
+        running = asyncio.current_task()
+        keys = [key for key in (context.task_id, context.context_id) if key]
+        if running is not None:
+            for key in keys:
+                self._running_sessions[key] = running
+        try:
+            # Run the agent until either complete or the task is suspended.
+            updater = TaskUpdater(event_queue, context.task_id, context.context_id)
+            # Immediately notify that the task is submitted.
+            if not context.current_task:
+                await updater.submit()
+            await updater.start_work()
+            await self._process_request(
+                types.UserContent(
+                    parts=convert_a2a_parts_to_genai(context.message.parts),
+                ),
+                context.context_id,
+                updater,
+                metadata=context.message.metadata
+            )
+            logger.info("[adk executor] Agent执行完成退出")
+        finally:
+            if running is not None:
+                for key in keys:
+                    if self._running_sessions.get(key) is running:
+                        self._running_sessions.pop(key, None)
 
     async def cancel(self, context: RequestContext, event_queue: EventQueue):
-        # Ideally: kill any ongoing tasks.
-        raise ServerError(error=UnsupportedOperationError())
+        running = self._running_sessions.get(context.task_id)
+        if running is None and context.context_id:
+            running = self._running_sessions.get(context.context_id)
+        if running is None or running.done():
+            raise ServerError(error=TaskNotCancelableError())
+        running.cancel()
+        updater = TaskUpdater(event_queue, context.task_id, context.context_id)
+        await updater.cancel()
+        logger.info("[adk executor] Agent远端任务已取消")
 
     async def _upsert_session(self, session_id: str, metadata={}):
         """

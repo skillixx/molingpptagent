@@ -15,6 +15,7 @@ from sqlalchemy.orm import sessionmaker
 from backend.main_api.core.config import Settings
 from backend.main_api.models.base import Base
 from backend.main_api.models.domain import GenerationTask, Presentation
+from backend.main_api.repositories.resources import PresentationRepository
 from backend.main_api.repositories.tasks import TaskLeaseRepository
 from backend.main_api.workers import main as worker_main
 from backend.main_api.workers.runner import (
@@ -96,6 +97,8 @@ class ScriptedHandler:
             raise RetryableTaskError("AGENT_TEMPORARY", "Agent暂时不可用")
         if action == "non_retryable":
             raise NonRetryableTaskError("TASK_INPUT_INVALID", "任务输入无效")
+        if action == "exception":
+            raise RuntimeError("模拟派发后的未知异常")
         if action == "timeout":
             await asyncio.sleep(0.2)
             return
@@ -117,6 +120,24 @@ class SlowHandler(ScriptedHandler):
         self.calls.append(task.request_id)
         await asyncio.sleep(0.05)
         self.persisted_results.add(task.request_id)
+
+
+class CancellableHandler(ScriptedHandler):
+    """模拟正在等待远端响应的处理器，并记录 Worker 是否主动取消它。"""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.started = asyncio.Event()
+        self.cancelled = asyncio.Event()
+
+    async def execute(self, task: TaskExecution) -> None:
+        self.calls.append(task.request_id)
+        self.started.set()
+        try:
+            await asyncio.Event().wait()
+        except asyncio.CancelledError:
+            self.cancelled.set()
+            raise
 
 
 class CountingRepository:
@@ -191,13 +212,20 @@ def _presentation(engine) -> Presentation:
         return db.scalar(select(Presentation).where(Presentation.id == "presentation-1"))
 
 
-def _worker(engine, handler, clock, *, timeout: float = 1.0) -> PersistentTaskWorker:
+def _worker(
+    engine,
+    handler,
+    clock,
+    *,
+    timeout: float = 1.0,
+    heartbeat: float = 5,
+) -> PersistentTaskWorker:
     return PersistentTaskWorker(
         repository=TaskLeaseRepository(engine),
         handler=handler,
         worker_id="worker-test",
         lease_seconds=30,
-        heartbeat_seconds=5,
+        heartbeat_seconds=heartbeat,
         retry_backoff_seconds=10,
         claim_batch_size=10,
         agent_timeout_seconds=timeout,
@@ -275,8 +303,8 @@ def test_crash_after_persisted_result_recovers_success_without_second_agent_call
         engine.dispose()
 
 
-def test_timeout_retries_with_backoff_then_succeeds(tmp_path: Path) -> None:
-    """明确超时可重试，退避到期前不得再次调用Agent。"""
+def test_timeout_after_agent_dispatch_is_terminal_and_never_replays_agent(tmp_path: Path) -> None:
+    """外部调用超时后结果未知，必须停止而不是从第 0 页重做整份 PPT。"""
     engine = _engine(tmp_path)
     try:
         _insert_task(engine)
@@ -285,37 +313,37 @@ def test_timeout_retries_with_backoff_then_succeeds(tmp_path: Path) -> None:
         worker = _worker(engine, handler, clock, timeout=0.01)
         assert asyncio.run(worker.run_once()) is True
         task = _task(engine)
-        assert task.status == "pending"
+        assert task.status == "failed"
+        assert task.stage == "failed"
+        assert task.retryable is False
         assert task.last_error_code == "AGENT_TIMEOUT"
         assert asyncio.run(worker.run_once()) is False
-        clock.advance(10)
-        assert asyncio.run(worker.run_once()) is True
-        assert _task(engine).status == "succeeded"
-        assert handler.calls == ["request-stable-1", "request-stable-1"]
+        clock.advance(3600)
+        assert asyncio.run(worker.run_once()) is False
+        assert handler.calls == ["request-stable-1"]
     finally:
         engine.dispose()
 
 
-def test_retryable_failure_stops_at_max_attempts_and_becomes_dead_letter(tmp_path: Path) -> None:
-    """最大尝试次数包含首次执行，达到上限后必须明确失败且不再领取。"""
+def test_retryable_failure_after_dispatch_is_terminal_and_never_replays_agent(tmp_path: Path) -> None:
+    """派发后的失败结果未知，即使标成可重试也不能自动重放整份 PPT。"""
     engine = _engine(tmp_path)
     try:
         _insert_task(engine, max_attempts=3)
         clock = MutableClock()
-        handler = ScriptedHandler("retryable", "retryable", "retryable", "success")
+        handler = ScriptedHandler("retryable", "success")
         worker = _worker(engine, handler, clock)
-        for backoff in (10, 20):
-            assert asyncio.run(worker.run_once()) is True
-            clock.advance(backoff)
         assert asyncio.run(worker.run_once()) is True
         task = _task(engine)
         assert task.status == "failed"
-        assert task.stage == "dead_letter"
-        assert task.attempt == 3
+        assert task.stage == "failed"
+        assert task.retryable is False
+        assert task.last_error_code == "AGENT_TEMPORARY"
+        assert task.attempt == 1
         assert _presentation(engine).status == "failed"
         clock.advance(1000)
         assert asyncio.run(worker.run_once()) is False
-        assert len(handler.calls) == 3
+        assert handler.calls == ["request-stable-1"]
     finally:
         engine.dispose()
 
@@ -333,6 +361,27 @@ def test_non_retryable_failure_is_terminal_after_first_call(tmp_path: Path) -> N
         clock.advance(1000)
         assert asyncio.run(worker.run_once()) is False
         assert len(handler.calls) == 1
+    finally:
+        engine.dispose()
+
+
+def test_unknown_failure_after_dispatch_is_terminal_and_never_replays_agent(tmp_path: Path) -> None:
+    """未知异常的远端结果同样不可判定，必须留给用户手动重试。"""
+    engine = _engine(tmp_path)
+    try:
+        _insert_task(engine)
+        clock = MutableClock()
+        handler = ScriptedHandler("exception", "success")
+        worker = _worker(engine, handler, clock)
+
+        assert asyncio.run(worker.run_once()) is True
+        task = _task(engine)
+        assert task.status == task.stage == "failed"
+        assert task.retryable is False
+        assert task.last_error_code == "WORKER_EXECUTION_ERROR"
+        clock.advance(1000)
+        assert asyncio.run(worker.run_once()) is False
+        assert handler.calls == ["request-stable-1"]
     finally:
         engine.dispose()
 
@@ -375,5 +424,44 @@ def test_running_task_renews_lease_before_completion(tmp_path: Path) -> None:
         assert asyncio.run(worker.run_once()) is True
         assert repository.renew_calls >= 1
         assert _task(engine).status == "succeeded"
+    finally:
+        engine.dispose()
+
+
+def test_deleting_running_presentation_cancels_worker_execution_on_next_heartbeat(tmp_path: Path) -> None:
+    """删除运行中作品后，续租失败必须取消处理器，以便 A2A 客户端停止远端模型。"""
+    engine = _engine(tmp_path)
+    try:
+        _insert_task(engine)
+        clock = MutableClock()
+        handler = CancellableHandler()
+        worker = _worker(engine, handler, clock, timeout=2, heartbeat=0.01)
+
+        async def scenario() -> None:
+            running = asyncio.create_task(worker.run_once())
+            await handler.started.wait()
+            deleted = await asyncio.to_thread(
+                PresentationRepository(engine).soft_delete,
+                1001,
+                "presentation-1",
+                deleted_at=clock(),
+            )
+            assert deleted is True
+
+            done, _pending = await asyncio.wait({running}, timeout=0.5)
+            if running not in done:
+                running.cancel()
+                with pytest.raises(asyncio.CancelledError):
+                    await running
+            assert running in done
+            assert await running is True
+            assert handler.cancelled.is_set()
+
+        asyncio.run(scenario())
+
+        task = _task(engine)
+        assert task.status == task.stage == "failed"
+        assert task.last_error_code == "USER_CANCELLED"
+        assert handler.calls == ["request-stable-1"]
     finally:
         engine.dispose()

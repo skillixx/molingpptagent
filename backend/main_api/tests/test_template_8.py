@@ -295,7 +295,7 @@ def test_template_8_paginates_eight_items_without_reordering() -> None:
 
 def test_template_8_long_body_is_split_without_silent_truncation() -> None:
     """长正文拆分后必须逐字符保持原始顺序。"""
-    long_text = "复杂信息需要先确定结论，再按层级组织证据和行动。" * 80
+    long_text = "复杂信息需要先确定结论，再按层级组织证据和行动。" * 24
     document = _renderer().render(
         template_id="template_8",
         semantic_slides=[

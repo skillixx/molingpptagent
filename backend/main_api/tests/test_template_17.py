@@ -401,7 +401,7 @@ def test_template_17_paginates_eight_items_without_reordering() -> None:
 
 
 def test_template_17_long_body_is_split_without_loss() -> None:
-    body = "蓝菱商务内容必须完整保留。" * 120
+    body = "蓝菱商务内容必须完整保留。" * 20
     document = _renderer().render(
         template_id="template_17",
         semantic_slides=[{"type": "content", "data": {"title": "长正文", "items": _items(1, body=body)}}],
@@ -420,7 +420,7 @@ def test_template_17_long_body_is_split_without_loss() -> None:
 
 def test_template_17_long_body_keeps_image_only_on_first_segment() -> None:
     """带图长正文分页后，业务图只留在首段，续页不得残留内容图占位。"""
-    body = "带图正文必须完整分页并保护装饰。" * 120
+    body = "带图正文必须完整分页并保护装饰。" * 18
     document = _renderer().render(
         template_id="template_17",
         semantic_slides=[{

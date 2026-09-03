@@ -95,4 +95,23 @@ describe('Works', () => {
     await flushPromises()
     expect(api.remove).toHaveBeenCalledWith('p-1')
   })
+
+  it('零页生成任务显示排队中而不是误报正在生成', async () => {
+    api.list.mockResolvedValue({
+      items: [{ ...item, status: 'generating', slideCount: 0 }],
+      page: 1,
+      pageSize: 20,
+      total: 1,
+      hasMore: false,
+    })
+    const wrapper = mountWorks()
+    await flushPromises()
+
+    const card = wrapper.get('.work-card')
+    expect(card.get('.status-pill').text()).toBe('排队中')
+    expect(card.get('.open-button').text()).toBe('查看队列')
+    await wrapper.get('[data-testid="open-p-1"]').trigger('click')
+    expect(wrapper.get('.feedback').text()).toContain('任务正在排队')
+    expect(push).not.toHaveBeenCalledWith(expect.objectContaining({ name: 'PresentationEditor' }))
+  })
 })

@@ -53,6 +53,19 @@ class PresentationTemplateRenderer:
         self.template_root = template_root.resolve()
         self._cache: dict[str, dict[str, Any]] = {}
 
+    def max_content_item_slots(self, template_id: str) -> int:
+        """返回模板普通内容页的最大项目槽位，供调用模型前做零成本容量预检。"""
+        template = self._load(template_id)
+        slides = template.get("slides") if isinstance(template.get("slides"), list) else []
+        return max(
+            (
+                self._slot_count(slide, "item")
+                for slide in slides
+                if isinstance(slide, dict) and slide.get("type") == "content"
+            ),
+            default=0,
+        )
+
     def render(
         self,
         *,
@@ -66,10 +79,16 @@ class PresentationTemplateRenderer:
         if not isinstance(source_slides, list) or not source_slides:
             raise TemplateRenderError("模板没有可用页面", code="TEMPLATE_DATA_INVALID")
 
+        planned_page_count = len(semantic_slides)
+        # Main API 是独立信任边界：即使上游未执行标题协议，也不能因长标题把多项页降成单项页。
+        semantic_slides = self._normalize_content_titles(semantic_slides)
         # 先按模板真实槽位容量拆页，后续版式选择就不需要丢目录项或挤压正文。
         semantic_slides = self._paginate_contents_slides(source_slides, semantic_slides)
+        self._guard_pagination_growth(planned_page_count, semantic_slides)
         semantic_slides = self._paginate_transition_slides(source_slides, semantic_slides)
+        self._guard_pagination_growth(planned_page_count, semantic_slides)
         semantic_slides = self._paginate_content_slides(source_slides, semantic_slides)
+        self._guard_pagination_growth(planned_page_count, semantic_slides)
         rendered: list[dict[str, Any]] = []
         transition_number = 0
         for index, semantic in enumerate(semantic_slides):
@@ -100,6 +119,106 @@ class PresentationTemplateRenderer:
             "viewport_size": width,
             "viewport_ratio": height / width,
         }
+
+    @classmethod
+    def _normalize_content_titles(
+        cls,
+        semantic_slides: list[dict[str, Any]],
+    ) -> list[dict[str, Any]]:
+        """在渲染边界应用幂等安全标题，并把原题无损放入正文开头。"""
+        normalized_slides = copy.deepcopy(semantic_slides)
+        for semantic in normalized_slides:
+            if semantic.get("type") != "content":
+                continue
+            data = semantic.get("data")
+            if not isinstance(data, dict) or not isinstance(data.get("items"), list):
+                continue
+            items = data["items"]
+            limit = cls._item_title_limit(len(items))
+            normalized_items: list[Any] = []
+            for index, raw_item in enumerate(items):
+                if isinstance(raw_item, dict) and raw_item.get("kind") == "chart":
+                    normalized_items.append(raw_item)
+                    continue
+                if isinstance(raw_item, dict):
+                    item = raw_item
+                    source_title = cls._text(item.get("sourceTitle") or item.get("title"))
+                    display_title = cls._text(item.get("title"))
+                else:
+                    source_title = cls._text(raw_item)
+                    display_title = source_title
+                    item = {"title": display_title, "text": source_title}
+
+                if not display_title or len(unicodedata.normalize("NFC", display_title).strip()) > limit:
+                    # 禁止截断原句；语义短标题缺失时使用稳定占位名，并保留完整原题。
+                    display_title = f"核心要点{index + 1:02d}"
+                item["title"] = display_title
+                if source_title:
+                    item["sourceTitle"] = source_title
+                    body_key = "text" if isinstance(item.get("text"), str) else (
+                        "content" if isinstance(item.get("content"), str) else "text"
+                    )
+                    body = item.get(body_key) if isinstance(item.get(body_key), str) else ""
+                    if display_title != source_title and not body.strip().startswith(source_title):
+                        separator = "" if source_title.endswith(("。", "！", "？", ".", "!", "?")) else "。"
+                        item[body_key] = f"{source_title}{separator}{body}" if body else source_title
+                normalized_items.append(item)
+            data["items"] = normalized_items
+        return normalized_slides
+
+    @staticmethod
+    def _item_title_limit(item_count: int) -> int:
+        if item_count <= 1:
+            return 20
+        if item_count == 2:
+            return 16
+        if item_count == 3:
+            return 12
+        return 10
+
+    @classmethod
+    def _normalize_batch_titles(cls, items: list[Any]) -> list[Any]:
+        """正文拆段改变项目密度后，仅收紧展示标题，不重复写入原始正文。"""
+        normalized = copy.deepcopy(items)
+        limit = cls._item_title_limit(len(normalized))
+        for index, item in enumerate(normalized):
+            if not isinstance(item, dict) or item.get("kind") == "chart":
+                continue
+            title = cls._text(item.get("title"))
+            if not title or len(unicodedata.normalize("NFC", title).strip()) > limit:
+                item["title"] = f"核心要点{index + 1:02d}"
+        return normalized
+
+    @classmethod
+    def _guard_pagination_growth(
+        cls,
+        planned_page_count: int,
+        semantic_slides: list[dict[str, Any]],
+    ) -> None:
+        """阻止分页结果异常膨胀；错误上下文只包含规模统计，不包含用户正文。"""
+        allowed_page_count = planned_page_count * 1.5 + 5
+        if len(semantic_slides) <= allowed_page_count:
+            return
+        content_pages = [
+            slide for slide in semantic_slides if slide.get("type") == "content"
+        ]
+        item_counts = [
+            len(data.get("items"))
+            for slide in content_pages
+            if isinstance((data := slide.get("data")), dict)
+            and isinstance(data.get("items"), list)
+        ]
+        raise TemplateRenderError(
+            "内容分页数量异常",
+            code="TEMPLATE_PAGINATION_EXPLOSION",
+            context={
+                "planned_page_count": str(planned_page_count),
+                "final_page_count": str(len(semantic_slides)),
+                "content_page_count": str(len(content_pages)),
+                "single_item_page_count": str(sum(count == 1 for count in item_counts)),
+                "max_item_count": str(max(item_counts, default=0)),
+            },
+        )
 
     def _paginate_contents_slides(
         self,
@@ -324,35 +443,27 @@ class PresentationTemplateRenderer:
         prefer_images: bool,
         image_count: int,
     ) -> list[list[Any]]:
-        """按标题实际容量贪心分批；尾批可自动降密度，避免 3/5/6 项窄标题框溢出。"""
+        """只按模板项目槽位分批；标题不得改变批次密度或触发单项页退化。"""
         if not items:
             # 空内容页仍需保留模板骨架，不能把一个语义页分页成零页。
             return [[]]
         batches: list[list[Any]] = []
-        cursor = 0
-        while cursor < len(items):
-            remaining = len(items) - cursor
-            selected_batch: list[Any] | None = None
-            for size in range(min(max_item_slots, remaining), 0, -1):
-                batch = items[cursor:cursor + size]
-                selection_data = copy.deepcopy(base_data)
-                selection_data["items"] = copy.deepcopy(batch)
-                if self._content_item_titles_fit(
-                    content_templates,
-                    selection_data,
-                    prefer_images=prefer_images,
-                    image_count=image_count,
-                ):
-                    selected_batch = batch
-                    break
-            if selected_batch is None:
+        for cursor in range(0, len(items), max_item_slots):
+            batch = self._normalize_batch_titles(items[cursor:cursor + max_item_slots])
+            selection_data = copy.deepcopy(base_data)
+            selection_data["items"] = copy.deepcopy(batch)
+            if not self._content_item_titles_fit(
+                content_templates,
+                selection_data,
+                prefer_images=prefer_images,
+                image_count=image_count,
+            ):
                 raise TemplateRenderError(
-                    "内容项标题超过所有可用版式容量",
-                    code="TEMPLATE_DATA_INVALID",
-                    context={"item_count": str(remaining)},
+                    "安全内容项标题仍超过目标版式容量",
+                    code="ITEM_TITLE_TOO_LONG",
+                    context={"item_count": str(len(batch))},
                 )
-            batches.append(copy.deepcopy(selected_batch))
-            cursor += len(selected_batch)
+            batches.append(batch)
         return batches
 
     def _content_item_titles_fit(
@@ -507,7 +618,9 @@ class PresentationTemplateRenderer:
 
             page = copy.deepcopy(semantic)
             page_data = page["data"]
-            page_data["items"] = [copy.deepcopy(item) for item, _ in batch]
+            page_data["items"] = self._normalize_batch_titles(
+                [item for item, _ in batch]
+            )
             if pages and title:
                 page_data["title"] = f"{title}（续）"
             page_images = [copy.deepcopy(source) for _, source in batch if source is not None]
@@ -578,15 +691,14 @@ class PresentationTemplateRenderer:
             return [copy.deepcopy(item)]
 
         expanded: list[dict[str, Any]] = []
-        for index, chunk in enumerate(chunks):
+        for chunk in chunks:
             part = copy.deepcopy(item)
             if body_key is None:
                 # 仅标题项会同时把标题作为正文显示；拆成多个短标题即可无损分页。
                 part["title"] = chunk
             else:
                 part[body_key] = chunk
-                if index > 0 and title:
-                    part["title"] = f"{title}（续）"
+                # 页面主标题已经表达续页；项目标题保持稳定可避免正文分页反向触发降密度。
             expanded.append(part)
         return expanded
 
@@ -1334,11 +1446,12 @@ class PresentationTemplateRenderer:
             line_height=line_height,
             width_factor=width_factor,
         ) > height:
+            text_type = str(self._slot_type(element) or "unknown")[:64]
             raise TemplateRenderError(
                 "文本超过版式声明的最小字号容量",
-                code="TEMPLATE_DATA_INVALID",
+                code="ITEM_TITLE_TOO_LONG" if text_type == "itemTitle" else "TEMPLATE_DATA_INVALID",
                 context={
-                    "text_type": str(self._slot_type(element) or "unknown")[:64],
+                    "text_type": text_type,
                     "minimum_font_size": str(round(minimum, 1)),
                     # 仅记录长度和几何数据，便于定位真实容量问题，不泄露用户正文。
                     "text_length": str(len(value)),

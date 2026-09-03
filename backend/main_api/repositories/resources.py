@@ -378,6 +378,29 @@ class PresentationRepository(_OwnerRepository):
                 )
                 .values(status="deleted", deleted_at=deleted_at, updated_at=deleted_at)
             )
+            # 排队或运行中的任务与作品同事务终结；运行中 Worker 会在下一次续租时停止本地协程。
+            db.execute(
+                update(GenerationTask)
+                .where(
+                    GenerationTask.presentation_id == presentation_id,
+                    GenerationTask.owner_user_id == owner_user_id,
+                    GenerationTask.status.in_(("pending", "running")),
+                )
+                .values(
+                    status="failed",
+                    stage="failed",
+                    retryable=False,
+                    last_error_code="USER_CANCELLED",
+                    error_message="用户删除作品，任务已取消",
+                    finished_at=deleted_at,
+                    updated_at=deleted_at,
+                    locked_by=None,
+                    lock_token=None,
+                    locked_until=None,
+                    heartbeat_at=None,
+                    dispatch_started_at=None,
+                )
+            )
             return True
 
     @staticmethod

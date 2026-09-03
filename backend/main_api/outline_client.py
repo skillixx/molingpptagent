@@ -8,8 +8,12 @@ import httpx
 from a2a.client import A2ACardResolver, A2AClient
 from a2a.types import (
     AgentCard,
+    CancelTaskRequest,
+    CancelTaskSuccessResponse,
     MessageSendParams,
     SendStreamingMessageRequest,
+    TaskIdParams,
+    TaskState,
 )
 
 PUBLIC_AGENT_CARD_PATH = '/.well-known/agent.json'
@@ -61,6 +65,44 @@ class A2AOutlineClientWrapper:
             except Exception as e:
                 self.logger.error(f'获取 AgentCard 失败: {e}', exc_info=True)
                 raise RuntimeError('无法获取 agent card，无法继续运行。') from e
+
+    async def _cancel_remote_task(self) -> bool:
+        """本地大纲消费被取消时停止同一远端任务，并核验协议层终态。"""
+        if self.client is None or not isinstance(self.task_id, str) or not self.task_id:
+            return False
+        try:
+            response = await self.client.cancel_task(
+                CancelTaskRequest(
+                    id=str(uuid4()),
+                    params=TaskIdParams(id=self.task_id),
+                )
+            )
+        except Exception:
+            self.logger.warning("大纲 Agent 远端取消失败")
+            return False
+        root = getattr(response, "root", None)
+        if (
+            not isinstance(root, CancelTaskSuccessResponse)
+            or root.result.status.state != TaskState.canceled
+        ):
+            self.logger.warning("大纲 Agent 远端取消未确认")
+            return False
+        self.logger.info("大纲 Agent 远端任务已取消")
+        return True
+
+    async def _stream_with_remote_cancel(self, stream_response):
+        """等待大纲流时传播本地取消，并保留原始 CancelledError。"""
+        try:
+            async for chunk in stream_response:
+                yield chunk
+        except asyncio.CancelledError:
+            await self._cancel_remote_task()
+            raise
+        except Exception:
+            # 已拿到远端 taskId 后断流时尽力取消，避免大纲任务脱离 Worker 继续计费。
+            await self._cancel_remote_task()
+            raise
+
     async def generate(self, user_question: str, language="Chinese", user_id="") -> None:
         """
         user_question: 用户问题
@@ -95,13 +137,16 @@ class A2AOutlineClientWrapper:
             )
             stream_response = self.client.send_message_streaming(streaming_request)
             # 表示工具完成了调用，可以返回metada信息了
-            async for chunk in stream_response:
+            async for chunk in self._stream_with_remote_cancel(stream_response):
                 chunk_data = chunk.model_dump(mode='json', exclude_none=True)
                 if "error" in chunk_data:
                     self.logger.error("大纲Agent返回错误")
                     yield {"type": "final", "text": "大纲Agent调用失败", "author": "system"}
                     break
                 result = chunk_data["result"]
+                remote_task_id = result.get("taskId")
+                if isinstance(remote_task_id, str) and remote_task_id:
+                    self.task_id = remote_task_id
                 # 判断 chunk 类型
                 # 查看parts类型，分为data，text，reasoning，final，例如放入{"type": "text", "text": xxx}，最后yield返回
                 if result.get("kind") == "status-update":

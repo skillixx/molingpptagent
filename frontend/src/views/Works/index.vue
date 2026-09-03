@@ -97,8 +97,8 @@
             <div class="mini-lines"><i></i><i></i><i></i></div>
             <b>{{ String(work.slideCount).padStart(2, '0') }}</b>
           </div>
-          <span class="status-pill" :class="work.status"><i></i>{{ statusMeta[work.status].label }}</span>
-          <span v-if="work.status === 'generating'" class="generation-line"><i></i></span>
+          <span class="status-pill" :class="work.status"><i></i>{{ workStatusMeta(work).label }}</span>
+          <span v-if="work.status === 'generating' && work.slideCount > 0" class="generation-line"><i></i></span>
         </button>
         <div class="card-content">
           <div class="card-heading">
@@ -107,7 +107,7 @@
           </div>
           <p class="card-meta"><span>{{ work.slideCount }} 页</span><i></i><span>{{ formatDate(work.updatedAt) }}</span></p>
           <div class="card-actions">
-            <button type="button" class="open-button" @click="handlePrimary(work)">{{ statusMeta[work.status].action }}</button>
+            <button type="button" class="open-button" @click="handlePrimary(work)">{{ workStatusMeta(work).action }}</button>
             <button type="button" :data-testid="`duplicate-${work.id}`" aria-label="复制作品" @click="duplicateWork(work.id)"><IconCopy /></button>
             <button type="button" :data-testid="`delete-${work.id}`" aria-label="删除作品" @click="askDelete(work)"><IconDelete /></button>
           </div>
@@ -180,6 +180,13 @@ const statusMeta: Record<PresentationStatus, { label: string; action: string }> 
   billing_pending: { label: '待结算', action: '查看状态' },
 }
 
+function workStatusMeta(work: PresentationSummary) {
+  if (work.status === 'generating' && work.slideCount === 0) {
+    return { label: '排队中', action: '查看队列' }
+  }
+  return statusMeta[work.status]
+}
+
 watch(() => store.search, () => {
   window.clearTimeout(searchTimer)
   searchTimer = window.setTimeout(() => void store.applyFilters(), 300)
@@ -207,7 +214,9 @@ function handlePrimary(work: PresentationSummary) {
     return
   }
   if (work.status === 'generating') {
-    store.feedback = '作品正在生成，可稍后刷新查看进度。'
+    store.feedback = work.slideCount === 0
+      ? '任务正在排队，服务开始处理后会显示生成页数。'
+      : '作品正在生成，可稍后刷新查看进度。'
     return
   }
   if (work.status === 'billing_pending') {

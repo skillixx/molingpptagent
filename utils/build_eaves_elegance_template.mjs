@@ -596,15 +596,18 @@ function textItemsSlide(count) {
         groupId,
       }),
       line(slide, "item-line", left + 52, top + 18, 34, COLORS.mutedGold, 1),
-      text(slide, "item-title", `内容标题 ${index + 1}`, left + 96, top - 6, width - 96, 60, {
+      text(slide, "item-title", `内容标题 ${index + 1}`, left + 96, top - 6, width - 96, 70, {
         fontSize: 24,
         color: COLORS.ink,
         bold: true,
         textType: "itemTitle",
-        minimumFontSize: 24,
+        // 三栏最窄标题框在 20px、1.2 行高下可稳定容纳 12 个中文字符的两行标题。
+        minimumFontSize: 20,
+        textLineHeight: 1.2,
+        lineHeight: 1.2,
         groupId,
       }),
-      text(slide, "item-body", "在此输入完整说明，保持观点、证据与行动之间的清晰关系。", left + 4, top + 74, width - 8, bodyHeight, {
+      text(slide, "item-body", "在此输入完整说明，保持观点、证据与行动之间的清晰关系。", left + 4, top + 74, width - 8, count === 4 ? 100 : bodyHeight, {
         fontSize: 17,
         textType: "item",
         minimumFontSize: 16,
