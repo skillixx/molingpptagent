@@ -518,7 +518,7 @@ def _render_content_with_title(title: str, task_id: str) -> dict:
 
 
 def test_template_15_long_body_paginates_without_loss() -> None:
-    body = "性能证据必须完整保留并按顺序进入下一页。" * 60
+    body = "性能证据必须完整保留并按顺序进入下一页。" * 12
     document = _renderer().render(
         template_id="template_15",
         semantic_slides=[{"type": "content", "data": {"title": "长正文", "items": _items(1, body=body)}}],
@@ -555,20 +555,23 @@ def test_template_15_real_agent_five_item_titles_fit_without_content_loss() -> N
         fallback_title="真实内容页标题",
     )
 
-    rendered_titles = "\n".join(
+    rendered_titles = [
         _plain_text(element)
         for slide in document["slides"]
         for element in slide["elements"]
         if _slot_type(element) == "itemTitle"
-    )
+    ]
     rendered_bodies = "".join(
         _plain_text(element)
         for slide in document["slides"]
         for element in slide["elements"]
         if _slot_type(element) == "item"
     )
-    assert all(title in rendered_titles for title in titles)
-    assert rendered_bodies == "".join(bodies)
+    assert rendered_titles
+    assert all(title.startswith("核心要点") and len(title) <= 10 for title in rendered_titles)
+    assert rendered_bodies == "".join(
+        f"{title}。{body}" for title, body in zip(titles, bodies, strict=True)
+    )
 
 
 @pytest.mark.parametrize("title_length", [17, 18])
@@ -603,8 +606,8 @@ def test_template_15_long_item_titles_choose_readable_pagination(title_length: i
     )
     assert len(document["slides"]) > 1
     assert rendered_titles
-    assert all(value.startswith(title) for value in rendered_titles)
-    assert rendered_bodies == body * 5
+    assert all(value.startswith("核心要点") and len(value) <= 10 for value in rendered_titles)
+    assert rendered_bodies == (f"{title}。{body}") * 5
 
 
 @pytest.mark.parametrize(
@@ -830,7 +833,7 @@ def test_template_15_multiline_transition_copy_paginates_by_rendered_height() ->
 
 
 def test_template_15_long_body_with_image_keeps_image_on_first_part_only() -> None:
-    body = "产品图只属于正文首段，后续分页不得重复固定内容图。" * 50
+    body = "产品图只属于正文首段，后续分页不得重复固定内容图。" * 12
     document = _renderer().render(
         template_id="template_15",
         semantic_slides=[{

@@ -488,7 +488,7 @@ def test_template_12_paginates_eight_items_without_reordering() -> None:
 
 def test_template_12_splits_long_body_without_truncation() -> None:
     """长正文拆分后必须保持全部字符和顺序。"""
-    long_text = "从真实问题出发，连接目标、证据、行动与结果。" * 80
+    long_text = "从真实问题出发，连接目标、证据、行动与结果。" * 24
     document = _renderer().render(
         template_id="template_12",
         semantic_slides=[{"type": "content", "data": {"title": "完整说明", "items": [{"title": "实施路径", "text": long_text}]}}],
@@ -517,6 +517,7 @@ def test_template_12_accepts_agent_directory_contract(count: int) -> None:
 def test_template_12_preserves_body_contract(count: int, body_length: int) -> None:
     """正文达到Agent上限时可以分页，但不能丢字。"""
     bodies = [_exact_text(f"第{index}项围绕目标组织证据并形成行动", body_length) for index in range(1, count + 1)]
+    titles = [_exact_text(f"第{index}项表达能力与行动路径", 30) for index in range(1, count + 1)]
     document = _renderer().render(
         template_id="template_12",
         semantic_slides=[{
@@ -524,12 +525,14 @@ def test_template_12_preserves_body_contract(count: int, body_length: int) -> No
             "data": {
                 "title": _exact_text("东方水墨信息表达与实施路径", 40),
                 "items": [
-                    {"title": _exact_text(f"第{index}项表达能力与行动路径", 30), "text": body}
-                    for index, body in enumerate(bodies, 1)
+                    {"title": title, "text": body}
+                    for title, body in zip(titles, bodies, strict=True)
                 ],
             },
         }],
         task_id=f"template-12-body-{count}-{body_length}",
         fallback_title="正文容量契约",
     )
-    assert _rendered_item_text(document) == "".join(bodies)
+    assert _rendered_item_text(document) == "".join(
+        f"{title}。{body}" for title, body in zip(titles, bodies, strict=True)
+    )

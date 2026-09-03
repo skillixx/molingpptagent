@@ -5542,10 +5542,11 @@
           "defaultFontName": "微软雅黑",
           "defaultColor": "#F7FBFF",
           "vertical": false,
-          "content": "<p style=\"text-align: left;\"><span style=\"color: #F7FBFF;font-size: 24px;font-family: 微软雅黑;line-height: 1.35;\"><strong>清晰结构</strong></span></p>",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #F7FBFF;font-size: 24px;font-family: 微软雅黑;line-height: 1.2;\"><strong>清晰结构</strong></span></p>",
           "textType": "itemTitle",
           "groupId": "content-text-2-item-1",
-          "minimumFontSize": 24
+          "minimumFontSize": 20,
+          "textLineHeight": 1.2
         },
         {
           "type": "text",
@@ -5639,10 +5640,11 @@
           "defaultFontName": "微软雅黑",
           "defaultColor": "#F7FBFF",
           "vertical": false,
-          "content": "<p style=\"text-align: left;\"><span style=\"color: #F7FBFF;font-size: 24px;font-family: 微软雅黑;line-height: 1.35;\"><strong>清晰结构</strong></span></p>",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #F7FBFF;font-size: 24px;font-family: 微软雅黑;line-height: 1.2;\"><strong>清晰结构</strong></span></p>",
           "textType": "itemTitle",
           "groupId": "content-text-2-item-2",
-          "minimumFontSize": 24
+          "minimumFontSize": 20,
+          "textLineHeight": 1.2
         },
         {
           "type": "text",
@@ -5985,10 +5987,11 @@
           "defaultFontName": "微软雅黑",
           "defaultColor": "#F7FBFF",
           "vertical": false,
-          "content": "<p style=\"text-align: left;\"><span style=\"color: #F7FBFF;font-size: 24px;font-family: 微软雅黑;line-height: 1.35;\"><strong>清晰结构</strong></span></p>",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #F7FBFF;font-size: 24px;font-family: 微软雅黑;line-height: 1.2;\"><strong>清晰结构</strong></span></p>",
           "textType": "itemTitle",
           "groupId": "content-text-3-item-1",
-          "minimumFontSize": 24
+          "minimumFontSize": 20,
+          "textLineHeight": 1.2
         },
         {
           "type": "text",
@@ -6082,10 +6085,11 @@
           "defaultFontName": "微软雅黑",
           "defaultColor": "#F7FBFF",
           "vertical": false,
-          "content": "<p style=\"text-align: left;\"><span style=\"color: #F7FBFF;font-size: 24px;font-family: 微软雅黑;line-height: 1.35;\"><strong>清晰结构</strong></span></p>",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #F7FBFF;font-size: 24px;font-family: 微软雅黑;line-height: 1.2;\"><strong>清晰结构</strong></span></p>",
           "textType": "itemTitle",
           "groupId": "content-text-3-item-2",
-          "minimumFontSize": 24
+          "minimumFontSize": 20,
+          "textLineHeight": 1.2
         },
         {
           "type": "text",
@@ -6179,10 +6183,11 @@
           "defaultFontName": "微软雅黑",
           "defaultColor": "#F7FBFF",
           "vertical": false,
-          "content": "<p style=\"text-align: left;\"><span style=\"color: #F7FBFF;font-size: 24px;font-family: 微软雅黑;line-height: 1.35;\"><strong>清晰结构</strong></span></p>",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #F7FBFF;font-size: 24px;font-family: 微软雅黑;line-height: 1.2;\"><strong>清晰结构</strong></span></p>",
           "textType": "itemTitle",
           "groupId": "content-text-3-item-3",
-          "minimumFontSize": 24
+          "minimumFontSize": 20,
+          "textLineHeight": 1.2
         },
         {
           "type": "text",
@@ -6525,10 +6530,11 @@
           "defaultFontName": "微软雅黑",
           "defaultColor": "#F7FBFF",
           "vertical": false,
-          "content": "<p style=\"text-align: left;\"><span style=\"color: #F7FBFF;font-size: 24px;font-family: 微软雅黑;line-height: 1.35;\"><strong>清晰结构</strong></span></p>",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #F7FBFF;font-size: 24px;font-family: 微软雅黑;line-height: 1.2;\"><strong>清晰结构</strong></span></p>",
           "textType": "itemTitle",
           "groupId": "content-text-4-item-1",
-          "minimumFontSize": 24
+          "minimumFontSize": 20,
+          "textLineHeight": 1.2
         },
         {
           "type": "text",
@@ -6536,7 +6542,7 @@
           "left": 94,
           "top": 248,
           "width": 362,
-          "height": 58,
+          "height": 100,
           "rotate": 0,
           "defaultFontName": "微软雅黑",
           "defaultColor": "#B7C6D4",
@@ -6622,10 +6628,11 @@
           "defaultFontName": "微软雅黑",
           "defaultColor": "#F7FBFF",
           "vertical": false,
-          "content": "<p style=\"text-align: left;\"><span style=\"color: #F7FBFF;font-size: 24px;font-family: 微软雅黑;line-height: 1.35;\"><strong>清晰结构</strong></span></p>",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #F7FBFF;font-size: 24px;font-family: 微软雅黑;line-height: 1.2;\"><strong>清晰结构</strong></span></p>",
           "textType": "itemTitle",
           "groupId": "content-text-4-item-2",
-          "minimumFontSize": 24
+          "minimumFontSize": 20,
+          "textLineHeight": 1.2
         },
         {
           "type": "text",
@@ -6633,7 +6640,7 @@
           "left": 544,
           "top": 248,
           "width": 362,
-          "height": 58,
+          "height": 100,
           "rotate": 0,
           "defaultFontName": "微软雅黑",
           "defaultColor": "#B7C6D4",
@@ -6719,10 +6726,11 @@
           "defaultFontName": "微软雅黑",
           "defaultColor": "#F7FBFF",
           "vertical": false,
-          "content": "<p style=\"text-align: left;\"><span style=\"color: #F7FBFF;font-size: 24px;font-family: 微软雅黑;line-height: 1.35;\"><strong>清晰结构</strong></span></p>",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #F7FBFF;font-size: 24px;font-family: 微软雅黑;line-height: 1.2;\"><strong>清晰结构</strong></span></p>",
           "textType": "itemTitle",
           "groupId": "content-text-4-item-3",
-          "minimumFontSize": 24
+          "minimumFontSize": 20,
+          "textLineHeight": 1.2
         },
         {
           "type": "text",
@@ -6730,7 +6738,7 @@
           "left": 94,
           "top": 438,
           "width": 362,
-          "height": 58,
+          "height": 100,
           "rotate": 0,
           "defaultFontName": "微软雅黑",
           "defaultColor": "#B7C6D4",
@@ -6816,10 +6824,11 @@
           "defaultFontName": "微软雅黑",
           "defaultColor": "#F7FBFF",
           "vertical": false,
-          "content": "<p style=\"text-align: left;\"><span style=\"color: #F7FBFF;font-size: 24px;font-family: 微软雅黑;line-height: 1.35;\"><strong>清晰结构</strong></span></p>",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #F7FBFF;font-size: 24px;font-family: 微软雅黑;line-height: 1.2;\"><strong>清晰结构</strong></span></p>",
           "textType": "itemTitle",
           "groupId": "content-text-4-item-4",
-          "minimumFontSize": 24
+          "minimumFontSize": 20,
+          "textLineHeight": 1.2
         },
         {
           "type": "text",
@@ -6827,7 +6836,7 @@
           "left": 544,
           "top": 438,
           "width": 362,
-          "height": 58,
+          "height": 100,
           "rotate": 0,
           "defaultFontName": "微软雅黑",
           "defaultColor": "#B7C6D4",

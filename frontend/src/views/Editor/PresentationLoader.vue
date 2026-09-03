@@ -138,6 +138,15 @@ const unavailableMessage = computed(() => {
     if (editorStore.errorCode === 'TEMPLATE_TEXT_OVERFLOW') {
       return `${partial}模板无法容纳本页文字，生成已停止。请重试或更换模板。`
     }
+    if (editorStore.errorCode === 'ITEM_TITLE_TOO_LONG') {
+      return `${partial}内容项标题过长，无法进入当前多项版式。`
+    }
+    if (editorStore.errorCode === 'TEMPLATE_PAGINATION_EXPLOSION') {
+      return `${partial}内容拆分页数异常，生成已停止。请缩短内容或调整页面结构。`
+    }
+    if (editorStore.errorCode === 'TEMPLATE_ITEM_COUNT_UNSUPPORTED') {
+      return `${partial}当前大纲的单页项目数超过模板容量，请减少每个内容主题的项目数。`
+    }
     if (TEMPLATE_STRUCTURE_ERROR_CODES.includes(editorStore.errorCode ?? '')) {
       return `${partial}模板资源或版式无法使用，生成已停止。请重试或更换模板。`
     }

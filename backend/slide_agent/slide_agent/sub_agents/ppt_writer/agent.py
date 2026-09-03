@@ -12,8 +12,9 @@ from .tools import SearchImage, DocumentSearch,KnowledgeBaseSearch
 from ...config import PPT_WRITER_AGENT_CONFIG  # 保留导入，检查器不需要模型
 from ...create_model import create_model
 from . import prompt
-from .utils import validate_slide
+from .utils import normalize_repairable_content_slide, validate_slide
 from ...generation_utils import (
+    consume_page_model_call_budget,
     fallback_slide_for_failed_generation,
     normalize_search_engines,
     parse_last_json_object,
@@ -25,6 +26,19 @@ logger = logging.getLogger(__name__)
 def my_before_model_callback(callback_context: CallbackContext, llm_request: LlmRequest) -> Optional[LlmResponse]:
     agent_name = callback_context.agent_name
     history_length = len(llm_request.contents)
+    state = callback_context.state
+    current_slide_index = int(state.get("current_slide_index", 0))
+    if not consume_page_model_call_budget(state, current_slide_index):
+        fallback = fallback_slide_for_failed_generation(
+            state.get("outline_json") or [], current_slide_index
+        )
+        logger.error("第%s页达到模型调用硬上限，使用确定性回退", current_slide_index)
+        return LlmResponse(
+            content=types.Content(
+                role="model",
+                parts=[types.Part(text=json.dumps(fallback, ensure_ascii=False))],
+            )
+        )
     # metadata包含复合用户主体，日志只记录规模，禁止打印身份与生成正文。
     logger.info("调用%s模型前 callback history=%s", agent_name, history_length)
     #清空contents,不需要上一步的拆分topic的记录, 不能在这里清理，否则，每次调用工具都会清除记忆，白操作了
@@ -189,6 +203,8 @@ class CheckerAgent(BaseAgent):
         current_slide_index: int = ctx.session.state.get("current_slide_index", 0)
         outline_json: list = ctx.session.state.get("outline_json")
         current_slide_schema = outline_json[current_slide_index]
+        # 模型若完整保留了同索引原题，只是没有执行短标题协议，则本地确定性修复，避免重复消耗 Token。
+        data = normalize_repairable_content_slide(data, current_slide_schema)
         is_valid, error_messages = validate_slide(data, current_slide_schema)
         if not is_valid:
             ctx.session.state["is_valid_json"] = False

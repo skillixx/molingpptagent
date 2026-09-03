@@ -299,6 +299,27 @@ function keepElementInsideCanvas(element) {
 }
 
 
+function configureMultiItemCapacity(slide) {
+  if (!["content-text-2", "content-text-3", "content-text-4"].includes(slide.id)) return;
+  for (const element of slide.elements) {
+    const slotType = element.textType || element.text?.type;
+    if (slotType === "itemTitle") {
+      // 多项标题允许两行，并保持 20px 可读下限；完整长句由上游语义压缩协议保存到正文。
+      element.minimumFontSize = 20;
+      element.textLineHeight = 1.2;
+      element.height = Math.max(70, element.height || 0);
+      if (typeof element.content === "string") {
+        element.content = element.content.replace(/line-height:\s*[0-9.]+;/g, "line-height: 1.2;");
+      }
+    }
+    if (slide.id === "content-text-4" && slotType === "item") {
+      // 原始标题会进入正文开头，四项正文框需容纳至少三行 16px 文本。
+      element.height = Math.max(100, element.height || 0);
+    }
+  }
+}
+
+
 function configureSlide(slide) {
   const oldId = slide.id;
   slide.id = SLIDE_ID_MAP.get(oldId) || oldId;
@@ -354,6 +375,7 @@ function configureSlide(slide) {
       singleWide: 20,
       singleAscii: 44,
     };
+    configureMultiItemCapacity(slide);
   }
 
   if (slide.type === "cover") {

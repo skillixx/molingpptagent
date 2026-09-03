@@ -197,6 +197,28 @@ describe('PresentationLoader', () => {
     )
   })
 
+  it.each([
+    ['ITEM_TITLE_TOO_LONG', '内容项标题过长，无法进入当前多项版式。'],
+    ['TEMPLATE_PAGINATION_EXPLOSION', '内容拆分页数异常，生成已停止。请缩短内容或调整页面结构。'],
+    ['TEMPLATE_ITEM_COUNT_UNSUPPORTED', '当前大纲的单页项目数超过模板容量，请减少每个内容主题的项目数。'],
+  ])('分页安全错误显示具体处理建议：%s', async (generationErrorCode, expectedMessage) => {
+    api.get.mockResolvedValue({
+      ...detail,
+      status: 'failed',
+      generationErrorCode,
+      document: { ...detail.document, slides: [] },
+    })
+    const router = testRouter()
+    await router.push('/editor/presentation-pagination-failed')
+    await router.isReady()
+    const wrapper = mount(PresentationLoader, { global: { plugins: [createPinia(), router] } })
+    await flushPromises()
+
+    const state = wrapper.get('[data-testid="history-unavailable"]').text()
+    expect(state).toContain(expectedMessage)
+    expect(state).not.toContain('模板资源或版式无法使用')
+  })
+
   it('零页失败作品不显示上一份作品的页数', async () => {
     api.get.mockResolvedValue({
       ...detail,

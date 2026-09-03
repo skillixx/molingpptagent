@@ -14,6 +14,12 @@ from backend.main_api.workers.template_renderer import PresentationTemplateRende
 
 
 TEMPLATE_ROOT = Path(__file__).resolve().parents[1] / "template"
+LONG_ITEM_TITLES = [
+    "分析餐饮企业数字化运营效率变化",
+    "建立门店经营数据实时监测机制",
+    "优化供应链协同与成本控制流程",
+    "推动会员精细运营提升复购表现",
+]
 
 
 def _renderer() -> PresentationTemplateRenderer:
@@ -90,6 +96,35 @@ def _semantic_slides() -> list[dict[str, object]]:
         },
         {"type": "end", "data": {}},
     ]
+
+
+def _fixed_eighty_item_slides() -> list[dict[str, object]]:
+    """构造与问题报告一致的 28 页规划，正文保持在单页容量内。"""
+    slides: list[dict[str, object]] = [
+        {"type": "cover", "data": {"title": "餐饮企业数字化运营", "text": "固定测试"}},
+        {"type": "contents", "data": {"items": [f"章节{index}" for index in range(1, 6)]}},
+    ]
+    for chapter in range(1, 6):
+        slides.append({
+            "type": "transition",
+            "data": {"title": f"第{chapter}章", "text": "章节说明"},
+        })
+        for topic in range(1, 5):
+            slides.append({
+                "type": "content",
+                "data": {
+                    "title": f"内容主题{chapter}-{topic}",
+                    "items": [
+                        {
+                            "title": f"{chapter}{topic}{index}餐饮数字化运营效率变化",
+                            "text": f"第{chapter}章第{topic}主题第{index}项正文。",
+                        }
+                        for index in range(1, 5)
+                    ],
+                },
+            })
+    slides.append({"type": "end", "data": {}})
+    return slides
 
 
 def test_template_5_preserves_design_and_maps_semantic_slots() -> None:
@@ -330,6 +365,273 @@ def test_template_1_normal_item_counts_use_a_matching_multi_slot_layout(item_cou
         for element in document["slides"][0]["elements"]
     )
     assert item_slots == item_count
+
+
+@pytest.mark.parametrize("template_id", ["template_16", "template_17", "template_18"])
+def test_four_long_item_titles_stay_on_four_item_layout(template_id: str) -> None:
+    """标题过长必须改用安全展示名，不能把四项内容拆成四张单项页。"""
+    document = _renderer().render(
+        template_id=template_id,
+        semantic_slides=[{
+            "type": "content",
+            "data": {
+                "title": "经营效率",
+                "items": [
+                    {"title": title, "text": f"{title}的相关正文。"}
+                    for title in LONG_ITEM_TITLES
+                ],
+            },
+        }],
+        task_id=f"{template_id}-four-long-titles",
+        fallback_title="经营效率",
+    )
+
+    assert len(document["slides"]) == 1
+    assert document["slides"][0]["templateSlideId"] == "content-text-4"
+    rendered_titles = [
+        _plain_html(_content(element))
+        for element in document["slides"][0]["elements"]
+        if _slot_type(element) == "itemTitle"
+    ]
+    assert rendered_titles == ["核心要点01", "核心要点02", "核心要点03", "核心要点04"]
+    rendered_body = "".join(
+        _plain_html(_content(element))
+        for element in document["slides"][0]["elements"]
+        if _slot_type(element) == "item"
+    )
+    positions = [rendered_body.index(title) for title in LONG_ITEM_TITLES]
+    assert positions == sorted(positions)
+
+
+@pytest.mark.parametrize("template_id", ["template_16", "template_17", "template_18"])
+def test_fixed_eighty_item_outline_renders_without_page_explosion(template_id: str) -> None:
+    semantic_slides = _fixed_eighty_item_slides()
+    original_titles = [
+        item["title"]
+        for slide in semantic_slides
+        if slide["type"] == "content"
+        for item in slide["data"]["items"]
+    ]
+    document = _renderer().render(
+        template_id=template_id,
+        semantic_slides=semantic_slides,
+        task_id=f"{template_id}-fixed-eighty-items",
+        fallback_title="餐饮企业数字化运营",
+    )
+
+    content_slides = [slide for slide in document["slides"] if slide["type"] == "content"]
+    single_item_slides = [
+        slide
+        for slide in content_slides
+        if sum(_slot_type(element) == "item" for element in slide["elements"]) == 1
+    ]
+    assert len(document["slides"]) == 28
+    assert len(content_slides) == 20
+    assert len(single_item_slides) == 0
+    assert all(slide["templateSlideId"] == "content-text-4" for slide in content_slides)
+    rendered_bodies = "".join(
+        _plain_html(_content(element))
+        for slide in content_slides
+        for element in slide["elements"]
+        if _slot_type(element) == "item"
+    )
+    positions = [rendered_bodies.index(title) for title in original_titles]
+    assert positions == sorted(positions)
+
+
+@pytest.mark.parametrize("template_id", ["template_16", "template_17", "template_18"])
+@pytest.mark.parametrize("item_count", [2, 3, 4])
+def test_affected_multi_item_title_and_body_slots_do_not_overlap(
+    template_id: str,
+    item_count: int,
+) -> None:
+    document = _renderer().render(
+        template_id=template_id,
+        semantic_slides=[{
+            "type": "content",
+            "data": {
+                "title": "安全区验证",
+                "items": [
+                    {"title": f"第{index}项容量标题", "text": "正文安全区验证。"}
+                    for index in range(1, item_count + 1)
+                ],
+            },
+        }],
+        task_id=f"{template_id}-{item_count}-slot-safety",
+        fallback_title="安全区验证",
+    )
+    slide = document["slides"][0]
+    titles = sorted(
+        (element for element in slide["elements"] if _slot_type(element) == "itemTitle"),
+        key=lambda element: (float(element["top"]), float(element["left"])),
+    )
+    bodies = sorted(
+        (element for element in slide["elements"] if _slot_type(element) == "item"),
+        key=lambda element: (float(element["top"]), float(element["left"])),
+    )
+
+    assert len(titles) == len(bodies) == item_count
+    for title, body in zip(titles, bodies, strict=True):
+        assert float(title["top"]) + float(title["height"]) <= float(body["top"])
+        assert float(body["top"]) + float(body["height"]) <= 562.5
+
+
+@pytest.mark.parametrize("template_id", ["template_16", "template_17", "template_18"])
+@pytest.mark.parametrize(("item_count", "title_length"), [(2, 16), (3, 12), (4, 10)])
+def test_affected_templates_accept_declared_multi_item_title_capacity(
+    template_id: str,
+    item_count: int,
+    title_length: int,
+) -> None:
+    titles = ["题" * title_length for _ in range(item_count)]
+    document = _renderer().render(
+        template_id=template_id,
+        semantic_slides=[{
+            "type": "content",
+            "data": {
+                "title": "多项标题容量",
+                "items": [
+                    {"title": title, "text": f"{title}。短正文"}
+                    for title in titles
+                ],
+            },
+        }],
+        task_id=f"{template_id}-{item_count}-title-capacity",
+        fallback_title="多项标题容量",
+    )
+
+    assert len(document["slides"]) == 1
+    assert document["slides"][0]["templateSlideId"] == f"content-text-{item_count}"
+    rendered_titles = [
+        _plain_html(_content(element))
+        for element in document["slides"][0]["elements"]
+        if _slot_type(element) == "itemTitle"
+    ]
+    assert rendered_titles == titles
+
+
+def test_renderer_uses_specific_error_when_even_safe_item_title_cannot_fit(tmp_path: Path) -> None:
+    slots = []
+    for index in range(4):
+        slots.extend([
+            {
+                "id": f"title-{index}",
+                "type": "text",
+                "textType": "itemTitle",
+                "left": 20 + index * 120,
+                "top": 40,
+                "width": 30,
+                "height": 50,
+                "minimumFontSize": 22,
+                "content": '<p><span style="font-size: 22px">标题</span></p>',
+            },
+            {
+                "id": f"body-{index}",
+                "type": "text",
+                "textType": "item",
+                "left": 20 + index * 120,
+                "top": 120,
+                "width": 100,
+                "height": 160,
+                "minimumFontSize": 16,
+                "content": '<p><span style="font-size: 16px">正文</span></p>',
+            },
+        ])
+    template = {
+        "width": 1000,
+        "height": 562.5,
+        "slides": [{
+            "id": "content-text-4",
+            "type": "content",
+            "allowedItemCounts": [4],
+            "elements": slots,
+        }],
+    }
+    (tmp_path / "template_1.json").write_text(
+        json.dumps(template, ensure_ascii=False),
+        encoding="utf-8",
+    )
+
+    with pytest.raises(TemplateRenderError) as captured:
+        PresentationTemplateRenderer(tmp_path).render(
+            template_id="template_1",
+            semantic_slides=[{
+                "type": "content",
+                "data": {
+                    "title": "安全标题失败",
+                    "items": [
+                        {"title": title, "text": "短正文"}
+                        for title in LONG_ITEM_TITLES
+                    ],
+                },
+            }],
+            task_id="safe-title-still-too-long",
+            fallback_title="安全标题失败",
+        )
+
+    assert captured.value.code == "ITEM_TITLE_TOO_LONG"
+
+
+def test_renderer_stops_abnormal_pagination_with_safe_statistics() -> None:
+    with pytest.raises(TemplateRenderError) as captured:
+        _renderer().render(
+            template_id="template_16",
+            semantic_slides=[{
+                "type": "content",
+                "data": {
+                    "title": "异常分页",
+                    "items": [{"title": "超长正文", "text": "正文内容" * 2000}],
+                },
+            }],
+            task_id="pagination-explosion",
+            fallback_title="异常分页",
+        )
+
+    assert captured.value.code == "TEMPLATE_PAGINATION_EXPLOSION"
+    assert set(captured.value.context) == {
+        "planned_page_count",
+        "final_page_count",
+        "content_page_count",
+        "single_item_page_count",
+        "max_item_count",
+    }
+    assert int(captured.value.context["planned_page_count"]) == 1
+    assert int(captured.value.context["final_page_count"]) > 6
+
+
+def test_image_body_pagination_rechecks_titles_for_the_final_batch_density() -> None:
+    title = "图文分页后的十六字标题容量校验值"
+    assert len(title) == 16
+    document = _renderer().render(
+        template_id="template_17",
+        semantic_slides=[{
+            "type": "content",
+            "data": {
+                "title": "带图正文分页",
+                "items": [
+                    {"title": title, "text": f"{title}。短正文"},
+                    {"title": title, "text": f"{title}。" + "正文" * 60},
+                ],
+            },
+            "images": [{
+                "src": "https://example.invalid/content.jpg",
+                "width": 1600,
+                "height": 900,
+            }],
+        }],
+        task_id="image-pagination-title-density",
+        fallback_title="带图正文分页",
+    )
+
+    assert len(document["slides"]) == 2
+    assert document["slides"][0]["templateSlideId"] == "content-image-1"
+    assert document["slides"][1]["templateSlideId"] == "content-text-3"
+    continuation_titles = [
+        _plain_html(_content(element))
+        for element in document["slides"][1]["elements"]
+        if _slot_type(element) == "itemTitle"
+    ]
+    assert continuation_titles == ["核心要点01", "核心要点02", "核心要点03"]
 
 
 def test_content_slot_without_font_size_receives_a_readable_size(tmp_path: Path) -> None:
