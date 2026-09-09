@@ -1,6 +1,11 @@
 import { createPinia } from 'pinia'
 import { flushPromises, mount } from '@vue/test-utils'
-import { createMemoryHistory, createRouter } from 'vue-router'
+import {
+  createMemoryHistory,
+  createRouter,
+  isNavigationFailure,
+  NavigationFailureType,
+} from 'vue-router'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { ref } from 'vue'
 
@@ -50,6 +55,32 @@ function testRouter() {
       { path: '/works', name: 'Works', component: { template: '<div />' } },
     ],
   })
+}
+
+async function cancelledNavigationFailure() {
+  const router = testRouter()
+  await router.push({ name: 'PPT' })
+  await router.isReady()
+  let releaseEditorGuard: ((value: boolean) => void) | undefined
+  router.beforeEach(to => {
+    if (to.name !== 'PresentationEditor') return true
+    return new Promise<boolean>(resolve => {
+      releaseEditorGuard = resolve
+    })
+  })
+  const editorNavigation = router.push({
+    name: 'PresentationEditor',
+    params: { presentationId: 'cancelled-presentation' },
+  })
+  await new Promise(resolve => window.setTimeout(resolve, 0))
+  const newerNavigation = router.push({ name: 'Works' })
+  releaseEditorGuard?.(true)
+  const failure = await editorNavigation
+  await newerNavigation
+  if (!isNavigationFailure(failure, NavigationFailureType.cancelled)) {
+    throw new Error('测试夹具没有生成 cancelled NavigationFailure')
+  }
+  return failure
 }
 
 beforeEach(() => {
@@ -157,7 +188,56 @@ describe('PPT persistent generation', () => {
     expect(router.currentRoute.value.name).toBe('Works')
   })
 
-  it('任务已创建但自动跳转失败时保留成功状态和手动入口', async () => {
+  it('首次自动跳转失败时自动重试并进入编辑器', async () => {
+    const router = testRouter()
+    await router.push({
+      name: 'PPT',
+      query: { outline: '# 跳转自动重试', language: 'chinese', model: 'deepseek-chat' },
+    })
+    await router.isReady()
+    const wrapper = mount(PPT, { global: { plugins: [createPinia(), router] } })
+    await flushPromises()
+    const pushSpy = vi.spyOn(router, 'push').mockRejectedValueOnce(new Error('navigation failed'))
+    const replaceSpy = vi.spyOn(router, 'replace')
+
+    await wrapper.get('.btn-primary').trigger('click')
+    await flushPromises()
+
+    expect(pushSpy).toHaveBeenCalledWith({
+      name: 'PresentationEditor',
+      params: { presentationId: 'presentation-uat-1' },
+    })
+    expect(replaceSpy).toHaveBeenCalledWith({
+      name: 'PresentationEditor',
+      params: { presentationId: 'presentation-uat-1' },
+    })
+    expect(router.currentRoute.value.name).toBe('PresentationEditor')
+    expect(mockedMessage.warning).not.toHaveBeenCalled()
+    expect(wrapper.find('[data-testid="generation-navigation-fallback"]').exists()).toBe(false)
+  })
+
+  it('用户发起更新导航后不再强制拉回旧编辑器目标', async () => {
+    const cancellation = await cancelledNavigationFailure()
+    const router = testRouter()
+    await router.push({
+      name: 'PPT',
+      query: { outline: '# 用户导航优先', language: 'chinese', model: 'deepseek-chat' },
+    })
+    await router.isReady()
+    const wrapper = mount(PPT, { global: { plugins: [createPinia(), router] } })
+    await flushPromises()
+    vi.spyOn(router, 'push').mockResolvedValueOnce(cancellation)
+    const replaceSpy = vi.spyOn(router, 'replace')
+
+    await wrapper.get('.btn-primary').trigger('click')
+    await flushPromises()
+
+    expect(replaceSpy).not.toHaveBeenCalled()
+    expect(mockedMessage.warning).not.toHaveBeenCalled()
+    expect(wrapper.find('[data-testid="generation-navigation-fallback"]').exists()).toBe(false)
+  })
+
+  it('连续两次自动跳转失败时保留成功状态和手动入口', async () => {
     const router = testRouter()
     await router.push({
       name: 'PPT',
@@ -167,6 +247,7 @@ describe('PPT persistent generation', () => {
     const wrapper = mount(PPT, { global: { plugins: [createPinia(), router] } })
     await flushPromises()
     const pushSpy = vi.spyOn(router, 'push').mockRejectedValueOnce(new Error('navigation failed'))
+    const replaceSpy = vi.spyOn(router, 'replace').mockRejectedValueOnce(new Error('navigation retry failed'))
 
     await wrapper.get('.btn-primary').trigger('click')
     await flushPromises()
@@ -177,6 +258,11 @@ describe('PPT persistent generation', () => {
       '生成任务已创建，但页面自动跳转失败，请手动选择下一步',
     )
     expect(wrapper.get('[data-testid="generation-navigation-fallback"]').text()).toContain('自动跳转未完成')
+    expect(wrapper.get('[data-testid="generation-navigation-fallback"]').text()).toContain('任务已在后台创建并开始生成')
+    expect(replaceSpy).toHaveBeenCalledWith({
+      name: 'PresentationEditor',
+      params: { presentationId: 'presentation-uat-1' },
+    })
 
     await wrapper.get('[data-testid="generation-navigation-fallback"] .destination-button').trigger('click')
     await flushPromises()
@@ -186,6 +272,70 @@ describe('PPT persistent generation', () => {
       params: { presentationId: 'presentation-uat-1' },
     })
     expect(router.currentRoute.value.name).toBe('PresentationEditor')
+  })
+
+  it('手动跳转仍失败时恢复按钮并展示可重试反馈', async () => {
+    const router = testRouter()
+    await router.push({
+      name: 'PPT',
+      query: { outline: '# 手动跳转反馈', language: 'chinese', model: 'deepseek-chat' },
+    })
+    await router.isReady()
+    const wrapper = mount(PPT, { global: { plugins: [createPinia(), router] } })
+    await flushPromises()
+    vi.spyOn(router, 'push')
+      .mockRejectedValueOnce(new Error('automatic navigation failed'))
+      .mockRejectedValueOnce(new Error('manual navigation failed'))
+    vi.spyOn(router, 'replace')
+      .mockRejectedValueOnce(new Error('automatic retry failed'))
+      .mockRejectedValueOnce(new Error('manual retry failed'))
+
+    await wrapper.get('.btn-primary').trigger('click')
+    await flushPromises()
+    const manualButton = wrapper.get('[data-testid="generation-navigation-fallback"] .destination-button')
+    await manualButton.trigger('click')
+    await flushPromises()
+
+    expect(wrapper.get('[data-testid="generation-navigation-error"]').text()).toContain('检查网络后重试')
+    expect(manualButton.attributes('disabled')).toBeUndefined()
+    expect(manualButton.text()).toBe('打开编辑器')
+    expect(mockedMessage.error).toHaveBeenCalledWith('页面仍无法跳转，请检查网络后重试')
+  })
+
+  it('手动跳转等待期间展示加载状态并阻止重复操作', async () => {
+    const router = testRouter()
+    await router.push({
+      name: 'PPT',
+      query: { outline: '# 手动跳转等待', language: 'chinese', model: 'deepseek-chat' },
+    })
+    await router.isReady()
+    const wrapper = mount(PPT, { global: { plugins: [createPinia(), router] } })
+    await flushPromises()
+    const pushSpy = vi.spyOn(router, 'push').mockRejectedValueOnce(new Error('automatic navigation failed'))
+    vi.spyOn(router, 'replace').mockRejectedValueOnce(new Error('automatic retry failed'))
+
+    await wrapper.get('.btn-primary').trigger('click')
+    await flushPromises()
+
+    let resolveManualNavigation: (() => void) | undefined
+    pushSpy.mockImplementationOnce(() => new Promise(resolve => {
+      resolveManualNavigation = () => resolve(undefined)
+    }))
+    const buttons = wrapper.findAll('[data-testid="generation-navigation-fallback"] .destination-button')
+    await buttons[0].trigger('click')
+    await flushPromises()
+
+    expect(buttons[0].text()).toBe('正在打开…')
+    expect(buttons[0].attributes('disabled')).toBeDefined()
+    expect(buttons[1].attributes('disabled')).toBeDefined()
+    await buttons[1].trigger('click')
+    expect(pushSpy).toHaveBeenCalledTimes(2)
+
+    resolveManualNavigation?.()
+    await flushPromises()
+    expect(buttons[0].text()).toBe('打开编辑器')
+    expect(buttons[0].attributes('disabled')).toBeUndefined()
+    expect(wrapper.find('[data-testid="generation-navigation-error"]').exists()).toBe(false)
   })
 
   it('用户等待期间离开页面后，任务完成也不会强制跳回', async () => {

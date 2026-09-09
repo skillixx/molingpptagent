@@ -98,16 +98,32 @@
               </div>
             </div>
             <p class="generation-status__hint" role="status" aria-live="polite">
-              PPT 已在后台正常生成，你可以手动打开编辑器，或前往作品库稍后查看。
+              PPT 任务已在后台创建并开始生成，你可以手动打开编辑器查看状态，或前往作品库稍后查看。
             </p>
             <div class="generation-fallback-actions">
-              <button type="button" class="destination-button" @click="openCreatedPresentation">
-                打开编辑器
+              <button
+                type="button"
+                class="destination-button"
+                :disabled="manualNavigationPending !== null"
+                @click="retryCreatedPresentation"
+              >
+                {{ manualNavigationPending === 'editor' ? '正在打开…' : '打开编辑器' }}
               </button>
-              <button type="button" class="destination-button destination-button--secondary" @click="openWorks">
-                前往作品库
+              <button
+                type="button"
+                class="destination-button destination-button--secondary"
+                :disabled="manualNavigationPending !== null"
+                @click="retryWorks"
+              >
+                {{ manualNavigationPending === 'works' ? '正在前往…' : '前往作品库' }}
               </button>
             </div>
+            <p
+              v-if="manualNavigationError"
+              class="generation-navigation-error"
+              data-testid="generation-navigation-error"
+              role="alert"
+            >{{ manualNavigationError }}</p>
           </div>
         </aside>
 
@@ -161,7 +177,13 @@
 
 <script lang="ts" setup>
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+import {
+  isNavigationFailure,
+  NavigationFailureType,
+  useRoute,
+  useRouter,
+  type RouteLocationRaw,
+} from 'vue-router'
 import { storeToRefs } from 'pinia'
 import api from '@/services'
 import useAIPPT from '@/hooks/useAIPPT'
@@ -206,6 +228,8 @@ const generationElapsedSeconds = ref(0)
 const generationDestination = ref<'editor' | 'works'>('editor')
 const createdPresentationId = ref('')
 const navigationFailed = ref(false)
+const manualNavigationPending = ref<'editor' | 'works' | null>(null)
+const manualNavigationError = ref('')
 let generationTimer: number | undefined
 let componentActive = true
 
@@ -266,16 +290,88 @@ onBeforeUnmount(() => {
   stopGenerationTimer()
 })
 
+const navigationFailureKind = (error: unknown) => {
+  if (isNavigationFailure(error)) return `vue-router-${error.type}`
+  if (error instanceof TypeError) return 'type-error'
+  if (error instanceof Error) return error.name || 'error'
+  return 'unknown'
+}
+
+const navigationCompleted = (result: unknown) => (
+  result === undefined
+  || isNavigationFailure(result, NavigationFailureType.duplicated)
+  // cancelled 表示用户或其他代码已发起更新导航；必须让新导航获胜，不能强制拉回旧目标。
+  || isNavigationFailure(result, NavigationFailureType.cancelled)
+)
+
+const navigateWithRetry = async (target: RouteLocationRaw) => {
+  let firstFailure: unknown
+  try {
+    const result = await router.push(target)
+    if (navigationCompleted(result)) return
+    firstFailure = result
+  }
+  catch (error) {
+    firstFailure = error
+  }
+  if (isNavigationFailure(firstFailure)) {
+    console.warn('[PPT] 自动导航被路由守卫中止', { kind: navigationFailureKind(firstFailure) })
+    throw new Error('PRESENTATION_NAVIGATION_ABORTED')
+  }
+  // 仅非 Router 异常可能来自瞬时模块加载；记录脱敏分类后用 replace 自动重试一次。
+  console.warn('[PPT] 自动导航首次失败', { kind: navigationFailureKind(firstFailure) })
+
+  let retryFailure: unknown
+  try {
+    const result = await router.replace(target)
+    if (navigationCompleted(result)) return
+    retryFailure = result
+  }
+  catch (error) {
+    retryFailure = error
+  }
+  console.warn('[PPT] 自动导航重试失败', { kind: navigationFailureKind(retryFailure) })
+  throw new Error('PRESENTATION_NAVIGATION_FAILED')
+}
+
 const openCreatedPresentation = async () => {
   if (!createdPresentationId.value) return
-  await router.push({
+  await navigateWithRetry({
     name: 'PresentationEditor',
     params: { presentationId: createdPresentationId.value },
   })
 }
 
 const openWorks = async () => {
-  await router.push({ name: 'Works' })
+  await navigateWithRetry({ name: 'Works' })
+}
+
+const runManualNavigation = async (
+  destination: 'editor' | 'works',
+  navigation: () => Promise<void>,
+) => {
+  if (manualNavigationPending.value !== null) return
+  manualNavigationPending.value = destination
+  manualNavigationError.value = ''
+  try {
+    await navigation()
+  }
+  catch {
+    // 手动入口仍失败时必须给出可见反馈，并保持按钮恢复后允许用户再次尝试。
+    manualNavigationError.value = '页面仍无法跳转，请检查网络后重试。任务会继续保留在作品库中。'
+    message.error('页面仍无法跳转，请检查网络后重试')
+  }
+  finally {
+    manualNavigationPending.value = null
+  }
+}
+
+const retryCreatedPresentation = async () => {
+  await runManualNavigation('editor', openCreatedPresentation)
+}
+
+const retryWorks = async () => {
+  await runManualNavigation('works', openWorks)
 }
 
 watch([outline, language, model, selectedTemplate], () => {
@@ -350,6 +446,8 @@ const createPPT = async () => {
   if (!selectedTemplate.value) return
   navigationFailed.value = false
   createdPresentationId.value = ''
+  manualNavigationPending.value = null
+  manualNavigationError.value = ''
   mainStore.setGenerating(true)
   loading.value = true
 
@@ -685,6 +783,13 @@ const createPPT = async () => {
     gap: 10px;
   }
 
+  .generation-navigation-error {
+    margin: 10px 0 0;
+    color: #b42318;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
   .generation-steps {
     margin: 0;
     padding: 0;
@@ -771,6 +876,7 @@ const createPPT = async () => {
 
     &:hover { border-color: #60a5fa; background: #dbeafe; transform: translateY(-1px); }
     &:focus-visible { outline: 3px solid rgba(59, 130, 246, 0.24); outline-offset: 2px; }
+    &:disabled { opacity: 0.58; cursor: wait; transform: none; }
 
     &--secondary {
       color: #475569;
