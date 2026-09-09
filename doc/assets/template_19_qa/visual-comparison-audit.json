@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_19",
+  "reference": {
+    "path": "C:/Users/sk20/Desktop/精品系列(21).pptx",
+    "sha256": "E80BFD5543B8C18F79181463E54D8FF6843C8DA13E6BD4D84141BA4E26A0211D"
+  },
+  "requiredStyleStatement": "生产模板必须保持与原图或原 PPT 的视觉风格、构图逻辑、色彩气质、留白节奏和装饰语言一致。",
+  "checks": [
+    {"aspect": "watercolor-paper-texture", "result": "保持米白水彩纸纹和低对比颗粒", "status": "PASS"},
+    {"aspect": "botanical-language", "result": "保持桉叶、蕨叶和植物边缘构图", "status": "PASS"},
+    {"aspect": "palette", "result": "保持低饱和绿、米白、淡桃粉和少量柔黄", "status": "PASS"},
+    {"aspect": "spacing", "result": "保持大面积留白和标题安全区", "status": "PASS"},
+    {"aspect": "cover-end-rhythm", "result": "封面与结束页维持呼应关系", "status": "PASS"},
+    {"aspect": "reference-media-policy", "result": "仅重建样式关系，不复制参考包媒体字节", "status": "PASS"}
+  ],
+  "representativeSlides": [
+    {"slideId": "cover-botanical-frame", "referenceSlides": [1], "status": "PASS"},
+    {"slideId": "contents-4", "referenceSlides": [2], "status": "PASS"},
+    {"slideId": "transition-eucalyptus", "referenceSlides": [3, 8, 13, 18], "status": "PASS"},
+    {"slideId": "content-text-4", "referenceSlides": [4, 10, 11], "status": "PASS"},
+    {"slideId": "content-image-1", "referenceSlides": [19, 23], "status": "PASS"},
+    {"slideId": "content-metrics-4", "referenceSlides": [6, 22], "status": "PASS"},
+    {"slideId": "end-botanical-frame", "referenceSlides": [24], "status": "PASS"}
+  ],
+  "status": "PASS"
+}

@@ -569,6 +569,8 @@ async def get_templates():
         { "name": "蓝菱商务汇报", "id": "template_17", "cover": "/api/data/template_17.jpg" },
         # 飞檐雅韵模板使用原创灰瓦、飞檐与梅枝素材，并保持业务图片独立可替换。
         { "name": "飞檐雅韵", "id": "template_18", "cover": "/api/data/template_18.jpg" },
+        # 水彩绿植轻商务模板使用原创水彩纸纹与桉叶素材，业务图片和固定装饰严格隔离。
+        { "name": "水彩绿植轻商务", "id": "template_19", "cover": "/api/data/template_19.jpg" },
     ]
 
     return {"data": templates}

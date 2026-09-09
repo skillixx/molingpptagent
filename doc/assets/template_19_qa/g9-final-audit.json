@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_19",
+  "auditedAt": "2026-09-03",
+  "referenceSha256": "E80BFD5543B8C18F79181463E54D8FF6843C8DA13E6BD4D84141BA4E26A0211D",
+  "candidateSha256": "C1D18473F6EB47D9EEECC4D02C29D5B4D53D3E511DC4F57E225A23FB9B485A0E",
+  "checks": {
+    "g0Baseline": "PASS",
+    "g1RightsAndMapping": "PASS",
+    "g2TechnicalProbe": "PASS",
+    "g3AssetsAndSpecification": "PASS",
+    "g4RepresentativeVisuals": "PASS",
+    "g5MvpInventory": "PASS",
+    "g6SemanticsAndRegression": "PASS",
+    "g7ProductionRegistration": "PASS",
+    "g8FormalQa": "PASS",
+    "fileInventory": "PASS",
+    "rightsRecord": "PASS",
+    "knownDeviationRecord": "PASS",
+    "forbiddenActionAudit": "PASS",
+    "postFixRegression": "PASS"
+  },
+  "forbiddenActions": {
+    "commit": false,
+    "push": false,
+    "pullRequest": false,
+    "merge": false,
+    "deploy": false,
+    "productionBackup": false,
+    "productionMigration": false,
+    "billingEnablement": false,
+    "rollback": false
+  },
+  "knownLimitations": [
+    "参考 PPT 的音频、转场、特殊字体、原生图表和嵌入对象按计划排除，不属于 V1 生产模板。",
+    "图片生成工具未暴露实际底层模型名称，记录为“工具未暴露”。",
+    "植物完整框景连续三轮未得到真实 Alpha，已按规划使用通过透明度验收的角景镜像变体替代。"
+  ],
+  "automaticResult": "PASS",
+  "userConfirmation": "用户明确回复“确认完成”",
+  "confirmedAt": "2026-09-09",
+  "status": "DONE",
+  "closureRule": "人工确认门禁已经满足，G9 已完成闭合。"
+}

@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "profile": "probe",
+  "contract": {
+    "expectedSlideCount": 3,
+    "minimumElementCount": 30,
+    "minimumImageCount": 6,
+    "requireEditedTitle": false
+  },
+  "input": "doc/assets/template_19_qa/exports/template_19_probe_editor_roundtrip.pptx",
+  "bytes": 2141686,
+  "size": {
+    "width": 720,
+    "height": 405
+  },
+  "slideCount": 3,
+  "totalElements": 36,
+  "totalImages": 6,
+  "containsEditedTitle": false,
+  "containsCroppedImage": true,
+  "failures": [],
+  "perSlide": [
+    {
+      "slide": 1,
+      "elementCount": 5,
+      "text": [
+        "水彩绿植轻商务",
+        "让自然留白承载清晰表达"
+      ],
+      "imageCount": 1,
+      "images": [
+        {
+          "width": 720,
+          "height": 405,
+          "geom": "rect",
+          "hasCrop": false
+        }
+      ]
+    },
+    {
+      "slide": 2,
+      "elementCount": 21,
+      "text": [
+        "01",
+        "四项内容结构",
+        "01",
+        "核心要点 1",
+        "在此输入完整说明，保持观点、依据与行动之间的清晰关系。",
+        "02",
+        "核心要点 2",
+        "在此输入完整说明，保持观点、依据与行动之间的清晰关系。",
+        "03",
+        "核心要点 3",
+        "在此输入完整说明，保持观点、依据与行动之间的清晰关系。",
+        "04",
+        "核心要点 4",
+        "在此输入完整说明，保持观点、依据与行动之间的清晰关系。"
+      ],
+      "imageCount": 2,
+      "images": [
+        {
+          "width": 720,
+          "height": 405,
+          "geom": "rect",
+          "hasCrop": false
+        },
+        {
+          "width": 187.2,
+          "height": 120.24,
+          "geom": "rect",
+          "hasCrop": false
+        }
+      ]
+    },
+    {
+      "slide": 3,
+      "elementCount": 10,
+      "text": [
+        "02",
+        "图文内容",
+        "01",
+        "让图片与观点共同完成表达",
+        "业务图片保持可替换和稳定裁切，水彩植物只承担固定装饰角色。"
+      ],
+      "imageCount": 3,
+      "images": [
+        {
+          "width": 720,
+          "height": 405,
+          "geom": "rect",
+          "hasCrop": false
+        },
+        {
+          "width": 269.28,
+          "height": 190.08,
+          "geom": "rect",
+          "hasCrop": true
+        },
+        {
+          "width": 165.6,
+          "height": 106.56,
+          "geom": "rect",
+          "hasCrop": false
+        }
+      ]
+    }
+  ],
+  "status": "PASS"
+}

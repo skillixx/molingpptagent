@@ -1,0 +1,551 @@
+{
+  "schemaVersion": 1,
+  "profile": "production",
+  "contract": {
+    "expectedSlideCount": 18,
+    "minimumElementCount": 200,
+    "minimumImageCount": 18,
+    "requireEditedTitle": true
+  },
+  "input": "doc/assets/template_19_qa/exports/template_19_production_editor_roundtrip.pptx",
+  "bytes": 14653541,
+  "size": {
+    "width": 720,
+    "height": 405
+  },
+  "slideCount": 18,
+  "totalElements": 248,
+  "totalImages": 36,
+  "containsEditedTitle": true,
+  "containsCroppedImage": true,
+  "failures": [],
+  "perSlide": [
+    {
+      "slide": 1,
+      "elementCount": 5,
+      "text": [
+        "水彩绿植生产编辑验收",
+        "让自然留白承载清晰表达"
+      ],
+      "imageCount": 1,
+      "images": [
+        {
+          "width": 720,
+          "height": 405,
+          "geom": "rect",
+          "hasCrop": false
+        }
+      ]
+    },
+    {
+      "slide": 2,
+      "elementCount": 7,
+      "text": [
+        "水彩绿植轻商务",
+        "用自然气息建立清晰、可信的表达"
+      ],
+      "imageCount": 3,
+      "images": [
+        {
+          "width": 720,
+          "height": 405,
+          "geom": "rect",
+          "hasCrop": false
+        },
+        {
+          "width": 273.6,
+          "height": 205.92,
+          "geom": "rect",
+          "hasCrop": true
+        },
+        {
+          "width": 201.6,
+          "height": 129.6,
+          "geom": "rect",
+          "hasCrop": false
+        }
+      ]
+    },
+    {
+      "slide": 3,
+      "elementCount": 10,
+      "text": [
+        "目录",
+        "CONTENTS",
+        "01",
+        "目录项目 1",
+        "02",
+        "目录项目 2"
+      ],
+      "imageCount": 2,
+      "images": [
+        {
+          "width": 720,
+          "height": 405,
+          "geom": "rect",
+          "hasCrop": false
+        },
+        {
+          "width": 255.6,
+          "height": 164.16,
+          "geom": "rect",
+          "hasCrop": false
+        }
+      ]
+    },
+    {
+      "slide": 4,
+      "elementCount": 13,
+      "text": [
+        "目录",
+        "CONTENTS",
+        "01",
+        "目录项目 1",
+        "02",
+        "目录项目 2",
+        "03",
+        "目录项目 3"
+      ],
+      "imageCount": 2,
+      "images": [
+        {
+          "width": 720,
+          "height": 405,
+          "geom": "rect",
+          "hasCrop": false
+        },
+        {
+          "width": 255.6,
+          "height": 164.16,
+          "geom": "rect",
+          "hasCrop": false
+        }
+      ]
+    },
+    {
+      "slide": 5,
+      "elementCount": 16,
+      "text": [
+        "目录",
+        "CONTENTS",
+        "01",
+        "目录项目 1",
+        "02",
+        "目录项目 2",
+        "03",
+        "目录项目 3",
+        "04",
+        "目录项目 4"
+      ],
+      "imageCount": 2,
+      "images": [
+        {
+          "width": 720,
+          "height": 405,
+          "geom": "rect",
+          "hasCrop": false
+        },
+        {
+          "width": 255.6,
+          "height": 164.16,
+          "geom": "rect",
+          "hasCrop": false
+        }
+      ]
+    },
+    {
+      "slide": 6,
+      "elementCount": 19,
+      "text": [
+        "目录",
+        "CONTENTS",
+        "01",
+        "目录项目 1",
+        "02",
+        "目录项目 2",
+        "03",
+        "目录项目 3",
+        "04",
+        "目录项目 4",
+        "05",
+        "目录项目 5"
+      ],
+      "imageCount": 2,
+      "images": [
+        {
+          "width": 720,
+          "height": 405,
+          "geom": "rect",
+          "hasCrop": false
+        },
+        {
+          "width": 255.6,
+          "height": 164.16,
+          "geom": "rect",
+          "hasCrop": false
+        }
+      ]
+    },
+    {
+      "slide": 7,
+      "elementCount": 22,
+      "text": [
+        "目录",
+        "CONTENTS",
+        "01",
+        "目录项目 1",
+        "02",
+        "目录项目 2",
+        "03",
+        "目录项目 3",
+        "04",
+        "目录项目 4",
+        "05",
+        "目录项目 5",
+        "06",
+        "目录项目 6"
+      ],
+      "imageCount": 2,
+      "images": [
+        {
+          "width": 720,
+          "height": 405,
+          "geom": "rect",
+          "hasCrop": false
+        },
+        {
+          "width": 255.6,
+          "height": 164.16,
+          "geom": "rect",
+          "hasCrop": false
+        }
+      ]
+    },
+    {
+      "slide": 8,
+      "elementCount": 34,
+      "text": [
+        "目录",
+        "CONTENTS",
+        "01",
+        "目录项目 1",
+        "02",
+        "目录项目 2",
+        "03",
+        "目录项目 3",
+        "04",
+        "目录项目 4",
+        "05",
+        "目录项目 5",
+        "06",
+        "目录项目 6",
+        "07",
+        "目录项目 7",
+        "08",
+        "目录项目 8",
+        "09",
+        "目录项目 9",
+        "10",
+        "目录项目 10"
+      ],
+      "imageCount": 2,
+      "images": [
+        {
+          "width": 720,
+          "height": 405,
+          "geom": "rect",
+          "hasCrop": false
+        },
+        {
+          "width": 255.6,
+          "height": 164.16,
+          "geom": "rect",
+          "hasCrop": false
+        }
+      ]
+    },
+    {
+      "slide": 9,
+      "elementCount": 5,
+      "text": [
+        "01",
+        "章节标题",
+        "用简短说明承接上一部分，并建立下一章节的清晰语境。"
+      ],
+      "imageCount": 2,
+      "images": [
+        {
+          "width": 720,
+          "height": 405,
+          "geom": "rect",
+          "hasCrop": false
+        },
+        {
+          "width": 136.8,
+          "height": 136.8,
+          "geom": "rect",
+          "hasCrop": false
+        }
+      ]
+    },
+    {
+      "slide": 10,
+      "elementCount": 6,
+      "text": [
+        "02",
+        "章节标题",
+        "以单侧植物构图转换章节节奏，同时保持标题区域清晰。"
+      ],
+      "imageCount": 2,
+      "images": [
+        {
+          "width": 720,
+          "height": 405,
+          "geom": "rect",
+          "hasCrop": false
+        },
+        {
+          "width": 252,
+          "height": 405,
+          "geom": "rect",
+          "hasCrop": false
+        }
+      ]
+    },
+    {
+      "slide": 11,
+      "elementCount": 8,
+      "text": [
+        "03",
+        "核心结论",
+        "让一个关键结论成为页面唯一重心",
+        "单项页面用于承载结论、引语或摘要。装饰保持克制，正文获得充足的阅读空间。"
+      ],
+      "imageCount": 2,
+      "images": [
+        {
+          "width": 720,
+          "height": 405,
+          "geom": "rect",
+          "hasCrop": false
+        },
+        {
+          "width": 201.6,
+          "height": 280.8,
+          "geom": "rect",
+          "hasCrop": false
+        }
+      ]
+    },
+    {
+      "slide": 12,
+      "elementCount": 10,
+      "text": [
+        "02",
+        "图文内容",
+        "01",
+        "让图片与观点共同完成表达",
+        "业务图片保持可替换和稳定裁切，水彩植物只承担固定装饰角色。"
+      ],
+      "imageCount": 3,
+      "images": [
+        {
+          "width": 720,
+          "height": 405,
+          "geom": "rect",
+          "hasCrop": false
+        },
+        {
+          "width": 269.28,
+          "height": 190.08,
+          "geom": "rect",
+          "hasCrop": true
+        },
+        {
+          "width": 165.6,
+          "height": 106.56,
+          "geom": "rect",
+          "hasCrop": false
+        }
+      ]
+    },
+    {
+      "slide": 13,
+      "elementCount": 13,
+      "text": [
+        "01",
+        "双项内容结构",
+        "01",
+        "核心要点 1",
+        "在此输入完整说明，保持信息层级清楚，并为证据和下一步行动留出空间。",
+        "02",
+        "核心要点 2",
+        "在此输入完整说明，保持信息层级清楚，并为证据和下一步行动留出空间。"
+      ],
+      "imageCount": 2,
+      "images": [
+        {
+          "width": 720,
+          "height": 405,
+          "geom": "rect",
+          "hasCrop": false
+        },
+        {
+          "width": 188.64,
+          "height": 120.96,
+          "geom": "rect",
+          "hasCrop": false
+        }
+      ]
+    },
+    {
+      "slide": 14,
+      "elementCount": 17,
+      "text": [
+        "01",
+        "三项内容结构",
+        "01",
+        "核心要点 1",
+        "在此输入完整说明，避免把正文压缩成难以阅读的小字。",
+        "02",
+        "核心要点 2",
+        "在此输入完整说明，避免把正文压缩成难以阅读的小字。",
+        "03",
+        "核心要点 3",
+        "在此输入完整说明，避免把正文压缩成难以阅读的小字。"
+      ],
+      "imageCount": 2,
+      "images": [
+        {
+          "width": 720,
+          "height": 405,
+          "geom": "rect",
+          "hasCrop": false
+        },
+        {
+          "width": 403.2,
+          "height": 66.24,
+          "geom": "rect",
+          "hasCrop": false
+        }
+      ]
+    },
+    {
+      "slide": 15,
+      "elementCount": 21,
+      "text": [
+        "01",
+        "四项内容结构",
+        "01",
+        "核心要点 1",
+        "在此输入完整说明，保持观点、依据与行动之间的清晰关系。",
+        "02",
+        "核心要点 2",
+        "在此输入完整说明，保持观点、依据与行动之间的清晰关系。",
+        "03",
+        "核心要点 3",
+        "在此输入完整说明，保持观点、依据与行动之间的清晰关系。",
+        "04",
+        "核心要点 4",
+        "在此输入完整说明，保持观点、依据与行动之间的清晰关系。"
+      ],
+      "imageCount": 2,
+      "images": [
+        {
+          "width": 720,
+          "height": 405,
+          "geom": "rect",
+          "hasCrop": false
+        },
+        {
+          "width": 187.2,
+          "height": 120.24,
+          "geom": "rect",
+          "hasCrop": false
+        }
+      ]
+    },
+    {
+      "slide": 16,
+      "elementCount": 21,
+      "text": [
+        "04",
+        "四项核心指标",
+        "75%",
+        "指标 1",
+        "指标说明",
+        "80%",
+        "指标 2",
+        "指标说明",
+        "85%",
+        "指标 3",
+        "指标说明",
+        "90%",
+        "指标 4",
+        "指标说明"
+      ],
+      "imageCount": 2,
+      "images": [
+        {
+          "width": 720,
+          "height": 405,
+          "geom": "rect",
+          "hasCrop": false
+        },
+        {
+          "width": 345.6,
+          "height": 59.04,
+          "geom": "rect",
+          "hasCrop": false
+        }
+      ]
+    },
+    {
+      "slide": 17,
+      "elementCount": 5,
+      "text": [
+        "感谢聆听",
+        "期待下一次交流与行动"
+      ],
+      "imageCount": 2,
+      "images": [
+        {
+          "width": 720,
+          "height": 405,
+          "geom": "rect",
+          "hasCrop": false
+        },
+        {
+          "width": 216,
+          "height": 138.96,
+          "geom": "rect",
+          "hasCrop": false
+        }
+      ]
+    },
+    {
+      "slide": 18,
+      "elementCount": 16,
+      "text": [
+        "下一步行动",
+        "明确负责人、完成标准和复盘时间",
+        "01",
+        "行动 1",
+        "02",
+        "行动 2",
+        "03",
+        "行动 3"
+      ],
+      "imageCount": 1,
+      "images": [
+        {
+          "width": 720,
+          "height": 405,
+          "geom": "rect",
+          "hasCrop": false
+        }
+      ]
+    }
+  ],
+  "status": "PASS"
+}

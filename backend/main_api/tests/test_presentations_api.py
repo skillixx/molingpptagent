@@ -774,6 +774,51 @@ def test_patch_saves_current_draft_and_increments_version(api) -> None:
         assert json.loads(saved.slides_json)["slides"][0]["remark"] == "已保存"
 
 
+def test_template_19_body_edit_persists_after_save_and_reload(api) -> None:
+    """模板正文通过作品保存接口写入后，重新读取必须返回同一可编辑文字。"""
+
+    client, engine = api
+    presentation_id = _create(client, key="template-19-body-save").json()["presentation"]["id"]
+    with sessionmaker(engine).begin() as db:
+        presentation = db.get(Presentation, presentation_id)
+        assert presentation is not None
+        presentation.status = "ready"
+        presentation.template_id = "template_19"
+
+    edited_body = "模板正文编辑后保存重载仍需完整保留"
+    document = {
+        "schema_version": 1,
+        "slides": [{
+            "id": "template-19-body-slide",
+            "elements": [{
+                "id": "template-19-body-item",
+                "type": "text",
+                "left": 100,
+                "top": 160,
+                "width": 600,
+                "height": 100,
+                "content": f"<p><span>{edited_body}</span></p>",
+                "textType": "item",
+            }],
+        }],
+        "viewport_size": 1000,
+        "viewport_ratio": 0.5625,
+    }
+    saved = client.patch(
+        f"/api/presentations/{presentation_id}",
+        headers={"Origin": TRUSTED_ORIGIN, "X-Request-Id": "template-19-body-save"},
+        json={"base_version": 1, "title": "水彩绿植正文编辑", "slides": document},
+    )
+    reloaded = client.get(f"/api/presentations/{presentation_id}")
+
+    assert saved.status_code == 200
+    assert saved.json()["current_version"] == 2
+    assert reloaded.status_code == 200
+    reloaded_element = reloaded.json()["slides"]["slides"][0]["elements"][0]
+    assert reloaded_element["textType"] == "item"
+    assert edited_body in reloaded_element["content"]
+
+
 def test_patch_rejects_other_deleted_missing_and_non_editable_presentations(api) -> None:
     client, engine = api
     presentation_id = _create(client, key="save-owner-scope").json()["presentation"]["id"]

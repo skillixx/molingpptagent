@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_19",
+  "candidate": {
+    "templateSha256": "C1D18473F6EB47D9EEECC4D02C29D5B4D53D3E511DC4F57E225A23FB9B485A0E",
+    "coverSha256": "5779DBC005E3CC48CA639DE23BE2D24AD07AFD35AE369D60A6846A1C01497E0D",
+    "slideCount": 18,
+    "mvpSlideCount": 12,
+    "assetCount": 9
+  },
+  "tests": {
+    "backend": {"passed": 1007, "failed": 0, "scope": "backend/main_api/tests", "status": "PASS"},
+    "frontend": {"filesPassed": 26, "testsPassed": 136, "failed": 0, "scope": "frontend full unit suite", "status": "PASS"},
+    "typescript": {"exitCode": 0, "status": "PASS"}
+  },
+  "realWorker": {
+    "slideCount": 12,
+    "types": {"cover": 1, "contents": 1, "transition": 2, "content": 7, "end": 1},
+    "status": "PASS"
+  },
+  "runtime": "PASS",
+  "fourViewports": "PASS",
+  "editorImportEditReplace": "PASS",
+  "pptxExportProjectReimport": "PASS",
+  "fullSizeVisualInspection": "PASS",
+  "styleConsistency": "PASS",
+  "postFixRevalidation": {
+    "date": "2026-09-04",
+    "reason": "修复封面 50 字副标题容量和首次路由异常自动重试",
+    "coverSubtitle": {
+      "characters": 50,
+      "estimatedHeight": 82.4,
+      "slotHeight": 88,
+      "panelBottom": 415,
+      "slotBottom": 413,
+      "status": "PASS"
+    },
+    "imageCoverSubtitle": {
+      "characters": 50,
+      "estimatedHeight": 82.4,
+      "slotHeight": 88,
+      "textLineHeight": 1.3,
+      "status": "PASS"
+    },
+    "deterministicBuildSha256": "C1D18473F6EB47D9EEECC4D02C29D5B4D53D3E511DC4F57E225A23FB9B485A0E",
+    "reconstructedPreFixSha256": "6BCC10869841DEA9289C219FFAB200B265B72013FE285FB3B5F4172B73EFF452",
+    "templateCapacityFieldsChanged": [
+      "cover-botanical-frame/content/height: 76 -> 88",
+      "cover-image/content/textLineHeight: default 1.5 -> 1.3"
+    ],
+    "eightyItemFixture": {
+      "items": 80,
+      "slides": 30,
+      "singleItemPageRatio": 0,
+      "status": "PASS"
+    },
+    "workerRestarted": true,
+    "workerPid": 15508,
+    "unaffectedEvidenceReuse": "公共渲染器、图片槽、裁切、素材和页面结构未修改；复用既有真实 Worker、四视口、换图和 PPTX 往返证据。",
+    "status": "PASS"
+  },
+  "status": "G8_PASS"
+}

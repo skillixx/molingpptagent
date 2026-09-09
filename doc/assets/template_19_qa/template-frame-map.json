@@ -1,0 +1,36 @@
+{
+  "outputSlides": [
+    {"outputSlide": 1, "templateId": "cover-botanical-frame", "sourceSlide": 1, "narrativeRole": "cover without business image", "reuseMode": "reference-rebuild"},
+    {"outputSlide": 2, "templateId": "cover-image", "sourceSlide": 19, "narrativeRole": "cover with one business image", "reuseMode": "reference-rebuild"},
+    {"outputSlide": 3, "templateId": "contents-2", "sourceSlide": 2, "narrativeRole": "two-item contents", "reuseMode": "capacity-variant"},
+    {"outputSlide": 4, "templateId": "contents-3", "sourceSlide": 2, "narrativeRole": "three-item contents", "reuseMode": "capacity-variant"},
+    {"outputSlide": 5, "templateId": "contents-4", "sourceSlide": 2, "narrativeRole": "four-item contents", "reuseMode": "reference-rebuild"},
+    {"outputSlide": 6, "templateId": "contents-5", "sourceSlide": 2, "narrativeRole": "five-item contents", "reuseMode": "capacity-variant"},
+    {"outputSlide": 7, "templateId": "contents-6", "sourceSlide": 2, "narrativeRole": "six-item contents", "reuseMode": "capacity-variant"},
+    {"outputSlide": 8, "templateId": "contents-10", "sourceSlide": 2, "narrativeRole": "ten-item contents", "reuseMode": "capacity-variant"},
+    {"outputSlide": 9, "templateId": "transition-eucalyptus", "sourceSlide": 3, "narrativeRole": "centered eucalyptus section divider", "reuseMode": "reference-rebuild"},
+    {"outputSlide": 10, "templateId": "transition-fern", "sourceSlide": 13, "narrativeRole": "asymmetric fern section divider", "reuseMode": "reference-rebuild"},
+    {"outputSlide": 11, "templateId": "content-statement-1", "sourceSlide": 17, "narrativeRole": "single conclusion", "reuseMode": "reference-rebuild"},
+    {"outputSlide": 12, "templateId": "content-image-1", "sourceSlide": 19, "narrativeRole": "one image and one text item", "reuseMode": "reference-rebuild"},
+    {"outputSlide": 13, "templateId": "content-text-2", "sourceSlide": 23, "narrativeRole": "two-item content", "reuseMode": "reference-rebuild"},
+    {"outputSlide": 14, "templateId": "content-text-3", "sourceSlide": 14, "narrativeRole": "three-item content", "reuseMode": "reference-rebuild"},
+    {"outputSlide": 15, "templateId": "content-text-4", "sourceSlide": 4, "narrativeRole": "four-item content", "reuseMode": "reference-rebuild"},
+    {"outputSlide": 16, "templateId": "content-metrics-4", "sourceSlide": 6, "narrativeRole": "four editable metrics", "reuseMode": "reference-rebuild"},
+    {"outputSlide": 17, "templateId": "end-botanical-frame", "sourceSlide": 24, "narrativeRole": "standard ending", "reuseMode": "reference-rebuild"},
+    {"outputSlide": 18, "templateId": "end-action", "sourceSlide": 21, "narrativeRole": "ending with one to three actions", "reuseMode": "reference-rebuild"}
+  ],
+  "omittedSourceSlides": [
+    {"sourceSlide": 5, "reason": "Merged into the three-item family."},
+    {"sourceSlide": 7, "reason": "Merged into the four-item family."},
+    {"sourceSlide": 8, "reason": "Duplicate transition pattern."},
+    {"sourceSlide": 9, "reason": "Statement structure covered by source slide 17."},
+    {"sourceSlide": 10, "reason": "Four-item structure covered by source slide 4."},
+    {"sourceSlide": 11, "reason": "Four-item structure covered by source slide 4."},
+    {"sourceSlide": 12, "reason": "Process semantics deferred; represented as ordinary four-item content."},
+    {"sourceSlide": 15, "reason": "Three-item structure covered by source slide 14."},
+    {"sourceSlide": 16, "reason": "Four-item structure covered by source slide 4."},
+    {"sourceSlide": 18, "reason": "Duplicate transition pattern."},
+    {"sourceSlide": 20, "reason": "Relationship semantics represented by ordinary content groups."},
+    {"sourceSlide": 22, "reason": "Native chart excluded; visual rhythm mapped to content-metrics-4."}
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_19",
+  "mainApi": {
+    "port": 6800,
+    "pid": 51184,
+    "readyz": 200,
+    "releaseChannel": "production",
+    "releaseCommit": "ba3757553bc3be8ad400b9de867dac187c93d8e2",
+    "dependencies": {"outline": "up", "content": "up", "personaldb": "up", "database": "up", "moling": "up"},
+    "status": "PASS"
+  },
+  "services": [
+    {"name": "outline", "port": 10001, "pid": 66880, "agentCard": 200, "status": "PASS"},
+    {"name": "content", "port": 10011, "pid": 68012, "agentCard": 200, "status": "PASS"},
+    {"name": "personaldb", "port": 9100, "pid": 61480, "healthz": 200, "status": "PASS"},
+    {"name": "mysql", "hostPort": 13306, "container": "trainppt-mysql", "containerState": "running", "status": "PASS"},
+    {"name": "minio", "hostPort": 19000, "container": "trainppt-minio", "healthReady": 200, "status": "PASS"}
+  ],
+  "templateEndpoint": {
+    "listStatus": 200,
+    "uniqueTemplateId": true,
+    "name": "水彩绿植轻商务",
+    "cover": "/api/data/template_19.jpg",
+    "directCoverStatus": 200,
+    "directJsonStatus": 200,
+    "directAssetStatus": 200,
+    "status": "PASS"
+  },
+  "status": "PASS"
+}

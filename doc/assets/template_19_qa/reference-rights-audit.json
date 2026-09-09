@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "referencePptx": "C:\\Users\\sk20\\Desktop\\精品系列(21).pptx",
+  "referenceSha256": "E80BFD5543B8C18F79181463E54D8FF6843C8DA13E6BD4D84141BA4E26A0211D",
+  "slideCount": 24,
+  "canvas": [960, 540],
+  "masters": 3,
+  "layouts": 36,
+  "slidePlaceholders": 0,
+  "parsedElements": 405,
+  "mediaParts": 35,
+  "audioParts": [
+    {
+      "part": "ppt/media/media1.mp3",
+      "bytes": 11699188,
+      "policy": "exclude"
+    }
+  ],
+  "nativeCharts": 1,
+  "embeddedObjects": 1,
+  "transitionSlides": 24,
+  "embeddedFonts": false,
+  "specialFontsObserved": [
+    "汉仪家书简",
+    "迷你简卡通",
+    "全字库正楷体",
+    "站酷快乐体2016修订版"
+  ],
+  "policies": {
+    "referenceMedia": "exclude_all",
+    "fonts": "replace_with_微软雅黑_and_Arial",
+    "audio": "exclude_all",
+    "animationsAndTransitions": "exclude_all",
+    "nativeCharts": "rebuild_with_editable_text_and_shapes",
+    "embeddedObjects": "exclude_all",
+    "sampleText": "replace_with_neutral_editable_copy",
+    "logosAndQrCodes": "exclude_unless_separately_authorized"
+  },
+  "productionAssetPolicy": "Use original generated assets or assets with explicit commercial authorization while preserving the reference composition, palette, visual weight, and spacing rhythm.",
+  "status": "PASS"
+}

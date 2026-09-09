@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_19",
+  "tool": "built-in imagegen",
+  "requestedModel": "GPT Image 2",
+  "actualModel": "工具未暴露",
+  "referencePolicy": "Reference deck and contact sheet were used only for style, composition, palette, spacing, and visual weight. No reference media bytes were copied into production assets.",
+  "assets": [
+    {"filename": "template_19_asset_bg_cover_v1.jpg", "rounds": 1, "source": "template_19_asset_bg_cover_v1_original.png", "sha256": "BD760320D39CF36754150A67B14500E86EBC23DE1E3E65F6C7F5FBE5741C918B", "bytes": 156141, "status": "PASS"},
+    {"filename": "template_19_asset_bg_content_v1.jpg", "rounds": 1, "source": "template_19_asset_bg_content_v1_original.png", "sha256": "F8EC7005562223A721E913FEFA2272689D249D4693A48F898BEB6A36BBB2E00D", "bytes": 222137, "status": "PASS"},
+    {"filename": "template_19_asset_bg_section_v1.jpg", "rounds": 1, "source": "template_19_asset_bg_section_v1_original.png", "sha256": "3063FB9C042BFC367A6FC81DAB0E03675C74E7622B6DEDD1F80DABCA4345A812", "bytes": 160552, "status": "PASS"},
+    {"filename": "template_19_asset_bg_end_v1.jpg", "rounds": 1, "source": "template_19_asset_bg_end_v1_original.png", "sha256": "17AD90963B53F05885FD9C37C2F6093ACAE5DF1BDC8715064E286D82F83BE9B0", "bytes": 137293, "status": "PASS"},
+    {"filename": "template_19_asset_eucalyptus_corner_upper_v1.png", "rounds": 1, "source": "template_19_asset_eucalyptus_corner_v1_round2.png", "transform": "mirror-horizontal-and-vertical", "fallbackReason": "Botanical frame background extraction failed to produce alpha in three rounds; the verified original transparent corner was mirrored as an authorized deterministic variant.", "sha256": "6CF227FA5D16476D16E05785005FB84522FB26568D8B0D0B6241F442F1238AB6", "bytes": 649422, "status": "PASS"},
+    {"filename": "template_19_asset_eucalyptus_corner_v1.png", "rounds": 2, "source": "template_19_asset_eucalyptus_corner_v1_round2.png", "firstRoundIssue": "RGB checkerboard", "sha256": "E9D8E8DC80F2089C0C9A5984E4759776CBC32D16BB8DCA9BE9F2D2A8172CB756", "bytes": 649012, "status": "PASS"},
+    {"filename": "template_19_asset_eucalyptus_sweep_v1.png", "rounds": 1, "source": "template_19_asset_eucalyptus_sweep_v1_original.png", "sha256": "EB25B1B194F700C6BED9CBFC55702A12CB63CC1413AAC0BCD6E6EBFCF13199D7", "bytes": 833623, "status": "PASS"},
+    {"filename": "template_19_asset_fern_spray_v1.png", "rounds": 1, "source": "template_19_asset_fern_spray_v1_original.png", "sha256": "FBC0D4E4041ACBBF84E996B4566370813686C5FD48A8E03020AF7791BE4276CC", "bytes": 442478, "status": "PASS"},
+    {"filename": "template_19_asset_leaf_medallion_v1.png", "rounds": 2, "source": "template_19_asset_leaf_medallion_v1_round2.png", "firstRoundIssue": "RGB white background", "sha256": "668EB26134FE815CD002409452122F3B0B03875CDC1D30708AF5F881C8132190", "bytes": 530754, "status": "PASS"}
+  ],
+  "failedOrDiscarded": [
+    {"asset": "template_19_asset_botanical_frame_v1.png", "rounds": 3, "reason": "All three built-in generations returned RGB checkerboard instead of a real alpha channel.", "replacement": "template_19_asset_eucalyptus_corner_upper_v1.png"},
+    {"asset": "template_19_asset_eucalyptus_corner_upper_v1_original.png", "rounds": 1, "reason": "Generated replacement also returned RGB checkerboard; used a mirrored verified transparent corner instead."}
+  ],
+  "status": "PASS"
+}

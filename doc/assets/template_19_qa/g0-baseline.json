@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-09-03T17:59:00+08:00",
+  "repository": "D:\\moling\\TrainPPTAgent",
+  "branch": "main",
+  "commit": "ba3757553bc3be8ad400b9de867dac187c93d8e2",
+  "candidateTemplateId": "template_19",
+  "templateIdScan": "free",
+  "referencePptx": "C:\\Users\\sk20\\Desktop\\精品系列(21).pptx",
+  "referenceSha256": "E80BFD5543B8C18F79181463E54D8FF6843C8DA13E6BD4D84141BA4E26A0211D",
+  "referenceBytes": 19943175,
+  "runtime": {
+    "python": "3.12.10",
+    "node": "24.19.0",
+    "npm": "11.17.0"
+  },
+  "baselineTests": {
+    "command": ".\\.venv\\Scripts\\python.exe -m pytest backend/main_api/tests/test_template_renderer.py backend/main_api/tests/test_template_assets.py -q",
+    "result": "47 passed in 1.88s"
+  },
+  "worktreePolicy": "Preserve all pre-existing modifications and untracked files.",
+  "status": "PASS"
+}

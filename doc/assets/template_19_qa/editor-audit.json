@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_19",
+  "candidateSlideCount": 18,
+  "productionJsonImport": "PASS",
+  "titleEdit": {
+    "value": "水彩绿植生产编辑验收",
+    "persistedThroughPptxRoundtrip": true,
+    "status": "PASS"
+  },
+  "bodyTextEdit": {
+    "value": "模板正文编辑后保存重载仍需完整保留",
+    "textType": "item",
+    "frontendAutosaveRegression": "frontend/src/editor/__tests__/presentationAutosaveEngine.spec.ts::模板正文编辑进入云端保存快照且不退化成标题修改",
+    "apiSaveReloadRegression": "backend/main_api/tests/test_presentations_api.py::test_template_19_body_edit_persists_after_save_and_reload",
+    "persistedAfterApplicationReload": true,
+    "status": "PASS"
+  },
+  "contentImageReplacement": {
+    "slide": 12,
+    "contentImageReplaceable": true,
+    "fixedDecorationPreserved": true,
+    "cropPreservedAfterReimport": true,
+    "status": "PASS"
+  },
+  "pptxExport": {
+    "path": "doc/assets/template_19_qa/exports/template_19_production_editor_roundtrip.pptx",
+    "bytes": 14653541,
+    "status": "PASS"
+  },
+  "projectReimport": {
+    "slideCount": 18,
+    "elementCount": 248,
+    "imageCount": 36,
+    "editedTitlePresent": true,
+    "editorCanvas": "960x540",
+    "status": "PASS"
+  },
+  "fullSizeVisualInspection": {
+    "inspectedSlides": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18],
+    "textOverflow": false,
+    "elementLoss": false,
+    "obviousCropFailure": false,
+    "obviousStyleDrift": false,
+    "status": "PASS"
+  },
+  "status": "PASS"
+}

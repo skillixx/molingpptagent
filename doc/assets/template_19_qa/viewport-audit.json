@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_19",
+  "editorUrl": "http://127.0.0.1:5780/editor",
+  "viewports": [
+    {"width": 1920, "height": 1080, "overflow": false, "primaryActionsReachable": true, "exportActionReachable": true, "status": "PASS"},
+    {"width": 1366, "height": 768, "overflow": false, "primaryActionsReachable": true, "exportActionReachable": true, "status": "PASS"},
+    {"width": 768, "height": 1024, "overflow": false, "primaryActionsReachable": true, "exportActionReachable": true, "status": "PASS"},
+    {"width": 390, "height": 844, "overflow": false, "mobileNavigationReachable": true, "downloadActionReachable": true, "status": "PASS"}
+  ],
+  "status": "PASS"
+}

@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "referencePptx": "C:\\Users\\sk20\\Desktop\\精品系列(21).pptx",
+  "referenceSha256": "E80BFD5543B8C18F79181463E54D8FF6843C8DA13E6BD4D84141BA4E26A0211D",
+  "pages": [
+    {"page": 1, "role": "cover", "decision": "rebuild", "targets": ["cover-botanical-frame", "cover-image"], "preserve": ["botanical frame", "paper texture", "asymmetric title panel", "corner foliage"]},
+    {"page": 2, "role": "contents", "decision": "rebuild-family", "targets": ["contents-2", "contents-3", "contents-4", "contents-5", "contents-6", "contents-10"], "preserve": ["four-item rhythm", "numeric markers", "left foliage mass", "open right content field"]},
+    {"page": 3, "role": "transition", "decision": "rebuild", "targets": ["transition-eucalyptus"], "preserve": ["centered section title", "low botanical arc", "large whitespace"]},
+    {"page": 4, "role": "content-4", "decision": "rebuild", "targets": ["content-text-4"], "preserve": ["four-part balance", "pastel circular accents", "edge foliage"]},
+    {"page": 5, "role": "content-3", "decision": "rebuild", "targets": ["content-text-3"], "preserve": ["three-row rhythm", "leaf markers", "wide text field"]},
+    {"page": 6, "role": "metrics-4", "decision": "rebuild", "targets": ["content-metrics-4"], "preserve": ["four circular metrics", "mint and blush alternation", "bottom foliage"]},
+    {"page": 7, "role": "content-4", "decision": "merge", "targets": ["content-text-4"], "preserve": ["four-item grid", "leaf badges"]},
+    {"page": 8, "role": "transition", "decision": "merge", "targets": ["transition-eucalyptus"], "preserve": ["centered title", "botanical arc"]},
+    {"page": 9, "role": "statement", "decision": "rebuild", "targets": ["content-statement-1"], "preserve": ["asymmetric foliage", "two color rails", "large whitespace"]},
+    {"page": 10, "role": "content-4", "decision": "rebuild", "targets": ["content-text-4"], "preserve": ["numbered quadrants", "mint and blush labels"]},
+    {"page": 11, "role": "content-4", "decision": "merge", "targets": ["content-text-4"], "preserve": ["four horizontal items", "leaf icon rhythm"]},
+    {"page": 12, "role": "process-4", "decision": "merge", "targets": ["content-text-4"], "preserve": ["rising sequence", "number nodes"], "deviation": "Express as ordinary editable items in V1."},
+    {"page": 13, "role": "transition", "decision": "rebuild", "targets": ["transition-fern"], "preserve": ["centered title", "botanical arc"]},
+    {"page": 14, "role": "content-3", "decision": "rebuild", "targets": ["content-text-3"], "preserve": ["three-column items", "fern side decoration"]},
+    {"page": 15, "role": "content-3", "decision": "merge", "targets": ["content-text-3"], "preserve": ["three numbered items", "horizontal reading"]},
+    {"page": 16, "role": "content-4", "decision": "merge", "targets": ["content-text-4"], "preserve": ["four-item balance", "central leaf cluster"]},
+    {"page": 17, "role": "statement", "decision": "rebuild", "targets": ["content-statement-1"], "preserve": ["large text field", "right botanical illustration", "three pastel accents"]},
+    {"page": 18, "role": "transition", "decision": "merge", "targets": ["transition-fern"], "preserve": ["centered section title", "low leaf arc"]},
+    {"page": 19, "role": "image-text", "decision": "rebuild", "targets": ["content-image-1", "cover-image"], "preserve": ["left visual", "right text blocks", "pastel rails"], "deviation": "Replace the decorative left visual with an explicit business image slot."},
+    {"page": 20, "role": "relationship", "decision": "merge", "targets": ["content-text-3"], "preserve": ["three connected ideas", "brush accents"], "deviation": "Use editable text groups without a private relationship protocol."},
+    {"page": 21, "role": "compare-2", "decision": "merge", "targets": ["end-action", "content-text-2"], "preserve": ["two-item contrast", "fern side visual"]},
+    {"page": 22, "role": "bar-chart", "decision": "rebuild", "targets": ["content-metrics-4"], "preserve": ["horizontal data emphasis", "yellow blush mint sequence"], "deviation": "Remove native chart and embedded object; use editable shapes and text."},
+    {"page": 23, "role": "image-text", "decision": "rebuild", "targets": ["content-image-1", "content-text-2"], "preserve": ["wide left visual", "right text", "corner foliage"]},
+    {"page": 24, "role": "end", "decision": "rebuild", "targets": ["end-botanical-frame", "end-action"], "preserve": ["cover-end symmetry", "botanical frame", "central closing panel"]}
+  ],
+  "status": "PASS"
+}

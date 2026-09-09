@@ -271,6 +271,10 @@ flowchart TD
 * [蓝菱商务汇报模板开发 Goal](doc/蓝菱商务汇报PPT模板开发Goal.md)
 * [蓝菱商务汇报模板 Goal 执行提示词](doc/蓝菱商务汇报PPT模板开发Goal执行提示词.md)
 * [蓝菱商务汇报模板素材与 QA 记录](doc/蓝菱商务汇报PPT模板素材与QA记录.md)
+* [水彩绿植轻商务模板开发说明](doc/水彩绿植轻商务PPT模板开发说明.md)
+* [水彩绿植轻商务模板开发 Goal](doc/水彩绿植轻商务PPT模板开发Goal.md)
+* [水彩绿植轻商务模板 Goal 执行提示词](doc/水彩绿植轻商务PPT模板开发Goal执行提示词.md)
+* [水彩绿植轻商务模板素材与 QA 记录](doc/水彩绿植轻商务PPT模板素材与QA记录.md)
 * [不同的模型配置](doc/custom_model.md)
 * [PPT的图片说明]doc/Image.md
 ---

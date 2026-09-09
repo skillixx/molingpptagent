@@ -6,6 +6,7 @@ import {
   type EditablePresentationSnapshot,
   type LocalPresentationDraft,
 } from '@/editor/presentationAutosaveEngine'
+import type { PPTTextElement } from '@/types/slides'
 
 
 function snapshot(title: string, version = 1): EditablePresentationSnapshot {
@@ -21,6 +22,25 @@ function snapshot(title: string, version = 1): EditablePresentationSnapshot {
       viewportRatio: 0.5625,
     },
   }
+}
+
+function templateBodySnapshot(body: string, version = 1): EditablePresentationSnapshot {
+  const value = snapshot('水彩绿植正文编辑', version)
+  const element: PPTTextElement = {
+    id: 'template-19-body-item',
+    type: 'text',
+    left: 100,
+    top: 160,
+    width: 600,
+    height: 100,
+    rotate: 0,
+    content: `<p><span>${body}</span></p>`,
+    defaultFontName: '微软雅黑',
+    defaultColor: '#4A4D4B',
+    textType: 'item',
+  }
+  value.document.slides[0].elements = [element]
+  return value
 }
 
 function deferred<T>() {
@@ -55,6 +75,30 @@ describe('PresentationAutosaveEngine', () => {
     expect(save).toHaveBeenCalledTimes(1)
     expect(save.mock.calls[0][0].title).toBe('最终内容')
     expect(writeDraft).toHaveBeenLastCalledWith('user-1', expect.objectContaining({ title: '最终内容' }))
+  })
+
+  it('模板正文编辑进入云端保存快照且不退化成标题修改', async () => {
+    let persisted: EditablePresentationSnapshot | undefined
+    const save = vi.fn(async (value: EditablePresentationSnapshot) => {
+      persisted = structuredClone(value)
+      return { currentVersion: 2 }
+    })
+    const engine = new PresentationAutosaveEngine({
+      save,
+      readDraft: vi.fn().mockResolvedValue(null),
+      writeDraft: vi.fn().mockResolvedValue(undefined),
+      deleteDraft: vi.fn().mockResolvedValue(undefined),
+      isOnline: () => true,
+    })
+    await engine.activate('user-1', templateBodySnapshot('初始正文'))
+    await engine.markChanged(templateBodySnapshot('模板正文编辑后保存重载仍需完整保留'))
+    await vi.advanceTimersByTimeAsync(2000)
+
+    const savedElement = persisted?.document.slides[0].elements[0] as PPTTextElement | undefined
+    expect(save).toHaveBeenCalledTimes(1)
+    expect(savedElement?.textType).toBe('item')
+    expect(savedElement?.content).toContain('模板正文编辑后保存重载仍需完整保留')
+    expect(engine.status).toBe('saved')
   })
 
   it('慢请求期间只允许一个请求在途，完成后立即保存排队的最新稿', async () => {
