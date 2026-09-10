@@ -284,6 +284,10 @@ const createOutline = async () => {
 }
 
 const goPPT = () => {
+  if (!isUsableMarkdownOutline(outline.value)) {
+    message.error('大纲需包含一级标题和章节内容，请完善后再创建PPT')
+    return
+  }
   router.push({
     name: 'PPT',
     query: {

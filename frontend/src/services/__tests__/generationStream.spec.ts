@@ -64,6 +64,8 @@ describe('generation stream', () => {
     '我来先搜索一些关于Linux入门教程的资料，以便生成一个全面的大纲。',
     '{"code":"INTERNAL_ERROR","message":"服务暂时不可用"}',
     '普通文本，没有标题结构',
+    '生成说明\n## 第一章\n### 目标\n- 行动项',
+    '# 只有一级标题',
   ])('拒绝不完整大纲：%s', content => {
     expect(isUsableMarkdownOutline(content)).toBe(false)
   })

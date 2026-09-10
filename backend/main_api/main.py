@@ -571,6 +571,8 @@ async def get_templates():
         { "name": "飞檐雅韵", "id": "template_18", "cover": "/api/data/template_18.jpg" },
         # 水彩绿植轻商务模板使用原创水彩纸纹与桉叶素材，业务图片和固定装饰严格隔离。
         { "name": "水彩绿植轻商务", "id": "template_19", "cover": "/api/data/template_19.jpg" },
+        # 抽象油彩商务汇报模板使用原创厚涂油彩素材，业务图片和固定装饰严格隔离。
+        { "name": "抽象油彩商务汇报", "id": "template_20", "cover": "/api/data/template_20.jpg" },
     ]
 
     return {"data": templates}

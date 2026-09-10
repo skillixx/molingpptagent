@@ -147,10 +147,16 @@ const unavailableMessage = computed(() => {
     if (editorStore.errorCode === 'TEMPLATE_ITEM_COUNT_UNSUPPORTED') {
       return `${partial}当前大纲的单页项目数超过模板容量，请减少每个内容主题的项目数。`
     }
+    if (editorStore.errorCode === 'OUTLINE_FORMAT_INVALID') {
+      return `${partial}大纲格式不完整，请返回大纲页补充一级标题和章节内容后重新生成。`
+    }
+    if (editorStore.errorCode === 'CONTENT_RESULT_EMPTY') {
+      return `${partial}正文生成未返回有效页面，请返回大纲页确认一级标题和章节内容后重新生成。`
+    }
     if (TEMPLATE_STRUCTURE_ERROR_CODES.includes(editorStore.errorCode ?? '')) {
       return `${partial}模板资源或版式无法使用，生成已停止。请重试或更换模板。`
     }
-    if (['AGENT_UNAVAILABLE', 'AGENT_REQUEST_FAILED', 'OUTLINE_RESULT_EMPTY', 'CONTENT_RESULT_EMPTY'].includes(editorStore.errorCode ?? '')) {
+    if (['AGENT_UNAVAILABLE', 'AGENT_REQUEST_FAILED', 'OUTLINE_RESULT_EMPTY'].includes(editorStore.errorCode ?? '')) {
       return `${partial}生成服务暂时不可用。`
     }
     if (['GENERATION_RESULT_FENCED', 'WORKER_LOST_BEFORE_DISPATCH', 'TASK_MAX_ATTEMPTS_EXCEEDED'].includes(editorStore.errorCode ?? '')) {

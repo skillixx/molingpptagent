@@ -77,6 +77,8 @@ class PresentationGenerationHandler:
                     payload["language"],
                     task.owner_user_id,
                 )
+            # 正文 Agent 要求一级标题和章节结构；在外部派发前统一校验，避免空结果与重复 Token。
+            self._validate_outline_structure(outline)
             self._validate_template_outline_capacity(template_capacity, outline)
             semantic_slides = await self._collect_slides(
                 self.content_factory(context_id),
@@ -154,6 +156,19 @@ class PresentationGenerationHandler:
     @staticmethod
     def _is_markdown_outline(content: str) -> bool:
         return re.search(r"(?m)^#{1,6}\s+\S", content) is not None
+
+    @staticmethod
+    def _validate_outline_structure(outline: str) -> None:
+        """执行与正文 Agent 相同的最低结构校验，并返回可识别的稳定错误码。"""
+        lines = [line.strip() for line in outline.splitlines()]
+        has_title = any(line.startswith("# ") and line[2:].strip() for line in lines)
+        has_structure = any(
+            (line.startswith("## ") or line.startswith("### ") or line.startswith("- "))
+            and line.split(" ", 1)[-1].strip()
+            for line in lines
+        )
+        if not has_title or not has_structure:
+            raise NonRetryableTaskError("OUTLINE_FORMAT_INVALID", "大纲格式不完整")
 
     def _template_content_capacity(self, template_id: str | None) -> int:
         """在外部派发前读取模板容量，并把模板错误固定映射为不可重试分类。"""

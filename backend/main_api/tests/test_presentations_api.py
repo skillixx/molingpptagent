@@ -819,6 +819,64 @@ def test_template_19_body_edit_persists_after_save_and_reload(api) -> None:
     assert edited_body in reloaded_element["content"]
 
 
+def test_template_20_title_and_body_edits_persist_after_save_and_reload(api) -> None:
+    """抽象油彩模板的标题和正文通过作品接口保存后必须完整重载。"""
+
+    client, engine = api
+    presentation_id = _create(client, key="template-20-edit-save").json()["presentation"]["id"]
+    with sessionmaker(engine).begin() as db:
+        presentation = db.get(Presentation, presentation_id)
+        assert presentation is not None
+        presentation.status = "ready"
+        presentation.template_id = "template_20"
+
+    edited_title = "抽象油彩生产编辑验收"
+    edited_body = "冻结版正文编辑重载验收"
+    document = {
+        "schema_version": 1,
+        "slides": [{
+            "id": "template-20-edit-slide",
+            "elements": [
+                {
+                    "id": "template-20-title",
+                    "type": "text",
+                    "left": 255,
+                    "top": 160,
+                    "width": 690,
+                    "height": 140,
+                    "content": f"<p><span>{edited_title}</span></p>",
+                    "textType": "title",
+                },
+                {
+                    "id": "template-20-body",
+                    "type": "text",
+                    "left": 310,
+                    "top": 322,
+                    "width": 560,
+                    "height": 50,
+                    "content": f"<p><span>{edited_body}</span></p>",
+                    "textType": "content",
+                },
+            ],
+        }],
+        "viewport_size": 1000,
+        "viewport_ratio": 0.5625,
+    }
+    saved = client.patch(
+        f"/api/presentations/{presentation_id}",
+        headers={"Origin": TRUSTED_ORIGIN, "X-Request-Id": "template-20-edit-save"},
+        json={"base_version": 1, "title": edited_title, "slides": document},
+    )
+    reloaded = client.get(f"/api/presentations/{presentation_id}")
+
+    assert saved.status_code == 200
+    assert saved.json()["current_version"] == 2
+    assert reloaded.status_code == 200
+    elements = reloaded.json()["slides"]["slides"][0]["elements"]
+    assert edited_title in elements[0]["content"]
+    assert edited_body in elements[1]["content"]
+
+
 def test_patch_rejects_other_deleted_missing_and_non_editable_presentations(api) -> None:
     client, engine = api
     presentation_id = _create(client, key="save-owner-scope").json()["presentation"]["id"]

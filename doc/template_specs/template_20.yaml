@@ -1,0 +1,151 @@
+schema_version: 1
+template:
+  id: template_20
+  title: 抽象油彩商务汇报
+  build_stage: development
+  canvas:
+    width: 1000
+    height: 562.5
+    aspect_ratio: "16:9"
+  reference:
+    path: "C:\\Users\\sk20\\Desktop\\精品系列(36).pptx"
+    sha256: 3F34B2292E389A1FD08E9E4A4B6A3BF24FDCC32EBAADA15A5A722815A8941C81
+    slide_count: 24
+    media_policy: exclude_all_and_rebuild
+    font_policy: replace_special_fonts
+    animation_policy: exclude_all
+    audio_policy: exclude_all
+    native_chart_policy: exclude_from_v1
+  fidelity:
+    level: high
+    must_preserve:
+      - deep_teal_orange_red_bright_yellow_relationship
+      - thick_impasto_and_pigment_texture
+      - white_content_pages_with_edge_paint
+      - oversized_english_labels_and_compact_headers
+      - directional_edge_decoration
+      - generous_continuous_whitespace
+      - cover_end_symmetry
+      - flat_multi_item_rhythm
+    forbidden_styles:
+      - technology_blue
+      - neon
+      - glassmorphism
+      - dense_card_grid
+      - botanical_watercolor
+      - generic_corporate_template
+    comparison_required: true
+    deviation_log_required: true
+  typography:
+    chinese: 微软雅黑
+    latin: Arial
+    minimum_font_size: 12
+    cover_title: 50
+    transition_title: 44
+    page_title: 35
+    item_title: 20
+    body: 16
+  colors:
+    background: "#FFFFFF"
+    structural_teal: "#10746A"
+    paint_teal: "#0E5A63"
+    structural_orange: "#FF9409"
+    paint_orange_red: "#E4651E"
+    bright_yellow: "#FDC90E"
+    title: "#000000"
+    body: "#282828"
+    white: "#FFFFFF"
+  safe_area:
+    horizontal: [56, 944]
+    vertical: [38, 518.5]
+    title_height: [70, 92]
+    decoration_text_gap: 20
+    content_image_decoration_gap: 18
+    horizontal_brush_max_height_ratio: 0.22
+    corner_decoration_max_width_ratio: 0.28
+  probe_slide_ids:
+    - cover-abstract-paint
+    - content-text-4
+    - content-image-1
+  sample_slide_ids:
+    - cover-abstract-paint
+    - contents-4
+    - transition-teal-paint
+    - content-text-2
+    - end-abstract-paint
+  mvp_slide_ids:
+    - cover-abstract-paint
+    - contents-2
+    - contents-3
+    - contents-4
+    - contents-5
+    - contents-6
+    - contents-10
+    - transition-teal-paint
+    - content-text-2
+    - content-text-3
+    - content-text-4
+    - end-abstract-paint
+  production_slide_ids:
+    - cover-abstract-paint
+    - cover-image
+    - contents-2
+    - contents-3
+    - contents-4
+    - contents-5
+    - contents-6
+    - contents-10
+    - transition-teal-paint
+    - transition-orange-stroke
+    - content-statement-1
+    - content-image-1
+    - content-text-2
+    - content-text-3
+    - content-text-4
+    - content-metrics-4
+    - end-abstract-paint
+    - end-action
+  expected_counts:
+    cover: 2
+    contents: 6
+    transition: 2
+    content: 6
+    end: 2
+  semantic_slots:
+    text: [title, content, item, itemTitle, itemNumber, partNumber]
+    image:
+      content: replaceable
+      decoration: fixed
+  selection:
+    contents:
+      exact_counts: [2, 3, 4, 5, 6, 10]
+      overflow: balanced_lossless_pagination
+    content:
+      text_item_counts: [1, 2, 3, 4]
+      image_counts: [0, 1]
+      metrics_count: 4
+      overflow: lossless_pagination
+      minimum_font_size: 12
+    end:
+      action_item_counts: [0, 1, 2, 3]
+assets:
+  - {id: bg-cover, filename: template_20_asset_bg_cover_v1.jpg, format: JPEG, size: [1920, 1080], mode: RGB, max_bytes: 450000}
+  - {id: bg-content, filename: template_20_asset_bg_content_v1.jpg, format: JPEG, size: [1920, 1080], mode: RGB, max_bytes: 280000}
+  - {id: bg-section, filename: template_20_asset_bg_section_v1.jpg, format: JPEG, size: [1920, 1080], mode: RGB, max_bytes: 380000}
+  - {id: bg-end, filename: template_20_asset_bg_end_v1.jpg, format: JPEG, size: [1920, 1080], mode: RGB, max_bytes: 420000}
+  - {id: teal-brush-band, filename: template_20_asset_teal_brush_band_v1.png, format: PNG, size: [1800, 520], mode: RGBA, max_bytes: 900000}
+  - {id: orange-brush-sweep, filename: template_20_asset_orange_brush_sweep_v1.png, format: PNG, size: [1500, 420], mode: RGBA, max_bytes: 700000}
+  - {id: yellow-highlight, filename: template_20_asset_yellow_highlight_v1.png, format: PNG, size: [1200, 260], mode: RGBA, max_bytes: 450000}
+  - {id: paint-corner, filename: template_20_asset_paint_corner_v1.png, format: PNG, size: [1200, 900], mode: RGBA, max_bytes: 850000}
+  - {id: pigment-speckles, filename: template_20_asset_pigment_speckles_v1.png, format: PNG, size: [1600, 900], mode: RGBA, max_bytes: 650000}
+qa:
+  viewports:
+    - [1920, 1080]
+    - [1366, 768]
+    - [768, 1024]
+    - [390, 844]
+  reference_comparison_required: true
+  export_roundtrip_required: true
+  final_development_status: G8_PASS_G9_PENDING
+  g9_status_after_automatic_pass: READY_FOR_CONFIRMATION
+  g9_human_confirmation_required: true

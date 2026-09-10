@@ -212,7 +212,7 @@ def test_handler_preserves_safe_template_error_code(
         )
 
         with pytest.raises(NonRetryableTaskError) as captured:
-            asyncio.run(handler.execute(_execution(content="# 已有大纲", template_id="template_8")))
+            asyncio.run(handler.execute(_execution(content="# 已有大纲\n## 第一章", template_id="template_8")))
 
         assert captured.value.code == expected_code
         assert str(captured.value) == expected_message
@@ -282,6 +282,29 @@ def test_handler_calls_both_agents_and_persists_editable_document(tmp_path: Path
         assert asyncio.run(handler.has_persisted_result(_execution())) is True
         assert outline.calls[0][1]["user_id"] == "479"
         assert content.calls[0][1]["metadata"]["user_id"] == "479"
+    finally:
+        engine.dispose()
+
+
+def test_handler_rejects_partial_outline_before_content_agent(tmp_path: Path) -> None:
+    """缺少一级标题的局部大纲必须在正文 Agent 调用前被明确拒绝。"""
+
+    engine = _engine(tmp_path)
+    try:
+        _insert_running_task(engine)
+        outline = ScriptedAgent([])
+        content = ScriptedAgent([])
+        handler = _handler(engine, outline, content)
+
+        with pytest.raises(NonRetryableTaskError) as captured:
+            asyncio.run(handler.execute(_execution(
+                content="生成说明\n## 第一章\n### 目标\n- 行动项",
+            )))
+
+        assert captured.value.code == "OUTLINE_FORMAT_INVALID"
+        assert str(captured.value) == "大纲格式不完整"
+        assert outline.calls == []
+        assert content.calls == []
     finally:
         engine.dispose()
 
@@ -419,7 +442,7 @@ def test_handler_escapes_agent_html_before_persisting(tmp_path: Path) -> None:
         _insert_running_task(engine)
         handler = _handler(
             engine,
-            ScriptedAgent([{"type": "text", "text": "# outline"}]),
+            ScriptedAgent([{"type": "text", "text": "# outline\n## section"}]),
             ScriptedAgent(
                 [
                     {
@@ -534,7 +557,7 @@ def test_stale_worker_cannot_persist_result(tmp_path: Path) -> None:
         _insert_running_task(engine)
         handler = _handler(
             engine,
-            ScriptedAgent([{"type": "text", "text": "# outline"}]),
+            ScriptedAgent([{"type": "text", "text": "# outline\n## section"}]),
             ScriptedAgent([{"type": "text", "text": '{"type":"end","data":{}}'}]),
         )
         with pytest.raises(NonRetryableTaskError) as error:
@@ -551,7 +574,7 @@ def test_malformed_agent_output_is_retryable(tmp_path: Path) -> None:
         _insert_running_task(engine)
         handler = _handler(
             engine,
-            ScriptedAgent([{"type": "text", "text": "# outline"}]),
+            ScriptedAgent([{"type": "text", "text": "# outline\n## section"}]),
             ScriptedAgent([{"type": "text", "text": "not-json"}]),
         )
         with pytest.raises(RetryableTaskError) as error:

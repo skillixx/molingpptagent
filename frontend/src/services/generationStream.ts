@@ -49,11 +49,15 @@ export async function consumeTextResponse(
   return content
 }
 
-/** 大纲至少需要一个 Markdown 标题，过程话术或错误 JSON 均视为中断。 */
+/** 大纲必须同时具备一级标题和章节内容，避免前后端格式契约不一致。 */
 export function isUsableMarkdownOutline(content: string): boolean {
   const normalized = content.trim()
+  const lines = normalized.split(/\r?\n/).map(line => line.trim())
+  const hasTitle = lines.some(line => /^#\s+\S+/.test(line))
+  const hasStructure = lines.some(line => /^(?:##|###)\s+\S+/.test(line) || /^-\s+\S+/.test(line))
   return normalized.length >= 20
-    && /^#{1,6}\s+\S+/m.test(normalized)
+    && hasTitle
+    && hasStructure
     && !/^\s*\{\s*"code"\s*:/i.test(normalized)
 }
 
