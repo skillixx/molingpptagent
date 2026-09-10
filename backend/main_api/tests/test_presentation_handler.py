@@ -36,6 +36,30 @@ class ScriptedAgent:
             yield chunk
 
 
+class CloseAwareAgent:
+    """模拟仍在远端生成的流，只有调用 aclose 才会标记为已关闭。"""
+
+    def __init__(self, chunk: dict[str, object]) -> None:
+        self.chunk = chunk
+        self.emitted = False
+        self.closed = False
+
+    def generate(self, *args, **kwargs):
+        return self
+
+    def __aiter__(self):
+        return self
+
+    async def __anext__(self):
+        if self.emitted:
+            await asyncio.Event().wait()
+        self.emitted = True
+        return self.chunk
+
+    async def aclose(self) -> None:
+        self.closed = True
+
+
 class ClassifiedTemplateRenderer:
     """模拟不同模板失败，验证处理器只保留安全错误分类。"""
 
@@ -282,6 +306,40 @@ def test_handler_calls_both_agents_and_persists_editable_document(tmp_path: Path
         assert asyncio.run(handler.has_persisted_result(_execution())) is True
         assert outline.calls[0][1]["user_id"] == "479"
         assert content.calls[0][1]["metadata"]["user_id"] == "479"
+    finally:
+        engine.dispose()
+
+
+def test_preview_render_failure_closes_content_stream(tmp_path: Path) -> None:
+    """预览渲染失败必须立即关闭 Content 流，避免远端任务继续生成。"""
+
+    engine = _engine(tmp_path)
+    try:
+        _insert_running_task(engine)
+        outline = ScriptedAgent([])
+        content = CloseAwareAgent({
+            "type": "text",
+            "text": json.dumps({
+                "type": "content",
+                "data": {"title": "正文页", "items": [{"title": "项目", "text": "说明"}]},
+            }, ensure_ascii=False),
+        })
+        handler = PresentationGenerationHandler(
+            repository=GenerationResultRepository(engine),
+            outline_factory=lambda _session_id: outline,
+            content_factory=lambda _session_id: content,
+            max_document_bytes=1024 * 1024,
+            template_renderer=ClassifiedTemplateRenderer("TEMPLATE_DATA_INVALID"),
+            now_factory=lambda: NOW,
+        )
+
+        with pytest.raises(NonRetryableTaskError):
+            asyncio.run(handler.execute(_execution(
+                content="# 已确认大纲\n## 第一章",
+                template_id="template_20",
+            )))
+
+        assert content.closed is True
     finally:
         engine.dispose()
 

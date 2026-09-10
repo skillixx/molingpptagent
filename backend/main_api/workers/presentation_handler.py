@@ -268,14 +268,25 @@ class PresentationGenerationHandler:
             "search_engine": search_engine,
             "language": language,
         }
-        async for chunk in wrapper.generate(user_question=outline, metadata=metadata):
-            if chunk.get("type") != "text" or not isinstance(chunk.get("text"), str):
-                continue
-            parsed = cls._parse_semantic_slide(chunk["text"])
-            if parsed is not None:
-                slides.append(parsed)
-                if on_slide is not None:
-                    await on_slide(list(slides))
+        stream = wrapper.generate(user_question=outline, metadata=metadata)
+        try:
+            async for chunk in stream:
+                if chunk.get("type") != "text" or not isinstance(chunk.get("text"), str):
+                    continue
+                parsed = cls._parse_semantic_slide(chunk["text"])
+                if parsed is not None:
+                    slides.append(parsed)
+                    if on_slide is not None:
+                        await on_slide(list(slides))
+        finally:
+            # 预览渲染或持久化失败会中断消费；显式关闭才能触发 A2A 远端取消。
+            close_stream = getattr(stream, "aclose", None)
+            if callable(close_stream):
+                try:
+                    await close_stream()
+                except Exception:
+                    # 关闭失败不能覆盖真实的渲染/持久化错误，日志只保留稳定分类。
+                    logger.warning("正文 Agent 消费流关闭失败")
         if not slides:
             raise RetryableTaskError("CONTENT_RESULT_EMPTY", "正文 Agent 未返回有效页面")
         if len(slides) > 200:

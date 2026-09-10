@@ -451,6 +451,8 @@ function transitionPaint(id, variantKey, useOrange) {
     titleFitLimits: { maxWide: 24, maxAscii: 50, singleWide: 12, singleAscii: 25 },
   });
   slide.variantKey = variantKey;
+  // 两个视觉版式覆盖 Content Agent 的四种稳定章节变体，不增加重复页面库存。
+  slide.variantAliases = useOrange ? ["stage"] : ["particle"];
   slide.elements.push(
     image(slide, "background", ASSETS.sectionBackground, 0, 0, 1000, 562.5),
     image(slide, useOrange ? "orange-sweep" : "teal-band", useOrange ? ASSETS.orangeBrushSweep : ASSETS.tealBrushBand,
@@ -748,6 +750,11 @@ function buildTemplate(stage) {
     title: "抽象油彩商务汇报",
     width: 1000,
     height: 562.5,
+    paginationGrowthPolicy: {
+      // 四栏正文槽较紧，允许受控拆页；仍会拦截29页膨胀到62页的真实异常。
+      factor: 1.75,
+      slack: 5,
+    },
     theme: {
       themeColors: [COLORS.teal, COLORS.orange, COLORS.paintTeal, COLORS.paintOrange, COLORS.yellow],
       fontColor: COLORS.body,

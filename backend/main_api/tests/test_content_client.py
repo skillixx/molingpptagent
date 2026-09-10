@@ -222,3 +222,26 @@ def test_stream_error_after_remote_acceptance_attempts_remote_cancel(monkeypatch
         asyncio.run(consume())
 
     assert fake_client.cancelled_task_ids == ["remote-task-network-error"]
+
+
+def test_consumer_closing_stream_after_render_failure_cancels_remote_task(monkeypatch) -> None:
+    """本地渲染失败关闭消费流时，必须取消已经派发的远端生成任务。"""
+
+    fake_client = FakeTextA2AClient()
+    monkeypatch.setattr(content_client_module.httpx, "AsyncClient", FakeHttpClient)
+    monkeypatch.setattr(content_client_module, "A2AClient", lambda **_kwargs: fake_client)
+    wrapper = A2AContentClientWrapper(
+        session_id="session-render-failure",
+        agent_url="http://agent.invalid",
+    )
+    wrapper.agent_card = object()
+
+    async def scenario() -> None:
+        stream = wrapper.generate("固定大纲", metadata={})
+        chunk = await anext(stream)
+        assert chunk["type"] == "text"
+        await stream.aclose()
+
+    asyncio.run(scenario())
+
+    assert fake_client.cancelled_task_ids == ["remote-task-during-delay"]

@@ -241,6 +241,7 @@ def test_template_20_production_inventory_matches_goal() -> None:
     assert set(template["metadata"]["productionSlideIds"]) == PRODUCTION_IDS
     assert {slide["id"] for slide in template["slides"]} == PRODUCTION_IDS
     assert counts == {"cover": 2, "contents": 6, "transition": 2, "content": 6, "end": 2}
+    assert template["paginationGrowthPolicy"] == {"factor": 1.75, "slack": 5}
 
 
 @pytest.mark.parametrize(
@@ -479,6 +480,68 @@ def test_template_20_long_body_is_split_without_loss() -> None:
     )
     assert len(document["slides"]) > 1
     assert rendered == body
+
+
+def test_template_20_long_four_item_page_keeps_a_renderable_continuation_title() -> None:
+    """四项正文拆出续页时，不得因“（续）”触发标题框二次换行而失败。"""
+
+    title = "业务协同目标管理体系"
+    assert len(title) == 10
+    body = "完整正文需要保留全部信息并在必要时无损拆分。" * 12
+    document = _renderer().render(
+        template_id="template_20",
+        semantic_slides=[{
+            "type": "content",
+            "data": {
+                "title": title,
+                "items": [
+                    {"title": "关键行动一", "text": body},
+                    {"title": "关键行动二", "text": "第二项完整说明。"},
+                    {"title": "关键行动三", "text": "第三项完整说明。"},
+                    {"title": "关键行动四", "text": "第四项完整说明。"},
+                ],
+            },
+        }],
+        task_id="template-20-continuation-title",
+        fallback_title=title,
+    )
+
+    assert len(document["slides"]) > 1
+    rendered_titles = [
+        _plain_text(element)
+        for slide in document["slides"]
+        for element in slide["elements"]
+        if _slot_type(element) == "title"
+    ]
+    assert rendered_titles == [title] * len(document["slides"])
+
+
+@pytest.mark.parametrize(
+    ("variant", "expected_layout"),
+    [
+        ("horizon", "transition-teal-paint"),
+        ("particle", "transition-teal-paint"),
+        ("spectrum", "transition-orange-stroke"),
+        ("stage", "transition-orange-stroke"),
+    ],
+)
+def test_template_20_maps_all_agent_transition_variants(
+    variant: str,
+    expected_layout: str,
+) -> None:
+    """正文 Agent 的四种章节变体必须都能映射到模板 20 的两个视觉版式。"""
+
+    page = _renderer().render(
+        template_id="template_20",
+        semantic_slides=[{
+            "type": "transition",
+            "data": {"title": "章节目标", "text": "章节说明", "variant": variant},
+        }],
+        task_id=f"template-20-transition-{variant}",
+        fallback_title="章节目标",
+    )["slides"][0]
+
+    assert page["templateSlideId"] == expected_layout
 
 
 def test_template_20_rejects_more_than_three_end_actions() -> None:

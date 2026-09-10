@@ -80,15 +80,20 @@ class PresentationTemplateRenderer:
             raise TemplateRenderError("模板没有可用页面", code="TEMPLATE_DATA_INVALID")
 
         planned_page_count = len(semantic_slides)
+        pagination_policy = (
+            template.get("paginationGrowthPolicy")
+            if isinstance(template.get("paginationGrowthPolicy"), dict)
+            else None
+        )
         # Main API 是独立信任边界：即使上游未执行标题协议，也不能因长标题把多项页降成单项页。
         semantic_slides = self._normalize_content_titles(semantic_slides)
         # 先按模板真实槽位容量拆页，后续版式选择就不需要丢目录项或挤压正文。
         semantic_slides = self._paginate_contents_slides(source_slides, semantic_slides)
-        self._guard_pagination_growth(planned_page_count, semantic_slides)
+        self._guard_pagination_growth(planned_page_count, semantic_slides, pagination_policy)
         semantic_slides = self._paginate_transition_slides(source_slides, semantic_slides)
-        self._guard_pagination_growth(planned_page_count, semantic_slides)
+        self._guard_pagination_growth(planned_page_count, semantic_slides, pagination_policy)
         semantic_slides = self._paginate_content_slides(source_slides, semantic_slides)
-        self._guard_pagination_growth(planned_page_count, semantic_slides)
+        self._guard_pagination_growth(planned_page_count, semantic_slides, pagination_policy)
         rendered: list[dict[str, Any]] = []
         transition_number = 0
         for index, semantic in enumerate(semantic_slides):
@@ -194,9 +199,16 @@ class PresentationTemplateRenderer:
         cls,
         planned_page_count: int,
         semantic_slides: list[dict[str, Any]],
+        policy: dict[str, Any] | None = None,
     ) -> None:
         """阻止分页结果异常膨胀；错误上下文只包含规模统计，不包含用户正文。"""
-        allowed_page_count = planned_page_count * 1.5 + 5
+        factor = 1.5
+        slack = 5.0
+        if isinstance(policy, dict):
+            # 模板只能在受控范围内声明更紧或略宽的分页预算，禁止绕过全局保护。
+            factor = min(1.8, max(1.0, cls._number(policy.get("factor"), factor)))
+            slack = min(5.0, max(0.0, cls._number(policy.get("slack"), slack)))
+        allowed_page_count = planned_page_count * factor + slack
         if len(semantic_slides) <= allowed_page_count:
             return
         content_pages = [
@@ -527,6 +539,18 @@ class PresentationTemplateRenderer:
                 image_count=image_count,
             )
             if not self._slide_title_fits(selected, continuation):
+                return title
+            # 标题总字符数合规仍可能因单行阈值插入换行；必须用最终文本框模型复核。
+            rendered_title = self._title_with_policy_break(selected, continuation)
+            elements = (
+                selected.get("elements")
+                if isinstance(selected.get("elements"), list)
+                else []
+            )
+            title_slots = self._slots(elements, "title")
+            if title_slots and any(
+                not self._slot_text_fits(slot, rendered_title) for slot in title_slots
+            ):
                 return title
         return continuation
 
@@ -990,7 +1014,7 @@ class PresentationTemplateRenderer:
         if slide_type != "content" and isinstance(requested_variant, str) and requested_variant.strip():
             variant_value = requested_variant.strip()
             variant_candidates = [
-                slide for slide in candidates if slide.get("variantKey") == variant_value
+                slide for slide in candidates if self._variant_matches(slide, variant_value)
             ]
             if not variant_candidates and any(slide.get("variantKey") for slide in candidates):
                 raise TemplateRenderError(
@@ -1011,7 +1035,7 @@ class PresentationTemplateRenderer:
             ordered_variants = ("horizon", "spectrum", "particle", "stage")
             variant_value = ordered_variants[(section_index - 1) % len(ordered_variants)]
             variant_candidates = [
-                slide for slide in candidates if slide.get("variantKey") == variant_value
+                slide for slide in candidates if self._variant_matches(slide, variant_value)
             ]
             if not variant_candidates:
                 raise TemplateRenderError(
@@ -1063,7 +1087,7 @@ class PresentationTemplateRenderer:
             if isinstance(content_variant, str) and content_variant.strip():
                 variant_value = content_variant.strip()
                 matching_variant = [
-                    slide for slide in candidates if slide.get("variantKey") == variant_value
+                    slide for slide in candidates if self._variant_matches(slide, variant_value)
                 ]
                 if not matching_variant and any(slide.get("variantKey") for slide in candidates):
                     raise TemplateRenderError(
@@ -1138,6 +1162,14 @@ class PresentationTemplateRenderer:
             return candidates[(variant_seed + index) % len(candidates)]
         # 历史模板继续固定使用首选版式，避免兼容行为漂移。
         return candidates[0]
+
+    @staticmethod
+    def _variant_matches(slide: dict[str, Any], requested: str) -> bool:
+        """匹配主变体或模板声明的兼容别名，未知变体仍保持严格拒绝。"""
+        if slide.get("variantKey") == requested:
+            return True
+        aliases = slide.get("variantAliases")
+        return isinstance(aliases, list) and requested in aliases
 
     @staticmethod
     def _requested_layout_kind(data: dict[str, Any]) -> str | None:

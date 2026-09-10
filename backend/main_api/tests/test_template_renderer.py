@@ -599,6 +599,28 @@ def test_renderer_stops_abnormal_pagination_with_safe_statistics() -> None:
     assert int(captured.value.context["final_page_count"]) > 6
 
 
+def test_pagination_guard_supports_bounded_template_policy() -> None:
+    """紧凑模板可声明有限扩展系数，但真实倍增仍必须被拒绝。"""
+
+    normal_pages = [
+        {"type": "content", "data": {"items": [{"title": "项目"}] * 4}}
+        for _ in range(44)
+    ]
+    policy = {"factor": 1.75, "slack": 5}
+    PresentationTemplateRenderer._guard_pagination_growth(23, normal_pages, policy)
+
+    excessive_pages = [
+        {"type": "content", "data": {"items": [{"title": "项目"}] * 4}}
+        for _ in range(62)
+    ]
+    with pytest.raises(TemplateRenderError) as captured:
+        PresentationTemplateRenderer._guard_pagination_growth(29, excessive_pages, policy)
+
+    assert captured.value.code == "TEMPLATE_PAGINATION_EXPLOSION"
+    assert captured.value.context["planned_page_count"] == "29"
+    assert captured.value.context["final_page_count"] == "62"
+
+
 def test_image_body_pagination_rechecks_titles_for_the_final_batch_density() -> None:
     title = "图文分页后的十六字标题容量校验值"
     assert len(title) == 16
