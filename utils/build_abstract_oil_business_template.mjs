@@ -535,7 +535,8 @@ function contentText(count) {
         color: COLORS.black,
         bold: true,
         textType: "itemTitle",
-        minimumFontSize: 20,
+        // 三栏和四栏需要兑现公共协议的12字/10字标题容量，最低16px仍满足可读性门槛。
+        minimumFontSize: count >= 3 ? 16 : 20,
         textLineHeight: 1.15,
         lineHeight: 1.15,
         groupId,

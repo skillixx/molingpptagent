@@ -124,6 +124,46 @@ def test_template_20_four_item_probe_keeps_four_item_density() -> None:
     assert sum(element.get("textType") == "item" for element in page["elements"]) == 4
 
 
+@pytest.mark.parametrize(
+    ("count", "title", "expected_layout"),
+    [
+        (3, "业务协同目标管理体系升级", "content-text-3"),
+        (4, "业务协同目标管理体系", "content-text-4"),
+    ],
+)
+def test_template_20_accepts_declared_item_title_limits(
+    count: int,
+    title: str,
+    expected_layout: str,
+) -> None:
+    """三项和四项版式必须容纳公共协议允许的12字和10字标题。"""
+
+    assert len(title) == (12 if count == 3 else 10)
+    page = _renderer().render(
+        template_id="template_20",
+        semantic_slides=[{
+            "type": "content",
+            "data": {
+                "title": "标题容量边界",
+                "items": [
+                    {"title": title, "text": f"第{index}项完整说明。"}
+                    for index in range(1, count + 1)
+                ],
+            },
+        }],
+        task_id=f"template-20-title-limit-{count}",
+        fallback_title="标题容量边界",
+    )["slides"][0]
+
+    assert page["templateSlideId"] == expected_layout
+    rendered_titles = [
+        _plain_text(element)
+        for element in page["elements"]
+        if _slot_type(element) == "itemTitle"
+    ]
+    assert rendered_titles == [title] * count
+
+
 def test_template_20_probe_assets_are_valid() -> None:
     """探针使用的三项原创素材必须满足发布尺寸、模式、Alpha和体积。"""
 
