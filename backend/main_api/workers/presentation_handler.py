@@ -175,6 +175,14 @@ class PresentationGenerationHandler:
         if template_id is None or self.template_renderer is None:
             return 0
         try:
+            pagination_support = getattr(
+                self.template_renderer,
+                "supports_lossless_content_pagination",
+                None,
+            )
+            if callable(pagination_support) and pagination_support(template_id):
+                # 已声明无损分页的模板不受单页槽位数限制，最终仍由渲染器执行容量保护。
+                return 0
             return self.template_renderer.max_content_item_slots(template_id)
         except TemplateRenderError as exc:
             raise self._template_task_error(exc) from None

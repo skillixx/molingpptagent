@@ -151,7 +151,7 @@ const unavailableMessage = computed(() => {
       return `${partial}大纲格式不完整，请返回大纲页补充一级标题和章节内容后重新生成。`
     }
     if (editorStore.errorCode === 'CONTENT_RESULT_EMPTY') {
-      return `${partial}正文生成未返回有效页面，请返回大纲页确认一级标题和章节内容后重新生成。`
+      return `${partial}正文生成服务未返回有效页面，请重试；若仍失败，请稍后再试。`
     }
     if (TEMPLATE_STRUCTURE_ERROR_CODES.includes(editorStore.errorCode ?? '')) {
       return `${partial}模板资源或版式无法使用，生成已停止。请重试或更换模板。`

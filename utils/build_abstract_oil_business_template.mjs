@@ -750,6 +750,8 @@ function buildTemplate(stage) {
     title: "抽象油彩商务汇报",
     width: 1000,
     height: 562.5,
+    // 同一主题超过四项时由公共渲染器按原顺序无损拆页，不能在 Worker 预检阶段拒绝。
+    supportsLosslessContentPagination: true,
     paginationGrowthPolicy: {
       // 四栏正文槽较紧，允许受控拆页；仍会拦截29页膨胀到62页的真实异常。
       factor: 1.75,

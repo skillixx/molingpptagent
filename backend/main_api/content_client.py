@@ -20,6 +20,17 @@ from a2a.types import (
 
 PUBLIC_AGENT_CARD_PATH = '/.well-known/agent.json'
 EXTENDED_AGENT_CARD_PATH = '/agent/authenticatedExtendedCard'
+REMOTE_CANCEL_TIMEOUT_SECONDS = 5.0
+REMOTE_TERMINAL_TASK_STATES = frozenset({
+    TaskState.completed.value,
+    TaskState.canceled.value,
+    TaskState.failed.value,
+    TaskState.rejected.value,
+})
+REMOTE_UNSUPPORTED_TASK_STATES = frozenset({
+    TaskState.input_required.value,
+    TaskState.auth_required.value,
+})
 
 
 class A2AContentClientWrapper:
@@ -31,6 +42,9 @@ class A2AContentClientWrapper:
         self.client: A2AClient | None = None
         # 应该根据第一次回答，获取这个task_id并赋值
         self.task_id = None
+        self._remote_cancel_attempted = False
+        self._remote_task_terminal = False
+        self._remote_task_state: str | None = None
 
     async def _get_agent_card(self, resolver: A2ACardResolver) -> AgentCard:
         """
@@ -72,13 +86,23 @@ class A2AContentClientWrapper:
         """本地消费被取消时通知 A2A 服务停止同一远端任务，避免孤儿模型继续计费。"""
         if self.client is None or not isinstance(self.task_id, str) or not self.task_id:
             return False
+        if self._remote_cancel_attempted:
+            return False
+        self._remote_cancel_attempted = True
         try:
-            response = await self.client.cancel_task(
-                CancelTaskRequest(
-                    id=str(uuid4()),
-                    params=TaskIdParams(id=self.task_id),
-                )
+            response = await asyncio.wait_for(
+                self.client.cancel_task(
+                    CancelTaskRequest(
+                        id=str(uuid4()),
+                        params=TaskIdParams(id=self.task_id),
+                    )
+                ),
+                timeout=REMOTE_CANCEL_TIMEOUT_SECONDS,
             )
+        except asyncio.TimeoutError:
+            # 远端取消是尽力清理，必须有界，不能占满整次 Worker 执行超时。
+            self.logger.warning("正文 Agent 远端取消超时")
+            return False
         except Exception:
             # 取消失败不能覆盖原始超时；日志只记录稳定分类，不打印远端响应。
             self.logger.warning("正文 Agent 远端取消失败")
@@ -115,6 +139,40 @@ class A2AContentClientWrapper:
             raise
 
     async def generate(self, user_question: str, metadata={}) -> None:
+        """在最外层保证消费者提前退出时立即取消远端任务。"""
+        self.task_id = None
+        self._remote_cancel_attempted = False
+        self._remote_task_terminal = False
+        self._remote_task_state = None
+        stream = self._generate_impl(user_question, metadata=metadata)
+        completed = False
+        try:
+            async for chunk in stream:
+                yield chunk
+            if self.task_id:
+                if self._remote_task_state == TaskState.completed.value:
+                    completed = True
+                elif (
+                    self._remote_task_state in REMOTE_TERMINAL_TASK_STATES
+                    or self._remote_task_state in REMOTE_UNSUPPORTED_TASK_STATES
+                ):
+                    # 局部页面不能掩盖失败、中止、拒绝或需人工介入的远端状态。
+                    raise RuntimeError("正文 Agent 远端任务未成功完成")
+                else:
+                    # submitted/working 后的干净 EOF 仍是断流，不能误报成功并留下孤儿任务。
+                    raise RuntimeError("正文 Agent 响应流在远端任务完成前结束")
+            else:
+                completed = True
+        finally:
+            if not completed and not self._remote_task_terminal:
+                await self._cancel_remote_task()
+            try:
+                await stream.aclose()
+            except Exception:
+                # 关闭内层流属于清理动作，失败时只记录告警，不能覆盖上游真实异常。
+                self.logger.warning("正文 Agent 本地生成流关闭失败")
+
+    async def _generate_impl(self, user_question: str, metadata={}) -> None:
         """
         user_question: 用户问题
         history： 历史对话消息
@@ -159,6 +217,16 @@ class A2AContentClientWrapper:
                 remote_task_id = result.get("taskId")
                 if isinstance(remote_task_id, str) and remote_task_id:
                     self.task_id = remote_task_id
+                remote_status = result.get("status")
+                remote_state = (
+                    remote_status.get("state")
+                    if isinstance(remote_status, dict)
+                    else None
+                )
+                if isinstance(remote_state, str):
+                    self._remote_task_state = remote_state
+                if remote_state in REMOTE_TERMINAL_TASK_STATES:
+                    self._remote_task_terminal = True
                 # 判断 chunk 类型
                 # 查看parts类型，分为data，text，reasoning，final，例如放入{"type": "text", "text": xxx}，最后yield返回
                 if result.get("kind") == "status-update":

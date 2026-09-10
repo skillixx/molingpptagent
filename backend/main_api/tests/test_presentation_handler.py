@@ -580,6 +580,61 @@ def test_incompatible_confirmed_outline_is_rejected_before_content_agent_call(tm
         engine.dispose()
 
 
+def test_template_20_confirmed_outline_allows_five_items_and_paginates(tmp_path: Path) -> None:
+    """声明无损项目分页的模板不得把单页槽位数误当成整个主题上限。"""
+
+    engine = _engine(tmp_path)
+    try:
+        _insert_running_task(engine)
+        outline = ScriptedAgent([])
+        items = [
+            {"title": f"关键行动{index}", "text": f"第{index}项完整说明。"}
+            for index in range(1, 6)
+        ]
+        content = ScriptedAgent([{
+            "type": "text",
+            "text": json.dumps(
+                {"type": "content", "data": {"title": "五项行动", "items": items}},
+                ensure_ascii=False,
+            ),
+        }])
+        handler = PresentationGenerationHandler(
+            repository=GenerationResultRepository(engine),
+            outline_factory=lambda _session_id: outline,
+            content_factory=lambda _session_id: content,
+            max_document_bytes=1024 * 1024,
+            template_renderer=PresentationTemplateRenderer(
+                Path(__file__).resolve().parents[1] / "template"
+            ),
+            now_factory=lambda: NOW,
+        )
+        markdown = """# 业务协同
+## 第一章
+### 五项行动
+- 项目一
+- 项目二
+- 项目三
+- 项目四
+- 项目五
+"""
+
+        asyncio.run(handler.execute(_execution(content=markdown, template_id="template_20")))
+
+        assert outline.calls == []
+        assert len(content.calls) == 1
+        factory = sessionmaker(engine, expire_on_commit=False)
+        with factory() as db:
+            presentation = db.scalar(select(Presentation))
+            assert presentation is not None
+            document = json.loads(presentation.slides_json)
+            assert len(document["slides"]) == 2
+            for item in items:
+                assert item["title"] in presentation.slides_json
+                assert item["text"] in presentation.slides_json
+    finally:
+        engine.dispose()
+
+
 def test_template_preflight_failure_is_terminal_before_any_agent_call(tmp_path: Path) -> None:
     """模板资源错误必须先于大纲和正文 Agent 检查，并保持不可重试分类。"""
     engine = _engine(tmp_path)

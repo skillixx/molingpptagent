@@ -43,7 +43,9 @@ template:
     cover_title: 50
     transition_title: 44
     page_title: 35
-    item_title: 20
+    item_title:
+      one_two_item: 20
+      three_four_item: 16
     body: 16
   colors:
     background: "#FFFFFF"
@@ -126,6 +128,10 @@ template:
       metrics_count: 4
       overflow: lossless_pagination
       minimum_font_size: 12
+      supports_lossless_item_pagination: true
+      pagination_growth_policy:
+        factor: 1.75
+        slack: 5
     end:
       action_item_counts: [0, 1, 2, 3]
 assets:

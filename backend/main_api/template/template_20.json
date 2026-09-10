@@ -3,6 +3,7 @@
   "title": "抽象油彩商务汇报",
   "width": 1000,
   "height": 562.5,
+  "supportsLosslessContentPagination": true,
   "paginationGrowthPolicy": {
     "factor": 1.75,
     "slack": 5

@@ -116,6 +116,39 @@ class FailingStreamA2AClient(FakeA2AClient):
         raise httpx.ReadError("模拟远端流中断")
 
 
+class HangingCancelA2AClient(FakeTextA2AClient):
+    async def cancel_task(self, request):
+        self.cancelled_task_ids.append(request.params.id)
+        await asyncio.Event().wait()
+
+
+class PartialThenFailedA2AClient(FakeA2AClient):
+    async def _stream(self):
+        yield FakeChunk({
+            "result": {
+                "kind": "status-update",
+                "taskId": "remote-task-failed",
+                "status": {
+                    "state": "working",
+                    "message": {
+                        "parts": [{
+                            "kind": "text",
+                            "text": '{"type":"content","data":{"title":"半成品","items":[]}}',
+                        }],
+                        "metadata": {"author": "ControllerAgent"},
+                    },
+                },
+            },
+        })
+        yield FakeChunk({
+            "result": {
+                "kind": "status-update",
+                "taskId": "remote-task-failed",
+                "status": {"state": "failed"},
+            },
+        })
+
+
 def test_content_stream_cancellation_cancels_remote_agent_task(monkeypatch) -> None:
     fake_client = FakeA2AClient()
     monkeypatch.setattr(content_client_module.httpx, "AsyncClient", FakeHttpClient)
@@ -245,3 +278,187 @@ def test_consumer_closing_stream_after_render_failure_cancels_remote_task(monkey
     asyncio.run(scenario())
 
     assert fake_client.cancelled_task_ids == ["remote-task-during-delay"]
+
+
+def test_outer_generator_close_guarantees_remote_cancel(monkeypatch) -> None:
+    """即使内层流关闭不负责取消，外层生成器也必须保证远端任务被停止。"""
+
+    fake_client = FakeTextA2AClient()
+    monkeypatch.setattr(content_client_module.httpx, "AsyncClient", FakeHttpClient)
+    monkeypatch.setattr(content_client_module, "A2AClient", lambda **_kwargs: fake_client)
+    wrapper = A2AContentClientWrapper(
+        session_id="session-outer-close",
+        agent_url="http://agent.invalid",
+    )
+    wrapper.agent_card = object()
+
+    async def passthrough(stream_response):
+        async for chunk in stream_response:
+            yield chunk
+
+    monkeypatch.setattr(wrapper, "_stream_with_remote_cancel", passthrough)
+
+    async def scenario() -> None:
+        stream = wrapper.generate("固定大纲", metadata={})
+        chunk = await anext(stream)
+        assert chunk["type"] == "text"
+        await stream.aclose()
+
+    asyncio.run(scenario())
+
+    assert fake_client.cancelled_task_ids == ["remote-task-during-delay"]
+
+
+def test_completed_outer_generator_does_not_cancel_remote_task(monkeypatch) -> None:
+    """远端流正常结束时不得发送取消请求，避免把成功任务误标记为取消。"""
+
+    fake_client = FakeA2AClient()
+    monkeypatch.setattr(content_client_module.httpx, "AsyncClient", FakeHttpClient)
+    monkeypatch.setattr(content_client_module, "A2AClient", lambda **_kwargs: fake_client)
+    wrapper = A2AContentClientWrapper(
+        session_id="session-completed",
+        agent_url="http://agent.invalid",
+    )
+    wrapper.agent_card = object()
+
+    async def completed_stream():
+        yield FakeChunk({
+            "result": {
+                "kind": "status-update",
+                "taskId": "remote-task-completed",
+                "status": {"state": "submitted"},
+            },
+        })
+        yield FakeChunk({
+            "result": {
+                "kind": "status-update",
+                "taskId": "remote-task-completed",
+                "status": {"state": "completed"},
+            },
+        })
+
+    monkeypatch.setattr(fake_client, "send_message_streaming", lambda _request: completed_stream())
+
+    async def consume() -> list[dict]:
+        return [chunk async for chunk in wrapper.generate("固定大纲", metadata={})]
+
+    chunks = asyncio.run(consume())
+
+    assert chunks[-1] == {"type": "final", "text": "对话结束", "author": "system"}
+    assert fake_client.cancelled_task_ids == []
+
+
+def test_submitted_then_clean_eof_is_canceled_and_not_reported_complete(monkeypatch) -> None:
+    """只观察到 submitted 后断流不代表成功，必须取消远端任务并保留失败。"""
+
+    fake_client = FakeA2AClient()
+    monkeypatch.setattr(content_client_module.httpx, "AsyncClient", FakeHttpClient)
+    monkeypatch.setattr(content_client_module, "A2AClient", lambda **_kwargs: fake_client)
+    wrapper = A2AContentClientWrapper(
+        session_id="session-premature-eof",
+        agent_url="http://agent.invalid",
+    )
+    wrapper.agent_card = object()
+
+    async def submitted_only_stream():
+        yield FakeChunk({
+            "result": {
+                "kind": "status-update",
+                "taskId": "remote-task-premature-eof",
+                "status": {"state": "submitted"},
+            },
+        })
+
+    monkeypatch.setattr(fake_client, "send_message_streaming", lambda _request: submitted_only_stream())
+
+    async def consume() -> None:
+        async for _chunk in wrapper.generate("固定大纲", metadata={}):
+            pass
+
+    with pytest.raises(RuntimeError, match="完成前结束"):
+        asyncio.run(consume())
+
+    assert fake_client.cancelled_task_ids == ["remote-task-premature-eof"]
+
+
+def test_partial_content_followed_by_failed_terminal_is_not_reported_complete(monkeypatch) -> None:
+    """已收到局部正文也不能掩盖远端失败终态。"""
+
+    fake_client = PartialThenFailedA2AClient()
+    monkeypatch.setattr(content_client_module.httpx, "AsyncClient", FakeHttpClient)
+    monkeypatch.setattr(content_client_module, "A2AClient", lambda **_kwargs: fake_client)
+    wrapper = A2AContentClientWrapper(
+        session_id="session-partial-failed",
+        agent_url="http://agent.invalid",
+    )
+    wrapper.agent_card = object()
+
+    async def no_delay() -> None:
+        return None
+
+    monkeypatch.setattr(wrapper, "_delay_between_chunks", no_delay)
+
+    async def consume() -> list[dict]:
+        return [chunk async for chunk in wrapper.generate("固定大纲", metadata={})]
+
+    with pytest.raises(RuntimeError, match="未成功完成"):
+        asyncio.run(consume())
+
+    assert fake_client.cancelled_task_ids == []
+
+
+def test_inner_stream_close_failure_does_not_escape_outer_cleanup(monkeypatch, caplog) -> None:
+    """本地清理失败只记录告警，不能覆盖触发关闭的原始业务异常。"""
+
+    wrapper = A2AContentClientWrapper(
+        session_id="session-close-failure",
+        agent_url="http://agent.invalid",
+    )
+
+    async def failing_close(_question, metadata):
+        del metadata
+        try:
+            yield {"type": "text", "text": "固定内容", "author": "tester"}
+            await asyncio.Event().wait()
+        finally:
+            raise RuntimeError("模拟内层流关闭失败")
+
+    monkeypatch.setattr(wrapper, "_generate_impl", failing_close)
+
+    async def scenario() -> None:
+        stream = wrapper.generate("固定大纲", metadata={})
+        assert (await anext(stream))["text"] == "固定内容"
+        await stream.aclose()
+
+    asyncio.run(scenario())
+
+    assert "正文 Agent 本地生成流关闭失败" in caplog.text
+
+
+def test_remote_cancel_timeout_keeps_outer_close_bounded(monkeypatch, caplog) -> None:
+    """远端取消端点无响应时，本地关流必须在短超时内返回。"""
+
+    fake_client = HangingCancelA2AClient()
+    monkeypatch.setattr(content_client_module.httpx, "AsyncClient", FakeHttpClient)
+    monkeypatch.setattr(content_client_module, "A2AClient", lambda **_kwargs: fake_client)
+    monkeypatch.setattr(
+        content_client_module,
+        "REMOTE_CANCEL_TIMEOUT_SECONDS",
+        0.01,
+        raising=False,
+    )
+    wrapper = A2AContentClientWrapper(
+        session_id="session-cancel-timeout",
+        agent_url="http://agent.invalid",
+    )
+    wrapper.agent_card = object()
+
+    async def scenario() -> None:
+        stream = wrapper.generate("固定大纲", metadata={})
+        assert (await anext(stream))["type"] == "text"
+        await asyncio.wait_for(stream.aclose(), timeout=0.2)
+
+    asyncio.run(scenario())
+
+    assert fake_client.cancelled_task_ids == ["remote-task-during-delay"]
+    assert "正文 Agent 远端取消超时" in caplog.text

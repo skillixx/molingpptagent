@@ -516,6 +516,43 @@ def test_template_20_long_four_item_page_keeps_a_renderable_continuation_title()
     assert rendered_titles == [title] * len(document["slides"])
 
 
+def test_template_20_image_long_body_keeps_renderable_title_and_all_text() -> None:
+    """带图长正文续页也必须复用可容纳标题，并按顺序无损保留正文。"""
+
+    title = "业务协同目标管理体系"
+    assert len(title) == 10
+    body = "带图正文必须保留完整观点、依据、执行方法和后续行动。" * 18
+    document = _renderer().render(
+        template_id="template_20",
+        semantic_slides=[{
+            "type": "content",
+            "data": {
+                "title": title,
+                "items": [{"title": "完整说明", "text": body}],
+            },
+            "images": _images(1),
+        }],
+        task_id="template-20-image-continuation-title",
+        fallback_title=title,
+    )
+
+    assert len(document["slides"]) > 1
+    rendered_titles = [
+        _plain_text(element)
+        for slide in document["slides"]
+        for element in slide["elements"]
+        if _slot_type(element) == "title"
+    ]
+    rendered_body = "".join(
+        _plain_text(element)
+        for slide in document["slides"]
+        for element in slide["elements"]
+        if _slot_type(element) == "item"
+    )
+    assert rendered_titles == [title] * len(document["slides"])
+    assert rendered_body == body
+
+
 @pytest.mark.parametrize(
     ("variant", "expected_layout"),
     [

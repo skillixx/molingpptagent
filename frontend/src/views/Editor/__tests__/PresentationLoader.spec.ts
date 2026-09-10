@@ -202,7 +202,7 @@ describe('PresentationLoader', () => {
     ['TEMPLATE_PAGINATION_EXPLOSION', '内容拆分页数异常，生成已停止。请缩短内容或调整页面结构。'],
     ['TEMPLATE_ITEM_COUNT_UNSUPPORTED', '当前大纲的单页项目数超过模板容量，请减少每个内容主题的项目数。'],
     ['OUTLINE_FORMAT_INVALID', '大纲格式不完整，请返回大纲页补充一级标题和章节内容后重新生成。'],
-    ['CONTENT_RESULT_EMPTY', '正文生成未返回有效页面，请返回大纲页确认一级标题和章节内容后重新生成。'],
+    ['CONTENT_RESULT_EMPTY', '正文生成服务未返回有效页面，请重试；若仍失败，请稍后再试。'],
   ])('分页安全错误显示具体处理建议：%s', async (generationErrorCode, expectedMessage) => {
     api.get.mockResolvedValue({
       ...detail,

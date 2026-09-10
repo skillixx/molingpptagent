@@ -66,6 +66,12 @@ class PresentationTemplateRenderer:
             default=0,
         )
 
+    def supports_lossless_content_pagination(self, template_id: str) -> bool:
+        """返回模板是否明确允许把同一主题的普通项目无损拆到多页。"""
+
+        template = self._load(template_id)
+        return template.get("supportsLosslessContentPagination") is True
+
     def render(
         self,
         *,
@@ -645,9 +651,16 @@ class PresentationTemplateRenderer:
             page_data["items"] = self._normalize_batch_titles(
                 [item for item, _ in batch]
             )
-            if pages and title:
-                page_data["title"] = f"{title}（续）"
             page_images = [copy.deepcopy(source) for _, source in batch if source is not None]
+            if pages and title:
+                # 带图拆页也必须按续页最终版式复核标题，避免“（续）”触发换行后溢出。
+                page_data["title"] = self._content_continuation_title(
+                    content_templates,
+                    page_data,
+                    title,
+                    prefer_images=bool(page_images),
+                    image_count=len(page_images),
+                )
             if page_images:
                 page["images"] = page_images
             else:
