@@ -86,6 +86,27 @@ class PresentationTemplateRenderer:
             raise TemplateRenderError("模板没有可用页面", code="TEMPLATE_DATA_INVALID")
 
         planned_page_count = len(semantic_slides)
+        if any(slide.get("metricValueField") == "value" for slide in source_slides):
+            semantic_slides = copy.deepcopy(semantic_slides)
+            # 兼容 Agent 的 title/text 指标格式，在标题归一化前提取数值，避免原题混入数值槽。
+            for semantic in semantic_slides:
+                data = semantic.get("data")
+                if semantic.get("type") == "content" and isinstance(data, dict) and self._requested_layout_kind(data) == "metrics":
+                    for item in data.get("items", []) if isinstance(data.get("items"), list) else []:
+                        if isinstance(item, dict) and "value" not in item:
+                            legacy_value = self._text(item.get("text") or item.get("content"))
+                            source_title = self._text(item.get("sourceTitle"))
+                            description = self._text(item.get("content")) if self._text(item.get("text")) else ""
+                            if source_title and self._text(item.get("title")) != source_title:
+                                # 只识别标题保真协议写入的精确前缀，不能用数字正则猜测或截取用户原文。
+                                prefix = source_title + ("" if source_title.endswith(("。", "！", "？", ".", "!", "?")) else "。")
+                                if legacy_value.startswith(prefix):
+                                    legacy_value = legacy_value[len(prefix):]
+                                    description = "\n".join(part for part in (source_title, description) if part)
+                            item["value"] = legacy_value
+                            # 同时存在 text 数值和 content 说明时，说明仍须保留。
+                            item["text"] = description
+                            item.pop("content", None)
         pagination_policy = (
             template.get("paginationGrowthPolicy")
             if isinstance(template.get("paginationGrowthPolicy"), dict)
@@ -381,7 +402,7 @@ class PresentationTemplateRenderer:
             )
             if self._requested_layout_kind(data):
                 # 显式或推断出的专业版式有固定项目数，不能借分页把非法输入悄悄改成合法批次。
-                self._select(
+                selected = self._select(
                     content_templates,
                     "content",
                     data,
@@ -389,6 +410,12 @@ class PresentationTemplateRenderer:
                     prefer_images=bool(semantic_images),
                     image_count=len(semantic_images),
                 )
+                if selected.get("metricValueField") == "value":
+                    if semantic_images:
+                        raise TemplateRenderError("指标版式没有业务图片槽", code="TEMPLATE_MISSING_SLOT")
+                    # 固定四指标不能按普通正文容量拆成更多指标并重复数值；超长文字由槽位检查报错。
+                    paginated.append(copy.deepcopy(semantic))
+                    continue
             if semantic_images and strict_image_protocol:
                 paginated.extend(
                     self._paginate_content_with_images(
@@ -961,10 +988,15 @@ class PresentationTemplateRenderer:
             end_content = self._text(data.get("text"))
             if self._meaningful_text(end_content):
                 self._fill_single(elements, "content", end_content, max_lines=3)
-            self._fill_list(elements, "item", self._string_items(data.get("items")), max_lines=2)
+            action_values = self._string_items(data.get("items"))
+            if slide.get("preserveEndItemBody") is True:
+                # 新行动页支持带标题和正文的对象；历史模板继续沿用旧的单文本契约。
+                action_values = ["\n".join(part for part in (title, body) if part)
+                                 for title, body in self._content_items(data.get("items"))]
+            self._fill_list(elements, "item", action_values, max_lines=3)
         else:
             self._fill_single(elements, "title", title, max_lines=2)
-            self._fill_content(elements, data, semantic)
+            self._fill_content(elements, data, semantic, metric_values=slide.get("metricValueField") == "value")
 
         # 空槽清理可能连带移除分组图片，因此必须在文字槽处理完成后再应用 Agent 配图。
         self._fill_images(elements, semantic_images)
@@ -1356,7 +1388,21 @@ class PresentationTemplateRenderer:
             return (3, count - content_slots)
         return (4, count)
 
-    def _fill_content(self, elements: list[dict[str, Any]], data: dict[str, Any], semantic: dict[str, Any]) -> None:
+    def _fill_content(self, elements: list[dict[str, Any]], data: dict[str, Any], semantic: dict[str, Any], *, metric_values: bool = False) -> None:
+        if metric_values:
+            raw_items = data.get("items")
+            if not isinstance(raw_items, list) or len(raw_items) != 4 or not all(isinstance(item, dict) for item in raw_items):
+                raise TemplateRenderError("指标版式要求四个有效指标", code="TEMPLATE_DATA_INVALID")
+            values = [self._text(item.get("value")) for item in raw_items]
+            if any(not value for value in values) or any(
+                isinstance(item.get("value"), float) and not math.isfinite(item["value"]) for item in raw_items
+            ):
+                raise TemplateRenderError("指标缺少有效数值", code="TEMPLATE_DATA_INVALID")
+            # 逐项绑定，不截断原题或正文，也不把用户数值替换为序号或模板示例。
+            self._fill_list(elements, "itemTitle", [self._text(item.get("title")) for item in raw_items], max_lines=2)
+            self._fill_list(elements, "itemNumber", values, max_lines=2)
+            self._fill_list(elements, "item", [self._text(item.get("text") or item.get("content")) for item in raw_items], max_lines=3)
+            return
         items = self._content_items(data.get("items"))
         item_slots = self._slots(elements, "item")
         if item_slots:

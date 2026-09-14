@@ -2633,7 +2633,10 @@
         ],
         "deviations": []
       },
-      "remark": "[Sources]\n- Visual style source: C:\\Users\\sk20\\Desktop\\创意风格 (56).pptx\n- Source media excluded; project assets generated with built-in GPT2 image template\n- Final output must preserve the original image and PPT visual style"
+      "remark": "[Sources]\n- Visual style source: C:\\Users\\sk20\\Desktop\\创意风格 (56).pptx\n- Source media excluded; project assets generated with built-in GPT2 image template\n- Final output must preserve the original image and PPT visual style",
+      "allowedItemCounts": [
+        0
+      ]
     },
     {
       "id": "cover-marble-minimal",
@@ -3141,8 +3144,30 @@
           "lock": true
         },
         {
+          "type": "shape",
+          "id": "t21-content-metrics-4-content-plane-002",
+          "left": 72,
+          "top": 122,
+          "width": 856,
+          "height": 390,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
+          "fill": "#FFFFFF",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#FFFFFF",
+            "width": 0,
+            "style": "solid"
+          },
+          "lock": true
+        },
+        {
           "type": "text",
-          "id": "t21-content-metrics-4-title-002",
+          "id": "t21-content-metrics-4-title-003",
           "left": 72,
           "top": 28,
           "width": 700,
@@ -3157,7 +3182,7 @@
         },
         {
           "type": "line",
-          "id": "t21-content-metrics-4-header-rule-003",
+          "id": "t21-content-metrics-4-header-rule-004",
           "left": 72,
           "top": 112,
           "start": [
@@ -3180,307 +3205,191 @@
         },
         {
           "type": "text",
-          "id": "t21-content-metrics-4-metric-title-1-004",
-          "left": 100,
-          "top": 155,
-          "width": 180,
+          "id": "t21-content-metrics-4-metric-title-1-005",
+          "left": 98,
+          "top": 132,
+          "width": 340,
           "height": 44,
           "rotate": 0,
           "defaultFontName": "微软雅黑",
           "defaultColor": "#183F59",
-          "content": "<p style=\"text-align: left;\"><span style=\"color: #183F59;font-size: 18px;font-family: 微软雅黑;line-height: 1.25;font-weight: 700;\">指标 1</span></p>",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #183F59;font-size: 18px;font-family: 微软雅黑;line-height: 1.1;font-weight: 700;\">指标 1</span></p>",
           "textType": "itemTitle",
           "groupId": "metrics-1",
-          "textLineHeight": 1.25
+          "minimumFontSize": 14,
+          "textLineHeight": 1.1
         },
         {
           "type": "text",
-          "id": "t21-content-metrics-4-metric-value-1-005",
-          "left": 100,
-          "top": 201,
-          "width": 180,
+          "id": "t21-content-metrics-4-metric-value-1-006",
+          "left": 98,
+          "top": 178,
+          "width": 340,
           "height": 65,
           "rotate": 0,
-          "defaultFontName": "Arial",
+          "defaultFontName": "微软雅黑",
           "defaultColor": "#183F59",
-          "content": "<p style=\"text-align: left;\"><span style=\"color: #183F59;font-size: 36px;font-family: Arial;line-height: 1.25;font-weight: 700;\">65%</span></p>",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #183F59;font-size: 36px;font-family: 微软雅黑;line-height: 1.1;font-weight: 700;\">65%</span></p>",
           "textType": "itemNumber",
           "groupId": "metrics-1",
-          "textLineHeight": 1.25
+          "minimumFontSize": 26,
+          "textLineHeight": 1.1
         },
         {
-          "type": "shape",
-          "id": "t21-content-metrics-4-metric-bar-bg-1-006",
-          "left": 100,
-          "top": 267,
-          "width": 300,
-          "height": 12,
-          "viewBox": [
-            200,
-            200
-          ],
-          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
-          "fill": "#E7E8E8",
-          "fixedRatio": false,
+          "type": "text",
+          "id": "t21-content-metrics-4-metric-body-1-007",
+          "left": 98,
+          "top": 252,
+          "width": 340,
+          "height": 68,
           "rotate": 0,
-          "outline": {
-            "color": "#E7E8E8",
-            "width": 0,
-            "style": "solid"
-          },
-          "lock": true,
-          "groupId": "metrics-1"
-        },
-        {
-          "type": "shape",
-          "id": "t21-content-metrics-4-metric-bar-1-007",
-          "left": 100,
-          "top": 267,
-          "width": 190,
-          "height": 12,
-          "viewBox": [
-            200,
-            200
-          ],
-          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
-          "fill": "#235775",
-          "fixedRatio": false,
-          "rotate": 0,
-          "outline": {
-            "color": "#235775",
-            "width": 0,
-            "style": "solid"
-          },
-          "lock": true,
-          "groupId": "metrics-1"
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#555E64",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #555E64;font-size: 16px;font-family: 微软雅黑;line-height: 1.1;\">指标说明 1</span></p>",
+          "textType": "item",
+          "minimumFontSize": 14,
+          "textLineHeight": 1.1
         },
         {
           "type": "text",
           "id": "t21-content-metrics-4-metric-title-2-008",
           "left": 520,
-          "top": 155,
-          "width": 180,
+          "top": 132,
+          "width": 340,
           "height": 44,
           "rotate": 0,
           "defaultFontName": "微软雅黑",
           "defaultColor": "#183F59",
-          "content": "<p style=\"text-align: left;\"><span style=\"color: #183F59;font-size: 18px;font-family: 微软雅黑;line-height: 1.25;font-weight: 700;\">指标 2</span></p>",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #183F59;font-size: 18px;font-family: 微软雅黑;line-height: 1.1;font-weight: 700;\">指标 2</span></p>",
           "textType": "itemTitle",
           "groupId": "metrics-2",
-          "textLineHeight": 1.25
+          "minimumFontSize": 14,
+          "textLineHeight": 1.1
         },
         {
           "type": "text",
           "id": "t21-content-metrics-4-metric-value-2-009",
           "left": 520,
-          "top": 201,
-          "width": 180,
+          "top": 178,
+          "width": 340,
           "height": 65,
           "rotate": 0,
-          "defaultFontName": "Arial",
+          "defaultFontName": "微软雅黑",
           "defaultColor": "#183F59",
-          "content": "<p style=\"text-align: left;\"><span style=\"color: #183F59;font-size: 36px;font-family: Arial;line-height: 1.25;font-weight: 700;\">72%</span></p>",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #183F59;font-size: 36px;font-family: 微软雅黑;line-height: 1.1;font-weight: 700;\">72%</span></p>",
           "textType": "itemNumber",
           "groupId": "metrics-2",
-          "textLineHeight": 1.25
-        },
-        {
-          "type": "shape",
-          "id": "t21-content-metrics-4-metric-bar-bg-2-010",
-          "left": 520,
-          "top": 267,
-          "width": 300,
-          "height": 12,
-          "viewBox": [
-            200,
-            200
-          ],
-          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
-          "fill": "#E7E8E8",
-          "fixedRatio": false,
-          "rotate": 0,
-          "outline": {
-            "color": "#E7E8E8",
-            "width": 0,
-            "style": "solid"
-          },
-          "lock": true,
-          "groupId": "metrics-2"
-        },
-        {
-          "type": "shape",
-          "id": "t21-content-metrics-4-metric-bar-2-011",
-          "left": 520,
-          "top": 267,
-          "width": 215,
-          "height": 12,
-          "viewBox": [
-            200,
-            200
-          ],
-          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
-          "fill": "#235775",
-          "fixedRatio": false,
-          "rotate": 0,
-          "outline": {
-            "color": "#235775",
-            "width": 0,
-            "style": "solid"
-          },
-          "lock": true,
-          "groupId": "metrics-2"
+          "minimumFontSize": 26,
+          "textLineHeight": 1.1
         },
         {
           "type": "text",
-          "id": "t21-content-metrics-4-metric-title-3-012",
-          "left": 100,
-          "top": 325,
-          "width": 180,
+          "id": "t21-content-metrics-4-metric-body-2-010",
+          "left": 520,
+          "top": 252,
+          "width": 340,
+          "height": 68,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#555E64",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #555E64;font-size: 16px;font-family: 微软雅黑;line-height: 1.1;\">指标说明 2</span></p>",
+          "textType": "item",
+          "minimumFontSize": 14,
+          "textLineHeight": 1.1
+        },
+        {
+          "type": "text",
+          "id": "t21-content-metrics-4-metric-title-3-011",
+          "left": 98,
+          "top": 322,
+          "width": 340,
           "height": 44,
           "rotate": 0,
           "defaultFontName": "微软雅黑",
           "defaultColor": "#183F59",
-          "content": "<p style=\"text-align: left;\"><span style=\"color: #183F59;font-size: 18px;font-family: 微软雅黑;line-height: 1.25;font-weight: 700;\">指标 3</span></p>",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #183F59;font-size: 18px;font-family: 微软雅黑;line-height: 1.1;font-weight: 700;\">指标 3</span></p>",
           "textType": "itemTitle",
           "groupId": "metrics-3",
-          "textLineHeight": 1.25
+          "minimumFontSize": 14,
+          "textLineHeight": 1.1
         },
         {
           "type": "text",
-          "id": "t21-content-metrics-4-metric-value-3-013",
-          "left": 100,
-          "top": 371,
-          "width": 180,
+          "id": "t21-content-metrics-4-metric-value-3-012",
+          "left": 98,
+          "top": 368,
+          "width": 340,
           "height": 65,
           "rotate": 0,
-          "defaultFontName": "Arial",
+          "defaultFontName": "微软雅黑",
           "defaultColor": "#183F59",
-          "content": "<p style=\"text-align: left;\"><span style=\"color: #183F59;font-size: 36px;font-family: Arial;line-height: 1.25;font-weight: 700;\">79%</span></p>",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #183F59;font-size: 36px;font-family: 微软雅黑;line-height: 1.1;font-weight: 700;\">79%</span></p>",
           "textType": "itemNumber",
           "groupId": "metrics-3",
-          "textLineHeight": 1.25
-        },
-        {
-          "type": "shape",
-          "id": "t21-content-metrics-4-metric-bar-bg-3-014",
-          "left": 100,
-          "top": 437,
-          "width": 300,
-          "height": 12,
-          "viewBox": [
-            200,
-            200
-          ],
-          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
-          "fill": "#E7E8E8",
-          "fixedRatio": false,
-          "rotate": 0,
-          "outline": {
-            "color": "#E7E8E8",
-            "width": 0,
-            "style": "solid"
-          },
-          "lock": true,
-          "groupId": "metrics-3"
-        },
-        {
-          "type": "shape",
-          "id": "t21-content-metrics-4-metric-bar-3-015",
-          "left": 100,
-          "top": 437,
-          "width": 240,
-          "height": 12,
-          "viewBox": [
-            200,
-            200
-          ],
-          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
-          "fill": "#235775",
-          "fixedRatio": false,
-          "rotate": 0,
-          "outline": {
-            "color": "#235775",
-            "width": 0,
-            "style": "solid"
-          },
-          "lock": true,
-          "groupId": "metrics-3"
+          "minimumFontSize": 26,
+          "textLineHeight": 1.1
         },
         {
           "type": "text",
-          "id": "t21-content-metrics-4-metric-title-4-016",
+          "id": "t21-content-metrics-4-metric-body-3-013",
+          "left": 98,
+          "top": 442,
+          "width": 340,
+          "height": 68,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#555E64",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #555E64;font-size: 16px;font-family: 微软雅黑;line-height: 1.1;\">指标说明 3</span></p>",
+          "textType": "item",
+          "minimumFontSize": 14,
+          "textLineHeight": 1.1
+        },
+        {
+          "type": "text",
+          "id": "t21-content-metrics-4-metric-title-4-014",
           "left": 520,
-          "top": 325,
-          "width": 180,
+          "top": 322,
+          "width": 340,
           "height": 44,
           "rotate": 0,
           "defaultFontName": "微软雅黑",
           "defaultColor": "#183F59",
-          "content": "<p style=\"text-align: left;\"><span style=\"color: #183F59;font-size: 18px;font-family: 微软雅黑;line-height: 1.25;font-weight: 700;\">指标 4</span></p>",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #183F59;font-size: 18px;font-family: 微软雅黑;line-height: 1.1;font-weight: 700;\">指标 4</span></p>",
           "textType": "itemTitle",
           "groupId": "metrics-4",
-          "textLineHeight": 1.25
+          "minimumFontSize": 14,
+          "textLineHeight": 1.1
         },
         {
           "type": "text",
-          "id": "t21-content-metrics-4-metric-value-4-017",
+          "id": "t21-content-metrics-4-metric-value-4-015",
           "left": 520,
-          "top": 371,
-          "width": 180,
+          "top": 368,
+          "width": 340,
           "height": 65,
           "rotate": 0,
-          "defaultFontName": "Arial",
+          "defaultFontName": "微软雅黑",
           "defaultColor": "#183F59",
-          "content": "<p style=\"text-align: left;\"><span style=\"color: #183F59;font-size: 36px;font-family: Arial;line-height: 1.25;font-weight: 700;\">86%</span></p>",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #183F59;font-size: 36px;font-family: 微软雅黑;line-height: 1.1;font-weight: 700;\">86%</span></p>",
           "textType": "itemNumber",
           "groupId": "metrics-4",
-          "textLineHeight": 1.25
+          "minimumFontSize": 26,
+          "textLineHeight": 1.1
         },
         {
-          "type": "shape",
-          "id": "t21-content-metrics-4-metric-bar-bg-4-018",
+          "type": "text",
+          "id": "t21-content-metrics-4-metric-body-4-016",
           "left": 520,
-          "top": 437,
-          "width": 300,
-          "height": 12,
-          "viewBox": [
-            200,
-            200
-          ],
-          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
-          "fill": "#E7E8E8",
-          "fixedRatio": false,
+          "top": 442,
+          "width": 340,
+          "height": 68,
           "rotate": 0,
-          "outline": {
-            "color": "#E7E8E8",
-            "width": 0,
-            "style": "solid"
-          },
-          "lock": true,
-          "groupId": "metrics-4"
-        },
-        {
-          "type": "shape",
-          "id": "t21-content-metrics-4-metric-bar-4-019",
-          "left": 520,
-          "top": 437,
-          "width": 265,
-          "height": 12,
-          "viewBox": [
-            200,
-            200
-          ],
-          "path": "M 0 0 L 200 0 L 200 200 L 0 200 Z",
-          "fill": "#235775",
-          "fixedRatio": false,
-          "rotate": 0,
-          "outline": {
-            "color": "#235775",
-            "width": 0,
-            "style": "solid"
-          },
-          "lock": true,
-          "groupId": "metrics-4"
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#555E64",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #555E64;font-size: 16px;font-family: 微软雅黑;line-height: 1.1;\">指标说明 4</span></p>",
+          "textType": "item",
+          "minimumFontSize": 14,
+          "textLineHeight": 1.1
         }
       ],
       "background": {
@@ -3503,7 +3412,12 @@
         ],
         "deviations": []
       },
-      "remark": "[Sources]\n- Visual style source: C:\\Users\\sk20\\Desktop\\创意风格 (56).pptx\n- Source media excluded; project assets generated with built-in GPT2 image template\n- Final output must preserve the original image and PPT visual style"
+      "remark": "[Sources]\n- Visual style source: C:\\Users\\sk20\\Desktop\\创意风格 (56).pptx\n- Source media excluded; project assets generated with built-in GPT2 image template\n- Final output must preserve the original image and PPT visual style",
+      "allowedItemCounts": [
+        4
+      ],
+      "layoutKind": "metrics",
+      "metricValueField": "value"
     },
     {
       "id": "end-action",
@@ -3525,10 +3439,10 @@
         {
           "type": "shape",
           "id": "t21-end-action-frame-002",
-          "left": 220,
-          "top": 104,
-          "width": 560,
-          "height": 340,
+          "left": 190,
+          "top": 82,
+          "width": 620,
+          "height": 416,
           "viewBox": [
             200,
             200
@@ -3547,30 +3461,77 @@
         {
           "type": "text",
           "id": "t21-end-action-title-003",
-          "left": 290,
-          "top": 210,
-          "width": 420,
-          "height": 90,
+          "left": 230,
+          "top": 100,
+          "width": 540,
+          "height": 94,
           "rotate": 0,
           "defaultFontName": "微软雅黑",
           "defaultColor": "#183F59",
-          "content": "<p style=\"text-align: center;\"><span style=\"color: #183F59;font-size: 54px;font-family: 微软雅黑;line-height: 1.1;font-weight: 700;\">感谢观看</span></p>",
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #183F59;font-size: 44px;font-family: 微软雅黑;line-height: 1.1;font-weight: 700;\">下一步行动</span></p>",
           "textType": "title",
+          "minimumFontSize": 32,
           "textLineHeight": 1.1
         },
         {
           "type": "text",
           "id": "t21-end-action-content-004",
-          "left": 350,
-          "top": 320,
-          "width": 300,
-          "height": 48,
+          "left": 230,
+          "top": 198,
+          "width": 540,
+          "height": 66,
           "rotate": 0,
           "defaultFontName": "微软雅黑",
           "defaultColor": "#555E64",
-          "content": "<p style=\"text-align: center;\"><span style=\"color: #555E64;font-size: 20px;font-family: 微软雅黑;line-height: 1.25;\">谢谢</span></p>",
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #555E64;font-size: 18px;font-family: 微软雅黑;line-height: 1.2;\">协同推进，共同落实</span></p>",
           "textType": "content",
-          "textLineHeight": 1.25
+          "minimumFontSize": 16,
+          "textLineHeight": 1.2
+        },
+        {
+          "type": "text",
+          "id": "t21-end-action-action-1-005",
+          "left": 246,
+          "top": 272,
+          "width": 508,
+          "height": 64,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#183F59",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #183F59;font-size: 18px;font-family: 微软雅黑;line-height: 1.2;\">行动计划 1</span></p>",
+          "textType": "item",
+          "minimumFontSize": 14,
+          "textLineHeight": 1.2
+        },
+        {
+          "type": "text",
+          "id": "t21-end-action-action-2-006",
+          "left": 246,
+          "top": 340,
+          "width": 508,
+          "height": 64,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#183F59",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #183F59;font-size: 18px;font-family: 微软雅黑;line-height: 1.2;\">行动计划 2</span></p>",
+          "textType": "item",
+          "minimumFontSize": 14,
+          "textLineHeight": 1.2
+        },
+        {
+          "type": "text",
+          "id": "t21-end-action-action-3-007",
+          "left": 246,
+          "top": 408,
+          "width": 508,
+          "height": 64,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#183F59",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #183F59;font-size: 18px;font-family: 微软雅黑;line-height: 1.2;\">行动计划 3</span></p>",
+          "textType": "item",
+          "minimumFontSize": 14,
+          "textLineHeight": 1.2
         }
       ],
       "background": {
@@ -3583,13 +3544,22 @@
       "sourceFidelity": {
         "mustMatchReferenceStyle": true,
         "preserve": [
-          "source_end_cover_symmetry",
-          "white_title_frame",
-          "fluid_marble_edges"
+          "blue_ivory_fluid_marble",
+          "white_content_plane",
+          "source_page_rhythm",
+          "source_spacing"
         ],
         "deviations": []
       },
-      "remark": "[Sources]\n- Visual style source: C:\\Users\\sk20\\Desktop\\创意风格 (56).pptx\n- Source media excluded; project assets generated with built-in GPT2 image template\n- Final output must preserve the original image and PPT visual style"
+      "remark": "[Sources]\n- Visual style source: C:\\Users\\sk20\\Desktop\\创意风格 (56).pptx\n- Source media excluded; project assets generated with built-in GPT2 image template\n- Final output must preserve the original image and PPT visual style",
+      "allowedItemCounts": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "variantKey": "action",
+      "preserveEndItemBody": true
     }
   ]
 }

@@ -113,6 +113,11 @@ template:
       text_item_counts: [1, 2, 3, 4]
       image_counts: [0, 1]
       metrics_count: 4
+      metrics_layout_kind: metrics
+      metrics_value_field: value
+      metrics_legacy_input: title_text_supported
+      metrics_fields: [title, value, text]
+      metrics_overflow: explicit_error_without_truncation
       overflow: lossless_pagination
       minimum_font_size: 12
       supports_lossless_item_pagination: true
@@ -121,6 +126,8 @@ template:
         slack: 5
     end:
       action_item_counts: [0, 1, 2, 3]
+      action_variant: action
+      preserve_action_title_and_body: true
 assets:
   generation_tool: GPT2_image_template
   actual_model_policy: record_actual_model_or_tool_not_exposed

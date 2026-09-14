@@ -62,6 +62,103 @@ def test_generated_cover_uses_blue_white_versioned_asset() -> None:
     assert background["imageType"] == "decoration"
 
 
+@pytest.mark.parametrize("count", [0, 1, 2, 3])
+@pytest.mark.parametrize("explicit", [False, True])
+def test_end_actions_are_preserved_in_order(count: int, explicit: bool) -> None:
+    """行动版式支持零到三项，自动选版和显式选版都不能丢失输入。"""
+    values = [f"行动{index}：落实本季度业务计划" for index in range(1, count + 1)]
+    data = {"title": "下一步行动", "text": "请各团队按计划执行", "items": values}
+    if explicit:
+        data["variant"] = "action"
+    page = _renderer().render(template_id="template_21", semantic_slides=[{"type": "end", "data": data}],
+                              task_id="end-actions", fallback_title="结束")["slides"][0]
+    assert page["templateSlideId"] == ("end-action" if count or explicit else "end-marble-frame")
+    from lxml import html
+    slots = [e for e in page["elements"] if e.get("textType") == "item"]
+    assert [html.fromstring(e["content"]).text_content() for e in slots] == values
+    assert any(data["title"] in e.get("content", "") for e in page["elements"])
+    assert any(data["text"] in e.get("content", "") for e in page["elements"])
+
+
+def test_end_rejects_more_than_three_actions() -> None:
+    with pytest.raises(TemplateRenderError) as error:
+        _renderer().render(template_id="template_21", semantic_slides=[{"type": "end", "data": {
+            "title": "下一步", "items": ["行动一", "行动二", "行动三", "行动四"],
+        }}], task_id="too-many-actions", fallback_title="结束")
+    assert error.value.code == "TEMPLATE_DATA_INVALID"
+
+
+@pytest.mark.parametrize("explicit", [False, True])
+def test_four_metrics_keep_labels_values_and_descriptions(explicit: bool) -> None:
+    """四指标只能由指标语义选中，数值不可被普通编号覆盖，文字必须按原顺序保留。"""
+    from lxml import html
+    items = [{"kind": "metric", "title": f"指标{index}", "value": value, "text": f"完整说明{index}"}
+             for index, value in enumerate([0, "12.5%", "1,234万元", "-8%"], 1)]
+    data = {"title": "四项业务指标", "items": items}
+    if explicit:
+        data["layoutKind"] = "metrics"
+    page = _renderer().render(template_id="template_21", semantic_slides=[{"type": "content", "data": data}],
+                              task_id="four-metrics", fallback_title="指标")["slides"][0]
+    assert page["templateSlideId"] == "content-metrics-4"
+    def values(slot):
+        return [html.fromstring(e["content"]).text_content() for e in page["elements"] if e.get("textType") == slot]
+    assert values("itemTitle") == [item["title"] for item in items]
+    assert values("itemNumber") == [str(item["value"]) for item in items]
+    assert values("item") == [item["text"] for item in items]
+
+
+@pytest.mark.parametrize("count", [1, 3, 5])
+def test_metrics_reject_wrong_count(count: int) -> None:
+    with pytest.raises(TemplateRenderError):
+        _renderer().render(template_id="template_21", semantic_slides=[{"type": "content", "data": {
+            "title": "指标", "layoutKind": "metrics", "items": [{"title": "指标", "value": "20%", "text": "说明"}] * count,
+        }}], task_id="wrong-metrics-count", fallback_title="指标")
+
+
+def test_metrics_legacy_text_value_and_long_source_titles_are_preserved() -> None:
+    """兼容 Agent 旧式 title/text 指标，长原题与数值均保留，空说明不能删掉整组指标。"""
+    title = "本季度全部业务渠道客户满意度变化"
+    page = _renderer().render(template_id="template_21", semantic_slides=[{"type": "content", "data": {
+        "title": "业务指标", "items": [
+            {"kind": "metric", "title": title if i == 0 else f"指标{i}", "text": f"{80+i}%"} for i in range(4)
+        ],
+    }}], task_id="legacy-metrics", fallback_title="指标")["slides"][0]
+    from lxml import html
+    numbers = [html.fromstring(e["content"]).text_content() for e in page["elements"] if e.get("textType") == "itemNumber"]
+    assert numbers == ["80%", "81%", "82%", "83%"]
+    assert any(title in e.get("content", "") for e in page["elements"])
+
+
+def test_metrics_after_agent_title_normalization_keep_value_separate() -> None:
+    """真实 Agent 已将长原题写入正文时，渲染器也不能把该前缀当作指标数值。"""
+    from backend.slide_agent.slide_agent.generation_utils import normalize_content_page_titles
+    from lxml import html
+    title = "Quarterly customer satisfaction rate long original title"
+    semantic = normalize_content_page_titles({"type": "content", "data": {
+        "title": "Metrics", "items": [{"kind": "metric", "title": title, "text": "85%"}] * 4,
+    }})
+    page = _renderer().render(template_id="template_21", semantic_slides=[semantic],
+                              task_id="normalized-metrics", fallback_title="Metrics")["slides"][0]
+    assert [html.fromstring(e["content"]).text_content() for e in page["elements"] if e.get("textType") == "itemNumber"] == ["85%"] * 4
+    assert all(title in e["content"] for e in page["elements"] if e.get("textType") == "item")
+
+
+@pytest.mark.parametrize("value", [None, True, {}, "", float("nan"), float("inf")])
+def test_metrics_reject_invalid_values(value) -> None:
+    with pytest.raises(TemplateRenderError):
+        _renderer().render(template_id="template_21", semantic_slides=[{"type": "content", "data": {
+            "layoutKind": "metrics", "title": "指标", "items": [{"title": "指标", "value": value, "text": "说明"}] * 4,
+        }}], task_id="invalid-metrics", fallback_title="指标")
+
+
+def test_end_action_objects_preserve_title_and_body() -> None:
+    page = _renderer().render(template_id="template_21", semantic_slides=[{"type": "end", "data": {
+        "title": "行动", "items": [{"title": "推进计划", "text": "安排负责人并确定截止时间"}],
+    }}], task_id="action-object", fallback_title="行动")["slides"][0]
+    text = next(e["content"] for e in page["elements"] if e.get("textType") == "item")
+    assert "推进计划" in text and "安排负责人并确定截止时间" in text
+
+
 @pytest.mark.parametrize("cover_id", ["cover-marble-frame", "cover-marble-minimal"])
 def test_cover_preserves_long_chinese_subtitle(tmp_path: Path, cover_id: str) -> None:
     """两个封面都必须完整容纳两行中文副标题，且不侵入下方装饰线。"""

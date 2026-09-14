@@ -198,10 +198,30 @@ function contentImage() {
 
 function focus() { const s = createSlide("content-focus-1", "content"); s.elements.push(image(s, "background", ASSETS.content, 0, 0, 1000, 562.5)); addHeader(s, "单项结论"); s.elements.push(text(s, "itemTitle", "核心结论标题", 90, 190, 820, 70, { fontSize: 42, color: COLORS.blue, bold: true, textType: "itemTitle", align: "center", groupId: "focus-item-1" }), text(s, "item", "结论说明文字。", 160, 290, 680, 80, { fontSize: 20, color: COLORS.gray, textType: "item", align: "center", groupId: "focus-item-1" })); return s; }
 
-function metrics() { const s = createSlide("content-metrics-4", "content"); s.elements.push(image(s, "background", ASSETS.content, 0, 0, 1000, 562.5)); addHeader(s, "指标概览"); for(let i=0;i<4;i+=1){const x=100+(i%2)*420,y=155+Math.floor(i/2)*170,g=`metrics-${i+1}`;s.elements.push(text(s,`metric-title-${i+1}`,`指标 ${i+1}`,x,y,180,30,{fontSize:18,color:COLORS.blue,bold:true,textType:"itemTitle",groupId:g}),text(s,`metric-value-${i+1}`,`${65+i*7}%`,x,y+40,180,56,{font:"Arial",fontSize:36,color:COLORS.blue,bold:true,textType:"itemNumber",groupId:g}),shape(s,`metric-bar-bg-${i+1}`,x,y+112,300,12,COLORS.lightGray,{groupId:g}),shape(s,`metric-bar-${i+1}`,x,y+112,190+i*25,12,COLORS.blue2,{groupId:g}));} return s; }
+function metrics() {
+  const s = createSlide("content-metrics-4", "content", { layoutKind: "metrics", allowedItemCounts: [4] });
+  // 标题、实际数值与说明分别填充，不能把指标数值当作 01～04 的项目编号。
+  s.metricValueField = "value";
+  s.elements.push(image(s, "background", ASSETS.content, 0, 0, 1000, 562.5));
+  // 沿用模板的白色内容平面，避免下排指标压在深蓝边缘流纹上影响阅读。
+  s.elements.push(shape(s, "content-plane", 72, 122, 856, 390, COLORS.white));
+  addHeader(s, "指标概览");
+  for (let i = 0; i < 4; i += 1) {
+    const x = 98 + (i % 2) * 422;
+    const y = 132 + Math.floor(i / 2) * 190;
+    const groupId = `metrics-${i + 1}`;
+    s.elements.push(
+      text(s, `metric-title-${i + 1}`, `指标 ${i + 1}`, x, y, 340, 44, { fontSize: 18, minimumFontSize: 14, textLineHeight: 1.1, color: COLORS.blue, bold: true, textType: "itemTitle", groupId }),
+      text(s, `metric-value-${i + 1}`, `${65 + i * 7}%`, x, y + 46, 340, 65, { fontSize: 36, minimumFontSize: 26, textLineHeight: 1.1, color: COLORS.blue, bold: true, textType: "itemNumber", groupId }),
+      // 说明是可选槽，独立清理它，不能连带删除同指标的标签与数值。
+      text(s, `metric-body-${i + 1}`, `指标说明 ${i + 1}`, x, y + 120, 340, 68, { fontSize: 16, minimumFontSize: 14, textLineHeight: 1.1, color: COLORS.gray, textType: "item" }),
+    );
+  }
+  return s;
+}
 
 function end(id = "end-marble-frame") {
-  const s = createSlide(id, "end", { preserve: ["source_end_cover_symmetry", "white_title_frame", "fluid_marble_edges"] });
+  const s = createSlide(id, "end", { allowedItemCounts: [0], preserve: ["source_end_cover_symmetry", "white_title_frame", "fluid_marble_edges"] });
   // 默认结束语可能不经过动态换字，必须显式声明与显示一致的行高。
   s.elements.push(
     image(s, "background", ASSETS.end, 0, 0, 1000, 562.5),
@@ -212,10 +232,29 @@ function end(id = "end-marble-frame") {
   return s;
 }
 
+function endAction() {
+  const s = createSlide("end-action", "end", { allowedItemCounts: [0, 1, 2, 3] });
+  // 显式 action 变体允许空行动列表；自动选版仍优先选择无行动槽的普通结束页。
+  s.variantKey = "action";
+  s.preserveEndItemBody = true;
+  s.elements.push(
+    image(s, "background", ASSETS.end, 0, 0, 1000, 562.5),
+    shape(s, "frame", 190, 82, 620, 416, COLORS.white, { outline: COLORS.blue, outlineWidth: 2 }),
+    text(s, "title", "下一步行动", 230, 100, 540, 94, { fontSize: 44, minimumFontSize: 32, textLineHeight: 1.1, color: COLORS.blue, bold: true, align: "center", textType: "title" }),
+    text(s, "content", "协同推进，共同落实", 230, 198, 540, 66, { fontSize: 18, minimumFontSize: 16, textLineHeight: 1.2, color: COLORS.gray, align: "center", textType: "content" }),
+  );
+  for (let index = 0; index < 3; index += 1) {
+    // 独立原生文字槽保留顺序和全文，空槽由渲染器清理，不展示伪造行动内容。
+    s.elements.push(text(s, `action-${index + 1}`, `行动计划 ${index + 1}`, 246, 272 + index * 68, 508, 64,
+      { fontSize: 18, minimumFontSize: 14, textLineHeight: 1.2, color: COLORS.blue, textType: "item" }));
+  }
+  return s;
+}
+
 function build(stage) {
   const probe = [cover("cover-marble-frame"), contentText(4), contentImage()];
   const mvp = [cover("cover-marble-frame"), ...[2,3,4,5,6,10].map(contents), transition("transition-marble-left"), contentText(2), contentText(3), contentText(4), end()];
-  const production = [...mvp, cover("cover-marble-minimal", true), transition("transition-marble-right", "right"), focus(), contentImage(), metrics(), end("end-action")];
+  const production = [...mvp, cover("cover-marble-minimal", true), transition("transition-marble-right", "right"), focus(), contentImage(), metrics(), endAction()];
   const slides = stage === "probe" ? probe : stage === "mvp" ? mvp : production;
   // 为默认单行语义文字补足真实高度；这些槽位下方均预留了独立空间。
   for (const slide of slides) {
@@ -224,11 +263,6 @@ function build(stage) {
       if (slide.type === "transition" && element.textType === "partNumber") element.height = 60;
       if (slide.id === "content-focus-1" && element.textType === "itemTitle") element.height = 74;
       if (slide.id === "content-image-1" && element.textType === "itemTitle") element.height = 52;
-      if (slide.id === "content-metrics-4" && element.textType === "itemTitle") element.height = 44;
-      if (slide.id === "content-metrics-4" && element.textType === "itemNumber") {
-        element.top += 6;
-        element.height = 65;
-      }
     }
   }
   const clean = slides.map(({ __counter, ...slide }) => slide);
