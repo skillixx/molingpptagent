@@ -28,6 +28,25 @@ const item = {
 beforeEach(() => fetchMock.mockReset())
 
 describe('presentationApi', () => {
+  it('已生成蓝米封面加载新版背景，不修改文字和用户替换的图片', async () => {
+    const background = { id: 'bg', type: 'image', imageType: 'decoration',
+      src: '/api/data/template_21_asset_bg_cover_v1.jpg', left: 0, top: 0, width: 1000, height: 562.5 }
+    const customImage = { ...background, id: 'custom', src: 'data:image/png;base64,userImage' }
+    const text = { id: 'title', type: 'text', content: '社交媒体与品牌营销' }
+    fetchMock.mockResolvedValue(response({ ...item, template_id: 'template_21', slides: {
+      schema_version: 1, slides: [
+        { id: 'cover', type: 'cover', templateSlideId: 'cover-marble-frame', elements: [background, text, customImage] },
+        { id: 'content', type: 'content', elements: [background] },
+      ],
+    } }))
+    const detail = await presentationApi.get('presentation-1')
+    expect(detail.document.slides[0].elements[0]).toEqual({ ...background, src: '/api/data/template_21_asset_bg_cover_v2.jpg' })
+    expect(detail.document.slides[0].elements.slice(1)).toEqual([text, customImage])
+    expect(detail.document.slides[1].elements).toEqual([background])
+    expect(fetchMock).toHaveBeenCalledTimes(1)
+    expect(fetchMock.mock.calls[0][1].method).toBe('GET')
+  })
+
   it('列表只发送受限查询并解析服务端字段', async () => {
     fetchMock.mockResolvedValue(response({ items: [item], page: 2, page_size: 10, total: 11, has_more: false }))
 

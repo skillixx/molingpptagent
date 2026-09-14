@@ -234,6 +234,21 @@ function parseDocument(value: unknown): PresentationDocument {
     }
     if (slide.remark !== undefined && typeof slide.remark !== 'string') throw new PresentationApiError(502)
     if (slide.notes !== undefined && !Array.isArray(slide.notes)) throw new PresentationApiError(502)
+    // 已生成作品仍可能引用旧封面 URL。只升级本模板的默认封面装饰，保留用户换图和正文。
+    // 使用新文件名同时覆盖编辑器、缩略图和后续导出；这里只转换读取结果，不写数据库。
+    if (slide.type === 'cover' && ['cover-marble-frame', 'cover-marble-minimal'].includes(String(slide.templateSlideId))) {
+      return {
+        ...slide,
+        elements: slide.elements.map(element => {
+          const image = record(element)
+          if (image.type === 'image' && image.imageType === 'decoration' &&
+              image.src === '/api/data/template_21_asset_bg_cover_v1.jpg') {
+            return { ...image, src: '/api/data/template_21_asset_bg_cover_v2.jpg' }
+          }
+          return element
+        }),
+      } as unknown as Slide
+    }
     return slide as unknown as Slide
   })
   return {

@@ -1,0 +1,148 @@
+schema_version: 1
+template:
+  id: template_21
+  title: 蓝米流纹商务汇报
+  build_stage: development
+  canvas:
+    width: 1000
+    height: 562.5
+    aspect_ratio: "16:9"
+  reference:
+    path: "C:\\Users\\sk20\\Desktop\\创意风格 (56).pptx"
+    sha256: EE80AB40B1E168B3713E42A18EA7176C2A7AA38772E58151285A4CE2D72A543C
+    slide_count: 25
+    media_policy: exclude_all_and_rebuild
+    font_policy: replace_special_fonts
+    animation_policy: exclude_all
+    audio_policy: exclude_all
+    native_chart_policy: exclude_from_v1
+  fidelity:
+    level: high
+    must_preserve:
+      - blue_ivory_fluid_marble_language
+      - white_content_plane_and_deep_blue_title_hierarchy
+      - source_page_rhythm_and_spacing
+      - cover_end_visual_symmetry
+      - light_paper_like_edge_texture
+      - editable_image_and_decoration_layering
+    user_approved_style_variant: original_gpt2_blue_ivory_marble_variant
+    comparison_required: true
+    deviation_log_required: true
+  typography:
+    chinese: 微软雅黑
+    latin: Arial
+    minimum_font_size: 12
+    cover_title: 50
+    transition_title: 44
+    page_title: 35
+    item_title:
+      one_two_item: 20
+      three_four_item: 16
+    body: 16
+  colors:
+    deep_sea_blue: "#183F59"
+    primary_blue: "#235775"
+    mist_blue: "#7FA7B5"
+    pale_blue_gray: "#B9CED0"
+    ivory: "#ECEBDD"
+    white: "#FFFFFF"
+    title: "#111111"
+    body: "#555E64"
+    light_gray: "#E7E8E8"
+  safe_area:
+    horizontal: [56, 944]
+    vertical: [38, 520]
+    title_height: [70, 92]
+    decoration_text_gap: 20
+    content_image_decoration_gap: 18
+    low_interference_area_ratio: 0.70
+    side_decoration_max_width_ratio: 0.30
+    bottom_decoration_max_height_ratio: 0.25
+  probe_slide_ids:
+    - cover-marble-frame
+    - content-text-4
+    - content-image-1
+  mvp_slide_ids:
+    - cover-marble-frame
+    - contents-2
+    - contents-3
+    - contents-4
+    - contents-5
+    - contents-6
+    - contents-10
+    - transition-marble-left
+    - content-text-2
+    - content-text-3
+    - content-text-4
+    - end-marble-frame
+  production_slide_ids:
+    - cover-marble-frame
+    - cover-marble-minimal
+    - contents-2
+    - contents-3
+    - contents-4
+    - contents-5
+    - contents-6
+    - contents-10
+    - transition-marble-left
+    - transition-marble-right
+    - content-focus-1
+    - content-image-1
+    - content-text-2
+    - content-text-3
+    - content-text-4
+    - content-metrics-4
+    - end-marble-frame
+    - end-action
+  expected_counts:
+    cover: 2
+    contents: 6
+    transition: 2
+    content: 6
+    end: 2
+  semantic_slots:
+    text: [title, content, item, itemTitle, itemNumber, partNumber]
+    image:
+      content: replaceable
+      decoration: fixed
+  selection:
+    contents:
+      exact_counts: [2, 3, 4, 5, 6, 10]
+      overflow: balanced_lossless_pagination
+    content:
+      text_item_counts: [1, 2, 3, 4]
+      image_counts: [0, 1]
+      metrics_count: 4
+      overflow: lossless_pagination
+      minimum_font_size: 12
+      supports_lossless_item_pagination: true
+      pagination_growth_policy:
+        factor: 1.75
+        slack: 5
+    end:
+      action_item_counts: [0, 1, 2, 3]
+assets:
+  generation_tool: GPT2_image_template
+  actual_model_policy: record_actual_model_or_tool_not_exposed
+  retry_limit: 3
+  files:
+    - {id: bg-cover, filename: template_21_asset_bg_cover_v2.jpg, format: JPEG, size: [1920, 1080], mode: RGB, max_bytes: 450000}
+    - {id: bg-content, filename: template_21_asset_bg_content_v1.jpg, format: JPEG, size: [1920, 1080], mode: RGB, max_bytes: 280000}
+    - {id: bg-section, filename: template_21_asset_bg_section_v1.jpg, format: JPEG, size: [1920, 1080], mode: RGB, max_bytes: 350000}
+    - {id: bg-end, filename: template_21_asset_bg_end_v1.jpg, format: JPEG, size: [1920, 1080], mode: RGB, max_bytes: 420000}
+    - {id: marble-blue, filename: template_21_asset_marble_tile_blue_v1.jpg, format: JPEG, size: [1200, 1200], mode: RGB, max_bytes: 320000}
+    - {id: marble-ivory, filename: template_21_asset_marble_tile_ivory_v1.jpg, format: JPEG, size: [1200, 1200], mode: RGB, max_bytes: 320000}
+    - {id: bottom-flow, filename: template_21_asset_bottom_flow_v1.png, format: PNG, size: [1800, 460], mode: RGBA, max_bytes: 750000}
+    - {id: side-flow, filename: template_21_asset_side_flow_v1.png, format: PNG, size: [650, 1080], mode: RGBA, max_bytes: 650000}
+    - {id: corner-flow, filename: template_21_asset_corner_flow_v1.png, format: PNG, size: [1200, 900], mode: RGBA, max_bytes: 850000}
+qa:
+  viewports:
+    - [1920, 1080]
+    - [1366, 768]
+    - [768, 1024]
+    - [390, 844]
+  reference_comparison_required: true
+  export_roundtrip_required: true
+  final_development_status: G8_PASS_G9_PENDING
+  g9_status_after_automatic_pass: READY_FOR_CONFIRMATION
+  g9_human_confirmation_required: true
