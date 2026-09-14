@@ -149,6 +149,9 @@ class A2AContentClientWrapper:
         try:
             async for chunk in stream:
                 yield chunk
+            # 只记录协议终态，不记录页面内容、提示词或身份参数。
+            self.logger.info("正文 Agent 流结束 remote_state=%s has_task_id=%s",
+                             self._remote_task_state, bool(self.task_id))
             if self.task_id:
                 if self._remote_task_state == TaskState.completed.value:
                     completed = True

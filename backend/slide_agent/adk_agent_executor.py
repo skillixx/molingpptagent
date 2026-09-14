@@ -96,10 +96,15 @@ class ADKAgentExecutor(AgentExecutor):
         session_id = session_obj.id
         # 汇集所有的 agent 名称
         logger.info("开始处理内容生成请求，session=%s", session_id)
-        agent_names = extract_agent_names(self.runner.agent)
-        agent_names = list(agent_names)
+        # 编排节点不一定产生最终事件，不能用所有 Agent 名称归零作为完成条件。
+        has_final_output = False
         async for event in self._run_agent(session_id, new_message):
+            if getattr(event, "error_code", None):
+                await task_updater.update_status(TaskState.failed, final=True)
+                return
             agent_author = event.author
+            if event.content and event.content.parts and event.is_final_response():
+                has_final_output = True
             if agent_author in self.show_agent:
                 logger.info(f"[adk executor] {agent_author}完成")
                 if event.content and event.content.parts:
@@ -131,16 +136,9 @@ class ADKAgentExecutor(AgentExecutor):
                 logger.debug("最终会话状态键=%s", sorted(final_session.state.keys()))
                 references = final_session.state.get("references",[])
                 agent_author = event.author
-                if agent_author in agent_names:
-                    logger.info(f"[adk executor] {agent_author}完成")
-                    agent_names.remove(agent_author)
                 parts = convert_genai_parts_to_a2a(event.content.parts)
                 logger.info("返回最终结果，agent=%s parts=%s", agent_author, len(parts))
                 await task_updater.add_artifact(parts=parts,metadata={"author": agent_author, "references": references})
-                if not agent_names:
-                    # 说明任务整体完成了，没有要进行其它任务的Agent了，所有Agent都完成了自己的任务
-                    await task_updater.complete()  # 这个会关掉event的Queue
-                    break
             elif event.get_function_calls():
                 logger.info("触发工具调用，agent=%s", agent_author)
                 await task_updater.update_status(
@@ -165,6 +163,14 @@ class ADKAgentExecutor(AgentExecutor):
                         convert_genai_parts_to_a2a(event.content.parts),metadata={"author": agent_author}
                     ),
                 )
+
+        # 仅在 Runner 正常耗尽且收到最终输出后完成；异常和取消不会执行到这里。
+        if has_final_output:
+            await task_updater.complete()
+            logger.info("正文 Agent 正常结束，已发送 completed")
+        else:
+            await task_updater.update_status(TaskState.failed, final=True)
+            logger.warning("正文 Agent 正常结束但没有最终输出，已发送 failed")
 
     async def execute(
         self,
