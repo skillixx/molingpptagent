@@ -1,6 +1,7 @@
 from backend.slide_agent.slide_agent.generation_utils import (
     consume_page_model_call_budget,
     fallback_slide_for_failed_generation,
+    generation_completion_proof,
     initialize_generation_state,
     item_title_limit,
     normalize_content_page_titles,
@@ -8,6 +9,7 @@ from backend.slide_agent.slide_agent.generation_utils import (
     parse_last_json_object,
 )
 from backend.slide_agent.slide_agent.utils import parse_markdown_to_slides
+import pytest
 
 
 LONG_ITEM_TITLES = [
@@ -16,6 +18,28 @@ LONG_ITEM_TITLES = [
     "优化供应链协同与成本控制流程",
     "推动会员精细运营提升复购表现",
 ]
+
+
+@pytest.mark.parametrize("planned,index,generated", [
+    (2, 1, [{"type": "cover"}]),
+    (2, 2, [{"type": "cover"}]),
+    (2, 2, [{"type": "end"}, {"type": "cover"}]),
+    (2, 2, [{"type": "cover"}, "invalid"]),
+    (True, 1, [{"type": "cover"}]),
+    (0, 0, []),
+])
+def test_incomplete_generation_cannot_produce_success_evidence(planned, index, generated):
+    state = {"slides_plan_num": planned, "current_slide_index": index,
+             "outline_json": [{"type": "cover"}, {"type": "end"}], "generated_slides_content": generated}
+    assert generation_completion_proof(state)["complete"] is False
+
+
+def test_complete_generation_evidence_contains_only_counts():
+    pages = [{"type": "cover", "data": {"title": "保密内容"}}, {"type": "end"}]
+    assert generation_completion_proof({"slides_plan_num": 2, "current_slide_index": 2,
+        "outline_json": pages, "generated_slides_content": pages}) == {
+        "complete": True, "planned": 2, "index": 2, "produced": 2,
+    }
 
 
 def _fixed_four_item_outline() -> str:

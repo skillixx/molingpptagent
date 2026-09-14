@@ -11,6 +11,28 @@ ALLOWED_SEARCH_ENGINES = ("KnowledgeBaseSearch", "SearchImage")
 MAX_MODEL_CALLS_PER_PAGE = 2
 
 
+def generation_completion_proof(state: Mapping[str, Any]) -> dict[str, Any]:
+    """Controller 的完成证据只含计数，逐页核对计划，避免迭代耗尽或漏页被判成功。"""
+    planned = state.get("slides_plan_num")
+    index = state.get("current_slide_index")
+    outline = state.get("outline_json")
+    generated = state.get("generated_slides_content")
+    count = len(generated) if isinstance(generated, list) else 0
+    complete = (
+        type(planned) is int and planned > 0
+        and type(index) is int and index == planned
+        and isinstance(outline, list) and len(outline) == planned
+        and isinstance(generated, list) and count == planned
+        and all(
+            isinstance(source, dict) and isinstance(page, dict)
+            and source.get("type") in {"cover", "contents", "transition", "content", "end"}
+            and page.get("type") == source.get("type")
+            for source, page in zip(outline, generated)
+        )
+    )
+    return {"complete": complete, "planned": planned, "index": index, "produced": count}
+
+
 def consume_page_model_call_budget(state: dict[str, Any], page_index: int) -> bool:
     """登记单页真实模型调用；超过硬上限时返回 False，由调用方改走本地回退。"""
     counts = state.get("page_model_call_count_map")

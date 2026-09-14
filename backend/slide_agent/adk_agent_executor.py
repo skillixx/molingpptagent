@@ -94,17 +94,23 @@ class ADKAgentExecutor(AgentExecutor):
         # Update session_id with the ID from the resolved session object
         # to be used in self._run_agent.
         session_id = session_obj.id
-        # 汇集所有的 agent 名称
         logger.info("开始处理内容生成请求，session=%s", session_id)
-        # 编排节点不一定产生最终事件，不能用所有 Agent 名称归零作为完成条件。
-        has_final_output = False
+        # 只接受本次 Controller 的完成证据；普通最终回复和正常 EOF 都不代表整份 PPT 完成。
+        has_controller_completion = False
         async for event in self._run_agent(session_id, new_message):
             if getattr(event, "error_code", None):
                 await task_updater.update_status(TaskState.failed, final=True)
                 return
             agent_author = event.author
-            if event.content and event.content.parts and event.is_final_response():
-                has_final_output = True
+            actions = getattr(event, "actions", None)
+            if agent_author == "ControllerAgent" and getattr(actions, "escalate", False):
+                proof = (getattr(actions, "state_delta", None) or {}).get("ppt_generation_completion")
+                has_controller_completion = (
+                    isinstance(proof, dict) and proof.get("complete") is True
+                    and type(proof.get("planned")) is int and proof["planned"] > 0
+                    and type(proof.get("index")) is int and proof["index"] == proof["planned"]
+                    and type(proof.get("produced")) is int and proof["produced"] == proof["planned"]
+                )
             if agent_author in self.show_agent:
                 logger.info(f"[adk executor] {agent_author}完成")
                 if event.content and event.content.parts:
@@ -164,13 +170,13 @@ class ADKAgentExecutor(AgentExecutor):
                     ),
                 )
 
-        # 仅在 Runner 正常耗尽且收到最终输出后完成；异常和取消不会执行到这里。
-        if has_final_output:
+        # 收到可信完成证据后仍等 Runner 正常结束；后续异常和取消不能被早到的证据掩盖。
+        if has_controller_completion:
             await task_updater.complete()
             logger.info("正文 Agent 正常结束，已发送 completed")
         else:
             await task_updater.update_status(TaskState.failed, final=True)
-            logger.warning("正文 Agent 正常结束但没有最终输出，已发送 failed")
+            logger.warning("正文 Agent 响应结束但没有完整计划完成证据，已发送 failed")
 
     async def execute(
         self,

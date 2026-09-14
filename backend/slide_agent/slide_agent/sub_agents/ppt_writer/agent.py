@@ -16,6 +16,7 @@ from .utils import normalize_repairable_content_slide, validate_slide
 from ...generation_utils import (
     consume_page_model_call_budget,
     fallback_slide_for_failed_generation,
+    generation_completion_proof,
     normalize_search_engines,
     parse_last_json_object,
 )
@@ -331,7 +332,12 @@ class ControllerAgent(BaseAgent):
                 pretty = str(accumulated)
             logger.info("全部页处理完成，slides=%s", len(accumulated))
             # 结束循环
-            yield Event(author=self.name, actions=EventActions(escalate=True))
+            # 完成信号来自 Controller 核对后的计划，不依赖任意子 Agent 的最终回复。
+            # state_delta 会被 ADK 持久化并传递给执行器，且不携带用户正文。
+            yield Event(author=self.name, actions=EventActions(
+                escalate=True,
+                state_delta={"ppt_generation_completion": generation_completion_proof(st)},
+            ))
 
         return
 
