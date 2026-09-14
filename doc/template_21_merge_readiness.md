@@ -4,8 +4,52 @@
 
 ## 结论
 
-本次提交是待审候选版本，不是生产发布。当前不建议合并到 main。
-用户确认的是封面配色效果，不等于批准合并或消除下面的功能缺陷。
+原有三个 P1 合并阻塞项已经按用户要求修复。独立复审未发现本次修复仍有明确阻塞项。
+干净 LF 检出完整回归已通过，当前代码与离线验收层面建议可以合并到 main；实际合并仍待用户授权。
+本次仅提交和推送功能分支，不合并 main，不部署或重启运行服务，不调用真实模型。
+
+## 最新修复验收
+
+代码候选：`9dfbc66f0d441839a31de730529edf3c90c5b302`。
+
+- 生成收尾：仅接受本次 Controller 核对计划页数、推进页码、生成数量与页型后发出的完成证明，仍等待 Runner 正常结束。普通最终回复、错误、取消、缺少证明或部分计划不能冒充成功。
+- 行动结束页：独立原生文字槽，0～3 项自动或显式选版可达，标题与正文按顺序保留，超过上限明确报错。
+- 四指标：接入 metrics 版式协议，标签、实际数值、说明分别填充；支持 0、百分数、负值与旧式 title/text。上游已归一化的长原题保留在说明中，不混入数值。空说明不再连带删除整组指标。
+- 指标页沿用白色内容平面，避免正文压在深蓝流纹上；没有关闭溢出或分页保护。
+
+| 最新检查 | 结果 |
+| --- | --- |
+| Windows 工作区完整后端回归 | 1195 passed，2 failed，3 条依赖弃用警告 |
+| 两项失败 | 仍为下文 template_19/20 的既有 LF/CRLF 字节比较差异 |
+| 当前候选受影响测试 | 188 passed |
+| 真实 ADK Runner/Loop/Controller 联测 | 固定 Writer，无模型调用；2 页计划仅执行 1 轮失败，2 轮完成 |
+| 前端全量 Vitest / vue-tsc | 142 passed / PASS |
+| 四视口 | 1920×1080、1366×768、768×1024、390×844，指标页和行动页检查通过 |
+| 编辑换图、JSON 保存重载 | PASS，固定装饰保留，未写真实作品 |
+| 项目原生 PPTX 导出重导入 | 8 页；编辑标题、指标数值及行动文字完整保留 |
+| 干净 LF 检出回归 | 1197 passed，3 条依赖弃用警告；未跳过测试、未修改历史模板 |
+
+固定样本覆盖封面、目录、章节、四项正文、四指标、业务图片、行动结束与普通结束。
+浏览器认证为模拟响应，真实 API 写请求全部阻止。截图只含固定测试文案，位于 `assets/template_21_qa/blocker-fixes/`。
+导出物保存在本地 `output/template21-blockers-qa/`，不上传数据库、用户原 PPT 或日志。
+
+可复现命令：
+
+```powershell
+python -m pytest backend/main_api/tests backend/slide_agent/test_adk_agent_executor.py backend/slide_agent/test_generation_utils.py backend/slide_agent/test_generation_completion_integration.py backend/slide_agent/test_ppt_writer_validation.py -q
+npm --prefix frontend run test:unit
+npm --prefix frontend run type-check
+python utils/verify_template_21_blockers.py output/template21-blockers-qa
+# 使用已有本地测试前端、已安装 Playwright 和 Chrome；必要时用 PLAYWRIGHT_PACKAGE_PATH 指向包目录。
+node utils/verify_template_21_browser.cjs output/template21-blockers-qa
+```
+
+没有执行真实模型生成或生产部署验收。实际合并与部署仍需分别获得用户授权。
+干净检出关闭了 Git 的自动换行转换，复用了已安装的前端依赖；源代码与候选提交一致，未使用本地未跟踪 QA 文件补齐测试。
+
+## 初次审查历史记录（整改前）
+
+以下问题、测试计数和证据限制保留为整改前记录；最新状态以上方表格为准。
 
 基线：`2179a1070a9875b40334f13bd72577307a137b7c`，审查时与远程 main 一致。
 分支：`codex/template-21-generation-fixes`。

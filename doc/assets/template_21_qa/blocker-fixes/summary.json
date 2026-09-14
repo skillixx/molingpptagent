@@ -1,0 +1,31 @@
+{
+  "candidateCommit": "9dfbc66f0d441839a31de730529edf3c90c5b302",
+  "baseCommit": "2179a1070a9875b40334f13bd72577307a137b7c",
+  "status": "READY_FOR_MERGE_REVIEW",
+  "scope": "Three merge blockers: incomplete completion, end action loss, metrics unreachable",
+  "tests": {
+    "cleanCheckoutBackend": {"passed": 1197, "failed": 0, "dependencyWarnings": 3},
+    "windowsWorkingTreeBackend": {"passed": 1195, "failed": 2, "failures": "pre-existing template19/template20 CRLF versus LF byte comparison"},
+    "affectedBackend": {"passed": 188, "failed": 0},
+    "frontend": {"passed": 142, "failed": 0, "files": 26},
+    "frontendTypeCheck": "PASS"
+  },
+  "browser": {
+    "mode": "real editor, isolated browser, fixed semantic data, mock authentication, no real API writes",
+    "viewports": [[1920,1080],[1366,768],[768,1024],[390,844]],
+    "pagesInspected": ["content-metrics-4", "end-action"],
+    "textEditAndImageReplacement": "PASS",
+    "decorationPreservation": "PASS",
+    "jsonSaveReload": "PASS",
+    "nativePptxExportReimport": "PASS",
+    "roundtripSlideCount": 8,
+    "editedTitleMetricValuesAndActionsPreserved": true,
+    "screenshots": ["metrics.png", "end-action.png"]
+  },
+  "independentReview": "No remaining concrete blocker found in scoped fixes",
+  "realModelCalls": 0,
+  "productionDatabaseWrites": false,
+  "servicesRestarted": false,
+  "deployed": false,
+  "mainMerged": false
+}
