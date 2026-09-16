@@ -15,9 +15,9 @@
 | 生产素材 | 9 项 |
 | G0～G8 | 全部 `PASS` |
 | 原 Goal 状态 | `DONE` |
-| 当前热修复状态 | `HOTFIX_READY_FOR_CONFIRMATION` |
-| 热修复人工确认 | `PENDING_AFTER_HOTFIX` |
-| Git 交付 | 已提交并推送 `codex/template-22-peach-ink`；未授权 PR、合并或部署 |
+| 当前热修复状态 | `HOTFIX_CONFIRMED_FOR_MERGE` |
+| 热修复人工确认 | `CONFIRMED_2026-09-16` |
+| Git 交付 | 已提交并推送 `codex/template-22-peach-ink`；已授权创建 PR 并合并到 `main`；未授权生产部署 |
 
 候选哈希按生产注册、正式 JSON、封面、九项素材、专项测试、机器规格和确定性构建器的文件路径与 SHA-256 联合计算。当前逐文件记录见 `doc/assets/template_22_qa/hotfix-candidate-manifest.json`；`frozen-candidate-manifest.json` 保留为原已确认候选的历史记录。
 
@@ -109,12 +109,12 @@
 
 ## 7. 2026-09-16 标题容量热修复
 
-当前热修复候选为 `template_22-hotfix-be9af16783e9`，候选 SHA-256 为 `be9af16783e9b7f9916583c45addcf5739f871491b7be1d9a4e6d8a843028182`。该候选已完成受影响范围验证并获准推送开发分支，但尚未获得新的合并确认。
+当前热修复候选为 `template_22-hotfix-be9af16783e9`，候选 SHA-256 为 `be9af16783e9b7f9916583c45addcf5739f871491b7be1d9a4e6d8a843028182`。该候选已完成受影响范围验证，并于 2026-09-16 获得当前候选确认、创建 PR 和合并到 `main` 的明确授权；生产部署仍未授权。
 
 实际生成发现两个模板容量边界：四项正文页允许 10 个中文字，但默认行高的测算高度超过 54px 标题槽；墨圈章节页的 470px 标题框无法容纳 11 个中文字。修复保持最小字号和完整原文不变：四项正文标题行高调整为 1.05，墨圈章节标题框调整为 `left=380`、`width=540`。
 
 新增两个公开渲染入口回归测试，先确认旧模板分别抛出 `ITEM_TITLE_TOO_LONG` 和 `TEMPLATE_DATA_INVALID`，再验证修复后完整标题、四项密度、正文顺序和章节版式均保留。模板与受影响公共回归共 98 项通过；两次生产构建和正式 JSON SHA-256 一致。原失败输入缓存重放分别通过 14→19 页和 3→4 页渲染，受影响页面视觉检查无重叠。
 
-生产模板 JSON SHA-256 为 `8d4670e8c0ed4816def6575e728f5585007d27e7d3db739f8adaf15e5211db82`，公网资源与本地文件哈希一致，`/api/readyz` 为 200。详细证据见 `doc/assets/template_22_qa/hotfix-20260916-title-capacity.json`。已提交并推送开发分支；尚未创建 PR、合并或部署。
+生产模板 JSON SHA-256 为 `8d4670e8c0ed4816def6575e728f5585007d27e7d3db739f8adaf15e5211db82`，公网资源与本地文件哈希一致，`/api/readyz` 为 200。详细证据见 `doc/assets/template_22_qa/hotfix-20260916-title-capacity.json`。开发分支已提交并推送；当前授权范围为创建 PR、合并到 `main` 和本地重启，不包含生产部署。
 
 第一次热修复后 Worker 仍持有进程内模板缓存，日志继续显示旧的 `width=470`，因此修复文件虽然已经能从公网读取，新任务仍使用旧版式失败。最终已在任务队列为空时重新启动 Worker，清空 `PresentationTemplateRenderer._cache`；新 Worker 的创建时间晚于最终模板写入时间。

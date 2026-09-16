@@ -8,7 +8,7 @@
     "pythonImplementation": "PASS",
     "powershellImplementation": "PASS"
   },
-  "status": "READY_FOR_CONFIRMATION",
+  "status": "CONFIRMED_FOR_MERGE",
   "previousConfirmedCandidate": "template_22-g8-db790bc36b0a",
   "branch": "codex/template-22-peach-ink",
   "baseCommit": "5987db70c827573769fea9eb130ff6d08ae8260e",
@@ -51,12 +51,12 @@
     "hotfix-20260916-title-capacity.json",
     "hotfix-visual-inspection.json"
   ],
-  "humanConfirmation": "PENDING_AFTER_HOTFIX",
+  "humanConfirmation": "CONFIRMED_2026-09-16",
   "gitCommitCreated": true,
   "localCommits": [
     "3276e73",
     "efc14ee",
     "6ea9362"
   ],
-  "gitDelivery": "PUSHED_BRANCH"
+  "gitDelivery": "MAIN_MERGE_AUTHORIZED"
 }
