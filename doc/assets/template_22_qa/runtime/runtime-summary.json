@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_22",
+  "status": "PASS",
+  "branchFrontendUrl": "http://127.0.0.1:5778",
+  "branchApiUrl": "http://127.0.0.1:6800",
+  "selectorUrl": "http://127.0.0.1:5778/app",
+  "editorUrl": "http://127.0.0.1:5778/editor",
+  "registrationCount": 1,
+  "registeredName": "桃夭墨韵商务汇报",
+  "cover": {
+    "src": "/api/data/template_22.jpg",
+    "complete": true,
+    "naturalWidth": 960,
+    "naturalHeight": 540
+  },
+  "templateSelected": true,
+  "editorEntryVisible": true,
+  "screenshots": [
+    "runtime-template-selected.png",
+    "runtime-editor-entry.png"
+  ],
+  "failedResponses": []
+}

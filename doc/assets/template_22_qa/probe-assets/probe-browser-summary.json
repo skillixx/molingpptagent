@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_22",
+  "status": "PASS",
+  "replacementInputs": [
+    {
+      "name": "landscape",
+      "width": 600,
+      "height": 450
+    },
+    {
+      "name": "portrait",
+      "width": 600,
+      "height": 900
+    },
+    {
+      "name": "square",
+      "width": 600,
+      "height": 600
+    }
+  ],
+  "jsonEdit": true,
+  "decorationProtection": true,
+  "circleCrop": true,
+  "jsonSaveReload": true,
+  "pptxExportReimport": true,
+  "unexpectedApiWrites": []
+}

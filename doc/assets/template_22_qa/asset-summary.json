@@ -1,0 +1,163 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_22",
+  "status": "PASS",
+  "generationTool": "built-in image generation",
+  "requestedGenerator": "GPT2 图片模板",
+  "actualModel": "工具未暴露",
+  "assets": [
+    {
+      "filename": "template_22_asset_bg_cover_v1.jpg",
+      "source": "doc/assets/template_22_qa/originals/template_22_asset_bg_cover_v1_original.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "mode": "RGB",
+      "bytes": 371032,
+      "maxBytes": 450000,
+      "jpegQuality": 92,
+      "alphaRange": null,
+      "sha256": "4F6F0E9EE1010874F9073F10034834AAAAAA6288EE9812A8D0301BD765CA0BCD"
+    },
+    {
+      "filename": "template_22_asset_bg_content_v1.jpg",
+      "source": "doc/assets/template_22_qa/originals/template_22_asset_bg_content_v1_original.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "mode": "RGB",
+      "bytes": 262738,
+      "maxBytes": 280000,
+      "jpegQuality": 92,
+      "alphaRange": null,
+      "sha256": "EAF4D4AD5CA6D0914A629CA6B1F124D57FAF667D47B5A422B88A70DC75136943"
+    },
+    {
+      "filename": "template_22_asset_bg_section_v1.jpg",
+      "source": "doc/assets/template_22_qa/originals/template_22_asset_bg_section_v1_original.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "mode": "RGB",
+      "bytes": 301184,
+      "maxBytes": 350000,
+      "jpegQuality": 92,
+      "alphaRange": null,
+      "sha256": "51B1E92A188E094619681818F61273511B7CA179BC49258E83B2343B4ABC0D40"
+    },
+    {
+      "filename": "template_22_asset_bg_end_v1.jpg",
+      "source": "doc/assets/template_22_qa/originals/template_22_asset_bg_end_v1_original.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "mode": "RGB",
+      "bytes": 279797,
+      "maxBytes": 420000,
+      "jpegQuality": 92,
+      "alphaRange": null,
+      "sha256": "AC5D807717CEA1C0181AF0B0CFB2795F70A360CDEFC385E57E1139215E52D3A9"
+    },
+    {
+      "filename": "template_22_asset_scroll_roll_v1.png",
+      "source": "doc/assets/template_22_qa/originals/template_22_asset_scroll_roll_v1_original.png",
+      "size": [
+        1500,
+        900
+      ],
+      "mode": "RGBA",
+      "bytes": 805729,
+      "maxBytes": 900000,
+      "jpegQuality": null,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "sha256": "B51AA89B6D464932B32B617FEEF9F3E8650BC7A4B7F06BA21C3B39C06B457C1F"
+    },
+    {
+      "filename": "template_22_asset_ink_title_frame_v1.png",
+      "source": "doc/assets/template_22_qa/originals/template_22_asset_ink_title_frame_v1_original.png",
+      "size": [
+        1200,
+        320
+      ],
+      "mode": "RGBA",
+      "bytes": 159496,
+      "maxBytes": 450000,
+      "jpegQuality": null,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "sha256": "94F24C90252E8B6D3419BE84BB256BB9E24E8E0E82DB4ED0E6ED087FB8D6E143"
+    },
+    {
+      "filename": "template_22_asset_ink_circle_frame_v1.png",
+      "source": "doc/assets/template_22_qa/originals/template_22_asset_ink_circle_frame_v1_original.png",
+      "size": [
+        900,
+        900
+      ],
+      "mode": "RGBA",
+      "bytes": 702611,
+      "maxBytes": 750000,
+      "jpegQuality": null,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "sha256": "DD391A016A30ED1C3693EEE6CC231EF88FA7E0BC8AF6C7E2F6B505B743BB25A2"
+    },
+    {
+      "filename": "template_22_asset_ink_brush_band_v1.png",
+      "source": "doc/assets/template_22_qa/originals/template_22_asset_ink_brush_band_v1_original.png",
+      "size": [
+        1800,
+        360
+      ],
+      "mode": "RGBA",
+      "bytes": 208934,
+      "maxBytes": 650000,
+      "jpegQuality": null,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "sha256": "66E21D99AAE8571241FC28F227DA4DF6C3A4D0E877B78DBD6844F9590CDA6A19"
+    },
+    {
+      "filename": "template_22_asset_petal_sweep_v1.png",
+      "source": "doc/assets/template_22_qa/originals/template_22_asset_petal_sweep_v1_original.png",
+      "size": [
+        1200,
+        900
+      ],
+      "mode": "RGBA",
+      "bytes": 206043,
+      "maxBytes": 700000,
+      "jpegQuality": null,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "sha256": "E65AA38800E79C02F99BC17D2EF48465D3437D1AD965DBB0AA2BDB20BF9282A9"
+    }
+  ],
+  "selectorCover": {
+    "filename": "template_22.jpg",
+    "size": [
+      960,
+      540
+    ],
+    "mode": "RGB",
+    "bytes": 108907,
+    "maxBytes": 150000,
+    "jpegQuality": 92,
+    "sha256": "E4E0CC9FF92206E0FB7C86CAB3A78DE67963F2A31D58E57BDE9EA7E08B1D7D9F"
+  }
+}

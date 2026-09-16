@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_22",
+  "status": "PASS",
+  "requestedGenerator": "GPT2 图片模板",
+  "generationTool": "built-in image generation",
+  "actualModel": "工具未暴露",
+  "retryLimit": 3,
+  "rounds": {
+    "template_22_asset_bg_cover_v1.jpg": 1,
+    "template_22_asset_bg_content_v1.jpg": 1,
+    "template_22_asset_bg_section_v1.jpg": 1,
+    "template_22_asset_bg_end_v1.jpg": 1,
+    "template_22_asset_scroll_roll_v1.png": 1,
+    "template_22_asset_ink_title_frame_v1.png": 1,
+    "template_22_asset_ink_circle_frame_v1.png": 1,
+    "template_22_asset_ink_brush_band_v1.png": 1,
+    "template_22_asset_petal_sweep_v1.png": 1
+  },
+  "sourceDirectory": "doc/assets/template_22_qa/originals",
+  "publishedDirectory": "backend/main_api/template",
+  "assetSummary": "asset-summary.json",
+  "promptRecord": "image-prompts.md",
+  "notes": [
+    "所有视觉均为新生成素材，未使用参考PPT媒体字节。",
+    "水墨圆框保持900x900与RGBA，实际702611字节，因此将上限从候选估算600KB调整为750KB。",
+    "相似度和差异度仅记录为非阻塞备注，所有素材在第一轮达到用途和技术规格后停止。"
+  ]
+}

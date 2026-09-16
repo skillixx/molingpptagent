@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_22",
+  "status": "PASS",
+  "referenceSlideCount": 26,
+  "productionScope": {
+    "mvpSlideCount": 12,
+    "productionSlideCount": 18,
+    "excludedSpecialtyLayouts": ["three-image-gallery", "process", "timeline", "venn", "roadmap"]
+  },
+  "mappings": [
+    {"sourceSlides": [1], "target": "cover-scroll-blossom", "action": "rebuild"},
+    {"sourceSlides": [2], "target": "contents-2/3/4/5/6/10", "action": "derive-capacity-variants"},
+    {"sourceSlides": [3, 9, 15, 21], "target": "transition-petal-number/transition-ink-circle", "action": "consolidate"},
+    {"sourceSlides": [4], "target": "content-text-4", "action": "rebuild"},
+    {"sourceSlides": [5, 10, 12, 23], "target": "content-text-2/content-text-3", "action": "consolidate"},
+    {"sourceSlides": [8, 13, 25], "target": "content-statement-1/content-text-3", "action": "consolidate"},
+    {"sourceSlides": [11, 14], "target": "content-metrics-4", "action": "rebuild-editable"},
+    {"sourceSlides": [16], "target": "probe-image-circle-1", "action": "probe-only"},
+    {"sourceSlides": [20], "target": "content-image-1", "action": "replace-source-figure-with-content-slot"},
+    {"sourceSlides": [26], "target": "end-blossom-mountain/end-action", "action": "rebuild"},
+    {"sourceSlides": [6, 7, 17, 18, 19, 22, 24], "target": "future-specialty-layouts", "action": "exclude-from-v1"}
+  ]
+}

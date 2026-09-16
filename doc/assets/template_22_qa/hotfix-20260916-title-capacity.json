@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_22",
+  "candidateId": "template_22-hotfix-be9af16783e9",
+  "candidateSha256": "be9af16783e9b7f9916583c45addcf5739f871491b7be1d9a4e6d8a843028182",
+  "date": "2026-09-16",
+  "status": "PASS",
+  "scope": "post-confirmation-title-capacity-hotfix",
+  "fixedErrors": [
+    "ITEM_TITLE_TOO_LONG",
+    "TEMPLATE_DATA_INVALID"
+  ],
+  "changes": {
+    "fourItemTitleLineHeight": 1.05,
+    "transitionCircleTitleLeft": 380,
+    "transitionCircleTitleWidth": 540,
+    "minimumFontSizeUnchanged": true,
+    "contentTruncationAdded": false
+  },
+  "tests": {
+    "boundaryRegressions": 2,
+    "templateAndAffectedPublicRegressions": "98 passed",
+    "deterministicProductionBuild": true
+  },
+  "replay": {
+    "fourItemTitleFailure": {
+      "semanticSlides": 14,
+      "renderedSlides": 19,
+      "status": "PASS"
+    },
+    "transitionTitleFailure": {
+      "semanticSlides": 3,
+      "renderedSlides": 4,
+      "status": "PASS"
+    }
+  },
+  "visualInspection": {
+    "fourItemTenWideTitles": "PASS",
+    "transitionCircleElevenWideTitle": "PASS",
+    "blockingOverlap": false,
+    "evidence": [
+      "hotfix-renders/four-item-ten-wide-title.png",
+      "hotfix-renders/transition-eleven-wide-title.png"
+    ]
+  },
+  "productionJsonSha256": "8d4670e8c0ed4816def6575e728f5585007d27e7d3db739f8adaf15e5211db82",
+  "runtime": {
+    "servedJsonMatchesDisk": true,
+    "workerRestartedAfterFinalTemplateWrite": true,
+    "workerTemplateCacheReset": true,
+    "publicReadyz": 200,
+    "enterWithoutTicket": 400,
+    "authMeWithoutSession": 401,
+    "activeTasksAfterRestart": 0
+  },
+  "gitDelivery": "NOT_AUTHORIZED"
+}

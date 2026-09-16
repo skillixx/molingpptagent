@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_22",
+  "status": "PASS",
+  "branch": "codex/template-22-peach-ink",
+  "head": "5987db70c827573769fea9eb130ff6d08ae8260e",
+  "repositoryRoot": "D:\\moling\\TrainPPTAgent",
+  "listeners": [
+    {
+      "address": "127.0.0.1",
+      "port": 5778,
+      "pid": 29096,
+      "executable": "C:\\nvm4w\\nodejs\\node.exe",
+      "commandLine": "\"node\"   \"D:\\moling\\TrainPPTAgent\\frontend\\node_modules\\.bin\\\\..\\vite\\bin\\vite.js\" --host 127.0.0.1 --port 5778"
+    },
+    {
+      "address": "127.0.0.1",
+      "port": 6800,
+      "pid": 28784,
+      "executable": "C:\\Program Files\\Python312\\python.exe",
+      "commandLine": "\"C:\\Program Files\\Python312\\python.exe\" D:\\moling\\TrainPPTAgent\\backend\\main_api\\main.py"
+    }
+  ],
+  "endpoints": {
+    "health": {
+      "url": "http://127.0.0.1:6800/healthz",
+      "status": 200,
+      "bytes": 129,
+      "body": "{\"status\":\"ok\",\"component\":\"main_api\",\"release_channel\":\"production\",\"release_commit\":\"5987db70c827573769fea9eb130ff6d08ae8260e\"}"
+    },
+    "ready": {
+      "url": "http://127.0.0.1:6800/readyz",
+      "status": 200,
+      "bytes": 227,
+      "body": "{\"status\":\"ready\",\"component\":\"main_api\",\"release_channel\":\"production\",\"release_commit\":\"5987db70c827573769fea9eb130ff6d08ae8260e\",\"dependencies\":{\"outline\":\"up\",\"content\":\"up\",\"personaldb\":\"up\",\"database\":\"up\",\"moling\":\"up\"}}"
+    },
+    "templatesApi": {
+      "url": "http://127.0.0.1:6800/templates",
+      "status": 200,
+      "bytes": 1791,
+      "body": "{\"data\":[{\"name\":\"红色通用\",\"id\":\"template_1\",\"cover\":\"/api/data/template_1.jpg\"},{\"name\":\"蓝色通用\",\"id\":\"template_2\",\"cover\":\"/api/data/template_2.jpg\"},{\"name\":\"紫色通用\",\"id\":\"template_3\",\"cover\":\"/api/data/template_3.jpg\"},{\"name\":\"莫兰迪配色\",\"id\":\"template_4\",\"cover\":\"/api/data/template_4.jpg\"},{\"name\":\"毕业答辩\",\"id\":\"template_5\",\"cover\":\"/api/data/template_5.jpg\"},{\"name\":\"红金年会颁奖\",\"id\":\"template_7\",\"cover\":\"/api/data/template_7.jpg\"},{\"name\":\"科技蓝扁平\",\"id\":\"template_8\",\"cover\":\"/api/data/template_8.jpg\"},{\"name\":\"AI 霓虹科技\",\"id\":\"template_9\",\"cover\":\"/api/data/template_9.jpg\"},{\"name\":\"清新校园教育\",\"id\":\"template_10\",\"cover\":\"/api/data/template_10.jpg\"},{\"name\":\"蓝金流体创意\",\"id\":\"template_11\",\"cover\":\"/api/data/template_11.jpg\"},{\"name\":\"东方水墨雅韵\",\"id\":\"template_12\",\"cover\":\"/api/data/template_12.jpg\"},{\"name\":\"灰蓝企业宣传\",\"id\":\"template_13\",\"cover\":\"/api/data/template_13.jpg\"},{\"name\":\"深蓝青棱商务信息图\",\"id\":\"template_14\",\"cover\":\"/api/data/template_14.jpg\"},{\"name\":\"星脉科技产品发布\",\"id\":\"template_15\",\"cover\":\"/api/data/template_15.jpg\"},{\"name\":\"深空星环科技\",\"id\":\"template_16\",\"cover\":\"/api/data/template_16.jpg\"},{\"name\":\"蓝菱商务汇报\",\"id\":\"template_17\",\"cover\":\"/api/data/template_17.jpg\"},{\"name\":\"飞檐雅韵\",\"id\":\"template_18\",\"cover\":\"/api/data/template_18.jpg\"},{\"name\":\"水彩绿植轻商务\",\"id\":\"template_19\",\"cover\":\"/api/data/template_19.jpg\"},{\"name\":\"抽象油彩商务汇报\",\"id\":\"template_20\",\"cover\":\"/api/data/template_20.jpg\"},{\"name\":\"蓝米流纹商务汇报\",\"id\":\"template_21\",\"cover\":\"/api/data/template_21.jpg?v=2ce4dc01e4fa\"},{\"name\":\"桃夭墨韵商务汇报\",\"id\":\"template_22\",\"cover\":\"/api/data/template_22.jpg\"}]}"
+    },
+    "templatesProxy": {
+      "url": "http://127.0.0.1:5778/api/templates",
+      "status": 200,
+      "bytes": 1791,
+      "body": "{\"data\":[{\"name\":\"红色通用\",\"id\":\"template_1\",\"cover\":\"/api/data/template_1.jpg\"},{\"name\":\"蓝色通用\",\"id\":\"template_2\",\"cover\":\"/api/data/template_2.jpg\"},{\"name\":\"紫色通用\",\"id\":\"template_3\",\"cover\":\"/api/data/template_3.jpg\"},{\"name\":\"莫兰迪配色\",\"id\":\"template_4\",\"cover\":\"/api/data/template_4.jpg\"},{\"name\":\"毕业答辩\",\"id\":\"template_5\",\"cover\":\"/api/data/template_5.jpg\"},{\"name\":\"红金年会颁奖\",\"id\":\"template_7\",\"cover\":\"/api/data/template_7.jpg\"},{\"name\":\"科技蓝扁平\",\"id\":\"template_8\",\"cover\":\"/api/data/template_8.jpg\"},{\"name\":\"AI 霓虹科技\",\"id\":\"template_9\",\"cover\":\"/api/data/template_9.jpg\"},{\"name\":\"清新校园教育\",\"id\":\"template_10\",\"cover\":\"/api/data/template_10.jpg\"},{\"name\":\"蓝金流体创意\",\"id\":\"template_11\",\"cover\":\"/api/data/template_11.jpg\"},{\"name\":\"东方水墨雅韵\",\"id\":\"template_12\",\"cover\":\"/api/data/template_12.jpg\"},{\"name\":\"灰蓝企业宣传\",\"id\":\"template_13\",\"cover\":\"/api/data/template_13.jpg\"},{\"name\":\"深蓝青棱商务信息图\",\"id\":\"template_14\",\"cover\":\"/api/data/template_14.jpg\"},{\"name\":\"星脉科技产品发布\",\"id\":\"template_15\",\"cover\":\"/api/data/template_15.jpg\"},{\"name\":\"深空星环科技\",\"id\":\"template_16\",\"cover\":\"/api/data/template_16.jpg\"},{\"name\":\"蓝菱商务汇报\",\"id\":\"template_17\",\"cover\":\"/api/data/template_17.jpg\"},{\"name\":\"飞檐雅韵\",\"id\":\"template_18\",\"cover\":\"/api/data/template_18.jpg\"},{\"name\":\"水彩绿植轻商务\",\"id\":\"template_19\",\"cover\":\"/api/data/template_19.jpg\"},{\"name\":\"抽象油彩商务汇报\",\"id\":\"template_20\",\"cover\":\"/api/data/template_20.jpg\"},{\"name\":\"蓝米流纹商务汇报\",\"id\":\"template_21\",\"cover\":\"/api/data/template_21.jpg?v=2ce4dc01e4fa\"},{\"name\":\"桃夭墨韵商务汇报\",\"id\":\"template_22\",\"cover\":\"/api/data/template_22.jpg\"}]}"
+    },
+    "coverApiStatus": 200,
+    "coverProxyStatus": 200,
+    "jsonApiStatus": 200,
+    "jsonProxyStatus": 200
+  },
+  "templateRegistration": {
+    "count": 1,
+    "name": "桃夭墨韵商务汇报",
+    "cover": "/api/data/template_22.jpg"
+  },
+  "candidateCoverSha256": "e4e0cc9ff92206e0fb7c86cab3a78de67963f2a31d58e57bde9ea7e08b1d7d9f",
+  "servedCoverSha256": "e4e0cc9ff92206e0fb7c86cab3a78de67963f2a31d58e57bde9ea7e08b1d7d9f",
+  "proxiedCoverSha256": "e4e0cc9ff92206e0fb7c86cab3a78de67963f2a31d58e57bde9ea7e08b1d7d9f",
+  "candidateJsonSha256": "8d4670e8c0ed4816def6575e728f5585007d27e7d3db739f8adaf15e5211db82",
+  "servedJsonSha256": "8d4670e8c0ed4816def6575e728f5585007d27e7d3db739f8adaf15e5211db82",
+  "proxiedJsonSha256": "8d4670e8c0ed4816def6575e728f5585007d27e7d3db739f8adaf15e5211db82",
+  "verifiedApiEntry": "D:\\moling\\TrainPPTAgent\\backend\\main_api\\main.py",
+  "controlledLaunchWorkingDirectory": "D:\\moling\\TrainPPTAgent",
+  "selectorUrl": "http://127.0.0.1:5778/app",
+  "editorUrl": "http://127.0.0.1:5778/editor",
+  "browserSelection": true,
+  "browserEditorEntry": true,
+  "runtimeProfile": "development-validation-no-persistence-no-sso-no-billing",
+  "knownLimitations": [
+    "readyz 返回 503，因为本次候选验收未启动 Outline、Content 和 PersonalDB；真实 Handler/Worker 已通过固定上游和隔离 SQLite 单独验证。"
+  ]
+}

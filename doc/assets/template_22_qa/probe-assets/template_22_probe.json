@@ -1,0 +1,356 @@
+{
+  "id": "template_22",
+  "title": "桃夭墨韵商务汇报",
+  "width": 1000,
+  "height": 562.5,
+  "supportsLosslessContentPagination": true,
+  "paginationGrowthPolicy": {
+    "factor": 1.75,
+    "slack": 5
+  },
+  "theme": {
+    "themeColors": [
+      "#7B334D",
+      "#DF8FA5",
+      "#211B1C"
+    ],
+    "fontColor": "#4A3F40",
+    "fontName": "微软雅黑",
+    "backgroundColor": "#F7EFE8"
+  },
+  "metadata": {
+    "aspectRatio": "16:9",
+    "buildStage": "probe",
+    "sourceReference": "中国风格(5).pptx",
+    "sourceReferenceSha256": "17CBC63F0D9D77B9D8B78018047FEB10D0D284C150A5E761208CF4E0B683460E",
+    "rightsPolicy": "reference-media-excluded",
+    "probeSlideIds": [
+      "cover-scroll-blossom",
+      "content-image-1",
+      "probe-image-circle-1"
+    ],
+    "probeAssetFiles": [
+      "template_22_probe_bg.jpg",
+      "template_22_probe_decoration.png",
+      "template_22_probe_content.jpg"
+    ],
+    "imageSlotMarker": "imageType=content",
+    "decorativeImageMarker": "imageType=decoration"
+  },
+  "slides": [
+    {
+      "id": "cover-scroll-blossom",
+      "type": "cover",
+      "elements": [
+        {
+          "type": "image",
+          "id": "t22-cover-scroll-blossom-background-001",
+          "src": "/api/data/template_22_probe_bg.jpg",
+          "left": 0,
+          "top": 0,
+          "width": 1000,
+          "height": 562.5,
+          "rotate": 0,
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t22-cover-scroll-blossom-corner-decoration-001",
+          "src": "/api/data/template_22_probe_decoration.png",
+          "left": 760,
+          "top": 0,
+          "width": 240,
+          "height": 240,
+          "rotate": 0,
+          "fixedRatio": true,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t22-cover-scroll-blossom-title-003",
+          "left": 110,
+          "top": 150,
+          "width": 640,
+          "height": 130,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#7B334D",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #7B334D;font-size: 54px;font-family: 微软雅黑;line-height: 1.1;font-weight: 700;\">桃夭墨韵商务汇报</span></p>",
+          "textType": "title",
+          "minimumFontSize": 48,
+          "textLineHeight": 1.1
+        },
+        {
+          "type": "text",
+          "id": "t22-cover-scroll-blossom-content-003",
+          "left": 115,
+          "top": 305,
+          "width": 520,
+          "height": 62,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#4A3F40",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #4A3F40;font-size: 20px;font-family: 微软雅黑;line-height: 1.35;font-weight: 400;\">以清晰结构承载东方意境</span></p>",
+          "textType": "content",
+          "minimumFontSize": 16,
+          "textLineHeight": 1.35
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#F7EFE8"
+      },
+      "titleFitLimits": {
+        "maxWide": 20,
+        "maxAscii": 42,
+        "singleWide": 10,
+        "singleAscii": 22
+      }
+    },
+    {
+      "id": "content-image-1",
+      "type": "content",
+      "elements": [
+        {
+          "type": "image",
+          "id": "t22-content-image-1-background-001",
+          "src": "/api/data/template_22_probe_bg.jpg",
+          "left": 0,
+          "top": 0,
+          "width": 1000,
+          "height": 562.5,
+          "rotate": 0,
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t22-content-image-1-corner-decoration-001",
+          "src": "/api/data/template_22_probe_decoration.png",
+          "left": 760,
+          "top": 0,
+          "width": 240,
+          "height": 240,
+          "rotate": 0,
+          "fixedRatio": true,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t22-content-image-1-title-003",
+          "left": 72,
+          "top": 52,
+          "width": 700,
+          "height": 74,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#7B334D",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #7B334D;font-size: 34px;font-family: 微软雅黑;line-height: 1.15;font-weight: 700;\">图文内容验证</span></p>",
+          "textType": "title",
+          "minimumFontSize": 30,
+          "textLineHeight": 1.15
+        },
+        {
+          "type": "image",
+          "id": "t22-content-image-1-content-image-004",
+          "src": "/api/data/template_22_probe_content.jpg",
+          "left": 80,
+          "top": 155,
+          "width": 390,
+          "height": 285,
+          "rotate": 0,
+          "fixedRatio": false,
+          "imageType": "content",
+          "groupId": "content-image-1-image-item-1",
+          "clip": {
+            "shape": "rect",
+            "range": [
+              [
+                0,
+                0
+              ],
+              [
+                100,
+                100
+              ]
+            ]
+          },
+          "strictImageCount": true,
+          "requireSourceDimensions": true
+        },
+        {
+          "type": "text",
+          "id": "t22-content-image-1-item-title-004",
+          "left": 525,
+          "top": 195,
+          "width": 380,
+          "height": 64,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 24px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">完整标题</span></p>",
+          "textType": "itemTitle",
+          "minimumFontSize": 20,
+          "groupId": "content-image-1-image-item-1",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "text",
+          "id": "t22-content-image-1-item-004",
+          "left": 525,
+          "top": 285,
+          "width": 380,
+          "height": 130,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#4A3F40",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #4A3F40;font-size: 18px;font-family: 微软雅黑;line-height: 1.35;font-weight: 400;\">正文编辑和换图后必须完整保留。</span></p>",
+          "textType": "item",
+          "minimumFontSize": 16,
+          "groupId": "content-image-1-image-item-1",
+          "textLineHeight": 1.35
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#F7EFE8"
+      },
+      "variantKey": "left",
+      "allowedItemCounts": [
+        1
+      ],
+      "titleFitLimits": {
+        "maxWide": 22,
+        "maxAscii": 44,
+        "singleWide": 18,
+        "singleAscii": 34
+      }
+    },
+    {
+      "id": "probe-image-circle-1",
+      "type": "content",
+      "elements": [
+        {
+          "type": "image",
+          "id": "t22-probe-image-circle-1-background-001",
+          "src": "/api/data/template_22_probe_bg.jpg",
+          "left": 0,
+          "top": 0,
+          "width": 1000,
+          "height": 562.5,
+          "rotate": 0,
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t22-probe-image-circle-1-corner-decoration-001",
+          "src": "/api/data/template_22_probe_decoration.png",
+          "left": 760,
+          "top": 0,
+          "width": 240,
+          "height": 240,
+          "rotate": 0,
+          "fixedRatio": true,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t22-probe-image-circle-1-title-003",
+          "left": 72,
+          "top": 52,
+          "width": 700,
+          "height": 74,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#7B334D",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #7B334D;font-size: 34px;font-family: 微软雅黑;line-height: 1.15;font-weight: 700;\">圆形图片验证</span></p>",
+          "textType": "title",
+          "minimumFontSize": 30,
+          "textLineHeight": 1.15
+        },
+        {
+          "type": "image",
+          "id": "t22-probe-image-circle-1-content-image-004",
+          "src": "/api/data/template_22_probe_content.jpg",
+          "left": 80,
+          "top": 155,
+          "width": 285,
+          "height": 285,
+          "rotate": 0,
+          "fixedRatio": false,
+          "imageType": "content",
+          "groupId": "probe-image-circle-1-circle-item-1",
+          "clip": {
+            "shape": "ellipse",
+            "range": [
+              [
+                0,
+                0
+              ],
+              [
+                100,
+                100
+              ]
+            ]
+          },
+          "strictImageCount": true,
+          "requireSourceDimensions": true
+        },
+        {
+          "type": "text",
+          "id": "t22-probe-image-circle-1-item-title-004",
+          "left": 435,
+          "top": 195,
+          "width": 430,
+          "height": 64,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 24px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">完整标题</span></p>",
+          "textType": "itemTitle",
+          "minimumFontSize": 20,
+          "groupId": "probe-image-circle-1-circle-item-1",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "text",
+          "id": "t22-probe-image-circle-1-item-004",
+          "left": 435,
+          "top": 285,
+          "width": 430,
+          "height": 130,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#4A3F40",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #4A3F40;font-size: 18px;font-family: 微软雅黑;line-height: 1.35;font-weight: 400;\">正文编辑和换图后必须完整保留。</span></p>",
+          "textType": "item",
+          "minimumFontSize": 16,
+          "groupId": "probe-image-circle-1-circle-item-1",
+          "textLineHeight": 1.35
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#F7EFE8"
+      },
+      "variantKey": "circle",
+      "allowedItemCounts": [
+        1
+      ],
+      "titleFitLimits": {
+        "maxWide": 22,
+        "maxAscii": 44,
+        "singleWide": 18,
+        "singleAscii": 34
+      }
+    }
+  ]
+}

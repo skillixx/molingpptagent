@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_22",
+  "candidateId": "template_22-hotfix-be9af16783e9",
+  "candidateSha256": "be9af16783e9b7f9916583c45addcf5739f871491b7be1d9a4e6d8a843028182",
+  "digestAlgorithm": "sha256(path_utf8 + NUL + file_sha256_ascii + LF, in files order)",
+  "digestValidation": {
+    "pythonImplementation": "PASS",
+    "powershellImplementation": "PASS"
+  },
+  "status": "CONFIRMED_FOR_MERGE",
+  "previousConfirmedCandidate": "template_22-g8-db790bc36b0a",
+  "branch": "codex/template-22-peach-ink",
+  "baseCommit": "5987db70c827573769fea9eb130ff6d08ae8260e",
+  "files": [
+    {"path": "backend/main_api/main.py", "bytes": 33973, "sha256": "0cab1eba3670b4b216b896c46ba6a9c8215ddfe01e6e3c23a7de4c83fbcbe7f0"},
+    {"path": "backend/main_api/template/template_22.json", "bytes": 125772, "sha256": "8d4670e8c0ed4816def6575e728f5585007d27e7d3db739f8adaf15e5211db82"},
+    {"path": "backend/main_api/template/template_22.jpg", "bytes": 108907, "sha256": "e4e0cc9ff92206e0fb7c86cab3a78de67963f2a31d58e57bde9ea7e08b1d7d9f"},
+    {"path": "backend/main_api/template/template_22_asset_bg_cover_v1.jpg", "bytes": 371032, "sha256": "4f6f0e9ee1010874f9073f10034834aaaaaa6288ee9812a8d0301bd765ca0bcd"},
+    {"path": "backend/main_api/template/template_22_asset_bg_content_v1.jpg", "bytes": 262738, "sha256": "eaf4d4ad5ca6d0914a629ca6b1f124d57faf667d47b5a422b88a70dc75136943"},
+    {"path": "backend/main_api/template/template_22_asset_bg_section_v1.jpg", "bytes": 301184, "sha256": "51b1e92a188e094619681818f61273511b7ca179bc49258e83b2343b4abc0d40"},
+    {"path": "backend/main_api/template/template_22_asset_bg_end_v1.jpg", "bytes": 279797, "sha256": "ac5d807717cea1c0181af0b0cfb2795f70a360cdefc385e57e1139215e52d3a9"},
+    {"path": "backend/main_api/template/template_22_asset_scroll_roll_v1.png", "bytes": 805729, "sha256": "b51aa89b6d464932b32b617feef9f3e8650bc7a4b7f06ba21c3b39c06b457c1f"},
+    {"path": "backend/main_api/template/template_22_asset_ink_title_frame_v1.png", "bytes": 159496, "sha256": "94f24c90252e8b6d3419be84bb256bb9e24e8e0e82db4ed0e6ed087fb8d6e143"},
+    {"path": "backend/main_api/template/template_22_asset_ink_circle_frame_v1.png", "bytes": 702611, "sha256": "dd391a016a30ed1c3693eee6cc231ef88fa7e0bc8af6c7e2f6b505b743bb25a2"},
+    {"path": "backend/main_api/template/template_22_asset_ink_brush_band_v1.png", "bytes": 208934, "sha256": "66e21d99aae8571241fc28f227da4df6c3a4d0e877b78dbd6844f9590cda6a19"},
+    {"path": "backend/main_api/template/template_22_asset_petal_sweep_v1.png", "bytes": 206043, "sha256": "e65aa38800e79c02f99bc17d2ef48465d3437d1ad965dbb0aa2bdb20bf9282a9"},
+    {"path": "backend/main_api/tests/test_template_22.py", "bytes": 19806, "sha256": "5645b650f1df2da9e5127aca7e2f1f27f8dcfc30ab9c9539571de08f11e79768"},
+    {"path": "doc/template_specs/template_22.yaml", "bytes": 4176, "sha256": "a5341d8bacb38374ec01d6cc8990924d2358ef90b0c7d7b6d599b774cb501f28"},
+    {"path": "utils/build_peach_ink_template.mjs", "bytes": 23031, "sha256": "affc49c8878a71a10ead51713c4daa14896d3b9981d7be08662b0f65216e0b9d"},
+    {"path": "utils/process_peach_ink_template_assets.py", "bytes": 6997, "sha256": "ef0df93906c4840cdf3e0a24db5dd8e247b19976f3381bf35ce417f30752aacf"}
+  ],
+  "verification": {
+    "templateAndAffectedRegressions": "98 passed",
+    "deterministicProductionBuild": true,
+    "productionJsonSha256": "8d4670e8c0ed4816def6575e728f5585007d27e7d3db739f8adaf15e5211db82",
+    "servedJsonMatchesDisk": true,
+    "cachedFailureReplay": "PASS",
+    "affectedVisualInspection": "PASS",
+    "workerRestartedAfterFinalTemplateWrite": true,
+    "publicReadyz": 200,
+    "activeTasks": 0
+  },
+  "reusedUnchangedEvidence": [
+    "browser-g8-summary.json",
+    "probe-browser-summary.json",
+    "runtime/runtime-process-summary.json",
+    "visual-inspection.json"
+  ],
+  "newEvidence": [
+    "hotfix-20260916-title-capacity.json",
+    "hotfix-visual-inspection.json"
+  ],
+  "humanConfirmation": "CONFIRMED_2026-09-16",
+  "gitCommitCreated": true,
+  "localCommits": [
+    "3276e73",
+    "efc14ee",
+    "6ea9362"
+  ],
+  "gitDelivery": "MAIN_MERGE_AUTHORIZED"
+}

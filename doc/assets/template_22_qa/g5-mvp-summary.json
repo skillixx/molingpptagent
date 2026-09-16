@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_22",
+  "stage": "G5",
+  "status": "PASS",
+  "slideCount": 12,
+  "deterministicBuild": true,
+  "builder": "utils/build_peach_ink_template.mjs",
+  "mvpJson": "samples/template_22_mvp.json",
+  "checks": {
+    "stableSlideIds": true,
+    "uniqueElementIds": true,
+    "groupIdsShareWithinItem": true,
+    "referencedAssetsReadable": true,
+    "base64Images": false,
+    "localAbsolutePaths": false
+  }
+}

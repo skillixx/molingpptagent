@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_22",
+  "candidateId": "template_22-g8-db790bc36b0a",
+  "candidateSha256": "db790bc36b0a6cb7c1fce2dcbf7224ca6b63a81f29d12b9ae0387dacb022b3d5",
+  "status": "PASS",
+  "commands": [
+    {
+      "name": "template-and-affected-regressions",
+      "command": [
+        "D:\\moling\\TrainPPTAgent\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pytest",
+        "backend/main_api/tests/test_template_22.py",
+        "backend/main_api/tests/test_template_renderer.py",
+        "backend/main_api/tests/test_template_assets.py",
+        "-q"
+      ],
+      "cwd": "D:\\moling\\TrainPPTAgent",
+      "exitCode": 0,
+      "output": "........................................................................ [ 75%]\n........................                                                 [100%]\n96 passed in 3.88s"
+    },
+    {
+      "name": "frontend-type-check",
+      "command": [
+        "C:\\nvm4w\\nodejs\\npm.cmd",
+        "run",
+        "type-check"
+      ],
+      "cwd": "D:\\moling\\TrainPPTAgent\\frontend",
+      "exitCode": 0,
+      "output": "> pptist@2.0.0 type-check\n> vue-tsc --build --force"
+    },
+    {
+      "name": "production-build-first",
+      "command": [
+        "%USERPROFILE%\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "utils/build_peach_ink_template.mjs",
+        "--stage",
+        "production",
+        "%USERPROFILE%\\AppData\\Local\\Temp\\template-22-final-1ms55odw\\production-first.json"
+      ],
+      "cwd": "D:\\moling\\TrainPPTAgent",
+      "exitCode": 0,
+      "output": "%USERPROFILE%\\AppData\\Local\\Temp\\template-22-final-1ms55odw\\production-first.json"
+    },
+    {
+      "name": "production-build-second",
+      "command": [
+        "%USERPROFILE%\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "utils/build_peach_ink_template.mjs",
+        "--stage",
+        "production",
+        "%USERPROFILE%\\AppData\\Local\\Temp\\template-22-final-1ms55odw\\production-second.json"
+      ],
+      "cwd": "D:\\moling\\TrainPPTAgent",
+      "exitCode": 0,
+      "output": "%USERPROFILE%\\AppData\\Local\\Temp\\template-22-final-1ms55odw\\production-second.json"
+    },
+    {
+      "name": "real-handler-worker",
+      "command": [
+        "D:\\moling\\TrainPPTAgent\\.venv\\Scripts\\python.exe",
+        "utils/run_template_22_handler_qa.py"
+      ],
+      "cwd": "D:\\moling\\TrainPPTAgent",
+      "exitCode": 0,
+      "output": "{\"schemaVersion\": 1, \"templateId\": \"template_22\", \"status\": \"PASS\", \"executionMode\": \"fixed-upstream-real-handler-renderer-and-persistent-worker\", \"databaseWrites\": \"isolated-temporary-sqlite-only\", \"productionQueueWrites\": false, \"billingOperations\": false, \"realTextModelCalls\": false, \"realImageModelCalls\": false, \"taskId\": \"template-22-worker-qa\", \"presentationId\": \"template-22-worker-presentation\", \"workerClaimed\": true, \"workerStatus\": \"succeeded\", \"workerStage\": \"completed\", \"workerAttempt\": 1, \"slideCount\": 7, \"slideTypes\": {\"cover\": 1, \"contents\": 1, \"transition\": 1, \"content\": 3, \"end\": 1}, \"reachedStableLayoutIds\": [\"content-image-1\", \"content-metrics-4\", \"content-text-4\", \"contents-4\", \"cover-blossom-minimal\", \"end-action\", \"transition-petal-number\"], \"fixedDecorationCount\": 11, \"contentImageCount\": 1, \"previewUpdates\": 7}"
+    },
+    {
+      "name": "probe-document",
+      "command": [
+        "D:\\moling\\TrainPPTAgent\\.venv\\Scripts\\python.exe",
+        "utils/build_template_22_qa_document.py",
+        "--stage",
+        "probe",
+        "--output",
+        "doc/assets/template_22_qa/probe-assets/probe-document.json"
+      ],
+      "cwd": "D:\\moling\\TrainPPTAgent",
+      "exitCode": 0,
+      "output": "D:\\moling\\TrainPPTAgent\\doc\\assets\\template_22_qa\\probe-assets\\probe-document.json"
+    },
+    {
+      "name": "probe-browser",
+      "command": [
+        "%USERPROFILE%\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "utils/verify_template_22_probe_browser.cjs",
+        "doc/assets/template_22_qa/probe-assets"
+      ],
+      "cwd": "D:\\moling\\TrainPPTAgent",
+      "exitCode": 0,
+      "output": "PASS: probe JSON edit, image replacement, decoration protection, JSON reload, PPTX export and reimport"
+    },
+    {
+      "name": "g8-browser",
+      "command": [
+        "%USERPROFILE%\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "utils/verify_template_22_browser.cjs",
+        "doc/assets/template_22_qa",
+        "backend/main_api/template"
+      ],
+      "cwd": "D:\\moling\\TrainPPTAgent",
+      "exitCode": 0,
+      "output": "{\"schemaVersion\":1,\"templateId\":\"template_22\",\"status\":\"PASS\",\"frontendUrl\":\"http://127.0.0.1:5778/editor\",\"sourceSlideCount\":7,\"viewports\":[{\"name\":\"desktop\",\"width\":1920,\"height\":1080},{\"name\":\"laptop\",\"width\":1366,\"height\":768},{\"name\":\"tablet\",\"width\":768,\"height\":1024},{\"name\":\"mobile\",\"width\":390,\"height\":844}],\"representativeSlideIndexes\":[3,5],\"screenshots\":[\"viewports/desktop-3.png\",\"viewports/desktop-5.png\",\"viewports/laptop-3.png\",\"viewports/laptop-5.png\",\"viewports/tablet-3.png\",\"viewports/tablet-5.png\",\"viewports/mobile-3.png\",\"viewports/mobile-5.png\"],\"titleEdited\":true,\"bodyEdited\":true,\"contentImageReplaced\":true,\"decorationProtected\":true,\"jsonSaveReload\":true,\"pptxExportReimport\":true,\"roundtripSlideCount\":7,\"expectedTextCount\":49,\"expectedTextBySlide\":[[\"桃夭墨韵编辑验收\",\"固定语义数据与真实处理链验收\"],[\"目录\",\"01\",\"项目背景\",\"02\",\"关键成果\",\"03\",\"实施路径\",\"04\",\"后续计划\"],[\"01\",\"关键成果\",\"以桃花、水墨与留白承载清晰的业务表达。\"],[\"本阶段四项成果\",\"01\",\"统一视觉规范\",\"正文编辑验收：内容保持可修改并可保存。\",\"02\",\"完善模板库存\",\"覆盖封面、目录、章节、正文、图文、指标和结束页。\",\"03\",\"保留编辑能力\",\"标题正文可编辑，业务图片可替换，固定装饰保持锁定。\",\"04\",\"建立验收证据\",\"验证 JSON 保存重载及 PPTX 导出重新导入。\"],[\"核心指标\",\"18\",\"页面库存\",\"生产页面\",\"5\",\"页面类型\",\"语义类型\",\"1\",\"业务图片\",\"可替换槽位\",\"4\",\"验收视口\",\"设备尺寸\"],[\"模板应用示例\",\"统一图片协议\",\"横图、竖图和方图使用统一裁切协议，并与固定装饰严格分离。\"],[\"感谢观看\",\"桃夭墨韵商务汇报模板技术验收完成\",\"01\",\"确认候选版本\",\"02\",\"进入后续交付\"]],\"missingTexts\":[],\"orderedTextChecks\":{\"1\":[\"项目背景\",\"关键成果\",\"实施路径\",\"后续计划\"],\"3\":[\"统一视觉规范\",\"完善模板库存\",\"保留编辑能力\",\"建立验收证据\"],\"4\":[\"页面库存\",\"页面类型\",\"业务图片\",\"验收视口\"],\"6\":[\"确认候选版本\",\"进入后续交付\"]},\"contentImageBeforeExport\":1,\"imageCountBeforeExportBySlide\":[2,2,2,1,2,2,1],\"contentImageGeometryBeforeExport\":{\"left\":75,\"top\":165,\"width\":420,\"height\":315},\"roundtripImageCountBySlide\":[2,2,2,1,2,2,1],\"contentImageGeometryRetained\":true,\"unexpectedApiWrites\":[],\"pptxFile\":\"template_22_g8_roundtrip.pptx\"}"
+    },
+    {
+      "name": "runtime-browser",
+      "command": [
+        "%USERPROFILE%\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "utils/verify_template_22_runtime.cjs",
+        "doc/assets/template_22_qa/runtime"
+      ],
+      "cwd": "D:\\moling\\TrainPPTAgent",
+      "exitCode": 0,
+      "output": "{\"schemaVersion\":1,\"templateId\":\"template_22\",\"status\":\"PASS\",\"branchFrontendUrl\":\"http://127.0.0.1:5778\",\"branchApiUrl\":\"http://127.0.0.1:6800\",\"selectorUrl\":\"http://127.0.0.1:5778/app\",\"editorUrl\":\"http://127.0.0.1:5778/editor\",\"registrationCount\":1,\"registeredName\":\"桃夭墨韵商务汇报\",\"cover\":{\"src\":\"/api/data/template_22.jpg\",\"complete\":true,\"naturalWidth\":960,\"naturalHeight\":540},\"templateSelected\":true,\"editorEntryVisible\":true,\"screenshots\":[\"runtime-template-selected.png\",\"runtime-editor-entry.png\"],\"failedResponses\":[]}"
+    },
+    {
+      "name": "runtime-process-and-assets",
+      "command": [
+        "%USERPROFILE%\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.EXE",
+        "-NoProfile",
+        "-File",
+        "utils/verify_template_22_runtime.ps1"
+      ],
+      "cwd": "D:\\moling\\TrainPPTAgent",
+      "exitCode": 0,
+      "output": "{\n  \"schemaVersion\": 1,\n  \"templateId\": \"template_22\",\n  \"status\": \"PASS\",\n  \"branch\": \"codex/template-22-peach-ink\",\n  \"head\": \"5987db70c827573769fea9eb130ff6d08ae8260e\",\n  \"repositoryRoot\": \"D:\\\\moling\\\\TrainPPTAgent\",\n  \"listeners\": [\n    {\n      \"address\": \"127.0.0.1\",\n      \"port\": 5778,\n      \"pid\": 21748,\n      \"executable\": \"C:\\\\nvm4w\\\\nodejs\\\\node.exe\",\n      \"commandLine\": \"\\\"node\\\"   \\\"D:\\\\moling\\\\TrainPPTAgent\\\\frontend\\\\node_modules\\\\.bin\\\\\\\\..\\\\vite\\\\bin\\\\vite.js\\\" --host 127.0.0.1 --port 5778\"\n    },\n    {\n      \"address\": \"127.0.0.1\",\n      \"port\": 6800,\n      \"pid\": 26460,\n      \"executable\": \"C:\\\\Program Files\\\\Python312\\\\python.exe\",\n      \"commandLine\": \"\\\"C:\\\\Program Files\\\\Python312\\\\python.exe\\\" D:\\\\moling\\\\TrainPPTAgent\\\\backend\\\\main_api\\\\main.py\"\n    }\n  ],\n  \"endpoints\": {\n    \"health\": {\n      \"url\": \"http://127.0.0.1:6800/healthz\",\n      \"status\": 200,\n      \"bytes\": 70,\n      \"body\": \"{\\\"status\\\":\\\"ok\\\",\\\"component\\\":\\\"main_api\\\",\\\"release_channel\\\":\\\"development\\\"}\"\n    },\n    \"ready\": {\n      \"url\": \"http://127.0.0.1:6800/readyz\",\n      \"status\": 503,\n      \"bytes\": 148,\n      \"body\": \"{\\\"status\\\":\\\"not_ready\\\",\\\"component\\\":\\\"main_api\\\",\\\"release_channel\\\":\\\"development\\\",\\\"dependencies\\\":{\\\"outline\\\":\\\"down\\\",\\\"content\\\":\\\"down\\\",\\\"personaldb\\\":\\\"down\\\"}}\"\n    },\n    \"templatesApi\": {\n      \"url\": \"http://127.0.0.1:6800/templates\",\n      \"status\": 200,\n      \"bytes\": 1791,\n      \"body\": \"{\\\"data\\\":[{\\\"name\\\":\\\"红色通用\\\",\\\"id\\\":\\\"template_1\\\",\\\"cover\\\":\\\"/api/data/template_1.jpg\\\"},{\\\"name\\\":\\\"蓝色通用\\\",\\\"id\\\":\\\"template_2\\\",\\\"cover\\\":\\\"/api/data/template_2.jpg\\\"},{\\\"name\\\":\\\"紫色通用\\\",\\\"id\\\":\\\"template_3\\\",\\\"cover\\\":\\\"/api/data/template_3.jpg\\\"},{\\\"name\\\":\\\"莫兰迪配色\\\",\\\"id\\\":\\\"template_4\\\",\\\"cover\\\":\\\"/api/data/template_4.jpg\\\"},{\\\"name\\\":\\\"毕业答辩\\\",\\\"id\\\":\\\"template_5\\\",\\\"cover\\\":\\\"/api/data/template_5.jpg\\\"},{\\\"name\\\":\\\"红金年会颁奖\\\",\\\"id\\\":\\\"template_7\\\",\\\"cover\\\":\\\"/api/data/template_7.jpg\\\"},{\\\"name\\\":\\\"科技蓝扁平\\\",\\\"id\\\":\\\"template_8\\\",\\\"cover\\\":\\\"/api/data/template_8.jpg\\\"},{\\\"name\\\":\\\"AI 霓虹科技\\\",\\\"id\\\":\\\"template_9\\\",\\\"cover\\\":\\\"/api/data/template_9.jpg\\\"},{\\\"name\\\":\\\"清新校园教育\\\",\\\"id\\\":\\\"template_10\\\",\\\"cover\\\":\\\"/api/data/template_10.jpg\\\"},{\\\"name\\\":\\\"蓝金流体创意\\\",\\\"id\\\":\\\"template_11\\\",\\\"cover\\\":\\\"/api/data/template_11.jpg\\\"},{\\\"name\\\":\\\"东方水墨雅韵\\\",\\\"id\\\":\\\"template_12\\\",\\\"cover\\\":\\\"/api/data/template_12.jpg\\\"},{\\\"name\\\":\\\"灰蓝企业宣传\\\",\\\"id\\\":\\\"template_13\\\",\\\"cover\\\":\\\"/api/data/template_13.jpg\\\"},{\\\"name\\\":\\\"深蓝青棱商务信息图\\\",\\\"id\\\":\\\"template_14\\\",\\\"cover\\\":\\\"/api/data/template_14.jpg\\\"},{\\\"name\\\":\\\"星脉科技产品发布\\\",\\\"id\\\":\\\"template_15\\\",\\\"cover\\\":\\\"/api/data/template_15.jpg\\\"},{\\\"name\\\":\\\"深空星环科技\\\",\\\"id\\\":\\\"template_16\\\",\\\"cover\\\":\\\"/api/data/template_16.jpg\\\"},{\\\"name\\\":\\\"蓝菱商务汇报\\\",\\\"id\\\":\\\"template_17\\\",\\\"cover\\\":\\\"/api/data/template_17.jpg\\\"},{\\\"name\\\":\\\"飞檐雅韵\\\",\\\"id\\\":\\\"template_18\\\",\\\"cover\\\":\\\"/api/data/template_18.jpg\\\"},{\\\"name\\\":\\\"水彩绿植轻商务\\\",\\\"id\\\":\\\"template_19\\\",\\\"cover\\\":\\\"/api/data/template_19.jpg\\\"},{\\\"name\\\":\\\"抽象油彩商务汇报\\\",\\\"id\\\":\\\"template_20\\\",\\\"cover\\\":\\\"/api/data/template_20.jpg\\\"},{\\\"name\\\":\\\"蓝米流纹商务汇报\\\",\\\"id\\\":\\\"template_21\\\",\\\"cover\\\":\\\"/api/data/template_21.jpg?v=2ce4dc01e4fa\\\"},{\\\"name\\\":\\\"桃夭墨韵商务汇报\\\",\\\"id\\\":\\\"template_22\\\",\\\"cover\\\":\\\"/api/data/template_22.jpg\\\"}]}\"\n    },\n    \"templatesProxy\": {\n      \"url\": \"http://127.0.0.1:5778/api/templates\",\n      \"status\": 200,\n      \"bytes\": 1791,\n      \"body\": \"{\\\"data\\\":[{\\\"name\\\":\\\"红色通用\\\",\\\"id\\\":\\\"template_1\\\",\\\"cover\\\":\\\"/api/data/template_1.jpg\\\"},{\\\"name\\\":\\\"蓝色通用\\\",\\\"id\\\":\\\"template_2\\\",\\\"cover\\\":\\\"/api/data/template_2.jpg\\\"},{\\\"name\\\":\\\"紫色通用\\\",\\\"id\\\":\\\"template_3\\\",\\\"cover\\\":\\\"/api/data/template_3.jpg\\\"},{\\\"name\\\":\\\"莫兰迪配色\\\",\\\"id\\\":\\\"template_4\\\",\\\"cover\\\":\\\"/api/data/template_4.jpg\\\"},{\\\"name\\\":\\\"毕业答辩\\\",\\\"id\\\":\\\"template_5\\\",\\\"cover\\\":\\\"/api/data/template_5.jpg\\\"},{\\\"name\\\":\\\"红金年会颁奖\\\",\\\"id\\\":\\\"template_7\\\",\\\"cover\\\":\\\"/api/data/template_7.jpg\\\"},{\\\"name\\\":\\\"科技蓝扁平\\\",\\\"id\\\":\\\"template_8\\\",\\\"cover\\\":\\\"/api/data/template_8.jpg\\\"},{\\\"name\\\":\\\"AI 霓虹科技\\\",\\\"id\\\":\\\"template_9\\\",\\\"cover\\\":\\\"/api/data/template_9.jpg\\\"},{\\\"name\\\":\\\"清新校园教育\\\",\\\"id\\\":\\\"template_10\\\",\\\"cover\\\":\\\"/api/data/template_10.jpg\\\"},{\\\"name\\\":\\\"蓝金流体创意\\\",\\\"id\\\":\\\"template_11\\\",\\\"cover\\\":\\\"/api/data/template_11.jpg\\\"},{\\\"name\\\":\\\"东方水墨雅韵\\\",\\\"id\\\":\\\"template_12\\\",\\\"cover\\\":\\\"/api/data/template_12.jpg\\\"},{\\\"name\\\":\\\"灰蓝企业宣传\\\",\\\"id\\\":\\\"template_13\\\",\\\"cover\\\":\\\"/api/data/template_13.jpg\\\"},{\\\"name\\\":\\\"深蓝青棱商务信息图\\\",\\\"id\\\":\\\"template_14\\\",\\\"cover\\\":\\\"/api/data/template_14.jpg\\\"},{\\\"name\\\":\\\"星脉科技产品发布\\\",\\\"id\\\":\\\"template_15\\\",\\\"cover\\\":\\\"/api/data/template_15.jpg\\\"},{\\\"name\\\":\\\"深空星环科技\\\",\\\"id\\\":\\\"template_16\\\",\\\"cover\\\":\\\"/api/data/template_16.jpg\\\"},{\\\"name\\\":\\\"蓝菱商务汇报\\\",\\\"id\\\":\\\"template_17\\\",\\\"cover\\\":\\\"/api/data/template_17.jpg\\\"},{\\\"name\\\":\\\"飞檐雅韵\\\",\\\"id\\\":\\\"template_18\\\",\\\"cover\\\":\\\"/api/data/template_18.jpg\\\"},{\\\"name\\\":\\\"水彩绿植轻商务\\\",\\\"id\\\":\\\"template_19\\\",\\\"cover\\\":\\\"/api/data/template_19.jpg\\\"},{\\\"name\\\":\\\"抽象油彩商务汇报\\\",\\\"id\\\":\\\"template_20\\\",\\\"cover\\\":\\\"/api/data/template_20.jpg\\\"},{\\\"name\\\":\\\"蓝米流纹商务汇报\\\",\\\"id\\\":\\\"template_21\\\",\\\"cover\\\":\\\"/api/data/template_21.jpg?v=2ce4dc01e4fa\\\"},{\\\"name\\\":\\\"桃夭墨韵商务汇报\\\",\\\"id\\\":\\\"template_22\\\",\\\"cover\\\":\\\"/api/data/template_22.jpg\\\"}]}\"\n    },\n    \"coverApiStatus\": 200,\n    \"coverProxyStatus\": 200,\n    \"jsonApiStatus\": 200,\n    \"jsonProxyStatus\": 200\n  },\n  \"templateRegistration\": {\n    \"count\": 1,\n    \"name\": \"桃夭墨韵商务汇报\",\n    \"cover\": \"/api/data/template_22.jpg\"\n  },\n  \"candidateCoverSha256\": \"e4e0cc9ff92206e0fb7c86cab3a78de67963f2a31d58e57bde9ea7e08b1d7d9f\",\n  \"servedCoverSha256\": \"e4e0cc9ff92206e0fb7c86cab3a78de67963f2a31d58e57bde9ea7e08b1d7d9f\",\n  \"proxiedCoverSha256\": \"e4e0cc9ff92206e0fb7c86cab3a78de67963f2a31d58e57bde9ea7e08b1d7d9f\",\n  \"candidateJsonSha256\": \"0b8d65a8d2a672a6264dc26147aacb90418a8ba2794d637b45f60c303b115004\",\n  \"servedJsonSha256\": \"0b8d65a8d2a672a6264dc26147aacb90418a8ba2794d637b45f60c303b115004\",\n  \"proxiedJsonSha256\": \"0b8d65a8d2a672a6264dc26147aacb90418a8ba2794d637b45f60c303b115004\",\n  \"verifiedApiEntry\": \"D:\\\\moling\\\\TrainPPTAgent\\\\backend\\\\main_api\\\\main.py\",\n  \"controlledLaunchWorkingDirectory\": \"D:\\\\moling\\\\TrainPPTAgent\",\n  \"selectorUrl\": \"http://127.0.0.1:5778/app\",\n  \"editorUrl\": \"http://127.0.0.1:5778/editor\",\n  \"browserSelection\": true,\n  \"browserEditorEntry\": true,\n  \"runtimeProfile\": \"development-validation-no-persistence-no-sso-no-billing\",\n  \"knownLimitations\": [\n    \"readyz 返回 503，因为本次候选验收未启动 Outline、Content 和 PersonalDB；真实 Handler/Worker 已通过固定上游和隔离 SQLite 单独验证。\"\n  ]\n}"
+    }
+  ]
+}

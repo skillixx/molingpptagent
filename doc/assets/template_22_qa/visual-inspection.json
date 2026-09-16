@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_22",
+  "candidateSha256": "db790bc36b0a6cb7c1fce2dcbf7224ca6b63a81f29d12b9ae0387dacb022b3d5",
+  "status": "PASS",
+  "reviewedEvidence": [
+    "production-renders/production-contact-sheet.png",
+    "viewports/desktop-3.png",
+    "viewports/desktop-5.png",
+    "viewports/laptop-3.png",
+    "viewports/laptop-5.png",
+    "viewports/tablet-3.png",
+    "viewports/tablet-5.png",
+    "viewports/mobile-3.png",
+    "viewports/mobile-5.png",
+    "editor-renders/image-after-replacement.png",
+    "runtime/runtime-template-selected.png",
+    "runtime/runtime-editor-entry.png"
+  ],
+  "checks": {
+    "textReadable": true,
+    "noBlockingOverflow": true,
+    "noDecorationOcclusion": true,
+    "contentImageVisible": true,
+    "selectorCoverVisible": true,
+    "desktopUsable": true,
+    "laptopUsable": true,
+    "tabletUsable": true,
+    "mobileUsable": true
+  },
+  "notes": [
+    "主观相似度和差异度未作为通过门槛。",
+    "groupId 修复仅改变语义分组标识，不改变页面视觉位置。"
+  ]
+}
