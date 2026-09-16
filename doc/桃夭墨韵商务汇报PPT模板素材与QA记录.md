@@ -5,19 +5,21 @@
 | 项目 | 结果 |
 |---|---|
 | 模板 ID | `template_22` |
-| 候选标识 | `template_22-g8-db790bc36b0a` |
-| 候选 SHA-256 | `db790bc36b0a6cb7c1fce2dcbf7224ca6b63a81f29d12b9ae0387dacb022b3d5` |
+| 当前候选标识 | `template_22-hotfix-2a52d1badb06` |
+| 当前候选 SHA-256 | `2a52d1badb06003c89863ed03b4c8df5d88eb42c43a1a60bd51235ba025342fb` |
+| 上次已确认候选 | `template_22-g8-db790bc36b0a` |
 | 开发分支 | `codex/template-22-peach-ink` |
 | 工作目录 | `D:\moling\TrainPPTAgent` |
 | 基础提交 | `5987db70c827573769fea9eb130ff6d08ae8260e` |
 | 页面库存 | 18 页 |
 | 生产素材 | 9 项 |
 | G0～G8 | 全部 `PASS` |
-| Goal 状态 | `DONE` |
-| 人工确认 | `CONFIRMED`（2026-09-16） |
-| Git 交付 | 未授权、未执行 |
+| 原 Goal 状态 | `DONE` |
+| 当前热修复状态 | `HOTFIX_READY_FOR_CONFIRMATION` |
+| 热修复人工确认 | `PENDING_AFTER_HOTFIX` |
+| Git 交付 | 已授权提交并推送开发分支；未授权 PR、合并或部署 |
 
-候选哈希按生产注册、正式 JSON、封面、九项素材、专项测试、机器规格和确定性构建器的文件路径与 SHA-256 联合计算。逐文件记录见 `doc/assets/template_22_qa/frozen-candidate-manifest.json`。
+候选哈希按生产注册、正式 JSON、封面、九项素材、专项测试、机器规格和确定性构建器的文件路径与 SHA-256 联合计算。当前逐文件记录见 `doc/assets/template_22_qa/hotfix-candidate-manifest.json`；`frozen-candidate-manifest.json` 保留为原已确认候选的历史记录。
 
 ## 2. 素材记录
 

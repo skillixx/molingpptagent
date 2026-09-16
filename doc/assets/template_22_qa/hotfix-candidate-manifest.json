@@ -3,6 +3,11 @@
   "templateId": "template_22",
   "candidateId": "template_22-hotfix-2a52d1badb06",
   "candidateSha256": "2a52d1badb06003c89863ed03b4c8df5d88eb42c43a1a60bd51235ba025342fb",
+  "digestAlgorithm": "sha256(path_utf8 + NUL + file_sha256_ascii + LF, in files order)",
+  "digestValidation": {
+    "pythonImplementation": "PASS",
+    "powershellImplementation": "PASS"
+  },
   "status": "READY_FOR_CONFIRMATION",
   "previousConfirmedCandidate": "template_22-g8-db790bc36b0a",
   "branch": "codex/template-22-peach-ink",

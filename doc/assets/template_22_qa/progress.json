@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "templateId": "template_22",
-  "candidateId": "template_22-g8-db790bc36b0a",
+  "candidateId": "template_22-hotfix-2a52d1badb06",
   "branch": "codex/template-22-peach-ink",
   "currentStage": "G8",
   "stages": {
@@ -15,7 +15,8 @@
     "G7": "PASS",
     "G8": "PASS"
   },
-  "goalStatus": "DONE",
-  "humanConfirmation": "CONFIRMED_2026-09-16",
-  "gitDelivery": "NOT_AUTHORIZED"
+  "goalStatus": "HOTFIX_READY_FOR_CONFIRMATION",
+  "previousConfirmedCandidate": "template_22-g8-db790bc36b0a",
+  "humanConfirmation": "PENDING_AFTER_HOTFIX",
+  "gitDelivery": "AUTHORIZED_PUSH_ONLY"
 }
