@@ -18,5 +18,5 @@
   "goalStatus": "HOTFIX_READY_FOR_CONFIRMATION",
   "previousConfirmedCandidate": "template_22-g8-db790bc36b0a",
   "humanConfirmation": "PENDING_AFTER_HOTFIX",
-  "gitDelivery": "AUTHORIZED_PUSH_ONLY"
+  "gitDelivery": "PUSHED_BRANCH"
 }

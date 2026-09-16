@@ -17,7 +17,7 @@
 | 原 Goal 状态 | `DONE` |
 | 当前热修复状态 | `HOTFIX_READY_FOR_CONFIRMATION` |
 | 热修复人工确认 | `PENDING_AFTER_HOTFIX` |
-| Git 交付 | 已授权提交并推送开发分支；未授权 PR、合并或部署 |
+| Git 交付 | 已提交并推送 `codex/template-22-peach-ink`；未授权 PR、合并或部署 |
 
 候选哈希按生产注册、正式 JSON、封面、九项素材、专项测试、机器规格和确定性构建器的文件路径与 SHA-256 联合计算。当前逐文件记录见 `doc/assets/template_22_qa/hotfix-candidate-manifest.json`；`frozen-candidate-manifest.json` 保留为原已确认候选的历史记录。
 
@@ -115,6 +115,6 @@
 
 新增两个公开渲染入口回归测试，先确认旧模板分别抛出 `ITEM_TITLE_TOO_LONG` 和 `TEMPLATE_DATA_INVALID`，再验证修复后完整标题、四项密度、正文顺序和章节版式均保留。模板与受影响公共回归共 98 项通过；两次生产构建和正式 JSON SHA-256 一致。原失败输入缓存重放分别通过 14→19 页和 3→4 页渲染，受影响页面视觉检查无重叠。
 
-生产模板 JSON SHA-256 为 `8d4670e8c0ed4816def6575e728f5585007d27e7d3db739f8adaf15e5211db82`，公网资源与本地文件哈希一致，`/api/readyz` 为 200。详细证据见 `doc/assets/template_22_qa/hotfix-20260916-title-capacity.json`。已生成本地提交；尚未推送、创建 PR、合并或部署。
+生产模板 JSON SHA-256 为 `8d4670e8c0ed4816def6575e728f5585007d27e7d3db739f8adaf15e5211db82`，公网资源与本地文件哈希一致，`/api/readyz` 为 200。详细证据见 `doc/assets/template_22_qa/hotfix-20260916-title-capacity.json`。已提交并推送开发分支；尚未创建 PR、合并或部署。
 
 第一次热修复后 Worker 仍持有进程内模板缓存，日志继续显示旧的 `width=470`，因此修复文件虽然已经能从公网读取，新任务仍使用旧版式失败。最终已在任务队列为空时重新启动 Worker，清空 `PresentationTemplateRenderer._cache`；新 Worker 的创建时间晚于最终模板写入时间。

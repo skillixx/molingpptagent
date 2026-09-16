@@ -58,5 +58,5 @@
     "efc14ee",
     "6ea9362"
   ],
-  "gitDelivery": "AUTHORIZED_PUSH_ONLY"
+  "gitDelivery": "PUSHED_BRANCH"
 }
