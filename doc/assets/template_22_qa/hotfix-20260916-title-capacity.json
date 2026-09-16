@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "templateId": "template_22",
-  "candidateId": "template_22-hotfix-2a52d1badb06",
-  "candidateSha256": "2a52d1badb06003c89863ed03b4c8df5d88eb42c43a1a60bd51235ba025342fb",
+  "candidateId": "template_22-hotfix-be9af16783e9",
+  "candidateSha256": "be9af16783e9b7f9916583c45addcf5739f871491b7be1d9a4e6d8a843028182",
   "date": "2026-09-16",
   "status": "PASS",
   "scope": "post-confirmation-title-capacity-hotfix",

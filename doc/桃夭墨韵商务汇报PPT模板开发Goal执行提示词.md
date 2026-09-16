@@ -14,7 +14,7 @@
 Goal 工具状态：COMPLETE
 原 Goal 状态：DONE
 当前热修复状态：HOTFIX_READY_FOR_CONFIRMATION
-当前候选：template_22-hotfix-2a52d1badb06
+当前候选：template_22-hotfix-be9af16783e9
 ```
 
 当前 Goal 已依据主执行提示词启动，后续从第一个未完成任务继续。

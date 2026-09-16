@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "templateId": "template_22",
-  "candidateId": "template_22-hotfix-2a52d1badb06",
-  "candidateSha256": "2a52d1badb06003c89863ed03b4c8df5d88eb42c43a1a60bd51235ba025342fb",
+  "candidateId": "template_22-hotfix-be9af16783e9",
+  "candidateSha256": "be9af16783e9b7f9916583c45addcf5739f871491b7be1d9a4e6d8a843028182",
   "digestAlgorithm": "sha256(path_utf8 + NUL + file_sha256_ascii + LF, in files order)",
   "digestValidation": {
     "pythonImplementation": "PASS",
@@ -26,7 +26,7 @@
     {"path": "backend/main_api/template/template_22_asset_ink_brush_band_v1.png", "bytes": 208934, "sha256": "66e21d99aae8571241fc28f227da4df6c3a4d0e877b78dbd6844f9590cda6a19"},
     {"path": "backend/main_api/template/template_22_asset_petal_sweep_v1.png", "bytes": 206043, "sha256": "e65aa38800e79c02f99bc17d2ef48465d3437d1ad965dbb0aa2bdb20bf9282a9"},
     {"path": "backend/main_api/tests/test_template_22.py", "bytes": 19806, "sha256": "5645b650f1df2da9e5127aca7e2f1f27f8dcfc30ab9c9539571de08f11e79768"},
-    {"path": "doc/template_specs/template_22.yaml", "bytes": 4178, "sha256": "200b5d806871f95b6daa3f7cc5f138d5bdfa56f01475709097e3d5694fb7fb8f"},
+    {"path": "doc/template_specs/template_22.yaml", "bytes": 4176, "sha256": "a5341d8bacb38374ec01d6cc8990924d2358ef90b0c7d7b6d599b774cb501f28"},
     {"path": "utils/build_peach_ink_template.mjs", "bytes": 23031, "sha256": "affc49c8878a71a10ead51713c4daa14896d3b9981d7be08662b0f65216e0b9d"},
     {"path": "utils/process_peach_ink_template_assets.py", "bytes": 6997, "sha256": "ef0df93906c4840cdf3e0a24db5dd8e247b19976f3381bf35ce417f30752aacf"}
   ],
@@ -52,6 +52,11 @@
     "hotfix-visual-inspection.json"
   ],
   "humanConfirmation": "PENDING_AFTER_HOTFIX",
-  "gitCommitCreated": false,
+  "gitCommitCreated": true,
+  "localCommits": [
+    "3276e73",
+    "efc14ee",
+    "6ea9362"
+  ],
   "gitDelivery": "AUTHORIZED_PUSH_ONLY"
 }

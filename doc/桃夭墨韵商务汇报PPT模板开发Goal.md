@@ -15,7 +15,7 @@
 | Goal 工具状态 | `COMPLETE` |
 | 原 Goal 状态 | `DONE`，已确认候选 `template_22-g8-db790bc36b0a` |
 | 当前热修复状态 | `HOTFIX_READY_FOR_CONFIRMATION` |
-| 当前交付候选 | `template_22-hotfix-2a52d1badb06` |
+| 当前交付候选 | `template_22-hotfix-be9af16783e9` |
 | 技术验收目标 | G8 完成后进入 `READY_FOR_CONFIRMATION` |
 | Goal 完成条件 | G8 自动检测无问题后进入 `READY_FOR_CONFIRMATION`，用户明确确认当前候选版本开发完成 |
 | 编写日期 | 2026-09-15 |
@@ -311,5 +311,5 @@ flowchart TD
 - 18 页模板、发布素材、构建器、专项测试、封面和注册项已完成。
 - 前端和主 API 开发验收服务已在本分支启动；模板选择、编辑器、资源接口和 PPTX 往返均已验证。
 - 用户已于 2026-09-16 明确确认原候选 `template_22-g8-db790bc36b0a`，原 Goal 已闭合。
-- 标题容量热修复形成新候选 `template_22-hotfix-2a52d1badb06`，候选 SHA-256 为 `2a52d1badb06003c89863ed03b4c8df5d88eb42c43a1a60bd51235ba025342fb`；已获准推送开发分支，但尚待新的候选确认和合并授权。
-- Git 提交、推送、PR、合并和部署未执行。
+- 标题容量热修复形成新候选 `template_22-hotfix-be9af16783e9`，候选 SHA-256 为 `be9af16783e9b7f9916583c45addcf5739f871491b7be1d9a4e6d8a843028182`；已获准推送开发分支，但尚待新的候选确认和合并授权。
+- 已生成本地提交；尚未推送、创建 PR、合并或部署。

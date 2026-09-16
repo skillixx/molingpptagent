@@ -8,7 +8,7 @@ template:
     height: 562.5
     aspect_ratio: "16:9"
   reference:
-    path: "C:\\Users\\sk20\\Desktop\\中国风格(5).pptx"
+    path: "%USERPROFILE%\\Desktop\\中国风格(5).pptx"
     sha256: 17CBC63F0D9D77B9D8B78018047FEB10D0D284C150A5E761208CF4E0B683460E
     slide_count: 26
     media_policy: exclude_all_and_rebuild
