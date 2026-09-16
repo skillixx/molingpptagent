@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_22",
+  "templateName": "桃夭墨韵商务汇报",
+  "status": "PASS",
+  "branch": "codex/template-22-peach-ink",
+  "baseCommit": "5987db70c827573769fea9eb130ff6d08ae8260e",
+  "workspace": "D:\\moling\\TrainPPTAgent",
+  "reference": {
+    "path": "%USERPROFILE%\\Desktop\\中国风格(5).pptx",
+    "sha256": "17CBC63F0D9D77B9D8B78018047FEB10D0D284C150A5E761208CF4E0B683460E",
+    "bytes": 9074007,
+    "slideCount": 26
+  },
+  "templateIdScan": {
+    "claimedIds": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21],
+    "template22ClaimsBeforeDevelopment": 0,
+    "selectedId": "template_22"
+  },
+  "toolchain": {
+    "templateRenderer": "backend/main_api/workers/template_renderer.py",
+    "assetResolver": "backend/main_api/template_assets.py",
+    "previewRenderer": "utils/render_pptist_template_preview.mjs",
+    "backendTests": "backend/main_api/tests"
+  },
+  "workspacePolicy": {
+    "preserveExistingChanges": true,
+    "cleanUntrackedFiles": false,
+    "developmentBranchRequired": true
+  }
+}

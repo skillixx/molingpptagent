@@ -576,6 +576,8 @@ async def get_templates():
         # 蓝米流纹商务汇报模板使用蓝米流体纹理，业务图片与固定装饰严格隔离。
         # 缩略图已切换蓝白配色，使用文件哈希前缀作为版本，避免浏览器复用旧图。
         { "name": "蓝米流纹商务汇报", "id": "template_21", "cover": "/api/data/template_21.jpg?v=2ce4dc01e4fa" },
+        # 桃夭墨韵商务汇报模板使用原创桃花、宣纸和水墨素材，业务图片与固定装饰严格隔离。
+        { "name": "桃夭墨韵商务汇报", "id": "template_22", "cover": "/api/data/template_22.jpg" },
     ]
 
     return {"data": templates}

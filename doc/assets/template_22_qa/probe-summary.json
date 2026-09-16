@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_22",
+  "stage": "G2",
+  "status": "PASS",
+  "probeSlideIds": [
+    "cover-scroll-blossom",
+    "content-image-1",
+    "probe-image-circle-1"
+  ],
+  "checks": {
+    "deterministicBuilder": true,
+    "rendererUnitTests": "7 passed",
+    "jsonEdit": true,
+    "contentImageReplacement": true,
+    "landscapePortraitSquareReplacement": true,
+    "centerCropRanges": true,
+    "decorationProtection": true,
+    "circleCrop": true,
+    "jsonSaveReload": true,
+    "pptxExportReimport": true,
+    "unexpectedApiWrites": false
+  },
+  "evidence": {
+    "probeJson": "probe-assets/template_22_probe.json",
+    "renderedDocument": "probe-assets/probe-document.json",
+    "staticContactSheet": "probe-renders/probe-contact-sheet.png",
+    "editorCircleScreenshot": "probe-assets/editor-circle-after-replacement.png",
+    "editorSavedJson": "probe-assets/editor-saved.json",
+    "editorRoundtripPptx": "probe-assets/template_22_probe_editor_roundtrip.pptx",
+    "browserSummary": "probe-assets/probe-browser-summary.json"
+  }
+}

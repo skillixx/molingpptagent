@@ -1,0 +1,132 @@
+schema_version: 1
+template:
+  id: template_22
+  title: 桃夭墨韵商务汇报
+  build_stage: development
+  canvas:
+    width: 1000
+    height: 562.5
+    aspect_ratio: "16:9"
+  reference:
+    path: "C:\\Users\\sk20\\Desktop\\中国风格(5).pptx"
+    sha256: 17CBC63F0D9D77B9D8B78018047FEB10D0D284C150A5E761208CF4E0B683460E
+    slide_count: 26
+    media_policy: exclude_all_and_rebuild
+    font_policy: replace_unavailable_and_special_fonts
+    animation_policy: exclude_all
+    audio_policy: exclude_all
+  typography:
+    chinese: 微软雅黑
+    latin: Arial
+    minimum_font_size: 12
+    cover_title: 54
+    transition_title: 46
+    page_title: 34
+    item_title:
+      one_two_item: 22
+      three_four_item: 18
+    body: 16
+    vertical_text_max_chars: 8
+  colors:
+    ivory: "#F7EFE8"
+    pale_rose: "#E7C8D0"
+    blossom: "#DF8FA5"
+    dusty_rose: "#B56F7D"
+    burgundy: "#7B334D"
+    ink: "#211B1C"
+    body: "#4A3F40"
+    leaf: "#68725D"
+  safe_area:
+    horizontal: [56, 944]
+    vertical: [40, 520]
+    title_height: [70, 96]
+    decoration_text_gap: 20
+    content_image_decoration_gap: 18
+    low_interference_area_ratio: 0.72
+  probe_slide_ids:
+    - cover-scroll-blossom
+    - content-image-1
+    - probe-image-circle-1
+  mvp_slide_ids:
+    - cover-scroll-blossom
+    - contents-2
+    - contents-3
+    - contents-4
+    - contents-5
+    - contents-6
+    - contents-10
+    - transition-petal-number
+    - content-text-2
+    - content-text-3
+    - content-text-4
+    - end-blossom-mountain
+  production_slide_ids:
+    - cover-scroll-blossom
+    - cover-blossom-minimal
+    - contents-2
+    - contents-3
+    - contents-4
+    - contents-5
+    - contents-6
+    - contents-10
+    - transition-petal-number
+    - transition-ink-circle
+    - content-statement-1
+    - content-image-1
+    - content-text-2
+    - content-text-3
+    - content-text-4
+    - content-metrics-4
+    - end-blossom-mountain
+    - end-action
+  expected_counts:
+    cover: 2
+    contents: 6
+    transition: 2
+    content: 6
+    end: 2
+  semantic_slots:
+    text: [title, content, item, itemTitle, itemNumber, partNumber]
+    image:
+      content: replaceable
+      decoration: fixed
+  selection:
+    contents:
+      exact_counts: [2, 3, 4, 5, 6, 10]
+      overflow: balanced_lossless_pagination
+    content:
+      text_item_counts: [1, 2, 3, 4]
+      image_counts: [0, 1]
+      metrics_count: 4
+      metrics_layout_kind: metrics
+      overflow: lossless_pagination
+      minimum_font_size: 12
+      pagination_growth_policy:
+        factor: 1.75
+        slack: 5
+    end:
+      action_item_counts: [0, 1, 2, 3]
+assets:
+  generation_tool: GPT2_image_template
+  actual_model: 工具未暴露
+  retry_limit: 3
+  files:
+    - {id: bg-cover, filename: template_22_asset_bg_cover_v1.jpg, format: JPEG, size: [1920, 1080], mode: RGB, max_bytes: 450000}
+    - {id: bg-content, filename: template_22_asset_bg_content_v1.jpg, format: JPEG, size: [1920, 1080], mode: RGB, max_bytes: 280000}
+    - {id: bg-section, filename: template_22_asset_bg_section_v1.jpg, format: JPEG, size: [1920, 1080], mode: RGB, max_bytes: 350000}
+    - {id: bg-end, filename: template_22_asset_bg_end_v1.jpg, format: JPEG, size: [1920, 1080], mode: RGB, max_bytes: 420000}
+    - {id: scroll-roll, filename: template_22_asset_scroll_roll_v1.png, format: PNG, size: [1500, 900], mode: RGBA, max_bytes: 900000}
+    - {id: ink-title-frame, filename: template_22_asset_ink_title_frame_v1.png, format: PNG, size: [1200, 320], mode: RGBA, max_bytes: 450000}
+    - {id: ink-circle-frame, filename: template_22_asset_ink_circle_frame_v1.png, format: PNG, size: [900, 900], mode: RGBA, max_bytes: 750000}
+    - {id: ink-brush-band, filename: template_22_asset_ink_brush_band_v1.png, format: PNG, size: [1800, 360], mode: RGBA, max_bytes: 650000}
+    - {id: petal-sweep, filename: template_22_asset_petal_sweep_v1.png, format: PNG, size: [1200, 900], mode: RGBA, max_bytes: 700000}
+qa:
+  viewports:
+    - [1920, 1080]
+    - [1366, 768]
+    - [768, 1024]
+    - [390, 844]
+  visual_comparison: non_blocking_note
+  export_roundtrip_required: true
+  final_status_after_automatic_pass: READY_FOR_CONFIRMATION
+  human_confirmation_required: true

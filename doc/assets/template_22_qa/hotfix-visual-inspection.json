@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_22",
+  "candidateId": "template_22-hotfix-2a52d1badb06",
+  "candidateSha256": "2a52d1badb06003c89863ed03b4c8df5d88eb42c43a1a60bd51235ba025342fb",
+  "status": "PASS",
+  "reviewedEvidence": [
+    "hotfix-renders/four-item-ten-wide-title.png",
+    "hotfix-renders/transition-eleven-wide-title.png"
+  ],
+  "checks": {
+    "fourItemTitlesComplete": true,
+    "fourItemDensityRetained": true,
+    "transitionTitleComplete": true,
+    "minimumFontSizesRetained": true,
+    "blockingOverlap": false,
+    "bodyOcclusion": false
+  },
+  "notes": [
+    "本次只重验标题行高和墨圈章节标题框影响的两个页面。",
+    "未变化的页面继续复用原 G8 四视口、编辑换图和 PPTX 往返证据。"
+  ]
+}

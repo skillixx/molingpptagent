@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_22",
+  "candidateId": "template_22-g8-db790bc36b0a",
+  "stage": "G8",
+  "status": "PASS",
+  "goalStatus": "DONE",
+  "branch": "codex/template-22-peach-ink",
+  "repositoryRoot": "D:\\moling\\TrainPPTAgent",
+  "baseCommit": "5987db70c827573769fea9eb130ff6d08ae8260e",
+  "candidateSha256": "db790bc36b0a6cb7c1fce2dcbf7224ca6b63a81f29d12b9ae0387dacb022b3d5",
+  "productionSlideCount": 18,
+  "productionAssetCount": 9,
+  "checks": {
+    "templateAndAffectedRegressionTests": "96 passed (current candidate)",
+    "frontendTypeCheck": "PASS (current candidate)",
+    "deterministicProductionBuild": true,
+    "realHandlerAndPersistentWorker": "PASS",
+    "fixedMockUpstream": true,
+    "isolatedTemporarySqlite": true,
+    "realTextModelCalls": false,
+    "realImageModelCalls": false,
+    "fivePageTypesGenerated": true,
+    "fourViewports": "PASS",
+    "visualInspection": "PASS",
+    "titleAndBodyEditing": "PASS",
+    "contentImageReplacement": "PASS",
+    "decorationProtection": "PASS",
+    "jsonSaveReload": "PASS",
+    "pptxExportReimport": "PASS",
+    "expectedTextRetained": true,
+    "expectedTextCount": 49,
+    "projectOrderRetained": true,
+    "contentImageRetainedAfterPptxReimport": true,
+    "landscapePortraitSquareReplacement": "PASS",
+    "centerCropRanges": "PASS",
+    "invalidInputErrorCodes": "PASS",
+    "templateRegistrationAndCover": "PASS",
+    "branchRuntime": "PASS"
+  },
+  "urls": {
+    "selector": "http://127.0.0.1:5778/app",
+    "editor": "http://127.0.0.1:5778/editor",
+    "api": "http://127.0.0.1:6800"
+  },
+  "knownLimitations": [
+    "readyz 返回 503，因为本次候选验收未启动 Outline、Content 和 PersonalDB；真实 Handler/Worker 已通过固定上游和隔离 SQLite 单独验证。"
+  ],
+  "humanConfirmationRequired": false,
+  "humanConfirmation": "CONFIRMED_2026-09-16",
+  "goalComplete": true,
+  "gitCommitPushPrMergeAuthorized": false
+}

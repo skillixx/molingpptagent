@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_22",
+  "stage": "G7",
+  "status": "PASS",
+  "slideCount": 18,
+  "inventory": {
+    "cover": 2,
+    "contents": 6,
+    "transition": 2,
+    "content": 6,
+    "end": 2
+  },
+  "publishedAssets": 9,
+  "templateJson": "backend/main_api/template/template_22.json",
+  "selectorCover": "backend/main_api/template/template_22.jpg",
+  "registeredName": "桃夭墨韵商务汇报",
+  "visualEvidence": "production-renders/production-contact-sheet.png",
+  "checks": {
+    "allPublishedAssetsReferenced": true,
+    "templateListRegistration": true,
+    "cover960x540Rgb": true,
+    "coverBytesUnder150k": true,
+    "deterministicProductionBuild": true
+  }
+}

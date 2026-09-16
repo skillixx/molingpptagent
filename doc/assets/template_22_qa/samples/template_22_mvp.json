@@ -1,0 +1,3094 @@
+{
+  "id": "template_22",
+  "title": "桃夭墨韵商务汇报",
+  "width": 1000,
+  "height": 562.5,
+  "supportsLosslessContentPagination": true,
+  "paginationGrowthPolicy": {
+    "factor": 1.75,
+    "slack": 5
+  },
+  "theme": {
+    "themeColors": [
+      "#7B334D",
+      "#DF8FA5",
+      "#211B1C"
+    ],
+    "fontColor": "#4A3F40",
+    "fontName": "微软雅黑",
+    "backgroundColor": "#F7EFE8"
+  },
+  "metadata": {
+    "aspectRatio": "16:9",
+    "buildStage": "mvp",
+    "sourceReference": "中国风格(5).pptx",
+    "sourceReferenceSha256": "17CBC63F0D9D77B9D8B78018047FEB10D0D284C150A5E761208CF4E0B683460E",
+    "rightsPolicy": "reference-media-excluded",
+    "sourceFidelity": "peach-blossom-xuan-paper-scroll-ink-language",
+    "probeSlideIds": [
+      "cover-scroll-blossom",
+      "content-image-1",
+      "probe-image-circle-1"
+    ],
+    "sampleSlideIds": [
+      "cover-scroll-blossom",
+      "contents-4",
+      "transition-petal-number",
+      "content-text-4",
+      "content-metrics-4",
+      "content-image-1",
+      "end-blossom-mountain"
+    ],
+    "mvpSlideIds": [
+      "cover-scroll-blossom",
+      "contents-2",
+      "contents-3",
+      "contents-4",
+      "contents-5",
+      "contents-6",
+      "contents-10",
+      "transition-petal-number",
+      "content-text-2",
+      "content-text-3",
+      "content-text-4",
+      "end-blossom-mountain"
+    ],
+    "productionSlideIds": [
+      "cover-scroll-blossom",
+      "cover-blossom-minimal",
+      "contents-2",
+      "contents-3",
+      "contents-4",
+      "contents-5",
+      "contents-6",
+      "contents-10",
+      "transition-petal-number",
+      "transition-ink-circle",
+      "content-statement-1",
+      "content-image-1",
+      "content-text-2",
+      "content-text-3",
+      "content-text-4",
+      "content-metrics-4",
+      "end-blossom-mountain",
+      "end-action"
+    ],
+    "imageSlotMarker": "imageType=content",
+    "decorativeImageMarker": "imageType=decoration",
+    "assetGeneration": "GPT2 图片模板；实际模型工具未暴露",
+    "assetFiles": [
+      "template_22_asset_bg_cover_v1.jpg",
+      "template_22_asset_bg_content_v1.jpg",
+      "template_22_asset_bg_section_v1.jpg",
+      "template_22_asset_bg_end_v1.jpg",
+      "template_22_asset_scroll_roll_v1.png",
+      "template_22_asset_ink_title_frame_v1.png",
+      "template_22_asset_ink_circle_frame_v1.png",
+      "template_22_asset_ink_brush_band_v1.png",
+      "template_22_asset_petal_sweep_v1.png"
+    ]
+  },
+  "slides": [
+    {
+      "id": "cover-scroll-blossom",
+      "type": "cover",
+      "elements": [
+        {
+          "type": "image",
+          "id": "t22-cover-scroll-blossom-background-001",
+          "src": "/api/data/template_22_asset_bg_cover_v1.jpg",
+          "left": 0,
+          "top": 0,
+          "width": 1000,
+          "height": 562.5,
+          "rotate": 0,
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t22-cover-scroll-blossom-scroll-002",
+          "src": "/api/data/template_22_asset_scroll_roll_v1.png",
+          "left": -40,
+          "top": 330,
+          "width": 450,
+          "height": 270,
+          "rotate": 0,
+          "fixedRatio": true,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t22-cover-scroll-blossom-title-003",
+          "left": 320,
+          "top": 150,
+          "width": 600,
+          "height": 145,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#7B334D",
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #7B334D;font-size: 54px;font-family: 微软雅黑;line-height: 1.08;font-weight: 700;\">桃夭墨韵商务汇报</span></p>",
+          "textType": "title",
+          "minimumFontSize": 48,
+          "textLineHeight": 1.08
+        },
+        {
+          "type": "text",
+          "id": "t22-cover-scroll-blossom-content-003",
+          "left": 440,
+          "top": 315,
+          "width": 420,
+          "height": 68,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#4A3F40",
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #4A3F40;font-size: 20px;font-family: 微软雅黑;line-height: 1.35;font-weight: 400;\">以清晰结构承载东方意境</span></p>",
+          "textType": "content",
+          "minimumFontSize": 16,
+          "textLineHeight": 1.35
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#F7EFE8"
+      },
+      "variantMode": "deterministic",
+      "titleFitLimits": {
+        "maxWide": 20,
+        "maxAscii": 42,
+        "singleWide": 10,
+        "singleAscii": 22
+      }
+    },
+    {
+      "id": "contents-2",
+      "type": "contents",
+      "elements": [
+        {
+          "type": "image",
+          "id": "t22-contents-2-background-001",
+          "src": "/api/data/template_22_asset_bg_content_v1.jpg",
+          "left": 0,
+          "top": 0,
+          "width": 1000,
+          "height": 562.5,
+          "rotate": 0,
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t22-contents-2-title-frame-002",
+          "src": "/api/data/template_22_asset_ink_title_frame_v1.png",
+          "left": 62,
+          "top": 42,
+          "width": 270,
+          "height": 72,
+          "rotate": 0,
+          "fixedRatio": true,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-2-static-title-002",
+          "left": 98,
+          "top": 57,
+          "width": 195,
+          "height": 42,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#7B334D",
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #7B334D;font-size: 28px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">目录</span></p>",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-2-item-number-004",
+          "left": 92,
+          "top": 160,
+          "width": 54,
+          "height": 42,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#DF8FA5",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #DF8FA5;font-size: 24px;font-family: 微软雅黑;line-height: 1.05;font-weight: 700;\">01</span></p>",
+          "textType": "itemNumber",
+          "minimumFontSize": 20,
+          "groupId": "contents-2-item-1",
+          "textLineHeight": 1.05
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-2-item-004",
+          "left": 160,
+          "top": 161,
+          "width": 315,
+          "height": 44,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 19px;font-family: 微软雅黑;line-height: 1.35;font-weight: 400;\">目录项目1</span></p>",
+          "textType": "item",
+          "minimumFontSize": 16,
+          "groupId": "contents-2-item-1",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "line",
+          "id": "t22-contents-2-item-rule-004",
+          "left": 160,
+          "top": 207,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            300,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#E7C8D0",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "groupId": "contents-2-item-1"
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-2-item-number-007",
+          "left": 532,
+          "top": 160,
+          "width": 54,
+          "height": 42,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#DF8FA5",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #DF8FA5;font-size: 24px;font-family: 微软雅黑;line-height: 1.05;font-weight: 700;\">02</span></p>",
+          "textType": "itemNumber",
+          "minimumFontSize": 20,
+          "groupId": "contents-2-item-2",
+          "textLineHeight": 1.05
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-2-item-007",
+          "left": 600,
+          "top": 161,
+          "width": 315,
+          "height": 44,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 19px;font-family: 微软雅黑;line-height: 1.35;font-weight: 400;\">目录项目2</span></p>",
+          "textType": "item",
+          "minimumFontSize": 16,
+          "groupId": "contents-2-item-2",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "line",
+          "id": "t22-contents-2-item-rule-007",
+          "left": 600,
+          "top": 207,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            300,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#E7C8D0",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "groupId": "contents-2-item-2"
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#F7EFE8"
+      }
+    },
+    {
+      "id": "contents-3",
+      "type": "contents",
+      "elements": [
+        {
+          "type": "image",
+          "id": "t22-contents-3-background-001",
+          "src": "/api/data/template_22_asset_bg_content_v1.jpg",
+          "left": 0,
+          "top": 0,
+          "width": 1000,
+          "height": 562.5,
+          "rotate": 0,
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t22-contents-3-title-frame-002",
+          "src": "/api/data/template_22_asset_ink_title_frame_v1.png",
+          "left": 62,
+          "top": 42,
+          "width": 270,
+          "height": 72,
+          "rotate": 0,
+          "fixedRatio": true,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-3-static-title-002",
+          "left": 98,
+          "top": 57,
+          "width": 195,
+          "height": 42,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#7B334D",
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #7B334D;font-size: 28px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">目录</span></p>",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-3-item-number-004",
+          "left": 92,
+          "top": 160,
+          "width": 54,
+          "height": 42,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#DF8FA5",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #DF8FA5;font-size: 24px;font-family: 微软雅黑;line-height: 1.05;font-weight: 700;\">01</span></p>",
+          "textType": "itemNumber",
+          "minimumFontSize": 20,
+          "groupId": "contents-3-item-1",
+          "textLineHeight": 1.05
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-3-item-004",
+          "left": 160,
+          "top": 161,
+          "width": 315,
+          "height": 44,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 19px;font-family: 微软雅黑;line-height: 1.35;font-weight: 400;\">目录项目1</span></p>",
+          "textType": "item",
+          "minimumFontSize": 16,
+          "groupId": "contents-3-item-1",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "line",
+          "id": "t22-contents-3-item-rule-004",
+          "left": 160,
+          "top": 207,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            300,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#E7C8D0",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "groupId": "contents-3-item-1"
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-3-item-number-007",
+          "left": 532,
+          "top": 160,
+          "width": 54,
+          "height": 42,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#DF8FA5",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #DF8FA5;font-size: 24px;font-family: 微软雅黑;line-height: 1.05;font-weight: 700;\">02</span></p>",
+          "textType": "itemNumber",
+          "minimumFontSize": 20,
+          "groupId": "contents-3-item-2",
+          "textLineHeight": 1.05
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-3-item-007",
+          "left": 600,
+          "top": 161,
+          "width": 315,
+          "height": 44,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 19px;font-family: 微软雅黑;line-height: 1.35;font-weight: 400;\">目录项目2</span></p>",
+          "textType": "item",
+          "minimumFontSize": 16,
+          "groupId": "contents-3-item-2",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "line",
+          "id": "t22-contents-3-item-rule-007",
+          "left": 600,
+          "top": 207,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            300,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#E7C8D0",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "groupId": "contents-3-item-2"
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-3-item-number-010",
+          "left": 92,
+          "top": 256,
+          "width": 54,
+          "height": 42,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#DF8FA5",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #DF8FA5;font-size: 24px;font-family: 微软雅黑;line-height: 1.05;font-weight: 700;\">03</span></p>",
+          "textType": "itemNumber",
+          "minimumFontSize": 20,
+          "groupId": "contents-3-item-3",
+          "textLineHeight": 1.05
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-3-item-010",
+          "left": 160,
+          "top": 257,
+          "width": 315,
+          "height": 44,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 19px;font-family: 微软雅黑;line-height: 1.35;font-weight: 400;\">目录项目3</span></p>",
+          "textType": "item",
+          "minimumFontSize": 16,
+          "groupId": "contents-3-item-3",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "line",
+          "id": "t22-contents-3-item-rule-010",
+          "left": 160,
+          "top": 303,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            300,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#E7C8D0",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "groupId": "contents-3-item-3"
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#F7EFE8"
+      }
+    },
+    {
+      "id": "contents-4",
+      "type": "contents",
+      "elements": [
+        {
+          "type": "image",
+          "id": "t22-contents-4-background-001",
+          "src": "/api/data/template_22_asset_bg_content_v1.jpg",
+          "left": 0,
+          "top": 0,
+          "width": 1000,
+          "height": 562.5,
+          "rotate": 0,
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t22-contents-4-title-frame-002",
+          "src": "/api/data/template_22_asset_ink_title_frame_v1.png",
+          "left": 62,
+          "top": 42,
+          "width": 270,
+          "height": 72,
+          "rotate": 0,
+          "fixedRatio": true,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-4-static-title-002",
+          "left": 98,
+          "top": 57,
+          "width": 195,
+          "height": 42,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#7B334D",
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #7B334D;font-size: 28px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">目录</span></p>",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-4-item-number-004",
+          "left": 92,
+          "top": 160,
+          "width": 54,
+          "height": 42,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#DF8FA5",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #DF8FA5;font-size: 24px;font-family: 微软雅黑;line-height: 1.05;font-weight: 700;\">01</span></p>",
+          "textType": "itemNumber",
+          "minimumFontSize": 20,
+          "groupId": "contents-4-item-1",
+          "textLineHeight": 1.05
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-4-item-004",
+          "left": 160,
+          "top": 161,
+          "width": 315,
+          "height": 44,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 19px;font-family: 微软雅黑;line-height: 1.35;font-weight: 400;\">目录项目1</span></p>",
+          "textType": "item",
+          "minimumFontSize": 16,
+          "groupId": "contents-4-item-1",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "line",
+          "id": "t22-contents-4-item-rule-004",
+          "left": 160,
+          "top": 207,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            300,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#E7C8D0",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "groupId": "contents-4-item-1"
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-4-item-number-007",
+          "left": 532,
+          "top": 160,
+          "width": 54,
+          "height": 42,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#DF8FA5",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #DF8FA5;font-size: 24px;font-family: 微软雅黑;line-height: 1.05;font-weight: 700;\">02</span></p>",
+          "textType": "itemNumber",
+          "minimumFontSize": 20,
+          "groupId": "contents-4-item-2",
+          "textLineHeight": 1.05
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-4-item-007",
+          "left": 600,
+          "top": 161,
+          "width": 315,
+          "height": 44,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 19px;font-family: 微软雅黑;line-height: 1.35;font-weight: 400;\">目录项目2</span></p>",
+          "textType": "item",
+          "minimumFontSize": 16,
+          "groupId": "contents-4-item-2",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "line",
+          "id": "t22-contents-4-item-rule-007",
+          "left": 600,
+          "top": 207,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            300,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#E7C8D0",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "groupId": "contents-4-item-2"
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-4-item-number-010",
+          "left": 92,
+          "top": 256,
+          "width": 54,
+          "height": 42,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#DF8FA5",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #DF8FA5;font-size: 24px;font-family: 微软雅黑;line-height: 1.05;font-weight: 700;\">03</span></p>",
+          "textType": "itemNumber",
+          "minimumFontSize": 20,
+          "groupId": "contents-4-item-3",
+          "textLineHeight": 1.05
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-4-item-010",
+          "left": 160,
+          "top": 257,
+          "width": 315,
+          "height": 44,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 19px;font-family: 微软雅黑;line-height: 1.35;font-weight: 400;\">目录项目3</span></p>",
+          "textType": "item",
+          "minimumFontSize": 16,
+          "groupId": "contents-4-item-3",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "line",
+          "id": "t22-contents-4-item-rule-010",
+          "left": 160,
+          "top": 303,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            300,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#E7C8D0",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "groupId": "contents-4-item-3"
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-4-item-number-013",
+          "left": 532,
+          "top": 256,
+          "width": 54,
+          "height": 42,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#DF8FA5",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #DF8FA5;font-size: 24px;font-family: 微软雅黑;line-height: 1.05;font-weight: 700;\">04</span></p>",
+          "textType": "itemNumber",
+          "minimumFontSize": 20,
+          "groupId": "contents-4-item-4",
+          "textLineHeight": 1.05
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-4-item-013",
+          "left": 600,
+          "top": 257,
+          "width": 315,
+          "height": 44,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 19px;font-family: 微软雅黑;line-height: 1.35;font-weight: 400;\">目录项目4</span></p>",
+          "textType": "item",
+          "minimumFontSize": 16,
+          "groupId": "contents-4-item-4",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "line",
+          "id": "t22-contents-4-item-rule-013",
+          "left": 600,
+          "top": 303,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            300,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#E7C8D0",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "groupId": "contents-4-item-4"
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#F7EFE8"
+      }
+    },
+    {
+      "id": "contents-5",
+      "type": "contents",
+      "elements": [
+        {
+          "type": "image",
+          "id": "t22-contents-5-background-001",
+          "src": "/api/data/template_22_asset_bg_content_v1.jpg",
+          "left": 0,
+          "top": 0,
+          "width": 1000,
+          "height": 562.5,
+          "rotate": 0,
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t22-contents-5-title-frame-002",
+          "src": "/api/data/template_22_asset_ink_title_frame_v1.png",
+          "left": 62,
+          "top": 42,
+          "width": 270,
+          "height": 72,
+          "rotate": 0,
+          "fixedRatio": true,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-5-static-title-002",
+          "left": 98,
+          "top": 57,
+          "width": 195,
+          "height": 42,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#7B334D",
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #7B334D;font-size: 28px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">目录</span></p>",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-5-item-number-004",
+          "left": 92,
+          "top": 160,
+          "width": 54,
+          "height": 42,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#DF8FA5",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #DF8FA5;font-size: 24px;font-family: 微软雅黑;line-height: 1.05;font-weight: 700;\">01</span></p>",
+          "textType": "itemNumber",
+          "minimumFontSize": 20,
+          "groupId": "contents-5-item-1",
+          "textLineHeight": 1.05
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-5-item-004",
+          "left": 160,
+          "top": 161,
+          "width": 315,
+          "height": 44,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 19px;font-family: 微软雅黑;line-height: 1.35;font-weight: 400;\">目录项目1</span></p>",
+          "textType": "item",
+          "minimumFontSize": 16,
+          "groupId": "contents-5-item-1",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "line",
+          "id": "t22-contents-5-item-rule-004",
+          "left": 160,
+          "top": 207,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            300,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#E7C8D0",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "groupId": "contents-5-item-1"
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-5-item-number-007",
+          "left": 532,
+          "top": 160,
+          "width": 54,
+          "height": 42,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#DF8FA5",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #DF8FA5;font-size: 24px;font-family: 微软雅黑;line-height: 1.05;font-weight: 700;\">02</span></p>",
+          "textType": "itemNumber",
+          "minimumFontSize": 20,
+          "groupId": "contents-5-item-2",
+          "textLineHeight": 1.05
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-5-item-007",
+          "left": 600,
+          "top": 161,
+          "width": 315,
+          "height": 44,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 19px;font-family: 微软雅黑;line-height: 1.35;font-weight: 400;\">目录项目2</span></p>",
+          "textType": "item",
+          "minimumFontSize": 16,
+          "groupId": "contents-5-item-2",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "line",
+          "id": "t22-contents-5-item-rule-007",
+          "left": 600,
+          "top": 207,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            300,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#E7C8D0",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "groupId": "contents-5-item-2"
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-5-item-number-010",
+          "left": 92,
+          "top": 256,
+          "width": 54,
+          "height": 42,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#DF8FA5",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #DF8FA5;font-size: 24px;font-family: 微软雅黑;line-height: 1.05;font-weight: 700;\">03</span></p>",
+          "textType": "itemNumber",
+          "minimumFontSize": 20,
+          "groupId": "contents-5-item-3",
+          "textLineHeight": 1.05
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-5-item-010",
+          "left": 160,
+          "top": 257,
+          "width": 315,
+          "height": 44,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 19px;font-family: 微软雅黑;line-height: 1.35;font-weight: 400;\">目录项目3</span></p>",
+          "textType": "item",
+          "minimumFontSize": 16,
+          "groupId": "contents-5-item-3",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "line",
+          "id": "t22-contents-5-item-rule-010",
+          "left": 160,
+          "top": 303,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            300,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#E7C8D0",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "groupId": "contents-5-item-3"
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-5-item-number-013",
+          "left": 532,
+          "top": 256,
+          "width": 54,
+          "height": 42,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#DF8FA5",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #DF8FA5;font-size: 24px;font-family: 微软雅黑;line-height: 1.05;font-weight: 700;\">04</span></p>",
+          "textType": "itemNumber",
+          "minimumFontSize": 20,
+          "groupId": "contents-5-item-4",
+          "textLineHeight": 1.05
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-5-item-013",
+          "left": 600,
+          "top": 257,
+          "width": 315,
+          "height": 44,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 19px;font-family: 微软雅黑;line-height: 1.35;font-weight: 400;\">目录项目4</span></p>",
+          "textType": "item",
+          "minimumFontSize": 16,
+          "groupId": "contents-5-item-4",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "line",
+          "id": "t22-contents-5-item-rule-013",
+          "left": 600,
+          "top": 303,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            300,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#E7C8D0",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "groupId": "contents-5-item-4"
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-5-item-number-016",
+          "left": 92,
+          "top": 352,
+          "width": 54,
+          "height": 42,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#DF8FA5",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #DF8FA5;font-size: 24px;font-family: 微软雅黑;line-height: 1.05;font-weight: 700;\">05</span></p>",
+          "textType": "itemNumber",
+          "minimumFontSize": 20,
+          "groupId": "contents-5-item-5",
+          "textLineHeight": 1.05
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-5-item-016",
+          "left": 160,
+          "top": 353,
+          "width": 315,
+          "height": 44,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 19px;font-family: 微软雅黑;line-height: 1.35;font-weight: 400;\">目录项目5</span></p>",
+          "textType": "item",
+          "minimumFontSize": 16,
+          "groupId": "contents-5-item-5",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "line",
+          "id": "t22-contents-5-item-rule-016",
+          "left": 160,
+          "top": 399,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            300,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#E7C8D0",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "groupId": "contents-5-item-5"
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#F7EFE8"
+      }
+    },
+    {
+      "id": "contents-6",
+      "type": "contents",
+      "elements": [
+        {
+          "type": "image",
+          "id": "t22-contents-6-background-001",
+          "src": "/api/data/template_22_asset_bg_content_v1.jpg",
+          "left": 0,
+          "top": 0,
+          "width": 1000,
+          "height": 562.5,
+          "rotate": 0,
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t22-contents-6-title-frame-002",
+          "src": "/api/data/template_22_asset_ink_title_frame_v1.png",
+          "left": 62,
+          "top": 42,
+          "width": 270,
+          "height": 72,
+          "rotate": 0,
+          "fixedRatio": true,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-6-static-title-002",
+          "left": 98,
+          "top": 57,
+          "width": 195,
+          "height": 42,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#7B334D",
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #7B334D;font-size: 28px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">目录</span></p>",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-6-item-number-004",
+          "left": 92,
+          "top": 160,
+          "width": 54,
+          "height": 42,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#DF8FA5",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #DF8FA5;font-size: 24px;font-family: 微软雅黑;line-height: 1.05;font-weight: 700;\">01</span></p>",
+          "textType": "itemNumber",
+          "minimumFontSize": 20,
+          "groupId": "contents-6-item-1",
+          "textLineHeight": 1.05
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-6-item-004",
+          "left": 160,
+          "top": 161,
+          "width": 315,
+          "height": 44,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 19px;font-family: 微软雅黑;line-height: 1.35;font-weight: 400;\">目录项目1</span></p>",
+          "textType": "item",
+          "minimumFontSize": 16,
+          "groupId": "contents-6-item-1",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "line",
+          "id": "t22-contents-6-item-rule-004",
+          "left": 160,
+          "top": 207,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            300,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#E7C8D0",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "groupId": "contents-6-item-1"
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-6-item-number-007",
+          "left": 532,
+          "top": 160,
+          "width": 54,
+          "height": 42,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#DF8FA5",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #DF8FA5;font-size: 24px;font-family: 微软雅黑;line-height: 1.05;font-weight: 700;\">02</span></p>",
+          "textType": "itemNumber",
+          "minimumFontSize": 20,
+          "groupId": "contents-6-item-2",
+          "textLineHeight": 1.05
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-6-item-007",
+          "left": 600,
+          "top": 161,
+          "width": 315,
+          "height": 44,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 19px;font-family: 微软雅黑;line-height: 1.35;font-weight: 400;\">目录项目2</span></p>",
+          "textType": "item",
+          "minimumFontSize": 16,
+          "groupId": "contents-6-item-2",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "line",
+          "id": "t22-contents-6-item-rule-007",
+          "left": 600,
+          "top": 207,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            300,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#E7C8D0",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "groupId": "contents-6-item-2"
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-6-item-number-010",
+          "left": 92,
+          "top": 256,
+          "width": 54,
+          "height": 42,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#DF8FA5",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #DF8FA5;font-size: 24px;font-family: 微软雅黑;line-height: 1.05;font-weight: 700;\">03</span></p>",
+          "textType": "itemNumber",
+          "minimumFontSize": 20,
+          "groupId": "contents-6-item-3",
+          "textLineHeight": 1.05
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-6-item-010",
+          "left": 160,
+          "top": 257,
+          "width": 315,
+          "height": 44,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 19px;font-family: 微软雅黑;line-height: 1.35;font-weight: 400;\">目录项目3</span></p>",
+          "textType": "item",
+          "minimumFontSize": 16,
+          "groupId": "contents-6-item-3",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "line",
+          "id": "t22-contents-6-item-rule-010",
+          "left": 160,
+          "top": 303,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            300,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#E7C8D0",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "groupId": "contents-6-item-3"
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-6-item-number-013",
+          "left": 532,
+          "top": 256,
+          "width": 54,
+          "height": 42,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#DF8FA5",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #DF8FA5;font-size: 24px;font-family: 微软雅黑;line-height: 1.05;font-weight: 700;\">04</span></p>",
+          "textType": "itemNumber",
+          "minimumFontSize": 20,
+          "groupId": "contents-6-item-4",
+          "textLineHeight": 1.05
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-6-item-013",
+          "left": 600,
+          "top": 257,
+          "width": 315,
+          "height": 44,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 19px;font-family: 微软雅黑;line-height: 1.35;font-weight: 400;\">目录项目4</span></p>",
+          "textType": "item",
+          "minimumFontSize": 16,
+          "groupId": "contents-6-item-4",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "line",
+          "id": "t22-contents-6-item-rule-013",
+          "left": 600,
+          "top": 303,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            300,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#E7C8D0",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "groupId": "contents-6-item-4"
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-6-item-number-016",
+          "left": 92,
+          "top": 352,
+          "width": 54,
+          "height": 42,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#DF8FA5",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #DF8FA5;font-size: 24px;font-family: 微软雅黑;line-height: 1.05;font-weight: 700;\">05</span></p>",
+          "textType": "itemNumber",
+          "minimumFontSize": 20,
+          "groupId": "contents-6-item-5",
+          "textLineHeight": 1.05
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-6-item-016",
+          "left": 160,
+          "top": 353,
+          "width": 315,
+          "height": 44,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 19px;font-family: 微软雅黑;line-height: 1.35;font-weight: 400;\">目录项目5</span></p>",
+          "textType": "item",
+          "minimumFontSize": 16,
+          "groupId": "contents-6-item-5",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "line",
+          "id": "t22-contents-6-item-rule-016",
+          "left": 160,
+          "top": 399,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            300,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#E7C8D0",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "groupId": "contents-6-item-5"
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-6-item-number-019",
+          "left": 532,
+          "top": 352,
+          "width": 54,
+          "height": 42,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#DF8FA5",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #DF8FA5;font-size: 24px;font-family: 微软雅黑;line-height: 1.05;font-weight: 700;\">06</span></p>",
+          "textType": "itemNumber",
+          "minimumFontSize": 20,
+          "groupId": "contents-6-item-6",
+          "textLineHeight": 1.05
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-6-item-019",
+          "left": 600,
+          "top": 353,
+          "width": 315,
+          "height": 44,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 19px;font-family: 微软雅黑;line-height: 1.35;font-weight: 400;\">目录项目6</span></p>",
+          "textType": "item",
+          "minimumFontSize": 16,
+          "groupId": "contents-6-item-6",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "line",
+          "id": "t22-contents-6-item-rule-019",
+          "left": 600,
+          "top": 399,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            300,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#E7C8D0",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "groupId": "contents-6-item-6"
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#F7EFE8"
+      }
+    },
+    {
+      "id": "contents-10",
+      "type": "contents",
+      "elements": [
+        {
+          "type": "image",
+          "id": "t22-contents-10-background-001",
+          "src": "/api/data/template_22_asset_bg_content_v1.jpg",
+          "left": 0,
+          "top": 0,
+          "width": 1000,
+          "height": 562.5,
+          "rotate": 0,
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t22-contents-10-title-frame-002",
+          "src": "/api/data/template_22_asset_ink_title_frame_v1.png",
+          "left": 62,
+          "top": 42,
+          "width": 270,
+          "height": 72,
+          "rotate": 0,
+          "fixedRatio": true,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-10-static-title-002",
+          "left": 98,
+          "top": 57,
+          "width": 195,
+          "height": 42,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#7B334D",
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #7B334D;font-size: 28px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">目录</span></p>",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-10-item-number-004",
+          "left": 92,
+          "top": 145,
+          "width": 54,
+          "height": 42,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#DF8FA5",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #DF8FA5;font-size: 24px;font-family: 微软雅黑;line-height: 1.05;font-weight: 700;\">01</span></p>",
+          "textType": "itemNumber",
+          "minimumFontSize": 20,
+          "groupId": "contents-10-item-1",
+          "textLineHeight": 1.05
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-10-item-004",
+          "left": 160,
+          "top": 146,
+          "width": 315,
+          "height": 44,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 17px;font-family: 微软雅黑;line-height: 1.35;font-weight: 400;\">目录项目1</span></p>",
+          "textType": "item",
+          "minimumFontSize": 16,
+          "groupId": "contents-10-item-1",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "line",
+          "id": "t22-contents-10-item-rule-004",
+          "left": 160,
+          "top": 192,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            300,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#E7C8D0",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "groupId": "contents-10-item-1"
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-10-item-number-007",
+          "left": 532,
+          "top": 145,
+          "width": 54,
+          "height": 42,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#DF8FA5",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #DF8FA5;font-size: 24px;font-family: 微软雅黑;line-height: 1.05;font-weight: 700;\">02</span></p>",
+          "textType": "itemNumber",
+          "minimumFontSize": 20,
+          "groupId": "contents-10-item-2",
+          "textLineHeight": 1.05
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-10-item-007",
+          "left": 600,
+          "top": 146,
+          "width": 315,
+          "height": 44,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 17px;font-family: 微软雅黑;line-height: 1.35;font-weight: 400;\">目录项目2</span></p>",
+          "textType": "item",
+          "minimumFontSize": 16,
+          "groupId": "contents-10-item-2",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "line",
+          "id": "t22-contents-10-item-rule-007",
+          "left": 600,
+          "top": 192,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            300,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#E7C8D0",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "groupId": "contents-10-item-2"
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-10-item-number-010",
+          "left": 92,
+          "top": 213,
+          "width": 54,
+          "height": 42,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#DF8FA5",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #DF8FA5;font-size: 24px;font-family: 微软雅黑;line-height: 1.05;font-weight: 700;\">03</span></p>",
+          "textType": "itemNumber",
+          "minimumFontSize": 20,
+          "groupId": "contents-10-item-3",
+          "textLineHeight": 1.05
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-10-item-010",
+          "left": 160,
+          "top": 214,
+          "width": 315,
+          "height": 44,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 17px;font-family: 微软雅黑;line-height: 1.35;font-weight: 400;\">目录项目3</span></p>",
+          "textType": "item",
+          "minimumFontSize": 16,
+          "groupId": "contents-10-item-3",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "line",
+          "id": "t22-contents-10-item-rule-010",
+          "left": 160,
+          "top": 260,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            300,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#E7C8D0",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "groupId": "contents-10-item-3"
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-10-item-number-013",
+          "left": 532,
+          "top": 213,
+          "width": 54,
+          "height": 42,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#DF8FA5",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #DF8FA5;font-size: 24px;font-family: 微软雅黑;line-height: 1.05;font-weight: 700;\">04</span></p>",
+          "textType": "itemNumber",
+          "minimumFontSize": 20,
+          "groupId": "contents-10-item-4",
+          "textLineHeight": 1.05
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-10-item-013",
+          "left": 600,
+          "top": 214,
+          "width": 315,
+          "height": 44,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 17px;font-family: 微软雅黑;line-height: 1.35;font-weight: 400;\">目录项目4</span></p>",
+          "textType": "item",
+          "minimumFontSize": 16,
+          "groupId": "contents-10-item-4",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "line",
+          "id": "t22-contents-10-item-rule-013",
+          "left": 600,
+          "top": 260,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            300,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#E7C8D0",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "groupId": "contents-10-item-4"
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-10-item-number-016",
+          "left": 92,
+          "top": 281,
+          "width": 54,
+          "height": 42,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#DF8FA5",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #DF8FA5;font-size: 24px;font-family: 微软雅黑;line-height: 1.05;font-weight: 700;\">05</span></p>",
+          "textType": "itemNumber",
+          "minimumFontSize": 20,
+          "groupId": "contents-10-item-5",
+          "textLineHeight": 1.05
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-10-item-016",
+          "left": 160,
+          "top": 282,
+          "width": 315,
+          "height": 44,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 17px;font-family: 微软雅黑;line-height: 1.35;font-weight: 400;\">目录项目5</span></p>",
+          "textType": "item",
+          "minimumFontSize": 16,
+          "groupId": "contents-10-item-5",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "line",
+          "id": "t22-contents-10-item-rule-016",
+          "left": 160,
+          "top": 328,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            300,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#E7C8D0",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "groupId": "contents-10-item-5"
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-10-item-number-019",
+          "left": 532,
+          "top": 281,
+          "width": 54,
+          "height": 42,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#DF8FA5",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #DF8FA5;font-size: 24px;font-family: 微软雅黑;line-height: 1.05;font-weight: 700;\">06</span></p>",
+          "textType": "itemNumber",
+          "minimumFontSize": 20,
+          "groupId": "contents-10-item-6",
+          "textLineHeight": 1.05
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-10-item-019",
+          "left": 600,
+          "top": 282,
+          "width": 315,
+          "height": 44,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 17px;font-family: 微软雅黑;line-height: 1.35;font-weight: 400;\">目录项目6</span></p>",
+          "textType": "item",
+          "minimumFontSize": 16,
+          "groupId": "contents-10-item-6",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "line",
+          "id": "t22-contents-10-item-rule-019",
+          "left": 600,
+          "top": 328,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            300,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#E7C8D0",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "groupId": "contents-10-item-6"
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-10-item-number-022",
+          "left": 92,
+          "top": 349,
+          "width": 54,
+          "height": 42,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#DF8FA5",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #DF8FA5;font-size: 24px;font-family: 微软雅黑;line-height: 1.05;font-weight: 700;\">07</span></p>",
+          "textType": "itemNumber",
+          "minimumFontSize": 20,
+          "groupId": "contents-10-item-7",
+          "textLineHeight": 1.05
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-10-item-022",
+          "left": 160,
+          "top": 350,
+          "width": 315,
+          "height": 44,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 17px;font-family: 微软雅黑;line-height: 1.35;font-weight: 400;\">目录项目7</span></p>",
+          "textType": "item",
+          "minimumFontSize": 16,
+          "groupId": "contents-10-item-7",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "line",
+          "id": "t22-contents-10-item-rule-022",
+          "left": 160,
+          "top": 396,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            300,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#E7C8D0",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "groupId": "contents-10-item-7"
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-10-item-number-025",
+          "left": 532,
+          "top": 349,
+          "width": 54,
+          "height": 42,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#DF8FA5",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #DF8FA5;font-size: 24px;font-family: 微软雅黑;line-height: 1.05;font-weight: 700;\">08</span></p>",
+          "textType": "itemNumber",
+          "minimumFontSize": 20,
+          "groupId": "contents-10-item-8",
+          "textLineHeight": 1.05
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-10-item-025",
+          "left": 600,
+          "top": 350,
+          "width": 315,
+          "height": 44,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 17px;font-family: 微软雅黑;line-height: 1.35;font-weight: 400;\">目录项目8</span></p>",
+          "textType": "item",
+          "minimumFontSize": 16,
+          "groupId": "contents-10-item-8",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "line",
+          "id": "t22-contents-10-item-rule-025",
+          "left": 600,
+          "top": 396,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            300,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#E7C8D0",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "groupId": "contents-10-item-8"
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-10-item-number-028",
+          "left": 92,
+          "top": 417,
+          "width": 54,
+          "height": 42,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#DF8FA5",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #DF8FA5;font-size: 24px;font-family: 微软雅黑;line-height: 1.05;font-weight: 700;\">09</span></p>",
+          "textType": "itemNumber",
+          "minimumFontSize": 20,
+          "groupId": "contents-10-item-9",
+          "textLineHeight": 1.05
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-10-item-028",
+          "left": 160,
+          "top": 418,
+          "width": 315,
+          "height": 44,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 17px;font-family: 微软雅黑;line-height: 1.35;font-weight: 400;\">目录项目9</span></p>",
+          "textType": "item",
+          "minimumFontSize": 16,
+          "groupId": "contents-10-item-9",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "line",
+          "id": "t22-contents-10-item-rule-028",
+          "left": 160,
+          "top": 464,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            300,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#E7C8D0",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "groupId": "contents-10-item-9"
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-10-item-number-031",
+          "left": 532,
+          "top": 417,
+          "width": 54,
+          "height": 42,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#DF8FA5",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #DF8FA5;font-size: 24px;font-family: 微软雅黑;line-height: 1.05;font-weight: 700;\">10</span></p>",
+          "textType": "itemNumber",
+          "minimumFontSize": 20,
+          "groupId": "contents-10-item-10",
+          "textLineHeight": 1.05
+        },
+        {
+          "type": "text",
+          "id": "t22-contents-10-item-031",
+          "left": 600,
+          "top": 418,
+          "width": 315,
+          "height": 44,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 17px;font-family: 微软雅黑;line-height: 1.35;font-weight: 400;\">目录项目10</span></p>",
+          "textType": "item",
+          "minimumFontSize": 16,
+          "groupId": "contents-10-item-10",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "line",
+          "id": "t22-contents-10-item-rule-031",
+          "left": 600,
+          "top": 464,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            300,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#E7C8D0",
+          "style": "solid",
+          "width": 1,
+          "rotate": 0,
+          "groupId": "contents-10-item-10"
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#F7EFE8"
+      }
+    },
+    {
+      "id": "transition-petal-number",
+      "type": "transition",
+      "elements": [
+        {
+          "type": "image",
+          "id": "t22-transition-petal-number-background-001",
+          "src": "/api/data/template_22_asset_bg_section_v1.jpg",
+          "left": 0,
+          "top": 0,
+          "width": 1000,
+          "height": 562.5,
+          "rotate": 0,
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t22-transition-petal-number-petals-002",
+          "src": "/api/data/template_22_asset_petal_sweep_v1.png",
+          "left": 625,
+          "top": 15,
+          "width": 350,
+          "height": 260,
+          "rotate": 0,
+          "fixedRatio": true,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t22-transition-petal-number-part-number-003",
+          "left": 90,
+          "top": 165,
+          "width": 150,
+          "height": 115,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#7B334D",
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #7B334D;font-size: 76px;font-family: 微软雅黑;line-height: 1;font-weight: 700;\">01</span></p>",
+          "textType": "partNumber",
+          "minimumFontSize": 64,
+          "textLineHeight": 1
+        },
+        {
+          "type": "text",
+          "id": "t22-transition-petal-number-title-003",
+          "left": 285,
+          "top": 190,
+          "width": 560,
+          "height": 90,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 46px;font-family: 微软雅黑;line-height: 1.1;font-weight: 700;\">章节标题</span></p>",
+          "textType": "title",
+          "minimumFontSize": 42,
+          "textLineHeight": 1.1
+        },
+        {
+          "type": "text",
+          "id": "t22-transition-petal-number-content-003",
+          "left": 290,
+          "top": 300,
+          "width": 500,
+          "height": 72,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#4A3F40",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #4A3F40;font-size: 18px;font-family: 微软雅黑;line-height: 1.35;font-weight: 400;\">章节说明文字</span></p>",
+          "textType": "content",
+          "minimumFontSize": 16,
+          "textLineHeight": 1.35
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#F7EFE8"
+      },
+      "variantMode": "deterministic"
+    },
+    {
+      "id": "content-text-2",
+      "type": "content",
+      "elements": [
+        {
+          "type": "image",
+          "id": "t22-content-text-2-background-001",
+          "src": "/api/data/template_22_asset_bg_content_v1.jpg",
+          "left": 0,
+          "top": 0,
+          "width": 1000,
+          "height": 562.5,
+          "rotate": 0,
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t22-content-text-2-title-002",
+          "left": 72,
+          "top": 46,
+          "width": 720,
+          "height": 72,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#7B334D",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #7B334D;font-size: 34px;font-family: 微软雅黑;line-height: 1.15;font-weight: 700;\">页面标题</span></p>",
+          "textType": "title",
+          "minimumFontSize": 30,
+          "textLineHeight": 1.15
+        },
+        {
+          "type": "line",
+          "id": "t22-content-text-2-header-rule-002",
+          "left": 72,
+          "top": 124,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            160,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B56F7D",
+          "style": "solid",
+          "width": 2,
+          "rotate": 0,
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t22-content-text-2-item-number-004",
+          "left": 100,
+          "top": 160,
+          "width": 62,
+          "height": 46,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#DF8FA5",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #DF8FA5;font-size: 28px;font-family: 微软雅黑;line-height: 1.05;font-weight: 700;\">01</span></p>",
+          "textType": "itemNumber",
+          "minimumFontSize": 24,
+          "groupId": "content-text-2-item-1",
+          "textLineHeight": 1.05
+        },
+        {
+          "type": "text",
+          "id": "t22-content-text-2-item-title-004",
+          "left": 100,
+          "top": 214,
+          "width": 350,
+          "height": 54,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 22px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">内容标题1</span></p>",
+          "textType": "itemTitle",
+          "minimumFontSize": 20,
+          "groupId": "content-text-2-item-1",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "line",
+          "id": "t22-content-text-2-item-rule-004",
+          "left": 100,
+          "top": 275,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            350,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B56F7D",
+          "style": "solid",
+          "width": 2,
+          "rotate": 0,
+          "groupId": "content-text-2-item-1"
+        },
+        {
+          "type": "text",
+          "id": "t22-content-text-2-item-004",
+          "left": 100,
+          "top": 296,
+          "width": 350,
+          "height": 180,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#4A3F40",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #4A3F40;font-size: 16px;font-family: 微软雅黑;line-height: 1.35;font-weight: 400;\">正文信息完整展示，并保持清晰的阅读层级。</span></p>",
+          "textType": "item",
+          "minimumFontSize": 14,
+          "groupId": "content-text-2-item-1",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "text",
+          "id": "t22-content-text-2-item-number-008",
+          "left": 540,
+          "top": 160,
+          "width": 62,
+          "height": 46,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#DF8FA5",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #DF8FA5;font-size: 28px;font-family: 微软雅黑;line-height: 1.05;font-weight: 700;\">02</span></p>",
+          "textType": "itemNumber",
+          "minimumFontSize": 24,
+          "groupId": "content-text-2-item-2",
+          "textLineHeight": 1.05
+        },
+        {
+          "type": "text",
+          "id": "t22-content-text-2-item-title-008",
+          "left": 540,
+          "top": 214,
+          "width": 350,
+          "height": 54,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 22px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">内容标题2</span></p>",
+          "textType": "itemTitle",
+          "minimumFontSize": 20,
+          "groupId": "content-text-2-item-2",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "line",
+          "id": "t22-content-text-2-item-rule-008",
+          "left": 540,
+          "top": 275,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            350,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B56F7D",
+          "style": "solid",
+          "width": 2,
+          "rotate": 0,
+          "groupId": "content-text-2-item-2"
+        },
+        {
+          "type": "text",
+          "id": "t22-content-text-2-item-008",
+          "left": 540,
+          "top": 296,
+          "width": 350,
+          "height": 180,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#4A3F40",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #4A3F40;font-size: 16px;font-family: 微软雅黑;line-height: 1.35;font-weight: 400;\">正文信息完整展示，并保持清晰的阅读层级。</span></p>",
+          "textType": "item",
+          "minimumFontSize": 14,
+          "groupId": "content-text-2-item-2",
+          "textLineHeight": 1.35
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#F7EFE8"
+      },
+      "allowedItemCounts": [
+        2
+      ],
+      "titleFitLimits": {
+        "maxWide": 24,
+        "maxAscii": 48,
+        "singleWide": 20,
+        "singleAscii": 40
+      }
+    },
+    {
+      "id": "content-text-3",
+      "type": "content",
+      "elements": [
+        {
+          "type": "image",
+          "id": "t22-content-text-3-background-001",
+          "src": "/api/data/template_22_asset_bg_content_v1.jpg",
+          "left": 0,
+          "top": 0,
+          "width": 1000,
+          "height": 562.5,
+          "rotate": 0,
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t22-content-text-3-title-002",
+          "left": 72,
+          "top": 46,
+          "width": 720,
+          "height": 72,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#7B334D",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #7B334D;font-size: 34px;font-family: 微软雅黑;line-height: 1.15;font-weight: 700;\">页面标题</span></p>",
+          "textType": "title",
+          "minimumFontSize": 30,
+          "textLineHeight": 1.15
+        },
+        {
+          "type": "line",
+          "id": "t22-content-text-3-header-rule-002",
+          "left": 72,
+          "top": 124,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            160,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B56F7D",
+          "style": "solid",
+          "width": 2,
+          "rotate": 0,
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t22-content-text-3-item-number-004",
+          "left": 65,
+          "top": 160,
+          "width": 62,
+          "height": 46,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#DF8FA5",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #DF8FA5;font-size: 28px;font-family: 微软雅黑;line-height: 1.05;font-weight: 700;\">01</span></p>",
+          "textType": "itemNumber",
+          "minimumFontSize": 24,
+          "groupId": "content-text-3-item-1",
+          "textLineHeight": 1.05
+        },
+        {
+          "type": "text",
+          "id": "t22-content-text-3-item-title-004",
+          "left": 65,
+          "top": 214,
+          "width": 255,
+          "height": 54,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 18px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">内容标题1</span></p>",
+          "textType": "itemTitle",
+          "minimumFontSize": 16,
+          "groupId": "content-text-3-item-1",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "line",
+          "id": "t22-content-text-3-item-rule-004",
+          "left": 65,
+          "top": 275,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            255,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B56F7D",
+          "style": "solid",
+          "width": 2,
+          "rotate": 0,
+          "groupId": "content-text-3-item-1"
+        },
+        {
+          "type": "text",
+          "id": "t22-content-text-3-item-004",
+          "left": 65,
+          "top": 296,
+          "width": 255,
+          "height": 180,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#4A3F40",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #4A3F40;font-size: 16px;font-family: 微软雅黑;line-height: 1.35;font-weight: 400;\">正文信息完整展示，并保持清晰的阅读层级。</span></p>",
+          "textType": "item",
+          "minimumFontSize": 14,
+          "groupId": "content-text-3-item-1",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "text",
+          "id": "t22-content-text-3-item-number-008",
+          "left": 370,
+          "top": 160,
+          "width": 62,
+          "height": 46,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#DF8FA5",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #DF8FA5;font-size: 28px;font-family: 微软雅黑;line-height: 1.05;font-weight: 700;\">02</span></p>",
+          "textType": "itemNumber",
+          "minimumFontSize": 24,
+          "groupId": "content-text-3-item-2",
+          "textLineHeight": 1.05
+        },
+        {
+          "type": "text",
+          "id": "t22-content-text-3-item-title-008",
+          "left": 370,
+          "top": 214,
+          "width": 255,
+          "height": 54,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 18px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">内容标题2</span></p>",
+          "textType": "itemTitle",
+          "minimumFontSize": 16,
+          "groupId": "content-text-3-item-2",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "line",
+          "id": "t22-content-text-3-item-rule-008",
+          "left": 370,
+          "top": 275,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            255,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B56F7D",
+          "style": "solid",
+          "width": 2,
+          "rotate": 0,
+          "groupId": "content-text-3-item-2"
+        },
+        {
+          "type": "text",
+          "id": "t22-content-text-3-item-008",
+          "left": 370,
+          "top": 296,
+          "width": 255,
+          "height": 180,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#4A3F40",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #4A3F40;font-size: 16px;font-family: 微软雅黑;line-height: 1.35;font-weight: 400;\">正文信息完整展示，并保持清晰的阅读层级。</span></p>",
+          "textType": "item",
+          "minimumFontSize": 14,
+          "groupId": "content-text-3-item-2",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "text",
+          "id": "t22-content-text-3-item-number-012",
+          "left": 675,
+          "top": 160,
+          "width": 62,
+          "height": 46,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#DF8FA5",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #DF8FA5;font-size: 28px;font-family: 微软雅黑;line-height: 1.05;font-weight: 700;\">03</span></p>",
+          "textType": "itemNumber",
+          "minimumFontSize": 24,
+          "groupId": "content-text-3-item-3",
+          "textLineHeight": 1.05
+        },
+        {
+          "type": "text",
+          "id": "t22-content-text-3-item-title-012",
+          "left": 675,
+          "top": 214,
+          "width": 255,
+          "height": 54,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 18px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">内容标题3</span></p>",
+          "textType": "itemTitle",
+          "minimumFontSize": 16,
+          "groupId": "content-text-3-item-3",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "line",
+          "id": "t22-content-text-3-item-rule-012",
+          "left": 675,
+          "top": 275,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            255,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B56F7D",
+          "style": "solid",
+          "width": 2,
+          "rotate": 0,
+          "groupId": "content-text-3-item-3"
+        },
+        {
+          "type": "text",
+          "id": "t22-content-text-3-item-012",
+          "left": 675,
+          "top": 296,
+          "width": 255,
+          "height": 180,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#4A3F40",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #4A3F40;font-size: 16px;font-family: 微软雅黑;line-height: 1.35;font-weight: 400;\">正文信息完整展示，并保持清晰的阅读层级。</span></p>",
+          "textType": "item",
+          "minimumFontSize": 14,
+          "groupId": "content-text-3-item-3",
+          "textLineHeight": 1.35
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#F7EFE8"
+      },
+      "allowedItemCounts": [
+        3
+      ],
+      "titleFitLimits": {
+        "maxWide": 24,
+        "maxAscii": 48,
+        "singleWide": 20,
+        "singleAscii": 40
+      }
+    },
+    {
+      "id": "content-text-4",
+      "type": "content",
+      "elements": [
+        {
+          "type": "image",
+          "id": "t22-content-text-4-background-001",
+          "src": "/api/data/template_22_asset_bg_content_v1.jpg",
+          "left": 0,
+          "top": 0,
+          "width": 1000,
+          "height": 562.5,
+          "rotate": 0,
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t22-content-text-4-title-002",
+          "left": 72,
+          "top": 46,
+          "width": 720,
+          "height": 72,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#7B334D",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #7B334D;font-size: 34px;font-family: 微软雅黑;line-height: 1.15;font-weight: 700;\">页面标题</span></p>",
+          "textType": "title",
+          "minimumFontSize": 30,
+          "textLineHeight": 1.15
+        },
+        {
+          "type": "line",
+          "id": "t22-content-text-4-header-rule-002",
+          "left": 72,
+          "top": 124,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            160,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B56F7D",
+          "style": "solid",
+          "width": 2,
+          "rotate": 0,
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t22-content-text-4-item-number-004",
+          "left": 50,
+          "top": 160,
+          "width": 62,
+          "height": 46,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#DF8FA5",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #DF8FA5;font-size: 28px;font-family: 微软雅黑;line-height: 1.05;font-weight: 700;\">01</span></p>",
+          "textType": "itemNumber",
+          "minimumFontSize": 24,
+          "groupId": "content-text-4-item-1",
+          "textLineHeight": 1.05
+        },
+        {
+          "type": "text",
+          "id": "t22-content-text-4-item-title-004",
+          "left": 50,
+          "top": 214,
+          "width": 195,
+          "height": 54,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 18px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">内容标题1</span></p>",
+          "textType": "itemTitle",
+          "minimumFontSize": 16,
+          "groupId": "content-text-4-item-1",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "line",
+          "id": "t22-content-text-4-item-rule-004",
+          "left": 50,
+          "top": 275,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            195,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B56F7D",
+          "style": "solid",
+          "width": 2,
+          "rotate": 0,
+          "groupId": "content-text-4-item-1"
+        },
+        {
+          "type": "text",
+          "id": "t22-content-text-4-item-004",
+          "left": 50,
+          "top": 296,
+          "width": 195,
+          "height": 180,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#4A3F40",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #4A3F40;font-size: 16px;font-family: 微软雅黑;line-height: 1.35;font-weight: 400;\">正文信息完整展示，并保持清晰的阅读层级。</span></p>",
+          "textType": "item",
+          "minimumFontSize": 14,
+          "groupId": "content-text-4-item-1",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "text",
+          "id": "t22-content-text-4-item-number-008",
+          "left": 280,
+          "top": 160,
+          "width": 62,
+          "height": 46,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#DF8FA5",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #DF8FA5;font-size: 28px;font-family: 微软雅黑;line-height: 1.05;font-weight: 700;\">02</span></p>",
+          "textType": "itemNumber",
+          "minimumFontSize": 24,
+          "groupId": "content-text-4-item-2",
+          "textLineHeight": 1.05
+        },
+        {
+          "type": "text",
+          "id": "t22-content-text-4-item-title-008",
+          "left": 280,
+          "top": 214,
+          "width": 195,
+          "height": 54,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 18px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">内容标题2</span></p>",
+          "textType": "itemTitle",
+          "minimumFontSize": 16,
+          "groupId": "content-text-4-item-2",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "line",
+          "id": "t22-content-text-4-item-rule-008",
+          "left": 280,
+          "top": 275,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            195,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B56F7D",
+          "style": "solid",
+          "width": 2,
+          "rotate": 0,
+          "groupId": "content-text-4-item-2"
+        },
+        {
+          "type": "text",
+          "id": "t22-content-text-4-item-008",
+          "left": 280,
+          "top": 296,
+          "width": 195,
+          "height": 180,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#4A3F40",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #4A3F40;font-size: 16px;font-family: 微软雅黑;line-height: 1.35;font-weight: 400;\">正文信息完整展示，并保持清晰的阅读层级。</span></p>",
+          "textType": "item",
+          "minimumFontSize": 14,
+          "groupId": "content-text-4-item-2",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "text",
+          "id": "t22-content-text-4-item-number-012",
+          "left": 510,
+          "top": 160,
+          "width": 62,
+          "height": 46,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#DF8FA5",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #DF8FA5;font-size: 28px;font-family: 微软雅黑;line-height: 1.05;font-weight: 700;\">03</span></p>",
+          "textType": "itemNumber",
+          "minimumFontSize": 24,
+          "groupId": "content-text-4-item-3",
+          "textLineHeight": 1.05
+        },
+        {
+          "type": "text",
+          "id": "t22-content-text-4-item-title-012",
+          "left": 510,
+          "top": 214,
+          "width": 195,
+          "height": 54,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 18px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">内容标题3</span></p>",
+          "textType": "itemTitle",
+          "minimumFontSize": 16,
+          "groupId": "content-text-4-item-3",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "line",
+          "id": "t22-content-text-4-item-rule-012",
+          "left": 510,
+          "top": 275,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            195,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B56F7D",
+          "style": "solid",
+          "width": 2,
+          "rotate": 0,
+          "groupId": "content-text-4-item-3"
+        },
+        {
+          "type": "text",
+          "id": "t22-content-text-4-item-012",
+          "left": 510,
+          "top": 296,
+          "width": 195,
+          "height": 180,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#4A3F40",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #4A3F40;font-size: 16px;font-family: 微软雅黑;line-height: 1.35;font-weight: 400;\">正文信息完整展示，并保持清晰的阅读层级。</span></p>",
+          "textType": "item",
+          "minimumFontSize": 14,
+          "groupId": "content-text-4-item-3",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "text",
+          "id": "t22-content-text-4-item-number-016",
+          "left": 740,
+          "top": 160,
+          "width": 62,
+          "height": 46,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#DF8FA5",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #DF8FA5;font-size: 28px;font-family: 微软雅黑;line-height: 1.05;font-weight: 700;\">04</span></p>",
+          "textType": "itemNumber",
+          "minimumFontSize": 24,
+          "groupId": "content-text-4-item-4",
+          "textLineHeight": 1.05
+        },
+        {
+          "type": "text",
+          "id": "t22-content-text-4-item-title-016",
+          "left": 740,
+          "top": 214,
+          "width": 195,
+          "height": 54,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#211B1C",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #211B1C;font-size: 18px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">内容标题4</span></p>",
+          "textType": "itemTitle",
+          "minimumFontSize": 16,
+          "groupId": "content-text-4-item-4",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "line",
+          "id": "t22-content-text-4-item-rule-016",
+          "left": 740,
+          "top": 275,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            195,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#B56F7D",
+          "style": "solid",
+          "width": 2,
+          "rotate": 0,
+          "groupId": "content-text-4-item-4"
+        },
+        {
+          "type": "text",
+          "id": "t22-content-text-4-item-016",
+          "left": 740,
+          "top": 296,
+          "width": 195,
+          "height": 180,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#4A3F40",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #4A3F40;font-size: 16px;font-family: 微软雅黑;line-height: 1.35;font-weight: 400;\">正文信息完整展示，并保持清晰的阅读层级。</span></p>",
+          "textType": "item",
+          "minimumFontSize": 14,
+          "groupId": "content-text-4-item-4",
+          "textLineHeight": 1.35
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#F7EFE8"
+      },
+      "allowedItemCounts": [
+        4
+      ],
+      "titleFitLimits": {
+        "maxWide": 24,
+        "maxAscii": 48,
+        "singleWide": 20,
+        "singleAscii": 40
+      }
+    },
+    {
+      "id": "end-blossom-mountain",
+      "type": "end",
+      "elements": [
+        {
+          "type": "image",
+          "id": "t22-end-blossom-mountain-background-001",
+          "src": "/api/data/template_22_asset_bg_end_v1.jpg",
+          "left": 0,
+          "top": 0,
+          "width": 1000,
+          "height": 562.5,
+          "rotate": 0,
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t22-end-blossom-mountain-title-002",
+          "left": 105,
+          "top": 170,
+          "width": 600,
+          "height": 110,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#7B334D",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #7B334D;font-size: 54px;font-family: 微软雅黑;line-height: 1.1;font-weight: 700;\">感谢观看</span></p>",
+          "textType": "title",
+          "minimumFontSize": 48,
+          "textLineHeight": 1.1
+        },
+        {
+          "type": "text",
+          "id": "t22-end-blossom-mountain-content-002",
+          "left": 110,
+          "top": 300,
+          "width": 520,
+          "height": 70,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#4A3F40",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #4A3F40;font-size: 19px;font-family: 微软雅黑;line-height: 1.35;font-weight: 400;\">期待与您继续交流</span></p>",
+          "textType": "content",
+          "minimumFontSize": 16,
+          "textLineHeight": 1.35
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#F7EFE8"
+      }
+    }
+  ]
+}

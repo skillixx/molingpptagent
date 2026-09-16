@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_22",
+  "candidateId": "template_22-g8-db790bc36b0a",
+  "branch": "codex/template-22-peach-ink",
+  "currentStage": "G8",
+  "stages": {
+    "G0": "PASS",
+    "G1": "PASS",
+    "G2": "PASS",
+    "G3": "PASS",
+    "G4": "PASS",
+    "G5": "PASS",
+    "G6": "PASS",
+    "G7": "PASS",
+    "G8": "PASS"
+  },
+  "goalStatus": "DONE",
+  "humanConfirmation": "CONFIRMED_2026-09-16",
+  "gitDelivery": "NOT_AUTHORIZED"
+}

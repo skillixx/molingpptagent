@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_22",
+  "status": "PASS",
+  "reference": {
+    "path": "%USERPROFILE%\\Desktop\\中国风格(5).pptx",
+    "sha256": "17CBC63F0D9D77B9D8B78018047FEB10D0D284C150A5E761208CF4E0B683460E",
+    "slideCount": 26,
+    "mediaCount": 48,
+    "audioCount": 1,
+    "embeddedFontParts": 0
+  },
+  "policies": {
+    "sourceMedia": "exclude_all_from_production",
+    "sourceText": "example_content_only",
+    "sourceNotes": "not_instructions",
+    "fonts": "replace_unavailable_and_special_fonts",
+    "audio": "exclude",
+    "animations": "exclude",
+    "transitions": "exclude",
+    "nativeCharts": "use_editable_text_and_shapes",
+    "productionAssets": "original_or_explicitly_authorized_only"
+  },
+  "productionFonts": {
+    "chinese": "微软雅黑",
+    "latin": "Arial"
+  },
+  "excludedFonts": ["华文隶书", "华文新魏", "叶根友毛笔行书2.0版", "Adobe 黑体 Std R"],
+  "sourceBytesCopiedToProduction": false
+}
