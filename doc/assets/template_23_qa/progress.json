@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "templateId": "template_23",
-  "candidateId": "template_23-g6-f0f732e27516",
-  "branch": "codex/template-22-peach-ink",
+  "candidateId": "template_23-g6-13b7c821b244",
+  "branch": "codex/template-23-cyan-star",
   "currentStage": "G6",
   "stages": {
     "G0": "PASS",
@@ -15,10 +15,10 @@
   },
   "goalStatus": "DEVELOPMENT_COMPLETE",
   "humanConfirmation": "CONFIRMED",
-  "humanConfirmationAt": "2026-09-17T14:28:18+08:00",
-  "humanConfirmationInstruction": "确认通过并闭合 Goal",
+  "humanConfirmationAt": "2026-09-17T16:07:38+08:00",
+  "humanConfirmationInstruction": "你帮我看看如何合并到main分支比较安全，帮合并到main上，重新启动项目程序",
   "goalComplete": true,
   "closureEvidence": "closure-report.json",
-  "gitDelivery": "NOT_AUTHORIZED",
+  "gitDelivery": "AUTHORIZED_COMMIT_PUSH_MERGE",
   "productionDelivery": "NOT_AUTHORIZED"
 }

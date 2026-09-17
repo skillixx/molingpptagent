@@ -189,6 +189,8 @@ def test_template_23_content_image_is_replaceable_and_keeps_center_crop(
     assert content_image["clip"]["shape"] == "rect"
     assert content_image["originalWidth"] == width
     assert content_image["originalHeight"] == height
+    assert content_image["minimumSourceWidth"] == 600
+    assert content_image["minimumSourceHeight"] == 450
     for actual_point, expected_point in zip(content_image["clip"]["range"], expected_range, strict=True):
         assert actual_point == pytest.approx(expected_point)
     decorations = [element for element in page["elements"] if element.get("imageType") == "decoration"]
@@ -309,6 +311,19 @@ def test_template_23_rejects_invalid_image_and_metric_inputs() -> None:
             fallback_title="图文",
         )
     assert missing_dimensions.value.code == "TEMPLATE_DATA_INVALID"
+
+    with pytest.raises(TemplateRenderError) as undersized_image:
+        renderer.render(
+            template_id="template_23",
+            semantic_slides=[{
+                "type": "content",
+                "data": {"title": "图文", "items": [{"title": "标题", "text": "正文"}]},
+                "images": [{"src": "https://example.invalid/too-small.jpg", "width": 599, "height": 450}],
+            }],
+            task_id="template-23-undersized-image",
+            fallback_title="图文",
+        )
+    assert undersized_image.value.code == "TEMPLATE_DATA_INVALID"
 
     bad_metrics = [
         {"kind": "metric", "title": f"指标{index}", "value": "", "text": "说明"}

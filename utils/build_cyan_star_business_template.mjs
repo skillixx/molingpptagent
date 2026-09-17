@@ -92,6 +92,12 @@ function image(slide, role, src, left, top, width, height, options = {}) {
     ...(options.clip ? { clip: options.clip } : {}),
     ...(options.strictImageCount ? { strictImageCount: true } : {}),
     ...(options.requireSourceDimensions ? { requireSourceDimensions: true } : {}),
+    ...(Number.isFinite(options.minimumSourceWidth) && options.minimumSourceWidth > 0
+      ? { minimumSourceWidth: options.minimumSourceWidth }
+      : {}),
+    ...(Number.isFinite(options.minimumSourceHeight) && options.minimumSourceHeight > 0
+      ? { minimumSourceHeight: options.minimumSourceHeight }
+      : {}),
   };
 }
 
@@ -440,6 +446,9 @@ function contentImage() {
       groupId,
       strictImageCount: true,
       requireSourceDimensions: true,
+      // 三组正式换图样本的共同下限，兼顾横图、竖图和方图的清晰裁切。
+      minimumSourceWidth: 600,
+      minimumSourceHeight: 450,
       clip: { shape: "rect", range: [[0, 0], [100, 100]] },
     }),
     image(slide, "image-halo", assetUrl(ASSETS.imageHalo), 54, 145, 466, 350, {

@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "templateId": "template_23",
-  "candidateId": "template_23-g6-f0f732e27516",
+  "candidateId": "template_23-g6-13b7c821b244",
   "status": "FROZEN_APPROVED_DEVELOPMENT_COMPLETE",
-  "branch": "codex/template-22-peach-ink",
+  "branch": "codex/template-23-cyan-star",
   "repositoryRoot": "D:\\moling\\TrainPPTAgent",
-  "baseCommit": "2027033a816d37821e4dad84276878b15b3aa885",
-  "gitCommitCreated": false,
+  "baseCommit": "ca7bba62eac5b43621bf2ea6fac838f9aa2b0306",
+  "gitCommitCreated": true,
   "reference": {
     "path": "C:\\Users\\sk20\\Desktop\\星空风格(1).pptx",
     "sha256": "22BA3CA2A866D7064A3FF568122FF3635BC758F9D5E87CDC5F41F23E05CF882B"
   },
-  "candidateSha256": "F0F732E27516EBB2C86035E8884F0B6B31D87232F0B856FF5855671CDD80380D",
+  "candidateSha256": "13B7C821B2448BF7490D4D058325636A8C4691B1FADD621478333BC2F22937AF",
   "files": [
     {
       "path": "backend/main_api/main.py",
@@ -20,13 +20,13 @@
     },
     {
       "path": "backend/main_api/workers/template_renderer.py",
-      "bytes": 87472,
-      "sha256": "E3A2F8F38DBB776F61C21F5C43FDD5229CE5315F816A2A2B796A4E504190B9AC"
+      "bytes": 89884,
+      "sha256": "E62FD5DFC544EA442F94A44D13137445C3F5DE623E5D1593DD1F7972DB8AE76F"
     },
     {
       "path": "backend/main_api/template/template_23.json",
-      "bytes": 159740,
-      "sha256": "93EF1F27FDFD80B065552ABC283619C3779F6DDE7726F610ADA2744463750A9E"
+      "bytes": 159815,
+      "sha256": "7B4A99FE21F179033E695DEDAEBA681F1E4B80CFB61CC6F50B85C32AA6546BAF"
     },
     {
       "path": "backend/main_api/template/template_23.jpg",
@@ -80,8 +80,8 @@
     },
     {
       "path": "backend/main_api/tests/test_template_23.py",
-      "bytes": 13134,
-      "sha256": "CDED4B8B1F27347663EA27D4EEA1500F09675B2506AAA49DDBAD125DF9254157"
+      "bytes": 15666,
+      "sha256": "CA9AFA4BCAE133A23FA37270A984C49F943A1DCB101638B5D5786FB0BC399A72"
     },
     {
       "path": "backend/main_api/tests/test_template_renderer.py",
@@ -90,13 +90,13 @@
     },
     {
       "path": "doc/template_specs/template_23.yaml",
-      "bytes": 4044,
-      "sha256": "590A7B8186DA17A2114497C5AA4F21F374759AC1A9B4C34F1E6B6C01C0B17B52"
+      "bytes": 4088,
+      "sha256": "133747E8BF0D10D4C85A73DED7C5EFF081B0B3C05CA69EE6F09D7FA00D97EF16"
     },
     {
       "path": "utils/build_cyan_star_business_template.mjs",
-      "bytes": 20693,
-      "sha256": "8A33C107FD7775D53EB5832939B35E7A0339226E75DF2AFBBB0E23759C4B3878"
+      "bytes": 21176,
+      "sha256": "002CA20A8AC900F92D32E46FC105078D2980631992C3A51CC94C1B3207E8F948"
     },
     {
       "path": "utils/process_template_23_assets.mjs",
@@ -143,7 +143,7 @@
   ],
   "formalCommandEvidence": "formal-command-results.json",
   "humanConfirmation": "CONFIRMED",
-  "humanConfirmationAt": "2026-09-17T14:28:18+08:00",
-  "humanConfirmationInstruction": "确认通过并闭合 Goal",
+  "humanConfirmationAt": "2026-09-17T16:07:38+08:00",
+  "humanConfirmationInstruction": "你帮我看看如何合并到main分支比较安全，帮合并到main上，重新启动项目程序",
   "closureEvidence": "closure-report.json"
 }

@@ -91,6 +91,7 @@ template:
     content:
       text_item_counts: [1, 2, 3, 4]
       image_counts: [0, 1]
+      image_minimum_source_size: [600, 450]
       metrics_counts: [3, 4, 5]
       metrics_layout_kind: metrics
       overflow: lossless_pagination

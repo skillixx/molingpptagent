@@ -3712,7 +3712,9 @@
             ]
           },
           "strictImageCount": true,
-          "requireSourceDimensions": true
+          "requireSourceDimensions": true,
+          "minimumSourceWidth": 600,
+          "minimumSourceHeight": 450
         },
         {
           "type": "image",

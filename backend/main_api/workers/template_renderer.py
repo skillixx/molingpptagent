@@ -1296,6 +1296,26 @@ class PresentationTemplateRenderer:
                         "内容图片缺少有效尺寸",
                         code="TEMPLATE_DATA_INVALID",
                     )
+                minimum_width = cls._number(slot.get("minimumSourceWidth"), 0)
+                minimum_height = cls._number(slot.get("minimumSourceHeight"), 0)
+                if (
+                    minimum_width > 0
+                    and source_width < minimum_width
+                    or minimum_height > 0
+                    and source_height < minimum_height
+                ):
+                    # 最小尺寸由具体模板显式声明；公共渲染器只执行可选契约，
+                    # 不把 template_23 的清晰度阈值扩散到其他模板。
+                    raise TemplateRenderError(
+                        "内容图片尺寸低于模板要求",
+                        code="TEMPLATE_DATA_INVALID",
+                        context={
+                            "source_width": str(source_width),
+                            "source_height": str(source_height),
+                            "minimum_width": str(minimum_width),
+                            "minimum_height": str(minimum_height),
+                        },
+                    )
                 # 保留真实源图尺寸，供编辑器后续换图、重新裁切和导出往返使用。
                 slot["originalWidth"] = source_width
                 slot["originalHeight"] = source_height
