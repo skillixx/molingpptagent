@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_23",
+  "stage": "G3",
+  "status": "PASS",
+  "stableLayoutCount": 20,
+  "counts": {
+    "cover": 2,
+    "contents": 6,
+    "transition": 2,
+    "content": 8,
+    "end": 2
+  },
+  "deterministicBuilder": "utils/build_cyan_star_business_template.mjs",
+  "productionTemplate": "backend/main_api/template/template_23.json",
+  "visualEvidence": "production-renders/production-contact-sheet.png",
+  "registration": "backend/main_api/main.py",
+  "statusAfterStage": "PASS"
+}

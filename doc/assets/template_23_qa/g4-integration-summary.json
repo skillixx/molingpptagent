@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_23",
+  "stage": "G4",
+  "status": "PASS",
+  "registration": {
+    "endpoint": "http://127.0.0.1:6800/templates",
+    "templateCount": 22,
+    "matchCount": 1,
+    "name": "蓝曜星幕商务汇报",
+    "cover": "/api/data/template_23.jpg"
+  },
+  "frontendProxy": {
+    "templates": 200,
+    "templateJson": 200,
+    "selectorCover": 200
+  },
+  "selector": {
+    "url": "http://127.0.0.1:5778/app",
+    "cardVisible": true,
+    "cardSelectedClass": "template-card selected",
+    "compatibilityOnly": true,
+    "screenshot": "runtime/template-selector-selected.png"
+  },
+  "runtime": {
+    "frontendPreserved": true,
+    "mainApiRestartedAfterRegistration": true,
+    "unrelatedServicesRestarted": false
+  }
+}

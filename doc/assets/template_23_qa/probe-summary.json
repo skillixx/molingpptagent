@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_23",
+  "stage": "G2",
+  "status": "PASS",
+  "probeSlideIds": [
+    "cover-horizon",
+    "content-image-1",
+    "content-metrics-4"
+  ],
+  "checks": {
+    "deterministicBuild": true,
+    "safeArea": true,
+    "titleReadability": true,
+    "contentImageRoleSeparated": true,
+    "contentImageReplaceable": true,
+    "centerCropContract": true,
+    "metricSlotsComplete": true,
+    "forbiddenPurpleOrMagenta": false,
+    "forbiddenCompleteGlowRing": false
+  },
+  "evidence": [
+    "probe-renders/cover-horizon.png",
+    "probe-renders/content-image-1.png",
+    "probe-renders/content-metrics-4.png"
+  ],
+  "browser": {
+    "engine": "Chromium via Playwright CLI",
+    "consoleErrors": [
+      "favicon.ico 404 (non-blocking preview-only request)"
+    ],
+    "applicationConsoleErrors": 0
+  },
+  "notes": [
+    "三个探针在 1000x562.5 画布上无裁切、重叠或越界。",
+    "图文页业务图片与透明光晕装饰保持独立图层。"
+  ]
+}

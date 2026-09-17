@@ -1,0 +1,171 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_23",
+  "status": "PASS",
+  "generationTool": "built-in image generation",
+  "requestedGenerator": "GPT2 图片模板",
+  "actualModel": "工具未暴露",
+  "assets": [
+    {
+      "filename": "template_23_asset_bg_cover_v1.jpg",
+      "source": "doc/assets/template_23_qa/originals/template_23_asset_bg_cover_v1_original.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "mode": "RGB",
+      "bytes": 127652,
+      "maxBytes": 450000,
+      "jpegQuality": 92,
+      "pngQuantizedColors": null,
+      "alphaRange": null,
+      "sha256": "4466BBA5FA31614CCAA4523F97FD39D7821186CA8190E2223CC0AB6DF35EE70E"
+    },
+    {
+      "filename": "template_23_asset_bg_content_v1.jpg",
+      "source": "doc/assets/template_23_qa/originals/template_23_asset_bg_content_v1_original.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "mode": "RGB",
+      "bytes": 54350,
+      "maxBytes": 300000,
+      "jpegQuality": 92,
+      "pngQuantizedColors": null,
+      "alphaRange": null,
+      "sha256": "2D8243D36C54F89DBE5C6499C393EF6DE4F7BF42BA806706C877F53D3AB865E3"
+    },
+    {
+      "filename": "template_23_asset_bg_section_v1.jpg",
+      "source": "doc/assets/template_23_qa/originals/template_23_asset_bg_section_v1_original.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "mode": "RGB",
+      "bytes": 168214,
+      "maxBytes": 380000,
+      "jpegQuality": 92,
+      "pngQuantizedColors": null,
+      "alphaRange": null,
+      "sha256": "A9B947AEDD5D1B09A51861D38A1CFBFEDAD03865720372A0EFBB56A3B1E57E88"
+    },
+    {
+      "filename": "template_23_asset_bg_end_v1.jpg",
+      "source": "doc/assets/template_23_qa/originals/template_23_asset_bg_end_v1_original.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "mode": "RGB",
+      "bytes": 225009,
+      "maxBytes": 420000,
+      "jpegQuality": 92,
+      "pngQuantizedColors": null,
+      "alphaRange": null,
+      "sha256": "C1B9B09E2BAB338C8F8D6850C8C1B08172BD892EDF81836ACFB8CC1774375BBB"
+    },
+    {
+      "filename": "template_23_asset_particle_field_v1.png",
+      "source": "doc/assets/template_23_qa/originals/template_23_asset_particle_field_v1_original.png",
+      "size": [
+        1600,
+        900
+      ],
+      "mode": "RGBA",
+      "bytes": 442013,
+      "maxBytes": 800000,
+      "jpegQuality": null,
+      "pngQuantizedColors": null,
+      "alphaRange": [
+        0,
+        253
+      ],
+      "sha256": "C26D19D43D9E778B9E43868E9AA4ECE1C686C40F4031E3425B0D1F968C7C5734"
+    },
+    {
+      "filename": "template_23_asset_horizon_glow_v1.png",
+      "source": "doc/assets/template_23_qa/originals/template_23_asset_horizon_glow_v1_original.png",
+      "size": [
+        1800,
+        600
+      ],
+      "mode": "RGBA",
+      "bytes": 181710,
+      "maxBytes": 600000,
+      "jpegQuality": null,
+      "pngQuantizedColors": null,
+      "alphaRange": [
+        0,
+        253
+      ],
+      "sha256": "B6F8960630A680A138C0C5D101877C853064AE083E8EDE5D624E873AEC12C092"
+    },
+    {
+      "filename": "template_23_asset_title_flare_v1.png",
+      "source": "doc/assets/template_23_qa/originals/template_23_asset_title_flare_v1_original.png",
+      "size": [
+        1800,
+        180
+      ],
+      "mode": "RGBA",
+      "bytes": 14226,
+      "maxBytes": 350000,
+      "jpegQuality": null,
+      "pngQuantizedColors": null,
+      "alphaRange": [
+        0,
+        253
+      ],
+      "sha256": "A8752651296F25FDB78D5BD595AF5EC6DCE068C8A8B5462401DA8342A1E6ABE3"
+    },
+    {
+      "filename": "template_23_asset_image_halo_v1.png",
+      "source": "doc/assets/template_23_qa/originals/template_23_asset_image_halo_v1_original.png",
+      "size": [
+        1200,
+        900
+      ],
+      "mode": "RGBA",
+      "bytes": 225439,
+      "maxBytes": 700000,
+      "jpegQuality": null,
+      "pngQuantizedColors": null,
+      "alphaRange": [
+        0,
+        253
+      ],
+      "sha256": "33478BD7F8D259DD339A351AD8B2F519F938117692C4C58CCE617C3CDBA7BA52"
+    },
+    {
+      "filename": "template_23_asset_grid_arc_v1.png",
+      "source": "doc/assets/template_23_qa/originals/template_23_asset_grid_arc_v1_original.png",
+      "size": [
+        1600,
+        900
+      ],
+      "mode": "RGBA",
+      "bytes": 127022,
+      "maxBytes": 650000,
+      "jpegQuality": null,
+      "pngQuantizedColors": null,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "sha256": "A91C6B30F0A40A73A360221C7958174E7E9EF0F8E62CBE64CF1C742BBB4914DE"
+    }
+  ],
+  "selectorCover": {
+    "filename": "template_23.jpg",
+    "size": [
+      960,
+      540
+    ],
+    "mode": "RGB",
+    "bytes": 29481,
+    "maxBytes": 150000,
+    "sha256": "73B686A4B053063C7F34E646B63EA573F94B7C14B0396DC454CB65362A633229"
+  }
+}

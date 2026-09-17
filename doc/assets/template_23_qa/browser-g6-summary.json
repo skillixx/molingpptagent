@@ -1,0 +1,217 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_23",
+  "status": "PASS",
+  "frontendUrl": "http://127.0.0.1:5778/editor",
+  "sourceSlideCount": 8,
+  "viewports": [
+    {
+      "name": "desktop",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "name": "laptop",
+      "width": 1366,
+      "height": 768
+    },
+    {
+      "name": "tablet",
+      "width": 768,
+      "height": 1024
+    },
+    {
+      "name": "mobile",
+      "width": 390,
+      "height": 844
+    }
+  ],
+  "representativeSlideIndexes": [
+    3,
+    6
+  ],
+  "screenshots": [
+    "viewports/desktop-3.png",
+    "viewports/desktop-6.png",
+    "viewports/laptop-3.png",
+    "viewports/laptop-6.png",
+    "viewports/tablet-3.png",
+    "viewports/tablet-6.png",
+    "viewports/mobile-3.png",
+    "viewports/mobile-6.png"
+  ],
+  "titleEdited": true,
+  "bodyEdited": true,
+  "slideCount": 8,
+  "replacementInputs": [
+    {
+      "name": "landscape",
+      "filename": "template_23_probe_landscape.jpeg",
+      "width": 600,
+      "height": 450,
+      "decorationProtected": true,
+      "contentImageReplaced": true,
+      "originalWidth": 600,
+      "originalHeight": 450
+    },
+    {
+      "name": "portrait",
+      "filename": "template_23_probe_portrait.jpeg",
+      "width": 600,
+      "height": 900,
+      "decorationProtected": true,
+      "contentImageReplaced": true,
+      "originalWidth": 600,
+      "originalHeight": 900
+    },
+    {
+      "name": "square",
+      "filename": "template_23_probe_square.jpeg",
+      "width": 600,
+      "height": 600,
+      "decorationProtected": true,
+      "contentImageReplaced": true,
+      "originalWidth": 600,
+      "originalHeight": 600
+    }
+  ],
+  "decorationProtected": true,
+  "jsonSaveReload": true,
+  "pptxExportReimport": true,
+  "roundtripSlideCount": 8,
+  "expectedTextCount": 62,
+  "expectedTextBySlide": [
+    [
+      "蓝曜星幕编辑验收",
+      "固定数据真实处理链验收"
+    ],
+    [
+      "目录",
+      "01",
+      "项目背景",
+      "02",
+      "关键成果",
+      "03",
+      "业务指标",
+      "04",
+      "后续计划"
+    ],
+    [
+      "01",
+      "关键成果",
+      "聚焦阶段价值。"
+    ],
+    [
+      "本阶段四项成果",
+      "01",
+      "统一视觉规范",
+      "正文编辑验收：内容保持可修改并可保存。",
+      "02",
+      "完善页面库存",
+      "覆盖五种页面类型和二十个稳定版式。",
+      "03",
+      "保留编辑能力",
+      "标题正文可编辑，业务图片可替换。",
+      "04",
+      "建立验收证据",
+      "验证保存、导出和重新导入。"
+    ],
+    [
+      "三项经营指标",
+      "20",
+      "页面库存",
+      "稳定版式",
+      "5",
+      "页面类型",
+      "语义类型",
+      "9",
+      "素材库存",
+      "原创素材"
+    ],
+    [
+      "五项质量指标",
+      "20%",
+      "质量项1",
+      "检查1",
+      "40%",
+      "质量项2",
+      "检查2",
+      "60%",
+      "质量项3",
+      "检查3",
+      "80%",
+      "质量项4",
+      "检查4",
+      "100%",
+      "质量项5",
+      "检查5"
+    ],
+    [
+      "模板应用示例",
+      "统一图片协议",
+      "横竖方图保持裁切与装饰隔离。"
+    ],
+    [
+      "感谢观看",
+      "候选模板技术验收",
+      "01",
+      "确认候选",
+      "02",
+      "进入后续交付"
+    ]
+  ],
+  "missingTexts": [],
+  "orderedTextChecks": {
+    "1": [
+      "项目背景",
+      "关键成果",
+      "业务指标",
+      "后续计划"
+    ],
+    "3": [
+      "统一视觉规范",
+      "完善页面库存",
+      "保留编辑能力",
+      "建立验收证据"
+    ],
+    "4": [
+      "页面库存",
+      "页面类型",
+      "素材库存"
+    ],
+    "5": [
+      "质量项1",
+      "质量项2",
+      "质量项3",
+      "质量项4",
+      "质量项5"
+    ],
+    "7": [
+      "确认候选",
+      "进入后续交付"
+    ]
+  },
+  "imageCountBeforeExportBySlide": [
+    4,
+    3,
+    2,
+    2,
+    3,
+    3,
+    4,
+    2
+  ],
+  "roundtripImageCountBySlide": [
+    4,
+    3,
+    2,
+    2,
+    3,
+    3,
+    4,
+    2
+  ],
+  "contentImageGeometryRetained": true,
+  "unexpectedApiWrites": [],
+  "pptxFile": "template_23_g6_roundtrip.pptx"
+}

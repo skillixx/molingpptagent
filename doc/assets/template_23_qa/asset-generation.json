@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_23",
+  "status": "PASS",
+  "requestedGenerator": "GPT2 图片模板",
+  "generationTool": "built-in image generation",
+  "actualModel": "工具未暴露",
+  "retryLimit": 3,
+  "rounds": {
+    "template_23_asset_bg_cover_v1.jpg": 1,
+    "template_23_asset_bg_content_v1.jpg": 1,
+    "template_23_asset_bg_section_v1.jpg": 1,
+    "template_23_asset_bg_end_v1.jpg": 1,
+    "template_23_asset_particle_field_v1.png": 1,
+    "template_23_asset_horizon_glow_v1.png": 1,
+    "template_23_asset_title_flare_v1.png": 1,
+    "template_23_asset_image_halo_v1.png": 1,
+    "template_23_asset_grid_arc_v1.png": 1
+  },
+  "sourceDirectory": "doc/assets/template_23_qa/originals",
+  "publishedDirectory": "backend/main_api/template",
+  "assetSummary": "asset-summary.json",
+  "promptRecord": "image-prompts.md",
+  "notes": [
+    "九张视觉均为新生成素材，未使用参考 PPT 媒体字节。",
+    "所有素材第一轮即满足角色、尺寸、格式、透明通道与体积合同。",
+    "后处理只做机械归一化，未程序化绘制视觉内容。"
+  ]
+}

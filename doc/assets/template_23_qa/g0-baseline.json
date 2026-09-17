@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_23",
+  "templateName": "蓝曜星幕商务汇报",
+  "status": "PASS",
+  "branch": "codex/template-22-peach-ink",
+  "baseCommit": "2027033a816d37821e4dad84276878b15b3aa885",
+  "workspace": "D:\\moling\\TrainPPTAgent",
+  "reference": {
+    "path": "%USERPROFILE%\\Desktop\\星空风格(1).pptx",
+    "sha256": "22BA3CA2A866D7064A3FF568122FF3635BC758F9D5E87CDC5F41F23E05CF882B",
+    "bytes": 2945259,
+    "slideCount": 25
+  },
+  "templateIdScan": {
+    "claimedIds": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22],
+    "template23ClaimsBeforeDevelopment": 0,
+    "selectedId": "template_23"
+  },
+  "toolchain": {
+    "templateRenderer": "backend/main_api/workers/template_renderer.py",
+    "assetResolver": "backend/main_api/template_assets.py",
+    "previewRenderer": "utils/render_pptist_template_preview.mjs",
+    "backendTests": "backend/main_api/tests"
+  },
+  "workspacePolicy": {
+    "preserveExistingChanges": true,
+    "cleanUntrackedFiles": false,
+    "allowlistOnly": true,
+    "gitDeliveryAuthorized": false
+  }
+}

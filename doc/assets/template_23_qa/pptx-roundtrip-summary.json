@@ -1,0 +1,326 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_23",
+  "status": "PASS",
+  "powerPointOpenedAndSaved": true,
+  "source": {
+    "filename": "template_23_g6_roundtrip.pptx",
+    "bytes": 3016936,
+    "sha256": "0933788D5B8DEACD09419DA5E446D9D83FBD49B52A3F5AD1B6D60761BEFD2EBC",
+    "slideCount": 8,
+    "mediaCount": 23,
+    "fonts": [
+      "Arial",
+      "微软雅黑"
+    ],
+    "macroFree": true,
+    "slides": [
+      {
+        "name": "ppt/slides/slide1.xml",
+        "texts": [
+          "蓝曜星幕编辑验收",
+          "固定数据真实处理链验收"
+        ],
+        "text": "蓝曜星幕编辑验收 | 固定数据真实处理链验收",
+        "textJoined": "蓝曜星幕编辑验收固定数据真实处理链验收",
+        "pictureCount": 4,
+        "editableShapeCount": 2,
+        "groupCount": 0
+      },
+      {
+        "name": "ppt/slides/slide2.xml",
+        "texts": [
+          "目录",
+          "01",
+          "项目背景",
+          "02",
+          "关键成果",
+          "03",
+          "业务指标",
+          "04",
+          "后续计划"
+        ],
+        "text": "目录 | 01 | 项目背景 | 02 | 关键成果 | 03 | 业务指标 | 04 | 后续计划",
+        "textJoined": "目录01项目背景02关键成果03业务指标04后续计划",
+        "pictureCount": 3,
+        "editableShapeCount": 13,
+        "groupCount": 0
+      },
+      {
+        "name": "ppt/slides/slide3.xml",
+        "texts": [
+          "01",
+          "关键成果",
+          "聚焦阶段价值。"
+        ],
+        "text": "01 | 关键成果 | 聚焦阶段价值。",
+        "textJoined": "01关键成果聚焦阶段价值。",
+        "pictureCount": 2,
+        "editableShapeCount": 4,
+        "groupCount": 0
+      },
+      {
+        "name": "ppt/slides/slide4.xml",
+        "texts": [
+          "本阶段四项成果",
+          "01",
+          "统一视觉规范",
+          "正文编辑验收：内容保持可修改并可保存。",
+          "02",
+          "完善页面库存",
+          "覆盖五种页面类型和二十个稳定版式。",
+          "03",
+          "保留编辑能力",
+          "标题正文可编辑，业务图片可替换。",
+          "04",
+          "建立验收证据",
+          "验证保存、导出和重新导入。"
+        ],
+        "text": "本阶段四项成果 | 01 | 统一视觉规范 | 正文编辑验收：内容保持可修改并可保存。 | 02 | 完善页面库存 | 覆盖五种页面类型和二十个稳定版式。 | 03 | 保留编辑能力 | 标题正文可编辑，业务图片可替换。 | 04 | 建立验收证据 | 验证保存、导出和重新导入。",
+        "textJoined": "本阶段四项成果01统一视觉规范正文编辑验收：内容保持可修改并可保存。02完善页面库存覆盖五种页面类型和二十个稳定版式。03保留编辑能力标题正文可编辑，业务图片可替换。04建立验收证据验证保存、导出和重新导入。",
+        "pictureCount": 2,
+        "editableShapeCount": 21,
+        "groupCount": 0
+      },
+      {
+        "name": "ppt/slides/slide5.xml",
+        "texts": [
+          "三项经营指标",
+          "20",
+          "页面库存",
+          "稳定版式",
+          "5",
+          "页面类型",
+          "语义类型",
+          "9",
+          "素材库存",
+          "原创素材"
+        ],
+        "text": "三项经营指标 | 20 | 页面库存 | 稳定版式 | 5 | 页面类型 | 语义类型 | 9 | 素材库存 | 原创素材",
+        "textJoined": "三项经营指标20页面库存稳定版式5页面类型语义类型9素材库存原创素材",
+        "pictureCount": 3,
+        "editableShapeCount": 13,
+        "groupCount": 0
+      },
+      {
+        "name": "ppt/slides/slide6.xml",
+        "texts": [
+          "五项质量指标",
+          "20%",
+          "质量项1",
+          "检查1",
+          "40%",
+          "质量项2",
+          "检查2",
+          "60%",
+          "质量项3",
+          "检查3",
+          "80%",
+          "质量项4",
+          "检查4",
+          "100%",
+          "质量项5",
+          "检查5"
+        ],
+        "text": "五项质量指标 | 20% | 质量项1 | 检查1 | 40% | 质量项2 | 检查2 | 60% | 质量项3 | 检查3 | 80% | 质量项4 | 检查4 | 100% | 质量项5 | 检查5",
+        "textJoined": "五项质量指标20%质量项1检查140%质量项2检查260%质量项3检查380%质量项4检查4100%质量项5检查5",
+        "pictureCount": 3,
+        "editableShapeCount": 21,
+        "groupCount": 0
+      },
+      {
+        "name": "ppt/slides/slide7.xml",
+        "texts": [
+          "模板应用示例",
+          "统一图片协议",
+          "横竖方图保持裁切与装饰隔离。"
+        ],
+        "text": "模板应用示例 | 统一图片协议 | 横竖方图保持裁切与装饰隔离。",
+        "textJoined": "模板应用示例统一图片协议横竖方图保持裁切与装饰隔离。",
+        "pictureCount": 4,
+        "editableShapeCount": 4,
+        "groupCount": 0
+      },
+      {
+        "name": "ppt/slides/slide8.xml",
+        "texts": [
+          "感谢观看",
+          "候选模板技术验收",
+          "01",
+          "确认候选",
+          "02",
+          "进入后续交付"
+        ],
+        "text": "感谢观看 | 候选模板技术验收 | 01 | 确认候选 | 02 | 进入后续交付",
+        "textJoined": "感谢观看候选模板技术验收01确认候选02进入后续交付",
+        "pictureCount": 2,
+        "editableShapeCount": 6,
+        "groupCount": 0
+      }
+    ]
+  },
+  "saved": {
+    "filename": "template_23_g6_powerpoint_saved.pptx",
+    "bytes": 1555628,
+    "sha256": "2D2C10007BAA91F252C8DAC53216E791D9177E71F66254CBF0E466916BEC80B7",
+    "slideCount": 8,
+    "mediaCount": 9,
+    "fonts": [
+      "Arial",
+      "微软雅黑"
+    ],
+    "macroFree": true,
+    "slides": [
+      {
+        "name": "ppt/slides/slide1.xml",
+        "texts": [
+          "蓝曜星幕编辑验收",
+          "固定数据真实处理链验收"
+        ],
+        "text": "蓝曜星幕编辑验收 | 固定数据真实处理链验收",
+        "textJoined": "蓝曜星幕编辑验收固定数据真实处理链验收",
+        "pictureCount": 4,
+        "editableShapeCount": 2,
+        "groupCount": 0
+      },
+      {
+        "name": "ppt/slides/slide2.xml",
+        "texts": [
+          "目录",
+          "01",
+          "项目背景",
+          "02",
+          "关键成果",
+          "03",
+          "业务指标",
+          "04",
+          "后续计划"
+        ],
+        "text": "目录 | 01 | 项目背景 | 02 | 关键成果 | 03 | 业务指标 | 04 | 后续计划",
+        "textJoined": "目录01项目背景02关键成果03业务指标04后续计划",
+        "pictureCount": 3,
+        "editableShapeCount": 13,
+        "groupCount": 0
+      },
+      {
+        "name": "ppt/slides/slide3.xml",
+        "texts": [
+          "01",
+          "关键成果",
+          "聚焦阶段价值。"
+        ],
+        "text": "01 | 关键成果 | 聚焦阶段价值。",
+        "textJoined": "01关键成果聚焦阶段价值。",
+        "pictureCount": 2,
+        "editableShapeCount": 4,
+        "groupCount": 0
+      },
+      {
+        "name": "ppt/slides/slide4.xml",
+        "texts": [
+          "本阶段四项成果",
+          "01",
+          "统一视觉规范",
+          "正文编辑验收：内容保持可修改并可保存。",
+          "02",
+          "完善页面库存",
+          "覆盖五种页面类型和二十个稳定版式。",
+          "03",
+          "保留编辑能力",
+          "标题正文可编辑，业务图片可替换。",
+          "04",
+          "建立验收证据",
+          "验证保存、导出和重新导入。"
+        ],
+        "text": "本阶段四项成果 | 01 | 统一视觉规范 | 正文编辑验收：内容保持可修改并可保存。 | 02 | 完善页面库存 | 覆盖五种页面类型和二十个稳定版式。 | 03 | 保留编辑能力 | 标题正文可编辑，业务图片可替换。 | 04 | 建立验收证据 | 验证保存、导出和重新导入。",
+        "textJoined": "本阶段四项成果01统一视觉规范正文编辑验收：内容保持可修改并可保存。02完善页面库存覆盖五种页面类型和二十个稳定版式。03保留编辑能力标题正文可编辑，业务图片可替换。04建立验收证据验证保存、导出和重新导入。",
+        "pictureCount": 2,
+        "editableShapeCount": 21,
+        "groupCount": 0
+      },
+      {
+        "name": "ppt/slides/slide5.xml",
+        "texts": [
+          "三项经营指标",
+          "20",
+          "页面库存",
+          "稳定版式",
+          "5",
+          "页面类型",
+          "语义类型",
+          "9",
+          "素材库存",
+          "原创素材"
+        ],
+        "text": "三项经营指标 | 20 | 页面库存 | 稳定版式 | 5 | 页面类型 | 语义类型 | 9 | 素材库存 | 原创素材",
+        "textJoined": "三项经营指标20页面库存稳定版式5页面类型语义类型9素材库存原创素材",
+        "pictureCount": 3,
+        "editableShapeCount": 13,
+        "groupCount": 0
+      },
+      {
+        "name": "ppt/slides/slide6.xml",
+        "texts": [
+          "五项质量指标",
+          "20%",
+          "质量项1",
+          "检查1",
+          "40%",
+          "质量项2",
+          "检查2",
+          "60%",
+          "质量项3",
+          "检查3",
+          "80%",
+          "质量项4",
+          "检查4",
+          "100%",
+          "质量项5",
+          "检查5"
+        ],
+        "text": "五项质量指标 | 20% | 质量项1 | 检查1 | 40% | 质量项2 | 检查2 | 60% | 质量项3 | 检查3 | 80% | 质量项4 | 检查4 | 100% | 质量项5 | 检查5",
+        "textJoined": "五项质量指标20%质量项1检查140%质量项2检查260%质量项3检查380%质量项4检查4100%质量项5检查5",
+        "pictureCount": 3,
+        "editableShapeCount": 21,
+        "groupCount": 0
+      },
+      {
+        "name": "ppt/slides/slide7.xml",
+        "texts": [
+          "模板应用示例",
+          "统一图片协议",
+          "横竖方图保持裁切与装饰隔离。"
+        ],
+        "text": "模板应用示例 | 统一图片协议 | 横竖方图保持裁切与装饰隔离。",
+        "textJoined": "模板应用示例统一图片协议横竖方图保持裁切与装饰隔离。",
+        "pictureCount": 4,
+        "editableShapeCount": 4,
+        "groupCount": 0
+      },
+      {
+        "name": "ppt/slides/slide8.xml",
+        "texts": [
+          "感谢观看",
+          "候选模板技术验收",
+          "01",
+          "确认候选",
+          "02",
+          "进入后续交付"
+        ],
+        "text": "感谢观看 | 候选模板技术验收 | 01 | 确认候选 | 02 | 进入后续交付",
+        "textJoined": "感谢观看候选模板技术验收01确认候选02进入后续交付",
+        "pictureCount": 2,
+        "editableShapeCount": 6,
+        "groupCount": 0
+      }
+    ]
+  },
+  "checks": {
+    "slideCountRetained": true,
+    "allExpectedTextsRetained": true,
+    "textOrderRetained": true,
+    "pictureCountRetainedBySlide": true,
+    "editableShapeCountRetainedBySlide": true,
+    "macroFree": true
+  }
+}

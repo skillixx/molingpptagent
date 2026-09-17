@@ -1,0 +1,646 @@
+{
+  "id": "template_23",
+  "title": "蓝曜星幕商务汇报",
+  "width": 1000,
+  "height": 562.5,
+  "supportsLosslessContentPagination": true,
+  "paginationGrowthPolicy": {
+    "factor": 1.75,
+    "slack": 5
+  },
+  "theme": {
+    "themeColors": [
+      "#00DCEB",
+      "#0A8E99",
+      "#1A3955"
+    ],
+    "fontColor": "#A8BBCB",
+    "fontName": "微软雅黑",
+    "backgroundColor": "#020814"
+  },
+  "metadata": {
+    "aspectRatio": "16:9",
+    "buildStage": "probe",
+    "sourceReference": "星空风格(1).pptx",
+    "sourceReferenceSha256": "22BA3CA2A866D7064A3FF568122FF3635BC758F9D5E87CDC5F41F23E05CF882B",
+    "rightsPolicy": "reference-media-excluded",
+    "sourceFidelity": "cyan-horizon-starfield-business-language",
+    "probeSlideIds": [
+      "cover-horizon",
+      "content-image-1",
+      "content-metrics-4"
+    ],
+    "productionSlideIds": [
+      "cover-horizon",
+      "cover-visual",
+      "contents-2",
+      "contents-3",
+      "contents-4",
+      "contents-5",
+      "contents-6",
+      "contents-10",
+      "transition-particle-number",
+      "transition-lightline",
+      "content-focus-1",
+      "content-text-2",
+      "content-text-3",
+      "content-text-4",
+      "content-image-1",
+      "content-metrics-3",
+      "content-metrics-4",
+      "content-metrics-5",
+      "end-horizon",
+      "end-action"
+    ],
+    "imageSlotMarker": "imageType=content",
+    "decorativeImageMarker": "imageType=decoration",
+    "assetGeneration": "GPT2 图片模板；实际模型工具未暴露",
+    "assetFiles": [
+      "template_23_asset_bg_cover_v1.jpg",
+      "template_23_asset_bg_content_v1.jpg",
+      "template_23_asset_bg_section_v1.jpg",
+      "template_23_asset_bg_end_v1.jpg",
+      "template_23_asset_particle_field_v1.png",
+      "template_23_asset_horizon_glow_v1.png",
+      "template_23_asset_title_flare_v1.png",
+      "template_23_asset_image_halo_v1.png",
+      "template_23_asset_grid_arc_v1.png"
+    ]
+  },
+  "slides": [
+    {
+      "id": "cover-horizon",
+      "type": "cover",
+      "elements": [
+        {
+          "type": "image",
+          "id": "t23-cover-horizon-background-001",
+          "src": "/api/data/template_23_asset_bg_cover_v1.jpg",
+          "left": 0,
+          "top": 0,
+          "width": 1000,
+          "height": 562.5,
+          "rotate": 0,
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t23-cover-horizon-horizon-002",
+          "src": "/api/data/template_23_asset_horizon_glow_v1.png",
+          "left": 40,
+          "top": 355,
+          "width": 920,
+          "height": 245,
+          "rotate": 0,
+          "fixedRatio": true,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t23-cover-horizon-title-003",
+          "left": 88,
+          "top": 145,
+          "width": 700,
+          "height": 145,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#F4FBFF",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #F4FBFF;font-size: 54px;font-family: 微软雅黑;line-height: 1.08;font-weight: 700;\">蓝曜星幕商务汇报</span></p>",
+          "textType": "title",
+          "minimumFontSize": 46,
+          "textLineHeight": 1.08
+        },
+        {
+          "type": "text",
+          "id": "t23-cover-horizon-content-003",
+          "left": 93,
+          "top": 310,
+          "width": 590,
+          "height": 64,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A8BBCB",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #A8BBCB;font-size: 20px;font-family: 微软雅黑;line-height: 1.35;font-weight: 400;\">洞察趋势 · 聚焦增长 · 共创未来</span></p>",
+          "textType": "content",
+          "minimumFontSize": 16,
+          "textLineHeight": 1.35
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#020814"
+      },
+      "variantMode": "deterministic",
+      "titleFitLimits": {
+        "maxWide": 20,
+        "maxAscii": 42,
+        "singleWide": 10,
+        "singleAscii": 22
+      }
+    },
+    {
+      "id": "content-image-1",
+      "type": "content",
+      "elements": [
+        {
+          "type": "image",
+          "id": "t23-content-image-1-background-001",
+          "src": "/api/data/template_23_asset_bg_content_v1.jpg",
+          "left": 0,
+          "top": 0,
+          "width": 1000,
+          "height": 562.5,
+          "rotate": 0,
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t23-content-image-1-title-002",
+          "left": 68,
+          "top": 42,
+          "width": 720,
+          "height": 66,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#F4FBFF",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #F4FBFF;font-size: 34px;font-family: 微软雅黑;line-height: 1.12;font-weight: 700;\">图文内容</span></p>",
+          "textType": "title",
+          "minimumFontSize": 30,
+          "textLineHeight": 1.12
+        },
+        {
+          "type": "image",
+          "id": "t23-content-image-1-title-flare-002",
+          "src": "/api/data/template_23_asset_title_flare_v1.png",
+          "left": 63,
+          "top": 112,
+          "width": 380,
+          "height": 38,
+          "rotate": 0,
+          "fixedRatio": true,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t23-content-image-1-content-image-004",
+          "src": "/api/data/template_23_asset_bg_cover_v1.jpg",
+          "left": 72,
+          "top": 165,
+          "width": 430,
+          "height": 322,
+          "rotate": 0,
+          "fixedRatio": false,
+          "imageType": "content",
+          "groupId": "content-image-1-item-1",
+          "clip": {
+            "shape": "rect",
+            "range": [
+              [
+                0,
+                0
+              ],
+              [
+                100,
+                100
+              ]
+            ]
+          },
+          "strictImageCount": true,
+          "requireSourceDimensions": true
+        },
+        {
+          "type": "image",
+          "id": "t23-content-image-1-image-halo-004",
+          "src": "/api/data/template_23_asset_image_halo_v1.png",
+          "left": 54,
+          "top": 145,
+          "width": 466,
+          "height": 350,
+          "rotate": 0,
+          "fixedRatio": true,
+          "imageType": "decoration",
+          "lock": true,
+          "groupId": "content-image-1-item-1"
+        },
+        {
+          "type": "text",
+          "id": "t23-content-image-1-item-title-004",
+          "left": 565,
+          "top": 205,
+          "width": 350,
+          "height": 68,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#F4FBFF",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #F4FBFF;font-size: 24px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">图文标题</span></p>",
+          "textType": "itemTitle",
+          "minimumFontSize": 20,
+          "groupId": "content-image-1-item-1",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "line",
+          "id": "t23-content-image-1-item-rule-004",
+          "left": 565,
+          "top": 286,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            120,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "color": "#00DCEB",
+          "style": "solid",
+          "width": 2,
+          "rotate": 0,
+          "groupId": "content-image-1-item-1"
+        },
+        {
+          "type": "text",
+          "id": "t23-content-image-1-item-004",
+          "left": 565,
+          "top": 318,
+          "width": 350,
+          "height": 145,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A8BBCB",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #A8BBCB;font-size: 17px;font-family: 微软雅黑;line-height: 1.35;font-weight: 400;\">正文围绕业务图片展开，并保持内容与图片的语义对应。</span></p>",
+          "textType": "item",
+          "minimumFontSize": 14,
+          "groupId": "content-image-1-item-1",
+          "textLineHeight": 1.35
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#020814"
+      },
+      "variantKey": "left",
+      "allowedItemCounts": [
+        1
+      ]
+    },
+    {
+      "id": "content-metrics-4",
+      "type": "content",
+      "elements": [
+        {
+          "type": "image",
+          "id": "t23-content-metrics-4-background-001",
+          "src": "/api/data/template_23_asset_bg_content_v1.jpg",
+          "left": 0,
+          "top": 0,
+          "width": 1000,
+          "height": 562.5,
+          "rotate": 0,
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t23-content-metrics-4-title-002",
+          "left": 68,
+          "top": 42,
+          "width": 720,
+          "height": 66,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#F4FBFF",
+          "content": "<p style=\"text-align: left;\"><span style=\"color: #F4FBFF;font-size: 34px;font-family: 微软雅黑;line-height: 1.12;font-weight: 700;\">关键业务指标</span></p>",
+          "textType": "title",
+          "minimumFontSize": 30,
+          "textLineHeight": 1.12
+        },
+        {
+          "type": "image",
+          "id": "t23-content-metrics-4-title-flare-002",
+          "src": "/api/data/template_23_asset_title_flare_v1.png",
+          "left": 63,
+          "top": 112,
+          "width": 380,
+          "height": 38,
+          "rotate": 0,
+          "fixedRatio": true,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "shape",
+          "id": "t23-content-metrics-4-metric-orbit-004",
+          "left": 78,
+          "top": 180,
+          "width": 138,
+          "height": 138,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 100 0 A 100 100 0 1 1 99.9 0 Z",
+          "fill": "#071A2F",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#00DCEB",
+            "width": 2,
+            "style": "solid"
+          },
+          "groupId": "content-metrics-4-metric-1"
+        },
+        {
+          "type": "text",
+          "id": "t23-content-metrics-4-metric-value-004",
+          "left": 86,
+          "top": 222,
+          "width": 122,
+          "height": 50,
+          "rotate": 0,
+          "defaultFontName": "Arial",
+          "defaultColor": "#00DCEB",
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #00DCEB;font-size: 28px;font-family: Arial;line-height: 1.05;font-weight: 700;\">20%</span></p>",
+          "textType": "itemNumber",
+          "minimumFontSize": 24,
+          "groupId": "content-metrics-4-metric-1",
+          "textLineHeight": 1.05
+        },
+        {
+          "type": "text",
+          "id": "t23-content-metrics-4-metric-title-004",
+          "left": 52,
+          "top": 350,
+          "width": 190,
+          "height": 50,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#F4FBFF",
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #F4FBFF;font-size: 18px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">指标1</span></p>",
+          "textType": "itemTitle",
+          "minimumFontSize": 16,
+          "groupId": "content-metrics-4-metric-1",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "text",
+          "id": "t23-content-metrics-4-metric-body-004",
+          "left": 52,
+          "top": 410,
+          "width": 190,
+          "height": 62,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A8BBCB",
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #A8BBCB;font-size: 15px;font-family: 微软雅黑;line-height: 1.35;font-weight: 400;\">指标说明</span></p>",
+          "textType": "item",
+          "minimumFontSize": 12,
+          "groupId": "content-metrics-4-metric-1",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "shape",
+          "id": "t23-content-metrics-4-metric-orbit-008",
+          "left": 302,
+          "top": 180,
+          "width": 138,
+          "height": 138,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 100 0 A 100 100 0 1 1 99.9 0 Z",
+          "fill": "#071A2F",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#00DCEB",
+            "width": 2,
+            "style": "solid"
+          },
+          "groupId": "content-metrics-4-metric-2"
+        },
+        {
+          "type": "text",
+          "id": "t23-content-metrics-4-metric-value-008",
+          "left": 310,
+          "top": 222,
+          "width": 122,
+          "height": 50,
+          "rotate": 0,
+          "defaultFontName": "Arial",
+          "defaultColor": "#00DCEB",
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #00DCEB;font-size: 28px;font-family: Arial;line-height: 1.05;font-weight: 700;\">40%</span></p>",
+          "textType": "itemNumber",
+          "minimumFontSize": 24,
+          "groupId": "content-metrics-4-metric-2",
+          "textLineHeight": 1.05
+        },
+        {
+          "type": "text",
+          "id": "t23-content-metrics-4-metric-title-008",
+          "left": 276,
+          "top": 350,
+          "width": 190,
+          "height": 50,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#F4FBFF",
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #F4FBFF;font-size: 18px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">指标2</span></p>",
+          "textType": "itemTitle",
+          "minimumFontSize": 16,
+          "groupId": "content-metrics-4-metric-2",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "text",
+          "id": "t23-content-metrics-4-metric-body-008",
+          "left": 276,
+          "top": 410,
+          "width": 190,
+          "height": 62,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A8BBCB",
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #A8BBCB;font-size: 15px;font-family: 微软雅黑;line-height: 1.35;font-weight: 400;\">指标说明</span></p>",
+          "textType": "item",
+          "minimumFontSize": 12,
+          "groupId": "content-metrics-4-metric-2",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "shape",
+          "id": "t23-content-metrics-4-metric-orbit-012",
+          "left": 526,
+          "top": 180,
+          "width": 138,
+          "height": 138,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 100 0 A 100 100 0 1 1 99.9 0 Z",
+          "fill": "#071A2F",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#00DCEB",
+            "width": 2,
+            "style": "solid"
+          },
+          "groupId": "content-metrics-4-metric-3"
+        },
+        {
+          "type": "text",
+          "id": "t23-content-metrics-4-metric-value-012",
+          "left": 534,
+          "top": 222,
+          "width": 122,
+          "height": 50,
+          "rotate": 0,
+          "defaultFontName": "Arial",
+          "defaultColor": "#00DCEB",
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #00DCEB;font-size: 28px;font-family: Arial;line-height: 1.05;font-weight: 700;\">60%</span></p>",
+          "textType": "itemNumber",
+          "minimumFontSize": 24,
+          "groupId": "content-metrics-4-metric-3",
+          "textLineHeight": 1.05
+        },
+        {
+          "type": "text",
+          "id": "t23-content-metrics-4-metric-title-012",
+          "left": 500,
+          "top": 350,
+          "width": 190,
+          "height": 50,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#F4FBFF",
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #F4FBFF;font-size: 18px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">指标3</span></p>",
+          "textType": "itemTitle",
+          "minimumFontSize": 16,
+          "groupId": "content-metrics-4-metric-3",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "text",
+          "id": "t23-content-metrics-4-metric-body-012",
+          "left": 500,
+          "top": 410,
+          "width": 190,
+          "height": 62,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A8BBCB",
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #A8BBCB;font-size: 15px;font-family: 微软雅黑;line-height: 1.35;font-weight: 400;\">指标说明</span></p>",
+          "textType": "item",
+          "minimumFontSize": 12,
+          "groupId": "content-metrics-4-metric-3",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "shape",
+          "id": "t23-content-metrics-4-metric-orbit-016",
+          "left": 750,
+          "top": 180,
+          "width": 138,
+          "height": 138,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 100 0 A 100 100 0 1 1 99.9 0 Z",
+          "fill": "#071A2F",
+          "fixedRatio": false,
+          "rotate": 0,
+          "outline": {
+            "color": "#00DCEB",
+            "width": 2,
+            "style": "solid"
+          },
+          "groupId": "content-metrics-4-metric-4"
+        },
+        {
+          "type": "text",
+          "id": "t23-content-metrics-4-metric-value-016",
+          "left": 758,
+          "top": 222,
+          "width": 122,
+          "height": 50,
+          "rotate": 0,
+          "defaultFontName": "Arial",
+          "defaultColor": "#00DCEB",
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #00DCEB;font-size: 28px;font-family: Arial;line-height: 1.05;font-weight: 700;\">80%</span></p>",
+          "textType": "itemNumber",
+          "minimumFontSize": 24,
+          "groupId": "content-metrics-4-metric-4",
+          "textLineHeight": 1.05
+        },
+        {
+          "type": "text",
+          "id": "t23-content-metrics-4-metric-title-016",
+          "left": 724,
+          "top": 350,
+          "width": 190,
+          "height": 50,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#F4FBFF",
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #F4FBFF;font-size: 18px;font-family: 微软雅黑;line-height: 1.35;font-weight: 700;\">指标4</span></p>",
+          "textType": "itemTitle",
+          "minimumFontSize": 16,
+          "groupId": "content-metrics-4-metric-4",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "text",
+          "id": "t23-content-metrics-4-metric-body-016",
+          "left": 724,
+          "top": 410,
+          "width": 190,
+          "height": 62,
+          "rotate": 0,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A8BBCB",
+          "content": "<p style=\"text-align: center;\"><span style=\"color: #A8BBCB;font-size: 15px;font-family: 微软雅黑;line-height: 1.35;font-weight: 400;\">指标说明</span></p>",
+          "textType": "item",
+          "minimumFontSize": 12,
+          "groupId": "content-metrics-4-metric-4",
+          "textLineHeight": 1.35
+        },
+        {
+          "type": "image",
+          "id": "t23-content-metrics-4-grid-arc-020",
+          "src": "/api/data/template_23_asset_grid_arc_v1.png",
+          "left": 760,
+          "top": 350,
+          "width": 240,
+          "height": 135,
+          "rotate": 0,
+          "fixedRatio": true,
+          "imageType": "decoration",
+          "lock": true
+        }
+      ],
+      "background": {
+        "type": "solid",
+        "color": "#020814"
+      },
+      "allowedItemCounts": [
+        4
+      ],
+      "layoutKind": "metrics",
+      "metricValueField": "value"
+    }
+  ]
+}

@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_23",
+  "candidateId": "template_23-g6-f0f732e27516",
+  "status": "FROZEN_APPROVED_DEVELOPMENT_COMPLETE",
+  "branch": "codex/template-22-peach-ink",
+  "repositoryRoot": "D:\\moling\\TrainPPTAgent",
+  "baseCommit": "2027033a816d37821e4dad84276878b15b3aa885",
+  "gitCommitCreated": false,
+  "reference": {
+    "path": "C:\\Users\\sk20\\Desktop\\星空风格(1).pptx",
+    "sha256": "22BA3CA2A866D7064A3FF568122FF3635BC758F9D5E87CDC5F41F23E05CF882B"
+  },
+  "candidateSha256": "F0F732E27516EBB2C86035E8884F0B6B31D87232F0B856FF5855671CDD80380D",
+  "files": [
+    {
+      "path": "backend/main_api/main.py",
+      "bytes": 34207,
+      "sha256": "8D5626EDCBD8A1C1D15A15CEDCA7559E92AF81CCC589F254DB824500B0FE21CF"
+    },
+    {
+      "path": "backend/main_api/workers/template_renderer.py",
+      "bytes": 87472,
+      "sha256": "E3A2F8F38DBB776F61C21F5C43FDD5229CE5315F816A2A2B796A4E504190B9AC"
+    },
+    {
+      "path": "backend/main_api/template/template_23.json",
+      "bytes": 159740,
+      "sha256": "93EF1F27FDFD80B065552ABC283619C3779F6DDE7726F610ADA2744463750A9E"
+    },
+    {
+      "path": "backend/main_api/template/template_23.jpg",
+      "bytes": 29481,
+      "sha256": "73B686A4B053063C7F34E646B63EA573F94B7C14B0396DC454CB65362A633229"
+    },
+    {
+      "path": "backend/main_api/template/template_23_asset_bg_cover_v1.jpg",
+      "bytes": 127652,
+      "sha256": "4466BBA5FA31614CCAA4523F97FD39D7821186CA8190E2223CC0AB6DF35EE70E"
+    },
+    {
+      "path": "backend/main_api/template/template_23_asset_bg_content_v1.jpg",
+      "bytes": 54350,
+      "sha256": "2D8243D36C54F89DBE5C6499C393EF6DE4F7BF42BA806706C877F53D3AB865E3"
+    },
+    {
+      "path": "backend/main_api/template/template_23_asset_bg_section_v1.jpg",
+      "bytes": 168214,
+      "sha256": "A9B947AEDD5D1B09A51861D38A1CFBFEDAD03865720372A0EFBB56A3B1E57E88"
+    },
+    {
+      "path": "backend/main_api/template/template_23_asset_bg_end_v1.jpg",
+      "bytes": 225009,
+      "sha256": "C1B9B09E2BAB338C8F8D6850C8C1B08172BD892EDF81836ACFB8CC1774375BBB"
+    },
+    {
+      "path": "backend/main_api/template/template_23_asset_particle_field_v1.png",
+      "bytes": 442013,
+      "sha256": "C26D19D43D9E778B9E43868E9AA4ECE1C686C40F4031E3425B0D1F968C7C5734"
+    },
+    {
+      "path": "backend/main_api/template/template_23_asset_horizon_glow_v1.png",
+      "bytes": 181710,
+      "sha256": "B6F8960630A680A138C0C5D101877C853064AE083E8EDE5D624E873AEC12C092"
+    },
+    {
+      "path": "backend/main_api/template/template_23_asset_title_flare_v1.png",
+      "bytes": 14226,
+      "sha256": "A8752651296F25FDB78D5BD595AF5EC6DCE068C8A8B5462401DA8342A1E6ABE3"
+    },
+    {
+      "path": "backend/main_api/template/template_23_asset_image_halo_v1.png",
+      "bytes": 225439,
+      "sha256": "33478BD7F8D259DD339A351AD8B2F519F938117692C4C58CCE617C3CDBA7BA52"
+    },
+    {
+      "path": "backend/main_api/template/template_23_asset_grid_arc_v1.png",
+      "bytes": 127022,
+      "sha256": "A91C6B30F0A40A73A360221C7958174E7E9EF0F8E62CBE64CF1C742BBB4914DE"
+    },
+    {
+      "path": "backend/main_api/tests/test_template_23.py",
+      "bytes": 13134,
+      "sha256": "CDED4B8B1F27347663EA27D4EEA1500F09675B2506AAA49DDBAD125DF9254157"
+    },
+    {
+      "path": "backend/main_api/tests/test_template_renderer.py",
+      "bytes": 30738,
+      "sha256": "9683AEF551A07EDE12E85401E4259EBFEEDB839A4E1C5914D6886719243C200C"
+    },
+    {
+      "path": "doc/template_specs/template_23.yaml",
+      "bytes": 4044,
+      "sha256": "590A7B8186DA17A2114497C5AA4F21F374759AC1A9B4C34F1E6B6C01C0B17B52"
+    },
+    {
+      "path": "utils/build_cyan_star_business_template.mjs",
+      "bytes": 20693,
+      "sha256": "8A33C107FD7775D53EB5832939B35E7A0339226E75DF2AFBBB0E23759C4B3878"
+    },
+    {
+      "path": "utils/process_template_23_assets.mjs",
+      "bytes": 5989,
+      "sha256": "08DB506F456110ED031224129EBDA9FB2CABD55D1CBABB5664E2B460F4CC6820"
+    },
+    {
+      "path": "utils/run_template_23_handler_qa.py",
+      "bytes": 10504,
+      "sha256": "2E7F54BBE2911500719B9AC34DCAA9B92F192F75AE5B0E087E5480A4C8F75A68"
+    },
+    {
+      "path": "utils/verify_template_23_browser.cjs",
+      "bytes": 16342,
+      "sha256": "0D73E501F76FE94111E9E9BCF35E78E77367C3F2248F4243FC53F2BE225C21EA"
+    },
+    {
+      "path": "utils/verify_template_23_pptx_roundtrip.mjs",
+      "bytes": 5391,
+      "sha256": "78EDC7A788528F41A5D41CA1ABEC9EA8607ACC71D90C6FEB8191363D97B5F6F4"
+    }
+  ],
+  "evidenceTools": [
+    {
+      "path": "utils/finalize_template_23_qa.py",
+      "bytes": 18677,
+      "sha256": "3ED72F661AF29F3F25E605E3D86F6DAA0C303BAA156FF83259139A4669DBFF6F"
+    },
+    {
+      "path": "utils/run_template_23_handler_qa.py",
+      "bytes": 10504,
+      "sha256": "2E7F54BBE2911500719B9AC34DCAA9B92F192F75AE5B0E087E5480A4C8F75A68"
+    },
+    {
+      "path": "utils/verify_template_23_browser.cjs",
+      "bytes": 16342,
+      "sha256": "0D73E501F76FE94111E9E9BCF35E78E77367C3F2248F4243FC53F2BE225C21EA"
+    },
+    {
+      "path": "utils/verify_template_23_pptx_roundtrip.mjs",
+      "bytes": 5391,
+      "sha256": "78EDC7A788528F41A5D41CA1ABEC9EA8607ACC71D90C6FEB8191363D97B5F6F4"
+    }
+  ],
+  "formalCommandEvidence": "formal-command-results.json",
+  "humanConfirmation": "CONFIRMED",
+  "humanConfirmationAt": "2026-09-17T14:28:18+08:00",
+  "humanConfirmationInstruction": "确认通过并闭合 Goal",
+  "closureEvidence": "closure-report.json"
+}

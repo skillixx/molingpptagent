@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_23",
+  "status": "PASS",
+  "executionMode": "fixed-upstream-real-handler-renderer-and-persistent-worker",
+  "databaseWrites": "isolated-temporary-sqlite-only",
+  "productionQueueWrites": false,
+  "billingOperations": false,
+  "realTextModelCalls": false,
+  "realImageModelCalls": false,
+  "taskId": "template-23-worker-qa",
+  "workerClaimed": true,
+  "workerStatus": "succeeded",
+  "workerStage": "completed",
+  "slideCount": 8,
+  "slideTypes": {
+    "cover": 1,
+    "contents": 1,
+    "transition": 1,
+    "content": 4,
+    "end": 1
+  },
+  "reachedStableLayoutIds": [
+    "content-image-1",
+    "content-metrics-3",
+    "content-metrics-5",
+    "content-text-4",
+    "contents-4",
+    "cover-visual",
+    "end-action",
+    "transition-particle-number"
+  ],
+  "fixedDecorationCount": 22,
+  "contentImageCount": 1,
+  "previewUpdates": 8
+}

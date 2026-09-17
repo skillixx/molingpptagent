@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_23",
+  "kind": "post-closure-pagination-hotfix",
+  "recordedAt": "2026-09-17T15:04:34+08:00",
+  "status": "PASS",
+  "incident": {
+    "taskId": "2eaf8fb7-afe9-404c-80b6-776412c75dcc",
+    "errorCode": "TEMPLATE_PAGINATION_EXPLOSION",
+    "plannedPageCount": 14,
+    "guardedFinalPageCount": 31,
+    "lastSavedPreviewPageCount": 27,
+    "rootCause": "正文分页固定使用四项版式的小正文框容量，导致正常正文被拆成多个重复卡片。"
+  },
+  "fix": {
+    "summary": "比较一至四项版式的完整分页方案，优先选择总页数更少、正文拆段更少的方案。",
+    "preservesSourceTitle": true,
+    "preservesBody": true,
+    "preservesItemOrder": true,
+    "keepsSpecificErrorCodes": true,
+    "preventsArtificialSingleItemCompression": true
+  },
+  "verification": {
+    "fixedDataRed": "3 个语义内容页异常膨胀为 12 页并触发 TEMPLATE_PAGINATION_EXPLOSION。",
+    "fixedDataGreen": "相同输入生成 6 个 content-text-2 页面，正文和项目顺序完整保留。",
+    "affectedRegressionTests": "132 passed in 6.34s",
+    "allTemplateTests": {
+      "passed": 847,
+      "baselineFailures": 2,
+      "baselineFailureTests": [
+        "test_template_19_checked_in_production_matches_builder",
+        "test_template_20_checked_in_production_matches_builder"
+      ],
+      "note": "两个失败均为既有 CRLF/LF 字节差异；相关文件与 origin/main 无差异，不是本次变更引入。"
+    },
+    "persistentWorkerHandlerQa": "PASS",
+    "realTextModelCalls": false,
+    "realImageModelCalls": false,
+    "productionQueueWrites": false,
+    "billingOperations": false,
+    "runtimeAcceptance": {
+      "healthz": "PASS",
+      "readyz": "PASS",
+      "databaseSelectOne": "PASS",
+      "outline": "PASS",
+      "content": "PASS",
+      "personalDb": "PASS",
+      "minio": "PASS",
+      "frontendProxy": "PASS",
+      "activeTasks": 0
+    }
+  },
+  "restart": {
+    "scope": "Worker only",
+    "workerPid": 29996,
+    "startedAt": "2026-09-17T15:04:32+08:00",
+    "releaseCommit": "2027033a816d37821e4dad84276878b15b3aa885",
+    "releaseChannel": "production"
+  }
+}

@@ -369,7 +369,7 @@ def test_template_1_normal_item_counts_use_a_matching_multi_slot_layout(item_cou
 
 @pytest.mark.parametrize(
     "template_id",
-    ["template_16", "template_17", "template_18", "template_19", "template_20"],
+    ["template_16", "template_17", "template_18", "template_19", "template_20", "template_23"],
 )
 def test_four_long_item_titles_stay_on_four_item_layout(template_id: str) -> None:
     """标题过长必须改用安全展示名，不能把四项内容拆成四张单项页。"""
@@ -408,7 +408,7 @@ def test_four_long_item_titles_stay_on_four_item_layout(template_id: str) -> Non
 
 @pytest.mark.parametrize(
     "template_id",
-    ["template_16", "template_17", "template_18", "template_19", "template_20"],
+    ["template_16", "template_17", "template_18", "template_19", "template_20", "template_23"],
 )
 def test_fixed_eighty_item_outline_renders_without_page_explosion(template_id: str) -> None:
     semantic_slides = _fixed_eighty_item_slides()
@@ -447,7 +447,7 @@ def test_fixed_eighty_item_outline_renders_without_page_explosion(template_id: s
 
 @pytest.mark.parametrize(
     "template_id",
-    ["template_16", "template_17", "template_18", "template_19", "template_20"],
+    ["template_16", "template_17", "template_18", "template_19", "template_20", "template_23"],
 )
 @pytest.mark.parametrize("item_count", [2, 3, 4])
 def test_affected_multi_item_title_and_body_slots_do_not_overlap(
@@ -487,7 +487,7 @@ def test_affected_multi_item_title_and_body_slots_do_not_overlap(
 
 @pytest.mark.parametrize(
     "template_id",
-    ["template_16", "template_17", "template_18", "template_19", "template_20"],
+    ["template_16", "template_17", "template_18", "template_19", "template_20", "template_23"],
 )
 @pytest.mark.parametrize(("item_count", "title_length"), [(2, 16), (3, 12), (4, 10)])
 def test_affected_templates_accept_declared_multi_item_title_capacity(

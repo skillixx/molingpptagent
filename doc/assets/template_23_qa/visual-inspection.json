@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_23",
+  "candidateId": "template_23-g6-f0f732e27516",
+  "candidateSha256": "F0F732E27516EBB2C86035E8884F0B6B31D87232F0B856FF5855671CDD80380D",
+  "status": "PASS",
+  "method": "人工目视检查已渲染证据，不替代自动几何与往返检查",
+  "artifacts": [
+    "production-renders/production-contact-sheet.png",
+    "viewports/desktop-3.png",
+    "viewports/desktop-6.png",
+    "viewports/laptop-3.png",
+    "viewports/laptop-6.png",
+    "viewports/tablet-3.png",
+    "viewports/tablet-6.png",
+    "viewports/mobile-3.png",
+    "viewports/mobile-6.png",
+    "replacement-landscape.png",
+    "replacement-portrait.png",
+    "replacement-square.png"
+  ],
+  "checks": {
+    "twentyLayoutsReadable": true,
+    "noVisibleOverlapOrClipping": true,
+    "fourViewportEditorLayoutUsable": true,
+    "replacementImagesRespectFrameAndDecoration": true
+  }
+}

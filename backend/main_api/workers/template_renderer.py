@@ -378,8 +378,15 @@ class PresentationTemplateRenderer:
         content_templates = [
             slide for slide in source_slides if slide.get("type") == "content"
         ]
+        ordinary_content_templates = [
+            slide
+            for slide in content_templates
+            if slide.get("layoutKind") not in self._EXPLICIT_CONTENT_LAYOUT_KINDS
+        ]
+        capacity_templates = ordinary_content_templates or content_templates
+        # 指标等显式语义页的槽位数量不代表普通正文的分页密度。
         max_item_slots = max(
-            (self._slot_count(slide, "item") for slide in content_templates),
+            (self._slot_count(slide, "item") for slide in capacity_templates),
             default=0,
         )
         if max_item_slots <= 0:
@@ -413,7 +420,7 @@ class PresentationTemplateRenderer:
                 if selected.get("metricValueField") == "value":
                     if semantic_images:
                         raise TemplateRenderError("指标版式没有业务图片槽", code="TEMPLATE_MISSING_SLOT")
-                    # 固定四指标不能按普通正文容量拆成更多指标并重复数值；超长文字由槽位检查报错。
+                    # 三至五项指标都是固定语义页，不能按普通正文容量拆分并重复数值。
                     paginated.append(copy.deepcopy(semantic))
                     continue
             if semantic_images and strict_image_protocol:
@@ -429,38 +436,55 @@ class PresentationTemplateRenderer:
                 )
                 continue
 
-            # 单项页可以使用更宽的版式；正文拆分和标题安全批次互相影响，因此迭代到容量稳定。
-            target_count = min(max(1, len(raw_items)), max_item_slots)
-            expanded_items = copy.deepcopy(raw_items)
-            batches: list[list[Any]] = [expanded_items]
-            for _ in range(max_item_slots + 1):
-                item_capacity = self._content_item_capacity(
-                    content_templates,
-                    target_count,
-                    prefer_images=bool(semantic_images),
-                    image_count=len(semantic_images),
-                )
-                expanded_items = [
-                    expanded
-                    for item in raw_items
-                    for expanded in self._split_content_item(
-                        item,
-                        item_capacity,
-                        preserve_native_charts=preserve_native_charts,
+            # 不同密度版式的正文框容量差异很大。先比较 1～N 项的完整分页方案，
+            # 再选择页数最少且拆段最少的方案，避免四项小正文框把正常说明拆成大量重复卡片。
+            plans: list[tuple[int, int, int, list[list[Any]]]] = []
+            plan_errors: list[TemplateRenderError] = []
+            for target_count in range(1, max_item_slots + 1):
+                try:
+                    item_capacity = self._content_item_capacity(
+                        content_templates,
+                        target_count,
+                        prefer_images=bool(semantic_images),
+                        image_count=len(semantic_images),
                     )
-                ]
-                batches = self._content_title_safe_batches(
-                    content_templates,
-                    data,
-                    expanded_items,
-                    max_item_slots=max_item_slots,
-                    prefer_images=False,
-                    image_count=0,
-                )
-                next_count = max((len(batch) for batch in batches), default=1)
-                if next_count == target_count:
-                    break
-                target_count = next_count
+                    expanded_items = [
+                        expanded
+                        for item in raw_items
+                        for expanded in self._split_content_item(
+                            item,
+                            item_capacity,
+                            preserve_native_charts=preserve_native_charts,
+                        )
+                    ]
+                    candidate_batches = self._content_title_safe_batches(
+                        content_templates,
+                        data,
+                        expanded_items,
+                        max_item_slots=target_count,
+                        prefer_images=False,
+                        image_count=0,
+                    )
+                except TemplateRenderError as exc:
+                    plan_errors.append(exc)
+                    continue
+                # 续段可以复用多项版式降低极长正文的总页数，但不能把一个原始项目
+                # 伪装成同一页的多个项目；这种单页压缩应继续使用原始项目密度。
+                if raw_items and target_count > len(raw_items) and len(candidate_batches) <= 1:
+                    continue
+                # 页数优先，其次减少同一项目被拆成多个卡片；同分时使用更高密度。
+                split_count = max(0, len(expanded_items) - len(raw_items))
+                plans.append((len(candidate_batches), split_count, -target_count, candidate_batches))
+            if not plans:
+                if plan_errors:
+                    # 多密度探测可能同时遇到通用非法数据和精确标题容量错误；
+                    # 对外保留最可操作的错误码，避免回退成含糊的模板错误。
+                    raise next(
+                        (exc for exc in plan_errors if exc.code == "ITEM_TITLE_TOO_LONG"),
+                        plan_errors[0],
+                    )
+                raise TemplateRenderError("模板缺少正文分页版式", code="TEMPLATE_MISSING_SLOT")
+            batches = min(plans, key=lambda plan: plan[:3])[3]
 
             title = self._text(data.get("title"))
             for page_index, batch in enumerate(batches):
@@ -1391,8 +1415,16 @@ class PresentationTemplateRenderer:
     def _fill_content(self, elements: list[dict[str, Any]], data: dict[str, Any], semantic: dict[str, Any], *, metric_values: bool = False) -> None:
         if metric_values:
             raw_items = data.get("items")
-            if not isinstance(raw_items, list) or len(raw_items) != 4 or not all(isinstance(item, dict) for item in raw_items):
-                raise TemplateRenderError("指标版式要求四个有效指标", code="TEMPLATE_DATA_INVALID")
+            if (
+                not isinstance(raw_items, list)
+                or not 3 <= len(raw_items) <= 5
+                or not all(isinstance(item, dict) for item in raw_items)
+            ):
+                raise TemplateRenderError("指标版式要求三至五个有效指标", code="TEMPLATE_DATA_INVALID")
+            # 每个指标必须有标题、数值和说明槽，避免模板声明错误时静默截断末尾指标。
+            required_slots = ("itemTitle", "itemNumber", "item")
+            if any(len(self._slots(elements, slot_type)) < len(raw_items) for slot_type in required_slots):
+                raise TemplateRenderError("指标版式槽位不足", code="TEMPLATE_MISSING_SLOT")
             values = [self._text(item.get("value")) for item in raw_items]
             if any(not value for value in values) or any(
                 isinstance(item.get("value"), float) and not math.isfinite(item["value"]) for item in raw_items

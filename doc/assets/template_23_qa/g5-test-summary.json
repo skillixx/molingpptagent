@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_23",
+  "stage": "G5",
+  "status": "PASS",
+  "tests": {
+    "command": ".venv\\Scripts\\python.exe -m pytest backend/main_api/tests/test_template_23.py backend/main_api/tests/test_template_renderer.py backend/main_api/tests/test_template_assets.py backend/main_api/tests/test_template_22.py -q",
+    "result": "131 passed",
+    "seconds": 5.12,
+    "fixedDataOnly": true,
+    "isolatedSqlite": true,
+    "realTextModelCalls": false,
+    "productionTaskWrites": false
+  },
+  "frontendTypeCheck": {
+    "command": "npm run type-check",
+    "result": "PASS"
+  },
+  "publicRendererFixes": [
+    "三至五项指标填充协议",
+    "普通正文分页容量排除显式指标版式"
+  ],
+  "regressionTemplate": "template_22",
+  "handlerEvidence": "real-handler-summary.json"
+}

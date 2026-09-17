@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_23",
+  "candidateId": "template_23-g6-f0f732e27516",
+  "branch": "codex/template-22-peach-ink",
+  "currentStage": "G6",
+  "stages": {
+    "G0": "PASS",
+    "G1": "PASS",
+    "G2": "PASS",
+    "G3": "PASS",
+    "G4": "PASS",
+    "G5": "PASS",
+    "G6": "PASS"
+  },
+  "goalStatus": "DEVELOPMENT_COMPLETE",
+  "humanConfirmation": "CONFIRMED",
+  "humanConfirmationAt": "2026-09-17T14:28:18+08:00",
+  "humanConfirmationInstruction": "确认通过并闭合 Goal",
+  "goalComplete": true,
+  "closureEvidence": "closure-report.json",
+  "gitDelivery": "NOT_AUTHORIZED",
+  "productionDelivery": "NOT_AUTHORIZED"
+}

@@ -578,6 +578,8 @@ async def get_templates():
         { "name": "蓝米流纹商务汇报", "id": "template_21", "cover": "/api/data/template_21.jpg?v=2ce4dc01e4fa" },
         # 桃夭墨韵商务汇报模板使用原创桃花、宣纸和水墨素材，业务图片与固定装饰严格隔离。
         { "name": "桃夭墨韵商务汇报", "id": "template_22", "cover": "/api/data/template_22.jpg" },
+        # 蓝曜星幕商务汇报模板使用原创青色星幕与地平线素材，业务图片与固定装饰严格隔离。
+        { "name": "蓝曜星幕商务汇报", "id": "template_23", "cover": "/api/data/template_23.jpg" },
     ]
 
     return {"data": templates}
