@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "templateId": "template_23",
-  "candidateId": "template_23-g6-13b7c821b244",
-  "candidateSha256": "13B7C821B2448BF7490D4D058325636A8C4691B1FADD621478333BC2F22937AF",
+  "candidateId": "template_23-g6-6c26bd26e744",
+  "candidateSha256": "6C26BD26E744D84B977A37E27E37B739B14F6B3C7815F4C24023AC23C0990C91",
   "status": "PASS",
   "commands": [
     {
@@ -19,7 +19,7 @@
       ],
       "cwd": "D:\\moling\\TrainPPTAgent",
       "exitCode": 0,
-      "output": "........................................................................ [ 54%]\n............................................................             [100%]\n132 passed in 6.36s"
+      "output": "........................................................................ [ 54%]\n.............................................................            [100%]\n133 passed in 6.77s"
     },
     {
       "name": "frontend-type-check",
@@ -39,11 +39,11 @@
         "utils/build_cyan_star_business_template.mjs",
         "--stage",
         "production",
-        "C:\\Users\\sk20\\AppData\\Local\\Temp\\template-23-final-93t8ymdg\\production-first.json"
+        "C:\\Users\\sk20\\AppData\\Local\\Temp\\template-23-final-_5p2p44n\\production-first.json"
       ],
       "cwd": "D:\\moling\\TrainPPTAgent",
       "exitCode": 0,
-      "output": "C:\\Users\\sk20\\AppData\\Local\\Temp\\template-23-final-93t8ymdg\\production-first.json"
+      "output": "C:\\Users\\sk20\\AppData\\Local\\Temp\\template-23-final-_5p2p44n\\production-first.json"
     },
     {
       "name": "production-build-second",
@@ -52,11 +52,11 @@
         "utils/build_cyan_star_business_template.mjs",
         "--stage",
         "production",
-        "C:\\Users\\sk20\\AppData\\Local\\Temp\\template-23-final-93t8ymdg\\production-second.json"
+        "C:\\Users\\sk20\\AppData\\Local\\Temp\\template-23-final-_5p2p44n\\production-second.json"
       ],
       "cwd": "D:\\moling\\TrainPPTAgent",
       "exitCode": 0,
-      "output": "C:\\Users\\sk20\\AppData\\Local\\Temp\\template-23-final-93t8ymdg\\production-second.json"
+      "output": "C:\\Users\\sk20\\AppData\\Local\\Temp\\template-23-final-_5p2p44n\\production-second.json"
     },
     {
       "name": "real-handler-worker",

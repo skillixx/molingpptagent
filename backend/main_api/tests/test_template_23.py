@@ -163,6 +163,7 @@ def test_template_23_selects_exact_text_content_capacity(count: int, expected: s
 @pytest.mark.parametrize(
     ("width", "height", "expected_range"),
     [
+        (600, 450, [[0, 0.0775194], [100, 99.9224806]]),
         (1600, 900, [[12.4417702, 0], [87.5582298, 100]]),
         (900, 1600, [[0, 28.9389535], [100, 71.0610465]]),
         (1000, 1000, [[0, 12.5581395], [100, 87.4418605]]),
@@ -312,18 +313,23 @@ def test_template_23_rejects_invalid_image_and_metric_inputs() -> None:
         )
     assert missing_dimensions.value.code == "TEMPLATE_DATA_INVALID"
 
-    with pytest.raises(TemplateRenderError) as undersized_image:
-        renderer.render(
-            template_id="template_23",
-            semantic_slides=[{
-                "type": "content",
-                "data": {"title": "图文", "items": [{"title": "标题", "text": "正文"}]},
-                "images": [{"src": "https://example.invalid/too-small.jpg", "width": 599, "height": 450}],
-            }],
-            task_id="template-23-undersized-image",
-            fallback_title="图文",
-        )
-    assert undersized_image.value.code == "TEMPLATE_DATA_INVALID"
+    for width, height in ((599, 450), (600, 449)):
+        with pytest.raises(TemplateRenderError) as undersized_image:
+            renderer.render(
+                template_id="template_23",
+                semantic_slides=[{
+                    "type": "content",
+                    "data": {"title": "图文", "items": [{"title": "标题", "text": "正文"}]},
+                    "images": [{
+                        "src": "https://example.invalid/too-small.jpg",
+                        "width": width,
+                        "height": height,
+                    }],
+                }],
+                task_id=f"template-23-undersized-image-{width}x{height}",
+                fallback_title="图文",
+            )
+        assert undersized_image.value.code == "TEMPLATE_DATA_INVALID"
 
     bad_metrics = [
         {"kind": "metric", "title": f"指标{index}", "value": "", "text": "说明"}

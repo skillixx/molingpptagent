@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "templateId": "template_23",
-  "candidateId": "template_23-g6-13b7c821b244",
+  "candidateId": "template_23-g6-6c26bd26e744",
   "status": "FROZEN_APPROVED_DEVELOPMENT_COMPLETE",
   "branch": "codex/template-23-cyan-star",
   "repositoryRoot": "D:\\moling\\TrainPPTAgent",
-  "baseCommit": "ca7bba62eac5b43621bf2ea6fac838f9aa2b0306",
+  "baseCommit": "2c9dbff390b5e5a1279efc3e7d223b8a5fc751ff",
   "gitCommitCreated": true,
   "reference": {
     "path": "C:\\Users\\sk20\\Desktop\\星空风格(1).pptx",
     "sha256": "22BA3CA2A866D7064A3FF568122FF3635BC758F9D5E87CDC5F41F23E05CF882B"
   },
-  "candidateSha256": "13B7C821B2448BF7490D4D058325636A8C4691B1FADD621478333BC2F22937AF",
+  "candidateSha256": "6C26BD26E744D84B977A37E27E37B739B14F6B3C7815F4C24023AC23C0990C91",
   "files": [
     {
       "path": "backend/main_api/main.py",
@@ -80,8 +80,8 @@
     },
     {
       "path": "backend/main_api/tests/test_template_23.py",
-      "bytes": 15666,
-      "sha256": "CA9AFA4BCAE133A23FA37270A984C49F943A1DCB101638B5D5786FB0BC399A72"
+      "bytes": 15940,
+      "sha256": "9273EC0BCFCD8483B27D46DA8BE48A2B34820CCC826B7776076D6B4CB7B9CDD6"
     },
     {
       "path": "backend/main_api/tests/test_template_renderer.py",
@@ -143,7 +143,7 @@
   ],
   "formalCommandEvidence": "formal-command-results.json",
   "humanConfirmation": "CONFIRMED",
-  "humanConfirmationAt": "2026-09-17T16:07:38+08:00",
+  "humanConfirmationAt": "2026-09-17T16:14:37+08:00",
   "humanConfirmationInstruction": "你帮我看看如何合并到main分支比较安全，帮合并到main上，重新启动项目程序",
   "closureEvidence": "closure-report.json"
 }
