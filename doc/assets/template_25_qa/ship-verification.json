@@ -38,5 +38,25 @@
     "utils/verify_template_25_browser.cjs": "8f4f782a1ab35d7333dc361db02dee8d25a6a11c8153eded83ef354c77bd9d4a",
     ".gitattributes": "72a439509fbac036a90c23a38090ceae79d3a96197a24923ce0a9beab4b579bb"
   },
-  "reviewHashFormat": "SHA-256 of Git staged blobs, with Git-normalized line endings"
+  "reviewHashFormat": "SHA-256 of Git staged blobs, with Git-normalized line endings",
+  "remoteDelivery": {
+    "sourceCommit": "193c2cedb2962bfdcf4fb6d7d811f814a9dd9c23",
+    "remoteHeadMatches": true,
+    "remoteMain": "958d267bbf5ea008397aa7425ec3e726424f2825",
+    "mainProtected": false,
+    "compareStatus": "ahead",
+    "aheadBy": 1,
+    "behindBy": 0,
+    "checkRuns": 0,
+    "statusCount": 0,
+    "checkDetails": [],
+    "checkedAt": "2026-09-20T10:28:53.847560+00:00"
+  },
+  "mergeAssessment": {
+    "canMerge": true,
+    "mergeTreeExitCode": 0,
+    "mainIsAncestor": true,
+    "basis": "current remote main and verified code commit",
+    "merged": false
+  }
 }
