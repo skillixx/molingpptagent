@@ -1,0 +1,96 @@
+{
+  "candidateId": "template25-da624b852daa",
+  "templateId": "template_25",
+  "files": {
+    "utils/build_blueblack_city_pitch_template.mjs": "aa15f462c57807ab30be55d3a15f7369a69fd4e8e943bfbb8418b9f065b2e812",
+    "backend/main_api/workers/template_renderer.py": "de810d6db920d6c1af4750ed81ab4e95f5aea7d2334272a1e2807b8477425c3f",
+    "backend/main_api/main.py": "be8b3e5eb0dc8cff047939f952311496144c3896988eb060aee54774ccca430a",
+    "backend/main_api/tests/test_template_25.py": "e3d597e08911632e375e6960ee374e36c9960250c191bc6613d0a7c7b09af3c5",
+    "backend/main_api/template/template_25.json": "83e021c5fb917dacc961446b69c112f12197be216bf9f72a1cdb1901921b1387",
+    "backend/main_api/template/template_25.jpg": "518636903ea992c926c184518a2ccfe75467ebf9a6b2c829a4356eca151006ab",
+    "backend/main_api/template/template_25_asset_bg_city_cover_v1.jpg": "280832bff5a585a2f606b101d26274b5d9f266c8bbae5255876a31f84da2ece9",
+    "backend/main_api/template/template_25_asset_bg_nebula_contents_v1.jpg": "f1508ef74d3fe630d4412c413eb40dd296cca0b5fc78efbebe7840b36766bf5d",
+    "backend/main_api/template/template_25_asset_bg_building_section_v1.jpg": "0b799ac15d236fdb5146cf46c1b7840371a344a8367cdce81d217620b59f2f49",
+    "backend/main_api/template/template_25_asset_bg_meeting_section_v1.jpg": "6b330907b79309a91bdfe73e4920014c3b16e3dae0a68a054aeb977a5ba0917f",
+    "backend/main_api/template/template_25_asset_bg_city_end_v1.jpg": "6e6d52a7f47552e80567bac4f56a44cca2cbc192f07bd0a9578ef563105de9f5"
+  },
+  "tests": 145,
+  "styleObjects": 150,
+  "imageReplacements": 33,
+  "viewports": [
+    {
+      "width": 1920,
+      "height": 1080,
+      "mode": "desktop-editor",
+      "canvas": {
+        "x": 235,
+        "y": 179.3125,
+        "width": 1350,
+        "height": 759.375
+      },
+      "controls": [],
+      "withinViewport": true
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "mode": "desktop-editor",
+      "canvas": {
+        "x": 207.296875,
+        "y": 163.53125,
+        "width": 851.390625,
+        "height": 478.90625
+      },
+      "controls": [],
+      "withinViewport": true
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "mode": "desktop-editor",
+      "canvas": {
+        "x": 177.390625,
+        "y": 442.90625,
+        "width": 313.1875,
+        "height": 176.171875
+      },
+      "controls": [],
+      "withinViewport": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "mode": "mobile-preview",
+      "canvas": {
+        "x": 16,
+        "y": 77,
+        "width": 357,
+        "height": 192.375
+      },
+      "controls": [
+        {
+          "text": "首页",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "text": "下载",
+          "visible": true,
+          "disabled": false
+        }
+      ],
+      "withinViewport": true
+    }
+  ],
+  "automatedStatus": "PASS",
+  "humanConfirmation": {
+    "source": "user-message",
+    "text": "确认完成",
+    "candidateId": "template25-da624b852daa",
+    "recordedAt": "2026-09-20T17:26:06.784988+08:00",
+    "scope": "T8 人工确认与闭合；不包含 Git 交付或生产操作"
+  },
+  "goalStatus": "complete",
+  "createdAt": "2026-09-20T16:12:27.130998+08:00",
+  "closedAt": "2026-09-20T17:26:06.784988+08:00"
+}

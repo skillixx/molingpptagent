@@ -1,0 +1,42 @@
+{
+  "status": "PASS_WITH_EXISTING_REFERENCE_TEST_EXCLUDED",
+  "branch": "codex/blueblack-city-pitch-template",
+  "base": "958d267bbf5ea008397aa7425ec3e726424f2825",
+  "approvedCandidate": "template25-da624b852daa",
+  "approvedProductionFilesUnchanged": true,
+  "approvedSampleOutputUnchanged": true,
+  "testsPassed": 302,
+  "deselectedTests": [
+    "test_template_23_reference_registration_and_cover_are_available"
+  ],
+  "deselectionReason": "远程main既有测试依赖桌面星空风格(1).pptx，当前文件不存在；测试源码未修改",
+  "resolvedReviewFindings": [
+    "专项布局图片保序降级",
+    "按专项实际正文容量选择或降级，避免普通容量拆坏合法专项页",
+    "指标空可选说明保留名称与数值"
+  ],
+  "independentReview": "已报告问题均复测通过，无剩余确认阻塞项",
+  "browserEvidence": "ship-browser/summary.json",
+  "regressionSlides": 11,
+  "imageReplacements": 39,
+  "editableTextStyleObjects": 72,
+  "reviewCodeHashes": {
+    "backend/main_api/workers/template_renderer.py": "0c4e001cf0e90894808c053be1b4c55738cfa9a648a382a0d47f09aea504b140",
+    "backend/main_api/tests/test_template_25.py": "802212ad26c3543f8dbebc9bf38c2c0afa574e5ce09683ee20a09e8c7b930ea2",
+    "utils/verify_template_25_browser.cjs": "7f9ac50fc40590252d15af95e8a73241dc7cfaead8a34a764a2f94d9685ef0e7",
+    ".gitattributes": "4c192ca52f357253f85d6a80c2da4eece672d27613d3c1cda884975fe27c9fd3"
+  },
+  "merged": false,
+  "deployed": false,
+  "createdAt": "2026-09-20T10:08:09.453697+00:00",
+  "stagedSnapshotTestsPassed": 302,
+  "stagedSnapshotEvidence": "ship-staged-tests.xml",
+  "stagedTemplateRebuildByteIdentical": true,
+  "workingTreeReviewHashes": {
+    "backend/main_api/workers/template_renderer.py": "5a93299add3cc8727cfc86d5f7caf37426d3520b0913c57f5e1776d34477270b",
+    "backend/main_api/tests/test_template_25.py": "802212ad26c3543f8dbebc9bf38c2c0afa574e5ce09683ee20a09e8c7b930ea2",
+    "utils/verify_template_25_browser.cjs": "8f4f782a1ab35d7333dc361db02dee8d25a6a11c8153eded83ef354c77bd9d4a",
+    ".gitattributes": "72a439509fbac036a90c23a38090ceae79d3a96197a24923ce0a9beab4b579bb"
+  },
+  "reviewHashFormat": "SHA-256 of Git staged blobs, with Git-normalized line endings"
+}

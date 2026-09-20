@@ -1,0 +1,430 @@
+[
+  {
+    "type": "cover",
+    "data": {
+      "title": "城市创新服务融资路演",
+      "text": "固定数据版式演示，图片和数字仅用于模板验证。",
+      "variant": "city"
+    }
+  },
+  {
+    "type": "cover",
+    "data": {
+      "title": "面向未来城市绿色产业升级的智能服务平台商业发展与融资合作计划",
+      "text": "固定数据版式演示，图片和数字仅用于模板验证。",
+      "variant": "long-title"
+    }
+  },
+  {
+    "type": "contents",
+    "data": {
+      "items": [
+        "项目概况",
+        "团队介绍"
+      ]
+    }
+  },
+  {
+    "type": "contents",
+    "data": {
+      "items": [
+        "项目概况",
+        "团队介绍",
+        "行业与市场"
+      ]
+    }
+  },
+  {
+    "type": "contents",
+    "data": {
+      "items": [
+        "项目概况",
+        "团队介绍",
+        "行业与市场",
+        "产品特色"
+      ]
+    }
+  },
+  {
+    "type": "contents",
+    "data": {
+      "items": [
+        "项目概况",
+        "团队介绍",
+        "行业与市场",
+        "产品特色",
+        "财务计划"
+      ]
+    }
+  },
+  {
+    "type": "contents",
+    "data": {
+      "items": [
+        "项目概况",
+        "团队介绍",
+        "行业与市场",
+        "产品特色",
+        "财务计划",
+        "风险对策"
+      ]
+    }
+  },
+  {
+    "type": "transition",
+    "data": {
+      "title": "项目概况",
+      "text": "从目标到行动",
+      "variant": "building"
+    }
+  },
+  {
+    "type": "transition",
+    "data": {
+      "title": "团队与协作",
+      "text": "从目标到行动",
+      "variant": "meeting"
+    }
+  },
+  {
+    "type": "content",
+    "data": {
+      "title": "项目价值与行动",
+      "items": [
+        {
+          "title": "业务要点1",
+          "text": "第1项说明：以实际业务需求为基础，明确交付目标与实施安排。"
+        }
+      ]
+    }
+  },
+  {
+    "type": "content",
+    "data": {
+      "title": "项目价值与行动",
+      "items": [
+        {
+          "title": "业务要点1",
+          "text": "第1项说明：以实际业务需求为基础，明确交付目标与实施安排。"
+        },
+        {
+          "title": "业务要点2",
+          "text": "第2项说明：以实际业务需求为基础，明确交付目标与实施安排。"
+        }
+      ]
+    }
+  },
+  {
+    "type": "content",
+    "data": {
+      "title": "项目价值与行动",
+      "items": [
+        {
+          "title": "业务要点1",
+          "text": "第1项说明：以实际业务需求为基础，明确交付目标与实施安排。"
+        },
+        {
+          "title": "业务要点2",
+          "text": "第2项说明：以实际业务需求为基础，明确交付目标与实施安排。"
+        },
+        {
+          "title": "业务要点3",
+          "text": "第3项说明：以实际业务需求为基础，明确交付目标与实施安排。"
+        }
+      ]
+    }
+  },
+  {
+    "type": "content",
+    "data": {
+      "title": "项目价值与行动",
+      "items": [
+        {
+          "title": "业务要点1",
+          "text": "第1项说明：以实际业务需求为基础，明确交付目标与实施安排。"
+        },
+        {
+          "title": "业务要点2",
+          "text": "第2项说明：以实际业务需求为基础，明确交付目标与实施安排。"
+        },
+        {
+          "title": "业务要点3",
+          "text": "第3项说明：以实际业务需求为基础，明确交付目标与实施安排。"
+        },
+        {
+          "title": "业务要点4",
+          "text": "第4项说明：以实际业务需求为基础，明确交付目标与实施安排。"
+        }
+      ]
+    }
+  },
+  {
+    "type": "content",
+    "data": {
+      "title": "项目价值与行动",
+      "items": [
+        {
+          "title": "业务要点1",
+          "text": "第1项说明：以实际业务需求为基础，明确交付目标与实施安排。"
+        }
+      ],
+      "variant": "left"
+    },
+    "images": [
+      {
+        "src": "/api/data/template_25_asset_bg_city_cover_v1.jpg",
+        "width": 1920,
+        "height": 1080
+      }
+    ]
+  },
+  {
+    "type": "content",
+    "data": {
+      "title": "项目价值与行动",
+      "items": [
+        {
+          "title": "业务要点1",
+          "text": "第1项说明：以实际业务需求为基础，明确交付目标与实施安排。"
+        }
+      ],
+      "variant": "top"
+    },
+    "images": [
+      {
+        "src": "/api/data/template_25_asset_bg_city_cover_v1.jpg",
+        "width": 1920,
+        "height": 1080
+      }
+    ]
+  },
+  {
+    "type": "content",
+    "data": {
+      "title": "项目价值与行动",
+      "items": [
+        {
+          "title": "业务要点1",
+          "text": "第1项说明：以实际业务需求为基础，明确交付目标与实施安排。"
+        },
+        {
+          "title": "业务要点2",
+          "text": "第2项说明：以实际业务需求为基础，明确交付目标与实施安排。"
+        }
+      ]
+    },
+    "images": [
+      {
+        "src": "/api/data/template_25_asset_bg_city_cover_v1.jpg",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "src": "/api/data/template_25_asset_bg_nebula_contents_v1.jpg",
+        "width": 1920,
+        "height": 1080
+      }
+    ]
+  },
+  {
+    "type": "content",
+    "data": {
+      "title": "项目价值与行动",
+      "items": [
+        {
+          "title": "业务要点1",
+          "text": "第1项说明：以实际业务需求为基础，明确交付目标与实施安排。"
+        },
+        {
+          "title": "业务要点2",
+          "text": "第2项说明：以实际业务需求为基础，明确交付目标与实施安排。"
+        },
+        {
+          "title": "业务要点3",
+          "text": "第3项说明：以实际业务需求为基础，明确交付目标与实施安排。"
+        }
+      ]
+    },
+    "images": [
+      {
+        "src": "/api/data/template_25_asset_bg_city_cover_v1.jpg",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "src": "/api/data/template_25_asset_bg_nebula_contents_v1.jpg",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "src": "/api/data/template_25_asset_bg_building_section_v1.jpg",
+        "width": 1920,
+        "height": 1080
+      }
+    ]
+  },
+  {
+    "type": "content",
+    "data": {
+      "title": "项目价值与行动",
+      "items": [
+        {
+          "title": "业务要点1",
+          "text": "第1项说明：以实际业务需求为基础，明确交付目标与实施安排。"
+        },
+        {
+          "title": "业务要点2",
+          "text": "第2项说明：以实际业务需求为基础，明确交付目标与实施安排。"
+        },
+        {
+          "title": "业务要点3",
+          "text": "第3项说明：以实际业务需求为基础，明确交付目标与实施安排。"
+        },
+        {
+          "title": "业务要点4",
+          "text": "第4项说明：以实际业务需求为基础，明确交付目标与实施安排。"
+        }
+      ]
+    },
+    "images": [
+      {
+        "src": "/api/data/template_25_asset_bg_city_cover_v1.jpg",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "src": "/api/data/template_25_asset_bg_nebula_contents_v1.jpg",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "src": "/api/data/template_25_asset_bg_building_section_v1.jpg",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "src": "/api/data/template_25_asset_bg_meeting_section_v1.jpg",
+        "width": 1920,
+        "height": 1080
+      }
+    ]
+  },
+  {
+    "type": "content",
+    "data": {
+      "title": "四步实施路径",
+      "items": [
+        {
+          "title": "业务要点1",
+          "text": "第1项说明：以实际业务需求为基础，明确交付目标与实施安排。"
+        },
+        {
+          "title": "业务要点2",
+          "text": "第2项说明：以实际业务需求为基础，明确交付目标与实施安排。"
+        },
+        {
+          "title": "业务要点3",
+          "text": "第3项说明：以实际业务需求为基础，明确交付目标与实施安排。"
+        },
+        {
+          "title": "业务要点4",
+          "text": "第4项说明：以实际业务需求为基础，明确交付目标与实施安排。"
+        }
+      ],
+      "layoutKind": "process"
+    }
+  },
+  {
+    "type": "content",
+    "data": {
+      "title": "发展里程碑",
+      "items": [
+        {
+          "title": "2026.01",
+          "text": "第1项说明：以实际业务需求为基础，明确交付目标与实施安排。"
+        },
+        {
+          "title": "2026.06",
+          "text": "第2项说明：以实际业务需求为基础，明确交付目标与实施安排。"
+        },
+        {
+          "title": "2026.12",
+          "text": "第3项说明：以实际业务需求为基础，明确交付目标与实施安排。"
+        }
+      ],
+      "layoutKind": "timeline"
+    }
+  },
+  {
+    "type": "content",
+    "data": {
+      "title": "关键指标（示例）",
+      "items": [
+        {
+          "title": "业务要点1",
+          "text": "固定示例数据，仅用于验证。",
+          "value": "20%"
+        },
+        {
+          "title": "业务要点2",
+          "text": "固定示例数据，仅用于验证。",
+          "value": "40%"
+        },
+        {
+          "title": "业务要点3",
+          "text": "固定示例数据，仅用于验证。",
+          "value": "60%"
+        },
+        {
+          "title": "业务要点4",
+          "text": "固定示例数据，仅用于验证。",
+          "value": "80%"
+        }
+      ],
+      "layoutKind": "metrics"
+    }
+  },
+  {
+    "type": "content",
+    "data": {
+      "title": "双项方案对比",
+      "items": [
+        {
+          "title": "业务要点1",
+          "text": "第1项说明：以实际业务需求为基础，明确交付目标与实施安排。"
+        },
+        {
+          "title": "业务要点2",
+          "text": "第2项说明：以实际业务需求为基础，明确交付目标与实施安排。"
+        }
+      ],
+      "layoutKind": "compare"
+    }
+  },
+  {
+    "type": "end",
+    "data": {
+      "title": "感谢观看",
+      "text": "本演示仅用于模板验证",
+      "variant": "thanks"
+    }
+  },
+  {
+    "type": "end",
+    "data": {
+      "title": "期待与您交流合作",
+      "text": "本演示仅用于模板验证",
+      "variant": "contact",
+      "items": [
+        {
+          "title": "联系人",
+          "text": "示例负责人"
+        },
+        {
+          "title": "邮箱",
+          "text": "pitch@example.invalid"
+        }
+      ]
+    }
+  }
+]

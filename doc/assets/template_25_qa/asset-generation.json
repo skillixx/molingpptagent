@@ -1,0 +1,111 @@
+{
+  "templateId": "template_25",
+  "tool": "image_gen.imagegen",
+  "requestedMethod": "GPT2 图片模板",
+  "actualModel": "工具未暴露",
+  "assets": {
+    "cover": {
+      "source": "C:\\Users\\sk20\\.codex\\generated_images\\01a0bd78-364e-71b2-a47d-9361bd227181\\exec-b6a62ace-ef74-4fbf-b291-f911e59d2f10.png",
+      "sourceSha256": "fba46ab9c7b8a7c8d7bd30c45e3ca8e24edd55da49ac49b653b3e9791aeb529f",
+      "originalSize": [
+        1672,
+        941
+      ],
+      "prompt": "Generate a single professional photographic BACKGROUND asset for a 16:9 business fundraising pitch presentation, no slide text. Wide modern anonymous city skyline at blue-hour sunset, warm gold window lights and a subtly warm horizon under a broad deep blue sky, realistic high-end architectural photography, restrained business mood. Dense skyline and detailed buildings confined to lower 40% of frame. Upper and central 60% should be low-detail deep blue sky with subtle clouds, calm enough for editable white title text overlaid later. Symmetric wide panoramic balance; no foreground obstruction. No identifiable trademark landmarks, no brand signs, NO letters, NO numbers, NO logos, NO watermark, NO frame, NO charts. Landscape 1920x1080 target, 16:9 composition. This is A1 city-cover background only, not a finished slide.",
+      "file": "template_25_asset_bg_city_cover_v1.jpg",
+      "size": [
+        1920,
+        1080
+      ],
+      "mode": "RGB",
+      "format": "JPEG",
+      "imageType": "decoration",
+      "sha256": "280832bff5a585a2f606b101d26274b5d9f266c8bbae5255876a31f84da2ece9",
+      "bytes": 630007,
+      "visualCheck": "PASS：实际浏览器及原生 PowerPoint 页面叠字检查通过"
+    },
+    "contents": {
+      "source": "C:\\Users\\sk20\\.codex\\generated_images\\01a0bd78-364e-71b2-a47d-9361bd227181\\exec-5a54e593-256e-47d8-9989-fb0ae5e653e9.png",
+      "sourceSha256": "e00e773a690a2390b8a6a0056ab4f1e45dea890a8b57f80d1d27544521ac3d82",
+      "originalSize": [
+        1672,
+        941
+      ],
+      "prompt": "One 16:9 photographic star-nebula background for a sophisticated black and blue corporate presentation contents page. Near-black midnight navy across the central 70% and most left/right middle area for overlaid white editable text. Very restrained wisps of dark violet and burgundy nebula only in outer corners, sparse subtle stars, elegant deep space with low contrast and no bright central nebula. Background asset only, not finished slide. No text, digits, logos, watermark, frames, diamonds, icons, diagram or UI. Wide 1920x1080 target. A2 contents background consistent with restrained blue-black business theme.",
+      "file": "template_25_asset_bg_nebula_contents_v1.jpg",
+      "size": [
+        1920,
+        1080
+      ],
+      "mode": "RGB",
+      "format": "JPEG",
+      "imageType": "decoration",
+      "sha256": "f1508ef74d3fe630d4412c413eb40dd296cca0b5fc78efbebe7840b36766bf5d",
+      "bytes": 277026,
+      "visualCheck": "PASS：实际浏览器及原生 PowerPoint 页面叠字检查通过"
+    },
+    "building": {
+      "source": "C:\\Users\\sk20\\.codex\\generated_images\\01a0bd78-364e-71b2-a47d-9361bd227181\\exec-87731730-6010-46f0-aa2a-79ca5c174bff.png",
+      "sourceSha256": "626ae586b5ed0ab8c9a5795dcab2a1876a2f422567beafb347366f009aa15e5d",
+      "originalSize": [
+        1672,
+        941
+      ],
+      "prompt": "Create one realistic architectural photography background for a 16:9 business pitch presentation section divider. Looking upward between modern blue glass office towers on the far left and far right. Towers frame the image, rising diagonally toward upper corners. A large uninterrupted calm deep blue sky in central 50% stays low detail for a large editable diamond chapter frame added later. Silver-blue reflective glass, elegant professional business feel, gentle late-afternoon light, no dramatic neon, balanced symmetrical framing, realistic straight architecture. No lettering, numbers, signs, logos, trademarks, watermarks, frames, diamond or slide content. Background only, wide 1920x1080 target composition. A3 architectural section background.",
+      "file": "template_25_asset_bg_building_section_v1.jpg",
+      "size": [
+        1920,
+        1080
+      ],
+      "mode": "RGB",
+      "format": "JPEG",
+      "imageType": "decoration",
+      "sha256": "0b799ac15d236fdb5146cf46c1b7840371a344a8367cdce81d217620b59f2f49",
+      "bytes": 735217,
+      "visualCheck": "PASS：实际浏览器及原生 PowerPoint 页面叠字检查通过"
+    },
+    "meeting": {
+      "source": "C:\\Users\\sk20\\.codex\\generated_images\\01a0bd78-364e-71b2-a47d-9361bd227181\\exec-bf3079bd-7b2d-4006-a4aa-966817b35333.png",
+      "sourceSha256": "2fa2907d6cc44dd4048353193549980de0096f199d045c701ee6bea6ec6f2c75",
+      "originalSize": [
+        1672,
+        941
+      ],
+      "prompt": "Single wide 16:9 realistic corporate photography BACKGROUND for business pitch chapter divider, A4. A modern high floor conference room at warm sunset, panoramic windows, anonymous businesspeople as softly backlit dark silhouettes sitting only along far left and far right edges of a conference table. No clear recognizable faces. The center 45 percent of frame is calm, uncluttered window light and distant hazy city, reserved for a large editable dark diamond chapter frame added later. Restrained amber horizon and muted navy shadows, premium natural photographic lighting, balanced symmetrical composition. Do not include text, letters, digits, logos, watermark, UI, diamond frame or slide titles. Landscape 1920x1080 target. This asset is decorative and does not depict an actual identifiable team.",
+      "file": "template_25_asset_bg_meeting_section_v1.jpg",
+      "size": [
+        1920,
+        1080
+      ],
+      "mode": "RGB",
+      "format": "JPEG",
+      "imageType": "decoration",
+      "sha256": "6b330907b79309a91bdfe73e4920014c3b16e3dae0a68a054aeb977a5ba0917f",
+      "bytes": 418709,
+      "visualCheck": "PASS：实际浏览器及原生 PowerPoint 页面叠字检查通过"
+    },
+    "end": {
+      "source": "C:\\Users\\sk20\\.codex\\generated_images\\01a0bd78-364e-71b2-a47d-9361bd227181\\exec-c9242113-5c2e-4486-a5e0-6ebfecd5adfe.png",
+      "sourceSha256": "00653327f1a9abcce9a65fc21ae7497bd68299f328c3b23018d6f0a5be3a24a2",
+      "originalSize": [
+        1672,
+        941
+      ],
+      "prompt": "Edit this city cover background into a matching restrained ENDING background for the same business pitch presentation. Preserve the same photographic city identity and the deep blue sky / warm gold skyline palette. Reduce visible architectural detail and contrast in distant buildings, dim bright window points, lower the skyline visually toward the bottom quarter with atmospheric depth. Make the central and upper 70% very calm deep blue sky for white editable closing text and contact information. Retain a subtle warm horizon near bottom. This is a background image only: no text, letters, numbers, logos, watermark, UI, title or frame. Wide 16:9, 1920x1080 target. A5 city ending backdrop, visibly quieter than the reference.",
+      "file": "template_25_asset_bg_city_end_v1.jpg",
+      "size": [
+        1920,
+        1080
+      ],
+      "mode": "RGB",
+      "format": "JPEG",
+      "imageType": "decoration",
+      "sha256": "6e6d52a7f47552e80567bac4f56a44cca2cbc192f07bd0a9578ef563105de9f5",
+      "bytes": 474962,
+      "visualCheck": "PASS：实际浏览器及原生 PowerPoint 页面叠字检查通过",
+      "referenceImages": [
+        "C:\\Users\\sk20\\.codex\\generated_images\\01a0bd78-364e-71b2-a47d-9361bd227181\\exec-b6a62ace-ef74-4fbf-b291-f911e59d2f10.png"
+      ]
+    }
+  }
+}

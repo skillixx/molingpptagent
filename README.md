@@ -275,6 +275,9 @@ flowchart TD
 * [水彩绿植轻商务模板开发 Goal](doc/水彩绿植轻商务PPT模板开发Goal.md)
 * [水彩绿植轻商务模板 Goal 执行提示词](doc/水彩绿植轻商务PPT模板开发Goal执行提示词.md)
 * [水彩绿植轻商务模板素材与 QA 记录](doc/水彩绿植轻商务PPT模板素材与QA记录.md)
+* [蓝黑城市融资路演模板开发说明](doc/蓝黑城市融资路演PPT模板开发说明.md)
+* [蓝黑城市融资路演模板验收与复现](doc/assets/template_25_qa/README.md)
+* [蓝黑城市融资路演模板合并评估](doc/template_25_merge_readiness.md)
 * [不同的模型配置](doc/custom_model.md)
 * [PPT的图片说明]doc/Image.md
 ---

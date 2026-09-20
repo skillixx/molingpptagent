@@ -1,0 +1,91 @@
+{
+  "status": "PASS",
+  "templateId": "template_25",
+  "health": {
+    "status": "ok",
+    "component": "main_api",
+    "release_channel": "production",
+    "release_commit": "958d267bbf5ea008397aa7425ec3e726424f2825"
+  },
+  "ready": {
+    "status": "ready",
+    "component": "main_api",
+    "release_channel": "production",
+    "release_commit": "958d267bbf5ea008397aa7425ec3e726424f2825",
+    "dependencies": {
+      "outline": "up",
+      "content": "up",
+      "personaldb": "up",
+      "database": "up",
+      "moling": "up"
+    }
+  },
+  "registered": {
+    "name": "蓝黑城市·融资路演",
+    "id": "template_25",
+    "cover": "/api/data/template_25.jpg"
+  },
+  "assets": [
+    {
+      "name": "template_25.json",
+      "sha256": "83e021c5fb917dacc961446b69c112f12197be216bf9f72a1cdb1901921b1387",
+      "directAndProxyMatch": true
+    },
+    {
+      "name": "template_25.jpg",
+      "sha256": "518636903ea992c926c184518a2ccfe75467ebf9a6b2c829a4356eca151006ab",
+      "directAndProxyMatch": true
+    },
+    {
+      "name": "template_25_asset_bg_city_cover_v1.jpg",
+      "sha256": "280832bff5a585a2f606b101d26274b5d9f266c8bbae5255876a31f84da2ece9",
+      "directAndProxyMatch": true
+    },
+    {
+      "name": "template_25_asset_bg_nebula_contents_v1.jpg",
+      "sha256": "f1508ef74d3fe630d4412c413eb40dd296cca0b5fc78efbebe7840b36766bf5d",
+      "directAndProxyMatch": true
+    },
+    {
+      "name": "template_25_asset_bg_building_section_v1.jpg",
+      "sha256": "0b799ac15d236fdb5146cf46c1b7840371a344a8367cdce81d217620b59f2f49",
+      "directAndProxyMatch": true
+    },
+    {
+      "name": "template_25_asset_bg_meeting_section_v1.jpg",
+      "sha256": "6b330907b79309a91bdfe73e4920014c3b16e3dae0a68a054aeb977a5ba0917f",
+      "directAndProxyMatch": true
+    },
+    {
+      "name": "template_25_asset_bg_city_end_v1.jpg",
+      "sha256": "6e6d52a7f47552e80567bac4f56a44cca2cbc192f07bd0a9578ef563105de9f5",
+      "directAndProxyMatch": true
+    }
+  ],
+  "workerProcesses": [
+    {
+      "pid": 14896,
+      "cwd": "D:\\moling\\TrainPPTAgent",
+      "name": "python.exe",
+      "cmdline": [
+        "D:\\moling\\TrainPPTAgent\\.venv\\Scripts\\python.exe",
+        "-m",
+        "backend.main_api.workers.main"
+      ]
+    },
+    {
+      "pid": 19732,
+      "cwd": "D:\\moling\\TrainPPTAgent",
+      "name": "python.exe",
+      "cmdline": [
+        "C:\\Program Files\\Python312\\python.exe",
+        "-m",
+        "backend.main_api.workers.main"
+      ]
+    }
+  ],
+  "authStatus": 401,
+  "missingTicketStatus": 400,
+  "selectorUrl": "http://127.0.0.1:5778/app",
+  "editorUrl": "http://127.0.0.1:5778/editor"
+}

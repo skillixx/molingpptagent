@@ -1,0 +1,33 @@
+{
+  "repository": {
+    "full_name": "skillixx/molingpptagent",
+    "private": false,
+    "default_branch": "main",
+    "permissions": {
+      "admin": true,
+      "maintain": true,
+      "push": true,
+      "triage": true,
+      "pull": true
+    }
+  },
+  "/branches/main": {
+    "name": "main",
+    "protected": false,
+    "sha": "958d267bbf5ea008397aa7425ec3e726424f2825"
+  },
+  "/rules/branches/main": [],
+  "/actions/workflows": {
+    "total_count": 0,
+    "workflows": []
+  },
+  "/commits/main/check-runs": {
+    "total_count": 0,
+    "check_runs": []
+  },
+  "/commits/main/status": {
+    "state": "pending",
+    "total_count": 0,
+    "statuses": []
+  }
+}

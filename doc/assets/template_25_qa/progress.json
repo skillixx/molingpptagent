@@ -1,0 +1,28 @@
+{
+  "templateId": "template_25",
+  "updatedAt": "2026-09-20T17:26:06.784988+08:00",
+  "goalStatus": "complete",
+  "T1": "PASS",
+  "T2": "PASS",
+  "T3": "PASS",
+  "T4": "PASS",
+  "T5": "PASS",
+  "T6": "PASS",
+  "T7": "PASS",
+  "T8": "CONFIRMED_CLOSED",
+  "humanConfirmation": {
+    "source": "user-message",
+    "text": "确认完成",
+    "candidateId": "template25-da624b852daa",
+    "recordedAt": "2026-09-20T17:26:06.784988+08:00",
+    "scope": "T8 人工确认与闭合；不包含 Git 交付或生产操作"
+  },
+  "testEvidence": {
+    "exitCode": 0,
+    "passed": 145,
+    "command": ".venv/Scripts/python.exe -m pytest backend/main_api/tests/test_template_25.py backend/main_api/tests/test_template_renderer.py backend/main_api/tests/test_template_24.py -q --tb=short --junitxml=doc/assets/template_25_qa/tests.xml",
+    "durationSeconds": 15.34
+  },
+  "candidateId": "template25-da624b852daa",
+  "closedAt": "2026-09-20T17:26:06.784988+08:00"
+}

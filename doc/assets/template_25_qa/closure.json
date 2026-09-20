@@ -1,0 +1,21 @@
+{
+  "templateId": "template_25",
+  "candidateId": "template25-da624b852daa",
+  "status": "CLOSED",
+  "closedAt": "2026-09-20T17:26:06.784988+08:00",
+  "humanConfirmation": {
+    "source": "user-message",
+    "text": "确认完成",
+    "candidateId": "template25-da624b852daa",
+    "recordedAt": "2026-09-20T17:26:06.784988+08:00",
+    "scope": "T8 人工确认与闭合；不包含 Git 交付或生产操作"
+  },
+  "candidateFilesUnchanged": 11,
+  "automatedChecks": "PASS",
+  "testsPassed": 145,
+  "goalToolStatus": "complete",
+  "evidenceReused": true,
+  "retested": false,
+  "gitDeliveryPerformed": false,
+  "productionOperationsPerformed": false
+}

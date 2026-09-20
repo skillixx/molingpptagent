@@ -1,0 +1,1063 @@
+{
+  "status": "PASS",
+  "templateId": "template_25",
+  "stage": "ship-regression",
+  "slideCount": 11,
+  "jsonFullStateEqual": true,
+  "pptxEditorReimport": true,
+  "exportFailure": {
+    "errorCode": "PPTX_EXPORT_FAILED",
+    "exportingReset": true
+  },
+  "exportRetrySucceeded": true,
+  "missingTexts": [],
+  "imageGeometry": [
+    {
+      "slide": 3,
+      "before": [
+        48,
+        154,
+        208,
+        152
+      ],
+      "after": [
+        48,
+        154,
+        207.99999999999997,
+        152
+      ]
+    },
+    {
+      "slide": 3,
+      "before": [
+        280,
+        154,
+        208,
+        152
+      ],
+      "after": [
+        280,
+        154,
+        207.99999999999997,
+        152
+      ]
+    },
+    {
+      "slide": 3,
+      "before": [
+        512,
+        154,
+        208,
+        152
+      ],
+      "after": [
+        511.99999999999994,
+        154,
+        207.99999999999997,
+        152
+      ]
+    },
+    {
+      "slide": 3,
+      "before": [
+        744,
+        154,
+        208,
+        152
+      ],
+      "after": [
+        743.9999999999999,
+        154,
+        207.99999999999997,
+        152
+      ]
+    },
+    {
+      "slide": 4,
+      "before": [
+        48,
+        154,
+        285.3333333333333,
+        180
+      ],
+      "after": [
+        48,
+        154,
+        285.3333333333333,
+        179.99999999999997
+      ]
+    },
+    {
+      "slide": 4,
+      "before": [
+        357.3333333333333,
+        154,
+        285.3333333333333,
+        180
+      ],
+      "after": [
+        357.33333333333326,
+        154,
+        285.3333333333333,
+        179.99999999999997
+      ]
+    },
+    {
+      "slide": 4,
+      "before": [
+        666.6666666666666,
+        154,
+        285.3333333333333,
+        180
+      ],
+      "after": [
+        666.6666666666666,
+        154,
+        285.3333333333333,
+        179.99999999999997
+      ]
+    },
+    {
+      "slide": 5,
+      "before": [
+        48,
+        154,
+        208,
+        152
+      ],
+      "after": [
+        48,
+        154,
+        207.99999999999997,
+        152
+      ]
+    },
+    {
+      "slide": 5,
+      "before": [
+        280,
+        154,
+        208,
+        152
+      ],
+      "after": [
+        280,
+        154,
+        207.99999999999997,
+        152
+      ]
+    },
+    {
+      "slide": 5,
+      "before": [
+        512,
+        154,
+        208,
+        152
+      ],
+      "after": [
+        511.99999999999994,
+        154,
+        207.99999999999997,
+        152
+      ]
+    },
+    {
+      "slide": 5,
+      "before": [
+        744,
+        154,
+        208,
+        152
+      ],
+      "after": [
+        743.9999999999999,
+        154,
+        207.99999999999997,
+        152
+      ]
+    },
+    {
+      "slide": 6,
+      "before": [
+        48,
+        154,
+        440,
+        200
+      ],
+      "after": [
+        48,
+        154,
+        440,
+        200
+      ]
+    },
+    {
+      "slide": 6,
+      "before": [
+        512,
+        154,
+        440,
+        200
+      ],
+      "after": [
+        511.99999999999994,
+        154,
+        440,
+        200
+      ]
+    }
+  ],
+  "replacementResults": [
+    {
+      "slideId": "0870a2c469de5062",
+      "imageIndex": 0,
+      "dimensions": [
+        1200,
+        800
+      ],
+      "range": [
+        [
+          4.3859649122806985,
+          0
+        ],
+        [
+          95.6140350877193,
+          100
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "0870a2c469de5062",
+      "imageIndex": 1,
+      "dimensions": [
+        1200,
+        800
+      ],
+      "range": [
+        [
+          4.3859649122806985,
+          0
+        ],
+        [
+          95.6140350877193,
+          100
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "0870a2c469de5062",
+      "imageIndex": 2,
+      "dimensions": [
+        1200,
+        800
+      ],
+      "range": [
+        [
+          4.3859649122806985,
+          0
+        ],
+        [
+          95.6140350877193,
+          100
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "0870a2c469de5062",
+      "imageIndex": 3,
+      "dimensions": [
+        1200,
+        800
+      ],
+      "range": [
+        [
+          4.3859649122806985,
+          0
+        ],
+        [
+          95.6140350877193,
+          100
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "0870a2c469de5062",
+      "imageIndex": 0,
+      "dimensions": [
+        800,
+        1200
+      ],
+      "range": [
+        [
+          0,
+          25.641025641025646
+        ],
+        [
+          100,
+          74.35897435897435
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "0870a2c469de5062",
+      "imageIndex": 1,
+      "dimensions": [
+        800,
+        1200
+      ],
+      "range": [
+        [
+          0,
+          25.641025641025646
+        ],
+        [
+          100,
+          74.35897435897435
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "0870a2c469de5062",
+      "imageIndex": 2,
+      "dimensions": [
+        800,
+        1200
+      ],
+      "range": [
+        [
+          0,
+          25.641025641025646
+        ],
+        [
+          100,
+          74.35897435897435
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "0870a2c469de5062",
+      "imageIndex": 3,
+      "dimensions": [
+        800,
+        1200
+      ],
+      "range": [
+        [
+          0,
+          25.641025641025646
+        ],
+        [
+          100,
+          74.35897435897435
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "0870a2c469de5062",
+      "imageIndex": 0,
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "range": [
+        [
+          0,
+          13.461538461538467
+        ],
+        [
+          100,
+          86.53846153846153
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "0870a2c469de5062",
+      "imageIndex": 1,
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "range": [
+        [
+          0,
+          13.461538461538467
+        ],
+        [
+          100,
+          86.53846153846153
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "0870a2c469de5062",
+      "imageIndex": 2,
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "range": [
+        [
+          0,
+          13.461538461538467
+        ],
+        [
+          100,
+          86.53846153846153
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "0870a2c469de5062",
+      "imageIndex": 3,
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "range": [
+        [
+          0,
+          13.461538461538467
+        ],
+        [
+          100,
+          86.53846153846153
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "598f3efbd89757bf",
+      "imageIndex": 0,
+      "dimensions": [
+        1200,
+        800
+      ],
+      "range": [
+        [
+          0,
+          2.6869158878504606
+        ],
+        [
+          100,
+          97.31308411214954
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "598f3efbd89757bf",
+      "imageIndex": 1,
+      "dimensions": [
+        1200,
+        800
+      ],
+      "range": [
+        [
+          0,
+          2.6869158878504606
+        ],
+        [
+          100,
+          97.31308411214954
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "598f3efbd89757bf",
+      "imageIndex": 2,
+      "dimensions": [
+        1200,
+        800
+      ],
+      "range": [
+        [
+          0,
+          2.6869158878504606
+        ],
+        [
+          100,
+          97.31308411214954
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "598f3efbd89757bf",
+      "imageIndex": 0,
+      "dimensions": [
+        800,
+        1200
+      ],
+      "range": [
+        [
+          0,
+          28.97196261682243
+        ],
+        [
+          100,
+          71.02803738317758
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "598f3efbd89757bf",
+      "imageIndex": 1,
+      "dimensions": [
+        800,
+        1200
+      ],
+      "range": [
+        [
+          0,
+          28.97196261682243
+        ],
+        [
+          100,
+          71.02803738317758
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "598f3efbd89757bf",
+      "imageIndex": 2,
+      "dimensions": [
+        800,
+        1200
+      ],
+      "range": [
+        [
+          0,
+          28.97196261682243
+        ],
+        [
+          100,
+          71.02803738317758
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "598f3efbd89757bf",
+      "imageIndex": 0,
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "range": [
+        [
+          0,
+          18.457943925233643
+        ],
+        [
+          100,
+          81.54205607476635
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "598f3efbd89757bf",
+      "imageIndex": 1,
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "range": [
+        [
+          0,
+          18.457943925233643
+        ],
+        [
+          100,
+          81.54205607476635
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "598f3efbd89757bf",
+      "imageIndex": 2,
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "range": [
+        [
+          0,
+          18.457943925233643
+        ],
+        [
+          100,
+          81.54205607476635
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "972ed4b332d65f68",
+      "imageIndex": 0,
+      "dimensions": [
+        1200,
+        800
+      ],
+      "range": [
+        [
+          4.3859649122806985,
+          0
+        ],
+        [
+          95.6140350877193,
+          100
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "972ed4b332d65f68",
+      "imageIndex": 1,
+      "dimensions": [
+        1200,
+        800
+      ],
+      "range": [
+        [
+          4.3859649122806985,
+          0
+        ],
+        [
+          95.6140350877193,
+          100
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "972ed4b332d65f68",
+      "imageIndex": 2,
+      "dimensions": [
+        1200,
+        800
+      ],
+      "range": [
+        [
+          4.3859649122806985,
+          0
+        ],
+        [
+          95.6140350877193,
+          100
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "972ed4b332d65f68",
+      "imageIndex": 3,
+      "dimensions": [
+        1200,
+        800
+      ],
+      "range": [
+        [
+          4.3859649122806985,
+          0
+        ],
+        [
+          95.6140350877193,
+          100
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "972ed4b332d65f68",
+      "imageIndex": 0,
+      "dimensions": [
+        800,
+        1200
+      ],
+      "range": [
+        [
+          0,
+          25.641025641025646
+        ],
+        [
+          100,
+          74.35897435897435
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "972ed4b332d65f68",
+      "imageIndex": 1,
+      "dimensions": [
+        800,
+        1200
+      ],
+      "range": [
+        [
+          0,
+          25.641025641025646
+        ],
+        [
+          100,
+          74.35897435897435
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "972ed4b332d65f68",
+      "imageIndex": 2,
+      "dimensions": [
+        800,
+        1200
+      ],
+      "range": [
+        [
+          0,
+          25.641025641025646
+        ],
+        [
+          100,
+          74.35897435897435
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "972ed4b332d65f68",
+      "imageIndex": 3,
+      "dimensions": [
+        800,
+        1200
+      ],
+      "range": [
+        [
+          0,
+          25.641025641025646
+        ],
+        [
+          100,
+          74.35897435897435
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "972ed4b332d65f68",
+      "imageIndex": 0,
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "range": [
+        [
+          0,
+          13.461538461538467
+        ],
+        [
+          100,
+          86.53846153846153
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "972ed4b332d65f68",
+      "imageIndex": 1,
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "range": [
+        [
+          0,
+          13.461538461538467
+        ],
+        [
+          100,
+          86.53846153846153
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "972ed4b332d65f68",
+      "imageIndex": 2,
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "range": [
+        [
+          0,
+          13.461538461538467
+        ],
+        [
+          100,
+          86.53846153846153
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "972ed4b332d65f68",
+      "imageIndex": 3,
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "range": [
+        [
+          0,
+          13.461538461538467
+        ],
+        [
+          100,
+          86.53846153846153
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "9ae396a655d059eb",
+      "imageIndex": 0,
+      "dimensions": [
+        1200,
+        800
+      ],
+      "range": [
+        [
+          0,
+          15.909090909090914
+        ],
+        [
+          100,
+          84.0909090909091
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "9ae396a655d059eb",
+      "imageIndex": 1,
+      "dimensions": [
+        1200,
+        800
+      ],
+      "range": [
+        [
+          0,
+          15.909090909090914
+        ],
+        [
+          100,
+          84.0909090909091
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "9ae396a655d059eb",
+      "imageIndex": 0,
+      "dimensions": [
+        800,
+        1200
+      ],
+      "range": [
+        [
+          0,
+          34.84848484848485
+        ],
+        [
+          100,
+          65.15151515151516
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "9ae396a655d059eb",
+      "imageIndex": 1,
+      "dimensions": [
+        800,
+        1200
+      ],
+      "range": [
+        [
+          0,
+          34.84848484848485
+        ],
+        [
+          100,
+          65.15151515151516
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "9ae396a655d059eb",
+      "imageIndex": 0,
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "range": [
+        [
+          0,
+          27.272727272727273
+        ],
+        [
+          100,
+          72.72727272727272
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "9ae396a655d059eb",
+      "imageIndex": 1,
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "range": [
+        [
+          0,
+          27.272727272727273
+        ],
+        [
+          100,
+          72.72727272727272
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    }
+  ],
+  "viewports": [
+    {
+      "width": 1920,
+      "height": 1080,
+      "mode": "desktop-editor",
+      "canvas": {
+        "x": 235,
+        "y": 180.3125,
+        "width": 1350,
+        "height": 759.375
+      },
+      "controls": [],
+      "withinViewport": true
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "mode": "desktop-editor",
+      "canvas": {
+        "x": 207.296875,
+        "y": 164.53125,
+        "width": 851.390625,
+        "height": 478.90625
+      },
+      "controls": [],
+      "withinViewport": true
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "mode": "desktop-editor",
+      "canvas": {
+        "x": 177.390625,
+        "y": 443.90625,
+        "width": 313.1875,
+        "height": 176.171875
+      },
+      "controls": [],
+      "withinViewport": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "mode": "mobile-preview",
+      "canvas": {
+        "x": 16,
+        "y": 77,
+        "width": 357,
+        "height": 192.375
+      },
+      "controls": [
+        {
+          "text": "首页",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "text": "下载",
+          "visible": true,
+          "disabled": false
+        }
+      ],
+      "withinViewport": true
+    }
+  ],
+  "errors": [],
+  "writes": [],
+  "source": "D:\\moling\\TrainPPTAgent\\doc\\assets\\template_25_qa\\ship-regression-document.json",
+  "sourceSha256": "bafd9c64bc463fc9889bc9473ebb70020f0b44856606fbc4779c689591a63252",
+  "pptxSha256": "a64051e8d023270ccee84e593f4a2b4956065b9573bb5bd3eb73f9b44f65ed3b"
+}

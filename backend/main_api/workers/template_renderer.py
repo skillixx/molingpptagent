@@ -85,6 +85,22 @@ class PresentationTemplateRenderer:
         if not isinstance(source_slides, list) or not source_slides:
             raise TemplateRenderError("模板没有可用页面", code="TEMPLATE_DATA_INVALID")
 
+        # 新模板要求源条目与源图片一一对应，必须在分页拆散原始关系前校验。
+        # 不影响允许“有图条目＋无图条目”混排的历史模板。
+        if template.get("sourceImageCountPolicy") == "one-per-item":
+            for semantic in semantic_slides:
+                raw_images = semantic.get("images")
+                if semantic.get("type") != "content" or not isinstance(raw_images, list) or not raw_images:
+                    continue
+                data = semantic.get("data") if isinstance(semantic.get("data"), dict) else {}
+                images = self._semantic_images(raw_images)
+                count = len(self._content_items(data.get("items")))
+                if len(images) != len(raw_images) or len(images) != count:
+                    raise TemplateRenderError(
+                        "内容图片数量与内容项数量不匹配", code="TEMPLATE_DATA_INVALID",
+                        context={"item_count": str(count), "image_count": str(len(images))},
+                    )
+
         planned_page_count = len(semantic_slides)
         if any(slide.get("metricValueField") == "value" for slide in source_slides):
             semantic_slides = copy.deepcopy(semantic_slides)
@@ -114,12 +130,17 @@ class PresentationTemplateRenderer:
         )
         # Main API 是独立信任边界：即使上游未执行标题协议，也不能因长标题把多项页降成单项页。
         semantic_slides = self._normalize_content_titles(semantic_slides)
+        # 原题可能被保留到正文开头，须用归一化后的真实内容判断专项页容量。
+        semantic_slides = self._fallback_unsupported_layouts(template, semantic_slides)
         # 先按模板真实槽位容量拆页，后续版式选择就不需要丢目录项或挤压正文。
         semantic_slides = self._paginate_contents_slides(source_slides, semantic_slides)
         self._guard_pagination_growth(planned_page_count, semantic_slides, pagination_policy)
         semantic_slides = self._paginate_transition_slides(source_slides, semantic_slides)
         self._guard_pagination_growth(planned_page_count, semantic_slides, pagination_policy)
-        semantic_slides = self._paginate_content_slides(source_slides, semantic_slides)
+        semantic_slides = self._paginate_content_slides(
+            source_slides, semantic_slides,
+            preserve_fitting_special_layouts=template.get("unsupportedLayoutPolicy") == "ordinary",
+        )
         self._guard_pagination_growth(planned_page_count, semantic_slides, pagination_policy)
         rendered: list[dict[str, Any]] = []
         transition_number = 0
@@ -151,6 +172,63 @@ class PresentationTemplateRenderer:
             "viewport_size": width,
             "viewport_ratio": height / width,
         }
+
+    def _fallback_unsupported_layouts(
+        self, template: dict[str, Any], semantic_slides: list[dict[str, Any]],
+    ) -> list[dict[str, Any]]:
+        """仅对声明策略的新模板，把容纳不下文字或业务图的专项页保序降级。"""
+        if template.get("unsupportedLayoutPolicy") != "ordinary":
+            return semantic_slides
+        result = copy.deepcopy(semantic_slides)
+        layouts = template.get("slides", [])
+        for semantic in result:
+            data = semantic.get("data")
+            if semantic.get("type") != "content" or not isinstance(data, dict):
+                continue
+            requested = self._requested_layout_kind(data)
+            matching = [page for page in layouts if page.get("type") == "content" and page.get("layoutKind") == requested] if requested else []
+            count = len(self._content_items(data.get("items")))
+            # 未知布局继续交给原校验报错，不把拼错的类型静默变成正文。
+            if not matching:
+                continue
+            eligible = [page for page in matching if self._item_count_allowed(page, count)]
+            images = self._semantic_images(semantic.get("images"))
+            if eligible and all(self._special_layout_fits(page, data, len(images)) for page in eligible):
+                continue
+            data.pop("layoutKind", None)
+            data.pop("variant", None)
+            for item in data.get("items", []):
+                if not isinstance(item, dict):
+                    continue
+                # 指标降级仍保留独立数值和说明，并避免 kind 再次触发指标自动识别。
+                if item.get("kind") in {"metric", "number", "stat"}:
+                    item["kind"] = "text"
+                value = self._text(item.get("value"))
+                if value:
+                    parts = [value, self._text(item.get("text")), self._text(item.get("content"))]
+                    item["text"] = "\n".join(dict.fromkeys(part for part in parts if part))
+        return result
+
+    def _special_layout_fits(self, page: dict[str, Any], data: dict[str, Any], image_count: int) -> bool:
+        """使用最终槽位的最小字号和换行模型，不以普通正文页容量推测专项页。"""
+        elements = page.get("elements", [])
+        if image_count and len(self._image_slots(elements)) != image_count:
+            return False
+        items = self._content_items(data.get("items"))
+        values = {
+            "title": [self._text(data.get("title"))],
+            "itemTitle": [title for title, _ in items],
+            "item": [body or title for title, body in items],
+        }
+        if page.get("metricValueField") == "value":
+            raw_items = data.get("items", [])
+            values["itemNumber"] = [self._text(item.get("value")) if isinstance(item, dict) else "" for item in raw_items]
+            values["item"] = [body for _, body in items]
+        for role, texts in values.items():
+            slots = self._slots(elements, role)
+            if len(slots) < len(texts) or any(not self._slot_text_fits(slot, text) for slot, text in zip(slots, texts)):
+                return False
+        return True
 
     @classmethod
     def _normalize_content_titles(
@@ -373,6 +451,8 @@ class PresentationTemplateRenderer:
         self,
         source_slides: list[dict[str, Any]],
         semantic_slides: list[dict[str, Any]],
+        *,
+        preserve_fitting_special_layouts: bool = False,
     ) -> list[dict[str, Any]]:
         """按内容模板的最大要点槽位拆页，完整保留 Agent 返回的项目顺序。"""
         content_templates = [
@@ -417,6 +497,11 @@ class PresentationTemplateRenderer:
                     prefer_images=bool(semantic_images),
                     image_count=len(semantic_images),
                 )
+                # 启用降级策略的模板已按专项实际槽位检查完整内容，不再用普通正文
+                # 的更小估算拆段，避免把合法的双项对比拆成 2＋1 后失败。
+                if preserve_fitting_special_layouts and self._special_layout_fits(selected, data, len(semantic_images)):
+                    paginated.append(copy.deepcopy(semantic))
+                    continue
                 if selected.get("metricValueField") == "value":
                     if semantic_images:
                         raise TemplateRenderError("指标版式没有业务图片槽", code="TEMPLATE_MISSING_SLOT")
@@ -1041,6 +1126,16 @@ class PresentationTemplateRenderer:
         image_count: int = 0,
         variant_seed: int = 0,
     ) -> dict[str, Any]:
+        # 新模板显式启用容量选版：自动封面先排除放不下完整标题的候选。
+        # 显式变体仍遵循调用者选择；旧模板不带该标记，行为保持不变。
+        if (
+            slide_type == "cover"
+            and not data.get("variant")
+            and any(slide.get("fitTitleBeforeVariant") is True for slide in candidates)
+        ):
+            fitting = [slide for slide in candidates if self._slide_title_fits(slide, self._text(data.get("title")))]
+            if fitting:
+                candidates = fitting
         if slide_type == "cover" and any(
             self._has_explicit_content_image_slot(slide) for slide in candidates
         ):
@@ -1453,7 +1548,8 @@ class PresentationTemplateRenderer:
             # 逐项绑定，不截断原题或正文，也不把用户数值替换为序号或模板示例。
             self._fill_list(elements, "itemTitle", [self._text(item.get("title")) for item in raw_items], max_lines=2)
             self._fill_list(elements, "itemNumber", values, max_lines=2)
-            self._fill_list(elements, "item", [self._text(item.get("text") or item.get("content")) for item in raw_items], max_lines=3)
+            # 指标名称与数值已有效，缺少可选说明时只删除空说明框，保留其业务组。
+            self._fill_list(elements, "item", [self._text(item.get("text") or item.get("content")) for item in raw_items], max_lines=3, preserve_groups=True)
             return
         items = self._content_items(data.get("items"))
         item_slots = self._slots(elements, "item")
@@ -1500,7 +1596,7 @@ class PresentationTemplateRenderer:
         values = [str(index + offset + 1).zfill(2) for index in range(count)]
         self._fill_list(elements, slot_type, values, max_lines=1)
 
-    def _fill_list(self, elements: list[dict[str, Any]], slot_type: str, values: list[str], *, max_lines: int) -> None:
+    def _fill_list(self, elements: list[dict[str, Any]], slot_type: str, values: list[str], *, max_lines: int, preserve_groups: bool = False) -> None:
         slots = self._slots(elements, slot_type)
         unused_ids: set[str] = set()
         unused_groups: set[str] = set()
@@ -1511,7 +1607,7 @@ class PresentationTemplateRenderer:
                 continue
             if isinstance(element.get("id"), str):
                 unused_ids.add(element["id"])
-            if isinstance(element.get("groupId"), str):
+            if not preserve_groups and isinstance(element.get("groupId"), str):
                 unused_groups.add(element["groupId"])
         if unused_ids or unused_groups:
             elements[:] = [

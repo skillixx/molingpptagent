@@ -1,0 +1,913 @@
+{
+  "status": "PASS",
+  "templateId": "template_25",
+  "stage": "all-layouts-fixed",
+  "slideCount": 24,
+  "jsonFullStateEqual": true,
+  "pptxEditorReimport": true,
+  "exportFailure": {
+    "errorCode": "PPTX_EXPORT_FAILED",
+    "exportingReset": true
+  },
+  "exportRetrySucceeded": true,
+  "missingTexts": [],
+  "imageGeometry": [
+    {
+      "slide": 14,
+      "before": [
+        48,
+        159,
+        446,
+        338
+      ],
+      "after": [
+        48,
+        159,
+        446,
+        338
+      ]
+    },
+    {
+      "slide": 15,
+      "before": [
+        48,
+        146,
+        904,
+        184
+      ],
+      "after": [
+        48,
+        146,
+        904,
+        183.99999999999997
+      ]
+    },
+    {
+      "slide": 16,
+      "before": [
+        48,
+        154,
+        440,
+        200
+      ],
+      "after": [
+        48,
+        154,
+        440,
+        200
+      ]
+    },
+    {
+      "slide": 16,
+      "before": [
+        512,
+        154,
+        440,
+        200
+      ],
+      "after": [
+        511.99999999999994,
+        154,
+        440,
+        200
+      ]
+    },
+    {
+      "slide": 17,
+      "before": [
+        48,
+        154,
+        285.3333333333333,
+        180
+      ],
+      "after": [
+        48,
+        154,
+        285.3333333333333,
+        179.99999999999997
+      ]
+    },
+    {
+      "slide": 17,
+      "before": [
+        357.3333333333333,
+        154,
+        285.3333333333333,
+        180
+      ],
+      "after": [
+        357.33333333333326,
+        154,
+        285.3333333333333,
+        179.99999999999997
+      ]
+    },
+    {
+      "slide": 17,
+      "before": [
+        666.6666666666666,
+        154,
+        285.3333333333333,
+        180
+      ],
+      "after": [
+        666.6666666666666,
+        154,
+        285.3333333333333,
+        179.99999999999997
+      ]
+    },
+    {
+      "slide": 18,
+      "before": [
+        48,
+        154,
+        208,
+        152
+      ],
+      "after": [
+        48,
+        154,
+        207.99999999999997,
+        152
+      ]
+    },
+    {
+      "slide": 18,
+      "before": [
+        280,
+        154,
+        208,
+        152
+      ],
+      "after": [
+        280,
+        154,
+        207.99999999999997,
+        152
+      ]
+    },
+    {
+      "slide": 18,
+      "before": [
+        512,
+        154,
+        208,
+        152
+      ],
+      "after": [
+        511.99999999999994,
+        154,
+        207.99999999999997,
+        152
+      ]
+    },
+    {
+      "slide": 18,
+      "before": [
+        744,
+        154,
+        208,
+        152
+      ],
+      "after": [
+        743.9999999999999,
+        154,
+        207.99999999999997,
+        152
+      ]
+    }
+  ],
+  "replacementResults": [
+    {
+      "slideId": "content-image-left-1",
+      "imageIndex": 0,
+      "dimensions": [
+        1200,
+        800
+      ],
+      "range": [
+        [
+          6.015779092702168,
+          0
+        ],
+        [
+          93.98422090729784,
+          100
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "content-image-left-1",
+      "imageIndex": 0,
+      "dimensions": [
+        800,
+        1200
+      ],
+      "range": [
+        [
+          0,
+          24.738415545590435
+        ],
+        [
+          100,
+          75.26158445440956
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "content-image-left-1",
+      "imageIndex": 0,
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "range": [
+        [
+          0,
+          12.107623318385649
+        ],
+        [
+          100,
+          87.89237668161435
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "content-image-top-1",
+      "imageIndex": 0,
+      "dimensions": [
+        1200,
+        800
+      ],
+      "range": [
+        [
+          0,
+          34.73451327433628
+        ],
+        [
+          100,
+          65.26548672566372
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "content-image-top-1",
+      "imageIndex": 0,
+      "dimensions": [
+        800,
+        1200
+      ],
+      "range": [
+        [
+          0,
+          43.21533923303835
+        ],
+        [
+          100,
+          56.78466076696165
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "content-image-top-1",
+      "imageIndex": 0,
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "range": [
+        [
+          0,
+          39.823008849557525
+        ],
+        [
+          100,
+          60.176991150442475
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "content-image-2",
+      "imageIndex": 0,
+      "dimensions": [
+        1200,
+        800
+      ],
+      "range": [
+        [
+          0,
+          15.909090909090914
+        ],
+        [
+          100,
+          84.0909090909091
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "content-image-2",
+      "imageIndex": 1,
+      "dimensions": [
+        1200,
+        800
+      ],
+      "range": [
+        [
+          0,
+          15.909090909090914
+        ],
+        [
+          100,
+          84.0909090909091
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "content-image-2",
+      "imageIndex": 0,
+      "dimensions": [
+        800,
+        1200
+      ],
+      "range": [
+        [
+          0,
+          34.84848484848485
+        ],
+        [
+          100,
+          65.15151515151516
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "content-image-2",
+      "imageIndex": 1,
+      "dimensions": [
+        800,
+        1200
+      ],
+      "range": [
+        [
+          0,
+          34.84848484848485
+        ],
+        [
+          100,
+          65.15151515151516
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "content-image-2",
+      "imageIndex": 0,
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "range": [
+        [
+          0,
+          27.272727272727273
+        ],
+        [
+          100,
+          72.72727272727272
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "content-image-2",
+      "imageIndex": 1,
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "range": [
+        [
+          0,
+          27.272727272727273
+        ],
+        [
+          100,
+          72.72727272727272
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "content-image-3",
+      "imageIndex": 0,
+      "dimensions": [
+        1200,
+        800
+      ],
+      "range": [
+        [
+          0,
+          2.6869158878504606
+        ],
+        [
+          100,
+          97.31308411214954
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "content-image-3",
+      "imageIndex": 1,
+      "dimensions": [
+        1200,
+        800
+      ],
+      "range": [
+        [
+          0,
+          2.6869158878504606
+        ],
+        [
+          100,
+          97.31308411214954
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "content-image-3",
+      "imageIndex": 2,
+      "dimensions": [
+        1200,
+        800
+      ],
+      "range": [
+        [
+          0,
+          2.6869158878504606
+        ],
+        [
+          100,
+          97.31308411214954
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "content-image-3",
+      "imageIndex": 0,
+      "dimensions": [
+        800,
+        1200
+      ],
+      "range": [
+        [
+          0,
+          28.97196261682243
+        ],
+        [
+          100,
+          71.02803738317758
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "content-image-3",
+      "imageIndex": 1,
+      "dimensions": [
+        800,
+        1200
+      ],
+      "range": [
+        [
+          0,
+          28.97196261682243
+        ],
+        [
+          100,
+          71.02803738317758
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "content-image-3",
+      "imageIndex": 2,
+      "dimensions": [
+        800,
+        1200
+      ],
+      "range": [
+        [
+          0,
+          28.97196261682243
+        ],
+        [
+          100,
+          71.02803738317758
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "content-image-3",
+      "imageIndex": 0,
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "range": [
+        [
+          0,
+          18.457943925233643
+        ],
+        [
+          100,
+          81.54205607476635
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "content-image-3",
+      "imageIndex": 1,
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "range": [
+        [
+          0,
+          18.457943925233643
+        ],
+        [
+          100,
+          81.54205607476635
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "content-image-3",
+      "imageIndex": 2,
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "range": [
+        [
+          0,
+          18.457943925233643
+        ],
+        [
+          100,
+          81.54205607476635
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "content-image-4",
+      "imageIndex": 0,
+      "dimensions": [
+        1200,
+        800
+      ],
+      "range": [
+        [
+          4.3859649122806985,
+          0
+        ],
+        [
+          95.6140350877193,
+          100
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "content-image-4",
+      "imageIndex": 1,
+      "dimensions": [
+        1200,
+        800
+      ],
+      "range": [
+        [
+          4.3859649122806985,
+          0
+        ],
+        [
+          95.6140350877193,
+          100
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "content-image-4",
+      "imageIndex": 2,
+      "dimensions": [
+        1200,
+        800
+      ],
+      "range": [
+        [
+          4.3859649122806985,
+          0
+        ],
+        [
+          95.6140350877193,
+          100
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "content-image-4",
+      "imageIndex": 3,
+      "dimensions": [
+        1200,
+        800
+      ],
+      "range": [
+        [
+          4.3859649122806985,
+          0
+        ],
+        [
+          95.6140350877193,
+          100
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "content-image-4",
+      "imageIndex": 0,
+      "dimensions": [
+        800,
+        1200
+      ],
+      "range": [
+        [
+          0,
+          25.641025641025646
+        ],
+        [
+          100,
+          74.35897435897435
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "content-image-4",
+      "imageIndex": 1,
+      "dimensions": [
+        800,
+        1200
+      ],
+      "range": [
+        [
+          0,
+          25.641025641025646
+        ],
+        [
+          100,
+          74.35897435897435
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "content-image-4",
+      "imageIndex": 2,
+      "dimensions": [
+        800,
+        1200
+      ],
+      "range": [
+        [
+          0,
+          25.641025641025646
+        ],
+        [
+          100,
+          74.35897435897435
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "content-image-4",
+      "imageIndex": 3,
+      "dimensions": [
+        800,
+        1200
+      ],
+      "range": [
+        [
+          0,
+          25.641025641025646
+        ],
+        [
+          100,
+          74.35897435897435
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "content-image-4",
+      "imageIndex": 0,
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "range": [
+        [
+          0,
+          13.461538461538467
+        ],
+        [
+          100,
+          86.53846153846153
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "content-image-4",
+      "imageIndex": 1,
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "range": [
+        [
+          0,
+          13.461538461538467
+        ],
+        [
+          100,
+          86.53846153846153
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "content-image-4",
+      "imageIndex": 2,
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "range": [
+        [
+          0,
+          13.461538461538467
+        ],
+        [
+          100,
+          86.53846153846153
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "slideId": "content-image-4",
+      "imageIndex": 3,
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "range": [
+        [
+          0,
+          13.461538461538467
+        ],
+        [
+          100,
+          86.53846153846153
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    }
+  ],
+  "viewports": [
+    {
+      "width": 1920,
+      "height": 1080,
+      "mode": "desktop-editor",
+      "canvas": {
+        "x": 235,
+        "y": 179.3125,
+        "width": 1350,
+        "height": 759.375
+      },
+      "controls": [],
+      "withinViewport": true
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "mode": "desktop-editor",
+      "canvas": {
+        "x": 207.296875,
+        "y": 163.53125,
+        "width": 851.390625,
+        "height": 478.90625
+      },
+      "controls": [],
+      "withinViewport": true
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "mode": "desktop-editor",
+      "canvas": {
+        "x": 177.390625,
+        "y": 442.90625,
+        "width": 313.1875,
+        "height": 176.171875
+      },
+      "controls": [],
+      "withinViewport": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "mode": "mobile-preview",
+      "canvas": {
+        "x": 16,
+        "y": 77,
+        "width": 357,
+        "height": 192.375
+      },
+      "controls": [
+        {
+          "text": "首页",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "text": "下载",
+          "visible": true,
+          "disabled": false
+        }
+      ],
+      "withinViewport": true
+    }
+  ],
+  "errors": [],
+  "writes": [],
+  "source": "D:\\moling\\TrainPPTAgent\\doc\\assets\\template_25_qa\\production-document.json",
+  "sourceSha256": "45be1e30e49f9c26e316889349a3ad27886c1d4a64e83769a1c38c575f90e0eb",
+  "pptxSha256": "07bea089d39bead43f25ca38f997e4e02294c452f4add5e07a6fd56ef249a1e0"
+}

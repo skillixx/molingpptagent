@@ -582,6 +582,7 @@ async def get_templates():
         { "name": "蓝曜星幕商务汇报", "id": "template_23", "cover": "/api/data/template_23.jpg" },
         # 城市项目策划模板使用原创城市背景，业务图片与固定光轨装饰独立标注。
         { "name": "深蓝霓虹城市项目策划", "id": "template_24", "cover": "/api/data/template_24.jpg" },
+        { "name": "蓝黑城市·融资路演", "id": "template_25", "cover": "/api/data/template_25.jpg" },
     ]
 
     return {"data": templates}
