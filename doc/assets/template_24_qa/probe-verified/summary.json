@@ -1,0 +1,65 @@
+{
+  "status": "PASS",
+  "templateId": "template_24",
+  "stage": "probe",
+  "slideCount": 3,
+  "jsonFullStateEqual": true,
+  "pptxEditorReimport": true,
+  "missingTexts": [],
+  "replacementResults": [
+    {
+      "dimensions": [
+        1200,
+        800
+      ],
+      "range": [
+        [
+          5.486542443064185,
+          0
+        ],
+        [
+          94.5134575569358,
+          100
+        ]
+      ],
+      "decorationProtected": true
+    },
+    {
+      "dimensions": [
+        800,
+        1200
+      ],
+      "range": [
+        [
+          0,
+          25.038759689922486
+        ],
+        [
+          100,
+          74.96124031007751
+        ]
+      ],
+      "decorationProtected": true
+    },
+    {
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "range": [
+        [
+          0,
+          12.558139534883722
+        ],
+        [
+          100,
+          87.44186046511628
+        ]
+      ],
+      "decorationProtected": true
+    }
+  ],
+  "errors": [],
+  "writes": [],
+  "source": "D:\\moling\\TrainPPTAgent\\backend\\main_api\\template\\template_24_probe.json"
+}

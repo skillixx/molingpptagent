@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "stage": "G9",
+  "status": "COMPLETE",
+  "candidateId": "template24-g8-f1fdf1cdaaa0",
+  "confirmedAt": "2026-09-20T09:54:40.727027+08:00",
+  "userConfirmation": "确认完成",
+  "candidateUnchanged": true,
+  "g8Evidence": "g8-summary.json",
+  "testsReused": 104,
+  "scope": "本地模板开发验收与 Goal 闭合",
+  "gitDelivery": false,
+  "deployment": false
+}

@@ -1,0 +1,21 @@
+{
+  "status": "PASS_WITH_DISCLOSED_BASELINE_ENVIRONMENT_LIMITATION",
+  "base": "6dd88f8f004642aaa941ef86f20ba0d48846ca0e",
+  "branch": "codex/neon-city-template-24",
+  "approvedCandidate": "template24-g8-f1fdf1cdaaa0",
+  "approvedProductionFilesUnchanged": true,
+  "defaultOutputPathVerified": true,
+  "testsPassed": 132,
+  "deselectedTest": "test_template_23_reference_registration_and_cover_are_available",
+  "deselectionReason": "Existing test unchanged from origin/main; desktop reference PPTX is absent",
+  "browserEvidence": "ship-browser-summary.json",
+  "g9ConfirmationPreserved": true,
+  "reviewFixFiles": {
+    "utils/build_neon_city_project_template.mjs": "5bd6548bae4924a790d4e947a3106625d68cb86a5a4ac4e6611a3a7f753c92f0",
+    "utils/verify_template_24_browser.cjs": "b015fbf36d5fdca0c7d5ea58144eed9cf3bfce28504737eadb4f530eed9bdd71",
+    "utils/finalize_template_24_qa.py": "d7b358d1ee0fc9bcfa4aefca4f2f0277b1ba424f8319518ec13d9cadeb3806cc",
+    "backend/main_api/tests/test_template_24.py": "034bc1c78b04a11567fda8cbb4736343747056ccf28de91ccdeca2906d016d8b"
+  },
+  "merged": false,
+  "deployed": false
+}

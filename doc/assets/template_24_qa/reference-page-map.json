@@ -1,0 +1,527 @@
+{
+  "schemaVersion": 1,
+  "stage": "G1",
+  "candidateTemplateId": "template_24",
+  "source": "C:/Users/sk20/Desktop/项目策划(1).pptx",
+  "sourceSha256": "56CF0EA80E781D55DF1D4EE565DFA8858A0F9F61B2F88E88617166EBEFBAA0E5",
+  "slideCount": 25,
+  "mediaPolicy": "exclude-source-media-rebuild-original-assets",
+  "textPolicy": "source text is example content only",
+  "pages": [
+    {
+      "referencePage": 1,
+      "decision": "rebuild",
+      "productionLayouts": [
+        "cover-city",
+        "cover-city-minimal"
+      ],
+      "sourceTitles": [
+        "20XX",
+        "XXXX设计PPT模版",
+        "Click here to modify the text , you may post text here"
+      ],
+      "elementCount": 71,
+      "imageCount": 6,
+      "rightsAction": "exclude-source-media-rebuild-original-assets"
+    },
+    {
+      "referencePage": 2,
+      "decision": "derive",
+      "productionLayouts": [
+        "contents-2",
+        "contents-3",
+        "contents-4",
+        "contents-5",
+        "contents-6",
+        "contents-10",
+        "transition-city-left",
+        "transition-city-right"
+      ],
+      "sourceTitles": [
+        "项目背景介绍您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴",
+        "项目产品运营您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴",
+        "项目发展规划您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴",
+        "投资回报分析您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴",
+        "目录",
+        "项目背景介绍",
+        "项目产品运营",
+        "项目发展规划"
+      ],
+      "elementCount": 23,
+      "imageCount": 3,
+      "rightsAction": "exclude-source-media-rebuild-original-assets"
+    },
+    {
+      "referencePage": 3,
+      "decision": "derive",
+      "productionLayouts": [
+        "contents-2",
+        "contents-3",
+        "contents-4",
+        "contents-5",
+        "contents-6",
+        "contents-10",
+        "transition-city-left",
+        "transition-city-right"
+      ],
+      "sourceTitles": [
+        "项目背景介绍",
+        "目录",
+        "项目背景介绍",
+        "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字您的内容打在这里，您的您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字您的内容打在这里"
+      ],
+      "elementCount": 12,
+      "imageCount": 3,
+      "rightsAction": "exclude-source-media-rebuild-original-assets"
+    },
+    {
+      "referencePage": 4,
+      "decision": "derive",
+      "productionLayouts": [
+        "content-text-2",
+        "content-text-3",
+        "content-text-4"
+      ],
+      "sourceTitles": [
+        "点击输入简要文字内容",
+        "公司情况介绍",
+        "点击输入简要文字内容，文字内容概括精炼，不用多余的文字修饰，言短意赅的说明该项内容。点击输入简要文字内容，文字内容概括精炼，不用多余的文字修饰，言短意赅的说明该项内容。",
+        "点击输入简要文字内容，文字内容概括精炼，不用多余的文字修饰，言短意赅的说明该项内容。点击输入简要文字内容，文字内容概括精炼，不用多余的文字修饰，言短意赅的说明该项内容。",
+        "点击输入简要文字内容",
+        "点击输入简要文字内容"
+      ],
+      "elementCount": 38,
+      "imageCount": 2,
+      "rightsAction": "exclude-source-media-rebuild-original-assets"
+    },
+    {
+      "referencePage": 5,
+      "decision": "derive",
+      "productionLayouts": [
+        "content-text-2",
+        "content-text-3",
+        "content-text-4"
+      ],
+      "sourceTitles": [
+        "点击输入简要文字内容，文字内容概括精炼，不用多余的文字修饰，言短意赅的说明该项内容。点击输入简要文字内容，文字内容概括精炼，不用多余的文字修饰，言短意赅的说明该项内容。",
+        "公司情况介绍",
+        "添加标题",
+        "点击输入简要文字内容，文字内容概括精炼，不用多余的文字修饰",
+        "添加标题",
+        "点击输入简要文字内容，文字内容概括精炼，不用多余的文字修饰",
+        "添加标题",
+        "点击输入简要文字内容，文字内容概括精炼，不用多余的文字修饰"
+      ],
+      "elementCount": 68,
+      "imageCount": 0,
+      "rightsAction": "exclude-source-media-rebuild-original-assets"
+    },
+    {
+      "referencePage": 6,
+      "decision": "derive",
+      "productionLayouts": [
+        "content-image-1",
+        "content-focus-1",
+        "content-text-2",
+        "content-text-3"
+      ],
+      "sourceTitles": [
+        "点击输入简要文字内容，文字内容概括精炼，不用多余的文字修饰，言短意赅的说明该项内容。点击输入简要文字内容，文字内容概括精炼，不用多余的文字修饰，言短意赅的说明该项内容。",
+        "点击输入简要文字内容，文字内容概括精炼，不用多余的文字修饰，言短意赅的说明该项内容。点击输入简要文字内容，文字内容概括精炼，不用多余的文字修饰，言短意赅的说明该项内容。",
+        "项目成员介绍"
+      ],
+      "elementCount": 40,
+      "imageCount": 1,
+      "rightsAction": "exclude-source-media-rebuild-original-assets"
+    },
+    {
+      "referencePage": 7,
+      "decision": "derive",
+      "productionLayouts": [
+        "content-image-1",
+        "content-focus-1",
+        "content-text-2",
+        "content-text-3"
+      ],
+      "sourceTitles": [
+        "点击输入简要文字内容，文字内容概括精炼，不用多余的文字修饰，言短意赅的说明该项内容。点击输入简要文字内容，文字内容概括精炼，不用多余的文字修饰，言短意赅的说明该项内容。",
+        "点击添加标题",
+        "点击输入简要文字内容，文字内容概括精炼，不用多余的文字修饰，点击输入简要文字内容，文字内容概括精炼，不用多余的文字修饰，言短意赅的说明该项内容。言短意赅的说明该项内容。",
+        "点击添加标题",
+        "项目核心成员介绍"
+      ],
+      "elementCount": 111,
+      "imageCount": 0,
+      "rightsAction": "exclude-source-media-rebuild-original-assets"
+    },
+    {
+      "referencePage": 8,
+      "decision": "derive",
+      "productionLayouts": [
+        "content-text-2",
+        "content-text-3",
+        "content-text-4"
+      ],
+      "sourceTitles": [
+        "点击输入简要文字内容，文字内容概括精炼，不用多余的文字修饰，言短意赅的说明该项内容。",
+        "点击输入简要文字内容，文字内容概括精炼，不用多余的文字修饰，言短意赅的说明该项内容。",
+        "点击输入简要文字内容，文字内容概括精炼，不用多余的文字修饰，言短意赅的说明该项内容。",
+        "点击输入简要文字内容，文字内容概括精炼，不用多余的文字修饰，言短意赅的说明该项内容。",
+        "可行性分析"
+      ],
+      "elementCount": 51,
+      "imageCount": 1,
+      "rightsAction": "exclude-source-media-rebuild-original-assets"
+    },
+    {
+      "referencePage": 9,
+      "decision": "derive",
+      "productionLayouts": [
+        "contents-2",
+        "contents-3",
+        "contents-4",
+        "contents-5",
+        "contents-6",
+        "contents-10",
+        "transition-city-left",
+        "transition-city-right"
+      ],
+      "sourceTitles": [
+        "目录",
+        "项目背景介绍",
+        "项目产品运营",
+        "项目发展规划",
+        "投资回报分析",
+        "点击输入简要文字内容，文字内容概括精炼，不用多余的文字修饰，言短意赅的说明该项内容。点击输入简要文字内容，文字内容概括精炼，不用多余的文字修饰，言短意赅的说明该项内容。",
+        "项目产品运营"
+      ],
+      "elementCount": 14,
+      "imageCount": 3,
+      "rightsAction": "exclude-source-media-rebuild-original-assets"
+    },
+    {
+      "referencePage": 10,
+      "decision": "derive",
+      "productionLayouts": [
+        "content-text-2",
+        "content-text-3",
+        "content-text-4"
+      ],
+      "sourceTitles": [
+        "点击输入简要文字内容，文字内容概括精炼，不用多余的文字修饰，言短意赅的说明该项内容。点击输入简要文字内容，文字内容概括精炼，不用多余的文字修饰，言短意赅的说明该项内容。",
+        "点击输入简要文字内容，文字内容概括精炼，不用多余的文字修饰，言短意赅的说明该项内容。点击输入简要文字内容，文字内容概括精炼，不用多余的文字修饰，言短意赅的说明该项内容。",
+        "营运服务",
+        "点击此处添加标题"
+      ],
+      "elementCount": 143,
+      "imageCount": 0,
+      "rightsAction": "exclude-source-media-rebuild-original-assets"
+    },
+    {
+      "referencePage": 11,
+      "decision": "derive",
+      "productionLayouts": [
+        "content-metrics-4",
+        "content-text-4"
+      ],
+      "sourceTitles": [
+        "20",
+        "16",
+        "7",
+        "30",
+        "10",
+        "17",
+        "在此添加标题",
+        "在此添加标题"
+      ],
+      "elementCount": 83,
+      "imageCount": 0,
+      "rightsAction": "exclude-source-media-rebuild-original-assets"
+    },
+    {
+      "referencePage": 12,
+      "decision": "derive",
+      "productionLayouts": [
+        "content-image-1",
+        "content-focus-1",
+        "content-text-2",
+        "content-text-3"
+      ],
+      "sourceTitles": [
+        "点击输入简要文字内容，文字内容概括精炼，不用多余的文字修饰，言短意赅的说明该项内容。点击输入简要文字内容，文字内容概括精炼，不用多余的文字修饰，言短意赅的说明该项内容。",
+        "产业概况"
+      ],
+      "elementCount": 9,
+      "imageCount": 1,
+      "rightsAction": "exclude-source-media-rebuild-original-assets"
+    },
+    {
+      "referencePage": 13,
+      "decision": "derive",
+      "productionLayouts": [
+        "content-image-1",
+        "content-focus-1",
+        "content-text-2",
+        "content-text-3"
+      ],
+      "sourceTitles": [
+        "点击输入简要文字内容，文字内容概括精炼，不用多余的文字修饰，言短意赅的说明该项内容。点击输入简要文字内容，文字内容概括精炼，不用多余的文字修饰，言短意赅的说明该项内容。",
+        "点击添加标题",
+        "产业概况"
+      ],
+      "elementCount": 42,
+      "imageCount": 2,
+      "rightsAction": "exclude-source-media-rebuild-original-assets"
+    },
+    {
+      "referencePage": 14,
+      "decision": "derive",
+      "productionLayouts": [
+        "content-metrics-4",
+        "content-text-4"
+      ],
+      "sourceTitles": [
+        "100%",
+        "80%",
+        "60%",
+        "40%",
+        "20%",
+        "1月",
+        "2月",
+        "3月"
+      ],
+      "elementCount": 120,
+      "imageCount": 0,
+      "rightsAction": "exclude-source-media-rebuild-original-assets"
+    },
+    {
+      "referencePage": 15,
+      "decision": "derive",
+      "productionLayouts": [
+        "contents-2",
+        "contents-3",
+        "contents-4",
+        "contents-5",
+        "contents-6",
+        "contents-10",
+        "transition-city-left",
+        "transition-city-right"
+      ],
+      "sourceTitles": [
+        "目录",
+        "项目背景介绍",
+        "项目产品运营",
+        "项目发展规划",
+        "投资回报分析",
+        "点击输入简要文字内容，文字内容概括精炼，不用多余的文字修饰，言短意赅的说明该项内容。点击输入简要文字内容，文字内容概括精炼，不用多余的文字修饰，言短意赅的说明该项内容。",
+        "项目发展规划"
+      ],
+      "elementCount": 14,
+      "imageCount": 3,
+      "rightsAction": "exclude-source-media-rebuild-original-assets"
+    },
+    {
+      "referencePage": 16,
+      "decision": "derive",
+      "productionLayouts": [
+        "content-metrics-4",
+        "content-text-4"
+      ],
+      "sourceTitles": [
+        "27%",
+        "添加标题",
+        "点击添加文本点击添加文本",
+        "点击添加文本点击添加文本",
+        "点击添加文本点击添加文本",
+        "点击添加文本点击添加文本",
+        "点击添加文本点击添加文本",
+        "点击添加文本点击添加文本"
+      ],
+      "elementCount": 68,
+      "imageCount": 0,
+      "rightsAction": "exclude-source-media-rebuild-original-assets"
+    },
+    {
+      "referencePage": 17,
+      "decision": "derive",
+      "productionLayouts": [
+        "content-text-2",
+        "content-text-3",
+        "content-text-4"
+      ],
+      "sourceTitles": [
+        "点击输入简要文字内容，文字内容概括精炼，不用多余的文字修饰，言短意赅的说明该项内容。点击输入简要文字内容，文字内容概括精炼，不用多余的文字修饰",
+        "点击添加标题",
+        "点击输入简要文字内容，文字内容概括精炼，不用多余的文字修饰，言短意赅的说明该项内容。点击输入简要文字内容，文字内容概括精炼，不用多余的文字修饰",
+        "点击添加标题",
+        "点击输入简要文字内容，文字内容概括精炼，不用多余的文字修饰，言短意赅的说明该项内容。点击输入简要文字内容，文字内容概括精炼，不用多余的文字修饰",
+        "点击添加标题",
+        "产品开发计划"
+      ],
+      "elementCount": 55,
+      "imageCount": 3,
+      "rightsAction": "exclude-source-media-rebuild-original-assets"
+    },
+    {
+      "referencePage": 18,
+      "decision": "derive",
+      "productionLayouts": [
+        "content-text-2",
+        "content-text-3",
+        "content-text-4"
+      ],
+      "sourceTitles": [
+        "点击输入简要文字内容，文字内容概括精炼，不用多余的文字修饰，言短意赅的说明该项内容。点击输入简要文字内容，文字内容概括精炼，不用多余的文字修饰",
+        "点击输入简要文字内容，文字内容概括精炼，不用多余的文字修饰，言短意赅的说明该项内容。点击输入简要文字内容，文字内容概括精炼，不用多余的文字修饰",
+        "市场开拓计划"
+      ],
+      "elementCount": 38,
+      "imageCount": 1,
+      "rightsAction": "exclude-source-media-rebuild-original-assets"
+    },
+    {
+      "referencePage": 19,
+      "decision": "derive",
+      "productionLayouts": [
+        "content-image-1",
+        "content-focus-1",
+        "content-text-2",
+        "content-text-3"
+      ],
+      "sourceTitles": [
+        "点击输入简要文字内容，文字内容概括精炼，不用多余的文字修饰，言短意赅的说明该项内容。点击输入简要文字内容，文字内容概括精炼，不用多余的文字修饰",
+        "点击添加标题",
+        "点击输入简要文字内容，文字内容概括精炼",
+        "点击输入简要文字内容，文字内容概括精炼",
+        "点击输入简要文字内容，文字内容概括精炼",
+        "市场开拓计划"
+      ],
+      "elementCount": 55,
+      "imageCount": 1,
+      "rightsAction": "exclude-source-media-rebuild-original-assets"
+    },
+    {
+      "referencePage": 20,
+      "decision": "derive",
+      "productionLayouts": [
+        "contents-2",
+        "contents-3",
+        "contents-4",
+        "contents-5",
+        "contents-6",
+        "contents-10",
+        "transition-city-left",
+        "transition-city-right"
+      ],
+      "sourceTitles": [
+        "点击输入简要文字内容，文字内容概括精炼，不用多余的文字修饰，言短意赅的说明该项内容。点击输入简要文字内容，文字内容概括精炼，不用多余的文字修饰，言短意赅的说明该项内容。",
+        "目录",
+        "项目背景介绍",
+        "项目产品运营",
+        "项目发展规划",
+        "投资回报分析",
+        "投资回报分析"
+      ],
+      "elementCount": 14,
+      "imageCount": 3,
+      "rightsAction": "exclude-source-media-rebuild-original-assets"
+    },
+    {
+      "referencePage": 21,
+      "decision": "derive",
+      "productionLayouts": [
+        "content-metrics-4",
+        "content-text-4"
+      ],
+      "sourceTitles": [
+        "添加标题",
+        "添加标题",
+        "添加标题",
+        "添加标题",
+        "添加标题",
+        "添加标题",
+        "添加标题",
+        "添加标题"
+      ],
+      "elementCount": 72,
+      "imageCount": 0,
+      "rightsAction": "exclude-source-media-rebuild-original-assets"
+    },
+    {
+      "referencePage": 22,
+      "decision": "derive",
+      "productionLayouts": [
+        "content-metrics-4",
+        "content-text-4"
+      ],
+      "sourceTitles": [
+        "添加标题",
+        "添加标题",
+        "添加标题",
+        "添加标题",
+        "65%",
+        "80%",
+        "58%",
+        "71%"
+      ],
+      "elementCount": 64,
+      "imageCount": 0,
+      "rightsAction": "exclude-source-media-rebuild-original-assets"
+    },
+    {
+      "referencePage": 23,
+      "decision": "derive",
+      "productionLayouts": [
+        "content-image-1",
+        "content-focus-1",
+        "content-text-2",
+        "content-text-3"
+      ],
+      "sourceTitles": [
+        "点击输入简要文字内容，文字内容概括精炼，不用多余的文字修饰，言短意赅的说明该项内容。点击输入简要文字内容，文字内容概括精炼，不用多余的文字修饰，言短意赅的说明该项内容。",
+        "融资计划"
+      ],
+      "elementCount": 38,
+      "imageCount": 3,
+      "rightsAction": "exclude-source-media-rebuild-original-assets"
+    },
+    {
+      "referencePage": 24,
+      "decision": "derive",
+      "productionLayouts": [
+        "content-text-2",
+        "content-text-3",
+        "content-text-4"
+      ],
+      "sourceTitles": [
+        "点击输入简要文字内容，文字内容概括精炼，不用多余的文字修饰，言短意赅的说明该项内容。",
+        "点击输入简要文字内容，文字内容概括精炼，不用多余的文字修饰，言短意赅的说明该项内容。",
+        "点击输入简要文字内容，文字内容概括精炼，不用多余的文字修饰，言短意赅的说明该项内容。",
+        "点击输入简要文字内容，文字内容概括精炼，不用多余的文字修饰，言短意赅的说明该项内容。",
+        "点击输入简要文字内容，文字内容概括精炼，不用多余的文字修饰，言短意赅的说明该项内容。",
+        "资金用途",
+        "1",
+        "2"
+      ],
+      "elementCount": 57,
+      "imageCount": 0,
+      "rightsAction": "exclude-source-media-rebuild-original-assets"
+    },
+    {
+      "referencePage": 25,
+      "decision": "rebuild",
+      "productionLayouts": [
+        "end-city",
+        "end-action"
+      ],
+      "sourceTitles": [
+        "20XX",
+        "Thankyou",
+        "Click here to modify the text , you may post text here"
+      ],
+      "elementCount": 71,
+      "imageCount": 6,
+      "rightsAction": "exclude-source-media-rebuild-original-assets"
+    }
+  ]
+}

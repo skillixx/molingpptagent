@@ -1,0 +1,92 @@
+{
+  "status": "PASS",
+  "templateId": "template_24",
+  "stage": "production",
+  "slideCount": 18,
+  "jsonFullStateEqual": true,
+  "pptxEditorReimport": true,
+  "exportFailure": {
+    "errorCode": "PPTX_EXPORT_FAILED",
+    "exportingReset": true
+  },
+  "exportRetrySucceeded": true,
+  "missingTexts": [],
+  "imageGeometry": [
+    {
+      "slide": 15,
+      "before": [
+        72,
+        165,
+        430,
+        322
+      ],
+      "after": [
+        72,
+        165,
+        430,
+        322
+      ]
+    }
+  ],
+  "replacementResults": [
+    {
+      "dimensions": [
+        1200,
+        800
+      ],
+      "range": [
+        [
+          5.486542443064188,
+          0
+        ],
+        [
+          94.5134575569358,
+          100
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "dimensions": [
+        800,
+        1200
+      ],
+      "range": [
+        [
+          0,
+          25.038759689922482
+        ],
+        [
+          100,
+          74.96124031007751
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    },
+    {
+      "dimensions": [
+        1000,
+        1000
+      ],
+      "range": [
+        [
+          0,
+          12.558139534883722
+        ],
+        [
+          100,
+          87.44186046511628
+        ]
+      ],
+      "replacementImplementation": "getImageReplacementProps",
+      "decorationProtected": true
+    }
+  ],
+  "errors": [],
+  "writes": [],
+  "source": "D:\\moling\\TrainPPTAgent\\backend\\main_api\\template\\template_24.json",
+  "sourceSha256": "52012713822d59e1a51b1ca3070e41ddd2309d1140393098d175318dbddcc1b4",
+  "pptxSha256": "65ade7aa8756cb02d5a2fbe343313964f14564f74e5b090a6ddcc2cc92c3d40b"
+}

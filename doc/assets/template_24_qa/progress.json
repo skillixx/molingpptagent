@@ -1,0 +1,99 @@
+{
+  "status": "G9_COMPLETE",
+  "candidateId": "template24-g8-f1fdf1cdaaa0",
+  "createdAt": "2026-09-18T11:03:55.924959+00:00",
+  "stages": {
+    "G0": {
+      "status": "PASS",
+      "evidence": [
+        "g0-baseline.json"
+      ]
+    },
+    "G1": {
+      "status": "PASS",
+      "evidence": [
+        "reference-page-map.json",
+        "asset-generation.json"
+      ]
+    },
+    "G2": {
+      "status": "PASS",
+      "evidence": [
+        "probe-verified/summary.json",
+        "production-verified/summary.json"
+      ],
+      "note": "最终候选覆盖三页探针，旧 g2-browser 记录仅保留作历史。"
+    },
+    "G3": {
+      "status": "PASS",
+      "evidence": [
+        "determinism-summary.json",
+        "mvp.json"
+      ]
+    },
+    "G4": {
+      "status": "PASS",
+      "evidence": [
+        "production-verified/contact-sheet.png"
+      ],
+      "sampleIds": [
+        "cover-city",
+        "contents-4",
+        "transition-city-left",
+        "content-text-4",
+        "end-city"
+      ]
+    },
+    "G5": {
+      "status": "PASS",
+      "evidence": [
+        "tests.xml"
+      ],
+      "tests": 104
+    },
+    "G6": {
+      "status": "PASS",
+      "evidence": [
+        "runtime/runtime-summary.json",
+        "frozen-candidate-manifest.json"
+      ]
+    },
+    "G7": {
+      "status": "PASS",
+      "evidence": [
+        "real-handler-summary.json",
+        "worker-output-verified/summary.json"
+      ],
+      "mode": "固定上游、真实 Worker/Handler/Renderer，隔离 SQLite；不是在线文本模型验收"
+    },
+    "G8": {
+      "status": "PASS",
+      "evidence": [
+        "production-verified/summary.json",
+        "frozen-candidate-manifest.json"
+      ]
+    },
+    "G9": {
+      "status": "COMPLETE",
+      "evidence": [
+        "g9-closure.json"
+      ],
+      "confirmation": "确认完成"
+    }
+  },
+  "productionSlides": 18,
+  "mvpSlides": 12,
+  "assets": 9,
+  "testsPassed": 104,
+  "limitations": [
+    "认证使用浏览器夹具；未验证生产 SSO、计费和远程部署。",
+    "文本上游为固定数据；没有调用真实文本模型。",
+    "PPTX 重导入保留全文、图片和槽位，字体主题/字重与细线呈现可能变化，不承诺逐像素复刻。",
+    "前端源码未修改，四视口整改不适用；已有桌面与手机探针截图只作补充观察。"
+  ],
+  "goalClosed": true,
+  "gitDelivery": false,
+  "deployment": false,
+  "closedAt": "2026-09-20T09:54:40.727027+08:00",
+  "userConfirmation": "确认完成"
+}

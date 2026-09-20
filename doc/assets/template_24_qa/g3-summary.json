@@ -1,0 +1,12 @@
+{
+  "stage": "G3",
+  "status": "PASS",
+  "candidateTemplateId": "template_24",
+  "mvpSlides": 12,
+  "evidence": [
+    "determinism-summary.json",
+    "mvp.json",
+    "mvp-verified/summary.json"
+  ],
+  "specPath": "doc/template_specs/template_24.yaml"
+}

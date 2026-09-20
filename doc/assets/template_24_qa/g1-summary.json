@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "stage": "G1",
+  "status": "G1_PASS",
+  "candidateTemplateId": "template_24",
+  "referenceMap": "reference-page-map.json",
+  "assetGeneration": "asset-generation.json",
+  "referencePages": 25,
+  "assetCount": 9,
+  "mediaPolicy": "exclude-source-media-rebuild-original-assets",
+  "rightsPolicy": "source-media-excluded-original-assets",
+  "nextStage": "G2"
+}

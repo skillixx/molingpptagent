@@ -1,0 +1,25 @@
+{
+  "candidateId": "template24-g8-f1fdf1cdaaa0",
+  "createdAt": "2026-09-18T11:03:55.924959+00:00",
+  "files": {
+    "backend/main_api/template/template_24.json": "52012713822d59e1a51b1ca3070e41ddd2309d1140393098d175318dbddcc1b4",
+    "backend/main_api/template/template_24.jpg": "4e4a64a5a7e0028592b1c86f6755bd0510e0e113888e4b59773a9f62214705ac",
+    "utils/build_neon_city_project_template.mjs": "414827e96cec7ce587540f90d2644241b5a415e3f88be5cfea259611bdf914f3",
+    "backend/main_api/main.py": "271896a5828de7d4c5298545b639e916699fd1af4d3c4ae430ae384bf74abc5e",
+    "backend/main_api/tests/test_template_24.py": "e2fef88311752c6bf63fdeae8cd6c6a9413cd8bfa41a5dc0797d1da6cb0f7ed8",
+    "doc/template_specs/template_24.yaml": "6b9a1482fe82074b83a29f63e61f93b3069770d44d45d9345d646ecfc02d368b",
+    "utils/verify_template_24_browser.cjs": "c3233a4e566f802a597331ce4eb8122706ea2569b1649f31f611dfe83749ba9d",
+    "utils/verify_template_24_runtime.cjs": "78058d63bb7a361b051c339d5146434181ab62b5fa0b8d3b4f3e885e5c306c7d",
+    "utils/run_template_24_handler_qa.py": "49b79ff29c1c0ff7f16a9b275925032492e1f4148415b5a79c8e405c8be38d31",
+    "utils/finalize_template_24_qa.py": "1dd2fd691b883a8f06530491bb5cdb595352f698ffb6b88f65ba88a671c76711",
+    "backend/main_api/template/template_24_asset_bg_cover_v1.jpg": "2df24f2fbfd1b0190362d3851346be63b69af6882a38bbc3dcca835676558bfc",
+    "backend/main_api/template/template_24_asset_bg_content_v1.jpg": "6e5257e7d79b80c0218e3093bcdf75cbc2bf917ded981735054fa7db922c76a4",
+    "backend/main_api/template/template_24_asset_bg_section_v1.jpg": "3cea70f3abb0a79a08d732627fec95aa8f8cf10f385d1c8410f191c824f3ff8d",
+    "backend/main_api/template/template_24_asset_bg_end_v1.jpg": "91e3d121302c27a61431492d2951c27b042e1a790ec68c686013f450f0a2f3df",
+    "backend/main_api/template/template_24_asset_skyline_corner_v1.png": "3f7bc8b9dadc1c8db29ccdc467159d52ea83c1ad747634dd8f01f9e8354dfa21",
+    "backend/main_api/template/template_24_asset_route_light_v1.png": "da60b4d459123bcfd86fa870ed406054573e3e92eb821e5d58b6b6f7f4f478cc",
+    "backend/main_api/template/template_24_asset_edge_beam_v1.png": "4c0fe72cb281367209f657cb798b4b14beecbc73eec7ede1ecf675ec54db968c",
+    "backend/main_api/template/template_24_asset_city_glow_purple_v1.jpg": "6b522c23821aa11335d0f7cc4d9980998b53c7315cb5088f799fb03367dc6f89",
+    "backend/main_api/template/template_24_asset_city_grid_blue_v1.jpg": "73bd06c50869e24ba516372bdcc91a9b73f652859fd322ef81511b10ea4db3f9"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "probe": {
+    "count": 3,
+    "sha256": "ddcdb53b79c49a88f74f04b333b8b67087dac153f7f4c803923a0faec93a1b9f",
+    "matchesProductionProjection": true
+  },
+  "mvp": {
+    "count": 12,
+    "sha256": "ec9bb27ea94e998028e2d5c1b5bee88a6209546f51d12a9950682fa1470e1fd1",
+    "matchesProductionProjection": true
+  },
+  "production": {
+    "count": 18,
+    "sha256": "52012713822d59e1a51b1ca3070e41ddd2309d1140393098d175318dbddcc1b4",
+    "matchesProductionProjection": true
+  }
+}

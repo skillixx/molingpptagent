@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "stage": "G0",
+  "status": "G0_PASS",
+  "candidateTemplateId": "template_24",
+  "sourcePptx": "C:/Users/sk20/Desktop/项目策划(1).pptx",
+  "sourceSha256": "56CF0EA80E781D55DF1D4EE565DFA8858A0F9F61B2F88E88617166EBEFBAA0E5",
+  "sourceBytes": 7169434,
+  "canvas": "1000x562.5",
+  "aspectRatio": "16:9",
+  "requiredEntrypoints": [
+    "AGENTS.md",
+    "doc/Template.md",
+    "doc/PPT_Structure.md",
+    "backend/main_api/workers/template_renderer.py",
+    "backend/main_api/template_assets.py",
+    "backend/main_api/tests/test_template_renderer.py",
+    "backend/main_api/tests/test_template_assets.py",
+    "frontend/node_modules/pptxtojson/dist/index.js"
+  ],
+  "missingEntrypoints": [],
+  "candidateRefsOutsideExpected": [],
+  "worktree": {
+    "modified": 0,
+    "untracked": 62,
+    "policy": "保留现有用户未跟踪产物，不清理或覆盖"
+  }
+}

@@ -1,0 +1,443 @@
+{
+  "schemaVersion": 1,
+  "stage": "G1",
+  "candidateTemplateId": "template_24",
+  "generator": "built-in image_gen",
+  "modelNote": "工具未暴露",
+  "assetCount": 9,
+  "assets": [
+    {
+      "id": "A1",
+      "file": "template_24_asset_bg_cover_v1.jpg",
+      "source": "A1_bg_cover_source.png",
+      "type": "background",
+      "format": "jpeg",
+      "width": 1920,
+      "height": 1080,
+      "alpha": false,
+      "prompt": "Use case: productivity-visual. Asset type: TrainPPTAgent presentation cover background. Primary request: an original wide 16:9 dark blue futuristic city skyline at night for a business project-planning presentation. Scene/backdrop: fictional modern city, distant skyline, subtle waterfront and road-light traces. Composition/framing: 16:9 landscape, city buildings concentrated along the bottom and right edge, leave the upper-left and center-left calm, dark, low-detail negative space for an editable Chinese title and subtitle; no strong objects crossing the title area. Style/medium: polished editorial raster illustration, restrained corporate technology mood, clean layered depth. Lighting/mood: deep navy night with restrained cyan, teal and small blue-violet lights, calm and credible. Color palette: #0B1830, #273957, #47CCD4, #7567BC, #56BDB5, #F4F8FC. Constraints: original fictional city only; no readable text; no numbers; no logos; no websites; no brands; no recognizable landmarks; no people; no signatures; no watermark; no embedded charts or interface panels. Avoid: source-deck copying, excessive neon glow, dense detail in the title area, magenta-dominant palette, photorealistic landmark imagery.",
+      "tool": "built-in image_gen",
+      "model": "工具未暴露",
+      "sourcePath": "D:/moling/TrainPPTAgent/doc/assets/template_24_qa/originals/A1_bg_cover_source.png",
+      "finalPath": "D:/moling/TrainPPTAgent/backend/main_api/template/template_24_asset_bg_cover_v1.jpg",
+      "sourceSha256": "de1e1a16c16a9ed099b10f9ae1e1b109671625c72e70389f0c7c9463d5508a7f",
+      "finalSha256": "2df24f2fbfd1b0190362d3851346be63b69af6882a38bbc3dcca835676558bfc",
+      "actual": {
+        "format": "jpeg",
+        "width": 1920,
+        "height": 1080,
+        "channels": 3,
+        "hasAlpha": false,
+        "bytes": 150908
+      },
+      "checks": {
+        "dimension": true,
+        "format": true,
+        "alpha": true,
+        "contentPolicy": "已按无文字、无Logo、无水印约束生成并做视觉检查"
+      },
+      "promptSummary": "原创16:9深蓝城市夜景封面；城市集中底部和右侧；左上和中部留标题区；无文字、Logo、网站、人物、地标、签名、水印。",
+      "attempts": 1,
+      "generatedOriginal": "C:/Users/sk20/.codex/generated_images/01a0b292-dccf-7bf2-a8e4-02ac074d2bfb/exec-a1658668-a522-487b-ab9b-6d09e53e6e52.png",
+      "referencedBy": [
+        "cover-city",
+        "content-image-1"
+      ],
+      "originalMetadata": {
+        "size": [
+          1672,
+          941
+        ],
+        "mode": "RGB"
+      }
+    },
+    {
+      "id": "A2",
+      "file": "template_24_asset_bg_content_v1.jpg",
+      "source": "A2_bg_content_source.png",
+      "type": "background",
+      "format": "jpeg",
+      "width": 1920,
+      "height": 1080,
+      "alpha": false,
+      "prompt": "Use case: productivity-visual. Asset type: TrainPPTAgent presentation content background. Primary request: an original wide 16:9 dark navy business presentation background with an extremely subtle fictional city horizon and faint architectural linework. Composition/framing: keep the central 70 percent of the canvas calm, dark and low-detail for editable titles, paragraphs, metrics and business images; place only soft city traces and tiny cyan reflections along the far edges and bottom. Style/medium: restrained editorial raster illustration, quiet corporate technology mood. Lighting/mood: low-contrast navy and slate blue with very small cyan and teal accents, readable behind text. Color palette: #0B1830, #273957, #47CCD4, #56BDB5, #F4F8FC. Constraints: no readable text, no numbers, no logos, no websites, no brands, no landmarks, no people, no signatures, no watermark, no UI panels, no dense skyline in the content area. Avoid: bright focal objects in the center, strong magenta, dramatic light beams, copied source-deck imagery.",
+      "tool": "built-in image_gen",
+      "model": "工具未暴露",
+      "sourcePath": "D:/moling/TrainPPTAgent/doc/assets/template_24_qa/originals/A2_bg_content_source.png",
+      "finalPath": "D:/moling/TrainPPTAgent/backend/main_api/template/template_24_asset_bg_content_v1.jpg",
+      "sourceSha256": "146f2a42383025b0226dfe497a06cada641442bd41c6b8459b4f83d5ea37460b",
+      "finalSha256": "6e5257e7d79b80c0218e3093bcdf75cbc2bf917ded981735054fa7db922c76a4",
+      "actual": {
+        "format": "jpeg",
+        "width": 1920,
+        "height": 1080,
+        "channels": 3,
+        "hasAlpha": false,
+        "bytes": 41570
+      },
+      "checks": {
+        "dimension": true,
+        "format": true,
+        "alpha": true,
+        "contentPolicy": "已按无文字、无Logo、无水印约束生成并做视觉检查"
+      },
+      "promptSummary": "原创16:9深蓝内容背景；中央70%低干扰；城市线稿和青色反光只在边缘和底部；无文字、品牌和水印。",
+      "attempts": 1,
+      "generatedOriginal": "C:/Users/sk20/.codex/generated_images/01a0b292-dccf-7bf2-a8e4-02ac074d2bfb/exec-69f7031b-280e-459b-b34d-92b590992f64.png",
+      "referencedBy": [
+        "cover-city-minimal",
+        "contents-2",
+        "contents-3",
+        "contents-4",
+        "contents-5",
+        "contents-6",
+        "contents-10",
+        "content-focus-1",
+        "content-text-2",
+        "content-text-3",
+        "content-text-4",
+        "content-image-1",
+        "content-metrics-4"
+      ],
+      "originalMetadata": {
+        "size": [
+          1672,
+          941
+        ],
+        "mode": "RGB"
+      }
+    },
+    {
+      "id": "A3",
+      "file": "template_24_asset_bg_section_v1.jpg",
+      "source": "A3_bg_section_source.png",
+      "type": "background",
+      "format": "jpeg",
+      "width": 1920,
+      "height": 1080,
+      "alpha": false,
+      "prompt": "Use case: productivity-visual. Asset type: TrainPPTAgent presentation section background. Primary request: an original wide 16:9 deep-blue fictional city and light-trail composition for a chapter divider. Scene/backdrop: modern city skyline, subtle road-light arcs and distant buildings. Composition/framing: concentrate the skyline and cyan light energy on the left 35 to 40 percent of the canvas; keep the entire right side calm, dark and low-detail for a large editable chapter number, title and short explanation. Style/medium: polished editorial raster illustration, restrained corporate technology mood. Lighting/mood: deep navy with controlled cyan, teal and a small amount of blue-violet light. Color palette: #0B1830, #273957, #47CCD4, #7567BC, #56BDB5. Constraints: original fictional city only; no readable text; no numbers; no logos; no websites; no brands; no recognizable landmarks; no people; no signatures; no watermark; no dense detail on the right. Avoid: centered skyline, bright right-side objects, magenta-dominant palette, copied source-deck imagery.",
+      "tool": "built-in image_gen",
+      "model": "工具未暴露",
+      "sourcePath": "D:/moling/TrainPPTAgent/doc/assets/template_24_qa/originals/A3_bg_section_source.png",
+      "finalPath": "D:/moling/TrainPPTAgent/backend/main_api/template/template_24_asset_bg_section_v1.jpg",
+      "sourceSha256": "c3e56bf147ff641737118cc1d5ba5d0f7352a6f7897610fb90c67a10f5268c6b",
+      "finalSha256": "3cea70f3abb0a79a08d732627fec95aa8f8cf10f385d1c8410f191c824f3ff8d",
+      "actual": {
+        "format": "jpeg",
+        "width": 1920,
+        "height": 1080,
+        "channels": 3,
+        "hasAlpha": false,
+        "bytes": 136029
+      },
+      "checks": {
+        "dimension": true,
+        "format": true,
+        "alpha": true,
+        "contentPolicy": "已按无文字、无Logo、无水印约束生成并做视觉检查"
+      },
+      "promptSummary": "原创16:9章节背景；城市和光线集中左侧约40%；右侧留章节标题；无文字、品牌、人物和水印。",
+      "attempts": 1,
+      "generatedOriginal": "C:/Users/sk20/.codex/generated_images/01a0b292-dccf-7bf2-a8e4-02ac074d2bfb/exec-6b95f9f4-c759-4b4d-bbeb-d93a837f897b.png",
+      "referencedBy": [
+        "transition-city-left",
+        "transition-city-right"
+      ],
+      "originalMetadata": {
+        "size": [
+          1672,
+          941
+        ],
+        "mode": "RGB"
+      }
+    },
+    {
+      "id": "A4",
+      "file": "template_24_asset_bg_end_v1.jpg",
+      "source": "A4_bg_end_source.png",
+      "type": "background",
+      "format": "jpeg",
+      "width": 1920,
+      "height": 1080,
+      "alpha": false,
+      "prompt": "Use case: productivity-visual. Asset type: TrainPPTAgent presentation closing background. Primary request: an original wide 16:9 deep-blue fictional city-at-night background that echoes a cover but is quieter and more open. Scene/backdrop: distant modern skyline, soft water reflection and a few restrained road-light traces. Composition/framing: keep the upper-middle and center calm for editable closing text and 0 to 3 action items; put low-detail city silhouettes along the bottom and only a small amount of detail near one side. Style/medium: polished editorial raster illustration, quiet credible corporate technology mood. Lighting/mood: calm deep navy, muted cyan and teal, a small blue-violet accent, less contrast than a cover. Color palette: #0B1830, #273957, #47CCD4, #56BDB5, #F4F8FC. Constraints: no readable text; no numbers; no logos; no websites; no brands; no recognizable landmarks; no people; no signatures; no watermark; no dense center detail. Avoid: dramatic focal skyscraper in the center, heavy neon, magenta-dominant palette, copied source-deck imagery.",
+      "tool": "built-in image_gen",
+      "model": "工具未暴露",
+      "sourcePath": "D:/moling/TrainPPTAgent/doc/assets/template_24_qa/originals/A4_bg_end_source.png",
+      "finalPath": "D:/moling/TrainPPTAgent/backend/main_api/template/template_24_asset_bg_end_v1.jpg",
+      "sourceSha256": "b97add3d2f7cea8ec70f7f97fc7382ff57fe5b37cd260f9b7e629b835034b15c",
+      "finalSha256": "91e3d121302c27a61431492d2951c27b042e1a790ec68c686013f450f0a2f3df",
+      "actual": {
+        "format": "jpeg",
+        "width": 1920,
+        "height": 1080,
+        "channels": 3,
+        "hasAlpha": false,
+        "bytes": 84201
+      },
+      "checks": {
+        "dimension": true,
+        "format": true,
+        "alpha": true,
+        "contentPolicy": "已按无文字、无Logo、无水印约束生成并做视觉检查"
+      },
+      "promptSummary": "原创16:9结束背景；城市细节少于封面；上中部留结束语和行动信息；无文字、Logo和水印。",
+      "attempts": 1,
+      "generatedOriginal": "C:/Users/sk20/.codex/generated_images/01a0b292-dccf-7bf2-a8e4-02ac074d2bfb/exec-7f4feace-1f54-4e04-826b-a96f01f8d38a.png",
+      "referencedBy": [
+        "end-city",
+        "end-action"
+      ],
+      "originalMetadata": {
+        "size": [
+          1672,
+          941
+        ],
+        "mode": "RGB"
+      }
+    },
+    {
+      "id": "A5",
+      "file": "template_24_asset_city_grid_blue_v1.jpg",
+      "source": "A5_city_grid_source.png",
+      "type": "texture",
+      "format": "jpeg",
+      "width": 1200,
+      "height": 1200,
+      "alpha": false,
+      "prompt": "Use case: productivity-visual. Asset type: square presentation decoration texture. Primary request: an original square blue city-grid and blueprint texture for a dark business presentation. Scene/backdrop: abstract fictional building outlines, thin planning-grid lines, sparse tiny cyan light nodes. Composition/framing: square tile, visually balanced at every crop, no single focal object, usable inside circles, rectangles and edge masks. Style/medium: clean raster illustration with restrained linework. Lighting/mood: deep navy and city blue with subtle cyan accents. Color palette: #0B1830, #273957, #47CCD4, very small #F4F8FC highlights. Constraints: no readable text, no numbers, no logos, no websites, no brands, no real map labels, no landmarks, no people, no signature, no watermark, no UI panels. Avoid: dense high-contrast detail, magenta dominant color, photographic city imagery, copied source-deck assets.",
+      "tool": "built-in image_gen",
+      "model": "工具未暴露",
+      "sourcePath": "D:/moling/TrainPPTAgent/doc/assets/template_24_qa/originals/A5_city_grid_source.png",
+      "finalPath": "D:/moling/TrainPPTAgent/backend/main_api/template/template_24_asset_city_grid_blue_v1.jpg",
+      "sourceSha256": "8bd424447019323f3e5997405b7b3375265cd2f53e501ce7b6820c9ebc85aa52",
+      "finalSha256": "73bd06c50869e24ba516372bdcc91a9b73f652859fd322ef81511b10ea4db3f9",
+      "actual": {
+        "format": "jpeg",
+        "width": 1200,
+        "height": 1200,
+        "channels": 3,
+        "hasAlpha": false,
+        "bytes": 224199
+      },
+      "checks": {
+        "dimension": true,
+        "format": true,
+        "alpha": true,
+        "contentPolicy": "已按无文字、无Logo、无水印约束生成并做视觉检查"
+      },
+      "promptSummary": "原创方形蓝色城市网格和蓝图纹理；细线建筑和道路节点；可安全裁切；无文字、地图标签和品牌。",
+      "attempts": 1,
+      "generatedOriginal": "C:/Users/sk20/.codex/generated_images/01a0b292-dccf-7bf2-a8e4-02ac074d2bfb/exec-9b83de31-c75b-4e47-b4a8-16801d22762e.png",
+      "referencedBy": [
+        "contents-2",
+        "contents-3",
+        "contents-4",
+        "contents-5",
+        "contents-6",
+        "contents-10"
+      ],
+      "originalMetadata": {
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      }
+    },
+    {
+      "id": "A6",
+      "file": "template_24_asset_city_glow_purple_v1.jpg",
+      "source": "A6_city_glow_source.png",
+      "type": "texture",
+      "format": "jpeg",
+      "width": 1200,
+      "height": 1200,
+      "alpha": false,
+      "prompt": "Use case: productivity-visual. Asset type: square presentation decoration texture. Primary request: an original square low-contrast blue-violet city glow texture for a dark business presentation. Scene/backdrop: abstract distant city lights, soft atmospheric glow, sparse tiny architectural silhouettes, no specific place. Composition/framing: square tile, balanced and safe to crop into circles, rectangles and edge masks; keep the center soft and low detail. Style/medium: restrained raster illustration, polished corporate editorial mood. Lighting/mood: deep navy with muted blue-violet haze and small teal highlights, low contrast. Color palette: #0B1830, #273957, #7567BC, #47CCD4, #56BDB5. Constraints: no readable text, no numbers, no logos, no websites, no brands, no landmarks, no people, no signatures, no watermark, no UI panels. Avoid: loud purple, dense particle fields, photographic city detail, copied source-deck imagery.",
+      "tool": "built-in image_gen",
+      "model": "工具未暴露",
+      "sourcePath": "D:/moling/TrainPPTAgent/doc/assets/template_24_qa/originals/A6_city_glow_source.png",
+      "finalPath": "D:/moling/TrainPPTAgent/backend/main_api/template/template_24_asset_city_glow_purple_v1.jpg",
+      "sourceSha256": "a6bf48cd1c0f6c149a86b0fdaf21afc525f9e427450bb308831d37ca32ca2855",
+      "finalSha256": "6b522c23821aa11335d0f7cc4d9980998b53c7315cb5088f799fb03367dc6f89",
+      "actual": {
+        "format": "jpeg",
+        "width": 1200,
+        "height": 1200,
+        "channels": 3,
+        "hasAlpha": false,
+        "bytes": 29783
+      },
+      "checks": {
+        "dimension": true,
+        "format": true,
+        "alpha": true,
+        "contentPolicy": "已按无文字、无Logo、无水印约束生成并做视觉检查"
+      },
+      "promptSummary": "原创方形蓝紫低对比城市光晕纹理；中央柔和、细节稀疏；无文字、Logo、人物和水印。",
+      "attempts": 1,
+      "generatedOriginal": "C:/Users/sk20/.codex/generated_images/01a0b292-dccf-7bf2-a8e4-02ac074d2bfb/exec-6e70d706-a37f-4831-a1dc-5bd759a95ffc.png",
+      "referencedBy": [
+        "content-metrics-4"
+      ],
+      "originalMetadata": {
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGB"
+      }
+    },
+    {
+      "id": "A7",
+      "file": "template_24_asset_route_light_v1.png",
+      "source": "A7_route_light_source.png",
+      "type": "transparent-decoration",
+      "format": "png",
+      "width": 1800,
+      "height": 460,
+      "alpha": true,
+      "prompt": "Use case: productivity-visual. Asset type: transparent presentation overlay decoration. Primary request: a wide horizontal transparent overlay of elegant cyan and teal urban route light trails for a dark business presentation. Composition/framing: 1800x460 aspect ratio, thin glowing road-like curves concentrated along the bottom third, fading before the upper half; substantial transparent empty space above; no background rectangle. Style/medium: clean raster light-paint illustration, restrained and editable-layout friendly. Lighting/mood: subtle cyan, teal and a small blue-violet accent, polished and credible. Constraints: genuinely transparent background; no readable text; no numbers; no logos; no websites; no brands; no buildings or solid scene background; no people; no signatures; no watermark; no black or white matte. Avoid: full-width opaque haze, dense center detail, magenta dominance, copied source-deck imagery.",
+      "tool": "built-in image_gen",
+      "model": "工具未暴露",
+      "sourcePath": "D:/moling/TrainPPTAgent/doc/assets/template_24_qa/originals/A7_route_light_source.png",
+      "finalPath": "D:/moling/TrainPPTAgent/backend/main_api/template/template_24_asset_route_light_v1.png",
+      "sourceSha256": "f11a7b10639fc69bbaceb2a4f85dae332a7a0d2bdc786b1421925940fe5a0491",
+      "finalSha256": "da60b4d459123bcfd86fa870ed406054573e3e92eb821e5d58b6b6f7f4f478cc",
+      "actual": {
+        "format": "png",
+        "width": 1800,
+        "height": 460,
+        "channels": 4,
+        "hasAlpha": true,
+        "bytes": 524726
+      },
+      "checks": {
+        "dimension": true,
+        "format": true,
+        "alpha": true,
+        "contentPolicy": "已按无文字、无Logo、无水印约束生成并做视觉检查"
+      },
+      "promptSummary": "透明横向青色和青绿色道路光轨；光线集中底部，上方透明；无背景矩形、文字、Logo和水印。",
+      "attempts": 1,
+      "generatedOriginal": "C:/Users/sk20/.codex/generated_images/01a0b292-dccf-7bf2-a8e4-02ac074d2bfb/exec-a0668c74-2340-4c10-a4ef-d5c4db7c9b9d.png",
+      "referencedBy": [
+        "cover-city",
+        "cover-city-minimal",
+        "end-city",
+        "end-action"
+      ],
+      "originalMetadata": {
+        "size": [
+          2073,
+          759
+        ],
+        "mode": "RGBA"
+      },
+      "alphaExtrema": [
+        0,
+        253
+      ]
+    },
+    {
+      "id": "A8",
+      "file": "template_24_asset_edge_beam_v1.png",
+      "source": "A8_edge_beam_source.png",
+      "type": "transparent-decoration",
+      "format": "png",
+      "width": 650,
+      "height": 1080,
+      "alpha": true,
+      "prompt": "Use case: productivity-visual. Asset type: transparent presentation edge overlay. Primary request: a vertical transparent cyan-teal and subtle blue-violet light-beam decoration for a dark business presentation. Composition/framing: 650x1080 aspect ratio, light beams and soft architectural glow concentrated along the outer edge, fading toward the inner side; leave most of the inner half transparent and calm; no background rectangle. Style/medium: clean raster light atmosphere, restrained corporate technology mood. Lighting/mood: cool cyan and teal with a restrained violet accent. Constraints: genuinely transparent background; no readable text; no numbers; no logos; no websites; no brands; no buildings as a full scene; no people; no signatures; no watermark; no black or white matte. Avoid: centered column, opaque gradient block, dense particles, magenta dominance, copied source-deck imagery.",
+      "tool": "built-in image_gen",
+      "model": "工具未暴露",
+      "sourcePath": "D:/moling/TrainPPTAgent/doc/assets/template_24_qa/originals/A8_edge_beam_source.png",
+      "finalPath": "D:/moling/TrainPPTAgent/backend/main_api/template/template_24_asset_edge_beam_v1.png",
+      "sourceSha256": "2e5cb023705f3d9fafe691c3a326e1fbbfea841f299ac6886f10b9b6d0dda463",
+      "finalSha256": "4c0fe72cb281367209f657cb798b4b14beecbc73eec7ede1ecf675ec54db968c",
+      "actual": {
+        "format": "png",
+        "width": 650,
+        "height": 1080,
+        "channels": 4,
+        "hasAlpha": true,
+        "bytes": 570204
+      },
+      "checks": {
+        "dimension": true,
+        "format": true,
+        "alpha": true,
+        "contentPolicy": "已按无文字、无Logo、无水印约束生成并做视觉检查"
+      },
+      "promptSummary": "透明竖向边缘光束；青绿和少量蓝紫光集中外侧，向正文侧淡出；无不透明底、文字和水印。",
+      "attempts": 1,
+      "generatedOriginal": "C:/Users/sk20/.codex/generated_images/01a0b292-dccf-7bf2-a8e4-02ac074d2bfb/exec-92a2ec12-5fe9-41ad-a3eb-190ab1c520c5.png",
+      "referencedBy": [
+        "content-image-1"
+      ],
+      "originalMetadata": {
+        "size": [
+          973,
+          1617
+        ],
+        "mode": "RGBA"
+      },
+      "alphaExtrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "id": "A9",
+      "file": "template_24_asset_skyline_corner_v1.png",
+      "source": "A9_skyline_corner_source.png",
+      "type": "transparent-decoration",
+      "format": "png",
+      "width": 1200,
+      "height": 900,
+      "alpha": true,
+      "prompt": "Use case: productivity-visual. Asset type: transparent presentation corner overlay. Primary request: a transparent raster decoration of a small fictional futuristic skyline cluster with a few thin cyan outline buildings and sparse light dots. Composition/framing: 1200x900 aspect ratio, all visual weight confined to one bottom-right corner, central and upper-left areas genuinely transparent and empty; suitable for a subtle corner accent. Style/medium: clean restrained line-art and soft glow, corporate technology presentation mood. Lighting/mood: deep cyan, teal and a small blue-violet highlight. Constraints: genuinely transparent background; no readable text; no numbers; no logos; no websites; no brands; no recognizable landmarks; no people; no signatures; no watermark; no full-scene background; no black or white matte. Avoid: center-filling illustration, dense skyline, heavy glow, magenta dominance, copied source-deck imagery.",
+      "tool": "built-in image_gen",
+      "model": "工具未暴露",
+      "sourcePath": "D:/moling/TrainPPTAgent/doc/assets/template_24_qa/originals/A9_skyline_corner_source.png",
+      "finalPath": "D:/moling/TrainPPTAgent/backend/main_api/template/template_24_asset_skyline_corner_v1.png",
+      "sourceSha256": "eeeb3b493df01890492d42ad88c231f5cd342527e2941a53fafe493ea5cdadce",
+      "finalSha256": "3f7bc8b9dadc1c8db29ccdc467159d52ea83c1ad747634dd8f01f9e8354dfa21",
+      "actual": {
+        "format": "png",
+        "width": 1200,
+        "height": 900,
+        "channels": 4,
+        "hasAlpha": true,
+        "bytes": 400046
+      },
+      "checks": {
+        "dimension": true,
+        "format": true,
+        "alpha": true,
+        "contentPolicy": "已按无文字、无Logo、无水印约束生成并做视觉检查"
+      },
+      "promptSummary": "透明右下角虚构城市剪影和稀疏灯点；中央和左上透明；无文字、Logo、地标、人物和水印。",
+      "attempts": 1,
+      "generatedOriginal": "C:/Users/sk20/.codex/generated_images/01a0b292-dccf-7bf2-a8e4-02ac074d2bfb/exec-5d6130bf-338e-4c0b-8e07-d882a7a99f60.png",
+      "referencedBy": [
+        "cover-city-minimal",
+        "content-focus-1"
+      ],
+      "originalMetadata": {
+        "size": [
+          1448,
+          1086
+        ],
+        "mode": "RGBA"
+      },
+      "alphaExtrema": [
+        0,
+        255
+      ]
+    }
+  ],
+  "status": "PASS"
+}

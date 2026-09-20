@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "templateId": "template_24",
+  "stage": "mvp",
+  "slideCount": 12,
+  "jsonFullStateEqual": true,
+  "pptxEditorReimport": true,
+  "missingTexts": [],
+  "replacementResults": [],
+  "errors": [],
+  "writes": [],
+  "source": "D:\\moling\\TrainPPTAgent\\backend\\main_api\\template\\template_24_mvp.json"
+}
