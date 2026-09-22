@@ -1,0 +1,5127 @@
+{
+  "id": "template_26",
+  "title": "深蓝电路·网络安全",
+  "width": 1000,
+  "height": 562.5,
+  "supportsLosslessContentPagination": true,
+  "unsupportedLayoutPolicy": "ordinary",
+  "sourceImageCountPolicy": "one-per-item",
+  "theme": {
+    "themeColors": [
+      "#A0C9D8",
+      "#81B8CB",
+      "#183749"
+    ],
+    "fontColor": "#C5DCE5",
+    "fontName": "微软雅黑",
+    "backgroundColor": "#0B1524"
+  },
+  "metadata": {
+    "buildStage": "production",
+    "sourceReference": "项目策划(3).pptx",
+    "sourceReferenceSha256": "d1b398e9538faa293eff277196682b8c1e91275c2d672bcede06303395b7ec06",
+    "rightsPolicy": "reference-media-excluded",
+    "assetGeneration": "GPT2 图片模板；实际模型工具未暴露",
+    "assetFiles": [
+      "template_26_asset_bg_cover_v1.jpg",
+      "template_26_asset_bg_content_v1.jpg",
+      "template_26_asset_bg_section_v1.jpg",
+      "template_26_asset_bg_end_v1.jpg",
+      "template_26_asset_lock_v1.png",
+      "template_26_asset_circuit_upper_right_v1.png",
+      "template_26_asset_circuit_lower_left_v1.png",
+      "template_26_asset_network_sphere_v1.png"
+    ],
+    "mvpSlideIds": [
+      "cover-lock",
+      "contents-2",
+      "contents-3",
+      "contents-4",
+      "contents-5",
+      "contents-6",
+      "transition-circuit",
+      "content-text-1",
+      "content-text-2",
+      "content-text-3",
+      "content-text-4",
+      "content-image-left-1",
+      "content-image-right-1",
+      "end-thanks"
+    ],
+    "productionSlideIds": [
+      "cover-lock",
+      "cover-long-title",
+      "contents-2",
+      "contents-3",
+      "contents-4",
+      "contents-5",
+      "contents-6",
+      "transition-circuit",
+      "content-text-1",
+      "content-text-2",
+      "content-text-3",
+      "content-text-4",
+      "content-image-left-1",
+      "content-image-right-1",
+      "content-image-2",
+      "content-image-3",
+      "content-image-4",
+      "content-process-4",
+      "content-metrics-4",
+      "content-hub-6",
+      "end-thanks",
+      "end-action"
+    ]
+  },
+  "slides": [
+    {
+      "id": "cover-lock",
+      "type": "cover",
+      "background": {
+        "type": "solid",
+        "color": "#0B1524"
+      },
+      "elements": [
+        {
+          "type": "image",
+          "id": "t26-cover-lock-background-1",
+          "rotate": 0,
+          "left": 0,
+          "top": 0,
+          "width": 1000,
+          "height": 562.5,
+          "src": "/api/data/template_26_asset_bg_cover_v1.jpg",
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t26-cover-lock-upper-circuit-2",
+          "rotate": 0,
+          "left": 650,
+          "top": 0,
+          "width": 350,
+          "height": 350,
+          "src": "/api/data/template_26_asset_circuit_upper_right_v1.png",
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t26-cover-lock-lower-circuit-3",
+          "rotate": 0,
+          "left": 0,
+          "top": 242.5,
+          "width": 320,
+          "height": 320,
+          "src": "/api/data/template_26_asset_circuit_lower_left_v1.png",
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t26-cover-lock-hero-lock-4",
+          "rotate": 0,
+          "left": 447,
+          "top": 88,
+          "width": 106,
+          "height": 106,
+          "src": "/api/data/template_26_asset_lock_v1.png",
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t26-cover-lock-title-5",
+          "rotate": 0,
+          "left": 88,
+          "top": 219,
+          "width": 824,
+          "height": 125,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#E6F2F6",
+          "content": "<p style=\"text-align: center;\"><span style=\"font-family: 微软雅黑;font-size: 48px;color: #E6F2F6;font-weight: bold;line-height: 1.3;\">网络安全项目计划书</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 32,
+          "textType": "title"
+        },
+        {
+          "type": "text",
+          "id": "t26-cover-lock-subtitle-6",
+          "rotate": 0,
+          "left": 160,
+          "top": 375,
+          "width": 680,
+          "height": 96,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#C5DCE5",
+          "content": "<p style=\"text-align: center;\"><span style=\"font-family: 微软雅黑;font-size: 21px;color: #C5DCE5;font-weight: normal;line-height: 1.3;\">安全目标 · 实施路径 · 持续保障</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "content"
+        }
+      ],
+      "variantKey": "lock",
+      "fitTitleBeforeVariant": true,
+      "titleFitLimits": {
+        "maxWide": 24,
+        "maxAscii": 48,
+        "singleWide": 12,
+        "singleAscii": 24
+      }
+    },
+    {
+      "id": "cover-long-title",
+      "type": "cover",
+      "background": {
+        "type": "solid",
+        "color": "#0B1524"
+      },
+      "elements": [
+        {
+          "type": "image",
+          "id": "t26-cover-long-title-background-1",
+          "rotate": 0,
+          "left": 0,
+          "top": 0,
+          "width": 1000,
+          "height": 562.5,
+          "src": "/api/data/template_26_asset_bg_cover_v1.jpg",
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t26-cover-long-title-upper-circuit-2",
+          "rotate": 0,
+          "left": 650,
+          "top": 0,
+          "width": 350,
+          "height": 350,
+          "src": "/api/data/template_26_asset_circuit_upper_right_v1.png",
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t26-cover-long-title-hero-lock-3",
+          "rotate": 0,
+          "left": 456,
+          "top": 75,
+          "width": 88,
+          "height": 88,
+          "src": "/api/data/template_26_asset_lock_v1.png",
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t26-cover-long-title-title-4",
+          "rotate": 0,
+          "left": 88,
+          "top": 187,
+          "width": 824,
+          "height": 155,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#E6F2F6",
+          "content": "<p style=\"text-align: center;\"><span style=\"font-family: 微软雅黑;font-size: 40px;color: #E6F2F6;font-weight: bold;line-height: 1.3;\">面向业务持续发展的网络安全建设与实施计划</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 32,
+          "textType": "title"
+        },
+        {
+          "type": "text",
+          "id": "t26-cover-long-title-subtitle-5",
+          "rotate": 0,
+          "left": 160,
+          "top": 369,
+          "width": 680,
+          "height": 96,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#C5DCE5",
+          "content": "<p style=\"text-align: center;\"><span style=\"font-family: 微软雅黑;font-size: 21px;color: #C5DCE5;font-weight: normal;line-height: 1.3;\">安全目标 · 实施路径 · 持续保障</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "content"
+        }
+      ],
+      "variantKey": "long-title",
+      "fitTitleBeforeVariant": true,
+      "titleFitLimits": {
+        "maxWide": 48,
+        "maxAscii": 92,
+        "singleWide": 24,
+        "singleAscii": 46
+      }
+    },
+    {
+      "id": "contents-2",
+      "type": "contents",
+      "background": {
+        "type": "solid",
+        "color": "#0B1524"
+      },
+      "elements": [
+        {
+          "type": "image",
+          "id": "t26-contents-2-background-1",
+          "rotate": 0,
+          "left": 0,
+          "top": 0,
+          "width": 1000,
+          "height": 562.5,
+          "src": "/api/data/template_26_asset_bg_content_v1.jpg",
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t26-contents-2-upper-circuit-2",
+          "rotate": 0,
+          "left": 685,
+          "top": 0,
+          "width": 315,
+          "height": 315,
+          "src": "/api/data/template_26_asset_circuit_upper_right_v1.png",
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "shape",
+          "id": "t26-contents-2-directory-label-3",
+          "rotate": 0,
+          "left": 50,
+          "top": 210,
+          "width": 180,
+          "height": 155,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 50 0 L 150 0 L 200 100 L 150 200 L 50 200 L 0 100 Z",
+          "fill": "#183749",
+          "fixedRatio": false,
+          "outline": {
+            "color": "#81B8CB",
+            "width": 1.5,
+            "style": "solid"
+          }
+        },
+        {
+          "type": "text",
+          "id": "t26-contents-2-directory-heading-4",
+          "rotate": 0,
+          "left": 71,
+          "top": 240,
+          "width": 138,
+          "height": 73,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: center;\"><span style=\"font-family: 微软雅黑;font-size: 36px;color: #A0C9D8;font-weight: bold;line-height: 1.3;\">目录</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16
+        },
+        {
+          "type": "text",
+          "id": "t26-contents-2-number-5",
+          "rotate": 0,
+          "left": 318,
+          "top": 183.25,
+          "width": 65,
+          "height": 62,
+          "defaultFontName": "Arial",
+          "defaultColor": "#81B8CB",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: Arial;font-size: 33px;color: #81B8CB;font-weight: normal;line-height: 1.3;\">01</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemNumber",
+          "groupId": "contents-2-item-1"
+        },
+        {
+          "type": "text",
+          "id": "t26-contents-2-item-6",
+          "rotate": 0,
+          "left": 395,
+          "top": 184.25,
+          "width": 514,
+          "height": 90,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#E6F2F6",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 24px;color: #E6F2F6;font-weight: normal;line-height: 1.3;\">目录主题1</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 18,
+          "textType": "item",
+          "groupId": "contents-2-item-1"
+        },
+        {
+          "type": "line",
+          "id": "t26-contents-2-directory-rule-7",
+          "rotate": 0,
+          "left": 395,
+          "top": 278.25,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            514,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "width": 1.2,
+          "color": "#3B6578",
+          "style": "solid",
+          "groupId": "contents-2-item-1"
+        },
+        {
+          "type": "text",
+          "id": "t26-contents-2-number-8",
+          "rotate": 0,
+          "left": 318,
+          "top": 287.25,
+          "width": 65,
+          "height": 62,
+          "defaultFontName": "Arial",
+          "defaultColor": "#81B8CB",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: Arial;font-size: 33px;color: #81B8CB;font-weight: normal;line-height: 1.3;\">02</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemNumber",
+          "groupId": "contents-2-item-2"
+        },
+        {
+          "type": "text",
+          "id": "t26-contents-2-item-9",
+          "rotate": 0,
+          "left": 395,
+          "top": 288.25,
+          "width": 514,
+          "height": 90,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#E6F2F6",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 24px;color: #E6F2F6;font-weight: normal;line-height: 1.3;\">目录主题2</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 18,
+          "textType": "item",
+          "groupId": "contents-2-item-2"
+        },
+        {
+          "type": "line",
+          "id": "t26-contents-2-directory-rule-10",
+          "rotate": 0,
+          "left": 395,
+          "top": 382.25,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            514,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "width": 1.2,
+          "color": "#3B6578",
+          "style": "solid",
+          "groupId": "contents-2-item-2"
+        }
+      ]
+    },
+    {
+      "id": "contents-3",
+      "type": "contents",
+      "background": {
+        "type": "solid",
+        "color": "#0B1524"
+      },
+      "elements": [
+        {
+          "type": "image",
+          "id": "t26-contents-3-background-1",
+          "rotate": 0,
+          "left": 0,
+          "top": 0,
+          "width": 1000,
+          "height": 562.5,
+          "src": "/api/data/template_26_asset_bg_content_v1.jpg",
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t26-contents-3-upper-circuit-2",
+          "rotate": 0,
+          "left": 685,
+          "top": 0,
+          "width": 315,
+          "height": 315,
+          "src": "/api/data/template_26_asset_circuit_upper_right_v1.png",
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "shape",
+          "id": "t26-contents-3-directory-label-3",
+          "rotate": 0,
+          "left": 50,
+          "top": 210,
+          "width": 180,
+          "height": 155,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 50 0 L 150 0 L 200 100 L 150 200 L 50 200 L 0 100 Z",
+          "fill": "#183749",
+          "fixedRatio": false,
+          "outline": {
+            "color": "#81B8CB",
+            "width": 1.5,
+            "style": "solid"
+          }
+        },
+        {
+          "type": "text",
+          "id": "t26-contents-3-directory-heading-4",
+          "rotate": 0,
+          "left": 71,
+          "top": 240,
+          "width": 138,
+          "height": 73,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: center;\"><span style=\"font-family: 微软雅黑;font-size: 36px;color: #A0C9D8;font-weight: bold;line-height: 1.3;\">目录</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16
+        },
+        {
+          "type": "text",
+          "id": "t26-contents-3-number-5",
+          "rotate": 0,
+          "left": 318,
+          "top": 131.25,
+          "width": 65,
+          "height": 62,
+          "defaultFontName": "Arial",
+          "defaultColor": "#81B8CB",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: Arial;font-size: 33px;color: #81B8CB;font-weight: normal;line-height: 1.3;\">01</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemNumber",
+          "groupId": "contents-3-item-1"
+        },
+        {
+          "type": "text",
+          "id": "t26-contents-3-item-6",
+          "rotate": 0,
+          "left": 395,
+          "top": 132.25,
+          "width": 514,
+          "height": 90,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#E6F2F6",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 24px;color: #E6F2F6;font-weight: normal;line-height: 1.3;\">目录主题1</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 18,
+          "textType": "item",
+          "groupId": "contents-3-item-1"
+        },
+        {
+          "type": "line",
+          "id": "t26-contents-3-directory-rule-7",
+          "rotate": 0,
+          "left": 395,
+          "top": 226.25,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            514,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "width": 1.2,
+          "color": "#3B6578",
+          "style": "solid",
+          "groupId": "contents-3-item-1"
+        },
+        {
+          "type": "text",
+          "id": "t26-contents-3-number-8",
+          "rotate": 0,
+          "left": 318,
+          "top": 235.25,
+          "width": 65,
+          "height": 62,
+          "defaultFontName": "Arial",
+          "defaultColor": "#81B8CB",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: Arial;font-size: 33px;color: #81B8CB;font-weight: normal;line-height: 1.3;\">02</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemNumber",
+          "groupId": "contents-3-item-2"
+        },
+        {
+          "type": "text",
+          "id": "t26-contents-3-item-9",
+          "rotate": 0,
+          "left": 395,
+          "top": 236.25,
+          "width": 514,
+          "height": 90,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#E6F2F6",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 24px;color: #E6F2F6;font-weight: normal;line-height: 1.3;\">目录主题2</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 18,
+          "textType": "item",
+          "groupId": "contents-3-item-2"
+        },
+        {
+          "type": "line",
+          "id": "t26-contents-3-directory-rule-10",
+          "rotate": 0,
+          "left": 395,
+          "top": 330.25,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            514,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "width": 1.2,
+          "color": "#3B6578",
+          "style": "solid",
+          "groupId": "contents-3-item-2"
+        },
+        {
+          "type": "text",
+          "id": "t26-contents-3-number-11",
+          "rotate": 0,
+          "left": 318,
+          "top": 339.25,
+          "width": 65,
+          "height": 62,
+          "defaultFontName": "Arial",
+          "defaultColor": "#81B8CB",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: Arial;font-size: 33px;color: #81B8CB;font-weight: normal;line-height: 1.3;\">03</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemNumber",
+          "groupId": "contents-3-item-3"
+        },
+        {
+          "type": "text",
+          "id": "t26-contents-3-item-12",
+          "rotate": 0,
+          "left": 395,
+          "top": 340.25,
+          "width": 514,
+          "height": 90,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#E6F2F6",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 24px;color: #E6F2F6;font-weight: normal;line-height: 1.3;\">目录主题3</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 18,
+          "textType": "item",
+          "groupId": "contents-3-item-3"
+        },
+        {
+          "type": "line",
+          "id": "t26-contents-3-directory-rule-13",
+          "rotate": 0,
+          "left": 395,
+          "top": 434.25,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            514,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "width": 1.2,
+          "color": "#3B6578",
+          "style": "solid",
+          "groupId": "contents-3-item-3"
+        }
+      ]
+    },
+    {
+      "id": "contents-4",
+      "type": "contents",
+      "background": {
+        "type": "solid",
+        "color": "#0B1524"
+      },
+      "elements": [
+        {
+          "type": "image",
+          "id": "t26-contents-4-background-1",
+          "rotate": 0,
+          "left": 0,
+          "top": 0,
+          "width": 1000,
+          "height": 562.5,
+          "src": "/api/data/template_26_asset_bg_content_v1.jpg",
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t26-contents-4-upper-circuit-2",
+          "rotate": 0,
+          "left": 685,
+          "top": 0,
+          "width": 315,
+          "height": 315,
+          "src": "/api/data/template_26_asset_circuit_upper_right_v1.png",
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "shape",
+          "id": "t26-contents-4-directory-label-3",
+          "rotate": 0,
+          "left": 50,
+          "top": 210,
+          "width": 180,
+          "height": 155,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 50 0 L 150 0 L 200 100 L 150 200 L 50 200 L 0 100 Z",
+          "fill": "#183749",
+          "fixedRatio": false,
+          "outline": {
+            "color": "#81B8CB",
+            "width": 1.5,
+            "style": "solid"
+          }
+        },
+        {
+          "type": "text",
+          "id": "t26-contents-4-directory-heading-4",
+          "rotate": 0,
+          "left": 71,
+          "top": 240,
+          "width": 138,
+          "height": 73,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: center;\"><span style=\"font-family: 微软雅黑;font-size: 36px;color: #A0C9D8;font-weight: bold;line-height: 1.3;\">目录</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16
+        },
+        {
+          "type": "text",
+          "id": "t26-contents-4-number-5",
+          "rotate": 0,
+          "left": 318,
+          "top": 79.25,
+          "width": 65,
+          "height": 62,
+          "defaultFontName": "Arial",
+          "defaultColor": "#81B8CB",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: Arial;font-size: 33px;color: #81B8CB;font-weight: normal;line-height: 1.3;\">01</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemNumber",
+          "groupId": "contents-4-item-1"
+        },
+        {
+          "type": "text",
+          "id": "t26-contents-4-item-6",
+          "rotate": 0,
+          "left": 395,
+          "top": 80.25,
+          "width": 514,
+          "height": 90,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#E6F2F6",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 24px;color: #E6F2F6;font-weight: normal;line-height: 1.3;\">目录主题1</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 18,
+          "textType": "item",
+          "groupId": "contents-4-item-1"
+        },
+        {
+          "type": "line",
+          "id": "t26-contents-4-directory-rule-7",
+          "rotate": 0,
+          "left": 395,
+          "top": 174.25,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            514,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "width": 1.2,
+          "color": "#3B6578",
+          "style": "solid",
+          "groupId": "contents-4-item-1"
+        },
+        {
+          "type": "text",
+          "id": "t26-contents-4-number-8",
+          "rotate": 0,
+          "left": 318,
+          "top": 183.25,
+          "width": 65,
+          "height": 62,
+          "defaultFontName": "Arial",
+          "defaultColor": "#81B8CB",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: Arial;font-size: 33px;color: #81B8CB;font-weight: normal;line-height: 1.3;\">02</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemNumber",
+          "groupId": "contents-4-item-2"
+        },
+        {
+          "type": "text",
+          "id": "t26-contents-4-item-9",
+          "rotate": 0,
+          "left": 395,
+          "top": 184.25,
+          "width": 514,
+          "height": 90,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#E6F2F6",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 24px;color: #E6F2F6;font-weight: normal;line-height: 1.3;\">目录主题2</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 18,
+          "textType": "item",
+          "groupId": "contents-4-item-2"
+        },
+        {
+          "type": "line",
+          "id": "t26-contents-4-directory-rule-10",
+          "rotate": 0,
+          "left": 395,
+          "top": 278.25,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            514,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "width": 1.2,
+          "color": "#3B6578",
+          "style": "solid",
+          "groupId": "contents-4-item-2"
+        },
+        {
+          "type": "text",
+          "id": "t26-contents-4-number-11",
+          "rotate": 0,
+          "left": 318,
+          "top": 287.25,
+          "width": 65,
+          "height": 62,
+          "defaultFontName": "Arial",
+          "defaultColor": "#81B8CB",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: Arial;font-size: 33px;color: #81B8CB;font-weight: normal;line-height: 1.3;\">03</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemNumber",
+          "groupId": "contents-4-item-3"
+        },
+        {
+          "type": "text",
+          "id": "t26-contents-4-item-12",
+          "rotate": 0,
+          "left": 395,
+          "top": 288.25,
+          "width": 514,
+          "height": 90,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#E6F2F6",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 24px;color: #E6F2F6;font-weight: normal;line-height: 1.3;\">目录主题3</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 18,
+          "textType": "item",
+          "groupId": "contents-4-item-3"
+        },
+        {
+          "type": "line",
+          "id": "t26-contents-4-directory-rule-13",
+          "rotate": 0,
+          "left": 395,
+          "top": 382.25,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            514,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "width": 1.2,
+          "color": "#3B6578",
+          "style": "solid",
+          "groupId": "contents-4-item-3"
+        },
+        {
+          "type": "text",
+          "id": "t26-contents-4-number-14",
+          "rotate": 0,
+          "left": 318,
+          "top": 391.25,
+          "width": 65,
+          "height": 62,
+          "defaultFontName": "Arial",
+          "defaultColor": "#81B8CB",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: Arial;font-size: 33px;color: #81B8CB;font-weight: normal;line-height: 1.3;\">04</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemNumber",
+          "groupId": "contents-4-item-4"
+        },
+        {
+          "type": "text",
+          "id": "t26-contents-4-item-15",
+          "rotate": 0,
+          "left": 395,
+          "top": 392.25,
+          "width": 514,
+          "height": 90,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#E6F2F6",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 24px;color: #E6F2F6;font-weight: normal;line-height: 1.3;\">目录主题4</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 18,
+          "textType": "item",
+          "groupId": "contents-4-item-4"
+        },
+        {
+          "type": "line",
+          "id": "t26-contents-4-directory-rule-16",
+          "rotate": 0,
+          "left": 395,
+          "top": 486.25,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            514,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "width": 1.2,
+          "color": "#3B6578",
+          "style": "solid",
+          "groupId": "contents-4-item-4"
+        }
+      ]
+    },
+    {
+      "id": "contents-5",
+      "type": "contents",
+      "background": {
+        "type": "solid",
+        "color": "#0B1524"
+      },
+      "elements": [
+        {
+          "type": "image",
+          "id": "t26-contents-5-background-1",
+          "rotate": 0,
+          "left": 0,
+          "top": 0,
+          "width": 1000,
+          "height": 562.5,
+          "src": "/api/data/template_26_asset_bg_content_v1.jpg",
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t26-contents-5-upper-circuit-2",
+          "rotate": 0,
+          "left": 685,
+          "top": 0,
+          "width": 315,
+          "height": 315,
+          "src": "/api/data/template_26_asset_circuit_upper_right_v1.png",
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "shape",
+          "id": "t26-contents-5-directory-label-3",
+          "rotate": 0,
+          "left": 50,
+          "top": 210,
+          "width": 180,
+          "height": 155,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 50 0 L 150 0 L 200 100 L 150 200 L 50 200 L 0 100 Z",
+          "fill": "#183749",
+          "fixedRatio": false,
+          "outline": {
+            "color": "#81B8CB",
+            "width": 1.5,
+            "style": "solid"
+          }
+        },
+        {
+          "type": "text",
+          "id": "t26-contents-5-directory-heading-4",
+          "rotate": 0,
+          "left": 71,
+          "top": 240,
+          "width": 138,
+          "height": 73,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: center;\"><span style=\"font-family: 微软雅黑;font-size: 36px;color: #A0C9D8;font-weight: bold;line-height: 1.3;\">目录</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16
+        },
+        {
+          "type": "text",
+          "id": "t26-contents-5-number-5",
+          "rotate": 0,
+          "left": 283,
+          "top": 92.25,
+          "width": 65,
+          "height": 62,
+          "defaultFontName": "Arial",
+          "defaultColor": "#81B8CB",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: Arial;font-size: 33px;color: #81B8CB;font-weight: normal;line-height: 1.3;\">01</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemNumber",
+          "groupId": "contents-5-item-1"
+        },
+        {
+          "type": "text",
+          "id": "t26-contents-5-item-6",
+          "rotate": 0,
+          "left": 360,
+          "top": 93.25,
+          "width": 232,
+          "height": 90,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#E6F2F6",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 24px;color: #E6F2F6;font-weight: normal;line-height: 1.3;\">目录主题1</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 18,
+          "textType": "item",
+          "groupId": "contents-5-item-1"
+        },
+        {
+          "type": "line",
+          "id": "t26-contents-5-directory-rule-7",
+          "rotate": 0,
+          "left": 360,
+          "top": 187.25,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            229,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "width": 1.2,
+          "color": "#3B6578",
+          "style": "solid",
+          "groupId": "contents-5-item-1"
+        },
+        {
+          "type": "text",
+          "id": "t26-contents-5-number-8",
+          "rotate": 0,
+          "left": 620,
+          "top": 92.25,
+          "width": 65,
+          "height": 62,
+          "defaultFontName": "Arial",
+          "defaultColor": "#81B8CB",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: Arial;font-size: 33px;color: #81B8CB;font-weight: normal;line-height: 1.3;\">02</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemNumber",
+          "groupId": "contents-5-item-2"
+        },
+        {
+          "type": "text",
+          "id": "t26-contents-5-item-9",
+          "rotate": 0,
+          "left": 697,
+          "top": 93.25,
+          "width": 232,
+          "height": 90,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#E6F2F6",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 24px;color: #E6F2F6;font-weight: normal;line-height: 1.3;\">目录主题2</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 18,
+          "textType": "item",
+          "groupId": "contents-5-item-2"
+        },
+        {
+          "type": "line",
+          "id": "t26-contents-5-directory-rule-10",
+          "rotate": 0,
+          "left": 697,
+          "top": 187.25,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            229,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "width": 1.2,
+          "color": "#3B6578",
+          "style": "solid",
+          "groupId": "contents-5-item-2"
+        },
+        {
+          "type": "text",
+          "id": "t26-contents-5-number-11",
+          "rotate": 0,
+          "left": 283,
+          "top": 222.25,
+          "width": 65,
+          "height": 62,
+          "defaultFontName": "Arial",
+          "defaultColor": "#81B8CB",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: Arial;font-size: 33px;color: #81B8CB;font-weight: normal;line-height: 1.3;\">03</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemNumber",
+          "groupId": "contents-5-item-3"
+        },
+        {
+          "type": "text",
+          "id": "t26-contents-5-item-12",
+          "rotate": 0,
+          "left": 360,
+          "top": 223.25,
+          "width": 232,
+          "height": 90,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#E6F2F6",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 24px;color: #E6F2F6;font-weight: normal;line-height: 1.3;\">目录主题3</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 18,
+          "textType": "item",
+          "groupId": "contents-5-item-3"
+        },
+        {
+          "type": "line",
+          "id": "t26-contents-5-directory-rule-13",
+          "rotate": 0,
+          "left": 360,
+          "top": 317.25,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            229,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "width": 1.2,
+          "color": "#3B6578",
+          "style": "solid",
+          "groupId": "contents-5-item-3"
+        },
+        {
+          "type": "text",
+          "id": "t26-contents-5-number-14",
+          "rotate": 0,
+          "left": 620,
+          "top": 222.25,
+          "width": 65,
+          "height": 62,
+          "defaultFontName": "Arial",
+          "defaultColor": "#81B8CB",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: Arial;font-size: 33px;color: #81B8CB;font-weight: normal;line-height: 1.3;\">04</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemNumber",
+          "groupId": "contents-5-item-4"
+        },
+        {
+          "type": "text",
+          "id": "t26-contents-5-item-15",
+          "rotate": 0,
+          "left": 697,
+          "top": 223.25,
+          "width": 232,
+          "height": 90,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#E6F2F6",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 24px;color: #E6F2F6;font-weight: normal;line-height: 1.3;\">目录主题4</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 18,
+          "textType": "item",
+          "groupId": "contents-5-item-4"
+        },
+        {
+          "type": "line",
+          "id": "t26-contents-5-directory-rule-16",
+          "rotate": 0,
+          "left": 697,
+          "top": 317.25,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            229,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "width": 1.2,
+          "color": "#3B6578",
+          "style": "solid",
+          "groupId": "contents-5-item-4"
+        },
+        {
+          "type": "text",
+          "id": "t26-contents-5-number-17",
+          "rotate": 0,
+          "left": 283,
+          "top": 352.25,
+          "width": 65,
+          "height": 62,
+          "defaultFontName": "Arial",
+          "defaultColor": "#81B8CB",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: Arial;font-size: 33px;color: #81B8CB;font-weight: normal;line-height: 1.3;\">05</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemNumber",
+          "groupId": "contents-5-item-5"
+        },
+        {
+          "type": "text",
+          "id": "t26-contents-5-item-18",
+          "rotate": 0,
+          "left": 360,
+          "top": 353.25,
+          "width": 232,
+          "height": 90,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#E6F2F6",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 24px;color: #E6F2F6;font-weight: normal;line-height: 1.3;\">目录主题5</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 18,
+          "textType": "item",
+          "groupId": "contents-5-item-5"
+        },
+        {
+          "type": "line",
+          "id": "t26-contents-5-directory-rule-19",
+          "rotate": 0,
+          "left": 360,
+          "top": 447.25,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            229,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "width": 1.2,
+          "color": "#3B6578",
+          "style": "solid",
+          "groupId": "contents-5-item-5"
+        }
+      ]
+    },
+    {
+      "id": "contents-6",
+      "type": "contents",
+      "background": {
+        "type": "solid",
+        "color": "#0B1524"
+      },
+      "elements": [
+        {
+          "type": "image",
+          "id": "t26-contents-6-background-1",
+          "rotate": 0,
+          "left": 0,
+          "top": 0,
+          "width": 1000,
+          "height": 562.5,
+          "src": "/api/data/template_26_asset_bg_content_v1.jpg",
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t26-contents-6-upper-circuit-2",
+          "rotate": 0,
+          "left": 685,
+          "top": 0,
+          "width": 315,
+          "height": 315,
+          "src": "/api/data/template_26_asset_circuit_upper_right_v1.png",
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "shape",
+          "id": "t26-contents-6-directory-label-3",
+          "rotate": 0,
+          "left": 50,
+          "top": 210,
+          "width": 180,
+          "height": 155,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 50 0 L 150 0 L 200 100 L 150 200 L 50 200 L 0 100 Z",
+          "fill": "#183749",
+          "fixedRatio": false,
+          "outline": {
+            "color": "#81B8CB",
+            "width": 1.5,
+            "style": "solid"
+          }
+        },
+        {
+          "type": "text",
+          "id": "t26-contents-6-directory-heading-4",
+          "rotate": 0,
+          "left": 71,
+          "top": 240,
+          "width": 138,
+          "height": 73,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: center;\"><span style=\"font-family: 微软雅黑;font-size: 36px;color: #A0C9D8;font-weight: bold;line-height: 1.3;\">目录</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16
+        },
+        {
+          "type": "text",
+          "id": "t26-contents-6-number-5",
+          "rotate": 0,
+          "left": 283,
+          "top": 92.25,
+          "width": 65,
+          "height": 62,
+          "defaultFontName": "Arial",
+          "defaultColor": "#81B8CB",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: Arial;font-size: 33px;color: #81B8CB;font-weight: normal;line-height: 1.3;\">01</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemNumber",
+          "groupId": "contents-6-item-1"
+        },
+        {
+          "type": "text",
+          "id": "t26-contents-6-item-6",
+          "rotate": 0,
+          "left": 360,
+          "top": 93.25,
+          "width": 232,
+          "height": 90,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#E6F2F6",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 24px;color: #E6F2F6;font-weight: normal;line-height: 1.3;\">目录主题1</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 18,
+          "textType": "item",
+          "groupId": "contents-6-item-1"
+        },
+        {
+          "type": "line",
+          "id": "t26-contents-6-directory-rule-7",
+          "rotate": 0,
+          "left": 360,
+          "top": 187.25,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            229,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "width": 1.2,
+          "color": "#3B6578",
+          "style": "solid",
+          "groupId": "contents-6-item-1"
+        },
+        {
+          "type": "text",
+          "id": "t26-contents-6-number-8",
+          "rotate": 0,
+          "left": 620,
+          "top": 92.25,
+          "width": 65,
+          "height": 62,
+          "defaultFontName": "Arial",
+          "defaultColor": "#81B8CB",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: Arial;font-size: 33px;color: #81B8CB;font-weight: normal;line-height: 1.3;\">02</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemNumber",
+          "groupId": "contents-6-item-2"
+        },
+        {
+          "type": "text",
+          "id": "t26-contents-6-item-9",
+          "rotate": 0,
+          "left": 697,
+          "top": 93.25,
+          "width": 232,
+          "height": 90,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#E6F2F6",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 24px;color: #E6F2F6;font-weight: normal;line-height: 1.3;\">目录主题2</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 18,
+          "textType": "item",
+          "groupId": "contents-6-item-2"
+        },
+        {
+          "type": "line",
+          "id": "t26-contents-6-directory-rule-10",
+          "rotate": 0,
+          "left": 697,
+          "top": 187.25,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            229,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "width": 1.2,
+          "color": "#3B6578",
+          "style": "solid",
+          "groupId": "contents-6-item-2"
+        },
+        {
+          "type": "text",
+          "id": "t26-contents-6-number-11",
+          "rotate": 0,
+          "left": 283,
+          "top": 222.25,
+          "width": 65,
+          "height": 62,
+          "defaultFontName": "Arial",
+          "defaultColor": "#81B8CB",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: Arial;font-size: 33px;color: #81B8CB;font-weight: normal;line-height: 1.3;\">03</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemNumber",
+          "groupId": "contents-6-item-3"
+        },
+        {
+          "type": "text",
+          "id": "t26-contents-6-item-12",
+          "rotate": 0,
+          "left": 360,
+          "top": 223.25,
+          "width": 232,
+          "height": 90,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#E6F2F6",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 24px;color: #E6F2F6;font-weight: normal;line-height: 1.3;\">目录主题3</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 18,
+          "textType": "item",
+          "groupId": "contents-6-item-3"
+        },
+        {
+          "type": "line",
+          "id": "t26-contents-6-directory-rule-13",
+          "rotate": 0,
+          "left": 360,
+          "top": 317.25,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            229,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "width": 1.2,
+          "color": "#3B6578",
+          "style": "solid",
+          "groupId": "contents-6-item-3"
+        },
+        {
+          "type": "text",
+          "id": "t26-contents-6-number-14",
+          "rotate": 0,
+          "left": 620,
+          "top": 222.25,
+          "width": 65,
+          "height": 62,
+          "defaultFontName": "Arial",
+          "defaultColor": "#81B8CB",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: Arial;font-size: 33px;color: #81B8CB;font-weight: normal;line-height: 1.3;\">04</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemNumber",
+          "groupId": "contents-6-item-4"
+        },
+        {
+          "type": "text",
+          "id": "t26-contents-6-item-15",
+          "rotate": 0,
+          "left": 697,
+          "top": 223.25,
+          "width": 232,
+          "height": 90,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#E6F2F6",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 24px;color: #E6F2F6;font-weight: normal;line-height: 1.3;\">目录主题4</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 18,
+          "textType": "item",
+          "groupId": "contents-6-item-4"
+        },
+        {
+          "type": "line",
+          "id": "t26-contents-6-directory-rule-16",
+          "rotate": 0,
+          "left": 697,
+          "top": 317.25,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            229,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "width": 1.2,
+          "color": "#3B6578",
+          "style": "solid",
+          "groupId": "contents-6-item-4"
+        },
+        {
+          "type": "text",
+          "id": "t26-contents-6-number-17",
+          "rotate": 0,
+          "left": 283,
+          "top": 352.25,
+          "width": 65,
+          "height": 62,
+          "defaultFontName": "Arial",
+          "defaultColor": "#81B8CB",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: Arial;font-size: 33px;color: #81B8CB;font-weight: normal;line-height: 1.3;\">05</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemNumber",
+          "groupId": "contents-6-item-5"
+        },
+        {
+          "type": "text",
+          "id": "t26-contents-6-item-18",
+          "rotate": 0,
+          "left": 360,
+          "top": 353.25,
+          "width": 232,
+          "height": 90,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#E6F2F6",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 24px;color: #E6F2F6;font-weight: normal;line-height: 1.3;\">目录主题5</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 18,
+          "textType": "item",
+          "groupId": "contents-6-item-5"
+        },
+        {
+          "type": "line",
+          "id": "t26-contents-6-directory-rule-19",
+          "rotate": 0,
+          "left": 360,
+          "top": 447.25,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            229,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "width": 1.2,
+          "color": "#3B6578",
+          "style": "solid",
+          "groupId": "contents-6-item-5"
+        },
+        {
+          "type": "text",
+          "id": "t26-contents-6-number-20",
+          "rotate": 0,
+          "left": 620,
+          "top": 352.25,
+          "width": 65,
+          "height": 62,
+          "defaultFontName": "Arial",
+          "defaultColor": "#81B8CB",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: Arial;font-size: 33px;color: #81B8CB;font-weight: normal;line-height: 1.3;\">06</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemNumber",
+          "groupId": "contents-6-item-6"
+        },
+        {
+          "type": "text",
+          "id": "t26-contents-6-item-21",
+          "rotate": 0,
+          "left": 697,
+          "top": 353.25,
+          "width": 232,
+          "height": 90,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#E6F2F6",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 24px;color: #E6F2F6;font-weight: normal;line-height: 1.3;\">目录主题6</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 18,
+          "textType": "item",
+          "groupId": "contents-6-item-6"
+        },
+        {
+          "type": "line",
+          "id": "t26-contents-6-directory-rule-22",
+          "rotate": 0,
+          "left": 697,
+          "top": 447.25,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            229,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "width": 1.2,
+          "color": "#3B6578",
+          "style": "solid",
+          "groupId": "contents-6-item-6"
+        }
+      ]
+    },
+    {
+      "id": "transition-circuit",
+      "type": "transition",
+      "background": {
+        "type": "solid",
+        "color": "#0B1524"
+      },
+      "elements": [
+        {
+          "type": "image",
+          "id": "t26-transition-circuit-background-1",
+          "rotate": 0,
+          "left": 0,
+          "top": 0,
+          "width": 1000,
+          "height": 562.5,
+          "src": "/api/data/template_26_asset_bg_section_v1.jpg",
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t26-transition-circuit-upper-circuit-2",
+          "rotate": 0,
+          "left": 540,
+          "top": 0,
+          "width": 460,
+          "height": 460,
+          "src": "/api/data/template_26_asset_circuit_upper_right_v1.png",
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t26-transition-circuit-lock-3",
+          "rotate": 0,
+          "left": 100,
+          "top": 107,
+          "width": 82,
+          "height": 82,
+          "src": "/api/data/template_26_asset_lock_v1.png",
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t26-transition-circuit-part-number-4",
+          "rotate": 0,
+          "left": 101,
+          "top": 220,
+          "width": 126,
+          "height": 114,
+          "defaultFontName": "Arial",
+          "defaultColor": "#81B8CB",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: Arial;font-size: 64px;color: #81B8CB;font-weight: normal;line-height: 1.3;\">01</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 42,
+          "textType": "partNumber"
+        },
+        {
+          "type": "text",
+          "id": "t26-transition-circuit-title-5",
+          "rotate": 0,
+          "left": 249,
+          "top": 203,
+          "width": 637,
+          "height": 123,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#E6F2F6",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 36px;color: #E6F2F6;font-weight: bold;line-height: 1.3;\">安全建设目标</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 24,
+          "textType": "title"
+        },
+        {
+          "type": "text",
+          "id": "t26-transition-circuit-content-6",
+          "rotate": 0,
+          "left": 249,
+          "top": 340,
+          "width": 637,
+          "height": 120,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#C5DCE5",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 21px;color: #C5DCE5;font-weight: normal;line-height: 1.3;\">从业务需求出发，形成清晰的安全实施路径。</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "content"
+        }
+      ]
+    },
+    {
+      "id": "content-text-1",
+      "type": "content",
+      "background": {
+        "type": "solid",
+        "color": "#0B1524"
+      },
+      "elements": [
+        {
+          "type": "image",
+          "id": "t26-content-text-1-background-1",
+          "rotate": 0,
+          "left": 0,
+          "top": 0,
+          "width": 1000,
+          "height": 562.5,
+          "src": "/api/data/template_26_asset_bg_content_v1.jpg",
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t26-content-text-1-lower-circuit-2",
+          "rotate": 0,
+          "left": 0,
+          "top": 312.5,
+          "width": 250,
+          "height": 250,
+          "src": "/api/data/template_26_asset_circuit_lower_left_v1.png",
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t26-content-text-1-header-lock-3",
+          "rotate": 0,
+          "left": 40,
+          "top": 27,
+          "width": 44,
+          "height": 44,
+          "src": "/api/data/template_26_asset_lock_v1.png",
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t26-content-text-1-title-4",
+          "rotate": 0,
+          "left": 104,
+          "top": 24,
+          "width": 846,
+          "height": 74,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 28px;color: #A0C9D8;font-weight: bold;line-height: 1.3;\">网络安全项目策划</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 24,
+          "textType": "title"
+        },
+        {
+          "type": "line",
+          "id": "t26-content-text-1-header-rule-5",
+          "rotate": 0,
+          "left": 104,
+          "top": 108,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            846,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "width": 1.2,
+          "color": "#3B6578",
+          "style": "solid"
+        },
+        {
+          "type": "line",
+          "id": "t26-content-text-1-accent-6",
+          "rotate": 0,
+          "left": 142,
+          "top": 175,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            54,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "width": 1.2,
+          "color": "#81B8CB",
+          "style": "solid",
+          "groupId": "content-text-1-item-1"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-text-1-item-title-7",
+          "rotate": 0,
+          "left": 142,
+          "top": 186,
+          "width": 710,
+          "height": 56,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 28px;color: #A0C9D8;font-weight: bold;line-height: 1.3;\">安全要点1</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemTitle",
+          "groupId": "content-text-1-item-1"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-text-1-item-body-8",
+          "rotate": 0,
+          "left": 142,
+          "top": 250,
+          "width": 710,
+          "height": 218,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#C5DCE5",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 20px;color: #C5DCE5;font-weight: normal;line-height: 1.3;\">围绕实际业务需求，明确安全目标、实施行动与交付安排。</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "item",
+          "groupId": "content-text-1-item-1"
+        }
+      ],
+      "allowedItemCounts": [
+        1
+      ]
+    },
+    {
+      "id": "content-text-2",
+      "type": "content",
+      "background": {
+        "type": "solid",
+        "color": "#0B1524"
+      },
+      "elements": [
+        {
+          "type": "image",
+          "id": "t26-content-text-2-background-1",
+          "rotate": 0,
+          "left": 0,
+          "top": 0,
+          "width": 1000,
+          "height": 562.5,
+          "src": "/api/data/template_26_asset_bg_content_v1.jpg",
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t26-content-text-2-header-lock-2",
+          "rotate": 0,
+          "left": 40,
+          "top": 27,
+          "width": 44,
+          "height": 44,
+          "src": "/api/data/template_26_asset_lock_v1.png",
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t26-content-text-2-title-3",
+          "rotate": 0,
+          "left": 104,
+          "top": 24,
+          "width": 846,
+          "height": 74,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 28px;color: #A0C9D8;font-weight: bold;line-height: 1.3;\">网络安全项目策划</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 24,
+          "textType": "title"
+        },
+        {
+          "type": "line",
+          "id": "t26-content-text-2-header-rule-4",
+          "rotate": 0,
+          "left": 104,
+          "top": 108,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            846,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "width": 1.2,
+          "color": "#3B6578",
+          "style": "solid"
+        },
+        {
+          "type": "line",
+          "id": "t26-content-text-2-accent-5",
+          "rotate": 0,
+          "left": 66,
+          "top": 160,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            54,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "width": 1.2,
+          "color": "#81B8CB",
+          "style": "solid",
+          "groupId": "content-text-2-item-1"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-text-2-item-title-6",
+          "rotate": 0,
+          "left": 66,
+          "top": 171,
+          "width": 405,
+          "height": 56,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 22px;color: #A0C9D8;font-weight: bold;line-height: 1.3;\">安全要点1</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemTitle",
+          "groupId": "content-text-2-item-1"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-text-2-item-body-7",
+          "rotate": 0,
+          "left": 66,
+          "top": 235,
+          "width": 405,
+          "height": 236,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#C5DCE5",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 20px;color: #C5DCE5;font-weight: normal;line-height: 1.3;\">围绕实际业务需求，明确安全目标、实施行动与交付安排。</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "item",
+          "groupId": "content-text-2-item-1"
+        },
+        {
+          "type": "line",
+          "id": "t26-content-text-2-accent-8",
+          "rotate": 0,
+          "left": 534,
+          "top": 160,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            54,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "width": 1.2,
+          "color": "#81B8CB",
+          "style": "solid",
+          "groupId": "content-text-2-item-2"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-text-2-item-title-9",
+          "rotate": 0,
+          "left": 534,
+          "top": 171,
+          "width": 405,
+          "height": 56,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 22px;color: #A0C9D8;font-weight: bold;line-height: 1.3;\">安全要点2</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemTitle",
+          "groupId": "content-text-2-item-2"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-text-2-item-body-10",
+          "rotate": 0,
+          "left": 534,
+          "top": 235,
+          "width": 405,
+          "height": 236,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#C5DCE5",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 20px;color: #C5DCE5;font-weight: normal;line-height: 1.3;\">围绕实际业务需求，明确安全目标、实施行动与交付安排。</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "item",
+          "groupId": "content-text-2-item-2"
+        }
+      ],
+      "allowedItemCounts": [
+        2
+      ]
+    },
+    {
+      "id": "content-text-3",
+      "type": "content",
+      "background": {
+        "type": "solid",
+        "color": "#0B1524"
+      },
+      "elements": [
+        {
+          "type": "image",
+          "id": "t26-content-text-3-background-1",
+          "rotate": 0,
+          "left": 0,
+          "top": 0,
+          "width": 1000,
+          "height": 562.5,
+          "src": "/api/data/template_26_asset_bg_content_v1.jpg",
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t26-content-text-3-header-lock-2",
+          "rotate": 0,
+          "left": 40,
+          "top": 27,
+          "width": 44,
+          "height": 44,
+          "src": "/api/data/template_26_asset_lock_v1.png",
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t26-content-text-3-title-3",
+          "rotate": 0,
+          "left": 104,
+          "top": 24,
+          "width": 846,
+          "height": 74,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 28px;color: #A0C9D8;font-weight: bold;line-height: 1.3;\">网络安全项目策划</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 24,
+          "textType": "title"
+        },
+        {
+          "type": "line",
+          "id": "t26-content-text-3-header-rule-4",
+          "rotate": 0,
+          "left": 104,
+          "top": 108,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            846,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "width": 1.2,
+          "color": "#3B6578",
+          "style": "solid"
+        },
+        {
+          "type": "line",
+          "id": "t26-content-text-3-accent-5",
+          "rotate": 0,
+          "left": 48,
+          "top": 155,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            54,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "width": 1.2,
+          "color": "#81B8CB",
+          "style": "solid",
+          "groupId": "content-text-3-item-1"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-text-3-item-title-6",
+          "rotate": 0,
+          "left": 48,
+          "top": 166,
+          "width": 277,
+          "height": 56,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 22px;color: #A0C9D8;font-weight: bold;line-height: 1.3;\">安全要点1</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemTitle",
+          "groupId": "content-text-3-item-1"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-text-3-item-body-7",
+          "rotate": 0,
+          "left": 48,
+          "top": 230,
+          "width": 277,
+          "height": 258,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#C5DCE5",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 16px;color: #C5DCE5;font-weight: normal;line-height: 1.3;\">围绕实际业务需求，明确安全目标、实施行动与交付安排。</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "item",
+          "groupId": "content-text-3-item-1"
+        },
+        {
+          "type": "line",
+          "id": "t26-content-text-3-accent-8",
+          "rotate": 0,
+          "left": 361,
+          "top": 155,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            54,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "width": 1.2,
+          "color": "#81B8CB",
+          "style": "solid",
+          "groupId": "content-text-3-item-2"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-text-3-item-title-9",
+          "rotate": 0,
+          "left": 361,
+          "top": 166,
+          "width": 277,
+          "height": 56,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 22px;color: #A0C9D8;font-weight: bold;line-height: 1.3;\">安全要点2</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemTitle",
+          "groupId": "content-text-3-item-2"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-text-3-item-body-10",
+          "rotate": 0,
+          "left": 361,
+          "top": 230,
+          "width": 277,
+          "height": 258,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#C5DCE5",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 16px;color: #C5DCE5;font-weight: normal;line-height: 1.3;\">围绕实际业务需求，明确安全目标、实施行动与交付安排。</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "item",
+          "groupId": "content-text-3-item-2"
+        },
+        {
+          "type": "line",
+          "id": "t26-content-text-3-accent-11",
+          "rotate": 0,
+          "left": 674,
+          "top": 155,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            54,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "width": 1.2,
+          "color": "#81B8CB",
+          "style": "solid",
+          "groupId": "content-text-3-item-3"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-text-3-item-title-12",
+          "rotate": 0,
+          "left": 674,
+          "top": 166,
+          "width": 277,
+          "height": 56,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 22px;color: #A0C9D8;font-weight: bold;line-height: 1.3;\">安全要点3</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemTitle",
+          "groupId": "content-text-3-item-3"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-text-3-item-body-13",
+          "rotate": 0,
+          "left": 674,
+          "top": 230,
+          "width": 277,
+          "height": 258,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#C5DCE5",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 16px;color: #C5DCE5;font-weight: normal;line-height: 1.3;\">围绕实际业务需求，明确安全目标、实施行动与交付安排。</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "item",
+          "groupId": "content-text-3-item-3"
+        }
+      ],
+      "allowedItemCounts": [
+        3
+      ]
+    },
+    {
+      "id": "content-text-4",
+      "type": "content",
+      "background": {
+        "type": "solid",
+        "color": "#0B1524"
+      },
+      "elements": [
+        {
+          "type": "image",
+          "id": "t26-content-text-4-background-1",
+          "rotate": 0,
+          "left": 0,
+          "top": 0,
+          "width": 1000,
+          "height": 562.5,
+          "src": "/api/data/template_26_asset_bg_content_v1.jpg",
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t26-content-text-4-network-sphere-2",
+          "rotate": 0,
+          "left": 31,
+          "top": 185,
+          "width": 298,
+          "height": 298,
+          "src": "/api/data/template_26_asset_network_sphere_v1.png",
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t26-content-text-4-header-lock-3",
+          "rotate": 0,
+          "left": 40,
+          "top": 27,
+          "width": 44,
+          "height": 44,
+          "src": "/api/data/template_26_asset_lock_v1.png",
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t26-content-text-4-title-4",
+          "rotate": 0,
+          "left": 104,
+          "top": 24,
+          "width": 846,
+          "height": 74,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 28px;color: #A0C9D8;font-weight: bold;line-height: 1.3;\">网络安全项目策划</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 24,
+          "textType": "title"
+        },
+        {
+          "type": "line",
+          "id": "t26-content-text-4-header-rule-5",
+          "rotate": 0,
+          "left": 104,
+          "top": 108,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            846,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "width": 1.2,
+          "color": "#3B6578",
+          "style": "solid"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-text-4-item-title-6",
+          "rotate": 0,
+          "left": 359,
+          "top": 110,
+          "width": 593,
+          "height": 44,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 18px;color: #A0C9D8;font-weight: bold;line-height: 1.3;\">安全要点1</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemTitle",
+          "groupId": "content-text-4-item-1"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-text-4-item-body-7",
+          "rotate": 0,
+          "left": 359,
+          "top": 154,
+          "width": 593,
+          "height": 68,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#C5DCE5",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 16px;color: #C5DCE5;font-weight: normal;line-height: 1.3;\">围绕实际业务需求，明确安全目标、实施行动与交付安排。</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "item",
+          "groupId": "content-text-4-item-1"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-text-4-item-title-8",
+          "rotate": 0,
+          "left": 359,
+          "top": 222,
+          "width": 593,
+          "height": 44,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 18px;color: #A0C9D8;font-weight: bold;line-height: 1.3;\">安全要点2</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemTitle",
+          "groupId": "content-text-4-item-2"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-text-4-item-body-9",
+          "rotate": 0,
+          "left": 359,
+          "top": 266,
+          "width": 593,
+          "height": 68,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#C5DCE5",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 16px;color: #C5DCE5;font-weight: normal;line-height: 1.3;\">围绕实际业务需求，明确安全目标、实施行动与交付安排。</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "item",
+          "groupId": "content-text-4-item-2"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-text-4-item-title-10",
+          "rotate": 0,
+          "left": 359,
+          "top": 334,
+          "width": 593,
+          "height": 44,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 18px;color: #A0C9D8;font-weight: bold;line-height: 1.3;\">安全要点3</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemTitle",
+          "groupId": "content-text-4-item-3"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-text-4-item-body-11",
+          "rotate": 0,
+          "left": 359,
+          "top": 378,
+          "width": 593,
+          "height": 68,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#C5DCE5",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 16px;color: #C5DCE5;font-weight: normal;line-height: 1.3;\">围绕实际业务需求，明确安全目标、实施行动与交付安排。</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "item",
+          "groupId": "content-text-4-item-3"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-text-4-item-title-12",
+          "rotate": 0,
+          "left": 359,
+          "top": 446,
+          "width": 593,
+          "height": 44,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 18px;color: #A0C9D8;font-weight: bold;line-height: 1.3;\">安全要点4</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemTitle",
+          "groupId": "content-text-4-item-4"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-text-4-item-body-13",
+          "rotate": 0,
+          "left": 359,
+          "top": 490,
+          "width": 593,
+          "height": 68,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#C5DCE5",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 16px;color: #C5DCE5;font-weight: normal;line-height: 1.3;\">围绕实际业务需求，明确安全目标、实施行动与交付安排。</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "item",
+          "groupId": "content-text-4-item-4"
+        }
+      ],
+      "allowedItemCounts": [
+        4
+      ]
+    },
+    {
+      "id": "content-image-left-1",
+      "type": "content",
+      "background": {
+        "type": "solid",
+        "color": "#0B1524"
+      },
+      "elements": [
+        {
+          "type": "image",
+          "id": "t26-content-image-left-1-background-1",
+          "rotate": 0,
+          "left": 0,
+          "top": 0,
+          "width": 1000,
+          "height": 562.5,
+          "src": "/api/data/template_26_asset_bg_content_v1.jpg",
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t26-content-image-left-1-header-lock-2",
+          "rotate": 0,
+          "left": 40,
+          "top": 27,
+          "width": 44,
+          "height": 44,
+          "src": "/api/data/template_26_asset_lock_v1.png",
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t26-content-image-left-1-title-3",
+          "rotate": 0,
+          "left": 104,
+          "top": 24,
+          "width": 846,
+          "height": 74,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 28px;color: #A0C9D8;font-weight: bold;line-height: 1.3;\">业务场景与安全实践</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 24,
+          "textType": "title"
+        },
+        {
+          "type": "line",
+          "id": "t26-content-image-left-1-header-rule-4",
+          "rotate": 0,
+          "left": 104,
+          "top": 108,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            846,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "width": 1.2,
+          "color": "#3B6578",
+          "style": "solid"
+        },
+        {
+          "type": "image",
+          "id": "t26-content-image-left-1-business-image-5",
+          "rotate": 0,
+          "left": 48,
+          "top": 153,
+          "width": 410,
+          "height": 343,
+          "src": "/api/data/template_26_asset_bg_content_v1.jpg",
+          "fixedRatio": false,
+          "imageType": "content",
+          "groupId": "content-image-left-1-item-1",
+          "strictImageCount": true,
+          "requireSourceDimensions": true,
+          "clip": {
+            "shape": "rect",
+            "range": [
+              [
+                0,
+                0
+              ],
+              [
+                100,
+                100
+              ]
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "id": "t26-content-image-left-1-item-title-6",
+          "rotate": 0,
+          "left": 510,
+          "top": 165,
+          "width": 440,
+          "height": 80,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 22px;color: #A0C9D8;font-weight: bold;line-height: 1.3;\">安全要点1</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemTitle",
+          "groupId": "content-image-left-1-item-1"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-image-left-1-item-body-7",
+          "rotate": 0,
+          "left": 510,
+          "top": 255,
+          "width": 440,
+          "height": 219,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#C5DCE5",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 20px;color: #C5DCE5;font-weight: normal;line-height: 1.3;\">围绕实际业务需求，明确安全目标、实施行动与交付安排。</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "item",
+          "groupId": "content-image-left-1-item-1"
+        }
+      ],
+      "allowedItemCounts": [
+        1
+      ],
+      "variantKey": "left"
+    },
+    {
+      "id": "content-image-right-1",
+      "type": "content",
+      "background": {
+        "type": "solid",
+        "color": "#0B1524"
+      },
+      "elements": [
+        {
+          "type": "image",
+          "id": "t26-content-image-right-1-background-1",
+          "rotate": 0,
+          "left": 0,
+          "top": 0,
+          "width": 1000,
+          "height": 562.5,
+          "src": "/api/data/template_26_asset_bg_content_v1.jpg",
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t26-content-image-right-1-header-lock-2",
+          "rotate": 0,
+          "left": 40,
+          "top": 27,
+          "width": 44,
+          "height": 44,
+          "src": "/api/data/template_26_asset_lock_v1.png",
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t26-content-image-right-1-title-3",
+          "rotate": 0,
+          "left": 104,
+          "top": 24,
+          "width": 846,
+          "height": 74,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 28px;color: #A0C9D8;font-weight: bold;line-height: 1.3;\">业务场景与安全实践</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 24,
+          "textType": "title"
+        },
+        {
+          "type": "line",
+          "id": "t26-content-image-right-1-header-rule-4",
+          "rotate": 0,
+          "left": 104,
+          "top": 108,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            846,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "width": 1.2,
+          "color": "#3B6578",
+          "style": "solid"
+        },
+        {
+          "type": "image",
+          "id": "t26-content-image-right-1-business-image-5",
+          "rotate": 0,
+          "left": 540,
+          "top": 153,
+          "width": 410,
+          "height": 343,
+          "src": "/api/data/template_26_asset_bg_content_v1.jpg",
+          "fixedRatio": false,
+          "imageType": "content",
+          "groupId": "content-image-right-1-item-1",
+          "strictImageCount": true,
+          "requireSourceDimensions": true,
+          "clip": {
+            "shape": "rect",
+            "range": [
+              [
+                0,
+                0
+              ],
+              [
+                100,
+                100
+              ]
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "id": "t26-content-image-right-1-item-title-6",
+          "rotate": 0,
+          "left": 48,
+          "top": 165,
+          "width": 440,
+          "height": 80,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 22px;color: #A0C9D8;font-weight: bold;line-height: 1.3;\">安全要点1</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemTitle",
+          "groupId": "content-image-right-1-item-1"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-image-right-1-item-body-7",
+          "rotate": 0,
+          "left": 48,
+          "top": 255,
+          "width": 440,
+          "height": 219,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#C5DCE5",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 20px;color: #C5DCE5;font-weight: normal;line-height: 1.3;\">围绕实际业务需求，明确安全目标、实施行动与交付安排。</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "item",
+          "groupId": "content-image-right-1-item-1"
+        }
+      ],
+      "allowedItemCounts": [
+        1
+      ],
+      "variantKey": "right"
+    },
+    {
+      "id": "content-image-2",
+      "type": "content",
+      "background": {
+        "type": "solid",
+        "color": "#0B1524"
+      },
+      "elements": [
+        {
+          "type": "image",
+          "id": "t26-content-image-2-background-1",
+          "rotate": 0,
+          "left": 0,
+          "top": 0,
+          "width": 1000,
+          "height": 562.5,
+          "src": "/api/data/template_26_asset_bg_content_v1.jpg",
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t26-content-image-2-header-lock-2",
+          "rotate": 0,
+          "left": 40,
+          "top": 27,
+          "width": 44,
+          "height": 44,
+          "src": "/api/data/template_26_asset_lock_v1.png",
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t26-content-image-2-title-3",
+          "rotate": 0,
+          "left": 104,
+          "top": 24,
+          "width": 846,
+          "height": 74,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 28px;color: #A0C9D8;font-weight: bold;line-height: 1.3;\">业务场景与安全实践</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 24,
+          "textType": "title"
+        },
+        {
+          "type": "line",
+          "id": "t26-content-image-2-header-rule-4",
+          "rotate": 0,
+          "left": 104,
+          "top": 108,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            846,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "width": 1.2,
+          "color": "#3B6578",
+          "style": "solid"
+        },
+        {
+          "type": "image",
+          "id": "t26-content-image-2-business-image-5",
+          "rotate": 0,
+          "left": 48,
+          "top": 147,
+          "width": 440,
+          "height": 208,
+          "src": "/api/data/template_26_asset_bg_content_v1.jpg",
+          "fixedRatio": false,
+          "imageType": "content",
+          "groupId": "content-image-2-item-1",
+          "strictImageCount": true,
+          "requireSourceDimensions": true,
+          "clip": {
+            "shape": "rect",
+            "range": [
+              [
+                0,
+                0
+              ],
+              [
+                100,
+                100
+              ]
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "id": "t26-content-image-2-item-title-6",
+          "rotate": 0,
+          "left": 48,
+          "top": 369,
+          "width": 440,
+          "height": 56,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 20px;color: #A0C9D8;font-weight: bold;line-height: 1.3;\">安全要点1</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemTitle",
+          "groupId": "content-image-2-item-1"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-image-2-item-body-7",
+          "rotate": 0,
+          "left": 48,
+          "top": 431,
+          "width": 440,
+          "height": 100,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#C5DCE5",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 16px;color: #C5DCE5;font-weight: normal;line-height: 1.3;\">围绕实际业务需求，明确安全目标、实施行动与交付安排。</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "item",
+          "groupId": "content-image-2-item-1"
+        },
+        {
+          "type": "image",
+          "id": "t26-content-image-2-business-image-8",
+          "rotate": 0,
+          "left": 512,
+          "top": 147,
+          "width": 440,
+          "height": 208,
+          "src": "/api/data/template_26_asset_bg_content_v1.jpg",
+          "fixedRatio": false,
+          "imageType": "content",
+          "groupId": "content-image-2-item-2",
+          "strictImageCount": true,
+          "requireSourceDimensions": true,
+          "clip": {
+            "shape": "rect",
+            "range": [
+              [
+                0,
+                0
+              ],
+              [
+                100,
+                100
+              ]
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "id": "t26-content-image-2-item-title-9",
+          "rotate": 0,
+          "left": 512,
+          "top": 369,
+          "width": 440,
+          "height": 56,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 20px;color: #A0C9D8;font-weight: bold;line-height: 1.3;\">安全要点2</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemTitle",
+          "groupId": "content-image-2-item-2"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-image-2-item-body-10",
+          "rotate": 0,
+          "left": 512,
+          "top": 431,
+          "width": 440,
+          "height": 100,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#C5DCE5",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 16px;color: #C5DCE5;font-weight: normal;line-height: 1.3;\">围绕实际业务需求，明确安全目标、实施行动与交付安排。</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "item",
+          "groupId": "content-image-2-item-2"
+        }
+      ],
+      "allowedItemCounts": [
+        2
+      ]
+    },
+    {
+      "id": "content-image-3",
+      "type": "content",
+      "background": {
+        "type": "solid",
+        "color": "#0B1524"
+      },
+      "elements": [
+        {
+          "type": "image",
+          "id": "t26-content-image-3-background-1",
+          "rotate": 0,
+          "left": 0,
+          "top": 0,
+          "width": 1000,
+          "height": 562.5,
+          "src": "/api/data/template_26_asset_bg_content_v1.jpg",
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t26-content-image-3-header-lock-2",
+          "rotate": 0,
+          "left": 40,
+          "top": 27,
+          "width": 44,
+          "height": 44,
+          "src": "/api/data/template_26_asset_lock_v1.png",
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t26-content-image-3-title-3",
+          "rotate": 0,
+          "left": 104,
+          "top": 24,
+          "width": 846,
+          "height": 74,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 28px;color: #A0C9D8;font-weight: bold;line-height: 1.3;\">业务场景与安全实践</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 24,
+          "textType": "title"
+        },
+        {
+          "type": "line",
+          "id": "t26-content-image-3-header-rule-4",
+          "rotate": 0,
+          "left": 104,
+          "top": 108,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            846,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "width": 1.2,
+          "color": "#3B6578",
+          "style": "solid"
+        },
+        {
+          "type": "image",
+          "id": "t26-content-image-3-business-image-5",
+          "rotate": 0,
+          "left": 48,
+          "top": 147,
+          "width": 285.3333333333333,
+          "height": 185,
+          "src": "/api/data/template_26_asset_bg_content_v1.jpg",
+          "fixedRatio": false,
+          "imageType": "content",
+          "groupId": "content-image-3-item-1",
+          "strictImageCount": true,
+          "requireSourceDimensions": true,
+          "clip": {
+            "shape": "rect",
+            "range": [
+              [
+                0,
+                0
+              ],
+              [
+                100,
+                100
+              ]
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "id": "t26-content-image-3-item-title-6",
+          "rotate": 0,
+          "left": 48,
+          "top": 346,
+          "width": 285.3333333333333,
+          "height": 56,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 20px;color: #A0C9D8;font-weight: bold;line-height: 1.3;\">安全要点1</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemTitle",
+          "groupId": "content-image-3-item-1"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-image-3-item-body-7",
+          "rotate": 0,
+          "left": 48,
+          "top": 408,
+          "width": 285.3333333333333,
+          "height": 121,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#C5DCE5",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 16px;color: #C5DCE5;font-weight: normal;line-height: 1.3;\">围绕实际业务需求，明确安全目标、实施行动与交付安排。</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "item",
+          "groupId": "content-image-3-item-1"
+        },
+        {
+          "type": "image",
+          "id": "t26-content-image-3-business-image-8",
+          "rotate": 0,
+          "left": 357.3333333333333,
+          "top": 147,
+          "width": 285.3333333333333,
+          "height": 185,
+          "src": "/api/data/template_26_asset_bg_content_v1.jpg",
+          "fixedRatio": false,
+          "imageType": "content",
+          "groupId": "content-image-3-item-2",
+          "strictImageCount": true,
+          "requireSourceDimensions": true,
+          "clip": {
+            "shape": "rect",
+            "range": [
+              [
+                0,
+                0
+              ],
+              [
+                100,
+                100
+              ]
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "id": "t26-content-image-3-item-title-9",
+          "rotate": 0,
+          "left": 357.3333333333333,
+          "top": 346,
+          "width": 285.3333333333333,
+          "height": 56,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 20px;color: #A0C9D8;font-weight: bold;line-height: 1.3;\">安全要点2</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemTitle",
+          "groupId": "content-image-3-item-2"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-image-3-item-body-10",
+          "rotate": 0,
+          "left": 357.3333333333333,
+          "top": 408,
+          "width": 285.3333333333333,
+          "height": 121,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#C5DCE5",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 16px;color: #C5DCE5;font-weight: normal;line-height: 1.3;\">围绕实际业务需求，明确安全目标、实施行动与交付安排。</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "item",
+          "groupId": "content-image-3-item-2"
+        },
+        {
+          "type": "image",
+          "id": "t26-content-image-3-business-image-11",
+          "rotate": 0,
+          "left": 666.6666666666666,
+          "top": 147,
+          "width": 285.3333333333333,
+          "height": 185,
+          "src": "/api/data/template_26_asset_bg_content_v1.jpg",
+          "fixedRatio": false,
+          "imageType": "content",
+          "groupId": "content-image-3-item-3",
+          "strictImageCount": true,
+          "requireSourceDimensions": true,
+          "clip": {
+            "shape": "rect",
+            "range": [
+              [
+                0,
+                0
+              ],
+              [
+                100,
+                100
+              ]
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "id": "t26-content-image-3-item-title-12",
+          "rotate": 0,
+          "left": 666.6666666666666,
+          "top": 346,
+          "width": 285.3333333333333,
+          "height": 56,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 20px;color: #A0C9D8;font-weight: bold;line-height: 1.3;\">安全要点3</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemTitle",
+          "groupId": "content-image-3-item-3"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-image-3-item-body-13",
+          "rotate": 0,
+          "left": 666.6666666666666,
+          "top": 408,
+          "width": 285.3333333333333,
+          "height": 121,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#C5DCE5",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 16px;color: #C5DCE5;font-weight: normal;line-height: 1.3;\">围绕实际业务需求，明确安全目标、实施行动与交付安排。</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "item",
+          "groupId": "content-image-3-item-3"
+        }
+      ],
+      "allowedItemCounts": [
+        3
+      ]
+    },
+    {
+      "id": "content-image-4",
+      "type": "content",
+      "background": {
+        "type": "solid",
+        "color": "#0B1524"
+      },
+      "elements": [
+        {
+          "type": "image",
+          "id": "t26-content-image-4-background-1",
+          "rotate": 0,
+          "left": 0,
+          "top": 0,
+          "width": 1000,
+          "height": 562.5,
+          "src": "/api/data/template_26_asset_bg_content_v1.jpg",
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t26-content-image-4-header-lock-2",
+          "rotate": 0,
+          "left": 40,
+          "top": 27,
+          "width": 44,
+          "height": 44,
+          "src": "/api/data/template_26_asset_lock_v1.png",
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t26-content-image-4-title-3",
+          "rotate": 0,
+          "left": 104,
+          "top": 24,
+          "width": 846,
+          "height": 74,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 28px;color: #A0C9D8;font-weight: bold;line-height: 1.3;\">业务场景与安全实践</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 24,
+          "textType": "title"
+        },
+        {
+          "type": "line",
+          "id": "t26-content-image-4-header-rule-4",
+          "rotate": 0,
+          "left": 104,
+          "top": 108,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            846,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "width": 1.2,
+          "color": "#3B6578",
+          "style": "solid"
+        },
+        {
+          "type": "image",
+          "id": "t26-content-image-4-business-image-5",
+          "rotate": 0,
+          "left": 48,
+          "top": 147,
+          "width": 208,
+          "height": 155,
+          "src": "/api/data/template_26_asset_bg_content_v1.jpg",
+          "fixedRatio": false,
+          "imageType": "content",
+          "groupId": "content-image-4-item-1",
+          "strictImageCount": true,
+          "requireSourceDimensions": true,
+          "clip": {
+            "shape": "rect",
+            "range": [
+              [
+                0,
+                0
+              ],
+              [
+                100,
+                100
+              ]
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "id": "t26-content-image-4-item-title-6",
+          "rotate": 0,
+          "left": 48,
+          "top": 316,
+          "width": 208,
+          "height": 56,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 20px;color: #A0C9D8;font-weight: bold;line-height: 1.3;\">安全要点1</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemTitle",
+          "groupId": "content-image-4-item-1"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-image-4-item-body-7",
+          "rotate": 0,
+          "left": 48,
+          "top": 378,
+          "width": 208,
+          "height": 150,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#C5DCE5",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 16px;color: #C5DCE5;font-weight: normal;line-height: 1.3;\">围绕实际业务需求，明确安全目标、实施行动与交付安排。</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "item",
+          "groupId": "content-image-4-item-1"
+        },
+        {
+          "type": "image",
+          "id": "t26-content-image-4-business-image-8",
+          "rotate": 0,
+          "left": 280,
+          "top": 147,
+          "width": 208,
+          "height": 155,
+          "src": "/api/data/template_26_asset_bg_content_v1.jpg",
+          "fixedRatio": false,
+          "imageType": "content",
+          "groupId": "content-image-4-item-2",
+          "strictImageCount": true,
+          "requireSourceDimensions": true,
+          "clip": {
+            "shape": "rect",
+            "range": [
+              [
+                0,
+                0
+              ],
+              [
+                100,
+                100
+              ]
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "id": "t26-content-image-4-item-title-9",
+          "rotate": 0,
+          "left": 280,
+          "top": 316,
+          "width": 208,
+          "height": 56,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 20px;color: #A0C9D8;font-weight: bold;line-height: 1.3;\">安全要点2</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemTitle",
+          "groupId": "content-image-4-item-2"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-image-4-item-body-10",
+          "rotate": 0,
+          "left": 280,
+          "top": 378,
+          "width": 208,
+          "height": 150,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#C5DCE5",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 16px;color: #C5DCE5;font-weight: normal;line-height: 1.3;\">围绕实际业务需求，明确安全目标、实施行动与交付安排。</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "item",
+          "groupId": "content-image-4-item-2"
+        },
+        {
+          "type": "image",
+          "id": "t26-content-image-4-business-image-11",
+          "rotate": 0,
+          "left": 512,
+          "top": 147,
+          "width": 208,
+          "height": 155,
+          "src": "/api/data/template_26_asset_bg_content_v1.jpg",
+          "fixedRatio": false,
+          "imageType": "content",
+          "groupId": "content-image-4-item-3",
+          "strictImageCount": true,
+          "requireSourceDimensions": true,
+          "clip": {
+            "shape": "rect",
+            "range": [
+              [
+                0,
+                0
+              ],
+              [
+                100,
+                100
+              ]
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "id": "t26-content-image-4-item-title-12",
+          "rotate": 0,
+          "left": 512,
+          "top": 316,
+          "width": 208,
+          "height": 56,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 20px;color: #A0C9D8;font-weight: bold;line-height: 1.3;\">安全要点3</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemTitle",
+          "groupId": "content-image-4-item-3"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-image-4-item-body-13",
+          "rotate": 0,
+          "left": 512,
+          "top": 378,
+          "width": 208,
+          "height": 150,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#C5DCE5",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 16px;color: #C5DCE5;font-weight: normal;line-height: 1.3;\">围绕实际业务需求，明确安全目标、实施行动与交付安排。</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "item",
+          "groupId": "content-image-4-item-3"
+        },
+        {
+          "type": "image",
+          "id": "t26-content-image-4-business-image-14",
+          "rotate": 0,
+          "left": 744,
+          "top": 147,
+          "width": 208,
+          "height": 155,
+          "src": "/api/data/template_26_asset_bg_content_v1.jpg",
+          "fixedRatio": false,
+          "imageType": "content",
+          "groupId": "content-image-4-item-4",
+          "strictImageCount": true,
+          "requireSourceDimensions": true,
+          "clip": {
+            "shape": "rect",
+            "range": [
+              [
+                0,
+                0
+              ],
+              [
+                100,
+                100
+              ]
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "id": "t26-content-image-4-item-title-15",
+          "rotate": 0,
+          "left": 744,
+          "top": 316,
+          "width": 208,
+          "height": 56,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 20px;color: #A0C9D8;font-weight: bold;line-height: 1.3;\">安全要点4</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemTitle",
+          "groupId": "content-image-4-item-4"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-image-4-item-body-16",
+          "rotate": 0,
+          "left": 744,
+          "top": 378,
+          "width": 208,
+          "height": 150,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#C5DCE5",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 16px;color: #C5DCE5;font-weight: normal;line-height: 1.3;\">围绕实际业务需求，明确安全目标、实施行动与交付安排。</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "item",
+          "groupId": "content-image-4-item-4"
+        }
+      ],
+      "allowedItemCounts": [
+        4
+      ]
+    },
+    {
+      "id": "content-process-4",
+      "type": "content",
+      "background": {
+        "type": "solid",
+        "color": "#0B1524"
+      },
+      "elements": [
+        {
+          "type": "image",
+          "id": "t26-content-process-4-background-1",
+          "rotate": 0,
+          "left": 0,
+          "top": 0,
+          "width": 1000,
+          "height": 562.5,
+          "src": "/api/data/template_26_asset_bg_content_v1.jpg",
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t26-content-process-4-header-lock-2",
+          "rotate": 0,
+          "left": 40,
+          "top": 27,
+          "width": 44,
+          "height": 44,
+          "src": "/api/data/template_26_asset_lock_v1.png",
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t26-content-process-4-title-3",
+          "rotate": 0,
+          "left": 104,
+          "top": 24,
+          "width": 846,
+          "height": 74,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 28px;color: #A0C9D8;font-weight: bold;line-height: 1.3;\">实施流程</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 24,
+          "textType": "title"
+        },
+        {
+          "type": "line",
+          "id": "t26-content-process-4-header-rule-4",
+          "rotate": 0,
+          "left": 104,
+          "top": 108,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            846,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "width": 1.2,
+          "color": "#3B6578",
+          "style": "solid"
+        },
+        {
+          "type": "line",
+          "id": "t26-content-process-4-connector-5",
+          "rotate": 0,
+          "left": 195,
+          "top": 208,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            170,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "width": 1.2,
+          "color": "#3B6578",
+          "style": "solid"
+        },
+        {
+          "type": "shape",
+          "id": "t26-content-process-4-step-node-6",
+          "rotate": 0,
+          "left": 104,
+          "top": 164,
+          "width": 96,
+          "height": 88,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 50 0 L 150 0 L 200 100 L 150 200 L 50 200 L 0 100 Z",
+          "fill": "#183749",
+          "fixedRatio": false,
+          "outline": {
+            "color": "#81B8CB",
+            "width": 1.5,
+            "style": "solid"
+          },
+          "groupId": "content-process-4-item-1"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-process-4-step-number-7",
+          "rotate": 0,
+          "left": 116,
+          "top": 181,
+          "width": 72,
+          "height": 59,
+          "defaultFontName": "Arial",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: center;\"><span style=\"font-family: Arial;font-size: 30px;color: #A0C9D8;font-weight: normal;line-height: 1.3;\">01</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 22,
+          "textType": "itemNumber",
+          "groupId": "content-process-4-item-1"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-process-4-item-title-8",
+          "rotate": 0,
+          "left": 48,
+          "top": 279,
+          "width": 208,
+          "height": 56,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 20px;color: #A0C9D8;font-weight: bold;line-height: 1.3;\">安全要点1</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemTitle",
+          "groupId": "content-process-4-item-1"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-process-4-item-body-9",
+          "rotate": 0,
+          "left": 48,
+          "top": 343,
+          "width": 208,
+          "height": 168,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#C5DCE5",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 16px;color: #C5DCE5;font-weight: normal;line-height: 1.3;\">围绕实际业务需求，明确安全目标、实施行动与交付安排。</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "item",
+          "groupId": "content-process-4-item-1"
+        },
+        {
+          "type": "line",
+          "id": "t26-content-process-4-connector-10",
+          "rotate": 0,
+          "left": 427,
+          "top": 208,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            170,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "width": 1.2,
+          "color": "#3B6578",
+          "style": "solid"
+        },
+        {
+          "type": "shape",
+          "id": "t26-content-process-4-step-node-11",
+          "rotate": 0,
+          "left": 336,
+          "top": 164,
+          "width": 96,
+          "height": 88,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 50 0 L 150 0 L 200 100 L 150 200 L 50 200 L 0 100 Z",
+          "fill": "#183749",
+          "fixedRatio": false,
+          "outline": {
+            "color": "#81B8CB",
+            "width": 1.5,
+            "style": "solid"
+          },
+          "groupId": "content-process-4-item-2"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-process-4-step-number-12",
+          "rotate": 0,
+          "left": 348,
+          "top": 181,
+          "width": 72,
+          "height": 59,
+          "defaultFontName": "Arial",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: center;\"><span style=\"font-family: Arial;font-size: 30px;color: #A0C9D8;font-weight: normal;line-height: 1.3;\">02</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 22,
+          "textType": "itemNumber",
+          "groupId": "content-process-4-item-2"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-process-4-item-title-13",
+          "rotate": 0,
+          "left": 280,
+          "top": 279,
+          "width": 208,
+          "height": 56,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 20px;color: #A0C9D8;font-weight: bold;line-height: 1.3;\">安全要点2</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemTitle",
+          "groupId": "content-process-4-item-2"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-process-4-item-body-14",
+          "rotate": 0,
+          "left": 280,
+          "top": 343,
+          "width": 208,
+          "height": 168,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#C5DCE5",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 16px;color: #C5DCE5;font-weight: normal;line-height: 1.3;\">围绕实际业务需求，明确安全目标、实施行动与交付安排。</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "item",
+          "groupId": "content-process-4-item-2"
+        },
+        {
+          "type": "line",
+          "id": "t26-content-process-4-connector-15",
+          "rotate": 0,
+          "left": 659,
+          "top": 208,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            170,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "width": 1.2,
+          "color": "#3B6578",
+          "style": "solid"
+        },
+        {
+          "type": "shape",
+          "id": "t26-content-process-4-step-node-16",
+          "rotate": 0,
+          "left": 568,
+          "top": 164,
+          "width": 96,
+          "height": 88,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 50 0 L 150 0 L 200 100 L 150 200 L 50 200 L 0 100 Z",
+          "fill": "#183749",
+          "fixedRatio": false,
+          "outline": {
+            "color": "#81B8CB",
+            "width": 1.5,
+            "style": "solid"
+          },
+          "groupId": "content-process-4-item-3"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-process-4-step-number-17",
+          "rotate": 0,
+          "left": 580,
+          "top": 181,
+          "width": 72,
+          "height": 59,
+          "defaultFontName": "Arial",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: center;\"><span style=\"font-family: Arial;font-size: 30px;color: #A0C9D8;font-weight: normal;line-height: 1.3;\">03</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 22,
+          "textType": "itemNumber",
+          "groupId": "content-process-4-item-3"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-process-4-item-title-18",
+          "rotate": 0,
+          "left": 512,
+          "top": 279,
+          "width": 208,
+          "height": 56,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 20px;color: #A0C9D8;font-weight: bold;line-height: 1.3;\">安全要点3</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemTitle",
+          "groupId": "content-process-4-item-3"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-process-4-item-body-19",
+          "rotate": 0,
+          "left": 512,
+          "top": 343,
+          "width": 208,
+          "height": 168,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#C5DCE5",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 16px;color: #C5DCE5;font-weight: normal;line-height: 1.3;\">围绕实际业务需求，明确安全目标、实施行动与交付安排。</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "item",
+          "groupId": "content-process-4-item-3"
+        },
+        {
+          "type": "shape",
+          "id": "t26-content-process-4-step-node-20",
+          "rotate": 0,
+          "left": 800,
+          "top": 164,
+          "width": 96,
+          "height": 88,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 50 0 L 150 0 L 200 100 L 150 200 L 50 200 L 0 100 Z",
+          "fill": "#183749",
+          "fixedRatio": false,
+          "outline": {
+            "color": "#81B8CB",
+            "width": 1.5,
+            "style": "solid"
+          },
+          "groupId": "content-process-4-item-4"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-process-4-step-number-21",
+          "rotate": 0,
+          "left": 812,
+          "top": 181,
+          "width": 72,
+          "height": 59,
+          "defaultFontName": "Arial",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: center;\"><span style=\"font-family: Arial;font-size: 30px;color: #A0C9D8;font-weight: normal;line-height: 1.3;\">04</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 22,
+          "textType": "itemNumber",
+          "groupId": "content-process-4-item-4"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-process-4-item-title-22",
+          "rotate": 0,
+          "left": 744,
+          "top": 279,
+          "width": 208,
+          "height": 56,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 20px;color: #A0C9D8;font-weight: bold;line-height: 1.3;\">安全要点4</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemTitle",
+          "groupId": "content-process-4-item-4"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-process-4-item-body-23",
+          "rotate": 0,
+          "left": 744,
+          "top": 343,
+          "width": 208,
+          "height": 168,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#C5DCE5",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 16px;color: #C5DCE5;font-weight: normal;line-height: 1.3;\">围绕实际业务需求，明确安全目标、实施行动与交付安排。</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "item",
+          "groupId": "content-process-4-item-4"
+        }
+      ],
+      "allowedItemCounts": [
+        4
+      ],
+      "layoutKind": "process"
+    },
+    {
+      "id": "content-metrics-4",
+      "type": "content",
+      "background": {
+        "type": "solid",
+        "color": "#0B1524"
+      },
+      "elements": [
+        {
+          "type": "image",
+          "id": "t26-content-metrics-4-background-1",
+          "rotate": 0,
+          "left": 0,
+          "top": 0,
+          "width": 1000,
+          "height": 562.5,
+          "src": "/api/data/template_26_asset_bg_content_v1.jpg",
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t26-content-metrics-4-header-lock-2",
+          "rotate": 0,
+          "left": 40,
+          "top": 27,
+          "width": 44,
+          "height": 44,
+          "src": "/api/data/template_26_asset_lock_v1.png",
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t26-content-metrics-4-title-3",
+          "rotate": 0,
+          "left": 104,
+          "top": 24,
+          "width": 846,
+          "height": 74,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 28px;color: #A0C9D8;font-weight: bold;line-height: 1.3;\">关键安全指标</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 24,
+          "textType": "title"
+        },
+        {
+          "type": "line",
+          "id": "t26-content-metrics-4-header-rule-4",
+          "rotate": 0,
+          "left": 104,
+          "top": 108,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            846,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "width": 1.2,
+          "color": "#3B6578",
+          "style": "solid"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-metrics-4-metric-value-5",
+          "rotate": 0,
+          "left": 58,
+          "top": 154,
+          "width": 164,
+          "height": 84,
+          "defaultFontName": "Arial",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: Arial;font-size: 39px;color: #A0C9D8;font-weight: bold;line-height: 1.3;\">20</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 24,
+          "textType": "itemNumber",
+          "groupId": "content-metrics-4-item-1"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-metrics-4-metric-unit-6",
+          "rotate": 0,
+          "left": 58,
+          "top": 242,
+          "width": 164,
+          "height": 62,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#81B8CB",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 18px;color: #81B8CB;font-weight: normal;line-height: 1.3;\">%</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemUnit",
+          "groupId": "content-metrics-4-item-1"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-metrics-4-item-title-7",
+          "rotate": 0,
+          "left": 242,
+          "top": 156,
+          "width": 234,
+          "height": 56,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 20px;color: #A0C9D8;font-weight: bold;line-height: 1.3;\">安全要点1</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemTitle",
+          "groupId": "content-metrics-4-item-1"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-metrics-4-item-body-8",
+          "rotate": 0,
+          "left": 242,
+          "top": 216,
+          "width": 234,
+          "height": 94,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#C5DCE5",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 16px;color: #C5DCE5;font-weight: normal;line-height: 1.3;\">围绕实际业务需求，明确安全目标、实施行动与交付安排。</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "item",
+          "groupId": "content-metrics-4-item-1"
+        },
+        {
+          "type": "line",
+          "id": "t26-content-metrics-4-metric-rule-9",
+          "rotate": 0,
+          "left": 58,
+          "top": 316,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            418,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "width": 1.2,
+          "color": "#3B6578",
+          "style": "solid",
+          "groupId": "content-metrics-4-item-1"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-metrics-4-metric-value-10",
+          "rotate": 0,
+          "left": 528,
+          "top": 154,
+          "width": 164,
+          "height": 84,
+          "defaultFontName": "Arial",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: Arial;font-size: 39px;color: #A0C9D8;font-weight: bold;line-height: 1.3;\">40</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 24,
+          "textType": "itemNumber",
+          "groupId": "content-metrics-4-item-2"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-metrics-4-metric-unit-11",
+          "rotate": 0,
+          "left": 528,
+          "top": 242,
+          "width": 164,
+          "height": 62,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#81B8CB",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 18px;color: #81B8CB;font-weight: normal;line-height: 1.3;\">%</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemUnit",
+          "groupId": "content-metrics-4-item-2"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-metrics-4-item-title-12",
+          "rotate": 0,
+          "left": 712,
+          "top": 156,
+          "width": 234,
+          "height": 56,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 20px;color: #A0C9D8;font-weight: bold;line-height: 1.3;\">安全要点2</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemTitle",
+          "groupId": "content-metrics-4-item-2"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-metrics-4-item-body-13",
+          "rotate": 0,
+          "left": 712,
+          "top": 216,
+          "width": 234,
+          "height": 94,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#C5DCE5",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 16px;color: #C5DCE5;font-weight: normal;line-height: 1.3;\">围绕实际业务需求，明确安全目标、实施行动与交付安排。</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "item",
+          "groupId": "content-metrics-4-item-2"
+        },
+        {
+          "type": "line",
+          "id": "t26-content-metrics-4-metric-rule-14",
+          "rotate": 0,
+          "left": 528,
+          "top": 316,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            418,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "width": 1.2,
+          "color": "#3B6578",
+          "style": "solid",
+          "groupId": "content-metrics-4-item-2"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-metrics-4-metric-value-15",
+          "rotate": 0,
+          "left": 58,
+          "top": 341,
+          "width": 164,
+          "height": 84,
+          "defaultFontName": "Arial",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: Arial;font-size: 39px;color: #A0C9D8;font-weight: bold;line-height: 1.3;\">60</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 24,
+          "textType": "itemNumber",
+          "groupId": "content-metrics-4-item-3"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-metrics-4-metric-unit-16",
+          "rotate": 0,
+          "left": 58,
+          "top": 429,
+          "width": 164,
+          "height": 62,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#81B8CB",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 18px;color: #81B8CB;font-weight: normal;line-height: 1.3;\">%</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemUnit",
+          "groupId": "content-metrics-4-item-3"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-metrics-4-item-title-17",
+          "rotate": 0,
+          "left": 242,
+          "top": 343,
+          "width": 234,
+          "height": 56,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 20px;color: #A0C9D8;font-weight: bold;line-height: 1.3;\">安全要点3</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemTitle",
+          "groupId": "content-metrics-4-item-3"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-metrics-4-item-body-18",
+          "rotate": 0,
+          "left": 242,
+          "top": 403,
+          "width": 234,
+          "height": 94,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#C5DCE5",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 16px;color: #C5DCE5;font-weight: normal;line-height: 1.3;\">围绕实际业务需求，明确安全目标、实施行动与交付安排。</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "item",
+          "groupId": "content-metrics-4-item-3"
+        },
+        {
+          "type": "line",
+          "id": "t26-content-metrics-4-metric-rule-19",
+          "rotate": 0,
+          "left": 58,
+          "top": 503,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            418,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "width": 1.2,
+          "color": "#3B6578",
+          "style": "solid",
+          "groupId": "content-metrics-4-item-3"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-metrics-4-metric-value-20",
+          "rotate": 0,
+          "left": 528,
+          "top": 341,
+          "width": 164,
+          "height": 84,
+          "defaultFontName": "Arial",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: Arial;font-size: 39px;color: #A0C9D8;font-weight: bold;line-height: 1.3;\">80</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 24,
+          "textType": "itemNumber",
+          "groupId": "content-metrics-4-item-4"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-metrics-4-metric-unit-21",
+          "rotate": 0,
+          "left": 528,
+          "top": 429,
+          "width": 164,
+          "height": 62,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#81B8CB",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 18px;color: #81B8CB;font-weight: normal;line-height: 1.3;\">%</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemUnit",
+          "groupId": "content-metrics-4-item-4"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-metrics-4-item-title-22",
+          "rotate": 0,
+          "left": 712,
+          "top": 343,
+          "width": 234,
+          "height": 56,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 20px;color: #A0C9D8;font-weight: bold;line-height: 1.3;\">安全要点4</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemTitle",
+          "groupId": "content-metrics-4-item-4"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-metrics-4-item-body-23",
+          "rotate": 0,
+          "left": 712,
+          "top": 403,
+          "width": 234,
+          "height": 94,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#C5DCE5",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 16px;color: #C5DCE5;font-weight: normal;line-height: 1.3;\">围绕实际业务需求，明确安全目标、实施行动与交付安排。</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "item",
+          "groupId": "content-metrics-4-item-4"
+        },
+        {
+          "type": "line",
+          "id": "t26-content-metrics-4-metric-rule-24",
+          "rotate": 0,
+          "left": 528,
+          "top": 503,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            418,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "width": 1.2,
+          "color": "#3B6578",
+          "style": "solid",
+          "groupId": "content-metrics-4-item-4"
+        }
+      ],
+      "allowedItemCounts": [
+        4
+      ],
+      "layoutKind": "metrics",
+      "metricValueField": "value",
+      "metricUnitField": "unit"
+    },
+    {
+      "id": "content-hub-6",
+      "type": "content",
+      "background": {
+        "type": "solid",
+        "color": "#0B1524"
+      },
+      "elements": [
+        {
+          "type": "image",
+          "id": "t26-content-hub-6-background-1",
+          "rotate": 0,
+          "left": 0,
+          "top": 0,
+          "width": 1000,
+          "height": 562.5,
+          "src": "/api/data/template_26_asset_bg_content_v1.jpg",
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t26-content-hub-6-header-lock-2",
+          "rotate": 0,
+          "left": 40,
+          "top": 27,
+          "width": 44,
+          "height": 44,
+          "src": "/api/data/template_26_asset_lock_v1.png",
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t26-content-hub-6-title-3",
+          "rotate": 0,
+          "left": 104,
+          "top": 24,
+          "width": 846,
+          "height": 74,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 28px;color: #A0C9D8;font-weight: bold;line-height: 1.3;\">安全能力关联</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 24
+        },
+        {
+          "type": "line",
+          "id": "t26-content-hub-6-header-rule-4",
+          "rotate": 0,
+          "left": 104,
+          "top": 108,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            846,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "width": 1.2,
+          "color": "#3B6578",
+          "style": "solid"
+        },
+        {
+          "type": "line",
+          "id": "t26-content-hub-6-spoke-5",
+          "rotate": 0,
+          "left": 344,
+          "top": 187,
+          "start": [
+            156,
+            141
+          ],
+          "end": [
+            0,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "width": 1.2,
+          "color": "#3B6578",
+          "style": "solid"
+        },
+        {
+          "type": "line",
+          "id": "t26-content-hub-6-spoke-6",
+          "rotate": 0,
+          "left": 500,
+          "top": 187,
+          "start": [
+            0,
+            141
+          ],
+          "end": [
+            156,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "width": 1.2,
+          "color": "#3B6578",
+          "style": "solid"
+        },
+        {
+          "type": "line",
+          "id": "t26-content-hub-6-spoke-7",
+          "rotate": 0,
+          "left": 344,
+          "top": 317,
+          "start": [
+            156,
+            11
+          ],
+          "end": [
+            0,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "width": 1.2,
+          "color": "#3B6578",
+          "style": "solid"
+        },
+        {
+          "type": "line",
+          "id": "t26-content-hub-6-spoke-8",
+          "rotate": 0,
+          "left": 500,
+          "top": 317,
+          "start": [
+            0,
+            11
+          ],
+          "end": [
+            156,
+            0
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "width": 1.2,
+          "color": "#3B6578",
+          "style": "solid"
+        },
+        {
+          "type": "line",
+          "id": "t26-content-hub-6-spoke-9",
+          "rotate": 0,
+          "left": 344,
+          "top": 328,
+          "start": [
+            156,
+            0
+          ],
+          "end": [
+            0,
+            119
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "width": 1.2,
+          "color": "#3B6578",
+          "style": "solid"
+        },
+        {
+          "type": "line",
+          "id": "t26-content-hub-6-spoke-10",
+          "rotate": 0,
+          "left": 500,
+          "top": 328,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            156,
+            119
+          ],
+          "points": [
+            "",
+            ""
+          ],
+          "width": 1.2,
+          "color": "#3B6578",
+          "style": "solid"
+        },
+        {
+          "type": "shape",
+          "id": "t26-content-hub-6-hub-11",
+          "rotate": 0,
+          "left": 391,
+          "top": 229,
+          "width": 218,
+          "height": 198,
+          "viewBox": [
+            200,
+            200
+          ],
+          "path": "M 50 0 L 150 0 L 200 100 L 150 200 L 50 200 L 0 100 Z",
+          "fill": "#183749",
+          "fixedRatio": false,
+          "outline": {
+            "color": "#81B8CB",
+            "width": 2,
+            "style": "solid"
+          }
+        },
+        {
+          "type": "text",
+          "id": "t26-content-hub-6-hub-title-12",
+          "rotate": 0,
+          "left": 407,
+          "top": 266,
+          "width": 186,
+          "height": 116,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#E6F2F6",
+          "content": "<p style=\"text-align: center;\"><span style=\"font-family: 微软雅黑;font-size: 25px;color: #E6F2F6;font-weight: bold;line-height: 1.3;\">网络安全体系</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "title"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-hub-6-item-title-13",
+          "rotate": 0,
+          "left": 52,
+          "top": 139,
+          "width": 281,
+          "height": 44,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 18px;color: #A0C9D8;font-weight: bold;line-height: 1.3;\">安全要点1</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemTitle",
+          "groupId": "content-hub-6-item-1"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-hub-6-item-body-14",
+          "rotate": 0,
+          "left": 52,
+          "top": 185,
+          "width": 281,
+          "height": 72,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#C5DCE5",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 16px;color: #C5DCE5;font-weight: normal;line-height: 1.3;\">围绕实际业务需求，明确安全目标、实施行动与交付安排。</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "item",
+          "groupId": "content-hub-6-item-1"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-hub-6-item-title-15",
+          "rotate": 0,
+          "left": 667,
+          "top": 139,
+          "width": 281,
+          "height": 44,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 18px;color: #A0C9D8;font-weight: bold;line-height: 1.3;\">安全要点2</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemTitle",
+          "groupId": "content-hub-6-item-2"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-hub-6-item-body-16",
+          "rotate": 0,
+          "left": 667,
+          "top": 185,
+          "width": 281,
+          "height": 72,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#C5DCE5",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 16px;color: #C5DCE5;font-weight: normal;line-height: 1.3;\">围绕实际业务需求，明确安全目标、实施行动与交付安排。</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "item",
+          "groupId": "content-hub-6-item-2"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-hub-6-item-title-17",
+          "rotate": 0,
+          "left": 52,
+          "top": 269,
+          "width": 281,
+          "height": 44,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 18px;color: #A0C9D8;font-weight: bold;line-height: 1.3;\">安全要点3</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemTitle",
+          "groupId": "content-hub-6-item-3"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-hub-6-item-body-18",
+          "rotate": 0,
+          "left": 52,
+          "top": 315,
+          "width": 281,
+          "height": 72,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#C5DCE5",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 16px;color: #C5DCE5;font-weight: normal;line-height: 1.3;\">围绕实际业务需求，明确安全目标、实施行动与交付安排。</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "item",
+          "groupId": "content-hub-6-item-3"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-hub-6-item-title-19",
+          "rotate": 0,
+          "left": 667,
+          "top": 269,
+          "width": 281,
+          "height": 44,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 18px;color: #A0C9D8;font-weight: bold;line-height: 1.3;\">安全要点4</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemTitle",
+          "groupId": "content-hub-6-item-4"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-hub-6-item-body-20",
+          "rotate": 0,
+          "left": 667,
+          "top": 315,
+          "width": 281,
+          "height": 72,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#C5DCE5",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 16px;color: #C5DCE5;font-weight: normal;line-height: 1.3;\">围绕实际业务需求，明确安全目标、实施行动与交付安排。</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "item",
+          "groupId": "content-hub-6-item-4"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-hub-6-item-title-21",
+          "rotate": 0,
+          "left": 52,
+          "top": 399,
+          "width": 281,
+          "height": 44,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 18px;color: #A0C9D8;font-weight: bold;line-height: 1.3;\">安全要点5</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemTitle",
+          "groupId": "content-hub-6-item-5"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-hub-6-item-body-22",
+          "rotate": 0,
+          "left": 52,
+          "top": 445,
+          "width": 281,
+          "height": 72,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#C5DCE5",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 16px;color: #C5DCE5;font-weight: normal;line-height: 1.3;\">围绕实际业务需求，明确安全目标、实施行动与交付安排。</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "item",
+          "groupId": "content-hub-6-item-5"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-hub-6-item-title-23",
+          "rotate": 0,
+          "left": 667,
+          "top": 399,
+          "width": 281,
+          "height": 44,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#A0C9D8",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 18px;color: #A0C9D8;font-weight: bold;line-height: 1.3;\">安全要点6</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "itemTitle",
+          "groupId": "content-hub-6-item-6"
+        },
+        {
+          "type": "text",
+          "id": "t26-content-hub-6-item-body-24",
+          "rotate": 0,
+          "left": 667,
+          "top": 445,
+          "width": 281,
+          "height": 72,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#C5DCE5",
+          "content": "<p style=\"text-align: left;\"><span style=\"font-family: 微软雅黑;font-size: 16px;color: #C5DCE5;font-weight: normal;line-height: 1.3;\">围绕实际业务需求，明确安全目标、实施行动与交付安排。</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "item",
+          "groupId": "content-hub-6-item-6"
+        }
+      ],
+      "allowedItemCounts": [
+        6
+      ],
+      "layoutKind": "hub-spoke"
+    },
+    {
+      "id": "end-thanks",
+      "type": "end",
+      "background": {
+        "type": "solid",
+        "color": "#0B1524"
+      },
+      "elements": [
+        {
+          "type": "image",
+          "id": "t26-end-thanks-background-1",
+          "rotate": 0,
+          "left": 0,
+          "top": 0,
+          "width": 1000,
+          "height": 562.5,
+          "src": "/api/data/template_26_asset_bg_end_v1.jpg",
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t26-end-thanks-lower-circuit-2",
+          "rotate": 0,
+          "left": 0,
+          "top": 257.5,
+          "width": 305,
+          "height": 305,
+          "src": "/api/data/template_26_asset_circuit_lower_left_v1.png",
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t26-end-thanks-lock-3",
+          "rotate": 0,
+          "left": 458,
+          "top": 113,
+          "width": 84,
+          "height": 84,
+          "src": "/api/data/template_26_asset_lock_v1.png",
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t26-end-thanks-title-4",
+          "rotate": 0,
+          "left": 118,
+          "top": 231,
+          "width": 764,
+          "height": 118,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#E6F2F6",
+          "content": "<p style=\"text-align: center;\"><span style=\"font-family: 微软雅黑;font-size: 45px;color: #E6F2F6;font-weight: bold;line-height: 1.3;\">感谢您的观看</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 32,
+          "textType": "title"
+        },
+        {
+          "type": "text",
+          "id": "t26-end-thanks-content-5",
+          "rotate": 0,
+          "left": 160,
+          "top": 367,
+          "width": 680,
+          "height": 87,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#C5DCE5",
+          "content": "<p style=\"text-align: center;\"><span style=\"font-family: 微软雅黑;font-size: 21px;color: #C5DCE5;font-weight: normal;line-height: 1.3;\">共同构建可信赖的安全环境</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "content"
+        }
+      ],
+      "variantKey": "thanks",
+      "preserveEndItemBody": false
+    },
+    {
+      "id": "end-action",
+      "type": "end",
+      "background": {
+        "type": "solid",
+        "color": "#0B1524"
+      },
+      "elements": [
+        {
+          "type": "image",
+          "id": "t26-end-action-background-1",
+          "rotate": 0,
+          "left": 0,
+          "top": 0,
+          "width": 1000,
+          "height": 562.5,
+          "src": "/api/data/template_26_asset_bg_end_v1.jpg",
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "image",
+          "id": "t26-end-action-lower-circuit-2",
+          "rotate": 0,
+          "left": 0,
+          "top": 257.5,
+          "width": 305,
+          "height": 305,
+          "src": "/api/data/template_26_asset_circuit_lower_left_v1.png",
+          "fixedRatio": false,
+          "imageType": "decoration",
+          "lock": true
+        },
+        {
+          "type": "text",
+          "id": "t26-end-action-title-3",
+          "rotate": 0,
+          "left": 118,
+          "top": 62,
+          "width": 764,
+          "height": 118,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#E6F2F6",
+          "content": "<p style=\"text-align: center;\"><span style=\"font-family: 微软雅黑;font-size: 45px;color: #E6F2F6;font-weight: bold;line-height: 1.3;\">期待与您交流</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 32,
+          "textType": "title"
+        },
+        {
+          "type": "text",
+          "id": "t26-end-action-content-4",
+          "rotate": 0,
+          "left": 160,
+          "top": 181,
+          "width": 680,
+          "height": 87,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#C5DCE5",
+          "content": "<p style=\"text-align: center;\"><span style=\"font-family: 微软雅黑;font-size: 21px;color: #C5DCE5;font-weight: normal;line-height: 1.3;\">联系信息与下一步行动</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "content"
+        },
+        {
+          "type": "text",
+          "id": "t26-end-action-action-5",
+          "rotate": 0,
+          "left": 180,
+          "top": 282,
+          "width": 640,
+          "height": 70,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#C5DCE5",
+          "content": "<p style=\"text-align: center;\"><span style=\"font-family: 微软雅黑;font-size: 18px;color: #C5DCE5;font-weight: normal;line-height: 1.3;\">行动信息1</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "item",
+          "groupId": "end-action-item-1"
+        },
+        {
+          "type": "text",
+          "id": "t26-end-action-action-6",
+          "rotate": 0,
+          "left": 180,
+          "top": 358,
+          "width": 640,
+          "height": 70,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#C5DCE5",
+          "content": "<p style=\"text-align: center;\"><span style=\"font-family: 微软雅黑;font-size: 18px;color: #C5DCE5;font-weight: normal;line-height: 1.3;\">行动信息2</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "item",
+          "groupId": "end-action-item-2"
+        },
+        {
+          "type": "text",
+          "id": "t26-end-action-action-7",
+          "rotate": 0,
+          "left": 180,
+          "top": 434,
+          "width": 640,
+          "height": 70,
+          "defaultFontName": "微软雅黑",
+          "defaultColor": "#C5DCE5",
+          "content": "<p style=\"text-align: center;\"><span style=\"font-family: 微软雅黑;font-size: 18px;color: #C5DCE5;font-weight: normal;line-height: 1.3;\">行动信息3</span></p>",
+          "textLineHeight": 1.3,
+          "minimumFontSize": 16,
+          "textType": "item",
+          "groupId": "end-action-item-3"
+        }
+      ],
+      "variantKey": "action",
+      "preserveEndItemBody": true
+    }
+  ]
+}

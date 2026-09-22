@@ -1,0 +1,39 @@
+{
+  "templateId": "template_26",
+  "title": "深蓝电路·网络安全",
+  "branch": "codex/deepblue-circuit-security",
+  "baseCommit": "a35e430302b5efc8672a82f214c9c06fae594477",
+  "sourceSha256": "d1b398e9538faa293eff277196682b8c1e91275c2d672bcede06303395b7ec06",
+  "fonts": [
+    "微软雅黑",
+    "Arial"
+  ],
+  "sourceAuditReused": true,
+  "validationMode": "fixed inputs and real local interfaces",
+  "initialTest": "Inventory test RED: builder not implemented",
+  "stages": {
+    "T1": "已完成",
+    "T2": "已完成",
+    "T3": "已完成",
+    "T4": "已完成",
+    "T5": "已完成",
+    "T6": "已完成",
+    "T7": "已完成",
+    "T8": "已完成"
+  },
+  "candidateId": "template26-5db890c046cf",
+  "automaticChecks": "PASS",
+  "humanConfirmed": true,
+  "goalClosed": true,
+  "humanConfirmation": {
+    "candidateId": "template26-5db890c046cf",
+    "templateId": "template_26",
+    "confirmationText": "确认完成",
+    "confirmationSource": "本对话用户明确回复",
+    "recordedAt": "2026-09-22T14:04:17+08:00",
+    "candidateHashesRevalidated": true,
+    "scope": "当前候选的 T8 验收与 Goal 闭合，不包含 Git 交付或生产操作"
+  },
+  "goalStatus": "complete",
+  "closedAt": "2026-09-22T14:06:21+08:00"
+}

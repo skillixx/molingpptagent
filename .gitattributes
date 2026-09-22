@@ -3,3 +3,4 @@
 # 城市模板的构建产物保持 LF，确保 Windows 克隆后也能按字节复核确定性输出。
 backend/main_api/template/template_24.json text eol=lf
 backend/main_api/template/template_25.json text eol=lf
+backend/main_api/template/template_26.json text eol=lf

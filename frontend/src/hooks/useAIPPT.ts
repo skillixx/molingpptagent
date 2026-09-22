@@ -15,6 +15,7 @@ import { useSlidesStore } from '@/store'
 import useAddSlidesOrElements from './useAddSlidesOrElements'
 import useSlideHandler from './useSlideHandler'
 import { fillContentImageSlot, isContentImageSlot, isReplaceableTemplateImage } from './templateImageProtocol'
+import message from '@/utils/message'
 
 
 const isChartItem = (x: any): x is AIPPTContentChartItem =>
@@ -496,9 +497,82 @@ export default () => {
     if (imgs) imgPool.value = imgs
 
     const AISlides: AIPPTSlide[] = []
+    // 独立单位是模板显式选择的协议，历史模板仍使用原有本地生成逻辑。
+    type MetricTemplate = Slide & { layoutKind?: string; metricUnitField?: string; metricValueField?: string; allowedItemCounts?: number[] }
+    type MetricItem = { title?: unknown; text?: unknown; content?: unknown; value?: unknown; unit?: unknown; kind?: unknown }
+    const metricTemplates = templateSlides.filter((slide: MetricTemplate) => slide.type === 'content' && slide.metricUnitField === 'unit' && slide.metricValueField === 'value') as MetricTemplate[]
+    const preparedMetrics = new Map<AIPPTSlide, Slide>()
+    const metricFallbacks = new Set<AIPPTSlide>()
+    const metricText = (value: unknown): string => typeof value === 'string' ? value.trim()
+      : typeof value === 'number' && Number.isFinite(value) ? String(value) : ''
+    const metricRoles: TextType[] = ['itemTitle', 'itemNumber', 'itemUnit', 'item']
+    const orderedSlots = (slide: Slide, role: TextType) => slide.elements.filter(el => checkTextType(el, role))
+      .sort((a, b) => a.top - b.top || a.left - b.left)
     
     // 预处理：根据内容数量进行分页
-    for (const template of _AISlides) {
+    for (const original of _AISlides) {
+      let template = original
+      if (metricTemplates.length && template.type === 'content') {
+        const data = template.data as typeof template.data & { layoutKind?: string }
+        const rawItems = data.items as MetricItem[]
+        const requested = data.layoutKind === 'metrics' || (!data.layoutKind && rawItems.length > 0
+          && rawItems.every(item => item && ['metric', 'number', 'stat'].includes(String(item.kind))))
+        if (requested) {
+          // 本地指标库存没有业务图槽；流式旧入口会吞掉异常，因此同时给出可见错误反馈。
+          if (Array.isArray(template.images) && template.images.some(image => typeof image?.src === 'string' && image.src.trim())) {
+            const error = '本地指标生成暂不支持同时包含业务图片，请使用云端生成或将图片拆成独立图文页'
+            message.error(error)
+            throw new Error(error)
+          }
+          // 不修改调用方数据；旧 title/text 指标输入沿用后端的数值兼容规则。
+          const items = rawItems.map(item => {
+            if (!item || typeof item !== 'object') throw new Error('指标项目格式无效')
+            const explicitValue = Object.prototype.hasOwnProperty.call(item, 'value')
+            const value = metricText(explicitValue ? item.value : item.text || item.content)
+            const title = metricText(item.title)
+            if (!title || !value) throw new Error('指标缺少有效名称或数值')
+            return { title, value, unit: metricText(item.unit), text: metricText(explicitValue ? item.text || item.content : item.text ? item.content : '') }
+          })
+          const selected = metricTemplates.find(slide => items.length > 0
+            && (!slide.allowedItemCounts || slide.allowedItemCounts.includes(items.length))
+            && metricRoles.every(role => orderedSlots(slide, role).length === items.length))
+          if (selected) {
+            // 业务组决定对应关系，组的索引采用从上到下、从左到右的视觉顺序。
+            const titleSlots = orderedSlots(selected, 'itemTitle')
+            const groups = new Map(titleSlots.map((el, index) => [el.groupId, index] as const).filter(([groupId]) => groupId))
+            const elements = selected.elements.map(el => {
+              if (checkTextType(el, 'title')) return getNewTextElement({ el: el as PPTTextElement | PPTShapeElement, text: data.title, maxLine: 2 })
+              const role = metricRoles.find(type => checkTextType(el, type))
+              if (!role) return el
+              const index = (el.groupId ? groups.get(el.groupId) : undefined) ?? orderedSlots(selected, role).findIndex(slot => slot.id === el.id)
+              const item = items[index]
+              const value = role === 'itemTitle' ? item.title : role === 'itemNumber' ? item.value : role === 'itemUnit' ? item.unit : item.text
+              // 空单位也执行替换，清除模板示例百分号，同时保留其余业务组对象。
+              return getNewTextElement({ el: el as PPTTextElement | PPTShapeElement, text: value, maxLine: role === 'item' ? 3 : 2 })
+            })
+            preparedMetrics.set(template, { ...selected, id: nanoid(10), elements })
+            AISlides.push(template)
+            continue
+          }
+          // 专项数量不匹配时完整承接数值、单位和说明，之后走既有正文分页。
+          template = { ...template, data: { ...data, items: items.map(item => ({ kind: 'text', title: item.title,
+            text: [item.value + item.unit, item.text].filter(Boolean).join('\n') })) } }
+          // 回退只使用普通文字库存，并按其真实项目数分批，避免借用流程或关系图残留示例。
+          const capacities = templateSlides.filter((slide: MetricTemplate) => slide.type === 'content' && !slide.layoutKind && !countImageItemSlots(slide))
+            .map(slide => orderedSlots(slide, 'item').length).filter(count => count > 0)
+          if (!capacities.length || !items.length) throw new Error('指标回退缺少有效内容或普通文字模板')
+          let offset = 0
+          while (offset < items.length) {
+            const count = Math.max(...capacities.filter(capacity => capacity <= items.length - offset))
+            if (!Number.isFinite(count)) throw new Error('指标回退没有匹配项目数的普通文字模板')
+            const page = { ...template, data: { ...template.data, items: template.data.items.slice(offset, offset + count) }, offset }
+            metricFallbacks.add(page)
+            AISlides.push(page)
+            offset += count
+          }
+          continue
+        }
+      }
       if (template.type === 'content') {
         const items = (template.data.items as AnyContentItem[])
         if (items.length === 5 || items.length === 6) {
@@ -605,7 +679,7 @@ export default () => {
     const coverTemplates = templateSlides.filter(slide => slide.type === 'cover')
     const contentsTemplates = templateSlides.filter(slide => slide.type === 'contents')
     const transitionTemplates = templateSlides.filter(slide => slide.type === 'transition')
-    const contentTemplates = templateSlides.filter(slide => slide.type === 'content')
+    const contentTemplates = templateSlides.filter(slide => slide.type === 'content' && !metricTemplates.includes(slide))
     const referenceTemplates = templateSlides.filter(slide => slide.type === 'reference')
     const endTemplates = templateSlides.filter(slide => slide.type === 'end')
     
@@ -618,6 +692,11 @@ export default () => {
     
     // 处理每个AI幻灯片
     for (const item of AISlides) {
+      const metricSlide = preparedMetrics.get(item)
+      if (metricSlide) {
+        yield metricSlide
+        continue
+      }
       // 封面页处理
       if (item.type === 'cover') {
         const coverTemplate = coverTemplates[Math.floor(Math.random() * coverTemplates.length)]
@@ -741,7 +820,10 @@ export default () => {
       }
       else if (item.type === 'content') {
         const items = item.data.items as AnyContentItem[]
-        const _contentTemplates = getUseableContentTemplates(contentTemplates, items)
+        const candidates = metricFallbacks.has(item)
+          ? contentTemplates.filter((slide: MetricTemplate) => !slide.layoutKind && !countImageItemSlots(slide) && orderedSlots(slide, 'item').length === items.length)
+          : contentTemplates
+        const _contentTemplates = getUseableContentTemplates(candidates, items)
         const contentTemplate = pickContentTemplate(_contentTemplates)
 
         const sortedTitleItemIds = contentTemplate.elements
@@ -856,7 +938,7 @@ export default () => {
 
           if (el.type !== 'text' && el.type !== 'shape') return el
 
-          if (items.length === 1) {
+          if (items.length === 1 && !metricFallbacks.has(item)) {
             const only = items[0]
             if ((isTextItem(only) || isLegacyTextItem(only)) && checkTextType(el, 'content') && only.text) {
               const text = only.title ? `${only.title}：${only.text}` : only.text

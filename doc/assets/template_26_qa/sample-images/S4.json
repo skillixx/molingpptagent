@@ -1,0 +1,8 @@
+{
+  "asset": "S4",
+  "prompt": "A high quality realistic cybersecurity photo for a PowerPoint image placeholder: close-up of a person's hand holding an unbranded hardware security key next to an open unbranded laptop on a clean desk, soft blue-gray daylight, simple refined composition, shallow depth of field, no readable screen text, no logos, no overlay labels, wide 16:10 frame, no watermark. Fictional illustrative material. Generate one image.",
+  "tool": "image_gen.imagegen",
+  "actualModel": "工具未暴露",
+  "outputHint": "Generated images are saved to C:\\Users\\sk20\\.codex\\generated_images\\01a0c1c2-a2df-7023-ade5-fa50b7ebc744 as C:\\Users\\sk20\\.codex\\generated_images\\01a0c1c2-a2df-7023-ade5-fa50b7ebc744\\exec-3156ea40-2ee8-4cb4-8f74-1287c01a6e57.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "role": "QA业务展示样例，非固定装饰、非真实业务事实"
+}

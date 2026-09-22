@@ -1,0 +1,8 @@
+{
+  "asset": "S2",
+  "prompt": "A high quality realistic corporate cybersecurity photo for a PowerPoint image placeholder: orderly modern server room with closed black server cabinets, soft cool blue status lights and clean central aisle, no people, no readable text or logos, restrained blue-gray palette and precise architectural perspective, wide 16:10 composition, no sci-fi, no overlay, no watermark. Fictional illustrative material. Generate one image.",
+  "tool": "image_gen.imagegen",
+  "actualModel": "工具未暴露",
+  "outputHint": "Generated images are saved to C:\\Users\\sk20\\.codex\\generated_images\\01a0c1c2-a2df-7023-ade5-fa50b7ebc744 as C:\\Users\\sk20\\.codex\\generated_images\\01a0c1c2-a2df-7023-ade5-fa50b7ebc744\\exec-76b293c5-5ef0-4999-b43c-a0b06719a15b.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "role": "QA业务展示样例，非固定装饰、非真实业务事实"
+}

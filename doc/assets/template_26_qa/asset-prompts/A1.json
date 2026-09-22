@@ -1,0 +1,9 @@
+{
+  "asset": "A1",
+  "prompt": "Use case: productivity-visual. Create one final reusable PowerPoint COVER BACKGROUND bitmap, exactly 2560×1440, 16:9 landscape. Refined corporate cybersecurity theme, deep navy #0B1524 fading very gently to muted blue-gray #244456 around the center, dark edges, subtle fine matte texture. Huge clean center area for a separately placed lock icon and editable heading. The whole central 75 percent must be calm, smooth and text-friendly; very restrained soft ambient lighting, no bright flare, no hard rays, no strong pattern, no gradient banding. Nothing pictorial: NO lock, NO circuit traces, NO nodes, NO labels, NO text, NO logo, NO watermark, NO border, NO UI. This is asset A1 for a layered slide template; decorative lock and circuitry will be separate images. Opaque background. High-quality smooth finished presentation material.",
+  "tool": "image_gen.imagegen",
+  "requestedMethod": "GPT2 图片模板",
+  "actualModel": "工具未暴露",
+  "outputHint": "Generated images are saved to C:\\Users\\sk20\\.codex\\generated_images\\01a0c1c2-a2df-7023-ade5-fa50b7ebc744 as C:\\Users\\sk20\\.codex\\generated_images\\01a0c1c2-a2df-7023-ade5-fa50b7ebc744\\exec-d536d992-7e01-46a0-9d79-7bae5a8731a0.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "inspection": "visually accepted"
+}

@@ -197,6 +197,8 @@ class PresentationTemplateRenderer:
                 continue
             data.pop("layoutKind", None)
             data.pop("variant", None)
+            # 仅声明独立单位协议的模板启用该行为，旧模板保持原有数值展示。
+            preserve_units = any(page.get("metricUnitField") == "unit" for page in matching)
             for item in data.get("items", []):
                 if not isinstance(item, dict):
                     continue
@@ -205,7 +207,8 @@ class PresentationTemplateRenderer:
                     item["kind"] = "text"
                 value = self._text(item.get("value"))
                 if value:
-                    parts = [value, self._text(item.get("text")), self._text(item.get("content"))]
+                    unit = self._text(item.get("unit")) if preserve_units else ""
+                    parts = [value + unit, self._text(item.get("text")), self._text(item.get("content"))]
                     item["text"] = "\n".join(dict.fromkeys(part for part in parts if part))
         return result
 
@@ -224,6 +227,8 @@ class PresentationTemplateRenderer:
             raw_items = data.get("items", [])
             values["itemNumber"] = [self._text(item.get("value")) if isinstance(item, dict) else "" for item in raw_items]
             values["item"] = [body for _, body in items]
+            if page.get("metricUnitField") == "unit":
+                values["itemUnit"] = [self._text(item.get("unit")) if isinstance(item, dict) else "" for item in raw_items]
         for role, texts in values.items():
             slots = self._slots(elements, role)
             if len(slots) < len(texts) or any(not self._slot_text_fits(slot, text) for slot, text in zip(slots, texts)):
@@ -1105,7 +1110,8 @@ class PresentationTemplateRenderer:
             self._fill_list(elements, "item", action_values, max_lines=3)
         else:
             self._fill_single(elements, "title", title, max_lines=2)
-            self._fill_content(elements, data, semantic, metric_values=slide.get("metricValueField") == "value")
+            self._fill_content(elements, data, semantic, metric_values=slide.get("metricValueField") == "value",
+                               metric_units=slide.get("metricUnitField") == "unit")
 
         # 空槽清理可能连带移除分组图片，因此必须在文字槽处理完成后再应用 Agent 配图。
         self._fill_images(elements, semantic_images)
@@ -1527,7 +1533,7 @@ class PresentationTemplateRenderer:
             return (3, count - content_slots)
         return (4, count)
 
-    def _fill_content(self, elements: list[dict[str, Any]], data: dict[str, Any], semantic: dict[str, Any], *, metric_values: bool = False) -> None:
+    def _fill_content(self, elements: list[dict[str, Any]], data: dict[str, Any], semantic: dict[str, Any], *, metric_values: bool = False, metric_units: bool = False) -> None:
         if metric_values:
             raw_items = data.get("items")
             if (
@@ -1548,6 +1554,12 @@ class PresentationTemplateRenderer:
             # 逐项绑定，不截断原题或正文，也不把用户数值替换为序号或模板示例。
             self._fill_list(elements, "itemTitle", [self._text(item.get("title")) for item in raw_items], max_lines=2)
             self._fill_list(elements, "itemNumber", values, max_lines=2)
+            if metric_units:
+                units = [self._text(item.get("unit")) for item in raw_items]
+                if len(self._slots(elements, "itemUnit")) < len(raw_items):
+                    raise TemplateRenderError("指标单位槽位不足", code="TEMPLATE_MISSING_SLOT")
+                # 未提供单位是有效输入，仅清理单位文字，不能连带删除数值与名称。
+                self._fill_list(elements, "itemUnit", units, max_lines=2, preserve_groups=True)
             # 指标名称与数值已有效，缺少可选说明时只删除空说明框，保留其业务组。
             self._fill_list(elements, "item", [self._text(item.get("text") or item.get("content")) for item in raw_items], max_lines=3, preserve_groups=True)
             return

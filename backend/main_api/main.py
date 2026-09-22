@@ -583,6 +583,8 @@ async def get_templates():
         # 城市项目策划模板使用原创城市背景，业务图片与固定光轨装饰独立标注。
         { "name": "深蓝霓虹城市项目策划", "id": "template_24", "cover": "/api/data/template_24.jpg" },
         { "name": "蓝黑城市·融资路演", "id": "template_25", "cover": "/api/data/template_25.jpg" },
+        # 深蓝电路模板将背景、锁形及电路装饰与业务图片分层，正文和关系图保持可编辑。
+        { "name": "深蓝电路·网络安全", "id": "template_26", "cover": "/api/data/template_26.jpg" },
     ]
 
     return {"data": templates}

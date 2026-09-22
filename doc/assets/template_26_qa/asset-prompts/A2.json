@@ -1,0 +1,9 @@
+{
+  "asset": "A2",
+  "prompt": "Create ONE background image for text-heavy PowerPoint content slides, exactly 2560x1440 16:9 landscape. deep navy #0B1524 and muted blue gray #244456 with pale cyan #A0C9D8, restrained refined corporate cybersecurity presentation, no text, no numbers, no logo, no watermark. Opaque nearly uniform very dark navy, a barely perceptible broad ambient gray-blue gradient and ultra-subtle fine matte grain. All of the canvas is a clean text-safe area. Low contrast, no hotspots. No lock, no circuit lines, no symbols, no particles, no border, no UI. Intended as a quiet full-slide base beneath separately editable text and images.",
+  "tool": "image_gen.imagegen",
+  "requestedMethod": "GPT2 图片模板",
+  "actualModel": "工具未暴露",
+  "outputHint": "Generated images are saved to C:\\Users\\sk20\\.codex\\generated_images\\01a0c1c2-a2df-7023-ade5-fa50b7ebc744 as C:\\Users\\sk20\\.codex\\generated_images\\01a0c1c2-a2df-7023-ade5-fa50b7ebc744\\exec-a1e37903-bdb1-4af0-88cf-1c95d3b56e12.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "inspection": "pending"
+}

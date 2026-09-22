@@ -1,0 +1,26 @@
+{
+  "review": {
+    "standards": "JSON异步导入等待竞态已修复并复核通过",
+    "spec": "独立指标单位及回退丢失已修复并复核通过",
+    "additional": "六节点对象顺序已用先失败后通过的测试修复"
+  },
+  "frontendTests": {
+    "command": "npm run test:unit -- --run src/hooks/__tests__/templateImageProtocol.spec.ts src/hooks/__tests__/useExportArchiveState.spec.ts",
+    "passed": 11,
+    "exitCode": 0
+  },
+  "typeCheck": {
+    "command": "npm run type-check",
+    "exitCode": 0,
+    "typesSourceSha256": "d0cbcf2d96e635d075c26d50e24eba11cf59cacf99738e0ccb22a978ce3a9da6"
+  },
+  "visualReview": {
+    "editor": "22页已查看",
+    "nativePowerPoint": "22页已查看",
+    "outcome": "无明显溢出、遮挡或素材裁断"
+  },
+  "preview": {
+    "mode": "local-file",
+    "newHttpServer": "启动被自动审批拒绝，未启动；已改用本地文件并通过浏览器检查"
+  }
+}

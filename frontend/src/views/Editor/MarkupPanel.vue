@@ -104,6 +104,7 @@ const textTypeOptions = ref<{ label: string; value: TextType | '' }[]>([
   { label: '页脚', value: 'footer' },
   { label: '节编号', value: 'partNumber' },
   { label: '项目编号', value: 'itemNumber' },
+  { label: '指标单位', value: 'itemUnit' },
   { label: '引用编号', value: 'referenceNumber' },
   { label: 'PMID', value: 'pmid' },
   { label: 'url', value: 'url' },

@@ -139,7 +139,8 @@ interface PPTBaseElement {
 }
 
 
-export type TextType = 'title' | 'subtitle' | 'content' | 'item' | 'itemTitle' | 'notes' | 'header' | 'footer' | 'partNumber' | 'itemNumber'| 'referenceNumber' | 'doi' | 'pmid' | 'url' | 'text'
+// 指标单位独立成文字对象，保持数值和单位分别可编辑。
+export type TextType = 'title' | 'subtitle' | 'content' | 'item' | 'itemTitle' | 'notes' | 'header' | 'footer' | 'partNumber' | 'itemNumber' | 'itemUnit' | 'referenceNumber' | 'doi' | 'pmid' | 'url' | 'text'
 
 /**
  * 文本元素

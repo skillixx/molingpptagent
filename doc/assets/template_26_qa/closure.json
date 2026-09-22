@@ -1,0 +1,13 @@
+{
+  "candidateId": "template26-5db890c046cf",
+  "templateId": "template_26",
+  "confirmationText": "确认完成",
+  "confirmationSource": "本对话用户明确回复",
+  "recordedAt": "2026-09-22T14:04:17+08:00",
+  "candidateHashesRevalidated": true,
+  "scope": "当前候选的 T8 验收与 Goal 闭合，不包含 Git 交付或生产操作",
+  "T8": "已完成",
+  "goalClosed": true,
+  "goalStatus": "complete",
+  "closedAt": "2026-09-22T14:06:21+08:00"
+}

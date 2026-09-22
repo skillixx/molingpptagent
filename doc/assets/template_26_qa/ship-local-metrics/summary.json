@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "cases": [
+    {
+      "count": 4,
+      "slides": 1,
+      "contentPreserved": true,
+      "inputUnchanged": true
+    },
+    {
+      "count": 3,
+      "slides": 1,
+      "contentPreserved": true,
+      "inputUnchanged": true
+    },
+    {
+      "count": 13,
+      "slides": 4,
+      "contentPreserved": true,
+      "inputUnchanged": true
+    }
+  ],
+  "imageMetricRejectedWithVisibleFeedback": true,
+  "errors": [],
+  "writes": []
+}

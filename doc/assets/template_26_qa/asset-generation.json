@@ -1,0 +1,174 @@
+{
+  "templateId": "template_26",
+  "requestedMethod": "GPT2 图片模板",
+  "assets": [
+    {
+      "id": "A1",
+      "filename": "template_26_asset_bg_cover_v1.jpg",
+      "source": "C:\\Users\\sk20\\.codex\\generated_images\\01a0c1c2-a2df-7023-ade5-fa50b7ebc744\\exec-d536d992-7e01-46a0-9d79-7bae5a8731a0.png",
+      "sourceSha256": "c4b2bd3070d57bd33678d0e2aa57a2102d5d3b3437c99b1678735e756f6f76c9",
+      "sourceDimensions": [
+        1672,
+        941
+      ],
+      "dimensions": [
+        2560,
+        1440
+      ],
+      "sha256": "b4e9241c013e1f62c7e9d34a7ebf79df399f93335480701a98557c5096a45be4",
+      "hasAlpha": false,
+      "processing": "仅尺寸与格式规范化；未生成或重绘像素内容",
+      "visualInspection": "已查看生成图及全部真实编辑器和原生PPTX渲染，满足实际页面用途",
+      "promptFile": "asset-prompts/A1.json",
+      "actualModel": "工具未暴露",
+      "tool": "image_gen.imagegen"
+    },
+    {
+      "id": "A2",
+      "filename": "template_26_asset_bg_content_v1.jpg",
+      "source": "C:\\Users\\sk20\\.codex\\generated_images\\01a0c1c2-a2df-7023-ade5-fa50b7ebc744\\exec-a1e37903-bdb1-4af0-88cf-1c95d3b56e12.png",
+      "sourceSha256": "12e2191410de8dfcd4fcd4da74515c4397a76dc25f360c2a47ed2ea5caf543fb",
+      "sourceDimensions": [
+        1672,
+        941
+      ],
+      "dimensions": [
+        2560,
+        1440
+      ],
+      "sha256": "fefa48a8ecd179e1c79219dfea7cf380bb7779e1f3ef0d12ec557e0ca4db508c",
+      "hasAlpha": false,
+      "processing": "仅尺寸与格式规范化；未生成或重绘像素内容",
+      "visualInspection": "已查看生成图及全部真实编辑器和原生PPTX渲染，满足实际页面用途",
+      "promptFile": "asset-prompts/A2.json",
+      "actualModel": "工具未暴露",
+      "tool": "image_gen.imagegen"
+    },
+    {
+      "id": "A3",
+      "filename": "template_26_asset_bg_section_v1.jpg",
+      "source": "C:\\Users\\sk20\\.codex\\generated_images\\01a0c1c2-a2df-7023-ade5-fa50b7ebc744\\exec-4ead505c-1508-48c0-a6f9-2217ee8c9216.png",
+      "sourceSha256": "433e800b30e9859fe85fde22832eecbbcf687ec2c5f4c33e55c9a6c55e5212a2",
+      "sourceDimensions": [
+        1672,
+        941
+      ],
+      "dimensions": [
+        2560,
+        1440
+      ],
+      "sha256": "7922c941520057ae856150e79a5445daf43a58e3913754f5fe884c4b095e0c90",
+      "hasAlpha": false,
+      "processing": "仅尺寸与格式规范化；未生成或重绘像素内容",
+      "visualInspection": "已查看生成图及全部真实编辑器和原生PPTX渲染，满足实际页面用途",
+      "promptFile": "asset-prompts/A3.json",
+      "actualModel": "工具未暴露",
+      "tool": "image_gen.imagegen"
+    },
+    {
+      "id": "A4",
+      "filename": "template_26_asset_bg_end_v1.jpg",
+      "source": "C:\\Users\\sk20\\.codex\\generated_images\\01a0c1c2-a2df-7023-ade5-fa50b7ebc744\\exec-42c8609f-223e-4c7a-ad26-4497322be2ec.png",
+      "sourceSha256": "9bdf2d2e58ef9e2bdb228ad15fda1c336a5b7c105e5ec3804001ecc3daa4def7",
+      "sourceDimensions": [
+        1672,
+        941
+      ],
+      "dimensions": [
+        2560,
+        1440
+      ],
+      "sha256": "3ce4df5b4b12e4cc48bfcc13cec374538b12729d2a6ad5ad021a3ac20e7e32a5",
+      "hasAlpha": false,
+      "processing": "仅尺寸与格式规范化；未生成或重绘像素内容",
+      "visualInspection": "已查看生成图及全部真实编辑器和原生PPTX渲染，满足实际页面用途",
+      "promptFile": "asset-prompts/A4.json",
+      "actualModel": "工具未暴露",
+      "tool": "image_gen.imagegen"
+    },
+    {
+      "id": "A5",
+      "filename": "template_26_asset_lock_v1.png",
+      "source": "C:\\Users\\sk20\\.codex\\generated_images\\01a0c1c2-a2df-7023-ade5-fa50b7ebc744\\exec-724eae1e-0d39-4bae-87f1-8fc31edf5c3d.png",
+      "sourceSha256": "eca322be9fc16a6fda273790b39b995ddd2a5cbb802b98992575263a7984033d",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sha256": "c1ebbbb241a83ab942f6b7b2d6fdc7b146a64fa42d4284ded1c4720132995000",
+      "hasAlpha": true,
+      "processing": "仅尺寸与格式规范化；未生成或重绘像素内容",
+      "visualInspection": "已查看生成图及全部真实编辑器和原生PPTX渲染，满足实际页面用途",
+      "promptFile": "asset-prompts/A5.json",
+      "actualModel": "工具未暴露",
+      "tool": "image_gen.imagegen"
+    },
+    {
+      "id": "A6",
+      "filename": "template_26_asset_circuit_upper_right_v1.png",
+      "source": "C:\\Users\\sk20\\.codex\\generated_images\\01a0c1c2-a2df-7023-ade5-fa50b7ebc744\\exec-ec1e3900-026b-47bb-832e-8cebbd9c3ca0.png",
+      "sourceSha256": "9626c0f9725cbf6f2985561790671703b640fb0c2500878c2e884136119f6608",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "dimensions": [
+        1600,
+        1600
+      ],
+      "sha256": "d5415e442dfe045f7d497aefd6d323d6d9cd2b59ecc183534f94673a7d89793e",
+      "hasAlpha": true,
+      "processing": "仅尺寸与格式规范化；未生成或重绘像素内容",
+      "visualInspection": "已查看生成图及全部真实编辑器和原生PPTX渲染，满足实际页面用途",
+      "promptFile": "asset-prompts/A6.json",
+      "actualModel": "工具未暴露",
+      "tool": "image_gen.imagegen"
+    },
+    {
+      "id": "A7",
+      "filename": "template_26_asset_circuit_lower_left_v1.png",
+      "source": "C:\\Users\\sk20\\.codex\\generated_images\\01a0c1c2-a2df-7023-ade5-fa50b7ebc744\\exec-ec14f452-0cf6-457c-993b-c72db8a4011c.png",
+      "sourceSha256": "7b5ac011e76a1088ee11b33adf2ab4d06089e1b978963c43d6c5bcd6803c08e1",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "dimensions": [
+        1600,
+        1600
+      ],
+      "sha256": "0c5164538f2fd98499cad3a6954d1061968a5257692c6c2f437bde81accb1b5e",
+      "hasAlpha": true,
+      "processing": "仅尺寸与格式规范化；未生成或重绘像素内容",
+      "visualInspection": "已查看生成图及全部真实编辑器和原生PPTX渲染，满足实际页面用途",
+      "promptFile": "asset-prompts/A7.json",
+      "actualModel": "工具未暴露",
+      "tool": "image_gen.imagegen"
+    },
+    {
+      "id": "A8",
+      "filename": "template_26_asset_network_sphere_v1.png",
+      "source": "C:\\Users\\sk20\\.codex\\generated_images\\01a0c1c2-a2df-7023-ade5-fa50b7ebc744\\exec-612134ec-da8d-4661-8b21-ac889e5f9658.png",
+      "sourceSha256": "6b72f82f3ae6e5bad64ef023583b83f1d86a5fb42811f065133644632a398307",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sha256": "6fea4939c0926d46f4f78f2bef5a1aa7bc749dc5967fe5797912d70bc20e239f",
+      "hasAlpha": true,
+      "processing": "仅尺寸与格式规范化；未生成或重绘像素内容",
+      "visualInspection": "已查看生成图及全部真实编辑器和原生PPTX渲染，满足实际页面用途",
+      "promptFile": "asset-prompts/A8.json",
+      "actualModel": "工具未暴露",
+      "tool": "image_gen.imagegen"
+    }
+  ]
+}

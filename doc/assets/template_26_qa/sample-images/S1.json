@@ -1,0 +1,8 @@
+{
+  "asset": "S1",
+  "prompt": "A high quality realistic corporate cybersecurity photo for a PowerPoint image placeholder: a modern security operations center with two analysts seen from behind studying abstract blue status screens, no readable text or logos, calm blue-gray color grading, professional soft light, wide 16:10 composition, no futuristic fantasy, no overlay titles, no watermark. This is fictional illustrative material, not evidence of a real company. Generate one image.",
+  "tool": "image_gen.imagegen",
+  "actualModel": "工具未暴露",
+  "outputHint": "Generated images are saved to C:\\Users\\sk20\\.codex\\generated_images\\01a0c1c2-a2df-7023-ade5-fa50b7ebc744 as C:\\Users\\sk20\\.codex\\generated_images\\01a0c1c2-a2df-7023-ade5-fa50b7ebc744\\exec-5786c5db-46bf-4d0e-b7b0-630ed1a0eb44.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "role": "QA业务展示样例，非固定装饰、非真实业务事实"
+}

@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_26",
+  "status": "PASS",
+  "branchFrontendUrl": "http://127.0.0.1:5778",
+  "branchApiUrl": "http://127.0.0.1:6800",
+  "selectorUrl": "http://127.0.0.1:5778/app",
+  "editorUrl": "http://127.0.0.1:5778/editor",
+  "registrationCount": 1,
+  "registeredName": "深蓝电路·网络安全",
+  "cover": {
+    "src": "/api/data/template_26.jpg",
+    "complete": true,
+    "naturalWidth": 1350,
+    "naturalHeight": 760
+  },
+  "templateSelected": true,
+  "authenticationMode": "browser-fixture-only",
+  "backendMode": "local-project-api-auth-fixture-only",
+  "editorEntryVisible": true,
+  "screenshots": [
+    "runtime-template-selected.png",
+    "runtime-editor-entry.png"
+  ],
+  "failedResponses": []
+}

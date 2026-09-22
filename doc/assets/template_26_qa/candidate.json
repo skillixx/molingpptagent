@@ -1,0 +1,48 @@
+{
+  "candidateId": "template26-5db890c046cf",
+  "templateId": "template_26",
+  "status": "COMPLETE",
+  "files": {
+    "backend/main_api/main.py": "9d553d70e2808540cad3edd260ed8e9c9658945cfb86bbb09d16e87cf108631e",
+    "backend/main_api/workers/template_renderer.py": "97499f90fa74233e0083736a18ffa12fd4d05063374f74a16bc806c93e2d3364",
+    "frontend/src/types/slides.ts": "d0cbcf2d96e635d075c26d50e24eba11cf59cacf99738e0ccb22a978ce3a9da6",
+    "utils/build_deepblue_circuit_security_template.mjs": "4d2d59ce8abec0021e268cc365af54a00bc28bb6f394a7963fdd4d863ab92cca",
+    "backend/main_api/tests/test_template_26.py": "e0fe0241e102662a548fcfb0e5b6f9953ae8e2d1037a0b4757e800d6be381d31",
+    "backend/main_api/template/template_26.json": "f403b58c3b630a3d5942f830a704d7dd9e327e066a01b687886b9cd2dabd5ce4",
+    "backend/main_api/template/template_26.jpg": "6e2e7b0620323386e7d62b7004256a21c6652b5afa72fa8be57f124dd93da5af",
+    "backend/main_api/template/template_26_asset_bg_cover_v1.jpg": "b4e9241c013e1f62c7e9d34a7ebf79df399f93335480701a98557c5096a45be4",
+    "backend/main_api/template/template_26_asset_bg_content_v1.jpg": "fefa48a8ecd179e1c79219dfea7cf380bb7779e1f3ef0d12ec557e0ca4db508c",
+    "backend/main_api/template/template_26_asset_bg_section_v1.jpg": "7922c941520057ae856150e79a5445daf43a58e3913754f5fe884c4b095e0c90",
+    "backend/main_api/template/template_26_asset_bg_end_v1.jpg": "3ce4df5b4b12e4cc48bfcc13cec374538b12729d2a6ad5ad021a3ac20e7e32a5",
+    "backend/main_api/template/template_26_asset_lock_v1.png": "c1ebbbb241a83ab942f6b7b2d6fdc7b146a64fa42d4284ded1c4720132995000",
+    "backend/main_api/template/template_26_asset_circuit_upper_right_v1.png": "d5415e442dfe045f7d497aefd6d323d6d9cd2b59ecc183534f94673a7d89793e",
+    "backend/main_api/template/template_26_asset_circuit_lower_left_v1.png": "0c5164538f2fd98499cad3a6954d1061968a5257692c6c2f437bde81accb1b5e",
+    "backend/main_api/template/template_26_asset_network_sphere_v1.png": "6fea4939c0926d46f4f78f2bef5a1aa7bc749dc5967fe5797912d70bc20e239f"
+  },
+  "pptxSha256": "9a137faf98607b275c8d16be58b533ca7c5ff6fe0316b64acca39456af26341b",
+  "sampleJsonSha256": "f45073dc9d05e22df9ad3c584b8452f7ad3f07ea1f9fca97b0483637cbdd7a0c",
+  "automaticChecks": "PASS",
+  "humanConfirmed": true,
+  "goalClosed": true,
+  "backendTests": 170,
+  "evidence": [
+    "tests.xml",
+    "editor-delivery/summary.json",
+    "persistence-summary.json",
+    "real-handler-summary.json",
+    "runtime-selector/runtime-summary.json",
+    "pptx-package-summary.json",
+    "native-render-summary.json"
+  ],
+  "humanConfirmation": {
+    "candidateId": "template26-5db890c046cf",
+    "templateId": "template_26",
+    "confirmationText": "确认完成",
+    "confirmationSource": "本对话用户明确回复",
+    "recordedAt": "2026-09-22T14:04:17+08:00",
+    "candidateHashesRevalidated": true,
+    "scope": "当前候选的 T8 验收与 Goal 闭合，不包含 Git 交付或生产操作"
+  },
+  "goalStatus": "complete",
+  "closedAt": "2026-09-22T14:06:21+08:00"
+}

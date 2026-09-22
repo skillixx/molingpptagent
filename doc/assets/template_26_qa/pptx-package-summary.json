@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "slides": 22,
+  "nativeShapesIncludingText": 215,
+  "all11BusinessPicturesRestored": true,
+  "sampleImagesEmbedded": {
+    "S1.jpg": true,
+    "S2.jpg": true,
+    "S3.jpg": true,
+    "S4.jpg": true
+  },
+  "pptxSha256": "9a137faf98607b275c8d16be58b533ca7c5ff6fe0316b64acca39456af26341b"
+}
