@@ -1,0 +1,75 @@
+{
+  "status": "COMPLETED",
+  "statusText": "用户已确认，T1～T6 已完成并闭合",
+  "candidate": "template_28-b89a16a70e65",
+  "templateId": "template_28",
+  "humanConfirmation": {
+    "message": "确认完成",
+    "source": "current-thread-user-message",
+    "candidate": "template_28-b89a16a70e65",
+    "recordedAt": "2026-09-23T07:06:27.655748+00:00",
+    "recordedAtAsiaShanghai": "2026-09-23T15:06:27.655748+08:00"
+  },
+  "createdAt": "2026-09-23T06:53:49.434462+00:00",
+  "branch": "codex/teal-geometric-template",
+  "baseCommit": "58b968f954769bfdb10894dc9ab1e1fbff3718b7",
+  "layoutCount": 18,
+  "assetCount": 5,
+  "backendTests": 39,
+  "editorSlides": 18,
+  "imageReplacementChecks": 33,
+  "stressPages": 26,
+  "responsiveViewports": [
+    [
+      1920,
+      1080
+    ],
+    [
+      1366,
+      768
+    ],
+    [
+      768,
+      1024
+    ],
+    [
+      390,
+      844
+    ]
+  ],
+  "productionFiles": {
+    "backend/main_api/main.py": "a925b16a79e6c46c028560c0c493f03f65debbb138365e4e79678889b84b04a5",
+    "backend/main_api/workers/template_renderer.py": "3f6e8695c1779f8f661ae197f0f020646b3be6727f849dc03c66c9696fc49a34",
+    "frontend/src/hooks/useExport.ts": "cbd2f7b247ab2ecc8953b1f224e1a6719d9c4f4f994ef8119a4b293a2ac84e04",
+    "frontend/src/hooks/useImport.ts": "d60ce2683e6b2eb88d58654a6b7d4ee31ad9308584828304f3db0c752c5a5aef",
+    "frontend/src/hooks/templateImageProtocol.ts": "c02b3d10e24dad6f982ba38673230737293cf28da6919248f621f7887c0ed656",
+    "utils/build_teal_geometric_business_template.mjs": "d62c1b54ce3e73cc1042f12a8ae0ded3f271959196c2a67d750bfae86bda6289",
+    "backend/main_api/tests/test_template_28.py": "c8e6ca924321b57f2cb02e488ce8f597336540a7bd95bd72f74deac6ac66e1b7",
+    "backend/main_api/template/template_28.json": "86c3ef599528984c3b4533fc515fec331be6bdc2dc04d637cb8c15b66b44b894",
+    "backend/main_api/template/template_28.jpg": "97b313f10db202b58e373bbbba057ef1448bdbd5bbd6605da797e28fd912a027",
+    "doc/assets/template_28_qa/production-document.json": "4453f8451043555ea8e74c37cbce52dde90654ca7b3366a2d2c1d4ba18c3938b",
+    "doc/assets/template_28_qa/青绿几何清新商务-18版式样例.pptx": "dbf42c95dd64068a854a7ddbd8d28598fd8e0c6f670f1f813518c724c79ebbd5",
+    "backend/main_api/template/template_28_asset_bg_cover_v1.jpg": "f70426f36452b3d460ef165229f460773f0361c0400e9139de81d38d0a855d1e",
+    "backend/main_api/template/template_28_asset_bg_content_v1.jpg": "420266bbb52554c614bdfe046ad023408c7f9b25f1678518b49b9d64d417d703",
+    "backend/main_api/template/template_28_asset_bg_section_v1.jpg": "0db8b48d6ed0c3aa8e918592ec5bc681c6f38cdc7072de08e1036f2c8db3e4d1",
+    "backend/main_api/template/template_28_asset_bg_end_v1.jpg": "388d1594c8e490c66ae70ff6f47a316960acb7d44cbce469a57363cc8a8e4f67",
+    "backend/main_api/template/template_28_asset_corner_ornament_v1.png": "740ce32679f51a98ae1ad84dd5be90653e5b28bcfac67d72cd266578b99200ac"
+  },
+  "evidence": {
+    "editor-verified/summary.json": "a4baccde51cf2fb5ee1ccf7cf5be2294c79ac323b6b5384702db36213e3d62b4",
+    "fit-summary.json": "5e0037c9cb9116c0ccce69e8c2ae6928b3d56f58214ccd0468cf3315e28efd79",
+    "online-save-summary.json": "50b609b6edaba96a0dea6906427d3e2ad597db2cbac68804ab8369089fbea2b7",
+    "persistence-summary.json": "972dfa81decfc5619c6f67993079565fa66276089c18aba7fc0b52f87f1a3749",
+    "image-failure-summary.json": "a2c093e387674c04b9ef25eb20383af083787c3d83e0921dee2b451cb91396b1",
+    "real-handler-summary.json": "61b60013a07210aea30cc060cf1d7928b8597269369848e48b059df544cd6c1d",
+    "native-render-summary.json": "aef0ea53b7182254ef425d13488a95a4c992245ccb0c8610db02ad7fa50207a2",
+    "native-text-comparison.json": "51d61b1dd25739a52cb219b8d26cadaf141386eacba6e409e8dc6439eff1bc58",
+    "runtime/runtime-summary.json": "4f3e9a594a00aae559727dcba3cac3299a4e7ba6264c60fb532c07e0e983b748"
+  },
+  "previewUrl": "http://127.0.0.1:5780/__template28",
+  "selectorUrl": "http://127.0.0.1:5780/app",
+  "onlineSavedExampleUrl": "http://127.0.0.1:5780/editor/0be5bc01-0224-59ee-9f58-62ef09059e15",
+  "productionWrites": false,
+  "gitDeliveryPerformed": false,
+  "closedAt": "2026-09-23T07:06:27.655748+00:00"
+}

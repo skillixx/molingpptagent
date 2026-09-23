@@ -1,0 +1,34 @@
+{
+  "CheckedAt": "2026-09-23T15:52:15.2704710+08:00",
+  "ApiPid": 44312,
+  "ReadyStatus": 200,
+  "Ready": {
+    "status": "ready",
+    "component": "main_api",
+    "release_channel": "production",
+    "release_commit": "58b968f954769bfdb10894dc9ab1e1fbff3718b7",
+    "dependencies": {
+      "outline": "up",
+      "content": "up",
+      "personaldb": "up",
+      "database": "up",
+      "moling": "up"
+    }
+  },
+  "PublicOrigin": "https://ppt.axicomin.cn",
+  "TemplateCount": 27,
+  "Template28": [
+    {
+      "name": "青绿几何·清新商务",
+      "id": "template_28",
+      "cover": "/api/data/template_28.jpg"
+    }
+  ],
+  "CoverStatus": 200,
+  "TemplateSlides": 18,
+  "UnauthenticatedStatus": 401,
+  "MissingTicketStatus": 400,
+  "EnvFileSha256": "BDB0ADD19F281D047324CC204C1FA0A26EC8526539D50C0636BD45E986DAB479",
+  "NoProxy": "127.0.0.1,localhost,::1",
+  "Scope": "main-api-reload-only"
+}

@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "templateId": "template_28",
+  "presentationId": "0be5bc01-0224-59ee-9f58-62ef09059e15",
+  "draftSavedByButton": true,
+  "titleEditedByKeyboard": true,
+  "imageReplacementSaved": true,
+  "realAutosave": true,
+  "fullDocumentEqualAfterApiRead": true,
+  "newBrowserContextReloadEqual": true,
+  "slideCount": 18,
+  "currentVersion": 3,
+  "database": "isolated-template28-runtime-sqlite",
+  "productionWrites": false,
+  "url": "http://127.0.0.1:5780/editor/0be5bc01-0224-59ee-9f58-62ef09059e15",
+  "errors": []
+}

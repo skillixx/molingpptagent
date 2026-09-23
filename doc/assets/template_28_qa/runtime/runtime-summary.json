@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_28",
+  "status": "PASS",
+  "branchFrontendUrl": "http://127.0.0.1:5780",
+  "branchApiUrl": "http://127.0.0.1:6802",
+  "selectorUrl": "http://127.0.0.1:5780/app",
+  "editorUrl": "http://127.0.0.1:5780/editor",
+  "registrationCount": 1,
+  "registeredName": "青绿几何·清新商务",
+  "cover": {
+    "src": "/api/data/template_28.jpg",
+    "complete": true,
+    "naturalWidth": 1350,
+    "naturalHeight": 760
+  },
+  "templateSelected": true,
+  "authenticationMode": "isolated-preview-identity",
+  "backendMode": "current-main-api-read-routes-isolated-test-config",
+  "editorEntryVisible": true,
+  "screenshots": [
+    "runtime-template-selected.png",
+    "runtime-editor-entry.png"
+  ],
+  "failedResponses": []
+}

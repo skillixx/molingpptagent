@@ -1,0 +1,114 @@
+{
+  "status": "PASS",
+  "sourceSha256": "dbf42c95dd64068a854a7ddbd8d28598fd8e0c6f670f1f813518c724c79ebbd5",
+  "slides": [
+    {
+      "slide": 1,
+      "expectedTexts": 2,
+      "nativeTextShapes": 2,
+      "missing": []
+    },
+    {
+      "slide": 2,
+      "expectedTexts": 2,
+      "nativeTextShapes": 2,
+      "missing": []
+    },
+    {
+      "slide": 3,
+      "expectedTexts": 6,
+      "nativeTextShapes": 6,
+      "missing": []
+    },
+    {
+      "slide": 4,
+      "expectedTexts": 8,
+      "nativeTextShapes": 8,
+      "missing": []
+    },
+    {
+      "slide": 5,
+      "expectedTexts": 10,
+      "nativeTextShapes": 10,
+      "missing": []
+    },
+    {
+      "slide": 6,
+      "expectedTexts": 12,
+      "nativeTextShapes": 12,
+      "missing": []
+    },
+    {
+      "slide": 7,
+      "expectedTexts": 14,
+      "nativeTextShapes": 14,
+      "missing": []
+    },
+    {
+      "slide": 8,
+      "expectedTexts": 3,
+      "nativeTextShapes": 3,
+      "missing": []
+    },
+    {
+      "slide": 9,
+      "expectedTexts": 3,
+      "nativeTextShapes": 3,
+      "missing": []
+    },
+    {
+      "slide": 10,
+      "expectedTexts": 5,
+      "nativeTextShapes": 5,
+      "missing": []
+    },
+    {
+      "slide": 11,
+      "expectedTexts": 7,
+      "nativeTextShapes": 7,
+      "missing": []
+    },
+    {
+      "slide": 12,
+      "expectedTexts": 9,
+      "nativeTextShapes": 9,
+      "missing": []
+    },
+    {
+      "slide": 13,
+      "expectedTexts": 3,
+      "nativeTextShapes": 3,
+      "missing": []
+    },
+    {
+      "slide": 14,
+      "expectedTexts": 3,
+      "nativeTextShapes": 3,
+      "missing": []
+    },
+    {
+      "slide": 15,
+      "expectedTexts": 5,
+      "nativeTextShapes": 5,
+      "missing": []
+    },
+    {
+      "slide": 16,
+      "expectedTexts": 7,
+      "nativeTextShapes": 7,
+      "missing": []
+    },
+    {
+      "slide": 17,
+      "expectedTexts": 9,
+      "nativeTextShapes": 9,
+      "missing": []
+    },
+    {
+      "slide": 18,
+      "expectedTexts": 2,
+      "nativeTextShapes": 2,
+      "missing": []
+    }
+  ]
+}

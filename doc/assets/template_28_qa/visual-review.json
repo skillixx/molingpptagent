@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "method": "assistant-visual-inspection",
+  "candidate": "template_28-b89a16a70e65",
+  "reviewed": [
+    "contact-1.jpg",
+    "contact-2.jpg",
+    "native-contact-1.jpg",
+    "native-contact-2.jpg",
+    "editor-verified/viewport-390x844.png",
+    "editor-verified/viewport-768x1024.png",
+    "fit-four-original-long-titles.png",
+    "editor-verified/reimported-image-17.png"
+  ],
+  "findings": [
+    "十八个版式无影响阅读的遮挡",
+    "四项长标题原文保留且仍为一页",
+    "手机预览与下载入口可见",
+    "透明装饰及图片比例正常"
+  ],
+  "nonBlockingDifferences": [
+    "浏览器与PowerPoint存在少量字体换行及细线透明度差异"
+  ]
+}

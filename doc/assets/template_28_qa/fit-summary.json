@@ -1,0 +1,193 @@
+{
+  "status": "PASS",
+  "manualPreview": {
+    "slides": 18,
+    "title": "青绿几何·清新商务"
+  },
+  "selectors": [
+    {
+      "width": 1920,
+      "height": 1080,
+      "selected": true,
+      "fits": true
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "selected": true,
+      "fits": true
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "selected": true,
+      "fits": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "selected": true,
+      "fits": true
+    }
+  ],
+  "stressPages": [
+    {
+      "case": "all-layouts",
+      "page": 1,
+      "textCount": 2,
+      "problems": []
+    },
+    {
+      "case": "all-layouts",
+      "page": 2,
+      "textCount": 2,
+      "problems": []
+    },
+    {
+      "case": "all-layouts",
+      "page": 3,
+      "textCount": 6,
+      "problems": []
+    },
+    {
+      "case": "all-layouts",
+      "page": 4,
+      "textCount": 8,
+      "problems": []
+    },
+    {
+      "case": "all-layouts",
+      "page": 5,
+      "textCount": 10,
+      "problems": []
+    },
+    {
+      "case": "all-layouts",
+      "page": 6,
+      "textCount": 12,
+      "problems": []
+    },
+    {
+      "case": "all-layouts",
+      "page": 7,
+      "textCount": 14,
+      "problems": []
+    },
+    {
+      "case": "all-layouts",
+      "page": 8,
+      "textCount": 3,
+      "problems": []
+    },
+    {
+      "case": "all-layouts",
+      "page": 9,
+      "textCount": 3,
+      "problems": []
+    },
+    {
+      "case": "all-layouts",
+      "page": 10,
+      "textCount": 5,
+      "problems": []
+    },
+    {
+      "case": "all-layouts",
+      "page": 11,
+      "textCount": 7,
+      "problems": []
+    },
+    {
+      "case": "all-layouts",
+      "page": 12,
+      "textCount": 9,
+      "problems": []
+    },
+    {
+      "case": "all-layouts",
+      "page": 13,
+      "textCount": 3,
+      "problems": []
+    },
+    {
+      "case": "all-layouts",
+      "page": 14,
+      "textCount": 3,
+      "problems": []
+    },
+    {
+      "case": "all-layouts",
+      "page": 15,
+      "textCount": 5,
+      "problems": []
+    },
+    {
+      "case": "all-layouts",
+      "page": 16,
+      "textCount": 7,
+      "problems": []
+    },
+    {
+      "case": "all-layouts",
+      "page": 17,
+      "textCount": 9,
+      "problems": []
+    },
+    {
+      "case": "all-layouts",
+      "page": 18,
+      "textCount": 2,
+      "problems": []
+    },
+    {
+      "case": "cover-supplementary-info",
+      "page": 1,
+      "textCount": 2,
+      "problems": []
+    },
+    {
+      "case": "four-original-long-titles",
+      "page": 1,
+      "textCount": 9,
+      "problems": []
+    },
+    {
+      "case": "long-body",
+      "page": 1,
+      "textCount": 3,
+      "problems": []
+    },
+    {
+      "case": "long-body",
+      "page": 2,
+      "textCount": 3,
+      "problems": []
+    },
+    {
+      "case": "long-directory",
+      "page": 1,
+      "textCount": 12,
+      "problems": []
+    },
+    {
+      "case": "long-directory",
+      "page": 2,
+      "textCount": 10,
+      "problems": []
+    },
+    {
+      "case": "long-directory",
+      "page": 3,
+      "textCount": 10,
+      "problems": []
+    },
+    {
+      "case": "four-images-long-titles",
+      "page": 1,
+      "textCount": 9,
+      "problems": []
+    }
+  ],
+  "previewWriteBlocked": true,
+  "errors": []
+}

@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "height": 405.0,
+  "slides": 18,
+  "renderer": "Microsoft PowerPoint COM",
+  "source": "D:\\moling\\TrainPPTAgent\\doc\\assets\\template_28_qa\\青绿几何清新商务-18版式样例.pptx",
+  "width": 720.0,
+  "output": "D:\\moling\\TrainPPTAgent\\doc\\assets\\template_28_qa\\native-renders",
+  "sourceSha256": "dbf42c95dd64068a854a7ddbd8d28598fd8e0c6f670f1f813518c724c79ebbd5"
+}

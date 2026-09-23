@@ -1,0 +1,69 @@
+{
+  "assets": [
+    {
+      "id": "A1",
+      "file": "template_28_asset_bg_cover_v1.jpg",
+      "size": [
+        1920,
+        1080
+      ],
+      "mode": "RGB",
+      "transparentFraction": null,
+      "bytes": 137095,
+      "sha256": "f70426f36452b3d460ef165229f460773f0361c0400e9139de81d38d0a855d1e",
+      "sourceCopy": "doc/assets/template_28_qa/source-images/A1.png"
+    },
+    {
+      "id": "A2",
+      "file": "template_28_asset_bg_content_v1.jpg",
+      "size": [
+        1920,
+        1080
+      ],
+      "mode": "RGB",
+      "transparentFraction": null,
+      "bytes": 124769,
+      "sha256": "420266bbb52554c614bdfe046ad023408c7f9b25f1678518b49b9d64d417d703",
+      "sourceCopy": "doc/assets/template_28_qa/source-images/A2.png"
+    },
+    {
+      "id": "A3",
+      "file": "template_28_asset_bg_section_v1.jpg",
+      "size": [
+        1920,
+        1080
+      ],
+      "mode": "RGB",
+      "transparentFraction": null,
+      "bytes": 136916,
+      "sha256": "0db8b48d6ed0c3aa8e918592ec5bc681c6f38cdc7072de08e1036f2c8db3e4d1",
+      "sourceCopy": "doc/assets/template_28_qa/source-images/A3.png"
+    },
+    {
+      "id": "A4",
+      "file": "template_28_asset_bg_end_v1.jpg",
+      "size": [
+        1920,
+        1080
+      ],
+      "mode": "RGB",
+      "transparentFraction": null,
+      "bytes": 125685,
+      "sha256": "388d1594c8e490c66ae70ff6f47a316960acb7d44cbce469a57363cc8a8e4f67",
+      "sourceCopy": "doc/assets/template_28_qa/source-images/A4.png"
+    },
+    {
+      "id": "A5",
+      "file": "template_28_asset_corner_ornament_v1.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "mode": "RGBA",
+      "transparentFraction": 0.9766444830246913,
+      "bytes": 307276,
+      "sha256": "740ce32679f51a98ae1ad84dd5be90653e5b28bcfac67d72cd266578b99200ac",
+      "sourceCopy": "doc/assets/template_28_qa/source-images/A5.png"
+    }
+  ]
+}

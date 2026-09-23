@@ -1,0 +1,36 @@
+{
+  "method": "GPT2 图片模板；内置 imagegen",
+  "actualModel": "工具未暴露",
+  "assets": [
+    {
+      "id": "A1",
+      "file": "template_28_asset_bg_cover_v1.jpg",
+      "source": "C:\\Users\\sk20\\.codex\\generated_images\\01a0ccc7-8d52-7270-9d36-be576acf33a9\\exec-27abe0f5-b514-4b03-a3a7-6f43b892a994.png",
+      "prompt": "Use case: stylized-concept. Asset type: full bleed background for an editable corporate PowerPoint template, wide 16:9 landscape. Low-poly faceted triangles in refined cyan, petrol teal and mint green. Flat softly shaded polygon surface, not a landscape scene, no perspective, no objects, no symbols, no text, letters, numbers, logos, watermark or border. Keep the central reading zones uncluttered and dark enough for white editable text added later. Professional restrained fresh business aesthetic. Generate one standalone image only, not a collage. Cover background: cyan-teal at top, a restrained desaturated mint glow at the bottom edges, larger visible polygon facets mostly around perimeter, smooth deep teal central 70%. No bright patches in the middle. Suggested palette #07596B #087587 #32A99C #71C6B0. Size 1920x1080 or same aspect."
+    },
+    {
+      "id": "A2",
+      "file": "template_28_asset_bg_content_v1.jpg",
+      "source": "C:\\Users\\sk20\\.codex\\generated_images\\01a0ccc7-8d52-7270-9d36-be576acf33a9\\exec-13052ef8-ef0d-46d0-ba99-e0ea410df6e9.png",
+      "prompt": "Use case: stylized-concept. Asset type: full bleed background for an editable corporate PowerPoint template, wide 16:9 landscape. Low-poly faceted triangles in refined cyan, petrol teal and mint green. Flat softly shaded polygon surface, not a landscape scene, no perspective, no objects, no symbols, no text, letters, numbers, logos, watermark or border. Keep the central reading zones uncluttered and dark enough for white editable text added later. Professional restrained fresh business aesthetic. Generate one standalone image only, not a collage. Content background: distinctly darker and quieter, deep petrol teal #074D59 throughout the central 85%, small subtle low-contrast polygon facets along edges, tiny mint accents in outermost corners only. No concentrated glowing highlights. Size 1920x1080 or same aspect."
+    },
+    {
+      "id": "A3",
+      "file": "template_28_asset_bg_section_v1.jpg",
+      "source": "C:\\Users\\sk20\\.codex\\generated_images\\01a0ccc7-8d52-7270-9d36-be576acf33a9\\exec-27ec152d-6904-4c6d-b8c9-c7713365d12a.png",
+      "prompt": "Use case: stylized-concept. Asset type: full bleed background for an editable corporate PowerPoint template, wide 16:9 landscape. Low-poly faceted triangles in refined cyan, petrol teal and mint green. Flat softly shaded polygon surface, not a landscape scene, no perspective, no objects, no symbols, no text, letters, numbers, logos, watermark or border. Keep the central reading zones uncluttered and dark enough for white editable text added later. Professional restrained fresh business aesthetic. Generate one standalone image only, not a collage. Chapter divider background: deep teal open reading zone on left quarter for a large number, broad dark cyan-teal open reading zone on the right for heading and description; slightly brighter mint triangular facets confined to bottom outer edge, asymmetrical subtle pattern. Size 1920x1080 or same aspect."
+    },
+    {
+      "id": "A4",
+      "file": "template_28_asset_bg_end_v1.jpg",
+      "source": "C:\\Users\\sk20\\.codex\\generated_images\\01a0ccc7-8d52-7270-9d36-be576acf33a9\\exec-b5965ea3-6ab6-4a58-ad86-0635d3256fc1.png",
+      "prompt": "Use case: stylized-concept. Asset type: full bleed background for an editable corporate PowerPoint template, wide 16:9 landscape. Low-poly faceted triangles in refined cyan, petrol teal and mint green. Flat softly shaded polygon surface, not a landscape scene, no perspective, no objects, no symbols, no text, letters, numbers, logos, watermark or border. Keep the central reading zones uncluttered and dark enough for white editable text added later. Professional restrained fresh business aesthetic. Generate one standalone image only, not a collage. Closing background: restrained calm deep cyan teal field, central 70% very quiet for a closing title; sparse elegant facets toward edges and a soft mint touch in the bottom corners. Less detail than the cover. Size 1920x1080 or same aspect."
+    },
+    {
+      "id": "A5",
+      "file": "template_28_asset_corner_ornament_v1.png",
+      "source": "C:\\Users\\sk20\\.codex\\generated_images\\01a0ccc7-8d52-7270-9d36-be576acf33a9\\exec-69016618-a7f4-46e7-ae88-9d2939ceed40.png",
+      "prompt": "Use case: stylized-concept. Asset type: transparent PNG corner ornament overlay for a widescreen 16:9 presentation. Generate actual RGBA transparency with a completely transparent center and background, not a checkerboard rendering. Four delicate small silver-white and very pale cyan botanical scroll flourishes, one located inside each extreme corner of the canvas, thin clean flowing tendrils and small leaf curves. Each ornament confined to the outer corner 15% width and 20% height. Leave the entire central 75% empty transparent. Keep all ornaments fully within frame with a small safe inset. No connected full border, no text, no letters, no numbers, no logo, no watermark, no solid backdrop, no shadows. Elegant understated fine-line ornamental detail to overlay on teal low-poly corporate slides. One standalone transparent image, 1920x1080 or same aspect."
+    }
+  ]
+}

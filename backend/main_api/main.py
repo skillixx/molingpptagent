@@ -587,6 +587,8 @@ async def get_templates():
         { "name": "深蓝电路·网络安全", "id": "template_26", "cover": "/api/data/template_26.jpg" },
         # 唯美清新模板使用蓝紫光斑装饰，业务图片槽与背景独立，文字和流程保持可编辑。
         { "name": "蓝紫光斑·唯美清新", "id": "template_27", "cover": "/api/data/template_27.jpg" },
+        # 青绿低多边形背景与可替换图片槽分离，十八个版式复用现有填充和编辑能力。
+        { "name": "青绿几何·清新商务", "id": "template_28", "cover": "/api/data/template_28.jpg" },
     ]
 
     return {"data": templates}
