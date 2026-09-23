@@ -1,0 +1,13 @@
+{
+  "method": "standard-git-push-via-existing-local-proxy",
+  "localFeatureCommit": "d40127f575da2761e7d8ccafde8368cf030c2ee2",
+  "feature": "d40127f575da2761e7d8ccafde8368cf030c2ee2",
+  "main": "58b968f954769bfdb10894dc9ab1e1fbff3718b7",
+  "checks": {
+    "total_count": 0
+  },
+  "statuses": {
+    "state": "pending",
+    "total_count": 0
+  }
+}

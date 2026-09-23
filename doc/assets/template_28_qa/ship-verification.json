@@ -1,0 +1,37 @@
+{
+  "status": "PASS",
+  "baseCommit": "58b968f954769bfdb10894dc9ab1e1fbff3718b7",
+  "featureCommit": "d40127f575da2761e7d8ccafde8368cf030c2ee2",
+  "verifiedTree": "d4001906a4761ffa9d2cdef1a346ff3ed620b7dc",
+  "validationMode": "isolated-index-checkout-with-shared-dependencies-only",
+  "codeMatchesVerifiedTree": true,
+  "backend": {
+    "tests": 43,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "frontend": {
+    "tests": 23,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "mergeTreeExitCode": 0,
+  "mergeTree": "d4001906a4761ffa9d2cdef1a346ff3ed620b7dc",
+  "mainIsAncestor": true,
+  "diffCheckExitCode": 0,
+  "typeCheckExitCode": 0,
+  "review": {
+    "coverage": "no remaining blocking findings",
+    "planCompletion": "matches 18 layouts and 5 assets; user confirmation recorded",
+    "fixedFinding": "P2 re-audit reset of human confirmation; regression red 1 failed/3 passed, green 4 passed",
+    "qaReproduction": "documented dependency versions and run order; unified package path override"
+  },
+  "authorization": {
+    "commitPush": true,
+    "createPullRequest": false,
+    "mergeMain": false,
+    "deploy": false
+  }
+}

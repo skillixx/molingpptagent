@@ -1,0 +1,16 @@
+{
+  "repository": {
+    "full_name": "skillixx/molingpptagent",
+    "private": false,
+    "default_branch": "main"
+  },
+  "main": {
+    "sha": "58b968f954769bfdb10894dc9ab1e1fbff3718b7",
+    "protected": false
+  },
+  "workflows": {
+    "total_count": 0,
+    "names": []
+  },
+  "rulesets": []
+}
