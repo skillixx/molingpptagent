@@ -122,5 +122,16 @@
   "files": 116,
   "workingBytes": 71591574,
   "credentialPatternMatches": [],
-  "excludedQaFiles": 87
+  "excludedQaFiles": 87,
+  "shippingSupplementFiles": [
+    "doc/唯美清新PPT模板远程交付评估.md",
+    "doc/唯美清新PPT模板开发Goal.md",
+    "doc/assets/template_27_qa/README.md",
+    "doc/assets/template_27_qa/closure-report.md",
+    "doc/assets/template_27_qa/ship-clean-backend.xml",
+    "doc/assets/template_27_qa/ship-clean-frontend.xml",
+    "doc/assets/template_27_qa/ship-verification.json",
+    "doc/assets/template_27_qa/ship-remote-after.json",
+    "doc/assets/template_27_qa/ship-allowlist.json"
+  ]
 }

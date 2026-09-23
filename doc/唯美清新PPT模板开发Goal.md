@@ -104,7 +104,7 @@ P6 保留一个最终人工确认点，不恢复 P0–P5 的逐阶段审批，�
 | 记录项 | 当前记录 |
 | --- | --- |
 | 实际 Goal 标识 | 当前任务 01a0c83b-53ea-7ef2-b2fe-a655462823c7 的总 Goal（人工确认后闭合） |
-| 实施工作目录、分支与候选版本 | D:/moling/TrainPPTAgent；codex/weimei-fresh-template；基线 180d26961e05cf6a5d855c37d96653b4ab0963a6，加本任务未提交修改 |
+| 实施工作目录、分支与候选版本 | D:/moling/TrainPPTAgent；codex/weimei-fresh-template；开发基线 180d26961e05cf6a5d855c37d96653b4ab0963a6；后续提交推送见 [远程交付评估](唯美清新PPT模板远程交付评估.md) |
 | 正式模板编号 | template_27 |
 | 当前阶段与阶段结果 | P0–P6 已完成；用户确认“确认完成”，候选 template_27-590cf3bd956a 未变化 |
 | 素材来源及实际工具信息 | 内置 imagegen，实际模型工具未暴露；见 assets/template_27_qa/asset-generation.json 和 asset-inspection.json |

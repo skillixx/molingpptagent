@@ -2,7 +2,7 @@
 
 当前状态：**用户已确认，P0–P6 已闭合**。模板编号为 `template_27`，名称为“蓝紫光斑·唯美清新”。用户于 2026-09-23 明确回复“确认完成”；当前候选及验证证据未发生变化。
 
-候选标识：`template_27-590cf3bd956a`。代码位于 `codex/weimei-fresh-template`，基线为 `180d26961e05cf6a5d855c37d96653b4ab0963a6`，本次改动尚未提交。确切文件指纹见 [候选清单](candidate-manifest.json)。
+候选标识：`template_27-590cf3bd956a`。代码位于 `codex/weimei-fresh-template`，人工验收基线为 `180d26961e05cf6a5d855c37d96653b4ab0963a6`。P6 历史文件指纹见 [候选清单](candidate-manifest.json)，后续提交、远程状态和 main 合并判断见 [远程交付评估](../../唯美清新PPT模板远程交付评估.md)。
 
 ## 查看与使用
 
@@ -79,4 +79,4 @@ node utils/build_weimei_fresh_template.mjs
 
 用户已明确回复“确认完成”。候选与证据指纹核对一致，本次复用有效验证结果，未重复运行功能测试。
 
-确认记录见 [closure-record.json](closure-record.json)，最终结果见 [闭合报告](closure-report.md)。P0–P6 已闭合；没有执行提交、推送、PR、合并或生产部署。
+确认记录见 [closure-record.json](closure-record.json)，最终结果见 [闭合报告](closure-report.md)。P0–P6 已闭合；闭合当时未执行 Git 交付，后续用户单独授权的提交推送见远程交付评估，不自动包含 main 合并或生产部署。

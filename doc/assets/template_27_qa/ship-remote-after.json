@@ -1,0 +1,23 @@
+{
+  "status": "PUSH_VERIFIED",
+  "method": "github-git-data-api",
+  "branch": "codex/weimei-fresh-template",
+  "head": "461bfc208db13fe5bfa1013b2f74656c291d71b6",
+  "main": "180d26961e05cf6a5d855c37d96653b4ab0963a6",
+  "headMatchesLocal": true,
+  "mainProtected": false,
+  "rules": [],
+  "workflowCount": 0,
+  "checkRunCount": 0,
+  "commitStatusCount": 0,
+  "combinedState": "pending",
+  "comparison": {
+    "status": "ahead",
+    "ahead_by": 2,
+    "behind_by": 0,
+    "total_commits": 2
+  },
+  "openPullRequests": [],
+  "mergedMain": false,
+  "deployed": false
+}

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="vitest tests" tests="27" failures="0" errors="0" time="74.735">
+    <testsuite name="src/hooks/__tests__/templateImageProtocol.spec.ts" timestamp="2026-09-23T02:38:18.328Z" hostname="DESKTOP-9T1EKTQ" tests="10" failures="0" errors="0" skipped="0" time="0.0095051">
+        <testcase classname="src/hooks/__tests__/templateImageProtocol.spec.ts" name="template image protocol &gt; 显式协议只允许替换content图片并保护decoration" time="0.0022706">
+        </testcase>
+        <testcase classname="src/hooks/__tests__/templateImageProtocol.spec.ts" name="template image protocol &gt; 没有显式协议时保持历史模板图片类型兼容" time="0.000464">
+        </testcase>
+        <testcase classname="src/hooks/__tests__/templateImageProtocol.spec.ts" name="template image protocol &gt; 非图片元素和未标注图片都不能进入替换链路" time="0.0004941">
+        </testcase>
+        <testcase classname="src/hooks/__tests__/templateImageProtocol.spec.ts" name="template image protocol &gt; 图文项替换后使用居中cover适配并清理旧裁剪" time="0.0018484">
+        </testcase>
+        <testcase classname="src/hooks/__tests__/templateImageProtocol.spec.ts" name="template image protocol &gt; 竖图内容图在PPTX导出时继续使用cover" time="0.000564">
+        </testcase>
+        <testcase classname="src/hooks/__tests__/templateImageProtocol.spec.ts" name="template image protocol &gt; 横图内容图在PPTX导出时继续使用cover" time="0.0002707">
+        </testcase>
+        <testcase classname="src/hooks/__tests__/templateImageProtocol.spec.ts" name="template image protocol &gt; 显式clip优先于imageFit，导出器不会重复应用cover" time="0.000382">
+        </testcase>
+        <testcase classname="src/hooks/__tests__/templateImageProtocol.spec.ts" name="template image protocol &gt; 没有显式clip时编辑器继续应用cover" time="0.0001825">
+        </testcase>
+        <testcase classname="src/hooks/__tests__/templateImageProtocol.spec.ts" name="template image protocol &gt; 编辑器替换圆形横图时保留椭圆裁切和原画框" time="0.0007897">
+        </testcase>
+        <testcase classname="src/hooks/__tests__/templateImageProtocol.spec.ts" name="template image protocol &gt; 编辑器替换未裁剪图片时保持历史居中缩放行为" time="0.000353">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/hooks/__tests__/useExportArchiveState.spec.ts" timestamp="2026-09-23T02:38:18.339Z" hostname="DESKTOP-9T1EKTQ" tests="1" failures="0" errors="0" skipped="0" time="0.0097722">
+        <testcase classname="src/hooks/__tests__/useExportArchiveState.spec.ts" name="PPTX归档重试状态 &gt; 导出弹窗卸载再创建时仍共享待重试状态" time="0.0081826">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/hooks/__tests__/useExportFailure.spec.ts" timestamp="2026-09-23T02:38:18.341Z" hostname="DESKTOP-9T1EKTQ" tests="2" failures="0" errors="0" skipped="0" time="0.0280794">
+        <testcase classname="src/hooks/__tests__/useExportFailure.spec.ts" name="PPTX 导出失败恢复 &gt; 读取图片失败也提供统一错误反馈，并允许原实例重试" time="0.0224041">
+        </testcase>
+        <testcase classname="src/hooks/__tests__/useExportFailure.spec.ts" name="PPTX 导出失败恢复 &gt; 写出失败仍反馈一次并重置状态" time="0.0023801">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/hooks/__tests__/useExportLines.spec.ts" timestamp="2026-09-23T02:38:18.342Z" hostname="DESKTOP-9T1EKTQ" tests="11" failures="0" errors="0" skipped="0" time="0.0433582">
+        <testcase classname="src/hooks/__tests__/useExportLines.spec.ts" name="PPTX 原生直线导出 &gt; 保留水平、垂直及斜线的原生类型和方向：{&quot;start&quot;:[0,0],&quot;end&quot;:[100,0],&quot;x&quot;:0.2,&quot;y&quot;:0.4,&quot;w&quot;:1,&quot;h&quot;:0,&quot;flipH&quot;:false,&quot;flipV&quot;:false}" time="0.0188066">
+        </testcase>
+        <testcase classname="src/hooks/__tests__/useExportLines.spec.ts" name="PPTX 原生直线导出 &gt; 保留水平、垂直及斜线的原生类型和方向：{&quot;start&quot;:[0,0],&quot;end&quot;:[0,100],&quot;x&quot;:0.2,&quot;y&quot;:0.4,&quot;w&quot;:0,&quot;h&quot;:1,&quot;flipH&quot;:false,&quot;flipV&quot;:false}" time="0.0034224">
+        </testcase>
+        <testcase classname="src/hooks/__tests__/useExportLines.spec.ts" name="PPTX 原生直线导出 &gt; 保留水平、垂直及斜线的原生类型和方向：{&quot;start&quot;:[100,0],&quot;end&quot;:[0,0],&quot;x&quot;:0.2,&quot;y&quot;:0.4,&quot;w&quot;:1,&quot;h&quot;:0,&quot;flipH&quot;:true,&quot;flipV&quot;:false}" time="0.0022215">
+        </testcase>
+        <testcase classname="src/hooks/__tests__/useExportLines.spec.ts" name="PPTX 原生直线导出 &gt; 保留水平、垂直及斜线的原生类型和方向：{&quot;start&quot;:[0,100],&quot;end&quot;:[0,0],&quot;x&quot;:0.2,&quot;y&quot;:0.4,&quot;w&quot;:0,&quot;h&quot;:1,&quot;flipH&quot;:false,&quot;flipV&quot;:true}" time="0.0031135">
+        </testcase>
+        <testcase classname="src/hooks/__tests__/useExportLines.spec.ts" name="PPTX 原生直线导出 &gt; 保留水平、垂直及斜线的原生类型和方向：{&quot;start&quot;:[100,0],&quot;end&quot;:[0,80],&quot;x&quot;:0.2,&quot;y&quot;:0.4,&quot;w&quot;:1,&quot;h&quot;:0.8,&quot;flipH&quot;:true,&quot;flipV&quot;:false}" time="0.0017298">
+        </testcase>
+        <testcase classname="src/hooks/__tests__/useExportLines.spec.ts" name="PPTX 原生直线导出 &gt; 保留水平、垂直及斜线的原生类型和方向：{&quot;start&quot;:[25,15],&quot;end&quot;:[85,65],&quot;x&quot;:0.45,&quot;y&quot;:0.55,&quot;w&quot;:0.6,&quot;h&quot;:0.5,&quot;flipH&quot;:false,&quot;flipV&quot;:false}" time="0.001709">
+        </testcase>
+        <testcase classname="src/hooks/__tests__/useExportLines.spec.ts" name="PPTX 原生直线导出 &gt; 保留直线的颜色、线宽和箭头方向" time="0.0035287">
+        </testcase>
+        <testcase classname="src/hooks/__tests__/useExportLines.spec.ts" name="PPTX 原生直线导出 &gt; 保留折线和曲线现有自定义几何路径" time="0.0016514">
+        </testcase>
+        <testcase classname="src/hooks/__tests__/useExportLines.spec.ts" name="PPTX 原生直线导出 &gt; 保留折线和曲线现有自定义几何路径" time="0.0015549">
+        </testcase>
+        <testcase classname="src/hooks/__tests__/useExportLines.spec.ts" name="PPTX 原生直线导出 &gt; 保留折线和曲线现有自定义几何路径" time="0.0017619">
+        </testcase>
+        <testcase classname="src/hooks/__tests__/useExportLines.spec.ts" name="PPTX 原生直线导出 &gt; 保留折线和曲线现有自定义几何路径" time="0.0013245">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/services/__tests__/exports.spec.ts" timestamp="2026-09-23T02:38:18.348Z" hostname="DESKTOP-9T1EKTQ" tests="2" failures="0" errors="0" skipped="0" time="0.0250481">
+        <testcase classname="src/services/__tests__/exports.spec.ts" name="downloadAndArchivePptx &gt; 先保存同一Blob，归档失败仍保留本地成功并允许用同一请求键重试" time="0.0091822">
+        </testcase>
+        <testcase classname="src/services/__tests__/exports.spec.ts" name="downloadAndArchivePptx &gt; 上传浏览器生成的原始Blob并携带独立SHA与幂等键" time="0.0137727">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/views/Editor/ExportDialog/__tests__/ExportPPTXLocation.spec.ts" timestamp="2026-09-23T02:38:18.349Z" hostname="DESKTOP-9T1EKTQ" tests="1" failures="0" errors="0" skipped="0" time="0.048305">
+        <testcase classname="src/views/Editor/ExportDialog/__tests__/ExportPPTXLocation.spec.ts" name="ExportPPTX 文件位置 &gt; 明确展示文件名和浏览器下载位置" time="0.0467727">
+        </testcase>
+    </testsuite>
+</testsuites>

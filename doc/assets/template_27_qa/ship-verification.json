@@ -1,0 +1,37 @@
+{
+  "status": "PASS",
+  "branch": "codex/weimei-fresh-template",
+  "codeCommit": "461bfc208db13fe5bfa1013b2f74656c291d71b6",
+  "baseCommit": "180d26961e05cf6a5d855c37d96653b4ab0963a6",
+  "backend": {
+    "tests": 40,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "frontend": {
+    "tests": 27,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "typeCheck": {
+    "command": "npm run type-check",
+    "exitCode": 0
+  },
+  "verificationMode": "isolated-worktree-of-committed-files",
+  "sharedOnlyDependencies": true,
+  "mergeTreeExitCode": 0,
+  "mergeTree": "e71af3771498b79d1a7a3ea7ff3008ff55e3c967",
+  "approvedCandidate": "template_27-590cf3bd956a",
+  "formatOnlyChangesFromApprovedSnapshot": [
+    "utils/run_template_27_handler_qa.py",
+    "utils/verify_template_27_browser.cjs",
+    "utils/verify_template_27_runtime.cjs",
+    "utils/verify_template_27_persistence.py"
+  ],
+  "productBehaviorChangesAfterApproval": false,
+  "prCreated": false,
+  "mergedMain": false,
+  "deployed": false
+}
