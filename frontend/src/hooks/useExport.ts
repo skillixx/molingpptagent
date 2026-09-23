@@ -483,9 +483,8 @@ export default () => {
     return isSVGBase64 || isSVGUrl
   }
 
-  // 导出PPTX文件
-  const exportPPTX = async (_slides: Slide[], masterOverwrite: boolean, ignoreMedia: boolean) => {
-    exporting.value = true
+  // 构造文档时的图片读取、图形处理也可能失败，由统一导出入口处理这些异常。
+  const buildPPTX = async (_slides: Slide[], masterOverwrite: boolean, ignoreMedia: boolean) => {
     const pptx = new pptxgen()
 
     if (viewportRatio.value === 0.625) pptx.layout = 'LAYOUT_16x10'
@@ -774,7 +773,19 @@ export default () => {
           }
           if (el.shadow) options.shadow = getShadowOption(el.shadow)
 
-          pptxSlide.addShape('custGeom' as pptxgen.ShapeType, options)
+          const straight = !el.broken && !el.broken2 && !el.curve && !el.cubic
+          if (straight) {
+            // 普通直线必须使用原生 line：水平/垂直 custGeom 的零高/零宽路径在重新导入时会退化。
+            // 用端点确定包围盒和翻转方向，同时保留起止箭头与非零局部偏移。
+            options.x = (el.left + Math.min(el.start[0], el.end[0])) / ratioPx2Inch.value
+            options.y = (el.top + Math.min(el.start[1], el.end[1])) / ratioPx2Inch.value
+            options.w = Math.abs(el.end[0] - el.start[0]) / ratioPx2Inch.value
+            options.h = Math.abs(el.end[1] - el.start[1]) / ratioPx2Inch.value
+            options.flipH = el.end[0] < el.start[0]
+            options.flipV = el.end[1] < el.start[1]
+            delete options.points
+          }
+          pptxSlide.addShape((straight ? 'line' : 'custGeom') as pptxgen.ShapeType, options)
         }
 
         else if (el.type === 'chart') {
@@ -1002,7 +1013,14 @@ export default () => {
       }
     }
 
+    return pptx
+  }
+
+  // 导出PPTX文件：构造与写出共享错误反馈和加载状态复位，失败后可以正常重试。
+  const exportPPTX = async (_slides: Slide[], masterOverwrite: boolean, ignoreMedia: boolean) => {
+    exporting.value = true
     try {
+      const pptx = await buildPPTX(_slides, masterOverwrite, ignoreMedia)
       // PptxGenJS只生成一次Blob；本地保存和对象归档必须共享这个对象，禁止二次生成造成字节漂移。
       const generated = await pptx.write({ outputType: 'blob' })
       const blob = generated instanceof Blob
