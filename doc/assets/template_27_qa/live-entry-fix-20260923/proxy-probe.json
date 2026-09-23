@@ -1,0 +1,27 @@
+{
+  "activeTaskCount": 0,
+  "systemProxyKeysBefore": [
+    "ftp",
+    "http",
+    "https"
+  ],
+  "localProxyBypass": true,
+  "checks": [
+    {
+      "dependency": "outline",
+      "status": 200
+    },
+    {
+      "dependency": "content",
+      "status": 200
+    },
+    {
+      "dependency": "personaldb",
+      "status": 200
+    },
+    {
+      "dependency": "moling",
+      "status": 404
+    }
+  ]
+}

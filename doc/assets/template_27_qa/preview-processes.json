@@ -1,0 +1,30 @@
+{
+  "mode": "isolated-read-only-api-fixed-data-preview",
+  "listeners": [
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 6801,
+      "OwningProcess": 34980
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 5779,
+      "OwningProcess": 47548
+    }
+  ],
+  "processes": [
+    {
+      "ProcessId": 47548,
+      "ExecutablePath": "C:\\nvm4w\\nodejs\\node.exe",
+      "CommandLine": "\"C:\\nvm4w\\nodejs\\node.exe\" D:\\moling\\TrainPPTAgent\\utils\\serve_template_27_frontend.mjs"
+    },
+    {
+      "ProcessId": 34980,
+      "ExecutablePath": "C:\\Program Files\\Python312\\python.exe",
+      "CommandLine": "\"C:\\Program Files\\Python312\\python.exe\" D:\\moling\\TrainPPTAgent\\utils\\serve_template_27_preview.py"
+    }
+  ],
+  "workingDirectory": "D:\\moling\\TrainPPTAgent",
+  "frontend": "http://127.0.0.1:5779",
+  "api": "http://127.0.0.1:6801"
+}

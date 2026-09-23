@@ -1,0 +1,9 @@
+{
+  "hostDb": 1,
+  "activeTasks": [],
+  "apiPid": 35816,
+  "apiCwd": "D:\\moling\\TrainPPTAgent\\backend\\main_api",
+  "apiCommand": "python -m uvicorn main:app --host 127.0.0.1 --port 6800 --no-access-log",
+  "releaseCommit": "180d26961e05cf6a5d855c37d96653b4ab0963a6",
+  "releaseChannel": "production"
+}

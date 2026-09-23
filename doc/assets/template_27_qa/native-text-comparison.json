@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "renderer": {
+    "progId": "PowerPoint.Application",
+    "reportedName": "Microsoft PowerPoint",
+    "reportedVersion": "12.0",
+    "installedPath": "D:\\wps\\WPSOFF~1\\1210~1.285\\office6",
+    "actualFamily": "WPS Office"
+  },
+  "slides": 21,
+  "nativeEditableTextCount": 156,
+  "missingTexts": [],
+  "sourceSha256": "823d6dc927544d9839006f839a37e9481033e92846ed5b1182f336d692405a64"
+}

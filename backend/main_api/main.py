@@ -585,6 +585,8 @@ async def get_templates():
         { "name": "蓝黑城市·融资路演", "id": "template_25", "cover": "/api/data/template_25.jpg" },
         # 深蓝电路模板将背景、锁形及电路装饰与业务图片分层，正文和关系图保持可编辑。
         { "name": "深蓝电路·网络安全", "id": "template_26", "cover": "/api/data/template_26.jpg" },
+        # 唯美清新模板使用蓝紫光斑装饰，业务图片槽与背景独立，文字和流程保持可编辑。
+        { "name": "蓝紫光斑·唯美清新", "id": "template_27", "cover": "/api/data/template_27.jpg" },
     ]
 
     return {"data": templates}

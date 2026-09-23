@@ -1,0 +1,17 @@
+{
+  "status": "CLOSED",
+  "candidate": "template_27-590cf3bd956a",
+  "templateId": "template_27",
+  "confirmation": {
+    "message": "确认完成",
+    "source": "current-thread-user-message",
+    "candidate": "template_27-590cf3bd956a",
+    "recordedAt": "2026-09-23T01:41:57.143481+00:00",
+    "recordedAtAsiaShanghai": "2026-09-23T09:41:57.143481+08:00"
+  },
+  "candidateUnchanged": true,
+  "evidenceUnchanged": true,
+  "repeatedFunctionalTests": false,
+  "gitDelivery": false,
+  "productionDeployment": false
+}

@@ -1,0 +1,7 @@
+{
+  "prompt": "Use case: photorealistic-natural. Generate one 16:9 landscape editorial photograph for a presentation sample about thoughtful workplace design: a bright contemporary collaborative workspace overlooking a green urban courtyard, pale ash wood, blue upholstered seating, large softly sunlit windows, a round meeting table with a closed notebook and simple glass vase. Architectural photograph, calm and realistic, balanced details across the frame so landscape, square and portrait crops remain useful. No people, no readable text, no logos, no watermarks, no decorative slide frame or UI. This is a business content photograph that will be placed in editable image slots, not a slide background.",
+  "source": "C:\\Users\\sk20\\.codex\\generated_images\\01a0c83b-53ea-7ef2-b2fe-a655462823c7\\exec-2ca5594e-29ef-4683-8497-9b0cb1179159.png",
+  "method": "built-in imagegen",
+  "actualModel": "工具未暴露",
+  "role": "isolated editable business image fixture; not decoration"
+}

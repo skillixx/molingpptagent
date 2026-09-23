@@ -1,0 +1,27 @@
+{
+  "repo": {
+    "httpStatus": 200,
+    "defaultBranch": "main",
+    "private": false,
+    "permissions": {
+      "admin": true,
+      "maintain": true,
+      "push": true,
+      "triage": true,
+      "pull": true
+    }
+  },
+  "main": {
+    "httpStatus": 200,
+    "sha": "180d26961e05cf6a5d855c37d96653b4ab0963a6",
+    "protected": false
+  },
+  "rules": {
+    "httpStatus": 200,
+    "rules": []
+  },
+  "workflows": {
+    "httpStatus": 200,
+    "workflowCount": 0
+  }
+}

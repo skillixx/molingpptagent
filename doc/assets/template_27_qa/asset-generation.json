@@ -1,0 +1,45 @@
+{
+  "templateId": "template_27",
+  "method": "built-in imagegen",
+  "requestedMethod": "GPT2 图片模板",
+  "actualModel": "工具未暴露",
+  "sourceReferenceSha256": "1afc890ced8aa79bccc4dad0e67965bb652f6c9889f20524c317bb614d0bd1e9",
+  "assets": [
+    {
+      "id": "A1",
+      "prompt": "Use case: productivity-visual. Create ONE finished raster asset for a Chinese 16:9 PowerPoint template named Blue Violet Bokeh Fresh. Cohesive art direction: dreamy blue and lavender optical bokeh, restrained cyan and tiny warm pink-gold edge highlights, premium frosted-glass atmosphere. This is a background/decorative asset only, never a complete slide. Absolutely no text, letters, numbers, logos, watermarks, UI, borders, charts, people or identifiable objects. Landscape 16:9, ideally 1920x1080. Cover background: deep royal blue to soft purple gradient, subtle out-of-focus cyan and pink-violet bokeh near edges, tiny warm-gold bloom upper right. The central 70 percent must remain dark-blue, smooth and quiet so white titles are easy to read. No ring (ring is a separate asset).",
+      "source": "C:\\Users\\sk20\\.codex\\generated_images\\01a0c83b-53ea-7ef2-b2fe-a655462823c7\\exec-55c7dc7d-9b8c-4217-a0fc-4384ca3fe928.png",
+      "file": "template_27_asset_bg_cover_v1.jpg"
+    },
+    {
+      "id": "A2",
+      "prompt": "Use case: productivity-visual. Create ONE finished raster asset for a Chinese 16:9 PowerPoint template named Blue Violet Bokeh Fresh. Cohesive art direction: dreamy blue and lavender optical bokeh, restrained cyan and tiny warm pink-gold edge highlights, premium frosted-glass atmosphere. This is a background/decorative asset only, never a complete slide. Absolutely no text, letters, numbers, logos, watermarks, UI, borders, charts, people or identifiable objects. Landscape 16:9, ideally 1920x1080. Body background: very restrained dark blue #14306c to indigo #252958. Faint soft lavender optical bokeh only at corners, slight cyan tint top left. Central 80 percent smooth uniformly dark and low-contrast, completely suitable for dense white text. Sparse and understated. No ring.",
+      "source": "C:\\Users\\sk20\\.codex\\generated_images\\01a0c83b-53ea-7ef2-b2fe-a655462823c7\\exec-13c7eada-c0c2-4b17-bd11-de63c5ec4bf8.png",
+      "file": "template_27_asset_bg_content_v1.jpg"
+    },
+    {
+      "id": "A3",
+      "prompt": "Use case: productivity-visual. Create ONE finished raster asset for a Chinese 16:9 PowerPoint template named Blue Violet Bokeh Fresh. Cohesive art direction: dreamy blue and lavender optical bokeh, restrained cyan and tiny warm pink-gold edge highlights, premium frosted-glass atmosphere. This is a background/decorative asset only, never a complete slide. Absolutely no text, letters, numbers, logos, watermarks, UI, borders, charts, people or identifiable objects. Landscape 16:9, ideally 1920x1080. Chapter background: an atmospheric diffuse blue-violet light haze restricted to the left third and far-left edge; right two-thirds quiet deep blue for a white chapter title and paragraph. Tiny lavender corner bokeh, no bright spots in reading region. No ring.",
+      "source": "C:\\Users\\sk20\\.codex\\generated_images\\01a0c83b-53ea-7ef2-b2fe-a655462823c7\\exec-fedc7d87-81bb-48ef-9c21-7dee12c66502.png",
+      "file": "template_27_asset_bg_section_v1.jpg"
+    },
+    {
+      "id": "A4",
+      "prompt": "Use case: productivity-visual. Create ONE finished raster asset for a Chinese 16:9 PowerPoint template named Blue Violet Bokeh Fresh. Cohesive art direction: dreamy blue and lavender optical bokeh, restrained cyan and tiny warm pink-gold edge highlights, premium frosted-glass atmosphere. This is a background/decorative asset only, never a complete slide. Absolutely no text, letters, numbers, logos, watermarks, UI, borders, charts, people or identifiable objects. Landscape 16:9, ideally 1920x1080. Closing background: deep-blue to muted violet, extremely sparse soft cyan/lavender bokeh at upper border and distant corners, one very subtle warm-gold corner glow. Large dark clear middle, serene minimal ending page atmosphere. No ring.",
+      "source": "C:\\Users\\sk20\\.codex\\generated_images\\01a0c83b-53ea-7ef2-b2fe-a655462823c7\\exec-8e1142aa-feb4-4304-8a2f-da7376b40c7c.png",
+      "file": "template_27_asset_bg_end_v1.jpg"
+    },
+    {
+      "id": "A5",
+      "prompt": "Use case: productivity-visual. Create ONE finished raster asset for a Chinese 16:9 PowerPoint template named Blue Violet Bokeh Fresh. Cohesive art direction: dreamy blue and lavender optical bokeh, restrained cyan and tiny warm pink-gold edge highlights, premium frosted-glass atmosphere. This is a background/decorative asset only, never a complete slide. Absolutely no text, letters, numbers, logos, watermarks, UI, borders, charts, people or identifiable objects. Square transparent PNG, ideally 1200x1200. A single elegant incomplete circular glass ring, viewed straight-on, a few slender offset segments of frosted translucent silver-white and pale ice-blue glass, subtle specular highlights along outer edge. Ring centered with safe transparent margin, clear hollow center. Genuinely transparent alpha background and center, no checkered pattern, no opaque backdrop, no cast shadow outside the ring. No numerals, clock marks or icon. Keep luminous material visible over a dark blue background.",
+      "source": "C:\\Users\\sk20\\.codex\\generated_images\\01a0c83b-53ea-7ef2-b2fe-a655462823c7\\exec-0809c7d2-8301-4fe2-afbd-2c1f46df8ca4.png",
+      "file": "template_27_asset_glass_ring_v1.png"
+    },
+    {
+      "id": "A6",
+      "prompt": "Use case: productivity-visual. Create ONE finished raster asset for a Chinese 16:9 PowerPoint template named Blue Violet Bokeh Fresh. Cohesive art direction: dreamy blue and lavender optical bokeh, restrained cyan and tiny warm pink-gold edge highlights, premium frosted-glass atmosphere. This is a background/decorative asset only, never a complete slide. Absolutely no text, letters, numbers, logos, watermarks, UI, borders, charts, people or identifiable objects. Wide transparent PNG, about 8:3 landscape, ideally 1600x600. A sparse horizontal decorative cluster of very soft translucent blue-violet optical bokeh discs with just two tiny warm pink-gold points. Light concentrated at the lower-left portion, naturally fading to full alpha transparency toward the right and upper edge. Smooth subtle luminance, for overlaying the corner of a dark slide. Genuinely transparent background, no black/white backdrop, no checkered grid, no rectangular visible edge.",
+      "source": "C:\\Users\\sk20\\.codex\\generated_images\\01a0c83b-53ea-7ef2-b2fe-a655462823c7\\exec-b81e0f30-9277-4407-9da9-954f9a062bbd.png",
+      "file": "template_27_asset_corner_glow_v1.png"
+    }
+  ]
+}

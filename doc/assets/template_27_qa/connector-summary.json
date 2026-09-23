@@ -1,0 +1,210 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "page": 18,
+      "lines": [
+        {
+          "type": "line",
+          "id": "EzvqCILgIP",
+          "width": 1,
+          "left": 56,
+          "top": 114,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            888,
+            0
+          ],
+          "style": "solid",
+          "color": "#7088BF",
+          "points": [
+            "",
+            ""
+          ]
+        },
+        {
+          "type": "line",
+          "id": "eJoMDprUxT",
+          "width": 1,
+          "left": 188,
+          "top": 209.99999999999997,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            160,
+            0
+          ],
+          "style": "solid",
+          "color": "#7088BF",
+          "points": [
+            "",
+            ""
+          ]
+        },
+        {
+          "type": "line",
+          "id": "EL2VWC1-90",
+          "width": 1,
+          "left": 419.99999999999994,
+          "top": 209.99999999999997,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            160,
+            0
+          ],
+          "style": "solid",
+          "color": "#7088BF",
+          "points": [
+            "",
+            ""
+          ]
+        },
+        {
+          "type": "line",
+          "id": "WGR1QvCLWV",
+          "width": 1,
+          "left": 652,
+          "top": 209.99999999999997,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            160,
+            0
+          ],
+          "style": "solid",
+          "color": "#7088BF",
+          "points": [
+            "",
+            ""
+          ]
+        }
+      ],
+      "zeroShapes": [],
+      "nativeNodeCount": 17,
+      "connectorMovedByKeyboard": true
+    },
+    {
+      "page": 19,
+      "lines": [
+        {
+          "type": "line",
+          "id": "7MkIHV7UEh",
+          "width": 1,
+          "left": 56,
+          "top": 114,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            888,
+            0
+          ],
+          "style": "solid",
+          "color": "#7088BF",
+          "points": [
+            "",
+            ""
+          ]
+        },
+        {
+          "type": "line",
+          "id": "btiP9ZUgk3",
+          "width": 1,
+          "left": 172,
+          "top": 209.99999999999997,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            110,
+            0
+          ],
+          "style": "solid",
+          "color": "#7088BF",
+          "points": [
+            "",
+            ""
+          ]
+        },
+        {
+          "type": "line",
+          "id": "-3t48VhlcH",
+          "width": 1,
+          "left": 354,
+          "top": 209.99999999999997,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            110,
+            0
+          ],
+          "style": "solid",
+          "color": "#7088BF",
+          "points": [
+            "",
+            ""
+          ]
+        },
+        {
+          "type": "line",
+          "id": "pPNT_CPvbS",
+          "width": 1,
+          "left": 536,
+          "top": 209.99999999999997,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            110,
+            0
+          ],
+          "style": "solid",
+          "color": "#7088BF",
+          "points": [
+            "",
+            ""
+          ]
+        },
+        {
+          "type": "line",
+          "id": "fLe4lfK2a8",
+          "width": 1,
+          "left": 718,
+          "top": 209.99999999999997,
+          "start": [
+            0,
+            0
+          ],
+          "end": [
+            110,
+            0
+          ],
+          "style": "solid",
+          "color": "#7088BF",
+          "points": [
+            "",
+            ""
+          ]
+        }
+      ],
+      "zeroShapes": [],
+      "nativeNodeCount": 21,
+      "connectorMovedByKeyboard": true
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "ready": {
+    "status": "ready",
+    "component": "main_api",
+    "release_channel": "production",
+    "release_commit": "180d26961e05cf6a5d855c37d96653b4ab0963a6",
+    "dependencies": {
+      "outline": "up",
+      "content": "up",
+      "personaldb": "up",
+      "database": "up",
+      "moling": "up"
+    }
+  },
+  "templateCount": 26,
+  "target": [
+    {
+      "name": "蓝紫光斑·唯美清新",
+      "id": "template_27",
+      "cover": "/api/data/template_27.jpg"
+    }
+  ],
+  "coverStatus": 200,
+  "layoutCount": 21,
+  "source": "normal-local-entry-5778-to-6800"
+}

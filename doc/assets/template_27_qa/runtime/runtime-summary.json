@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_27",
+  "status": "PASS",
+  "branchFrontendUrl": "http://127.0.0.1:5779",
+  "branchApiUrl": "http://127.0.0.1:6801",
+  "selectorUrl": "http://127.0.0.1:5779/app",
+  "editorUrl": "http://127.0.0.1:5779/editor",
+  "registrationCount": 1,
+  "registeredName": "蓝紫光斑·唯美清新",
+  "cover": {
+    "src": "/api/data/template_27.jpg",
+    "complete": true,
+    "naturalWidth": 1350,
+    "naturalHeight": 760
+  },
+  "templateSelected": true,
+  "authenticationMode": "isolated-preview-identity",
+  "backendMode": "current-main-api-read-routes-isolated-test-config",
+  "editorEntryVisible": true,
+  "screenshots": [
+    "runtime-template-selected.png",
+    "runtime-editor-entry.png"
+  ],
+  "failedResponses": []
+}

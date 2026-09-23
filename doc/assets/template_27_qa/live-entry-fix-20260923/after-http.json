@@ -1,0 +1,50 @@
+[
+  {
+    "url": "http://127.0.0.1:6800/healthz",
+    "response": {
+      "status": "ok",
+      "component": "main_api",
+      "release_channel": "production",
+      "release_commit": "180d26961e05cf6a5d855c37d96653b4ab0963a6"
+    }
+  },
+  {
+    "url": "http://127.0.0.1:6800/readyz",
+    "error": "Response status code does not indicate success: 503 (Service Unavailable)."
+  },
+  {
+    "url": "http://127.0.0.1:5778/api/templates",
+    "response": {
+      "count": 26,
+      "target": [
+        {
+          "name": "蓝紫光斑·唯美清新",
+          "id": "template_27",
+          "cover": "/api/data/template_27.jpg"
+        }
+      ]
+    }
+  },
+  {
+    "url": "http://127.0.0.1:5778/api/data/template_27.jpg",
+    "status": 200,
+    "contentType": [
+      "image/jpeg"
+    ]
+  },
+  {
+    "url": "http://127.0.0.1:5778/api/data/template_27.json",
+    "status": 200,
+    "contentType": [
+      "application/json"
+    ]
+  },
+  {
+    "url": "http://127.0.0.1:6800/auth/me",
+    "status": 401
+  },
+  {
+    "url": "http://127.0.0.1:6800/enter",
+    "status": 400
+  }
+]

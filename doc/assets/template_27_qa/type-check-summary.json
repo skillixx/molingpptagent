@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "command": "npm run type-check",
+  "exitCode": 0,
+  "sourceSha256": "cbd2f7b247ab2ecc8953b1f224e1a6719d9c4f4f994ef8119a4b293a2ac84e04",
+  "note": "当前导出器候选已通过 vue-tsc，记录已完成命令的实际退出结果"
+}

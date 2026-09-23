@@ -1,0 +1,113 @@
+{
+  "status": "COMPLETED",
+  "candidate": "template_27-590cf3bd956a",
+  "humanConfirmation": {
+    "message": "确认完成",
+    "source": "current-thread-user-message",
+    "candidate": "template_27-590cf3bd956a",
+    "recordedAt": "2026-09-23T01:41:57.143481+00:00",
+    "recordedAtAsiaShanghai": "2026-09-23T09:41:57.143481+08:00"
+  },
+  "createdAt": "2026-09-22T11:27:35.650605+00:00",
+  "templateId": "template_27",
+  "layoutCount": 21,
+  "assetCount": 6,
+  "branch": "codex/weimei-fresh-template",
+  "baseCommit": "180d26961e05cf6a5d855c37d96653b4ab0963a6",
+  "productionFiles": {
+    "backend/main_api/main.py": "1ca07f0c002c518b5acef44bc749eee42427b48d7ddb4825d688728baf0ca2ec",
+    "frontend/src/hooks/useExport.ts": "cbd2f7b247ab2ecc8953b1f224e1a6719d9c4f4f994ef8119a4b293a2ac84e04",
+    "utils/build_weimei_fresh_template.mjs": "66ebdbc6783dcb5b7884c84d656df264e4e2dd11c0518de598b05aba6ee55c81",
+    "backend/main_api/template/template_27.json": "dcf800027d9f87415d5ea7d0b836dcefa22416fb1746c1052711e134f2128351",
+    "backend/main_api/template/template_27.jpg": "9236484fca61caa4e70e88b0a09243b0aa7dc4db470c4544e113b7139f5e3ccf",
+    "backend/main_api/template/template_27_asset_bg_cover_v1.jpg": "3ffc5d4ffca392846e1141261462ac9c8be545edb0a39df913ccc369e95cd3d2",
+    "backend/main_api/template/template_27_asset_bg_content_v1.jpg": "243f0b06929eda437c8f4bfcff81d0146dec083bf50b5c4fc77257189e75455b",
+    "backend/main_api/template/template_27_asset_bg_section_v1.jpg": "0b5c1f5b7f957111bbdbc0ea4ca6b47d43e396fd80ba6012947626226619fcdc",
+    "backend/main_api/template/template_27_asset_bg_end_v1.jpg": "a72eff8c3cd1dd14f4105a28d89a2fd723013a291b15131674a67a05cc13f080",
+    "backend/main_api/template/template_27_asset_glass_ring_v1.png": "ab63f6658a0427cc4a8b5f6af4964a6c024bcbedfd21ec10bfe26860eb604942",
+    "backend/main_api/template/template_27_asset_corner_glow_v1.png": "aa5fb4e6c1fc2831d16bd6f5c930297ec6b39f183303a07dc0c529276c21cdca",
+    "doc/assets/template_27_qa/production-document.json": "e2a67cacaeea1def79510b7201a57b9d4cc2a9b024099295af4f8c571e6c78f9",
+    "doc/assets/template_27_qa/唯美清新-21版式样例.pptx": "823d6dc927544d9839006f839a37e9481033e92846ed5b1182f336d692405a64",
+    "backend/main_api/tests/test_template_27.py": "9400d23649e79179ba0f7a0c6f045c1dbc4ccb774db040eb909d764be68c1cb6",
+    "frontend/src/hooks/__tests__/useExportLines.spec.ts": "4e713a957ba7a69050edf28d1bd5d352c046df213d29f185fbd0d7dafdc3ab8a",
+    "frontend/src/hooks/__tests__/useExportFailure.spec.ts": "2a02979fc3158f03cce4e6cd7ac019110d99aa35df89fe4e67c649988197b21f",
+    "utils/process_weimei_template_assets.py": "df3d0154802bf204896a511ebc34dc55783c348f7248805ccd017be5404f9a90",
+    "utils/build_template_27_qa_document.py": "85e589e741a195064810fcca001f457eff740e1189ca01dcc753fc500c6d6136",
+    "utils/run_template_27_handler_qa.py": "cdff6937051b3c92b279f79c3e2a6276eddc509eceea848b00bafe78286b4622",
+    "utils/verify_template_27_browser.cjs": "769831edf3cbcb337e39cb65e549858826cb7501e29202e42f8096a7942aeee0",
+    "utils/verify_template_27_runtime.cjs": "a4d1f3b79a458f2e0f091a96dfae30321d6258902626699059268441e0382264",
+    "utils/verify_template_27_fit.cjs": "1d7d3be6d5cff52d87b2ef652a92bb6439ac1f71655f54eb308c2a14df7d753e",
+    "utils/verify_template_27_persistence.py": "618443fae79c251bc60cb559553d3c24d07fcb9852f6d85ee185d29be5f5701d",
+    "utils/verify_template_27_connectors.cjs": "323623b5a36d8dc5b9d143a0d5ca4cde355bd4f382f2d2d41332f981c2cd99f5",
+    "utils/verify_template_27_image_failure.cjs": "dce03c927d296dd3acb3cdd6d26ff8dc657a11c496a0bd156979442e8e7bb69f",
+    "utils/serve_template_27_preview.py": "d23d2ebb7a12baa9edd2f6e828fbb450550cfcd567d01d2ef1dcc0cfa9ea121f",
+    "utils/serve_template_27_frontend.mjs": "f39bbb616acdbb95e62fb622c62bb8c27f150c900c9d3d9c6673b1a95e60fb17",
+    "utils/finalize_template_27_qa.py": "5dd1c1da243e5049ca2c3157a1f33fc783a41e0b135c1ae3123ba58fbd8b881d"
+  },
+  "backendTests": {
+    "tests": 40,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "frontendTests": {
+    "tests": 27,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "evidence": {
+    "real-handler-summary.json": {
+      "status": "PASS",
+      "sha256": "232359a2ee1576e735539a5a01742efe6921583c79fe44b6c840852004a03b71"
+    },
+    "persistence-summary.json": {
+      "status": "PASS",
+      "sha256": "a87ffe8a3c93215d090e3d9b86904c5cc179beed9b36e2168d715196f4baa9dd"
+    },
+    "editor-verified/summary.json": {
+      "status": "PASS",
+      "sha256": "cd87d56c34600feb64a417349ea3774b2fe2911a7cfdeeb31337c313f9f4b26d"
+    },
+    "runtime/runtime-summary.json": {
+      "status": "PASS",
+      "sha256": "ab62bba7027d2a0aea7d6b3f738e738b8c36c45727f8022f18f6eaeb2bb3c51e"
+    },
+    "fit-summary.json": {
+      "status": "PASS",
+      "sha256": "39754542b975af5f3bd40d7b9bdbcda97c825755778bc82513ba773288e4c2d8"
+    },
+    "connector-summary.json": {
+      "status": "PASS",
+      "sha256": "e7b4d8efc22cf5682d08937e4166c3f5c86b008736bfe0e7c653a4e37d6d1377"
+    },
+    "image-failure-summary.json": {
+      "status": "PASS",
+      "sha256": "a2c093e387674c04b9ef25eb20383af083787c3d83e0921dee2b451cb91396b1"
+    },
+    "type-check-summary.json": {
+      "status": "PASS",
+      "sha256": "e26a26fda9697b313cf4252784d554e95a426abee8f645013e3d6746e8256644"
+    }
+  },
+  "nativePresentationRender": {
+    "status": "PASS",
+    "renderer": {
+      "progId": "PowerPoint.Application",
+      "reportedName": "Microsoft PowerPoint",
+      "reportedVersion": "12.0",
+      "installedPath": "D:\\wps\\WPSOFF~1\\1210~1.285\\office6",
+      "actualFamily": "WPS Office"
+    },
+    "slides": 21,
+    "nativeEditableTextCount": 156,
+    "missingTexts": [],
+    "sourceSha256": "823d6dc927544d9839006f839a37e9481033e92846ed5b1182f336d692405a64"
+  },
+  "preview": "http://127.0.0.1:5779/__template27",
+  "selector": "http://127.0.0.1:5779/app",
+  "runtimeMode": "isolated-read-only-api-fixed-data-preview",
+  "gitDelivery": false,
+  "productionDeployment": false,
+  "completedAt": "2026-09-23T01:41:57.143481+00:00"
+}

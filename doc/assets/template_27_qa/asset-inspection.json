@@ -1,0 +1,82 @@
+{
+  "assets": [
+    {
+      "id": "A1",
+      "file": "template_27_asset_bg_cover_v1.jpg",
+      "size": [
+        1920,
+        1080
+      ],
+      "mode": "RGB",
+      "transparentFraction": null,
+      "bytes": 161413,
+      "sha256": "3ffc5d4ffca392846e1141261462ac9c8be545edb0a39df913ccc369e95cd3d2",
+      "sourceCopy": "doc/assets/template_27_qa/source-images/A1.png"
+    },
+    {
+      "id": "A2",
+      "file": "template_27_asset_bg_content_v1.jpg",
+      "size": [
+        1920,
+        1080
+      ],
+      "mode": "RGB",
+      "transparentFraction": null,
+      "bytes": 117897,
+      "sha256": "243f0b06929eda437c8f4bfcff81d0146dec083bf50b5c4fc77257189e75455b",
+      "sourceCopy": "doc/assets/template_27_qa/source-images/A2.png"
+    },
+    {
+      "id": "A3",
+      "file": "template_27_asset_bg_section_v1.jpg",
+      "size": [
+        1920,
+        1080
+      ],
+      "mode": "RGB",
+      "transparentFraction": null,
+      "bytes": 165764,
+      "sha256": "0b5c1f5b7f957111bbdbc0ea4ca6b47d43e396fd80ba6012947626226619fcdc",
+      "sourceCopy": "doc/assets/template_27_qa/source-images/A3.png"
+    },
+    {
+      "id": "A4",
+      "file": "template_27_asset_bg_end_v1.jpg",
+      "size": [
+        1920,
+        1080
+      ],
+      "mode": "RGB",
+      "transparentFraction": null,
+      "bytes": 127187,
+      "sha256": "a72eff8c3cd1dd14f4105a28d89a2fd723013a291b15131674a67a05cc13f080",
+      "sourceCopy": "doc/assets/template_27_qa/source-images/A4.png"
+    },
+    {
+      "id": "A5",
+      "file": "template_27_asset_glass_ring_v1.png",
+      "size": [
+        1200,
+        1200
+      ],
+      "mode": "RGBA",
+      "transparentFraction": 0.8334423611111111,
+      "bytes": 709971,
+      "sha256": "ab63f6658a0427cc4a8b5f6af4964a6c024bcbedfd21ec10bfe26860eb604942",
+      "sourceCopy": "doc/assets/template_27_qa/source-images/A5.png"
+    },
+    {
+      "id": "A6",
+      "file": "template_27_asset_corner_glow_v1.png",
+      "size": [
+        1600,
+        600
+      ],
+      "mode": "RGBA",
+      "transparentFraction": 0.7445,
+      "bytes": 512247,
+      "sha256": "aa5fb4e6c1fc2831d16bd6f5c930297ec6b39f183303a07dc0c529276c21cdca",
+      "sourceCopy": "doc/assets/template_27_qa/source-images/A6.png"
+    }
+  ]
+}

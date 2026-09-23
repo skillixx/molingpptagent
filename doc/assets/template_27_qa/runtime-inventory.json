@@ -1,0 +1,36 @@
+{
+  "listeners": [
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 6800,
+      "OwningProcess": 35816
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 5778,
+      "OwningProcess": 45464
+    }
+  ],
+  "processes": [
+    {
+      "ProcessId": 35816,
+      "ExecutablePath": "C:\\Program Files\\Python312\\python.exe",
+      "CommandLine": "\"C:\\Program Files\\Python312\\python.exe\" -m uvicorn main:app --host 127.0.0.1 --port 6800 --no-access-log"
+    },
+    {
+      "ProcessId": 45464,
+      "ExecutablePath": "C:\\nvm4w\\nodejs\\node.exe",
+      "CommandLine": "\"C:\\nvm4w\\nodejs\\node.exe\" D:\\moling\\TrainPPTAgent\\frontend\\node_modules\\vite\\bin\\vite.js --host 127.0.0.1 --port 5778 --strictPort"
+    }
+  ],
+  "verifiedWorkingDirectories": {
+    "35816": "D:\\moling\\TrainPPTAgent\\backend\\main_api",
+    "45464": "D:\\moling\\TrainPPTAgent\\frontend"
+  },
+  "planned": {
+    "cwd": "D:\\moling\\TrainPPTAgent",
+    "apiPort": 6801,
+    "branch": "codex/weimei-fresh-template",
+    "frontendPort": 5779
+  }
+}

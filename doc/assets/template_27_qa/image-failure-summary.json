@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "code": "PPTX_EXPORT_FAILED",
+  "exportingReset": true,
+  "visibleError": true,
+  "retrySucceeded": true,
+  "sameExporterInstance": true
+}
