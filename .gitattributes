@@ -7,6 +7,6 @@ backend/main_api/template/template_26.json text eol=lf
 backend/main_api/template/template_29.json text eol=lf
 
 # 音乐模板证据按原始字节计算摘要，禁止 Git 转换这些快照的行尾。
-doc/assets/template_29_qa/*.json -text
-doc/assets/template_29_qa/editor-verified/*.json -text
-doc/assets/template_29_qa/runtime/*.json -text
+doc/assets/template_29_qa/*.json -text whitespace=cr-at-eol
+doc/assets/template_29_qa/editor-verified/*.json -text whitespace=cr-at-eol
+doc/assets/template_29_qa/runtime/*.json -text whitespace=cr-at-eol
