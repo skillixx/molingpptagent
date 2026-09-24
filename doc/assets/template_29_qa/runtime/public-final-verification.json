@@ -1,0 +1,83 @@
+{
+  "status": "PASS",
+  "healthz": {
+    "http": 200,
+    "body": {
+      "status": "ok",
+      "component": "main_api",
+      "release_channel": "production",
+      "release_commit": "bd58ec3a994b13b967a3c2817799614a2aa89d8c"
+    }
+  },
+  "readyz": {
+    "http": 200,
+    "body": {
+      "status": "ready",
+      "component": "main_api",
+      "release_channel": "production",
+      "release_commit": "bd58ec3a994b13b967a3c2817799614a2aa89d8c",
+      "dependencies": {
+        "outline": "up",
+        "content": "up",
+        "personaldb": "up",
+        "database": "up",
+        "moling": "up"
+      }
+    }
+  },
+  "http://127.0.0.1:6800": {
+    "count": 28,
+    "template": {
+      "name": "乐章雅韵·音乐主题",
+      "id": "template_29",
+      "cover": "/api/data/template_29.jpg"
+    }
+  },
+  "https://ppt.axicomin.cn/api": {
+    "count": 28,
+    "template": {
+      "name": "乐章雅韵·音乐主题",
+      "id": "template_29",
+      "cover": "/api/data/template_29.jpg"
+    }
+  },
+  "formalAssets": [
+    {
+      "file": "template_29.json",
+      "http": 200,
+      "matchesCandidate": true
+    },
+    {
+      "file": "template_29.jpg",
+      "http": 200,
+      "matchesCandidate": true
+    },
+    {
+      "file": "template_29_asset_bg_cover_v1.jpg",
+      "http": 200,
+      "matchesCandidate": true
+    },
+    {
+      "file": "template_29_asset_bg_content_v1.jpg",
+      "http": 200,
+      "matchesCandidate": true
+    },
+    {
+      "file": "template_29_asset_bg_section_v1.jpg",
+      "http": 200,
+      "matchesCandidate": true
+    },
+    {
+      "file": "template_29_asset_bg_end_v1.jpg",
+      "http": 200,
+      "matchesCandidate": true
+    },
+    {
+      "file": "template_29_asset_violin_v1.png",
+      "http": 200,
+      "matchesCandidate": true
+    }
+  ],
+  "auth/me": 401,
+  "enter": 400
+}

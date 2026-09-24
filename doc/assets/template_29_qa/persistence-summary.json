@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "templateId": "template_29",
+  "slides": 18,
+  "draftCreated": true,
+  "editedDocumentPersisted": true,
+  "fullStateEqualAfterReopen": true,
+  "staleWriteRejected": true,
+  "ownerIsolation": true,
+  "database": "isolated-temporary-sqlite",
+  "productionWrites": false,
+  "sourceSha256": "f475c51fced25f8a9ebe6573c42a57fdd9394b6290efd659ebb9dad2a39226e0"
+}

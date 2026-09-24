@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "typeCheck": {
+    "command": "npm run type-check",
+    "exitCode": 0
+  },
+  "frontendTests": {
+    "command": "npx vitest run src/hooks/__tests__/templateImageProtocol.spec.ts src/views/Editor/__tests__/PresentationAutosaveStatus.spec.ts src/editor/__tests__/presentationAutosaveEngine.spec.ts",
+    "passed": 27,
+    "exitCode": 0
+  },
+  "review": {
+    "standardsBlockingFindings": 0,
+    "specBlockingFindings": 0,
+    "resolvedNotes": [
+      "测试图片缺失时给出明确准备步骤",
+      "颜色变量按音乐模板实际含义命名"
+    ]
+  },
+  "sourceFingerprints": {
+    "frontend/src/hooks/useExport.ts": "cbd2f7b247ab2ecc8953b1f224e1a6719d9c4f4f994ef8119a4b293a2ac84e04",
+    "frontend/src/hooks/useImport.ts": "d60ce2683e6b2eb88d58654a6b7d4ee31ad9308584828304f3db0c752c5a5aef",
+    "frontend/src/hooks/templateImageProtocol.ts": "c02b3d10e24dad6f982ba38673230737293cf28da6919248f621f7887c0ed656"
+  },
+  "deliveryTests": {
+    "command": ".venv/Scripts/python.exe -m pytest backend/main_api/tests/test_template_29_delivery.py -q",
+    "passed": 4,
+    "exitCode": 0
+  }
+}

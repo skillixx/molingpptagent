@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "templateId": "template_29",
+  "status": "PASS",
+  "branchFrontendUrl": "http://127.0.0.1:5781",
+  "branchApiUrl": "http://127.0.0.1:6803",
+  "selectorUrl": "http://127.0.0.1:5781/app",
+  "editorUrl": "http://127.0.0.1:5781/editor",
+  "registrationCount": 1,
+  "registeredName": "乐章雅韵·音乐主题",
+  "cover": {
+    "src": "/api/data/template_29.jpg",
+    "complete": true,
+    "naturalWidth": 1350,
+    "naturalHeight": 760
+  },
+  "templateSelected": true,
+  "authenticationMode": "isolated-preview-identity",
+  "backendMode": "current-main-api-read-routes-isolated-test-config",
+  "editorEntryVisible": true,
+  "screenshots": [
+    "runtime-template-selected.png",
+    "runtime-editor-entry.png"
+  ],
+  "failedResponses": []
+}

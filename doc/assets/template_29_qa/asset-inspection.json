@@ -1,0 +1,62 @@
+{
+  "source": "C:\\Users\\sk20\\Desktop\\创意风格 (7).pptx",
+  "sourceSha256": "796219d5f3cd53a20760062228836ad414e3c4b70c99f95b059f32f50326e065",
+  "generationUsed": false,
+  "assets": [
+    {
+      "id": "A1",
+      "file": "template_29_asset_bg_cover_v1.jpg",
+      "size": [
+        1920,
+        1080
+      ],
+      "mode": "RGB",
+      "sha256": "235540a6504691d200bb0cb6b42351c6f498bd256cf70dcfac0c5aed0a217736",
+      "source": "原稿装饰提取与 PowerPoint COM 渲染"
+    },
+    {
+      "id": "A2",
+      "file": "template_29_asset_bg_content_v1.jpg",
+      "size": [
+        1920,
+        1080
+      ],
+      "mode": "RGB",
+      "sha256": "809ccc4f0a1d29beba7de542e370cbea189706d409515a83f11e64802e658003",
+      "source": "原稿装饰提取与 PowerPoint COM 渲染"
+    },
+    {
+      "id": "A3",
+      "file": "template_29_asset_bg_section_v1.jpg",
+      "size": [
+        1920,
+        1080
+      ],
+      "mode": "RGB",
+      "sha256": "1a5ab66a07e59dbf2a7cabcac8d54a35c62d72bdecb0a17f94eb3b9e591401ca",
+      "source": "原稿装饰提取与 PowerPoint COM 渲染"
+    },
+    {
+      "id": "A4",
+      "file": "template_29_asset_bg_end_v1.jpg",
+      "size": [
+        1920,
+        1080
+      ],
+      "mode": "RGB",
+      "sha256": "d0dfd64f263ef4cc9538475f833cbd019b62206968f4114d0f7faa32fa216548",
+      "source": "原稿装饰提取与 PowerPoint COM 渲染"
+    },
+    {
+      "id": "A5",
+      "file": "template_29_asset_violin_v1.png",
+      "size": [
+        1200,
+        1600
+      ],
+      "mode": "RGBA",
+      "sha256": "353c751db34720ac1fac6f5a51da5abf2c56ef9f0655094f2ccdedf88c4a38c7",
+      "source": "ppt/media/image6.png；保留透明通道等比缩放"
+    }
+  ]
+}

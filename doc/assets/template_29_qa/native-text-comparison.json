@@ -1,0 +1,96 @@
+{
+  "status": "PASS",
+  "sourceSha256": "ff299c573296a2131d090a2df0b3c2cba5bdfdb5c21b18fbe938b6c8beea9736",
+  "slides": [
+    {
+      "page": 1,
+      "nativeEditableTexts": 2,
+      "missing": []
+    },
+    {
+      "page": 2,
+      "nativeEditableTexts": 2,
+      "missing": []
+    },
+    {
+      "page": 3,
+      "nativeEditableTexts": 6,
+      "missing": []
+    },
+    {
+      "page": 4,
+      "nativeEditableTexts": 8,
+      "missing": []
+    },
+    {
+      "page": 5,
+      "nativeEditableTexts": 10,
+      "missing": []
+    },
+    {
+      "page": 6,
+      "nativeEditableTexts": 12,
+      "missing": []
+    },
+    {
+      "page": 7,
+      "nativeEditableTexts": 14,
+      "missing": []
+    },
+    {
+      "page": 8,
+      "nativeEditableTexts": 3,
+      "missing": []
+    },
+    {
+      "page": 9,
+      "nativeEditableTexts": 3,
+      "missing": []
+    },
+    {
+      "page": 10,
+      "nativeEditableTexts": 5,
+      "missing": []
+    },
+    {
+      "page": 11,
+      "nativeEditableTexts": 7,
+      "missing": []
+    },
+    {
+      "page": 12,
+      "nativeEditableTexts": 9,
+      "missing": []
+    },
+    {
+      "page": 13,
+      "nativeEditableTexts": 3,
+      "missing": []
+    },
+    {
+      "page": 14,
+      "nativeEditableTexts": 3,
+      "missing": []
+    },
+    {
+      "page": 15,
+      "nativeEditableTexts": 5,
+      "missing": []
+    },
+    {
+      "page": 16,
+      "nativeEditableTexts": 7,
+      "missing": []
+    },
+    {
+      "page": 17,
+      "nativeEditableTexts": 9,
+      "missing": []
+    },
+    {
+      "page": 18,
+      "nativeEditableTexts": 2,
+      "missing": []
+    }
+  ]
+}

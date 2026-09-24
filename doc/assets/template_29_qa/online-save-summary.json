@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "templateId": "template_29",
+  "presentationId": "3f509efc-4251-5427-8c01-7a6ddcd46f87",
+  "draftSavedByButton": true,
+  "titleEditedByKeyboard": true,
+  "imageReplacementSaved": true,
+  "realAutosave": true,
+  "saveFailureVisible": true,
+  "saveRetrySucceeded": true,
+  "fullDocumentEqualAfterApiRead": true,
+  "newBrowserContextReloadEqual": true,
+  "slideCount": 18,
+  "currentVersion": 3,
+  "database": "isolated-template29-runtime-sqlite",
+  "productionWrites": false,
+  "url": "http://127.0.0.1:5781/editor/3f509efc-4251-5427-8c01-7a6ddcd46f87",
+  "errors": []
+}
