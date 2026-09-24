@@ -1,0 +1,57 @@
+{
+  "status": "PASS",
+  "baseMain": "bd58ec3a994b13b967a3c2817799614a2aa89d8c",
+  "featureCommit": "d787425fc0a7c07f6817e796a798df70ed98aead",
+  "packagingCommit": "d187f53de58f33931b2ab80c1d2fe8c624948d30",
+  "testedTree": "dfa7a6cf9ac2a54f2fad457738a8743b625707cf",
+  "tests": {
+    "backend": {
+      "tests": 43,
+      "failures": 0,
+      "errors": 0
+    },
+    "frontend": {
+      "tests": 27,
+      "failures": 0,
+      "errors": 0
+    }
+  },
+  "typeCheck": {
+    "command": "npm run type-check",
+    "exitCode": 0
+  },
+  "isolatedFinalizerExit": 0,
+  "checkedOriginalCandidate": "template_29-aa7f0cfaeed2",
+  "originalHumanConfirmationPreserved": {
+    "message": "确认完成",
+    "candidate": "template_29-aa7f0cfaeed2",
+    "confirmedAt": "2026-09-24T02:07:07.976176+00:00",
+    "confirmedAtLocal": "2026-09-24T10:07:07+08:00",
+    "source": "本任务用户明确回复"
+  },
+  "sourceDifferencesOnlyLineEndings": [
+    "backend/main_api/main.py",
+    "backend/main_api/workers/template_renderer.py",
+    "frontend/src/hooks/useExport.ts",
+    "frontend/src/hooks/useImport.ts",
+    "frontend/src/hooks/templateImageProtocol.ts",
+    "utils/build_music_theme_template.mjs",
+    "utils/build_template_29_qa_document.py",
+    "utils/render_template_29_native.ps1",
+    "utils/run_template_29_handler_qa.py",
+    "utils/serve_template_29_frontend.mjs",
+    "utils/serve_template_29_preview.py",
+    "utils/verify_template_29_browser.cjs",
+    "utils/verify_template_29_fit.cjs",
+    "utils/verify_template_29_image_failure.cjs",
+    "utils/verify_template_29_online_save.cjs",
+    "utils/verify_template_29_persistence.py",
+    "utils/verify_template_29_runtime.cjs",
+    "backend/main_api/tests/test_template_29.py",
+    "backend/main_api/tests/test_template_29_delivery.py"
+  ],
+  "reviewBlockingFindings": 0,
+  "snapshotHashPreserved": true,
+  "secretsScan": "PASS",
+  "unrelatedFilesExcluded": true
+}

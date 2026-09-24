@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="vitest tests" tests="27" failures="0" errors="0" time="18.676">
+    <testsuite name="src/hooks/__tests__/templateImageProtocol.spec.ts" timestamp="2026-09-24T02:54:44.496Z" hostname="DESKTOP-9T1EKTQ" tests="10" failures="0" errors="0" skipped="0" time="0.0094383">
+        <testcase classname="src/hooks/__tests__/templateImageProtocol.spec.ts" name="template image protocol &gt; 显式协议只允许替换content图片并保护decoration" time="0.0023093">
+        </testcase>
+        <testcase classname="src/hooks/__tests__/templateImageProtocol.spec.ts" name="template image protocol &gt; 没有显式协议时保持历史模板图片类型兼容" time="0.0004783">
+        </testcase>
+        <testcase classname="src/hooks/__tests__/templateImageProtocol.spec.ts" name="template image protocol &gt; 非图片元素和未标注图片都不能进入替换链路" time="0.0003968">
+        </testcase>
+        <testcase classname="src/hooks/__tests__/templateImageProtocol.spec.ts" name="template image protocol &gt; 图文项替换后使用居中cover适配并清理旧裁剪" time="0.001727">
+        </testcase>
+        <testcase classname="src/hooks/__tests__/templateImageProtocol.spec.ts" name="template image protocol &gt; 竖图内容图在PPTX导出时继续使用cover" time="0.000572">
+        </testcase>
+        <testcase classname="src/hooks/__tests__/templateImageProtocol.spec.ts" name="template image protocol &gt; 横图内容图在PPTX导出时继续使用cover" time="0.0002915">
+        </testcase>
+        <testcase classname="src/hooks/__tests__/templateImageProtocol.spec.ts" name="template image protocol &gt; 显式clip优先于imageFit，导出器不会重复应用cover" time="0.0003524">
+        </testcase>
+        <testcase classname="src/hooks/__tests__/templateImageProtocol.spec.ts" name="template image protocol &gt; 没有显式clip时编辑器继续应用cover" time="0.0001924">
+        </testcase>
+        <testcase classname="src/hooks/__tests__/templateImageProtocol.spec.ts" name="template image protocol &gt; 编辑器替换圆形横图时保留椭圆裁切和原画框" time="0.0006785">
+        </testcase>
+        <testcase classname="src/hooks/__tests__/templateImageProtocol.spec.ts" name="template image protocol &gt; 编辑器替换未裁剪图片时保持历史居中缩放行为" time="0.0003438">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/editor/__tests__/presentationAutosaveEngine.spec.ts" timestamp="2026-09-24T02:54:44.507Z" hostname="DESKTOP-9T1EKTQ" tests="12" failures="0" errors="0" skipped="0" time="0.0368463">
+        <testcase classname="src/editor/__tests__/presentationAutosaveEngine.spec.ts" name="PresentationAutosaveEngine &gt; 连续输入只在2秒静默后保存最新稿" time="0.0150736">
+        </testcase>
+        <testcase classname="src/editor/__tests__/presentationAutosaveEngine.spec.ts" name="PresentationAutosaveEngine &gt; 模板正文编辑进入云端保存快照且不退化成标题修改" time="0.0014951">
+        </testcase>
+        <testcase classname="src/editor/__tests__/presentationAutosaveEngine.spec.ts" name="PresentationAutosaveEngine &gt; 慢请求期间只允许一个请求在途，完成后立即保存排队的最新稿" time="0.0019254">
+        </testcase>
+        <testcase classname="src/editor/__tests__/presentationAutosaveEngine.spec.ts" name="PresentationAutosaveEngine &gt; 断网保留草稿，恢复网络后必须用户确认才重试" time="0.0011111">
+        </testcase>
+        <testcase classname="src/editor/__tests__/presentationAutosaveEngine.spec.ts" name="PresentationAutosaveEngine &gt; 关闭再打开时只提示恢复同身份同作品且同服务端版本的本地稿" time="0.0037322">
+        </testcase>
+        <testcase classname="src/editor/__tests__/presentationAutosaveEngine.spec.ts" name="PresentationAutosaveEngine &gt; 保存失败不丢草稿且保存中或脏稿触发离开保护" time="0.0009871">
+        </testcase>
+        <testcase classname="src/editor/__tests__/presentationAutosaveEngine.spec.ts" name="PresentationAutosaveEngine &gt; Vue集成只做浅层响应式，写入草稿仍是可结构化克隆的纯对象" time="0.0022797">
+        </testcase>
+        <testcase classname="src/editor/__tests__/presentationAutosaveEngine.spec.ts" name="PresentationAutosaveEngine &gt; IndexedDB不可用时仍执行云端保存并暴露本地兜底告警" time="0.0017754">
+        </testcase>
+        <testcase classname="src/editor/__tests__/presentationAutosaveEngine.spec.ts" name="PresentationAutosaveEngine &gt; 同一作品重新加载时旧草稿读取结果不能覆盖新一轮激活" time="0.0007123">
+        </testcase>
+        <testcase classname="src/editor/__tests__/presentationAutosaveEngine.spec.ts" name="PresentationAutosaveEngine &gt; 409进入冲突态并保留后续本地编辑，不再自动重复覆盖" time="0.0012343">
+        </testcase>
+        <testcase classname="src/editor/__tests__/presentationAutosaveEngine.spec.ts" name="PresentationAutosaveEngine &gt; 冲突后可加载最新或把本地稿另存为版本1副本" time="0.0021043">
+        </testcase>
+        <testcase classname="src/editor/__tests__/presentationAutosaveEngine.spec.ts" name="PresentationAutosaveEngine &gt; 加载最新失败时不删除本地冲突稿，仍可选择另存副本" time="0.0007813">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/views/Editor/__tests__/PresentationAutosaveStatus.spec.ts" timestamp="2026-09-24T02:54:44.513Z" hostname="DESKTOP-9T1EKTQ" tests="5" failures="0" errors="0" skipped="0" time="0.0560076">
+        <testcase classname="src/views/Editor/__tests__/PresentationAutosaveStatus.spec.ts" name="PresentationAutosaveStatus &gt; 脏稿可手动保存且按钮有真实回调" time="0.0356823">
+        </testcase>
+        <testcase classname="src/views/Editor/__tests__/PresentationAutosaveStatus.spec.ts" name="PresentationAutosaveStatus &gt; 本地草稿提供恢复和忽略两个可操作选择" time="0.0065603">
+        </testcase>
+        <testcase classname="src/views/Editor/__tests__/PresentationAutosaveStatus.spec.ts" name="PresentationAutosaveStatus &gt; 联网恢复后只有用户确认才调用重试" time="0.0039797">
+        </testcase>
+        <testcase classname="src/views/Editor/__tests__/PresentationAutosaveStatus.spec.ts" name="PresentationAutosaveStatus &gt; 离线按钮明确禁用而不是伪装可保存" time="0.0035912">
+        </testcase>
+        <testcase classname="src/views/Editor/__tests__/PresentationAutosaveStatus.spec.ts" name="PresentationAutosaveStatus &gt; 版本冲突提供加载最新和另存副本两个真实动作" time="0.0045117">
+        </testcase>
+    </testsuite>
+</testsuites>
