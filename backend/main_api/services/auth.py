@@ -88,8 +88,11 @@ class AuthService:
             max_age_seconds=int(self._absolute_ttl.total_seconds()),
         )
 
-    def resolve_session(self, raw_token: str, *, now: datetime | None = None) -> AppSession | None:
+    def resolve_session(self, raw_token: str | None, *, now: datetime | None = None) -> AppSession | None:
         """绝对过期、空闲过期或撤销任一成立即fail-closed。"""
+        # 未登录的本地或过期请求必须返回未认证，不能把 None 传给哈希函数触发 500。
+        if not raw_token:
+            return None
         current_time = _utc_naive(now or self._now_factory())
         row = self._sessions.get_by_raw_token(raw_token)
         if row is None or row.revoked_at is not None:

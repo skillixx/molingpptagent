@@ -186,13 +186,28 @@ class PresentationTemplateRenderer:
             if semantic.get("type") != "content" or not isinstance(data, dict):
                 continue
             requested = self._requested_layout_kind(data)
-            matching = [page for page in layouts if page.get("type") == "content" and page.get("layoutKind") == requested] if requested else []
+            requested_variant = self._text(data.get("variant"))
+            matching = [page for page in layouts if page.get("type") == "content" and (
+                page.get("layoutKind") == requested if requested else (
+                    bool(requested_variant) and self._variant_matches(page, requested_variant)
+                )
+            )]
             count = len(self._content_items(data.get("items")))
             # 未知布局继续交给原校验报错，不把拼错的类型静默变成正文。
             if not matching:
                 continue
             eligible = [page for page in matching if self._item_count_allowed(page, count)]
+            if requested_variant:
+                # 显式选择的带图/无图变体只用自己的容量判断，不能被同类另一版式降级。
+                variant_pages = [page for page in eligible if self._variant_matches(page, requested_variant)]
+                if not variant_pages and any(page.get("variantKey") for page in matching):
+                    # 未知变体留给严格选版报错，不能借降级策略静默吞掉拼写错误。
+                    continue
+                if variant_pages:
+                    eligible = variant_pages
             images = self._semantic_images(semantic.get("images"))
+            # 同一变体可有带图和无图形式，只比较与本次真实图片数量匹配的候选。
+            eligible = [page for page in eligible if self._image_count(page) == len(images)]
             if eligible and all(self._special_layout_fits(page, data, len(images)) for page in eligible):
                 continue
             data.pop("layoutKind", None)
@@ -215,7 +230,8 @@ class PresentationTemplateRenderer:
     def _special_layout_fits(self, page: dict[str, Any], data: dict[str, Any], image_count: int) -> bool:
         """使用最终槽位的最小字号和换行模型，不以普通正文页容量推测专项页。"""
         elements = page.get("elements", [])
-        if image_count and len(self._image_slots(elements)) != image_count:
+        # 严格图片协议也检查零张输入，避免缺图专项页被误判为可用后在填图阶段失败。
+        if (image_count or self._strict_image_count(page)) and len(self._image_slots(elements)) != image_count:
             return False
         items = self._content_items(data.get("items"))
         values = {
@@ -532,12 +548,13 @@ class PresentationTemplateRenderer:
             plan_errors: list[TemplateRenderError] = []
             for target_count in range(1, max_item_slots + 1):
                 try:
-                    item_capacity = self._content_item_capacity(
+                    capacity_slots = self._content_item_slots(
                         content_templates,
                         target_count,
                         prefer_images=bool(semantic_images),
                         image_count=len(semantic_images),
                     )
+                    item_capacity = min((self._slot_readable_capacity(slot) for slot in capacity_slots), default=1)
                     expanded_items = [
                         expanded
                         for item in raw_items
@@ -545,6 +562,7 @@ class PresentationTemplateRenderer:
                             item,
                             item_capacity,
                             preserve_native_charts=preserve_native_charts,
+                            slots=capacity_slots,
                         )
                     ]
                     candidate_batches = self._content_title_safe_batches(
@@ -729,29 +747,38 @@ class PresentationTemplateRenderer:
             raise TemplateRenderError("模板缺少内容图片槽位", code="TEMPLATE_MISSING_SLOT")
 
         image_layout_count = min(len(images), max_image_slots)
-        image_capacity = self._content_item_capacity(
-            content_templates,
-            image_layout_count,
-            prefer_images=True,
-            image_count=image_layout_count,
+        combined_item_count = min(len(raw_items), max_item_slots)
+        combined_image_layout = self._extra_item_layout_available(
+            content_templates, image_count=len(images), item_count=combined_item_count,
         )
+        image_slots = self._content_item_slots(
+            content_templates,
+            combined_item_count if combined_image_layout else image_layout_count,
+            prefer_images=True,
+            image_count=len(images) if combined_image_layout else image_layout_count,
+            selection_data=semantic.get("data") if combined_image_layout else None,
+        )
+        image_capacity = min((self._slot_readable_capacity(slot) for slot in image_slots), default=1)
         # 续段会按最多 max_item_slots 条聚合到纯文字页，因此容量必须按最密集版式估算。
         remaining_count = max_item_slots
-        text_capacity = self._content_item_capacity(
+        text_slots = self._content_item_slots(
             content_templates,
             remaining_count,
             prefer_images=False,
             image_count=0,
         )
+        text_capacity = min((self._slot_readable_capacity(slot) for slot in text_slots), default=1)
 
         expanded: list[tuple[Any, dict[str, Any] | None]] = []
         for index, item in enumerate(raw_items):
             # 带图长正文的续段会进入纯文字版式，必须同时满足图文页和续页的较小容量。
-            capacity = min(image_capacity, text_capacity) if index < len(images) else text_capacity
+            uses_image_page = index < len(images) or combined_image_layout
+            capacity = min(image_capacity, text_capacity) if uses_image_page else text_capacity
             parts = self._split_content_item(
                 item,
                 capacity,
                 preserve_native_charts=preserve_native_charts,
+                slots=image_slots + text_slots if uses_image_page else text_slots,
             )
             for part_index, part in enumerate(parts):
                 source = images[index] if index < len(images) and part_index == 0 else None
@@ -761,7 +788,7 @@ class PresentationTemplateRenderer:
         allow_extra_items = self._extra_item_layout_available(
             content_templates,
             image_count=len(images),
-            item_count=min(len(expanded), max_item_slots),
+            item_count=min(len(raw_items), max_item_slots),
         )
 
         title = self._text(
@@ -773,7 +800,8 @@ class PresentationTemplateRenderer:
         cursor = 0
         while cursor < len(expanded):
             if not pages and allow_extra_items:
-                batch = expanded[cursor:cursor + max_item_slots]
+                # 长正文的续段不能冒充额外项目，把单图单项页误选成更窄的多项图文页。
+                batch = expanded[cursor:cursor + min(len(raw_items), max_item_slots)]
                 cursor += len(batch)
                 has_image = True
             else:
@@ -793,6 +821,9 @@ class PresentationTemplateRenderer:
                 [item for item, _ in batch]
             )
             page_images = [copy.deepcopy(source) for _, source in batch if source is not None]
+            if pages and not page_images:
+                # 纯文字续页不再受首张设备框或图文变体约束，保留正文并选择普通文字容量。
+                page_data.pop("variant", None)
             if pages and title:
                 # 带图拆页也必须按续页最终版式复核标题，避免“（续）”触发换行后溢出。
                 page_data["title"] = self._content_continuation_title(
@@ -818,26 +849,41 @@ class PresentationTemplateRenderer:
         image_count: int,
     ) -> int:
         """返回指定项目数量所有可轮换版式中的最小可读正文容量。"""
+        return min((self._slot_readable_capacity(slot) for slot in self._content_item_slots(
+            content_templates, count, prefer_images=prefer_images, image_count=image_count,
+        )), default=1)
+
+    def _content_item_slots(
+        self,
+        content_templates: list[dict[str, Any]],
+        count: int,
+        *,
+        prefer_images: bool,
+        image_count: int,
+        selection_data: dict[str, Any] | None = None,
+    ) -> list[dict[str, Any]]:
+        """取得真实可能选中的正文槽，供分页同时校验字符容量与强制换行高度。"""
+        probe_data = copy.deepcopy(selection_data) if isinstance(selection_data, dict) else {}
+        probe_data["items"] = [{"title": "容量占位"} for _ in range(count)]
         selected_layouts: dict[str, dict[str, Any]] = {}
         for index in range(max(1, len(content_templates))):
             selected = self._select(
                 content_templates,
                 "content",
-                {"items": [{"title": "容量占位"} for _ in range(count)]},
+                probe_data,
                 index,
                 prefer_images=prefer_images,
                 image_count=image_count,
             )
             selected_layouts[str(selected.get("id") or index)] = selected
-        capacities = [
-            self._slot_readable_capacity(element)
+        return [
+            element
             for selected in selected_layouts.values()
             for element in self._slots(
                 selected.get("elements") if isinstance(selected.get("elements"), list) else [],
                 "item",
             )
         ]
-        return min(capacities, default=1)
 
     @classmethod
     def _split_content_item(
@@ -846,13 +892,14 @@ class PresentationTemplateRenderer:
         capacity: int,
         *,
         preserve_native_charts: bool,
+        slots: list[dict[str, Any]] | None = None,
     ) -> list[Any]:
         """按最终会写入正文框的文本拆分 item，避免特殊形态绕过容量校验。"""
         if not isinstance(item, dict):
             value = cls._text(item)
             if not value:
                 return [copy.deepcopy(item)]
-            return cls._split_weighted_text(value, capacity)
+            return cls._split_body_chunks(value, capacity, slots)
         if item.get("kind") == "chart" and preserve_native_charts:
             return [copy.deepcopy(item)]
 
@@ -864,7 +911,7 @@ class PresentationTemplateRenderer:
         body = text_body or content_body or title
         if not body:
             return [copy.deepcopy(item)]
-        chunks = cls._split_weighted_text(body, capacity)
+        chunks = cls._split_body_chunks(body, capacity, slots)
         if len(chunks) == 1:
             return [copy.deepcopy(item)]
 
@@ -879,6 +926,17 @@ class PresentationTemplateRenderer:
                 # 页面主标题已经表达续页；项目标题保持稳定可避免正文分页反向触发降密度。
             expanded.append(part)
         return expanded
+
+    @classmethod
+    def _split_body_chunks(cls, value: str, capacity: int, slots: list[dict[str, Any]] | None) -> list[str]:
+        """保留原有宽度分段；只有强制换行仍超高时，按最终槽位继续细分。"""
+        result: list[str] = []
+        for chunk in cls._split_weighted_text(value, capacity):
+            if slots and not all(cls._slot_text_fits(slot, chunk) for slot in slots):
+                result.extend(cls._split_text_to_fit_slots(chunk, slots))
+            else:
+                result.append(chunk)
+        return result
 
     @staticmethod
     def _has_native_chart_elements(slides: list[dict[str, Any]]) -> bool:
@@ -1938,6 +1996,8 @@ class PresentationTemplateRenderer:
         return sorted(
             [element for element in elements if cls._slot_type(element) == slot_type],
             key=lambda element: (
+                # 交错流程和环形关系可以显式绑定项目顺序；未声明的历史模板仍按坐标排序。
+                cls._number(element.get("slotIndex"), math.inf),
                 cls._number(element.get("top"), 0),
                 cls._number(element.get("left"), 0),
             ),

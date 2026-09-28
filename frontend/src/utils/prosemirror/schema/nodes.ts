@@ -172,6 +172,8 @@ export default {
   paragraph,
   blockquote,
   text,
+  // 模板渲染器和 PPTX 导入使用 br 表达显式换行，编辑器必须保留而不是合并为空格。
+  'hard_break': nodes.hard_break,
   'ordered_list': orderedList,
   'bullet_list': bulletList,
   'list_item': listItem,

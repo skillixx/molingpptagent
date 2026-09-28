@@ -18,6 +18,33 @@ from backend.main_api import outline_client as outline_client_module
 from backend.main_api.outline_client import A2AOutlineClientWrapper
 
 
+async def _fake_agent_card():
+    return object()
+
+
+def test_outline_setup_disables_system_proxy_for_local_a2a(monkeypatch) -> None:
+    """本机 Agent Card 请求不能被系统代理改写成 502。"""
+    captured = {}
+
+    class CapturingHttpClient:
+        def __init__(self, **kwargs):
+            captured.update(kwargs)
+
+        async def __aenter__(self):
+            return self
+
+        async def __aexit__(self, *_args):
+            return None
+
+    monkeypatch.setattr(outline_client_module.httpx, 'AsyncClient', CapturingHttpClient)
+    wrapper = A2AOutlineClientWrapper('proxy-test', 'http://127.0.0.1:10001')
+    monkeypatch.setattr(wrapper, '_get_agent_card', lambda _resolver: _fake_agent_card())
+
+    asyncio.run(wrapper.setup())
+
+    assert captured['trust_env'] is False
+
+
 class FakeChunk:
     def model_dump(self, **_kwargs) -> dict:
         return {

@@ -127,6 +127,15 @@ def test_local_mode_uses_fixed_development_subject_not_session_id() -> None:
     assert "random-client-value" not in principal.knowledge_subject
 
 
+def test_local_main_enter_path_redirects_to_home_without_sso() -> None:
+    """本地关闭 SSO 时，墨灵入口不能返回 Not Found。"""
+    module = _load_main_module()
+    with TestClient(module.app) as client:
+        response = client.get("/enter?ticket=local-test", follow_redirects=False)
+    assert response.status_code == 302
+    assert response.headers["location"] == "/"
+
+
 def test_session_id_is_bounded_generation_context_only() -> None:
     """合法旧值可保持生成连续性，路径/控制字符和超长值不能进入 Agent 上下文。"""
     assert generation_context_id("nanoid_123", "server-random") == "nanoid_123"

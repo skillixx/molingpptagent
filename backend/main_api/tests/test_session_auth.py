@@ -80,6 +80,11 @@ def _service(repository: SessionRepository, client: FakeMolingClient) -> AuthSer
     )
 
 
+def test_resolve_session_without_cookie_returns_none_instead_of_500(repository) -> None:
+    service = _service(repository, FakeMolingClient(_claims()))
+    assert service.resolve_session(None, now=NOW) is None
+
+
 def _app(service: AuthService, *, secure: bool = True) -> FastAPI:
     app = FastAPI()
     app.include_router(

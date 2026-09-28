@@ -19,7 +19,7 @@ repository_root = Path(__file__).resolve().parents[2]
 if str(repository_root) not in sys.path:
     sys.path.insert(0, str(repository_root))
 
-from fastapi.responses import StreamingResponse
+from fastapi.responses import StreamingResponse, RedirectResponse
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from fastapi import UploadFile, File, HTTPException, Form
@@ -120,6 +120,11 @@ if settings.sso_enabled:
             trusted_origins=(trusted_origin_from_url(settings.app_base_url),),
         )
     )
+else:
+    @app.get("/enter", include_in_schema=False)
+    async def local_enter() -> RedirectResponse:
+        """开发模式保留入口路径，直接进入本地首页，不消费或伪造 SSO ticket。"""
+        return RedirectResponse(url="/", status_code=302)
 
 # 旧工具接口在SSO模式只从服务端Session取owner；本地模式使用固定开发主体保持兼容。
 legacy_identity_resolver = LegacyIdentityResolver(
@@ -249,6 +254,8 @@ def _http_health_check(url: str):
         with httpx.Client(
             timeout=settings.health_probe_timeout_seconds,
             follow_redirects=False,
+            # 本机依赖探针必须直连，不能让系统代理把健康服务改写成 502。
+            trust_env=False,
         ) as client:
             response = client.get(url)
             return 200 <= response.status_code < 300
@@ -261,6 +268,8 @@ def _http_reachability_check(url: str):
         with httpx.Client(
             timeout=settings.health_probe_timeout_seconds,
             follow_redirects=False,
+            # 外部可达性检查也不应继承代理配置，避免本地联调状态被误报。
+            trust_env=False,
         ) as client:
             response = client.get(url)
             return response.status_code < 500
@@ -590,6 +599,8 @@ async def get_templates():
         # 青绿低多边形背景与可替换图片槽分离，十八个版式复用现有填充和编辑能力。
         { "name": "青绿几何·清新商务", "id": "template_28", "cover": "/api/data/template_28.jpg" },
         { "name": "乐章雅韵·音乐主题", "id": "template_29", "cover": "/api/data/template_29.jpg" },
+        # 蓝紫霓虹模板覆盖原稿二十二个基础版式，固定装饰与业务图片独立管理。
+        { "name": "蓝紫霓虹·科技产品发布", "id": "template_30", "cover": "/api/data/template_30.jpg" },
     ]
 
     return {"data": templates}

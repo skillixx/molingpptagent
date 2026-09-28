@@ -73,7 +73,8 @@ class A2AContentClientWrapper:
         return public_card
 
     async def setup(self) -> None:
-        async with httpx.AsyncClient(timeout=60.0) as httpx_client:
+        # 本机 A2A 服务必须绕过系统代理，避免 127.0.0.1 被代理层返回 502。
+        async with httpx.AsyncClient(timeout=60.0, trust_env=False) as httpx_client:
             resolver = A2ACardResolver(httpx_client=httpx_client, base_url=self.agent_url)
             try:
                 agent_card = await self._get_agent_card(resolver)
@@ -185,7 +186,8 @@ class A2AContentClientWrapper:
         if self.agent_card is None:
             await self.setup()
         logging.basicConfig(level=logging.INFO)
-        async with httpx.AsyncClient(timeout=360.0) as httpx_client:
+        # 正文流保持本机直连，防止系统代理在长连接中途断开。
+        async with httpx.AsyncClient(timeout=360.0, trust_env=False) as httpx_client:
             self.client = A2AClient(httpx_client=httpx_client, agent_card=self.agent_card)
             self.logger.info('A2AClient 初始化完成。')
 
